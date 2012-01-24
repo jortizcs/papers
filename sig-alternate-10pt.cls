@@ -1367,13 +1367,15 @@
 \newtoks\acmcopyr
 \newtoks\boilerplate 
 \global\acmcopyr={X-X-X-X/XX/XX}  % Default - 5/11/2001 *** Gerry
-\global\copyrtyr={2009}                % Default - 3/3/2003 *** Gerry
+\global\copyrtyr={2012}                % Default - 3/3/2003 *** Gerry
 \def\CopyrightYear#1{\global\copyrtyr{#1}}
 \def\crdata#1{\global\acmcopyr{#1}}
 \def\permission#1{\global\boilerplate{#1}}
 %
-\global\boilerplate={Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page.  To copy otherwise, to republish, to post on servers or to redistribute to lists, requires prior specific permission and/or a fee.\\
-ACM CoNEXT 2010, November 30 - December 3, 2010, Philadelphia, USA.} 
+%\global\boilerplate={Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page.  To copy otherwise, to republish, to post on servers or to redistribute to lists, requires prior specific permission and/or a fee.\\
+%ACM CoNEXT 2010, November 30 - December 3, 2010, Philadelphia, USA.}
+
+\global\boilerplate={Permission to make digital or hard copies of all or part of this work for personal or classroom use is granted without fee provided that copies are not made or distributed for profit or commercial advantage and that copies bear this notice and the full citation on the first page.  To copy otherwise, to republish, to post on servers or to redistribute to lists, requires prior specific permission and/or a fee.}
 
 \newtoks\copyrightetc
 \global\copyrightetc{Copyright \the\copyrtyr\ ACM \the\acmcopyr\ ...\$5.00}

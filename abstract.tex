@@ -1,0 +1,24 @@
+\begin{abstract}
+In this paper we investigate a general approach for identifying opportunities for energy savings
+in real building data traces.  
+
+We use a technique called Empirical Mode Decomposition (EMD) to
+compare sensors at overlapping underlying frequencies and find that 
+\end{abstract}
+
+Results:
+\begin{enumerate}
+\item Correlation is noisy and can't find inter-relationships between sensors
+		with subtle differences.
+\item Underlying behavior should extract most-common denominator in comparing traces
+		to observe truly correlated behavior.
+\item Empirical mode decomposition (EMD) can be used to compare underlying behavior after the
+		removal of the dominant frequencies in the signal.
+\end{enumerate}
+
+Future work:
+\begin{enumerate}
+\item We can create a time-varying dependency graph to compare ``normal'' versus ``abnormal'' behavioral
+		patterns in underlying use.
+\item We can codify ``normal'' or ``efficient'' graphs and compare with real graph constructs over time.
+\end{enumerate}
