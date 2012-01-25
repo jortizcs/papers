@@ -33,13 +33,20 @@ in correlated patterns of usage in order to:
 		from specification.
 \end{itemize}
 
-In this paper we 
-
-In this paper, we present early result in our research for constructing a correlated-usage model.  We show that
+In this paper, we present early result in our research for constructing a correlated-usage model using data
+from a deployment of sensor in a 12-story office-class building at the University of Tokyo.  The deployment
+consists of 1215 sensors monitoring a broad range of devices within the building.  We also collected temperature
+readings outside the building.  Our initial observation and results are
 
 \begin{enumerate}
-\item Raw-trace correlation is noisy for 
+\item Raw-trace correlation is too noisy to be meaningful in our correlation model.
+\item Using a technique called empirical model decomposition (EMD)~\cite{huang:emd1998} removes the 
+		underlying noise from the correlation patterns to identify truly correlated sensor traces.
+\item We can construct clusters of correlated sensor that are spatio-temporally correlated.
 \end{enumerate}
+
+In the rest of the paper we explain EMD and how we use it, we show various examples of our technique on real-world
+traces, and we discuss the implications and future work.
 
 % Green IT
 
