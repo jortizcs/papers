@@ -1,12 +1,63 @@
 \section{Introduction}
-Green IT
+Buildings consume an enourmous amount of energy in countries around the world.  In 
+the Japan, 28\% of the energy produced in consumed in buildings~\cite{japanbuildings} while in the United 
+States it is as high as 40\%~\cite{epabuildings}.  Moreover, studies show that between 30-80\% of it
+is wasted~\cite{waste_science, next10_waste}.  Large commercial buildings are typically instrumented
+with a large number of sensors measuring various aspects of building operation.  Atlhgouh typically
+used to assure operational stability, they may also be used to measure, observe, and identify
+instances of wasted use.
 
-Understand the energy consumption of a building and identify savings opportunities.
+Identifying instances of wasted energy use is non-trivial.  System efficiency is defined as the ratio of the 
+useful work done to the energy it consumes.  In the case of buildings, we define useful work as 
+the energy used to support activities by the building's occupants.
 
-Identification of energy consuming devices that are correlated.
-Uncover usage patterns of correlated device that are energy efficient.
-Detect deviation from the energy efficient pattern and report to the user.
+This approach is very time consuming and simply does not scale.
 
-During the design of our application the first difficulty was to identify the set of devices that have related energy consumption.
+Fundamentally we want to understand how and when devices are being used.  In particular, we are interested
+in correlated patterns of usage in order to:
 
-This article focuses on this problem
+\begin{itemize}
+\item Uncover potentially correlated usage patterns that lead to efficiencies.
+\item Identify anomolies from normal usage patterns.  These often indicate instances of waste.
+\item Provide a way to codify efficient or expected usage over time and identify deviations
+		from specification.
+\end{itemize}
+
+% Green IT
+
+% Understand the energy consumption of a building and identify savings opportunities.
+
+% Identification of energy consuming devices that are correlated.
+% Uncover usage patterns of correlated device that are energy efficient.
+% Detect deviation from the energy efficient pattern and report to the user.
+
+% During the design of our application the first difficulty was to identify the set of devices that have related energy consumption.
+
+% This article focuses on this problem.
+
+% Results:
+% \begin{enumerate}
+% \item Correlation is noisy and can't find inter-relationships between sensors
+% 		with subtle differences.
+% \item Underlying behavior should extract most-common denominator in comparing traces
+% 		to observe truly correlated behavior.
+% \item Empirical mode decomposition (EMD) can be used to compare underlying behavior after the
+% 		removal of the dominant frequencies in the signal.
+% \end{enumerate}
+
+% \subsection{ideas}
+
+% Future work:
+% \begin{enumerate}
+% \item We can create a time-varying dependency graph to compare ``normal'' versus ``abnormal'' behavioral
+% 		patterns in underlying use.
+% \item We can codify ``normal'' or ``efficient'' graphs and compare with real graph constructs over time.
+% \end{enumerate}
+
+% Possible algorithms:
+% \begin{enumerate}
+% \item find correlated and uncorrelated sensors
+% \item construct correlation network where the nodes are the sensors and an edge implies correlation above
+% 		threshold. (We can also construct the complement of that.)
+% \end{enumerate}
+
