@@ -28,13 +28,17 @@ traffic, as a proxy for occupancy, correlates with energy use can help determine
 In each of these studies and others~\cite{AgarwalBDGW11,buildanomaly}, cccupancy is used as an trigger
 that drives efficient resource-usage policies.  Efficiency
 when unoccupied means shutting everything off and efficiency when a space is occupied means anything
-can be turned on.  No question this is an excellent way to identify savings opportunities, however, we
-take a fundamentally different approach.  We start with the assumption that you operate efficiently and that mistakes
-cause inefficiencies to occur.  If uncorrected, losses remain.  Our goal is to help the user stay efficient.
-If successful, our approach should identify savings opportunities in cases where the space is unoccupied as well 
-as occupied.   Our approach is flexible to be helpful when the assumption does not hold by either allowing the
-user to specify what efficient usage is or through the discovery of efficient usage over various time scales.
-In either case, the flexibility of our approach is its strength from the perspective of generality and scale.
+can be turned on.  There is no question this is an excellent way to identify savings opportunities, however, we
+take a fundamentally different approach.  We are agnostic to the underlying cause or driver for efficient
+policies to be implemented.  More generally, we look to understand \emph{how the equipment is used in
+concert}.  This may help uncover unexpected underlying relationships and can be used in an anomoly detection application
+to establish ``efficient'', ``normal'', or ``inefficient'' usage patterns.  The latter 
+should identify savings opportunities in cases where the space is unoccupied as well 
+as occupied, because it has to do with the underlying behavior of the machines and how they generally work
+together.  This kind of application could achive both generality and scale.
+% Our approach is flexible to be helpful when the assumption does not hold by either allowing the
+% user to specify what efficient usage is or through the discovery of efficient usage over various time scales.
+% In either case, the flexibility of our approach is its strength from the perspective of generality and scale.
 
 
 
