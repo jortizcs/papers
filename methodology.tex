@@ -1,15 +1,14 @@
 \section{Methodology}\label{method}
 %Remove the weekly trend of the data to analyze the detailed changes that convey the device behavior at small time scales.
 
-Our initial approach examined simple correlation analysis on sensor traces.  However, we quickly
-found that correlation overly sensitive to fluctuations in the data.  {\bf Figure~\ref{fig:blah} shows
-the sensitivity in the analysis using only correlation.}
-Fundamentally, observed readings are driven by overlapping external phenomena.  Therefore,
-if  sensors overlap spatio-temporally, their readings should be correlated.  What we observe in the data
-is that the main driver for the readings of many of the sensors is outside temperature and weather.  It causes 
-the heaters to turn on/off, the lights to turn on/off, occupancy to vary.  There were other factors, such as 
-holiday scheduling and deadlines for student projects.  This made the sensor traces look correlated in
-their raw feed.  In order to find unique relationships we needed to remove the common trends.
+Our initial approach examined correlation analysis on raw sensor traces.  However, we quickly
+found that correlation is overly sensitive to fluctuations in the data.
+Fundamentally, the readings are driven by the same underlying phenomena: 
+weather and occupancy.  Weather influences \emph{all} the data similarly.  Occupancy, however, changes
+throughout the building and should be used as a differentiating component in the signal
+comparisons.  Sensors that share spatio-temporal elements should be correlated after the removal
+of the underlying trend driven by the weather.  In order to find unique relationships we needed to remove 
+this common trend.
 
 \subsection{Empirical Mode Decomposition}
 Empirical Mode Decomposition (EMD) \cite{huang:emd1998} is a new techniques used for de-trending data.
