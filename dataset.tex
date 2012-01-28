@@ -22,44 +22,63 @@ analysis we also narrowed the search down to three sensors:
 % includes one day holiday (July 18th)
 % 3 different sensors:
 \begin{itemize}
- \item 2 are measuring the electric power consumption of two devices from the same room; an Electric Heat Pump and the room lighting system.
- \item 1 is measuring the electric power consumption of a Gas Heat Pump that is heating and cooling a different room in the same building.
+ \item 2 are measuring the electric power consumption of two devices from the same room; an electric heat 
+ 		pump and the room lighting system.
+ \item 1 is measuring the electric power consumption of a gas heat pump that is pumping water to cool 
+ 		a different room in the same building.
 \end{itemize}
 
 Later we expand our analysis to include all the sensors in the building.
 
-\section{Problem statement}\label{problem}
-Find device correlation at large spatial and time scales.
+\section{Problem statement and Initial approach}\label{problem}
+In our analysis we are focused on finding devices that are correlated in their use of time.  Therefore, the
+main object is to examine how device traces relate to one another.  The main objective then is to find
+correlated device-trace patterns at large spatio-temporal scales.  
 
-Usual measures on sensor data like correlation coefficient or granger causality \cite{kim:buildsys2010}
--- this is not working
+Observe Figure \ref{fig:raw}.  The figure we shows the raw traces for the devices discussed in the previous section.
+Notice the common pattern in each of the traces.  The lights and pumps are on during the day and off at night.
+During weekends and holidays less power is consumes.  The correlation coefficients for 
+between  the EHP and light is $0.772013$ while the  correlation coefficient for the EHP and GHP is $0.636967$.
+Running simple correlation across these traces yields high correlation coefficients between them.
 
+% Usual measures on sensor data like correlation coefficient or granger causality \cite{kim:buildsys2010}
+% -- this is not working
 
 \begin{figure}
- \subfigure[EHP]{\includegraphics[width=.5\textwidth]{img/25.png}}
- \subfigure[Light]{\includegraphics[width=.5\textwidth]{img/26.png}}
- \subfigure[GHP]{\includegraphics[width=.5\textwidth]{img/41.png}}
+ \subfigure[EHP]{\label{fig:raw_ehp}\includegraphics[width=.5\textwidth]{img/25.png}}
+ \subfigure[Light]{\label{fig:raw_light}\includegraphics[width=.5\textwidth]{img/26.png}}
+ \subfigure[GHP]{\label{fig:raw_ghp}\includegraphics[width=.5\textwidth]{img/41.png}}
  \caption{Data from three different sensors captured in 2011 from July 4th to July 24th.}
  \label{fig:raw}
 \end{figure}
 
-For example correlation coefficients for the 3 signals...
-correlation coefficient for the EHP and Light signals: $0.772013$
-correlation coefficient for the EHP and GHP signals: $0.636967$
+% For example correlation coefficients for the 3 signals...
+% correlation coefficient for the EHP and Light signals: $0.772013$
+% correlation coefficient for the EHP and GHP signals: $0.636967$
 
-These scores suggest that the EHP signal is related to the two other measured signals.
+% These scores suggest that the EHP signal is related to the two other measured signals.
 
-These results were expected for the EHP and Light signals as the two measured devices operate for the same room and are used simultaneously.
-These results, however, suggest that the EHP and GHP signals are highly correlated whereas in facts the two corresponding devices are located at two opposite sides of the building and their functioning is independent.
-The small difference between the two computed correlation coefficients is misleading as one could conclude that the three signals are correlated and the corresponding devices are activated by a single action.
+These results were expected for the EHP and light signals as the two measured devices operate for the same room 
+and are used simultaneously.  More importantly, they are used to support the occupants of the rooms they are serving.
+We were somewhat surpised by the magnitude of correlation between the pumps, since they serve rooms on
+opposite sides of the building and operate independently.  However, occupancy and weather patterns are similar,
+and the underlying trend is captured by the correlation calculation.
+The difference between the correlation coefficients is small and one might conclude that all three are
+closely related to one another.  That conclusion is not false, but misleading.  Correlation on the raw 
+signal sensitive to the underlying trend in the signals.  In order to meangingfully distinguish between
+truly related devices we need to remove the common trends.  Correlation on the raw signal is not
+discriminatory enough.
 
-The high correlation coefficients obtained for these three signals result .... weekly pattern....
-small difference = local fluctuation...
 
-this high score comes from the fact that the two devices are monitoring offices that are weekly used.
+% The small difference between the two computed correlation coefficients is misleading as one could conclude that the three signals are correlated and the corresponding devices are activated by a single action.
 
-Indeed the weekly pattern of the data trump the correlation coefficients....
+% The high correlation coefficients obtained for these three signals result .... weekly pattern....
+% small difference = local fluctuation...
 
-How to inspect only the local fluctuations...?
-we'd like to have an elegant solution (i.e. not specifying the interesting time scale)
+% this high score comes from the fact that the two devices are monitoring offices that are weekly used.
+
+% Indeed the weekly pattern of the data trump the correlation coefficients....
+
+% How to inspect only the local fluctuations...?
+% we'd like to have an elegant solution (i.e. not specifying the interesting time scale)
 
