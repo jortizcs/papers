@@ -1,4 +1,20 @@
 \section{Results}
+
+% \begin{figure*}
+%  \subfigure[EHP vs. Light]{\includegraphics[width=\textwidth]{img/emd_25_26}}
+%  \subfigure[EHP vs. GHP]{\includegraphics[width=\textwidth]{img/emd_25_41}}
+%  \caption{Empirical Mode Decomposition}
+%  \label{fig:emd}
+% \end{figure*}
+
+\begin{figure*}[tb]
+\begin{center}
+\includegraphics[width=\textwidth]{img/emd_25_26}
+\caption{}
+\label{fig:emd}
+\end{center}
+\end{figure*}
+
 This section emphasizes the advantages of EMD to effectively uncover correlated sensor traces.
 First, we demonstrate the benefit of EMD with a simple example, the three sensors presented in Section \ref{problem}.
 Second, we validate the proposed methodology using a large dataset (674 sensors) and highlight the ability of EMD to uncover the spatial correlations of the sensors.
@@ -17,6 +33,14 @@ EHP, GHP & 0.6370 & 0.0060274 & 0.063546 & 0.16764 & 0.79378 \\ \hline
 \end{table*}
 \subsection{Simple Scenario}
 
+\begin{figure*}[tb]
+\begin{center}
+\includegraphics[width=\textwidth]{img/emd_25_41}
+\caption{}
+\label{fig:emd2}
+\end{center}
+\end{figure*}
+
 Lets consider the simple example of Section \ref{problem} where we would like to know if the EHP trace is correlated with the two other traces; a light trace and a GHP trace.
 Using the raw traces, the correlation coefficients $0.7715$ and $0.6370$ corresponding respectively to the light and GHP trace suggest that both traces are correlated to the EHP trace (Table \ref{tab:corr}).
 As stated in previous section this result is certainly biased by the strong daily pattern shared by these three traces.
@@ -30,13 +54,13 @@ The correlation coefficients for the EHP and light IMFs --- i.e. $0.43909$, $0.4
 However, the correlation coefficients for the EHP and GHP IMFs show that the two traces are independent in the high frequency domain.
 Therefore, EMD permits to effectively identify that the light trace is related to the EHP whereas the GHP one is not.
 
-\begin{figure*}
+\begin{figure}[tbh!]
 \centering
- \subfigure[Raw traces correlation coefficients]{\label{fig:histo1}\includegraphics[width=.45\textwidth]{img/allFloors_week1_week4_corr_abs.eps}}
- \subfigure[Average IMFs correlation coefficients]{\label{fig:histo2}\includegraphics[width=.45\textwidth]{img/allFloors_week1_week4_emd_abs.eps}}
+ \subfigure[Raw traces correlation coefficients]{\label{fig:histo1}\includegraphics[width=.45\textwidth]{img/allFloors_week1_week4_corr_abs-eps-converted-to}}
+ \subfigure[Average IMFs correlation coefficients]{\label{fig:histo2}\includegraphics[width=.45\textwidth]{img/allFloors_week1_week4_emd_abs-eps-converted-to}}
  \caption{Distribution of the correlation coefficients of the raw traces and corresponding IMFs using 3 weeks of data from 674 sensors deployed on 12 Floors.}
 \label{fig:histo}
-\end{figure*}
+\end{figure}
 
 \subsection{Validation}
 

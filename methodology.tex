@@ -1,8 +1,8 @@
 \section{Methodology}\label{method}
 %Remove the weekly trend of the data to analyze the detailed changes that convey the device behavior at small time scales.
 
-Our initial approach examined correlation analysis on raw sensor traces.  However, we quickly
-found that correlation is overly sensitive to fluctuations in the data.
+% Our initial approach examined correlation analysis on raw sensor traces.  However, we quickly
+% found that correlation is overly sensitive to fluctuations in the data.
 Fundamentally, the readings are driven by the same underlying phenomena: 
 weather and occupancy.  Weather influences \emph{all} the data similarly.  Occupancy, however, changes
 throughout the building and should be used as a differentiating component in the signal
@@ -36,9 +36,3 @@ We run our correlation analysis on the shared IMF outputs between a pairs of sig
 that the IMFs corresponding to two distinct signals are on the same time scale, we use 
 bivariate EMD \cite{rilling:biemd2007} to decompose two signals at once. The main use of EMD is for removing dominant trends to conduct a meaningful spectral analysis of the data.
 
-\begin{figure*}
- \subfigure[EHP vs. Light]{\includegraphics[width=\textwidth]{img/emd_25_26}}
- \subfigure[EHP vs. GHP]{\includegraphics[width=\textwidth]{img/emd_25_41}}
- \caption{Empirical Mode Decomposition}
- \label{fig:emd}
-\end{figure*}
