@@ -1,17 +1,70 @@
+\subsection{Limitations}
+EMD was useful for finding underlying behavioral relationships between traces of sensor data.  However,
+when we set the timescales smaller than a day, the results were not as strong.
+The trace has to be long enough to that a trend can be observed.  For this data set, the underlying
+trend is daily, therefore it requires there to be a significant number of samples over many days to
+for this method to be effective.
+Although this was a limitation for this dataset, it really depends on the underlying phenomenon that
+the sensors are measuring.  Its underlying trend is ultimately what EMD will be able to separate
+from the intrisic modes of the underlying signal.
+
 \subsection{Discussion}
-EMD works perfectly although the weekly pattern of the data is altered the last analyzed week.
+Using EMD to find fundamental relationships between sensor traces was quite promising for building
+up models of correlated usage.  We believe that correlated usage pattern can help identify oversights
+by the occupants and faults that lead to energy waste.  A direct application of this is the identification
+of simultaneous heating and cooling~\cite{simheatcool}.  Simultaneous heating and cooling is when you heating
+and cooling system either compete with one another or compete with the incoming air from outside and is
+a cause for major energy waste in building~\cite{simheatcool_waste}.  The longer is goes undetected,
+the more waste there is.  However, it is very difficult to identify since the occupants do not notice
+changes in temperature.  Our analysis can be used to build a correlation model between the outside
+heating cooling temperature, the cooling coil temperature, and the outside air vent position.  If their behavior
+is not correlated as expect, an alarm should be raised.
 
-EMD inherently finds the interesting time scales.
+We can also apply it to other usage scenarios.  In our traces, for example, we found an instance where the pump
+was on, but the lights were off.  These two are typically correlated, however, in this case they were not.
+That was a case where the air conditioning was pumping cool air into the room and there were not occupants.
+With our approach this could have been identified and corrected.  In future work, we intend to
+package our solution to serve these kinds of applications.
 
-number of zero crossing = mean frequency/time scale:
-  TODO give the time scale for each IMF.
+% EMD works perfectly although the weekly pattern of the data is altered the last analyzed week.
+
+% EMD inherently finds the interesting time scales.
+
+% number of zero crossing = mean frequency/time scale:
+%   TODO give the time scale for each IMF.
 
 
 \section{Conclusion}
-what is our problem
+% what is our problem
 
-what we did
+% what we did
 
-contributions and main results
+% contributions and main results
 
-future work
+% future work
+
+
+In this paper set out to examine the underlying relationship between sensor traces, to find interesting correlations
+in use.  We used data from a large deployment of sensor in building and found that direct correlation analysis on the raw
+traces was not discrimatory enough to find interesting relationships.  Upon closer inspection, we noticed that
+the underlying trend was dominating the correlation calculation.  In order to extract meaningful underlying behavior, it has
+to be removed.  We concluded that empirical mode decomposition was a good analytical tool for detrending 
+non-linear, non-stationary data; characteristics contained by our sensor traces.
+
+We re-ran our analysis on the same trace, except this time we correlated the IMF outputs of the EMD operation on each of the traces and found that the pump was closely related to the lights in the same room served by the pump and
+uncorrelated with a pump on the same floor serving a different room.  In order to corroborate the applicability
+of our approach, we compared the pump trace with \emph{all} 674 sensor traces and found a strong correlation
+between spatial position of the sensors and their IMF correlations.  The most correlated IMFs were serving the same
+area in the building.  As we relax the admittance criteria we find that the spatial correlation expands radially from
+the main location served by the reference trace.
+
+We plan to examine the use of this method in applications that help discovery changes in underlying relationships over time
+in order to identify opportunities for savings in buildings.  We will use it to build inter-device correlation models
+and use these models to establish ``normal'', ``abnormal'' usage patterns.  We hope to take it a step further and include a
+supervised learning approach to distinguish between ``efficient'' and ``inefficient'' usage patterns as well.
+
+
+
+
+
+
