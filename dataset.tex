@@ -1,7 +1,7 @@
 \section{Dataset}
 The data we used was obtained from a deployment of sensors in a 12-story office building
 on the campus of the University of Tokyo~\cite{gutp, ogawa:lncs2011}.  The deployment consists of 
-1215 sensor monitoring device power consumption, ranging from plug-load devices to components of the
+1215 sensors monitoring device power consumption, ranging from plug-load devices to components of the
 heating, ventilation, and air conditioning system and lighting.  Sensors also reported temperature
 data, pressure, device-state, and other device information.  Each sensor reports data on the
 order of minutes.  However, with the number of sensors, the collected data over a ~2 year
@@ -23,7 +23,7 @@ span was about half a terabyte.
 
 %received attention in the past \cite{ogawa:lncs2011}.
 
-For our investigation we focues on a three-week span in the summer of 2011 (from July 4th to July 24th).
+For our investigation we focus on a three-week span in the summer of 2011 (from July 4th to July 24th).
 The dataset capture regular work days, weekends and one holiday (July 18th).  This gave us a representative sample
 of how the equipment is used for various activities as they are influenced by occupant schedules.  For the initial
 analysis we also narrowed the search down to three sensors:
@@ -32,8 +32,8 @@ analysis we also narrowed the search down to three sensors:
 % 3 different sensors:
 \begin{itemize}
  \item 2 are measuring the electric power consumption of two devices from the same room; an electric heat 
- 		pump and the room lighting system.
- \item 1 is measuring the electric power consumption of a gas heat pump that is pumping water to cool 
+ 		pump (EHP) and the room lighting system.
+ \item 1 is measuring the electric power consumption of a gas heat pump (GHP) that is pumping water to cool 
  		a different room in the same building.
 \end{itemize}
 
@@ -69,12 +69,12 @@ Running simple correlation across these traces yields high correlation coefficie
 
 These results were expected for the EHP and light signals as the two measured devices operate for the same room 
 and are used simultaneously.  More importantly, they are used to support the occupants of the rooms they are serving.
-We were somewhat surpised by the magnitude of correlation between the pumps, since they serve rooms on
+We were somewhat surprised by the magnitude of correlation between the pumps, since they serve rooms on
 opposite sides of the building and operate independently.  However, occupancy and weather patterns are similar,
 and the underlying trend is captured by the correlation calculation.
 The difference between the correlation coefficients is small and one might conclude that all three are
 closely related to one another.  That conclusion is not false, but misleading.  Correlation on the raw 
-signal sensitive to the underlying trend in the signals.  In order to meangingfully distinguish between
+signal sensitive to the underlying trend in the signals.  In order to meaningfully distinguish between
 truly related devices we need to remove the common trends.  Correlation on the raw signal is not
 discriminatory enough.
 
