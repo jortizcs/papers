@@ -10,7 +10,7 @@ span was about half a terabyte.
 
 \begin{figure*}[tb]
 \hspace{-2cm}
-\includegraphics[width=1.2\textwidth]{img/emd_25_26.eps}
+\includegraphics[width=1.2\textwidth]{img/emd_25_26-eps-converted-to}
 \vspace{-1cm}
 \caption{Bivariate EMD of the EHP and light trace}
 \label{fig:emd}
@@ -39,15 +39,21 @@ analysis we also narrowed the search down to three sensors:
 
 Later we expand our analysis to include all the sensors in the building.
 
-\section{Problem statement and Initial approach}\label{problem}
-In our analysis we are focused on finding devices that are correlated in their use of time.  Therefore, the
-main object is to examine how device traces relate to one another.  The main objective then is to find
-correlated device-trace patterns at large spatio-temporal scales.  
 
-The figure \ref{fig:raw} shows the raw traces for the 3 devices discussed in the previous section.
+
+
+
+
+
+
+\section{Problem statement and Initial approach}\label{problem}
+In our analysis, we are focused on finding devices that are correlated in their use over time.  Therefore, the
+main objective is to examine how device traces relate to one another.  The wish to identify
+correlated device-trace patterns at large spatio-temporal scales.  
+Figure \ref{fig:raw} shows the raw traces for the 3 devices discussed in the previous section.
 Notice the common pattern in each of the traces.  The lights and pumps are on during the day and off at night.
-During weekends and holidays less power is consumed.  The correlation coefficient for 
- the EHP and light is $0.7715$ while the  correlation coefficient for the EHP and GHP is $0.6370$.
+During weekends and holidays less power is drawn.  The correlation coefficient for 
+ the EHP and light is $0.7715$ while the correlation coefficient for the EHP and GHP is $0.6370$.
 Running simple correlation across these traces yields high correlation coefficients between them.
 
 % Usual measures on sensor data like correlation coefficient or granger causality \cite{kim:buildsys2010}
@@ -68,7 +74,7 @@ Running simple correlation across these traces yields high correlation coefficie
 
 % These scores suggest that the EHP signal is related to the two other measured signals.
 
-These results were expected for the EHP and light signals as the two measured devices operate for the same room 
+These results were expected for the EHP and light signals, as the two measured devices operate for the same room 
 and are used simultaneously.  More importantly, they are used to support the occupants of the rooms they are serving.
 We were somewhat surprised by the magnitude of correlation between the pumps, since they serve rooms on
 opposite sides of the building and operate independently.  However, occupancy and weather patterns are similar,

@@ -15,13 +15,15 @@ this common trend.
 
 \subsection{Empirical Mode Decomposition}
 Empirical Mode Decomposition (EMD) \cite{huang:emd1998} is a new technique used for de-trending data.
-Specifically, EMD detrends non-stationary, non-linear timeseries data.  A trend is defined as 
-an intrinsically determined monotonic function within a certain temporal span or a function in which there 
-can be at most one extremum within that temporal span.  A non-stationary signal is a signal whose mean and
-variance change over time.  EMD is a process, rather than a theoretical tool, its main use is for removing dominant trends to conduct a meaningful spectral analysis of the data.
+Specifically, EMD detrends non-stationary, non-linear timeseries data.  
+% A trend is defined as 
+% an intrinsically determined monotonic function within a certain temporal span or a function in which there 
+% can be at most one extremum within that temporal span.  
+A non-stationary signal is a signal whose mean and
+variance change over time.  EMD is a process, not a theoretical tool.  Its main use is for removing trends 
+to enable more useful spectral analysis.
 
-
-We describe the EMD process as follow:  for a signal \emph{X(t)}, let $m_1$ be the mean of its upper and
+We describe the EMD process as follows:  for a signal \emph{X(t)}, let $m_1$ be the mean of its upper and
 lower envelopes as determined from a cubic-spline interpolation of local maxima and minima. The locality 
 is determined by an arbitrary parameter.
 
