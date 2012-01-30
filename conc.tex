@@ -6,7 +6,7 @@ trend is daily, therefore it requires there to be a significant number of sample
 for this method to be effective.
 Although this was a limitation for this dataset, it really depends on the underlying phenomenon that
 the sensors are measuring.  Its underlying trend is ultimately what EMD will be able to separate
-from the intrisic modes of the underlying signal.
+from the intrinsic modes of the underlying signal.
 
 \subsection{Discussion}
 Using EMD to find fundamental relationships between sensor traces was quite promising for building
@@ -46,7 +46,7 @@ package our solution to serve these kinds of applications.
 
 In this paper set out to examine the underlying relationship between sensor traces, to find interesting correlations
 in use.  We used data from a large deployment of sensor in building and found that direct correlation analysis on the raw
-traces was not discrimatory enough to find interesting relationships.  Upon closer inspection, we noticed that
+traces was not discriminatory enough to find interesting relationships.  Upon closer inspection, we noticed that
 the underlying trend was dominating the correlation calculation.  In order to extract meaningful underlying behavior, it has
 to be removed.  We concluded that empirical mode decomposition was a good analytical tool for detrending 
 non-linear, non-stationary data; characteristics contained by our sensor traces.
