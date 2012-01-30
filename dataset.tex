@@ -1,8 +1,8 @@
 \section{Dataset}
 The data we used was obtained from a deployment of sensors in a 12-story office building
 on the campus of the University of Tokyo~\cite{gutp, ogawa:lncs2011}.  The deployment consists of 
-1215 sensors monitoring device power consumption, ranging from plug-load devices to components of the
-heating, ventilation, and air conditioning system and lighting.  Sensors also reported temperature
+over 700 sensors monitoring device power consumption, ranging from plug-load devices to components of the
+heating, ventilation, air conditioning system and lighting.  Sensors also reported temperature
 data, pressure, device-state, and other device information.  Each sensor reports data on the
 order of minutes.  However, with the number of sensors, the collected data over a 2-year
 span was about half a terabyte.
@@ -44,10 +44,10 @@ In our analysis we are focused on finding devices that are correlated in their u
 main object is to examine how device traces relate to one another.  The main objective then is to find
 correlated device-trace patterns at large spatio-temporal scales.  
 
-Observe Figure \ref{fig:raw}.  The figure we shows the raw traces for the devices discussed in the previous section.
+The figure \ref{fig:raw} shows the raw traces for the 3 devices discussed in the previous section.
 Notice the common pattern in each of the traces.  The lights and pumps are on during the day and off at night.
-During weekends and holidays less power is consumes.  The correlation coefficients for 
-between  the EHP and light is $0.772013$ while the  correlation coefficient for the EHP and GHP is $0.636967$.
+During weekends and holidays less power is consumed.  The correlation coefficient for 
+ the EHP and light is $0.7715$ while the  correlation coefficient for the EHP and GHP is $0.6370$.
 Running simple correlation across these traces yields high correlation coefficients between them.
 
 % Usual measures on sensor data like correlation coefficient or granger causality \cite{kim:buildsys2010}
@@ -73,10 +73,10 @@ We were somewhat surprised by the magnitude of correlation between the pumps, si
 opposite sides of the building and operate independently.  However, occupancy and weather patterns are similar,
 and the underlying trend is captured by the correlation calculation.
 The difference between the correlation coefficients is small and one might conclude that all three are
-closely related to one another.  That conclusion is not false, but misleading.  Correlation on the raw 
-signal sensitive to the underlying trend in the signals.  In order to meaningfully distinguish between
-truly related devices we need to remove the common trends.  Correlation on the raw signal is not
-discriminatory enough.
+closely related to one another.  That conclusion is not false but misleading.  Correlation on the raw 
+signals is sensitive to the underlying trend shared by the signals.  In order to meaningfully distinguish between
+truly related devices we need to remove the common trends.  
+% Correlation on the raw signal is not discriminatory enough.
 
 
 % \begin{table}
@@ -91,7 +91,7 @@ discriminatory enough.
 % \label{tab:corr}
 % \end{center}
 % \end{table}
-\subsection{Simple Scenario}
+% \subsection{Simple Scenario}
 
 \begin{figure*}[tb]
 \hspace{-2cm}

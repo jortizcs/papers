@@ -13,12 +13,13 @@ This section emphasizes the advantages of EMD to effectively uncover correlated 
 First, we demonstrate the benefit of EMD with a simple example, the three sensors presented in Section \ref{problem}.
 Second, we validate the proposed methodology using a large dataset (674 sensors) and highlight the ability of EMD to uncover the spatial correlations of the sensors.
 
-Lets consider the simple example of Section \ref{problem} where we would like to know if the EHP trace is correlated with the two other traces; a light trace and a GHP trace.
-Using the raw traces, the correlation coefficients $0.7715$ and $0.6370$ corresponding respectively to the light and GHP trace suggest that both traces are correlated to the EHP trace (Figure \ref{fig:emd2}).
+\subsection{Example with 3 sensors}
+Lets consider the simple example of Section \ref{problem} where we would like to know if the EHP trace is correlated with the two other traces; the light trace and the GHP trace.
+Using the raw traces, the correlation coefficients $0.7715$ and $0.6370$ corresponding respectively to the light and GHP trace suggest that both traces are correlated to the EHP trace.
 % As stated in previous section this result is biased by the strong daily pattern shared by these three traces.
 As stated in previous section this result is misleading, as the weather trend dominates the calculation.
 %We emphasize that extracting the daily pattern of the data using EMD permits a more detailed analysis of these traces.
-Figure \ref{fig:emd} and figure \ref{fig:emd2} shows the EMD decomposition of the three traces.
+Figure \ref{fig:emd} and Figure \ref{fig:emd2} shows the EMD decomposition of the three traces.
 %Notice that the EMD process has been voluntary stopped once the daily pattern has been uncovered.
 For each trace EMD has retrieved three IMFs that highlight the higher frequency of the traces.
 
@@ -32,7 +33,8 @@ high-frequency IMF components.
 EMD allows us to meaningfully discriminate between traces, indicating the underlying independence in the intrinsic
 behavior of the two heat pumps.  It also suggest that the EHP and light are more intrinsically related
 to one another.  Although promising, these results must be validated across the rest of the
-dataset to confirm their significance.  Figure \ref{fig:emd} and \ref{fig:emd2} summarize our findings.
+dataset to confirm their significance.  
+% Figure \ref{fig:emd} and \ref{fig:emd2} summarize our findings.
 % permits to effectively identify that the light trace is related to the EHP whereas the GHP one is not.
 
 \subsection{Validation}

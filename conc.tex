@@ -12,9 +12,9 @@ from the intrinsic modes of the underlying signal.
 Using EMD to find fundamental relationships between sensor traces was quite promising for building
 up models of correlated usage.  We believe that correlated usage pattern can help identify oversights
 by the occupants and faults that lead to energy waste.  A direct application of this is the identification
-of simultaneous heating and cooling~\cite{simheatcool}.  Simultaneous heating and cooling is when you heating
+of simultaneous heating and cooling~\cite{simheatcool}.  Simultaneous heating and cooling is when heating
 and cooling system either compete with one another or compete with the incoming air from outside and is
-a cause for major energy waste in building~\cite{simheatcool}.  The longer is goes undetected,
+a cause for major energy waste in building~\cite{simheatcool}.  The longer it goes undetected,
 the more waste there is.  However, it is very difficult to identify since the occupants do not notice
 changes in temperature.  Our analysis can be used to build a correlation model between the outside
 heating cooling temperature, the cooling coil temperature, and the outside air vent position.  If their behavior
@@ -44,11 +44,11 @@ package our solution to serve these kinds of applications.
 % future work
 
 
-In this paper set out to examine the underlying relationship between sensor traces, to find interesting correlations
+This paper set out to examine the underlying relationship between sensor traces, to find interesting correlations
 in use.  We used data from a large deployment of sensor in building and found that direct correlation analysis on the raw
 traces was not discriminatory enough to find interesting relationships.  Upon closer inspection, we noticed that
-the underlying trend was dominating the correlation calculation.  In order to extract meaningful underlying behavior, it has
-to be removed.  We concluded that empirical mode decomposition was a good analytical tool for detrending 
+the underlying trend was dominating the correlation calculation.  In order to extract meaningful behavior this trend has
+to be removed.  We concluded that empirical mode decomposition is an helpful analytical tool for detrending 
 non-linear, non-stationary data; characteristics contained by our sensor traces.
 
 We re-ran our analysis on the same trace, except this time we correlated the IMF outputs of the EMD operation on each of the traces and found that the pump was closely related to the lights in the same room served by the pump and
