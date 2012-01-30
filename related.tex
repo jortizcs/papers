@@ -7,12 +7,12 @@ The model is then used to drive HVAC settings to reduce energy consumption.  We 
 in our approach.  Instead it is an implicit factor in correlated-usage patterns; changes in such a pattern 
 should signal changes in occupancy that may affect efficiency.
 
-\cite{kaminthermo} uses occupancy sensor from the in-home security system and user input to
-optimize the heating and cooling schedule in the home.  Using occupancy statistics over time, they
-are able to determine the times when someone will be home and they set the heating schedule accordingly.
-Our approach is agnostic to the optimal setting and instead focuses on identifying an intrinsic relationship
-between sensors so that meaningful correlation patterns can be identified.  We hope this can provide
-a tool for constructing ``normal'' versus ``abnormal'' usage that can identify waste.
+% \cite{kaminthermo} uses occupancy sensor from the in-home security system and user input to
+% optimize the heating and cooling schedule in the home.  Using occupancy statistics over time, they
+% are able to determine the times when someone will be home and they set the heating schedule accordingly.
+% Our approach is agnostic to the optimal setting and instead focuses on identifying an intrinsic relationship
+% between sensors so that meaningful correlation patterns can be identified.  We hope this can provide
+% a tool for constructing ``normal'' versus ``abnormal'' usage that can identify waste.
 % unaware of what is optimal, only what is common.  Uncommon behavior is flagged in hopes
 % that they are meaningful with respect to efficiency.
 
@@ -28,7 +28,7 @@ traffic, as a proxy for occupancy, correlates with energy use can help determine
 
 %{\bf Duty-cycling buildings aggressively: The next frontier in HVAC control}~\cite{AgarwalBDGW11}
 
-In each of these studies and others~\cite{AgarwalBDGW11,buildanomaly}, occupancy is used as a trigger
+In each of these studies and others~\cite{AgarwalBDGW11, kaminthermo, buildanomaly}, occupancy is used as a trigger
 that drives efficient resource-usage policies.  Efficiency
 when unoccupied means shutting everything off and efficiency when a space is occupied means anything
 can be turned on.  There is no question this is an excellent way to identify savings opportunities, however, we
