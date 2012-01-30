@@ -13,8 +13,8 @@ This section emphasizes the advantages of EMD to effectively uncover correlated 
 First, we demonstrate the benefit of EMD with a simple example, the three sensors presented in Section \ref{problem}.
 Second, we validate the proposed methodology using a large dataset (674 sensors) and highlight the ability of EMD to uncover the spatial correlations of the sensors.
 
-\subsection{Example with 3 sensors}
-Lets consider the simple example of Section \ref{problem} where we would like to know if the EHP trace is correlated with the two other traces; the light trace and the GHP trace.
+\subsection{Initial analysis}
+Lets consider the simple example of Section \ref{problem} where we would like to know if the EHP trace is correlated with the two other traces; the light and GHP trace.
 Using the raw traces, the correlation coefficients $0.7715$ and $0.6370$ corresponding respectively to the light and GHP trace suggest that both traces are correlated to the EHP trace.
 % As stated in previous section this result is biased by the strong daily pattern shared by these three traces.
 As stated in previous section this result is misleading, as the weather trend dominates the calculation.
@@ -23,7 +23,7 @@ Figure \ref{fig:emd} and Figure \ref{fig:emd2} show the EMD decomposition of the
 %Notice that the EMD process has been voluntary stopped once the daily pattern has been uncovered.
 For each trace, EMD has retrieved three IMFs that highlight the higher frequencies of the traces.
 
-Figure~\ref{fig:emd} show the raw signal (top) and EMD output IMFs and residual as well as the 
+Figure~\ref{fig:emd} shows the normalized raw trace (top) and EMD output IMFs and residual as well as the 
 correlation coefficients calculated on the IMFs for the EHP and
 light traces.  The correlation coefficients are $0.43909$, $0.49344$ and $0.63469$ corresponding to the IMF1, 
 IMF2, and IMF3, respectively.  Notice the highly correlated high-frequency IMF results.
@@ -46,14 +46,14 @@ For each trace $S$ we compute two scores: (1) the correlation coefficient for $S
 \centering
  \subfigure[Raw traces correlation coefficients]{\label{fig:histo1}\includegraphics[width=.43\textwidth]{img/allFloors_week1_week4_corr_abs-eps-converted-to}}
  \subfigure[Average IMFs correlation coefficients]{\label{fig:histo2}\includegraphics[width=.43\textwidth]{img/allFloors_week1_week4_emd_abs-eps-converted-to}}
- \caption{Distribution of the correlation coefficients of the raw traces and corresponding IMFs using 3 weeks of data from 674 sensors deployed on 12 Floors.}
+ \caption{Distribution of the correlation coefficients of the raw traces and correlation coefficients average of the corresponding IMFs using 3 weeks of data from 674 sensors.}
 \label{fig:histo}
 \end{figure}
 
 \begin{figure}
 \centering
 \includegraphics[width=.45\textwidth]{img/floorMap.png}
-\caption{Map of the floor where the analyzed is EHP trace is measured (room $C2$). The location of the sensors identified as related by the proposed approach are highlighted.}
+\caption{Map of the floor where the analyzed EHP serves (room $C2$). The location of the sensors identified as related by the proposed approach are highlighted, showing a direct relationship between IMF correlation and spatial proximity.}
 \label{fig:map}
 \end{figure}
 
@@ -78,8 +78,8 @@ Upon closer inspection of the 10 most correlated IMF traces, we find that there 
 between the EHP and the 10 devices.  In fact, there is a direct relationship between score and distance from
 the areas served by the EHP.  Figure~\ref{fig:map} shows a map of the floor that contains the rooms served by this
 EHP.  The EHP directly serves room $C2$.  We highlight rooms by the threshold setting on the IMF correlation coefficients.
-When we set the threshold at $0.4$ we see that the sensors that have a correlation higher fall within room $C2$ --
-the room served directly by the EHP.  As we relax the threshold, lowering it to $0.2$ and $0.1$ we see radial expansion from $C2$.  The trace with the highest score, $0.522$, is the trace corresponding to the lighting system \emph{in
+When we set the threshold at $0.5$ we see that the sensors that have a correlation higher fall within room $C2$ --
+the room served directly by the EHP.  As we relax the threshold, lowering it to $0.25$ and $0.1$ we see radial expansion from $C2$.  The trace with the highest score, $0.522$, is the trace corresponding to the lighting system \emph{in
 the same room}.
 The two highest scores for this floor (i.e. $0.316$ and $0.279$) are the light and EHP traces from next door, room $C1$.
 Lower values correspond to sensors measuring activities in other rooms that have no specific relationhip to the analyzed trace.  The results show a direct relationship between IMF correlation and spatial proximity.

@@ -10,8 +10,9 @@ the sensors are measuring.  Its underlying trend is ultimately what EMD will be 
 from the intrinsic modes of the underlying signal.
 
 \subsection{Discussion}
-Using EMD to find fundamental relationships between sensor traces effectively identifies intrinsically
-related behavioral relationships.
+EMD allows us to effectively identify fundamental relationships between sensor traces.
+% Using EMD to find fundamental relationships between sensor traces effectively identifies intrinsically
+% related behavioral relationships.
 % was quite promising for building
 % up models of correlated usage.  
 We believe that identifying meaningful usage-correlation patterns can help reduce oversights
@@ -52,7 +53,7 @@ This paper set out to examine the underlying relationship between sensor traces 
 in use.  We used data from a large deployment of sensors in a building and found that direct correlation analysis on the raw
 traces was not discriminatory enough to find interesting relationships.  Upon closer inspection, we noticed that
 the underlying trend was dominating the correlation calculation.  In order to extract meaningful behavior this trend has
-to be removed.  We concluded that empirical mode decomposition is a helpful analytical tool for detrending 
+to be removed.  We concluded that empirical mode decomposition is a helpful analytical tool for de-trending 
 non-linear, non-stationary data; inherent attributes contained by our traces.
 
 We re-ran our analysis on the same traces, except we correlated the IMF outputs of the EMD operation on each of the traces and found that the pump was closely related to the lights in the same room served by the pump and
