@@ -19,9 +19,9 @@ Using the raw traces, the correlation coefficients $0.7715$ and $0.6370$ corresp
 % As stated in previous section this result is biased by the strong daily pattern shared by these three traces.
 As stated in previous section this result is misleading, as the weather trend dominates the calculation.
 %We emphasize that extracting the daily pattern of the data using EMD permits a more detailed analysis of these traces.
-Figure \ref{fig:emd} and Figure \ref{fig:emd2} shows the EMD decomposition of the three traces.
+Figure \ref{fig:emd} and Figure \ref{fig:emd2} show the EMD decomposition of the three traces.
 %Notice that the EMD process has been voluntary stopped once the daily pattern has been uncovered.
-For each trace EMD has retrieved three IMFs that highlight the higher frequency of the traces.
+For each trace, EMD has retrieved three IMFs that highlight the higher frequencies of the traces.
 
 Figure~\ref{fig:emd} show the raw signal (top) and EMD output IMFs and residual as well as the 
 correlation coefficients calculated on the IMFs for the EHP and
@@ -58,19 +58,19 @@ For each trace $S$ we compute two scores: (1) the correlation coefficient for $S
 
 Figure \ref{fig:histo1} shows the distribution of the traces' correlation coefficients.  Notice
 that a large fraction of the dataset is correlated with the EHP trace.
-Indeed, \emph{half} of the trace have a correlation coefficient higher than $0.36$.  As expected, the underlying
+Indeed, \emph{half} the traces have a correlation coefficient higher than $0.36$.  As expected, the underlying
 trend is shared by a large number of device.
-Although the highest score (i.e. $0.7715$) -- corresponding the light in the same room that the EHP serves --
+Although the highest score (i.e. $0.7715$) corresponds the light in the same room that the EHP serves,
 there are 118 pumps, serving all areas of the building, with a correlation higher than $0.6$.
-Without comparing the metadata for the traces and comparing with correlation results, it is not clear
-where the threshold should be set.  The distribution is close to uniform, making it difficult to 
-be certain of how well you threshold discriminates against ``intrinsically unrelated'' traces.
+Using only these results, it is not clear where the threshold should be set.  The distribution is close to 
+uniform, making it difficult to 
+know of how well your threshold discriminates against unrelated traces.
 % Moreover, the distribution of the traces is almost uniform, thus, discriminating correlated traces is a laborious task.
 
 Figure \ref{fig:histo2} shows the distribution of the average correlation coefficients for the IMFs of
-each trace and the EHP.  The number of traces correlated in the high frequency domain is significantly smaller
-compared to previous results. It's clear from the distribution that only a small set of devices are
-\emph{intrinsically correlated} with the EHP.  Only 10 traces out of 674 perform a score higher than 
+each trace and the EHP.  The number of traces correlated in the high frequency IMFs is significantly smaller
+than the previous results. It's clear from the distribution that only a small set of devices are
+\emph{intrinsically correlated} with the EHP.  Only 10 traces out of 674 perform with a score higher than 
 $0.25$. This allows us to easily rank traces in term of correlation.
 
 Upon closer inspection of the 10 most correlated IMF traces, we find that there is a spatial relationship
@@ -78,10 +78,10 @@ between the EHP and the 10 devices.  In fact, there is a direct relationship bet
 the areas served by the EHP.  Figure~\ref{fig:map} shows a map of the floor that contains the rooms served by this
 EHP.  The EHP directly serves room $C2$.  We highlight rooms by the threshold setting on the IMF correlation coefficients.
 When we set the threshold at $0.4$ we see that the sensors that have a correlation higher fall within room $C2$ --
-the room served directly with the EHP.  As we relax the threshold, lowering it to $0.2$ and $0.1$ we see radial expansion from $C2$.  The trace with the highest score, $0.522$, is the trace corresponding to the lighting system \emph{in
+the room served directly by the EHP.  As we relax the threshold, lowering it to $0.2$ and $0.1$ we see radial expansion from $C2$.  The trace with the highest score, $0.522$, is the trace corresponding to the lighting system \emph{in
 the same room}.
 The two highest scores for this floor (i.e. $0.316$ and $0.279$) are the light and EHP traces from next door, room $C1$.
-Lower values correspond to sensors measuring activities in other rooms that have no specific relations with the analyzed trace.  The analysis yields a direct relationship between IMF correlation and spatial proximity.
+Lower values correspond to sensors measuring activities in other rooms that have no specific relationhip to the analyzed trace.  The results show a direct relationship between IMF correlation and spatial proximity.
 
 
 % Interestingly, the IMFs correlation coefficients reveal the spatial correlation of the sensors.
