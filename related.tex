@@ -1,11 +1,14 @@
 \section{Related Work}
 Recently, there has been increased interest in minimizing building energy consumption.  Our approach
 differs quite substantially from related work.
-In \cite{occmodels_buildsys11}, the authors present a multivariate Gaussian modeling parameter-fitting 
-approach to fit the parameters of an occupancy model to match the occupancy data with a small data set.  
+In \cite{occmodels_buildsys11}, the authors present a parameter-fitting 
+approach for a Gaussian model to fit the parameters of an occupancy model to match the occupancy data 
+with a small data set.  
 The model is then used to drive HVAC settings to reduce energy consumption.  We ignore occupancy entirely 
-in our approach.  Instead it is an implicit factor in correlated-usage patterns; changes in such a pattern 
-should signal changes in occupancy that may affect efficiency.
+in our approach.  It appears as a hidden factor in the correlation patterns we observe.
+
+% it is an implicit factor in correlated-usage patterns; changes in such a pattern 
+% should signal changes in occupancy that may affect efficiency.
 
 % \cite{kaminthermo} uses occupancy sensor from the in-home security system and user input to
 % optimize the heating and cooling schedule in the home.  Using occupancy statistics over time, they
@@ -19,7 +22,7 @@ should signal changes in occupancy that may affect efficiency.
 \cite{Bellala_buildsys11} looks at various buildings to develop a model of efficient power usage using 
 an unsupervised learning technique coupled with a Hidden Markov Model (HMM).  They also develop occupancy models based on
 computer network port-level logs to help determine more efficient management policies for lighting and HVAC.  
-They claim a savings of 9.5\% in lighting on a single floor.  While 
+They claim a savings of 9.5\% in lighting on a single floor. 
 \cite{kim:buildsys2010} uses branch-level energy monitoring and IP traffic from user's PCs to determine the
 causal relationships between occupancy and energy use.  Their approach is most similar to ours.  Understanding how IP 
 traffic, as a proxy for occupancy, correlates with energy use can help determine where inefficiencies may lie.
@@ -38,7 +41,7 @@ concert}.  This may help uncover unexpected underlying relationships and can be 
 to establish ``efficient'', ``normal'', or ``inefficient'' usage patterns.  The latter 
 should identify savings opportunities in cases where the space is unoccupied as well 
 as occupied, because it has to do with the underlying behavior of the machines and how they generally work
-together.  This kind of application could achieve both generality and scale.
+together.  Our approach could help achieve both generality and scale for such an application.
 % Our approach is flexible to be helpful when the assumption does not hold by either allowing the
 % user to specify what efficient usage is or through the discovery of efficient usage over various time scales.
 % In either case, the flexibility of our approach is its strength from the perspective of generality and scale.

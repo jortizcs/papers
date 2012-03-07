@@ -2,11 +2,9 @@
 The data we used was obtained from a deployment of sensors in a 12-story office building
 on the campus of the University of Tokyo~\cite{gutp, ogawa:lncs2011}.  The deployment consists of 
 almost 700 sensors monitoring device power consumption, ranging from plug-load devices to components of the
-heating, ventilation, air conditioning system and lighting.  Sensors also reported temperature
-data, pressure, device-state, and other device information.  Each sensor reports data on the
-order of minutes.  However, with the number of sensors, the collected data over a 2-year
-span was about half a terabyte.
-
+heating, ventilation, and air conditioning system (HVAC) and lighting.  Sensors also reported temperature, 
+pressure, device-state, and other information.  Each sensor reports data on the
+order of minutes.  Over 500 GBs of data was collected over a 2-year span.
 
 \begin{figure*}[tb]
 \hspace{-2cm}
@@ -23,38 +21,45 @@ span was about half a terabyte.
 
 %received attention in the past \cite{ogawa:lncs2011}.
 
-For our investigation we focus on a three-week span in the summer of 2011 (from July 4th to July 24th).
-The dataset capture regular work days, weekends and one holiday (July 18th).  This gave us a representative sample
-of how the equipment is used for various activities as they are influenced by occupant schedules.  For the initial
-analysis we also narrowed the search down to three sensors:
+For this investigation, we focus on a three-week span in the summer of 2011 (from July 4th to July 24th).
+The dataset captures regular work days, weekends, and one holiday (July 18th).  This timeframe captures
+the typical usage of the equipment, triggered by occupant activity.  For the initial
+analysis, we focus on three sensors; two water pumps and a light feed.  The first pump is an 
+``electric heat pump'' and is labled as EHP, the second  is a ``gas heat pump''
+and labeled as GHP.  The room lighting system serves the same room as the EHP.  The GHP
+serve a different room on the same floor.  The expanded portion of our analysis pivots as the EHP
+and does a pairwise comparison between it and all other sensors in the building.
 
 % includes one day holiday (July 18th)
 % 3 different sensors:
-\begin{itemize}
- \item Two are measuring the electric power consumption of two devices from the same room; an electric heat 
- 		pump (EHP) and the room lighting system.
- \item One is measuring the electric power consumption of a gas heat pump (GHP) that is pumping water to cool 
- 		a different room in the same building.
-\end{itemize}
+% \begin{itemize}
+%  \item Two are measuring the electric power consumption of two devices from the same room; an electric heat 
+%  		pump (EHP) and the room lighting system.
+%  \item One is measuring the electric power consumption of a gas heat pump (GHP) that is pumping water to cool 
+%  		a different room in the same building.
+% \end{itemize}
 
-Later we expand our analysis to include all the sensors in the building.
-
-
-
-
-
-
+% Later we expand our analysis to include all the sensors in the building.
 
 
 \section{Problem statement and Initial approach}\label{problem}
-In our analysis, we are focused on finding devices that are correlated in their use over time.  Therefore, the
-main objective is to examine how device traces relate to one another.  The wish to identify
-correlated device-trace patterns at large spatio-temporal scales.  
-Figure \ref{fig:raw} shows the raw traces for the 3 devices discussed in the previous section.
-Notice the common pattern in each of the traces.  The lights and pumps are on during the day and off at night.
-During weekends and holidays less power is drawn.  The correlation coefficient for 
- the EHP and light is $0.7715$ while the correlation coefficient for the EHP and GHP is $0.6370$.
-Running simple correlation across these traces yields high correlation coefficients between them.
+% In our analysis, we are focused on finding devices that are correlated in their use over time.  Therefore, the
+% main objective is to examine how device traces relate to one another.  The wish to identify
+% correlated device-trace patterns at large spatio-temporal scales.
+
+In buildings, metadata is poorly and unsystematically managed within a single system domain.  Moreover, 
+with the ever growing number of additional sub-meters, it is important to quickly integrate
+sensor data from multiple systems to understand the full state of the building.  It is also important to 
+understand how sensors are used in concert.  Anamolies in usage may indicate underlying problems with 
+the equipment or inefficient/incorrect usage.  
+
+We begin our analysis by running direct cross-correlation between the traces.
+Figure \ref{fig:raw} shows the raw traces for the three devices discussed in 
+the previous section (EHP, GHP, light).  All three exhibit a diurnal usage pattern.  On weekends, each
+draw less power.  The correlation coefficient for 
+ the EHP and light is $0.7715$ and the correlation coefficient for the EHP and GHP is $0.6370$.
+Running correlation across them yields high correlation coefficients, mostly
+due to their underlying daily usage pattern.
 
 % Usual measures on sensor data like correlation coefficient or granger causality \cite{kim:buildsys2010}
 % -- this is not working
@@ -74,17 +79,31 @@ Running simple correlation across these traces yields high correlation coefficie
 
 % These scores suggest that the EHP signal is related to the two other measured signals.
 
-These results were expected for the EHP and light traces, as the two measured devices operate for the same room 
-and are used simultaneously.  More importantly, they are used to support the occupants of the rooms they are serving.
-We were somewhat surprised by the magnitude of correlation between the pumps, since they serve rooms on
-opposite sides of the building and operate independently.  However, occupancy and weather patterns are similar,
-and the underlying trend is captured by the correlation calculation.
-The difference between the correlation coefficients is small and one might conclude that all three are
-closely related to one another.  That conclusion is not false but misleading.  Correlation on the raw 
-traces is sensitive to the underlying trend shared by the traces.  In order to meaningfully distinguish between
-truly related devices we need to remove the common trends.  
-% Correlation on the raw signal is not discriminatory enough.
+% These results were expected for the EHP and light traces, as the two measured devices operate for the same room 
+% and are used simultaneously.  More importantly, they are used to support the occupants of the rooms they are serving.
+% We were somewhat surprised by the magnitude of correlation between the pumps, since they serve rooms on
+% opposite sides of the building and operate independently.  However, occupancy and weather patterns are similar,
+% and the underlying trend is captured by the correlation calculation.
+% The difference between the correlation coefficients is small and one might conclude that all three are
+% closely related to one another.  That conclusion is not false but misleading.  Correlation on the raw 
+% traces is sensitive to the underlying trend shared by the traces.  In order to meaningfully distinguish between
+% truly related devices we need to remove the common trends. 
 
+Our initial results were not surprising.  The diurnal pattern dominates the comparison between the sensors.
+Weather is the main driver for this behavior and it affects the readings in almost all of the
+sensors in our dataset.  Cross-correlation on raw sensor data is insufficient for filtering intrinsically related
+behavior.  Upon closer examination of the data we assess the following:
+
+\begin{itemize}
+\item The main underlying diurnal trend occurs in almost all the traces.
+\item Occupancy and room activities occur at random times during the day and change 
+		at a higher frequency than weather patterns.
+\item Sensors that serve the same location observe the same activities.  Therefore, their underlying
+		measurements should be correlated.
+\end{itemize}
+
+In order uncover these relationships we must remove low-frequency trends in the traces and
+compare the readings at high frequencies.
 
 % \begin{table}
 % \begin{center}
