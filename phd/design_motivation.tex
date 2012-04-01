@@ -1,0 +1,166 @@
+\section{Design Motivation}
+Our system is designed for a class of sensor deployments for distributed monitoring applications where the 
+number of sensors is large and each sensor's data rate is on the order of seconds to minutes.  The motivating
+scenario is a building monitoring system that monitors health of HVAC system components, plug-load power draw, 
+lighting system power-draw, temperature sensors, pressure sensors, and other physical processes and items
+within the building.  Although the individual data rates are low, the aggregate data rates per deployment
+can be quite large.  For example, a typical 5-10 story building can easily produce at rates that match and exceed high-quality
+streaming video rates (i.e. 700-1200 Kbps).  StreamFS uses a pub-sub architecture and generalizes the pub-sub
+model to support real-time stream data processing that produce derivative streams as new data sources.  This can easily
+multiply the amount of data being stored and/or delivered subscribers.
+
+StreamFS organizes \emph{physical data} from \emph{real-world physical objects} whose relationship
+is \emph{as} important as the data they produce.  The relationship informs our queries and motivates our decision to expose
+these relationships, explicitly, through naming.  Although we're fundamentally building our interface on top of a relational
+data model, the decision to use a hierarchical namespace with symbolic links to expose the underlying
+entity-relationship graph is useful for managing physical data from the real-world.  With the relational model
+you may lose important semantic information information about the real-world in return for a high degree
+of data independence~\cite{Chen76theentity-relationship}.  Our system is more concerned with capturing
+entities and relationships which exist in the real world and our minds as well as information structure (organization
+of information in which entities and relationships are represented by data) -- we use an entity-relationship
+data model~\cite{Chen76theentity-relationship}.
+
+
+The data is timeseries in nature, and since it's fundamentally related to readings taken in physical space, 
+the associated metadata must be tightly coupled with each data stream.  The metadata
+describes the units, calibration parameters, placement and other important stream-context information.  
+Metadata should be treated as a first-class citizen in the system.  Such treatment
+is typical in fields in the natural sciences, such as environmental and climate science, where the metadata sets the framework
+for in.  Strict guidelines are given for recording and managing metadata~\cite{meta_climate}.  For the class
+of applications we are designing for, such concerns are just as relevant and metadata management must be done with
+great care.  For example, temperature measurements taken in various locations -- a room, a hot or cold water pipe, an air vent -- 
+and in order to interpret the measurement, we need the units of measurement, the location of the sensor, and calibration parameters
+(if we are getting raw readings that need to be converted to measurement values).
+
+In addition, we must track the deployment as it evolves.  Changes in metadata change the interpretation-context of the associated data stream.  
+For example, as a sensor gets older it goes through natural wear and tear which change the calibration coefficients.  When such 
+coefficients are updated, the associated data must be coupled with the newly reported data.   Also, some sensors are mobile and move from location 
+to location.  We have designed various mechanisms for handling deployment evolution and discuss these in section~\ref{sec:evolution}.
+
+\subsection{Location information}
+We wish to record and keep track of the placement of sensors throughout a space.  One method for recording spatial information
+is to include geo-spatial coordinates for each sensor.  However, geospatial coordinates do not capture more relevant information
+about what is being measured.  In a building, placement is more abstractly defined as the system or space in which the sensor
+is placed, not the specific coordinates of placement.  Although a coordinate system could also be useful, system or space association
+is more relevant in interpreting sensor readings.
+
+In addition, geospatial coordinates are difficult to assign or determine in some locations -- particularly indoors due
+to weak signals, fading, and multipath~\cite{indoorGPS}.  One could argue for the use of other infrastructure for determining coordinates
+in such a setting, however, the challenges remain~\cite{multipath, cricket, wifiindoors}.  Still, referring to sensors based on placement
+(with semantics ascribed by the user) is more important than determining the exact location.  Our system takes the approach of
+describing placement through naming.  Our naming mechanism is simple and flexible enough to allow for arbitrary names
+with ascribing meaning to the naming convention.  We leave interpretation semantics to the application.
+
+\subsection{Naming}
+Names should be human readable and interpretable, similar to DNS.  In buildings, sensors are referred to by the system or space
+associated with the point of measurement.  Our approach was to use a hierarchical naming scheme, similar to a Unix filesystem.  
+As explained in ~\cite{seltzerHierarchy},
+hierarchy  restricts the user to retrieve their data according to how that piece of data is named. The full pathname conflates naming and access.
+Although this can be limiting for data in a traditional sense, this restriction serves a very useful role in naming and retrieving data for
+the building application example and deployments like it.  We illustrate this with an example in building sensor deployments.
+
+Suppose there's a sensor on the first floor in room 100 in Soda Hall.  If we have different deployments, we can set the hierarchical
+structure to have a path as follows `{\tt /buildings/soda/01/100/tempSensor}' that walks us down from the `{\tt /buildings}' which can represent
+that set of buildings in our multi-deployment all the way from the building to the floor and finally the room where the sensor is placed.
+It's natural to organize the data this way and useful from a human-readable perspective to immediate extract the context where the sensor
+is based entirely on the access-path for that sensor.  This naming convention does not entirely cover all medata but it
+simplifies access to relevant information.
+
+%Multi-homing/naming and symbolic links
+The experienced reader may have noticed in a building a sensor that drives a system may also sit in a space.  A sensor can be 
+referred to through it's association with the system or its association with a space.  This observation implies the need for supporting 
+multiple names.  We support multiple names through the use of symbolic links, similar to symlinks used in typical filesystems.
+For example, if the {\tt tempSensor} is attached to a  variable air volume (VAV) component in the heating, ventilation and air conditioning
+(HVAC) system; in other words, the temperature sensor drives the heating/cooling sub-system for that room.  Another name
+for the same sensor is `{\tt /buildings/hvac/ventilation/vav/tempSensor}'.  To assure that both names refer to the same object we differentiate
+between \emph{hardlinks} and \emph{symlinks} and either we make one of the two paths point to the hardlink or make both names symlinks
+and create a hardlink with a different name that both paths point to.  In the mobile context, the latter approach is useful.  The object
+reference remains static while the symlink references to the object change as the object moves from place to place.
+
+\subsubsection{Additional metadata}
+Naming does not capture all the metadata, so we included object/node annotations: user-defined properties that are attached to each object.
+We support search by property values.   Geospatial, type, or other information can included in the annotation for the object.  Annotations are
+flexible enough to allow for a wide range of application semantics.  For example, our building monitoring application defines a set of node
+\emph{types} to represent different components in the HVAC sub-systems, electrical load tree, and zones inside the building.  More
+details can be found at~\cite{buildingschemas}.
+
+\subsection{Time and deployment evolution}
+\label{sec:evolution}
+Long-term deployments naturally evolve over time.  There are changes to the deployment settings and changes to sensors.  Sensors are
+replaced, removed, and added.  The space being monitored expands or morphs.  Meter upgrades join new facts about the sensor(s)
+with the sensor that replaced it.  As a concrete example, lets return to the building sensor deployment setting.  Buildings are often up for decades. 
+During this time period, rooms are added and broken sensors are replaced.  If the temperature sensor in a room breaks it needs to be 
+fixed or replaced.  Both involve certain new information to be recorded about the deployment, such as updates calibration parameters.  Although
+the logical sensor-access name is unchanged, the physical object the name references has changed and such changes are important.
+
+At a more infrequent rate, there may be changes to the physical structure of the building.  Two rooms may be combined into one.  An extra floor
+may be added to accommodate more people or new building functions.  Such changes usually require changes to the underlying climate and
+electrical systems.  New ducts and vents are added into the new spaces, expanding the reach of the current HVAC system.  A new, independent
+HVAC system may be added altogether.  The electrical load tree must accommodate the new load, which requires additions to the underlying
+structure of the electrical load tree.
+
+These are impact the context in which measurements are being collected.  Without mechanisms to accurately track and account for
+such changes, analysis about the behavior and consumption with respect to stale information will lead to gross miscalculations that get worse and worse
+over time.
+
+\subsubsection{Timeseries data, naming, metadata}
+The data collected from deployments is fundamentally timeseries in nature.  However, physical data cannot be interpreted without its associated context.
+Such context information is recorded in the metadata for each sensor stream.  As described in the previous sections, we partition the metadata into two
+pieces.  The first piece captures placement information through naming while the second piece captures everything else.  In particular, the latter piece
+should be used to record calibration information for the readings being collected.  The data and associated metadata are tightly coupled and we
+must design mechanisms to maintain the integrity of this relationship through time.  Changes in placement, as recorded by the naming structure, are 
+hereafter referred to as placement context while change in calibration or other descriptive information is hereafter referred to as descriptive or 
+measurement context (both will be used interchangeably).
+
+Timeseries data, placement context, and measurement context are bound through time.  For example, imagine a temperature sensor in a room sending periodic
+temperature readings.  Upon installation, the temperature sensor is named with respect to its placement in the room, (i.e. {\tt /room/tempsensor01}).
+With the newly created reference we record calibration information associated with the reference.  At some point in the future, the temperature sensor
+is replaced.  We wish to keep the logical reference to the sensor, so we keep the name reference to same, however, the new sensor has different calibration
+parameter that override the old ones.  In calculating, the average temperature of the room over that timespan, we need to re-structure the placement and measurement context in order to make an accurate assessment of the average temperature.  Using latest calibration parameters would give false readings
+for the original sensor.  Moreover, if at some point later, we install a completely new temperature sensor model and delete the current reference altogether,
+we still want to ``remember'' that we had the old model in the past in order to calculate the average temperature with the old readings.
+
+%Use a object id to couple the timeline udpates.
+
+Both scenarios require the coupling of separate timelines.  Attached to each set of readings is the metadata that describes the context of
+the data.  The metadata in StreamFS consists of the path(s) and properties associated with the object.  The state of this set uniquely identifies
+an object and any changes to the set of path(s) or properties generates a new object identifier.  The object identifier (\emph{oid}) is 
+unique 128-bit number.  The high-order 96 bits are unique to the object, while the remaining low-order 32 bits are the version number.  When a change
+occurs to the metadata we increment the version portion of the identifier.  We also record the time when the change was made.  As the data is stored, 
+the oid is attached to each inputted value.  This allows us to explicitly couple the metadata with the data.  The timestamps are used for
+snapshot and rollback queries.
+
+
+% Both scenarios require the ``stitching'' of separate, but related, timelines.  The timeseries data is naturally a set of readings recorded over time, the 
+% placement context or naming structure is on another timeline, and the measurement context is on its own timeline.  As we go back in time, we first determine
+% the existence of a temperature sensor in the room using the naming structure, we locate the point in time in which the measurement context was in effect,
+% and we grab the data through that time interval and use the measurement context to calculate the correct readings.  We continue this process throughout the
+% specificed query interval.  Finally, we take the calculated readings and compute the average.  The ``timeline-stitching'' (TLS) process is demonstrated
+% in figure~\ref{fig:timestitch}.  Queries that require \emph{timeline-stitching} are called ``metadata timeseries queries'' or \emph{MTSQ}.
+
+
+In section~\ref{sec:mtsq} we discuss the different types of MTSQ's, their relationship to traditional mechanisms used in temporal databases, and
+the complexity and performance issues for storing timelines and executing TLS's for MTSQ's efficiently.  Dealing with MTSQ's over time intervals 
+with many changes is the main challenge in running fast, efficient queries.  We have implemented a set of algorithms and caching technique that
+allow MTSQ's to run with very little overhead, when compared to a tranditional timeseries query.  The average overhead is only {\tt X}\% in the average
+case and no worse that {\tt Y}\% when compared to the standard timeseries query performance.  In addition, we show how MTSQ's help simplify the
+tracking and subsequent accuracy of derivative historical calculations.
+
+
+\subsection{Derivative streams}
+
+
+\subsection{Mapping relationships explicitly}
+
+
+
+
+
+
+
+
+
+
+
+
+

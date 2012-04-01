@@ -1,0 +1,77 @@
+\section{Metadata timeseries queries}
+\label{sec:mtsq}
+whataksndlkasndlkasn
+
+
+\subsection{Objects and data}
+%
+% 	join by global object identifier (128 uuid: 96-bit object_id, 32-bit version sequence)
+%
+%	Create a lookup service (read INS paper for ideas) to lookup the object
+%	It will probably involve something like the work in mobile IP, I3/Ocala, and INS
+%
+%	Example lookup syntax:
+%		sfs://jortiz81.homelinux.com:8080::550e8400-e29b-41d4-a716-4466-554400CF
+
+
+\subsection{Structural snapshot}
+
+\subsubsection{Storage}
+
+\subsubsection{Querying}
+
+\section{Relationship to OLAP}
+The main terms in OLAP consist of Dimensions, Measures, Hierarchies, and Grain.  Dimensions are the axes of aggregation.
+For example, you may want to aggregate with respect to location, time, or type.  Measures are the units or category of
+measurement that you're making for the data values assocaited with a dimension.  For example, cost is a type of measure,
+so is revenus and quatity.  There are hierarchies in the data that dictate the relationship between the dimensions
+and how that relationship influences the amount of derived data and computation that needs to be done to satisfy
+these hierarchical aggregations.  The grain of the data is the lowest level of granularity.  Abstractly, the lowest grain
+in OLAP is the actual transaction.  In the context of StreamFS, it's the raw stream coming in from a stream source.
+
+In a typical OLAP setup, hierarchies do not change, dimenions do not change, grain does not change, measures do not change.
+OLAP is perfect for industries with structured analytical accounting such as finance and accounting but less of a fit for
+sales, operations, marketing, and R\&D.
+
+% Keyword:  dimensional-relational model -- using the relationshal model (star, snowflake, constellation schemas)
+% to logically construct the OLAP hypercube.
+
+% It's extremely difficult, using the star schema in the OLAP hypercube approach, to add a dimension.  The main operations
+% on the hypercube are privoting, roll-up, and sub-cube extraction.
+
+What's different here is that the dimensions change -- measures have multiple coordinates at any point in time and the coordinates
+change as a function of time, not just measures themselves.  Dimensional coordinates are expressed by tags, where the time dimension,
+exists both for measures produced by stream objects and the tags themselves.  The tags are used to reconstructed the relational-DAG
+between the dimensions and the objects at any point in time.
+
+% Indexing will have to be addressed.  How do you set up the index structures to get comparable results	to traditional OLAP queries?
+
+\begin{itemize}
+\item Explain how are the tags used to handle dynamic dimensionality.
+\item Explain how the tags are used to handle hierarchical relationships.
+\item Explain how tags are used to support multi-dimenionality (multi-naming).
+\item Explain how OLAP operations are performed using these naming approach.
+	\begin{itemize}
+	\item Rollup.
+	\item Drill-down.
+	\item Pivoting.
+	\item Slice and Dice.
+	\item time.
+	\end{itemize}
+\item Explain how the indexing is done to support these operations efficiently -- use each of the operations for demonstration.
+\item Explain how timeseries queries account for dimensionality and hierarchical changes.
+\end{itemize}
+
+
+StreamFS is an analytical framework that provides streaming OLAP for operational processes with schema timeline consistency.
+\begin{itemize}
+\item streaming olap
+\item changing dimensions
+\item metadata timeline consistency management
+\end{itemize}
+
+
+
+
+
+

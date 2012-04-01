@@ -1,0 +1,28 @@
+\section{Notes}
+
+Emperical mode decomposition (EMD); taking a timeseries signal and decomposing it into
+the various frequencies that form a linear combination to reconstruct the original signal.
+
+
+Why am I looking at this?
+By find multi-timescale trends we can set up scheduling at various timescales to minimize the cost of
+performing energy-consuming tasks.  For example, (think of a good example to fill in here.)
+
+
+Where does correlation/causal analysis fit in here?
+The fundamental assumption I am making is that we can shave load by identifying couple energy-conuming
+acitivities and decoupling them by removing that dependence.  For example, (think of a good example here)
+
+
+What about the analytics portion of this?
+StreamFS should be doing aggregation at each node in the hiearchy and should be aggregating by unit.
+The default interpolator should be linear, with options for changing it to something else.  The metadata
+history aspect should have a section that accounts for dealing with the history associated with
+the expression and executiong of analytical processes as well as metadata state.
+
+
+\section{Live interactive analytics}
+Lots of moving parts, how do we deal with streaming data, timestamp formats, data cleaning, and processing easily
+and quickly.
+
+Then we need to run the analysis historically, now, and project into the future.

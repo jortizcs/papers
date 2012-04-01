@@ -1,0 +1,31 @@
+\BOOKMARK [1][-]{section.2}{Open questions}{}
+\BOOKMARK [1][-]{section.5}{Motivation, Problems, and Metrics}{}
+\BOOKMARK [2][-]{subsection.6}{Setup and assumptions}{section.5}
+\BOOKMARK [2][-]{subsection.7}{Problem 1: Online analytical data processing}{section.5}
+\BOOKMARK [3][-]{subsubsection.8}{Metrics}{subsection.7}
+\BOOKMARK [2][-]{subsection.13}{Problem 2: Slicing, dicing, and molding data}{section.5}
+\BOOKMARK [3][-]{subsubsection.14}{Metrics}{subsection.13}
+\BOOKMARK [2][-]{subsection.15}{Problem 3: Metadata management}{section.5}
+\BOOKMARK [2][-]{subsection.23}{Problem 4: Global object lookup}{section.5}
+\BOOKMARK [1][-]{section.24}{Design Motivation}{}
+\BOOKMARK [2][-]{subsection.25}{Location information}{section.24}
+\BOOKMARK [2][-]{subsection.26}{Naming}{section.24}
+\BOOKMARK [3][-]{subsubsection.27}{Additional metadata}{subsection.26}
+\BOOKMARK [2][-]{subsection.28}{Time and deployment evolution}{section.24}
+\BOOKMARK [3][-]{subsubsection.29}{Timeseries data, naming, metadata}{subsection.28}
+\BOOKMARK [2][-]{subsection.30}{Derivative streams}{section.24}
+\BOOKMARK [2][-]{subsection.31}{Mapping relationships explicitly}{section.24}
+\BOOKMARK [1][-]{section.32}{Metadata timeseries queries}{}
+\BOOKMARK [2][-]{subsection.33}{Objects and data}{section.32}
+\BOOKMARK [2][-]{subsection.34}{Structural snapshot}{section.32}
+\BOOKMARK [3][-]{subsubsection.35}{Storage}{subsection.34}
+\BOOKMARK [3][-]{subsubsection.36}{Querying}{subsection.34}
+\BOOKMARK [1][-]{section.37}{Relationship to OLAP}{}
+\BOOKMARK [1][-]{section.38}{Mobile SFS}{}
+\BOOKMARK [2][-]{subsection.41}{Tracking steps}{section.38}
+\BOOKMARK [3][-]{subsubsection.46}{Bootstrap}{subsection.41}
+\BOOKMARK [3][-]{subsubsection.50}{Tracking}{subsection.41}
+\BOOKMARK [3][-]{subsubsection.51}{Analysis}{subsection.41}
+\BOOKMARK [3][-]{subsubsection.52}{Visualization}{subsection.41}
+\BOOKMARK [1][-]{section.53}{Results}{}
+\BOOKMARK [1][-]{section.54}{References}{}

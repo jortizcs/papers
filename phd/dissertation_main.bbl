@@ -1,0 +1,19 @@
+\begin{thebibliography}{1}
+
+\bibitem{acme}
+X.~Jiang, M.~V. Ly, J.~Taneja, P.~Dutta, and D.~Culler.
+\newblock Experiences with a high-fidelity wireless building energy auditing
+  network.
+
+\bibitem{meta_climate}
+{\em Metadata and Provenance Management, Ewa Deelman, G. Bruce Berriman, Ann
+  Chervenak, Oscar Corcho, Paul Groth, Luc Moreau, Chapter 12: Scientific Data
+  Management: Challenges, Technology, and Deployment}.
+\newblock Chapman and Hall/CRC, Taylor and Francis Group, 2010.
+
+\bibitem{Chen76theentity-relationship}
+P.~P. shan Chen.
+\newblock The entity-relationship model: Toward a unified view of data.
+\newblock {\em ACM Transactions on Database Systems}, 1:9--36, 1976.
+
+\end{thebibliography}
