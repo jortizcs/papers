@@ -1,0 +1,23 @@
+\BOOKMARK [1][-]{section.2}{Introduction}{}
+\BOOKMARK [1][-]{section.3}{Related Work}{}
+\BOOKMARK [1][-]{section.4}{System Architecture}{}
+\BOOKMARK [2][-]{subsection.6}{Mobile phone}{section.4}
+\BOOKMARK [2][-]{subsection.7}{QR Codes}{section.4}
+\BOOKMARK [2][-]{subsection.12}{Data infrastructure}{section.4}
+\BOOKMARK [3][-]{subsubsection.13}{StreamFS}{subsection.12}
+\BOOKMARK [3][-]{subsubsection.14}{sMAP}{subsection.12}
+\BOOKMARK [2][-]{subsection.15}{Metering layer}{section.4}
+\BOOKMARK [1][-]{section.17}{Setup and interaction}{}
+\BOOKMARK [2][-]{subsection.22}{Inter-relationship capture}{section.17}
+\BOOKMARK [1][-]{section.24}{Applications}{}
+\BOOKMARK [2][-]{subsection.25}{Energy Auditing}{section.24}
+\BOOKMARK [3][-]{subsubsection.27}{Results}{subsection.25}
+\BOOKMARK [3][-]{subsubsection.33}{Issues}{subsection.25}
+\BOOKMARK [2][-]{subsection.34}{Item Scanner Application}{section.24}
+\BOOKMARK [3][-]{subsubsection.36}{Issues}{subsection.34}
+\BOOKMARK [2][-]{subsection.37}{Personalized Energy Tracking}{section.24}
+\BOOKMARK [2][-]{subsection.39}{Issues}{section.24}
+\BOOKMARK [1][-]{section.40}{Dynamic Aggregation}{}
+\BOOKMARK [1][-]{section.43}{Lessons learned}{}
+\BOOKMARK [1][-]{section.44}{Conclusion}{}
+\BOOKMARK [1][-]{section.45}{References}{}

@@ -1,0 +1,18 @@
+\BOOKMARK [1][-]{section.2}{Introduction}{}
+\BOOKMARK [2][-]{subsection.5}{Entity-relationship model}{section.2}
+\BOOKMARK [2][-]{subsection.11}{An example}{section.2}
+\BOOKMARK [2][-]{subsection.12}{General Approach}{section.2}
+\BOOKMARK [1][-]{section.13}{Mapping OLAP to ERG}{}
+\BOOKMARK [2][-]{subsection.14}{Measures, Dimenions, and Levels}{section.13}
+\BOOKMARK [2][-]{subsection.15}{Operations: drill-down and roll-up}{section.13}
+\BOOKMARK [2][-]{subsection.16}{Operations: slice and dice}{section.13}
+\BOOKMARK [2][-]{subsection.17}{Operations: pivoting}{section.13}
+\BOOKMARK [1][-]{section.18}{Related Work}{}
+\BOOKMARK [1][-]{section.19}{Namespaces}{}
+\BOOKMARK [2][-]{subsection.20}{Object identifier namespace}{section.19}
+\BOOKMARK [2][-]{subsection.21}{Hierarchical namespace}{section.19}
+\BOOKMARK [1][-]{section.22}{Dynamic Aggregation}{}
+\BOOKMARK [2][-]{subsection.23}{How it works}{section.22}
+\BOOKMARK [3][-]{subsubsection.25}{Dealing with dynamics}{subsection.23}
+\BOOKMARK [3][-]{subsubsection.26}{Two scenarios}{subsection.23}
+\BOOKMARK [1][-]{section.30}{References}{}

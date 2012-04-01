@@ -1,0 +1,120 @@
+This is BibTeX, Version 0.99c (TeX Live 2009)
+The top-level auxiliary file: mobisys_peas.aux
+White space in argument---line 26 of file mobisys_peas.aux
+ : \citation{Enabling
+ :                    ``Smart Spaces:'' Entity Description and User Interface Generation for a Heterogeneous Component-based Distributed System T. D. Hodes}
+I'm skipping whatever remains of this command
+White space in argument---line 27 of file mobisys_peas.aux
+ : \citation{R.
+ :              H. Katz}
+I'm skipping whatever remains of this command
+White space in argument---line 28 of file mobisys_peas.aux
+ : \citation{DARPA/NIST
+ :                      Smart Spaces Workshop}
+I'm skipping whatever remains of this command
+White space in argument---line 31 of file mobisys_peas.aux
+ : \citation{July
+ :                1998. UC Berkeley Technical Report CSD/98/1008}
+I'm skipping whatever remains of this command
+The style file: abbrv.bst
+Database file #1: references.bib
+I was expecting a `,' or a `}'---line 789 of file references.bib
+ :  
+ :  organization = "Center for Information Technology Research in the Interest of Society"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 858 of file references.bib
+ :    
+ :    title = "{Ensemble-level Power Management for Dense Blade Servers}",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 1026 of file references.bib
+ :  
+ :  month="August"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Unbalanced braces---line 1031 of file references.bib
+ :   author="{Ecos}
+ :                 }",
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 1040 of file references.bib
+ :  
+ :  month="March"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 1047 of file references.bib
+ :  
+ :  month="March"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 1054 of file references.bib
+ :  
+ :  month="January"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 1061 of file references.bib
+ :  
+ :  year="2007"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "Gaithersburg"
+Warning--I didn't find a database entry for "Maryland"
+Warning--I didn't find a database entry for "***http://www.efficientproducts.org/reports/plugload/Revised_Officestevel"
+Warning--to sort, need author or key in plugloadreport
+Name 8 in "Lanzisera, Steven M. and Dawson-Haggerty, Stephen and Jiang, Xiaofan and Cheung, Hoi Ying and Teneja, Jay and Lai, Judy and Ortiz, Jorge and Culler, David, and Brown, Richard" has a comma at the end for entry lbnlmels
+while executing---line 1049 of file abbrv.bst
+Warning--to sort, need author or key in qrcgen1
+Warning--to sort, need author or key in qrcgen2
+Warning--to sort, need author or key in weatherunderground
+Warning--to sort, need author or key in streamfs
+Warning--to sort, need author or key in apache
+Warning--to sort, need author or key in tinyurl
+Warning--empty booktitle in radar
+Warning--empty author and editor in oecd2011
+Warning--empty author and editor in eia:2010
+Name 8 in "Lanzisera, Steven M. and Dawson-Haggerty, Stephen and Jiang, Xiaofan and Cheung, Hoi Ying and Teneja, Jay and Lai, Judy and Ortiz, Jorge and Culler, David, and Brown, Richard" has a comma at the end for entry lbnlmels
+while executing---line 1090 of file abbrv.bst
+Warning--empty year in taxonomy
+Warning--empty school in cricket
+You've used 25 entries,
+            2118 wiz_defined-function locations,
+            625 strings with 7601 characters,
+and the built_in function-call counts, 7650 in all, are:
+= -- 734
+> -- 335
+< -- 6
++ -- 144
+- -- 112
+* -- 477
+:= -- 1148
+add.period$ -- 63
+call.type$ -- 25
+change.case$ -- 123
+chr.to.int$ -- 0
+cite$ -- 37
+duplicate$ -- 320
+empty$ -- 677
+format.name$ -- 112
+if$ -- 1683
+int.to.chr$ -- 0
+int.to.str$ -- 25
+missing$ -- 15
+newline$ -- 111
+num.names$ -- 32
+pop$ -- 197
+preamble$ -- 1
+purify$ -- 108
+quote$ -- 0
+skip$ -- 270
+stack$ -- 0
+substring$ -- 383
+swap$ -- 82
+text.length$ -- 6
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 96
+warning$ -- 12
+while$ -- 55
+width$ -- 27
+write$ -- 234
+(There were 14 error messages)

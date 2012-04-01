@@ -1,0 +1,106 @@
+\section{Introduction}
+The United States leads the world in per-capita energy consumption.  Furthermore, 
+our electricity use has consistently increased over the last 40 years~\cite{oecd2011}.
+With the specter of global warming and the increasing cost of energy, we must explore new
+ways for individuals to gain better visibility and insight about their energy consumption in order to optimize and reduce it. 
+With the increasing penetration of embedded sensors in the environment and the
+the continued rise in the number of smartphone users, we see an opportunity to bridge the physical world
+to our computational infrastructure to provide a `energy lens' on the physical world.  This paper describes the design
+and implementation of a personalized, mobile energy visibility system.  We discuss
+the architecture, experience, and challenges in a deployment we have done inside a campus building.
+%, and challenges in the deployment of the system in a building on our campus.
+
+%Mobile phones are obvious bridge between the physical world and better visibility.  Many people own a mobile phone
+Smartphones serve as a natural point of intersection between the physical world, computation, and users.  The camera serves as 
+the input interface from the physical world, the screen functions as the
+interface to the user, and its connectivy serves to overlay virtual services on top of the physical capture to be presented
+to the user.  In addition, since phones are highly personal items, they serve as a good proxy for information about the user
+that can personalize the views and services.  Moreover, as mobile devices, views can be tailored to location and other 
+contextual cues in the environment.
+
+The use of mobile phones presents classical, fundamental challenges related to mobility.  Moreover, objects in the physical world 
+also move from place to place.  This makes it even more difficult in trying to do fine-grained energy accounting.  Not only must we
+deal with mobile users, but also mobile, energy-consuming objects in the environment.  For example, to account for the total
+energy consumed on floor {\tt X} at time {\tt t} we must know all the energy-consumers on floor {\tt X} at that time.  Over time, this list
+changes, and these changes should be reflected in the total calculation at \emph{any} point in time.  Ultimately, physical-world state 
+needs to be tracked by the application; it needs to know where things are and
+where people are so that it can answer queries about these things relative to where/who is asking it.  Consistency management 
+is non-trivial.
+
+Our system uses QR codes to tag items in the physical world.  Once tagged, there are three types of interaction: 
+registration, binding, and scanning.  During the registration phase a user scans the QR code and enters information about the
+item it is attached to.  To bind items together a user scans multiple items.  This creates creates virtual links between items that
+can be used to fetch or compute information about the item in relation to other items.  For example, when a meter is bound
+to an item the data produced by the meter can be used a proxy for the item with respect to the measurements being taken
+by that meter.  We used a network of wired and wireless meters and pushed their data into a cloud-based service that
+acts as a proxy for meters in the physical world.  In addition, during the registration phase, metadata about each item is recorded
+that allows us to aggregate measurements in ways that are relevant to the user.  For example, 
+we can give the user visibility into the energy consumption of the room they are in, the item they scan, or
+the energy consumption of the items that belong to them.
+
+Our system was deployed incrementally in a 7-story, 141,000 square-foot building.  
+We tagged 351 items spread over 139 rooms throughout all floors.  On this infrastructure we built an energy auditing application,
+a device energy viewer, and a personalized energy application.  Based on the initial deployment experience
+we found that:
+
+\begin{itemize}
+\item QR codes are a convenient choice for tagging items because they are cheap, easily produced, and easily replaceable.
+\item Most smartphones are equipped with a camera and can download QR code scanning software for free, making it a effective, mobile scanner.
+\item Network connectivity is ubiquitous.  Smartphones can connect to the internet through the cellular network or WiFi.
+\end{itemize}
+
+\vspace{0.08in}
+
+Although the infrastructure takes some time to set up at scale, the deployment can be done incrementally.  
+%Most of the infrastructure
+%was already in place, as wifi is generally available throughout the building.  
+% Furthermore, for users that cannot connect to the wifi,
+% they can typically connect to a network through the 3G/4G network in the area, provided by their cellular service provider.  
+Furthermore, once deployed, the infrastructure provides immediate value for all building occupants and sets a good foundation
+for building different types of applications.  We describe some of the applications we built later in the paper.
+%Also, maintenance is simple, as tags are easily printed
+%on any printer and can be generated to replace worn or damaged tags.
+
+Building applications that use the infrastructure reveal many challenges.  Some common challenges include:
+
+\begin{itemize}
+\item Mobility.  Maintaining user location (and context, more broadly) is difficult.  However, tagged spaces throughout
+		the building provide a check-in mechanism that lets us keep track a user's location over time.  Still, users
+		often forget to re-scan their location to their set spatial context.  However, we learn a lot about context based
+		on natural user action.
+\item Consistency maintenance between the physical world and virtual representation.  Users forget to capture changes
+		in item inter-relationships.  For example, item A was once attached to meter M, but is now attached to meter \emph{m}.
+\item Apportionment/accounting accuracy is difficult to control due to the challenges with mobility and consistency, but also 
+		due to metadata consistency over time (even when the mechanism that solve the first two problems, are correctly 
+		implemented).  We introduce a feature called \emph{dynamic aggregation} that keeps track of changes inputted by users
+		to track the energy consuming constituents over time.
+\end{itemize}
+
+\vspace{0.08in}
+
+% \begin{itemize}
+% \item we must capture all devices, meters, \emph{and} their inter-relationship, but this can be done iteratively
+% \item we must capture some location and other information about each entity for accounting
+% \item engagement is desirable
+% \end{itemize}
+
+We discuss the various ways we have addressed some of these challenges in our deployment.  Addressing these challenges is an 
+on-going effort to reduce the interaction overhead between the user
+and her environment.  An ideal solution would enable full, consistent visibility of the energy consumption of items in the environment
+as well as allow a user to effectively observe their own footprint, with minimal dependence on users maintain view consistency.  
+Ultimately, we hope that detailed understanding of personal energy use will induce behavioral changes that reduce
+overall energy consumption.
+
+% Much of the process is manual and engagement is key for building up the infrastructure.  The mobile phone application helps, but it
+% is still quite cumbersome to get everything deployed and running from the ground up.  However, the processes scales with the number of
+% users and it is a one-time cost to set up.
+
+% There's also a list of fundamental challenges we ran into and offer initial solutions for in order to realize our vision.
+
+
+
+% It is challenging to keep track of users automatically, it still requires engagement from the user which can be considered burdonsome.
+% Because many of the processes are not automatic, users often forget to associate/dissociate the relationship between meters and items.
+% This leads to inconsistencies between the physical world and the virtual world.  Finally, these inconsistencies leads to energy accounting
+% errors that present a false view of the energy-consuming state of the physical world.  We discuss some initial approaches to address
+% some of these issues and our plans for future work.

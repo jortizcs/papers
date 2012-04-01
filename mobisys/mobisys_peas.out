@@ -1,0 +1,33 @@
+\BOOKMARK [1][-]{section.2}{Introduction}{}
+\BOOKMARK [1][-]{section.3}{Related Work}{}
+\BOOKMARK [2][-]{subsection.4}{Mobile systems}{section.3}
+\BOOKMARK [2][-]{subsection.5}{Plug-load metering}{section.3}
+\BOOKMARK [2][-]{subsection.6}{Combination}{section.3}
+\BOOKMARK [2][-]{subsection.7}{Data modeling and management}{section.3}
+\BOOKMARK [1][-]{section.8}{System Architecture}{}
+\BOOKMARK [2][-]{subsection.12}{Mobile phone}{section.8}
+\BOOKMARK [2][-]{subsection.13}{QR Codes}{section.8}
+\BOOKMARK [2][-]{subsection.15}{Computational infrastructure}{section.8}
+\BOOKMARK [3][-]{subsubsection.16}{Application layer}{subsection.15}
+\BOOKMARK [3][-]{subsubsection.17}{sMAP}{subsection.15}
+\BOOKMARK [3][-]{subsubsection.19}{StreamFS}{subsection.15}
+\BOOKMARK [1][-]{section.20}{Gestures and QR code design}{}
+\BOOKMARK [2][-]{subsection.21}{Gestures}{section.20}
+\BOOKMARK [2][-]{subsection.22}{QR code design}{section.20}
+\BOOKMARK [1][-]{section.28}{Applications}{}
+\BOOKMARK [2][-]{subsection.29}{Energy Audit}{section.28}
+\BOOKMARK [2][-]{subsection.32}{Inter-relationship capture}{section.28}
+\BOOKMARK [3][-]{subsubsection.35}{Results}{subsection.32}
+\BOOKMARK [3][-]{subsubsection.41}{Issues}{subsection.32}
+\BOOKMARK [2][-]{subsection.42}{Item Scanner Application}{section.28}
+\BOOKMARK [3][-]{subsubsection.44}{Issues}{subsection.42}
+\BOOKMARK [2][-]{subsection.45}{Personalized Energy Tracking}{section.28}
+\BOOKMARK [2][-]{subsection.46}{Issues}{section.28}
+\BOOKMARK [1][-]{section.47}{Dynamic Aggregation}{}
+\BOOKMARK [2][-]{subsection.48}{How it works}{section.47}
+\BOOKMARK [3][-]{subsubsection.50}{Dealing with dynamics}{subsection.48}
+\BOOKMARK [3][-]{subsubsection.51}{Two scenarios}{subsection.48}
+\BOOKMARK [1][-]{section.55}{Lessons learned}{}
+\BOOKMARK [1][-]{section.56}{Conclusion}{}
+\BOOKMARK [1][-]{section.57}{Additional Authors}{}
+\BOOKMARK [1][-]{section.58}{References}{}

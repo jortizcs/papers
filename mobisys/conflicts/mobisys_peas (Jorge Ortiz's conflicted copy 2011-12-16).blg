@@ -1,0 +1,85 @@
+This is BibTeX, Version 0.99c (TeX Live 2009)
+The top-level auxiliary file: mobisys_peas.aux
+The style file: abbrv.bst
+Database file #1: references.bib
+I was expecting a `,' or a `}'---line 650 of file references.bib
+ :  
+ :  organization = "Center for Information Technology Research in the Interest of Society"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 719 of file references.bib
+ :    
+ :    title = "{Ensemble-level Power Management for Dense Blade Servers}",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 887 of file references.bib
+ :  
+ :  month="August"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 894 of file references.bib
+ :  
+ :  month="March"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 901 of file references.bib
+ :  
+ :  month="March"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 908 of file references.bib
+ :  
+ :  month="January"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 915 of file references.bib
+ :  
+ :  year="2007"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--to sort, need author or key in qrcgen1
+Warning--to sort, need author or key in qrcgen2
+Warning--to sort, need author or key in streamfs
+Warning--empty author and editor in oecd2011
+You've used 9 entries,
+            2118 wiz_defined-function locations,
+            542 strings with 4943 characters,
+and the built_in function-call counts, 2617 in all, are:
+= -- 252
+> -- 109
+< -- 2
++ -- 47
+- -- 36
+* -- 160
+:= -- 383
+add.period$ -- 20
+call.type$ -- 9
+change.case$ -- 42
+chr.to.int$ -- 0
+cite$ -- 13
+duplicate$ -- 105
+empty$ -- 241
+format.name$ -- 36
+if$ -- 583
+int.to.chr$ -- 0
+int.to.str$ -- 9
+missing$ -- 4
+newline$ -- 39
+num.names$ -- 10
+pop$ -- 73
+preamble$ -- 1
+purify$ -- 37
+quote$ -- 0
+skip$ -- 98
+stack$ -- 0
+substring$ -- 133
+swap$ -- 27
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 34
+warning$ -- 4
+while$ -- 18
+width$ -- 10
+write$ -- 80
+(There were 7 error messages)

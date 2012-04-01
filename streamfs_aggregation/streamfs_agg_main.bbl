@@ -1,0 +1,35 @@
+\begin{thebibliography}{1}
+
+\bibitem{cbecs2003}
+Commercial buildings energy consumption survey, 2003.
+
+\bibitem{olap}
+E.~F. Codd, S.~Codd, and C.~Salley.
+\newblock Providing olap to user-analysts: An it mandate.
+
+\bibitem{waste_science}
+N.~Gershenfeld, S.~Samouhos, and B.~Nordman.
+\newblock Intelligent infrastructure for energy efficiency.
+\newblock {\em Science}, 327(5969):3, 2010.
+
+\bibitem{next10_waste}
+{Next10}.
+\newblock {Untapped Potential of Commericial Buildings: Energy Use and
+  Emissions}, 2010.
+
+\bibitem{SenkoDB}
+M.~E. Senko, E.~B. Altman, M.~M. Astrahan, and P.~L. Fehder.
+\newblock Data structures and accessing in data-base systems: Iii data
+  representations and the data independent accessing model.
+\newblock {\em IBM Syst. J.}, 12:64--93, March 1973.
+
+\bibitem{Chen76theentity-relationship}
+P.~P. shan Chen.
+\newblock The entity-relationship model: Toward a unified view of data.
+\newblock {\em ACM Transactions on Database Systems}, 1:9--36, 1976.
+
+\bibitem{epabuildings}
+{U.S. Environmental Protection Agency}.
+\newblock {Buildings Energy Data Book}, 2010.
+
+\end{thebibliography}

@@ -1,0 +1,130 @@
+\begin{thebibliography}{10}
+
+\bibitem{plugloadreport}
+
+
+\bibitem{qrcgen1}
+\url{http://qrcode.kaywa.com/}.
+
+\bibitem{qrcgen2}
+\url{http://www.qrstuff.com/}.
+
+\bibitem{weatherunderground}
+\url{http://www.wunderground.com/}.
+
+\bibitem{streamfs}
+\url{http://streamfs.cs.berkeley.edu/}.
+
+\bibitem{apache}
+\url{http://httpd.apache.org/}.
+
+\bibitem{tinyurl}
+\url{http://tinyurl.com/}.
+
+\bibitem{radar}
+P.~Bahl and V.~N. Padmanabhan.
+\newblock Radar: an in-building rf-based user location and tracking system.
+\newblock pages 775--784, 2000.
+
+\bibitem{Caswell:2000}
+D.~Caswell and P.~Debaty.
+\newblock Creating web representations for places.
+\newblock In {\em Proceedings of the 2nd international symposium on Handheld
+  and Ubiquitous Computing}, HUC '00, pages 114--126, London, UK, 2000.
+  Springer-Verlag.
+
+\bibitem{smap}
+S.~Dawson-Haggerty, X.~Jiang, G.~Tolle, J.~Ortiz, and D.~Culler.
+\newblock smap: a simple measurement and actuation profile for physical
+  information.
+\newblock In {\em Proceedings of the 8th ACM Conference on Embedded Networked
+  Sensor Systems}, SenSys '10, pages 197--210, New York, NY, USA, 2010. ACM.
+
+\bibitem{oecd2011}
+{\em Energy Balances of OECD Countries}.
+\newblock International Energy Agency,
+  \url{http://www.oecd-ilibrary.org/energy/energy-balances-of-oecd-countries-2%
+011_energy_bal_oecd-2011-en}, 2011.
+
+\bibitem{eia:2010}
+{\em Energy Outlook 2010}.
+\newblock Energy Information Administration,
+  \url{http://www.eia.doe.gov/oiaf/ieo/index.html}, 2010.
+
+\bibitem{wigem}
+A.~Goswami, L.~E. Ortiz, and S.~R. Das.
+\newblock Wigem : A learning-based approach for indoor localization.
+\newblock In {\em CoNext 2011}, 2011.
+
+\bibitem{semanticmodel}
+J.-L. Hainaut and B.~L. Charlier.
+\newblock An extensible semantic model of data base and its data language.
+\newblock In {\em IFIP Congress'74}, pages 1026--1030, 1974.
+
+\bibitem{Hodes}
+T.~D. Hodes, S.~E. Czerwinski, B.~Y. Zhao, A.~D. Joseph, and R.~H. Katz.
+\newblock An architecture for secure wide-area service discovery.
+\newblock {\em Wirel. Netw.}, 8:213--230, March 2002.
+
+\bibitem{hbci}
+J.~Hsu, P.~Mohan, X.~Jiang, J.~Ortiz, S.~Shankar, S.~Dawson-Haggerty, and
+  D.~Culler.
+\newblock Hbci: human-building-computer interaction.
+\newblock In {\em Proceedings of the 2nd ACM Workshop on Embedded Sensing
+  Systems for Energy-Efficiency in Building}, BuildSys '10, pages 55--60, New
+  York, NY, USA, 2010. ACM.
+
+\bibitem{acme}
+X.~Jiang, M.~V. Ly, J.~Taneja, P.~Dutta, and D.~Culler.
+\newblock Experiences with a high-fidelity wireless building energy auditing
+  network.
+
+\bibitem{Kindberg00aweb}
+T.~Kindberg and J.~Barton.
+\newblock A web-based nomadic computing system, 2000.
+
+\bibitem{livinglab}
+A.~Krioukov, L.~Dawson-Haggerty, Stephen~Lee, O.~Rehmane, and D.~Culler.
+\newblock A living laboratory study in personalized automated lighting
+  controls.
+\newblock In {\em Proceedings of the 3rd ACM Workshop on Embedded Sensing
+  Systems for Energy-Efficiency in Building}, BuildSys '11, New York, NY, USA,
+  2011. ACM.
+
+\bibitem{lbnlmels}
+S.~M. Lanzisera, S.~Dawson-Haggerty, X.~Jiang, H.~Y. Cheung, J.~Teneja, J.~Lai,
+  J.~Ortiz, D.~Culler, and R.~Brown.
+\newblock Wireless electricity metering of miscellaneous and electronic devices
+  in buildings.
+\newblock In {\em 2011 Future of Instrumentation International Workshop}, 2011.
+
+\bibitem{taxonomy}
+B.~N. Nordman and M.~Sanchez.
+\newblock Electronics come of age: A taxonomy for miscellaneous and low power
+  products.
+\newblock {\em ACEEE Summer Study on Energy Efficiency in Buildings}.
+
+\bibitem{cricket}
+N.~B. Priyantha.
+\newblock {\em The cricket indoor location system}.
+\newblock PhD thesis, Cambridge, MA, USA, 2005.
+\newblock AAI0808861.
+
+\bibitem{semanticrelational}
+H.~A. Schmid and J.~R. Swenson.
+\newblock On the semantics of the relational data model.
+\newblock In {\em Proceedings of the 1975 ACM SIGMOD international conference
+  on Management of data}, SIGMOD '75, pages 211--223, New York, NY, USA, 1975.
+  ACM.
+
+\bibitem{Chen76theentity-relationship}
+P.~P. shan Chen.
+\newblock The entity-relationship model: Toward a unified view of data.
+\newblock {\em ACM Transactions on Database Systems}, 1:9--36, 1976.
+
+\bibitem{activebadge1992}
+R.~Want, A.~Hopper, V.~Falc\~{a}o, and J.~Gibbons.
+\newblock The active badge location system.
+\newblock {\em ACM Trans. Inf. Syst.}, 10:91--102, January 1992.
+
+\end{thebibliography}

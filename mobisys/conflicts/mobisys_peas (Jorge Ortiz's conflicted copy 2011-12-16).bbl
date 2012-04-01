@@ -1,0 +1,46 @@
+\begin{thebibliography}{1}
+
+\bibitem{qrcgen1}
+\url{http://qrcode.kaywa.com/}.
+
+\bibitem{qrcgen2}
+\url{http://www.qrstuff.com/}.
+
+\bibitem{streamfs}
+\url{http://streamfs.cs.berkeley.edu/}.
+
+\bibitem{Caswell:2000}
+D.~Caswell and P.~Debaty.
+\newblock Creating web representations for places.
+\newblock In {\em Proceedings of the 2nd international symposium on Handheld
+  and Ubiquitous Computing}, HUC '00, pages 114--126, London, UK, 2000.
+  Springer-Verlag.
+
+\bibitem{smap}
+S.~Dawson-Haggerty, X.~Jiang, G.~Tolle, J.~Ortiz, and D.~Culler.
+\newblock smap: a simple measurement and actuation profile for physical
+  information.
+\newblock In {\em Proceedings of the 8th ACM Conference on Embedded Networked
+  Sensor Systems}, SenSys '10, pages 197--210, New York, NY, USA, 2010. ACM.
+
+\bibitem{oecd2011}
+{\em Energy Balances of OECD Countries}.
+\newblock International Energy Agency,
+  \url{http://www.oecd-ilibrary.org/energy/energy-balances-of-oecd-countries-2%
+011_energy_bal_oecd-2011-en}, 2011.
+
+\bibitem{acme}
+X.~Jiang, M.~V. Ly, J.~Taneja, P.~Dutta, and D.~Culler.
+\newblock Experiences with a high-fidelity wireless building energy auditing
+  network.
+
+\bibitem{Kindberg00aweb}
+T.~Kindberg and J.~Barton.
+\newblock A web-based nomadic computing system, 2000.
+
+\bibitem{activebadge1992}
+R.~Want, A.~Hopper, V.~Falc\~{a}o, and J.~Gibbons.
+\newblock The active badge location system.
+\newblock {\em ACM Trans. Inf. Syst.}, 10:91--102, January 1992.
+
+\end{thebibliography}
