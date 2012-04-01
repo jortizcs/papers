@@ -18,45 +18,37 @@ greatly.  The outside weather changes, varying schedules affect occupancy, rooms
 or other office activities.  Simply put, the process is time consuming, requires specialized knowledge,
 and does not scale.
 
-Devices are typically used in together in some fashion.  For example, in an office
-setting a person enters their office, turns on their PC or connects their laptop, turn on the lights, etc.
-When the person leaves the office, they revert back to state the office was in when it was
-not in use.  Waste occurs when something is left on.  Another example is the way a heater is used.  
-When the outside temperature is low the heater turns on.  If the temperature is high and the heater is on, there
-is a problem.  Moreover, if the heating and cooling system that serve the same space are on 
-simultaneously~\cite{simheatcool}, that
-is a problem that is \emph{particularly} wasteful and hard to detect by the occupants.  
+Devices are typically used together in some fashion.  For example, in an office
+setting a person enters their office, turns on their PC and lights, etc.
+When the person leaves the office, they revert back to the state their devices were in before arrival.
+If one of the items is not reverted to its pre-arrival state, waste occurs. 
+%Waste occurs when something is left on.
+The same is true about equipment usage.  When the outside temperature is low the heater turns on.
+% and
+%the negation is also true.  If the temperature is high and the heater is on, waste occurs.  
+\emph{Waste occurs when abnormal in-concert usage patterns arise}.  
+%For example, 
+% Moreover, if the heating and cooling system are on 
+% simultaneously~\cite{simheatcool}, that is a problem that is \emph{particularly} wasteful and hard to 
+% detect by occupants.  
 Fundamentally, understanding ``normal'' spatio-temporal usage patterns between devices could help
-identify problems when devices are not being used correctly. % in concert.
-% If the outside temperature is high and the heater is on, we signal a flag that this
-% behavior is problematic; it also happens to be wasteful.  If identified, this waste can be avoided or minimized.
+identify problems when devices are not being used correctly.
 We conjecture that inefficient energy use can be identified through anomalies in the correlation
-patterns of resource usage.  We examine device correlation patterns in this paper and look specifically
+patterns between devices.  We examine device correlation patterns in this paper and look specifically
 at processing raw sensor traces, such that the correlations we find are meaningful.
-% If applied correctly, our conjecture should narrow
-% the search space where a subset of those anomalies \emph{may} also be inefficient.
-
-
- 
-%It also generalizes acrossdifferent sensors and measurement units.  
-% In summary, we are interested
-% in correlated patterns of usage in order to uncover potentially un/correlated usage patterns 
-% that lead to efficiencies, identify anomolies from normal usage patterns, provide a way to codify efficient 
-% or expected usage over time, and identify deviations from specification.
 
 In this paper, we present early results for correlating usage patterns across a large number of sensors
-in a single deployment.  We analyzed data from a 12-story office building at the University of Tokyo.  
-The deployment consists of almost 700 sensors monitoring a broad range of devices within and outside 
+in a single deployment.  We analyze data from a 12-story office building at the University of Tokyo.  
+The deployment consists of almost 700 sensors monitoring a broad range of devices inside and outside 
 the building.  Our initial observations and results include the following:
 
 \begin{enumerate}
-\item Raw-trace correlation analysis is too influenced by the common underlying trends in the data
+\item Raw-trace correlation analysis is too strongly influenced by the common low-frequency trends in the data
 	to identify meaningful relationships.
-%is too noisy to be meaningful in our correlation model.
-\item Using a technique called empirical model decomposition (EMD)~\cite{huang:emd1998} removes the 
-		underlying trend and this helps identify truly correlated sensor traces.
-\item We can construct clusters of correlated sensor that are spatio-temporally correlated, without
-		a priori knowledge of their placement.
+\item Using a technique called empirical model decomposition (EMD)~\cite{huang:emd1998} removes this 
+		 trend and helps identify truly correlated sensor traces.
+\item We can construct clusters of correlated sensors that are spatio-temporally correlated, \emph{without
+		a priori knowledge of their placement}.
 \end{enumerate}
 
 In the rest of the paper we explain EMD and how we use it, we show various examples of our technique on real-world

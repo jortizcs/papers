@@ -27,8 +27,10 @@ the typical usage of the equipment, triggered by occupant activity.  For the ini
 analysis, we focus on three sensors; two water pumps and a light feed.  The first pump is an 
 ``electric heat pump'' and is labled as EHP, the second  is a ``gas heat pump''
 and labeled as GHP.  The room lighting system serves the same room as the EHP.  The GHP
-serve a different room on the same floor.  The expanded portion of our analysis pivots as the EHP
+serves a different room on the same floor.  The expanded portion of our analysis pivots around the EHP
 and does a pairwise comparison between it and all other sensors in the building.
+Computationally, this approach does not scale to a large number of sensors.  For future work, we will
+examine various heuristics to narrow the search space before running pairwise comparisons.
 
 % includes one day holiday (July 18th)
 % 3 different sensors:
@@ -50,13 +52,13 @@ and does a pairwise comparison between it and all other sensors in the building.
 In buildings, metadata is poorly and unsystematically managed within a single system domain.  Moreover, 
 with the ever growing number of additional sub-meters, it is important to quickly integrate
 sensor data from multiple systems to understand the full state of the building.  It is also important to 
-understand how sensors are used in concert.  Anamolies in usage may indicate underlying problems with 
+understand how sensors are used in concert.  Anomalies in usage may indicate underlying problems with 
 the equipment or inefficient/incorrect usage.  
 
-We begin our analysis by running direct correlation between the traces.
 Figure \ref{fig:raw} shows the raw traces for the three devices discussed in 
-the previous section (EHP, GHP, light).  All three exhibit a diurnal usage pattern.  On weekends, each
-draw less power.  The correlation coefficient for 
+the previous section (EHP, GHP, light). All three exhibit a diurnal usage pattern.  On weekends, each
+draw less power.   For our initial analysis, we calculated the pairwise 
+correlation coefficient for all sensors in the set.  The correlation coefficient for 
  the EHP and light is $0.7715$ and the correlation coefficient for the EHP and GHP is $0.6370$.
 Running correlation across them yields high correlation coefficients, mostly
 due to their underlying daily usage pattern.

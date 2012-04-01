@@ -17,17 +17,18 @@ EMD allows us to effectively identify fundamental relationships between sensor t
 % up models of correlated usage.  
 We believe that identifying meaningful usage-correlation patterns can help reduce oversights
 by the occupants and faults that lead to energy waste.  A direct application of this is the identification
-of simultaneous heating and cooling~\cite{simheatcool}; a non-trivial exercise in modern buildings.
-Simultaneous heating and cooling is when heating
-and cooling system either compete with one another or compete with the incoming air from outside and is
-a cause for major energy waste in building.  The longer it goes undetected,
-the more waste there is.  However, it is very difficult to identify since the occupants do not notice
-changes in temperature.  Our analysis can be used to build a correlation model between the outside
-heating cooling temperature, the cooling coil temperature, and the outside air vent position.  If their behavior
-is not correlated as expect, an alarm should be raised.
+of simultaneous heating and cooling~\cite{simheatcool}.  Simultaneous heating and cooling is when the heating
+and cooling system either compete with one another or compete with the incoming air from outside.  If
+their combined usage is incorrect, there is major energy waste.
+This problem is notoriously difficult to identify, since the occupants do not notice
+changes in temperature and building management systems do not perform cross-signal comparisons.  For 
+future work, we intend to run our analysis on the set of sensors that will
+allow us to identify this problem: the outside temperature sensors, the cooling
+coil temperature, and the air vent position sensor.  If their behavior
+is not correlated as expected, an alarm will be raised.
 
-We can also apply it to other usage scenarios.  In our traces, for example, we found an instance where the pump
-was on, but the lights were off.  The two are typically correlated, however, in this case where they were not.
+We can also apply it to other usage scenarios.  In our traces, we found an instance where the pump
+was on but the lights were off; where, typically, they are active simulatenously.
 The air conditioning was pumping cool air into a room without occupants.
 With our approach this could have been identified and corrected.  In future work, we intend to
 package our solution to serve these kinds of applications.
@@ -55,20 +56,24 @@ in use.  We used data from a large deployment of sensors in a building and found
 traces was not discriminatory enough to find interesting relationships.  Upon closer inspection, we noticed that
 the underlying trend was dominating the correlation calculation.  In order to extract meaningful behavior this trend has
 to be removed.  We show that empirical mode decomposition is a helpful analytical tool for detrending 
-non-linear, non-stationary data; inherent attributes contained by our traces.
+non-linear, non-stationary data; inherent attributes contained in our traces.
 
-We ran our analysis on the same traces, except we correlated the IMF outputs of the EMD operation on each of the traces and found that the pump was closely related to the lights in the same room served by the pump and
-uncorrelated with a pump on the same floor serving a different room.  In order to corroborate the applicability
+% We ran our analysis on the same traces, except we correlated the IMF outputs of the EMD operation on each of the traces and found that the pump was closely related to the lights in the same room served by the pump and
+% uncorrelated with a pump on the same floor serving a different room.  
+
+We ran our correlation analysis across IMFs, extracted from each trace by the EMD process, and found that the pump and light
+that serve the same room were highly correlated, while the the other pump was not correlated to either.
+In order to corroborate the applicability
 of our approach, we compared the pump trace with \emph{all} 674 sensor traces and found a strong correlation
-between the relative spatial position of the sensors and their IMF correlations.  The most correlated IMFs were 
+between the relative spatial position of the sensors and their IMF correlations.  The most highly-correlated IMFs were 
 serving the same
 area in the building.  As we relax the admittance criteria we find that the spatial correlation expands radially from
 the main location served by the reference trace.
 
-We plan to examine the use of this method in applications that help discovery changes in underlying relationships over time
-in order to identify opportunities for savings in buildings.  We will use it to build inter-device correlation models
-and use these models to establish ``normal'', ``abnormal'' usage patterns.  We hope to take it a step further and include a
-supervised learning approach to distinguish between ``efficient'' and ``inefficient'' usage patterns as well.
+We plan to examine the use of this method in applications that help discover changes in underlying relationships over time
+in order to identify opportunities for energy savings in buildings.  We will use it to build inter-device correlation models
+and use these models to establish ``(ab)normal'' usage patterns.  We hope to take it a step further and include a
+supervised learning approach to distinguish between ``(in)efficient'' usage patterns as well.
 
 
 
