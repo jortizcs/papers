@@ -58,7 +58,7 @@
 %\CopyrightYear{2008} 
 %\crdata{978-1-60558-096-8/08/09} 
 
-\title{Towards an Energy Lens on the \\Physical World with Mobile Phones}
+\title{Enabling Energy Services on the Physical World through Mobile Phones}
 %\numberofauthors{1} 
 %\author{\alignauthor Stephen Dawson-Haggerty, Jorge Ortiz, Xiaofan Jiang and David Culler\\
 %\affaddr{Computer Science Division}\\
@@ -104,29 +104,65 @@
 % without further effort on your part as the last section in
 % the body of your article BEFORE References or any Appendices.
 
-\numberofauthors{4} %  in this sample file, there are a *total*
+\numberofauthors{2} %  in this sample file, there are a *total*
 % of EIGHT authors. SIX appear on the 'first-page' (for formatting
 % reasons) and the remaining two appear in the \additionalauthors section.
 %
 \author{
-Jorge Ortiz, Jason Trager, Gavin Saldanha, David Culler, Paul Wright\\
+% You can go ahead and credit any number of authors here,
+% e.g. one 'row of three' or two rows (consisting of one row of three
+% and a second row of one, two or three).
+%
+% The command \alignauthor (no curly braces needed) should
+% precede each author name, affiliation/snail-mail address and
+% e-mail address. Additionally, tag each line of
+% affiliation/address with \affaddr, and tag the
+% e-mail address with \email.
+%
+% 1st. author
+\alignauthor
+%Prabal Dutta\\
+%       \affaddr{Computer Science Division}\\
+%       \affaddr{Univ. of California, Berkeley}\\
+%       \affaddr{Berkeley, CA 94720}\\
+%       \email{prabal@cs.berkeley.edu}
+% 2nd. author
+%\alignauthor
+%David Culler\\
+%       \affaddr{Computer Science Division}\\
+%       \affaddr{Univ. of California, Berkeley}\\
+%       \affaddr{Berkeley, CA 94720}\\
+%       \email{culler@cs.berkeley.edu}
+% 3rd. author
+%\alignauthor
+%Scott Shenker\\
+%       \affaddr{Computer Science Division}\\
+%       \affaddr{Univ. of California, Berkeley}\\
+%       \affaddr{Berkeley, CA 94720}\\
+%       \email{shenker@cs.berkeley.edu}
+%}
+%%%Jorge Ortiz, Yongwoo Noh, Gavin Saldanha, David Su, Jason Trager, David Culler, and Paul Wright\\
        %\affaddr{Department}\\
-	\affaddr{Computer Science Division}\\
-       \affaddr{University of California, Berkeley}\\
+	%%%\affaddr{Computer Science Division}\\
+       %%%\affaddr{University of California, Berkeley}\\
        %\affaddr{City, State Zip}\\
-       \email{jortiz@cs.berkeley.edu}
+       %%%\email{jortiz@cs.berkeley.edu}
 }
-
 
 
 \maketitle
 
+\input{intro}
+\input{related}
+\input{consistency}
+\input{eval}
+
 %\date{14 April 2007}
 %\maketitle
 
-\begin{abstract}
-\input{abstract}
-\end{abstract}
+% \begin{abstract}
+% \input{abstract}
+% \end{abstract}
 
 % A category with the (minimum) three required fields
 %\category{B.0}{Hardware}{General}
@@ -137,23 +173,18 @@ Jorge Ortiz, Jason Trager, Gavin Saldanha, David Culler, Paul Wright\\
 %\keywords{Churn, Link, Routing, Wireless, Sensor Network, Mote}
 
 %\newpage
+% \input{intro}
 
-\input{intro}
-\input{related}
-\input{system}
-\input{eaudit}
-\input{itemscan}
-\input{consistency}
-\input{dynagg}
-%\input{mobile}
-\input{conc}
+%
+% The marriage of pub/sub, streaming dbms, and filesystems
+%
+
 
 \vspace{+0.5mm}
 \vspace{+2mm}
 \bibliographystyle{abbrv}
 %\scriptsize
 \bibliography{references}
-%\bibliography{references}
 
 \end{document}
 
