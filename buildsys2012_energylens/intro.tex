@@ -1,8 +1,38 @@
 \section{Introduction}
-Introduction: Towards fined-grained, personal, real-time physical data services in buildings with Mobile Phones
+
+This paper examines two fundamental challenges -- mobility and consistency management -- in providing real-time, find-grained physical-data 
+services in buildings through mobile phones.  Physical data services are \emph{data-analytic} and \emph{control} services 
+based on real-time sensor data and related contextual information.  For this paper, we focus on data analytics but discuss the implications
+on control.  What makes these services unique is that the analytical processes are informed by the entities in the world and
+their inter-relationships.  Adding to the complexity of the problem, we must also deal with the temporal nature of these relationship
+and capture how they evolve over time.
+Through a combination of QR codes and mobile phones, we record
+the entities and construct an entity-relationship graph with a series of gestures by made users when they swipe QR codes.
+QR codes function as a cheap, universal tagging facility for items in the world.  Mobile phones function as an entity and relationship recorder and personal viewer -- through which analytical data services are provided.  
+
+We discuss our experience from one large deployment and our re-designed on-going second deployment in a building on our campus.
+In the first iteration, we tagged 351 items over 139 rooms in a 141,000 square-foot building on campus.  We used a small team
+of students to tag items throughout the building and mainly used it to collect and provide information to occupants
+about the distribution of plug-loads throughout the building.  We used a mobile application and associated cloud-based
+infrastructure to record and query the information.  Based on this experience, we have re-designed the system and started a
+second deployment in the same building.  It includes various features that address the fundamental challenges we faced in the
+first iteration and includes live metering information and real-time analytics.  This deployment, thus far, consists of 
+{\bf 20 wireless plug-load meters and 50 QR codes, spread throughout a single floor in the same building.} -- More here\dots
+
+Our work makes the following contributions:
+
+\begin{itemize}
+\item We design and implement a system that captures physical entities, their inter-relationships, and real-time sensor data and 
+		allows users to input/edit these over time.
+%\item We carefully design QR codes to minimize swipe times and increase robustness under varying lighting conditions.
+\item We observe that QR-code swiping gestures give us useful information about where people and items are located over time.  We
+		use these user-initiated actions to track people and things.
+\item We show how log-replay and transaction processing is used in our system to maintain a consistent view of the physical world.
+\end{itemize}
+
 
 \subsection{Motivation} 
-greater visibility and control of building environment can provide more incentives and opportunities to reduce energy consumption in buildings
+Greater visibility and control of building environment can provide more incentives and opportunities to reduce energy consumption in buildings
 
 Examples of these from previous work:
 \begin{itemize}

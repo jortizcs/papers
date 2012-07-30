@@ -1,86 +1,34 @@
 \section{Evaluation}
-
-The main driver for the EnergyLens work is to explore the fundamental challenges related to:
-
-\begin{enumerate}
-\item Tracking people and objects.
-	\begin{itemize}
-	\item Through local crowd-sourcing of the tasks to building occupants
-	\end{itemize}
-\item Maintaining consistency between the relationship between physical items and the entity-relationship graph that represents it.
-\item Providing real-time statistics, information, and processing of energy data related to the building environment.
-
-	\begin{itemize}
-	\item With respect to the occupants
-	\item with respect to spaces
-	\item Maintaining security and privacy
-		\begin{itemize}
-		\item specifically with respect to personal data and control
-		\end{itemize}
-	\end{itemize}
-
-\end{enumerate}
-
-\subsection{Tracking people and objects}
-There are three major components in our architecture: QR codes, mobile phones, and StreamFS.
-
-How do we evaluate our ability to track people and things?
-This is a description evaluation.  We need to describe how the pieces interact.  What will fall out of the description is our strong dependence on occupants/users to give us information about the state of the physical world.  It’ll also fall out that what allows these pieces to fit together is network infrastructure.
-
-\subsubsection{Usability (Strong dependence of occupants/users)}
-We base our design decisions on assumptions about what keeps users from engaging with the application.  We might be able to cite some studies to demonstrate that our assumptions are reasonable.  We could also cite our own experience with an early version of the application.
-
-\begin{enumerate}
-\item Minimal number of swipes (protocol description)
-\item minimal amount of textual input (protocol description)
-\item piggy-backed movement classification of people and objects. (protocol description)
-\item QR code engineering to minimize swipe time (swipe times)*
-\end{enumerate}
-
-\subsection{Maintaining, representing, and using physical state and inter-relationships}
-In order to provide relevant services, we need to capture the state of the physical environment within the building.  By “relevant”, we mean based on context and inter-relationships.  What are “the relevant services” we’re talking about?
-
-Energy analytics on the physical world.
-How much does this floor consume?
-What fraction of that is going to the various energy-related categories?  plug-load, hvac, lighting.
-Personalized energy analytics.
-Access the the control interface for the physical world.
-
-\subsubsection{General approach}
-Our approach is to abstractly represents things in the environment as logical entities and to capture their inter-relationships through an entity-relationship graph.  We use the entity relationships to track where objects and things are in the environment, which helps us maintain a more consistent view of the world.  We also use  it to inform our analytical approach and our choice of services to display.
-
-\subsubsection{Consistency management}
-Connecting the various components requires ubiquitous connectivity.  Although connectivity is available through the building and the access-point deployment is engineered to minimize dead spots, disconnections still occur (timeout, dead-spots, unsuccessful handoffs).  So, we need to design the system to deal disconnect operation.
-
-Evaluation will be of a protocol description and design rationale described in detail here.
-What’s the evaluation exactly?
-
-\begin{enumerate}
-\item Time to download the associated contextual information from StreamFS: files, metadata information, data**
-\item Conflict resolution examples**
-\item Optimizations: Pre-fetching measurements**
-\end{enumerate}
-
-\subsection{Real-time analytics}
-Discussion.  What to measure here?  Perhaps we discuss the relevant real-time analytics we run?  Will there be space?  For buildsys, include a half page talking about some of the analytics.
-Pub/sub architecture
-time decoupling
-variable time-decoupling achieved through the datastore as a buffer
-synchronization decoupling
-Either the publisher or subscriber run asynchronously.
-space decoupling
-The subscriber doesn’t have an explicit reference to the publisher.
-Programming model for real-time data
-Naming/tagging streams
-Dealing with dynamism through tagging
-Built-in functions for physical data
-heat modeling
-electrical modeling
-mathematical modeling
-
-Security and privacy
-Discussion.  Various topics related to StreamFS here.  Also some topics related to managing security in StreamFS for doing control.  Include another half page, perhaps.
+\subsection{Prefetching}
+\subsection{Log dump measurements}
+\subsection{Global transaction manager}
+\begin{itemize}
+\item Forwarding
+\item Conflict resolution
+\end{itemize}
 
 
-* Experiment that we need to run.\\
-** Code that needs to be written and experiment that needs to be run
+
+
+% The main driver for the EnergyLens work is to explore the fundamental challenges related to:
+
+% \begin{enumerate}
+% \item Tracking people and objects.
+% 	\begin{itemize}
+% 	\item Through local crowd-sourcing of the tasks to building occupants
+% 	\end{itemize}
+% \item Maintaining consistency between the relationship between physical items and the entity-relationship graph that represents it.
+% \item Providing real-time statistics, information, and processing of energy data related to the building environment.
+
+% 	\begin{itemize}
+% 	\item With respect to the occupants
+% 	\item with respect to spaces
+% 	\item Maintaining security and privacy
+% 		\begin{itemize}
+% 		\item specifically with respect to personal data and control
+% 		\end{itemize}
+% 	\end{itemize}
+
+% \end{enumerate}
+
+
