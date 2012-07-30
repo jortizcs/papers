@@ -1,0 +1,7 @@
+*.bbl
+*.aux
+*.fdb_latexmk
+*.synctex.gz
+*.swp
+*.out
+*.pdf
