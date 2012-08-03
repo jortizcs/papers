@@ -6,14 +6,21 @@
 % \item Kamin's hvac control work
 % \item BEMs
 % \item sMAP stuff
-\item Buildsys 2010 work~\cite{hbci}
+%\item Buildsys 2010 work~\cite{hbci}
 \item distributed consistency management: COPS
-\item mobility: tracking things with RFID~\cite{rfid_gonz2006}
+%\item mobility: tracking things with RFID~\cite{rfid_gonz2006}
 \item mobility: tracking of people, wifi indoor localization
-\item entity-relationship graphs
+%\item entity-relationship graphs
 \item homeOS [microsoft]
-\item HP Cooltown~\cite{cooltown}
+%\item HP Cooltown~\cite{cooltown}
 \end{itemize}
+
+This work focuses on the object definition, tracking, and management component of Hsu et al.~\cite{hbci}.  Their
+work stratefied the set of challenges that one could potentially face if the application were deployed at scale.  Our
+work, in constrast, bases its design rationale on a real deployment that is taking place at a large scale.
+The real systems challenges in dealing with intermittent connectivity
+and conflict resolution (when connectivity is re-established).  We also focus on leveraging gestures to minimize
+the cost of interaction for users, while maximizing the information we can attain about the state of the world.
 
 Logistic systems focus on the tracking of objects as the move through distribution sites to warehouses, stores, shelves,
 and purchase.  Items are tracked through bar code or RFID readers.  However, the workload is very structured and well
