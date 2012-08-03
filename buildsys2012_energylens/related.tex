@@ -8,9 +8,37 @@
 % \item sMAP stuff
 \item Buildsys 2010 work~\cite{hbci}
 \item distributed consistency management: COPS
-\item mobility: tracking things with RFID
+\item mobility: tracking things with RFID~\cite{rfid_gonz2006}
 \item mobility: tracking of people, wifi indoor localization
 \item entity-relationship graphs
-
 \item homeOS [microsoft]
+\item HP Cooltown~\cite{cooltown}
 \end{itemize}
+
+Logistic systems focus on the tracking of objects as the move through distribution sites to warehouses, stores, shelves,
+and purchase.  Items are tracked through bar code or RFID readers.  However, the workload is very structured and well
+defined.  The authors of~\cite{rfid_gonz2006} describe this structure and leverage it to minimize storage
+requirements and optimize query-processing performance.  Energy Lens uses the QR codes as the tag and the phone as an active
+reader.  As objects move, users scan those items to their new location.  However, objects may belong to one or
+many people, they can be metered by multiple meters a day, and their history in the system
+is on-going.  In contrast, a typical logistics workload has a start (distribution site) and end point (leaving the store
+after a sale).  In our workload, relationship semantics are important; we need to know whether the meter is \emph{bound-to}
+rather than simple \emph{attached-to} an item.  We discuss the difference later in the paper.
+% In addition to traditional logistics-style queries -- \emph{What is the average time that it took coffee-makers to move from the 
+% warehouse to the shelf and finally to the checkout counter in January of 2004?} -- energy-analytics requires queries to group
+% partial traces from meter data by tracking what meters the item attached to over the specified time-frame.
+% The Energy Lens system collects and manages this kind of information to enable such queries.
+Furthermore, we take advatange of natural gestures the user makes with the phone while scanning QR codes to extract
+information about the current location of the user or things.
+
+The key idea in the HP Cooltown~\cite{bridgingphysical,cooltown} work is to web-enable `things' in the world, grouped-by
+`place', and accessed by `people' via a standardized acquisition protocol (HTTP) and format (HTML, XML).  
+Cooltown creates a web presence for things in the world either directly (embedded web server) or indirectly 
+(URL-lookup tag) as a web page page that display the services it provides.  Many of the core concepts in Cooltown 
+also show up in Energy Lens.  The main overlap is the use of tags in the world that contain a reference to a virtual 
+resource, accessible via HTTP through
+a network connection.  Cooltown, however, explicitly chooses not maintain a centralized relationship
+graph, it leverages the decentralized, linking structure of the web to group associated web pages together.
+Furthermore, things are assumed to not move.  People are the main mobile entities.  The kind of applications
+we wish to support must track where things are and their specific inter-relationships.  We imposed a richer set of 
+semantics on our, centrally maintained, relationship graph and use it to provide detailed energy information.
