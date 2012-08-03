@@ -1,19 +1,19 @@
 \section{Related work}
 
-\begin{itemize}
+%\begin{itemize}
 % \item dashboard
 % \item andrew's lightin control work
 % \item Kamin's hvac control work
 % \item BEMs
 % \item sMAP stuff
 %\item Buildsys 2010 work~\cite{hbci}
-\item distributed consistency management: COPS
+%\item distributed consistency management: COPS
 %\item mobility: tracking things with RFID~\cite{rfid_gonz2006}
-\item mobility: tracking of people, wifi indoor localization
+%\item mobility: tracking of people, wifi indoor localization
 %\item entity-relationship graphs
-\item homeOS [microsoft]
+%\item homeOS [microsoft]
 %\item HP Cooltown~\cite{cooltown}
-\end{itemize}
+%\end{itemize}
 
 This work focuses on the object definition, tracking, and management component of Hsu et al.~\cite{hbci}.  Their
 work stratefied the set of challenges that one could potentially face if the application were deployed at scale.  Our
@@ -22,6 +22,21 @@ The real systems challenges in dealing with intermittent connectivity
 and conflict resolution (when connectivity is re-established).  We also focus on leveraging gestures to minimize
 the cost of interaction for users, while maximizing the information we can attain about the state of the world.
 
+% Tracking people/indoor localization
+An important aspect of the Energy Lens is determining when people and things have moved.  This requires some form 
+of indoor localization.  There's a large body of literature in the area of indoor localization with mobile phones ranging from 
+using wifi~\cite{radar}, to sonar~\cite{cricket}, to ambient noise~\cite{abs}, and a combination of sensors on the 
+phone~\cite{surroundsense, darwinphone}.  Dita~\cite{dita} uses acoustic localization of mobile phones and also uses the infrastructure 
+to determine gestures in free-space that are classified into pre-defined control actions.  Each of these require relatively complex 
+software and/or infrastrure.  
+We take a radically different, simple approach.  We use cheap, easy to re/produce tags (QR codes), place them on things in the 
+environment over incrementally and use the natural \emph{swiping gesture} that users make, when interacting with the Energy Lens 
+application, to track when they have moved or when the objects around them have moved.  The working principal is to attain as much 
+information from their gesture to determine when something/one has moved.  We discuss our heuristics in section~\ref{sec:swipes}.
+
+ACE~\cite{ACE}
+
+% Tracking things
 Logistic systems focus on the tracking of objects as the move through distribution sites to warehouses, stores, shelves,
 and purchase.  Items are tracked through bar code or RFID readers.  However, the workload is very structured and well
 defined.  The authors of~\cite{rfid_gonz2006} describe this structure and leverage it to minimize storage
@@ -38,6 +53,7 @@ rather than simple \emph{attached-to} an item.  We discuss the difference later 
 Furthermore, we take advatange of natural gestures the user makes with the phone while scanning QR codes to extract
 information about the current location of the user or things.
 
+% Tagging items, virtual services
 The key idea in the HP Cooltown~\cite{bridgingphysical,cooltown} work is to web-enable `things' in the world, grouped-by
 `place', and accessed by `people' via a standardized acquisition protocol (HTTP) and format (HTML, XML).  
 Cooltown creates a web presence for things in the world either directly (embedded web server) or indirectly 
@@ -49,3 +65,4 @@ graph, it leverages the decentralized, linking structure of the web to group ass
 Furthermore, things are assumed to not move.  People are the main mobile entities.  The kind of applications
 we wish to support must track where things are and their specific inter-relationships.  We imposed a richer set of 
 semantics on our, centrally maintained, relationship graph and use it to provide detailed energy information.
+
