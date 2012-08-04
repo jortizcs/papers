@@ -34,7 +34,16 @@ environment over incrementally and use the natural \emph{swiping gesture} that u
 application, to track when they have moved or when the objects around them have moved.  The working principal is to attain as much 
 information from their gesture to determine when something/one has moved.  We discuss our heuristics in section~\ref{sec:swipes}.
 
-ACE~\cite{ACE}
+% context-aware apps
+ACE~\cite{ACE} uses various sensors on the phone to infer a user's context.  The context domain consists of a set of user activities
+and semantic locations.  For example, if ACE can distinguish between {\tt Running, Driving, AtHome, or InOffice}.  ACE also infers 
+the one from the others, so if the user is {\tt AtHome} then they are not {\tt InOffice}.  Energy Lens uses inference to determine
+when a person or thing has moved.  Certain swipe combinations give us information about whether they moved and where they moved to or
+whether an item moved and where it moved to.  The main difference is that we only infer context when a user is actively swiping, rather
+than a continuous approach.  Pretching is a fundamental technique used in many domains.  However, the cost of a prefetch for mobile
+application outways the benefits if the prefetched data is not useful.  Informed mobile pretching~\cite{IMP} uses cost-benefit analysis 
+to determine when to prefetch content for the user.  In the Energy Lens context, we prefetch data based on their location swipes.
+We also rely on pretching to anticipate loss of connectivity, not just to improve preformance.
 
 % Tracking things
 Logistic systems focus on the tracking of objects as the move through distribution sites to warehouses, stores, shelves,
