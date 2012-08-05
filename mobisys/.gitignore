@@ -5,3 +5,5 @@
 *.swp
 *.out
 *.pdf
+*.DS_Store
+*.log
