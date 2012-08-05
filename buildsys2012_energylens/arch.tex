@@ -1,4 +1,19 @@
 \section{System architecture}
+The Energy Lens architecture consists of three layers: the sensing layer, the data management and processing layer, and the application
+layer.  In this section we discuss each layer and the important components on their design.  Each layer in the architecture
+is carefully design to work on a real deployment with live users.  In deploying the application in a real building, we ran
+into various issues that then informed our design.  For example, \emph{Qr code reading time varies substantially across phones
+and lighting conditions}.  You must design for the least-common demoninator in terms of camera quality and lighting.
+
+Another aspect to consider is network connectivity.  Within our building deployment, connectivity is ubiquitous, connectivity
+can still be intermittent.  Connectivity may be lost for several reasons, including disassociation from an access point due
+to idleness, dead spots in the building where connectivity to both wifi and 3G/4G are unavailable, multipath-induced
+destructive interference, and various other reason.  Dealing with these throughout the data collection and update phase is
+especially troublesome.  We discuss various mechanisms and algorithms for dealing with disconnected operation.
+
+\subsection{Sensing tier}
+We deployed 25 ACme power meters~\cite{acme} on a single floor of a building on campus.  The data was made available through
+sMAP~\cite{smap} and push through our processing and data management layer, StreamFS~\cite{streamfs}.
 
 \subsection{QR code design}
 \label{sec:qrc}
@@ -29,14 +44,14 @@ manipulate.  And finally, the representation of the URL itself can be
 parsed and utilized locally by native apps, typically by lookup, to
 permit rapid interaction with the item or space.
 
-\begin{figure}[htb!]
-\begin{center}
-\includegraphics[scale=0.3]{figs/qrcex}
-\caption{This is an example QR code from our deployment. This label resolves to {\tt http://tinyurl.com/6235eyw}.
-QR codes like these are used as tags physical objects and spaces/locations.}
-\label{fig:qrcex}
-\end{center}
-\end{figure}
+% \begin{figure}[htb!]
+% \begin{center}
+% \includegraphics[scale=0.3]{figs/qrcex}
+% \caption{This is an example QR code from our deployment. This label resolves to {\tt http://tinyurl.com/6235eyw}.
+% QR codes like these are used as tags physical objects and spaces/locations.}
+% \label{fig:qrcex}
+% \end{center}
+% \end{figure}
 
 Figure~\ref{fig:qrcex} shows an example QR code used in our deployment.  Tags like these are placed on physical
 objects and spaces throughout the building to link between the physical world and our virtual representation of it.
@@ -165,11 +180,16 @@ sensor information coming from sensors on the phone itself.  For example, we cou
 is pointing by using the phone's directional sensor and negating their direction (i.e. phone is facing east, tag on item must
 be facing west).
 
+\subsection{Disconnected operation}
 
 
-
-
-
+\begin{figure}[htb!]
+\begin{center}
+\includegraphics[scale=0.50]{figs/standard_interaction}
+\caption{}
+\label{fig:interactions}
+\end{center}
+\end{figure}
 
 
 \subsection{Swiping gestures}
@@ -257,24 +277,24 @@ What’s the evaluation exactly?
 
 \subsection{Real-time analytics}
 Discussion.  What to measure here?  Perhaps we discuss the relevant real-time analytics we run?  Will there be space?  For buildsys, include a half page talking about some of the analytics.
-Pub/sub architecture
-time decoupling
-variable time-decoupling achieved through the datastore as a buffer
-synchronization decoupling
-Either the publisher or subscriber run asynchronously.
-space decoupling
-The subscriber doesn’t have an explicit reference to the publisher.
-Programming model for real-time data
-Naming/tagging streams
-Dealing with dynamism through tagging
-Built-in functions for physical data
-heat modeling
-electrical modeling
-mathematical modeling
+% Pub/sub architecture
+% time decoupling
+% variable time-decoupling achieved through the datastore as a buffer
+% synchronization decoupling
+% Either the publisher or subscriber run asynchronously.
+% space decoupling
+% The subscriber doesn’t have an explicit reference to the publisher.
+% Programming model for real-time data
+% Naming/tagging streams
+% Dealing with dynamism through tagging
+% Built-in functions for physical data
+% heat modeling
+% electrical modeling
+% mathematical modeling
 
-Security and privacy
-Discussion.  Various topics related to StreamFS here.  Also some topics related to managing security in StreamFS for doing control.  Include another half page, perhaps.
+% Security and privacy
+% Discussion.  Various topics related to StreamFS here.  Also some topics related to managing security in StreamFS for doing control.  Include another half page, perhaps.
 
 
-* Experiment that we need to run.\\
-** Code that needs to be written and experiment that needs to be run
+% * Experiment that we need to run.\\
+% ** Code that needs to be written and experiment that needs to be run
