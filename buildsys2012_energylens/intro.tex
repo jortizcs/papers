@@ -14,9 +14,7 @@ sensor data in order to provide detailed energy-attribution analytics.  In order
 in the world and the relationships between them.  We limit the scope of the world to a single building domain.  We have 
 designed and implemented an application, called the `Energy Lens', that allows \emph{building occupants} to inform us 
 of things in the world and their inter-relationships, as well as combine the information with streaming meter data.  This paper focuses
-on challenges faced in collecting and maitaing this information. 
-% this information maintaining consistency, as relationships between entities change, and 
-% discusses various heuristics for avoiding conflict and mechanisms for dealing with them when they occur.
+on challenges faced in collecting and maitaing this information.
 
 The use of mobile phones presents classical, fundamental challenges related to mobility.  Typically, mobility
 refers to the phone as the person carrying it moves from place to place.  However, in the energy-attribution
@@ -55,6 +53,8 @@ makes the following contributions:
 		We codify this observation in our \emph{context-tracker} and use it to maintain consistency between the entity-relationship graph and the 
 		state of the physical world.  To the best of our knowledge, this is radically different from the approaches in standard 
 		localization techniques.  However, we argue that it can be used to \emph{enhance} their accuracy and overall performance.
+\item We implement a prefetching algorithm to obtain context-depedent information and both improve performance, as well as
+		enable disconnected operations.
 \item We design and implement a log-replay and transaction manager to deal with conflicts that arise when multiple users re-establish
 		a connection with the server and wish to execute updates to the entity-relationship graph.  We describe how different 
 		conflict-resolution policies can be implemented and our rationale for the policies we chose.
@@ -65,8 +65,8 @@ makes the following contributions:
 % We also argue about the broader implication of our observations and solution approaches.  We claim that issues of mobility
 % and consistency management are fundamental challenges that must be overcome in order to provide \emph{physical data services} -- a new class
 % of applications that has emerged at the intersection of energy and buildings.  We define physical data services and give some examples.
-In the next section we give some background and related work, followed by the system architecture, evaluation, and 
-broader discussion.
+In the next sections we describe a motivating scenario for this work, give some background and related work, followed 
+by the system architecture, evaluation, and broader discussion.
 
 % \begin{itemize}
 % \item QR codes are a convenient choice for tagging items because they are customizable, cheap, easily produced, and easily replaceable.

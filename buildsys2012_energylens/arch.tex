@@ -1,8 +1,13 @@
 \section{System architecture}
-The Energy Lens architecture consists of three layers: the sensing layer, the data management and processing layer, and the application
-layer.  In this section we discuss each layer and the important components on their design.  Each layer in the architecture
+The Energy Lens application aims to approximate the vision described in section~\ref{sec:vision}.  For our initial
+attempt, we tagged items in a building with QR codes and allowed users to 1) register new items and tag
+them with QR codes they can print from the Energy Lens site, 2) tell us which meters are attached to which items,
+3) scan individual item to view their load curve over a 24-hour period.
+
+The architecture consists of three layers: the sensing and tag layer, the data management and processing layer, and the application
+layer.  In this section we discuss each layer and their most important components.  Each layer in the architecture
 is carefully design to work on a real deployment with live users.  In deploying the application in a real building, we ran
-into various issues that then informed our design.  For example, \emph{Qr code reading time varies substantially across phones
+into various issues that informed our design.  For example, \emph{QR code reading times vary substantially across phones
 and lighting conditions}.  You must design for the least-common demoninator in terms of camera quality and lighting.
 
 Another aspect to consider is network connectivity.  Within our building deployment, connectivity is ubiquitous, connectivity
@@ -11,38 +16,44 @@ to idleness, dead spots in the building where connectivity to both wifi and 3G/4
 destructive interference, and various other reason.  Dealing with these throughout the data collection and update phase is
 especially troublesome.  We discuss various mechanisms and algorithms for dealing with disconnected operation.
 
-\subsection{Sensing tier}
-We deployed 25 ACme power meters~\cite{acme} on a single floor of a building on campus.  The data was made available through
-sMAP~\cite{smap} and push through our processing and data management layer, StreamFS~\cite{streamfs}.
+\subsection{Sensing and tag layer}
+We deployed 20 ACme power meters~\cite{acme} on a single floor of a building on campus.  The data was made available through
+sMAP~\cite{smap} and forwarded through our processing and data management layer, StreamFS~\cite{streamfs}.  We distributed
+the ACmes throughout a single floor in our building and registered various plug loads as being measured by them.  We also tagged
+hundreds of items and locations throughout the entire building.  In addition to tagging the 20 ACmes and the plug-loads they are
+attached to, we also tagged 351 unmetered items and 139 rooms with QR codes.
 
-\subsection{QR code design}
+\subsubsection{QR code design}
 \label{sec:qrc}
-We base our design decisions on assumptions about what keeps users from engaging with the application.  We might be able to cite some studies to demonstrate that our assumptions are reasonable.  We could also cite our own experience with an early version of the application.
+QR codes must be designed to minimize scanning time.  As we iterated through various designs we noticed that dim lighting conditions
+and poor cameras on certain phones caused the scan time to increase significantly.  The variance in scan time was high and
+very frustrating to deal with.  Without correcting this, occupants will not engage with the application, behavior similar to attaining
+user engagement on the web.
 
-\subsubsection{Usability (Strong dependence of occupants/users)}
-\begin{enumerate}
-\item Minimal number of swipes (protocol description)
-\item minimal amount of textual input (protocol description)
-\item piggy-backed movement classification of people and objects. (protocol description)
-\item QR code engineering to minimize swipe time (swipe times)*
-\end{enumerate}
+% \subsubsection{Usability (Strong dependence of occupants/users)}
+% \begin{enumerate}
+% \item Minimal number of swipes (protocol description)
+% \item minimal amount of textual input (protocol description)
+% \item piggy-backed movement classification of people and objects. (protocol description)
+% \item QR code engineering to minimize swipe time (swipe times)*
+% \end{enumerate}
 
 
 
-A QR code is a two-dimensional barcode that may encode almost 3000 bytes of data.  QR code generators
-can be found on the internet~\cite{qrcgen1, qrcgen2}.  
-Extending the approach in \cite{hbci}, in
-our
-architecture the QR code contains a meaningful {\tt URL} that a
-generic browser can access to provid ea human readable document with complete
-information about the item or space, as well as the additional
-information to bootstrap the smartphone to optimized access, such as
-native apps for interacting with the item or space.  Secondly, the 
-{\tt URL}  must be easily transformed into one that will yield a
-programmatic document, such as a JSON object, that apps can
-manipulate.  And finally, the representation of the URL itself can be
-parsed and utilized locally by native apps, typically by lookup, to
-permit rapid interaction with the item or space.
+% A QR code is a two-dimensional barcode that may encode almost 3000 bytes of data.  QR code generators
+% can be found on the internet~\cite{qrcgen1, qrcgen2}.  
+% Extending the approach in \cite{hbci}, in
+% our
+% architecture the QR code contains a meaningful {\tt URL} that a
+% generic browser can access to provid ea human readable document with complete
+% information about the item or space, as well as the additional
+% information to bootstrap the smartphone to optimized access, such as
+% native apps for interacting with the item or space.  Secondly, the 
+% {\tt URL}  must be easily transformed into one that will yield a
+% programmatic document, such as a JSON object, that apps can
+% manipulate.  And finally, the representation of the URL itself can be
+% parsed and utilized locally by native apps, typically by lookup, to
+% permit rapid interaction with the item or space.
 
 % \begin{figure}[htb!]
 % \begin{center}
@@ -53,7 +64,7 @@ permit rapid interaction with the item or space.
 % \end{center}
 % \end{figure}
 
-Figure~\ref{fig:qrcex} shows an example QR code used in our deployment.  Tags like these are placed on physical
+Figure~\ref{fig:qrcexcomp} shows an example QR code used in our deployment.  Tags like these are placed on physical
 objects and spaces throughout the building to link between the physical world and our virtual representation of it.
 QR codes are cheap to produce.  Any printer and some tape can be used to tag an item.  This is important for scalability.
 With the number of physical objects and places (floors, rooms) in a typical building, {\bf we must rely on the occupants
@@ -69,9 +80,9 @@ too much information is encode the camera takes a long time to scan them, especi
 conditions.  This can easily frustrate and drive away users, who are critical for scalability.
 We also want to design them for the lowest common denominator in terms of camera quality.  Older
 phones with cheap cameras should also be able to scan the tags quickly.  We ran some experiments to show
-how complex QR codes differ from the one we design and discuss these results in Section~\ref{sec:qrcodedesign}.
+how complex QR codes differ from the one we design and discuss these results in Section~\ref{sec:qrcexcomp}.
 
-\subsection{QR code swipe times}
+\subsubsection{QR code swipe times}
 \begin{figure*}[htb!]
 \begin{center}
 \includegraphics[width=\textwidth]{figs/swipes}
@@ -180,6 +191,16 @@ sensor information coming from sensors on the phone itself.  For example, we cou
 is pointing by using the phone's directional sensor and negating their direction (i.e. phone is facing east, tag on item must
 be facing west).
 
+
+
+
+
+
+\subsection{Data management layer}
+
+\subsection{Application layer}
+
+
 \subsection{Disconnected operation}
 
 
@@ -237,6 +258,18 @@ When a meter/item is inside a location, we say that the meter/item is “inside-
 {\bf Type-of}\\
 When an item is labeled by as a known, specific, type, we say that the item is a “type-of” thing specified by the its label.
 
+
+\begin{figure}[htb!]
+\begin{center}
+\includegraphics[scale=0.55]{figs/bindattachstructs}
+\caption{This diagram shows the relationship capture between the objects and locations in the building for the 
+energy audit application.  Children of a space node have an ``is-in'' relationship with the space.  An item
+with another item as a child have a ``attached'' relationship and meters attached to items are bound to each other.
+Note, this is a \emph{subset} of the relationship diagrams generated across our three applications.}
+\label{fig:attachandbind}
+\end{center}
+\end{figure}
+
 \subsection{Managing consistency while disconnected}
 
 \subsubsection{Caching}
@@ -247,8 +280,8 @@ We should pre-fetch, as the tags inform us about what the user might access next
 
 \begin{figure}[htb!]
 \begin{center}
-\includegraphics[scale=0.35]{figs/SDH_4F_ERG}
-\caption{Prefetched entities on the a single floor in our building.  This shows a snapshot of the entity-relationship
+\includegraphics[scale=0.55]{figs/SDH_4F_ERG_closeup}
+\caption{A portion of the prefetched entities on the a single floor in our building.  This shows a snapshot of the entity-relationship
 graph for that floor.  Each node, link, and associated content is prefetched when the user swipes the floor
 tag or anything on that floor.}
 \label{fig:sdh_4f_erg}

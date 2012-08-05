@@ -1,4 +1,5 @@
 *.bbl
+*.blg
 *.aux
 *.fdb_latexmk
 *.synctex.gz
