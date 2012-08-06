@@ -15,7 +15,7 @@
 %\item HP Cooltown~\cite{cooltown}
 %\end{itemize}
 Our work touches on several areas from smart home research to logistics.  In the building space, there has been
-some interest in building various kinds of energy-related visual and control applications.
+some interest in building various kinds of energy-related visualization and control applications.
 This work focuses on the object definition, tracking, and management component of the architecture proposed by 
 Hsu et al.~\cite{hbci}.  Their work stratefied the set of challenges that one could potentially face if the application 
 were deployed at scale.  Our
@@ -31,32 +31,39 @@ using wifi~\cite{radar}, to sonar~\cite{cricket}, to ambient noise~\cite{abs}, a
 phone~\cite{surroundsense, darwinphone}.  Dita~\cite{dita} uses acoustic localization of mobile phones and also uses the infrastructure 
 to determine gestures in free-space that are classified into pre-defined control actions.  Each of these require relatively complex 
 software and/or infrastrure.  
-We take a radically different, simple approach.  We use cheap, easy to re/produce tags (QR codes), place them on things in the 
-environment over incrementally and use the natural \emph{swiping gesture} that users make, when interacting with the Energy Lens 
-application, to track when they have moved or when the objects around them have moved.  The working principal is to attain as much 
-information from their gesture to determine when something/one has moved.  We discuss our heuristics in section~\ref{sec:swipes}.
+We take a radically different, simple approach.  We use cheap, easy to re/produce tags (QR codes), incrementally place them on things in the 
+environment and use the natural \emph{swiping gesture} that users make, when interacting with the Energy Lens 
+application, to track when they have moved or when the objects around them have moved.  The guiding principal is to attain as much 
+information from a gesture as possible, to determine a move has occured.  We discuss our heuristics in section~\ref{sec:tracking}.
 
 % context-aware apps
 ACE~\cite{ACE} uses various sensors on the phone to infer a user's context.  The context domain consists of a set of user activities
-and semantic locations.  For example, if ACE can distinguish between {\tt Running, Driving, AtHome, or InOffice}.  ACE also infers 
-the one from the others, so if the user is {\tt AtHome} then they are not {\tt InOffice}.  Energy Lens uses inference to determine
-when a person or thing has moved.  Certain swipe combinations give us information about whether they moved and where they moved to or
-whether an item moved and where it moved to.  The main difference is that we only infer context when a user is actively swiping, rather
-than a continuous approach.  Pretching is a fundamental technique used in many domains.  However, the cost of a prefetch for mobile
-application outways the benefits if the prefetched data is not useful.  Informed mobile pretching~\cite{IMP} uses cost-benefit analysis 
-to determine when to prefetch content for the user.  In the Energy Lens context, we prefetch data based on their location swipes.
-We also rely on pretching to anticipate loss of connectivity, not just to improve preformance.
+and semantic locations.  For example, ACE distinguishes between {\tt Running, Driving, AtHome, or InOffice}.  ACE can also infer 
+one from the other.  If a user is {\tt AtHome} then they are not {\tt InOffice}.  Energy Lens uses inference to determine
+when a person or thing has moved.  Certain swipe combinations give us information about whether they moved or
+whether an item moved.  The swipe itself tells us the new destination.  The main difference is that we only infer context 
+when a user is actively swiping, rather
+than a continuous approach.  
+
+Prefetching is a fundamental technique used in many domains.  The cost of a prefetch for mobile
+application outways the benefits if the prefetched data is not useful.  Informed mobile prefetching~\cite{imp_mobisys2012} uses cost-benefit analysis 
+to determine when to prefetch content for the user.  In the Energy Lens app, we prefetch data based on location swipes.
+Caching prefetched content not only improve performance and interactivity, but it necessary to sustain normal
+operation during periods of disconnectedness.
 
 % Tracking things
-Logistic systems focus on the tracking of objects as the move through distribution sites to warehouses, stores, shelves,
-and purchase.  Items are tracked through bar code or RFID readers.  However, the workload is very structured and well
-defined.  The authors of~\cite{rfid_gonz2006} describe this structure and leverage it to minimize storage
-requirements and optimize query-processing performance.  Energy Lens uses the QR codes as the tag and the phone as an active
+Logistic systems focus on tracking objects as the move from distribution sites, to warehouses, and across purchase counters.  
+Items are tracked through their unique bar codes, often embedded in an RFID.  The workload in logistic systems is very structured 
+and well defined.  The authors of~\cite{rfid_gonz2006} describe this structure and leverage it to minimize storage
+requirements and optimize query-processing performance.  Energy Lens uses QR codes as tags and the phone as an active
 reader.  As objects move, users scan those items to their new location.  However, objects may belong to one or
 many people, they can be metered by multiple meters a day, and their history in the system
 is on-going.  In contrast, a typical logistics workload has a start (distribution site) and end point (leaving the store
-after a sale).  In our workload, relationship semantics are important; we need to know whether the meter is \emph{bound-to}
-rather than simple \emph{attached-to} an item.  We discuss the difference later in the paper.
+after a sale).  Our workload is less well-defined.  Furthermore, relationship semantics are important; 
+For example, we interpret a bind relationship differently from an attach relationship.  We discuss the difference
+later in the paper.
+% we need to know whether 
+% the meter is \emph{bound-to} anrather than simple \emph{attached-to} an item.  We discuss the difference later in the paper.
 % In addition to traditional logistics-style queries -- \emph{What is the average time that it took coffee-makers to move from the 
 % warehouse to the shelf and finally to the checkout counter in January of 2004?} -- energy-analytics requires queries to group
 % partial traces from meter data by tracking what meters the item attached to over the specified time-frame.
@@ -65,15 +72,15 @@ Furthermore, we take advatange of natural gestures the user makes with the phone
 information about the current location of the user or things.
 
 % Tagging items, virtual services
-The key idea in the HP Cooltown~\cite{bridgingphysical,cooltown} work is to web-enable `things' in the world, grouped-by
-`place', and accessed by `people' via a standardized acquisition protocol (HTTP) and format (HTML, XML).  
-Cooltown creates a web presence for things in the world either directly (embedded web server) or indirectly 
-(URL-lookup tag) as a web page page that display the services it provides.  Many of the core concepts in Cooltown 
-also show up in Energy Lens.  The main overlap is the use of tags in the world that contain a reference to a virtual 
-resource, accessible via HTTP through
-a network connection.  Cooltown, however, explicitly chooses not maintain a centralized relationship
-graph, it leverages the decentralized, linking structure of the web to group associated web pages together.
-Furthermore, things are assumed to not move.  People are the main mobile entities.  The kind of applications
-we wish to support must track where things are and their specific inter-relationships.  We imposed a richer set of 
-semantics on our, centrally maintained, relationship graph and use it to provide detailed energy information.
+% The key idea in the HP Cooltown~\cite{bridgingphysical,cooltown} work is to web-enable `things' in the world, grouped-by
+% `place', and accessed by `people' via a standardized acquisition protocol (HTTP) and format (HTML, XML).  
+% Cooltown creates a web presence for things in the world either directly (embedded web server) or indirectly 
+% (URL-lookup tag) as a web page page that display the services it provides.  Many of the core concepts in Cooltown 
+% also show up in Energy Lens.  The main overlap is the use of tags in the world that contain a reference to a virtual 
+% resource, accessible via HTTP through
+% a network connection.  Cooltown, however, explicitly chooses not maintain a centralized relationship
+% graph, it leverages the decentralized, linking structure of the web to group associated web pages together.
+% Furthermore, things are assumed to not move.  People are the main mobile entities.  The kind of applications
+% we wish to support must track where things are and their specific inter-relationships.  We imposed a richer set of 
+% semantics on our, centrally maintained, relationship graph and use it to provide detailed energy information.
 

@@ -8,13 +8,14 @@ the continued rise in smartphone adoption, we see an opportunity for smartphones
 to our computational infrastructure and provide an `energy lens' on the physical world.  
 
 Our work examines the challenges in setting up and deploying a real, whole-building infrastructure to support real-time, 
-fined grained energy analytics and other physical data applications.  We use mobile phones to construct an entity-relationship 
-view of the physical world and combine it with streaming, energy-related 
-sensor data in order to provide detailed energy-attribution analytics.  In order to enable these, we must first capture the entities
-in the world and the relationships between them.  We limit the scope of the world to a single building domain.  We have 
+fined grained energy analytics.  We use mobile phones to construct an entity-relationship 
+graph of the physical world and combine it with streaming sensor data in order to perform detailed energy-attribution.
+We limit the scope of the world to a single building domain.  We have 
 designed and implemented an application, called the `Energy Lens', that allows \emph{building occupants} to inform us 
-of things in the world and their inter-relationships, as well as combine the information with streaming meter data.  This paper focuses
-on challenges faced in collecting and maitaing this information.
+of things throughout the building and how they are related to each other.  For example, computer X is inside 
+room Y and connected to meter Z.  Then, we use these relationships to guide our data look-up and analytical
+calculations.  For example, the load curve of room Y consists of the sum of all the power traces for loads
+inside room Y.  We use the mobile smartphone as the main input tool.
 
 The use of mobile phones presents classical, fundamental challenges related to mobility.  Typically, mobility
 refers to the phone as the person carrying it moves from place to place.  However, in the energy-attribution
@@ -27,23 +28,23 @@ Our system uses QR codes to tag things and locations in the physical world.  Onc
 registration, linking, and scanning -- which establish important relationships.  Registration is the act of creating a virtual object 
 to represent a physical one.  Linking captures the relationship between pairs of objects.  Scanning is the act of performing an item-lookup.
 Each of these interactions requires a set of swiping gestures.  Linking requires two tag swipes while the other two actions
-require a single tag swipe.  Internally, we maintain a \emph{entity-relationship graph} of things, people, and locations, that gets
+require a single tag swipe.  Internally, we maintain a \emph{entity-relationship graph (ERG)} of things, people, and locations, that gets
 updated through these sets of gestures.
 
 In order to connect these components, we rely on having `ubiquitous' network connectivity.  However, in practice, network
-connectivity can be intermittent and our system must deal with the challenges of intermittency.  We discuss how caching
-and logging are used to address these challenges.  Moreoever, when connectivity is re-established, we must deal with
-updating the entity-relationship graph to reflect the latest state of the world.  As such, we must address potential
-conflicts while replaying logs.  Finally, certain physical-state transitions are represented as a set of updates to the entity-relationship
-graph that must be applied atomically.  We use the notion of state-transition transactions, which is also used by our
-log-replay and transaction manager.
+\emph{availability} is intermittent and our system must deal with the challenges of intermittency.  We discuss how caching
+and logging are used to address these challenges.  Moreover, when connectivity is re-established, we must deal with
+applying updates to the ERG, as captured by the phone while disconnected.  
+Conflicts can also occur during an update.  For example, the two updates may disagree about which items are attached
+to which meters.  We implement a very simple conflict resolution scheme, described in section~\ref{sec:conflicts}.
+Finally, certain physical-state transitions are represented as a set of updates to the ERG that must be applied 
+atomically.  We implement transactions in the log-replay and transaction manager.
 
 Our `Energy Lens' system is deployed in a building on our campus.  We discuss
-its archictecture and our design choices.  As the deployment is on-going, we evaluate the
-transaction manager and conflict-resolution algorithms via synthetic traces -- capturing conflicts that we expect to occur
-at scale.  %, as more and more users interact with the system and need to deal with intermittent network connectivity.  
-We also
-discuss novel strategies for tracking moving people/things and describe how we implement these in our system.  In summary, our work
+its archictecture and our design choices.  As the deployment is on-going, we evaluate the log-replay and 
+transaction manager via synthetic traces.  % -- capturing conflicts that we expect to occur
+%at scale.  %, as more and more users interact with the system and need to deal with intermittent network connectivity.  
+We also discuss novel strategies for tracking moving people/things and describe how we implement these in our system.  In summary, our work
 makes the following contributions:
 
 \begin{itemize}
@@ -53,10 +54,9 @@ makes the following contributions:
 		We codify this observation in our \emph{context-tracker} and use it to maintain consistency between the entity-relationship graph and the 
 		state of the physical world.  To the best of our knowledge, this is radically different from the approaches in standard 
 		localization techniques.  However, we argue that it can be used to \emph{enhance} their accuracy and overall performance.
-\item We implement a prefetching algorithm to obtain context-depedent information and both improve performance, as well as
-		enable disconnected operations.
-\item We design and implement a log-replay and transaction manager to deal with conflicts that arise when multiple users re-establish
-		a connection with the server and wish to execute updates to the entity-relationship graph.  We describe how different 
+\item We implement a prefetching algorithm to obtain context-depedent information to both improve performance and
+		enable disconnected operation.
+\item We design and implement a log-replay and transaction manager over our data management layer.  We describe how different 
 		conflict-resolution policies can be implemented and our rationale for the policies we chose.
 \end{itemize}
 
@@ -65,8 +65,8 @@ makes the following contributions:
 % We also argue about the broader implication of our observations and solution approaches.  We claim that issues of mobility
 % and consistency management are fundamental challenges that must be overcome in order to provide \emph{physical data services} -- a new class
 % of applications that has emerged at the intersection of energy and buildings.  We define physical data services and give some examples.
-In the next sections we describe a motivating scenario for this work, give some background and related work, followed 
-by the system architecture, evaluation, and broader discussion.
+In the next sections we go through a motivating scenario.  We then discuss some related work, followed 
+by the system architecture, evaluation, and future directions.
 
 % \begin{itemize}
 % \item QR codes are a convenient choice for tagging items because they are customizable, cheap, easily produced, and easily replaceable.

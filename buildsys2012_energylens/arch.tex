@@ -245,6 +245,7 @@ to.  This creates an `attached-to' link between them.  Adding, removing, binding
 A lookup is done with by swiping the QR code attached to an item.
 
 \subsubsection{Tracking people and things}
+\label{sec:tracking}
 % There are three major components in our architecture: QR codes, mobile phones, and StreamFS.
 
 % How do we evaluate our ability to track people and things?
@@ -362,6 +363,7 @@ When the log is dumped, the global transaction manager (GTXM) that sit atop Stre
 
 
 \subsubsection{Conflict resolution}
+\label{sec:conflicts}
 When the Energy Lens application is started it makes contact with the server and attains the server's local clock time. 
 All transactions in the log are timestamped with a rough approximation of the time the operation would have been committed on the server. 
 When the OpLog is sent to the server, the server orders the operations in ascending order and applies them.
