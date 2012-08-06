@@ -1,44 +1,17 @@
 \section{Evaluation}
+\label{sec:eval}
+In this section we evaluate the pretch download times and discuss strategies for providing scalability.  We also
+look at the transaction manager and evaluate conflict resolution times.
 
-
-\begin{figure}[htb!]
-\begin{center}
-\includegraphics[scale=0.4]{figs/acmenetwork_SDH_4F}
-\caption{}
-\label{fig:acmenetwork_SDH_4F}
-\end{center}
-\end{figure}
-
-
-\subsection{Prefetching}
-
-\begin{algorithm}
-\caption{Prefetch Loop}
-\label{alg:prefetcher}
-	\begin{algorithmic}
-	\While {true}
-	\If {connected and active}
-	    \State $req\gets [t_{i-n}, OP_R]$
-	    \State $resp\gets $ send($req$)=$[t_{i-k}, OP_R],\dots, [t_{now}, OP_R]; $ 
-	    \State $n >= k$
-	    \For {$j = 1 \to size(resp)}$
-	    	\State $op \gets$ $resp[j]=[t_{i-k+e}, OP_R]$
-	    	\State apply($op$)
-	    \EndFor
-	\EndIf
-	\If {active}
-		\State Sleep for 10 minutes
-	\Else
-		\State Sleep for 1 hour
-	\EndIf
-	\EndWhile
-	\end{algorithmic}
-\end{algorithm}
-
-
+% \begin{figure}[htb!]
+% \begin{center}
+% \includegraphics[scale=0.4]{figs/acmenetwork_SDH_4F}
+% \caption{}
+% \label{fig:acmenetwork_SDH_4F}
+% \end{center}
+% \end{figure}
 
 \begin{table}
-\label{tab:qrscans}
 \begin{center}
   \begin{tabular}{| r | c  c | }
     \hline
@@ -51,14 +24,44 @@
 \caption{Shows the time to fetch nodes based on the size of the fetch.  The fetch time
 increased linearly with the number of nodes.  Caching maintain fetch time near
 that of fetching a single node.  A callback is used when cache is invalidated.}
+\label{tab:prefetchtimes}
 \end{center}
 \end{table}
 
-\subsection{Log dump measurements}
+\subsection{Prefetching}
+Prefetching occurs when a user enters a new floors, as detected by a floor scan or an item
+scan.  Table~\ref{tab:prefetchtimes} shows that the prefetch times scale linearly with the number of
+items (and data) to prefetch.  Each node holds approximate 100 bytes or information and for
+a 20-node deployment of power meters, producing 100 bytes of data per stream (3) every 20 seoncds, we fetch 
+approximately 1 MB of data.
+
+
+These prefetch times are non-trivial to deal with, especially since they cause the phone application to slow down
+as the data is loaded into the local cache.  Although we do not currently have a solution implemented, we are
+looking to include a callback facility, whereby the prefetch can take place one room at a time, and can be staggard over
+a longer time frame.  This allows user to continue using the application without any frustrating waits.
+
+% \subsection{Log dump measurements}
 
 
 \subsection{Global transaction manager}
 Maybe we include another table that talks about the trace we ran through and the conflict times, etc.
+
+\begin{table}
+\label{tab:conflicttimes}
+\begin{center}
+  \begin{tabular}{| r | c  c | }
+    \hline
+    {\bf Conflicts } & {\bf Res. time (sec) } & {\bf Std. Error (sec)} \\ \hline
+    1 & 0.8902 & 0.0756 \\ \hline
+    10 & 5.7342 & 1.7087 \\ \hline
+    100 & 52.3145 & 14.1146 \\ 
+    \hline
+  \end{tabular}
+\caption{}
+\end{center}
+\end{table}
+
 
 \begin{itemize}
 \item Forwarding

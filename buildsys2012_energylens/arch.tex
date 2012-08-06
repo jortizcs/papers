@@ -161,6 +161,17 @@ flexibility in several ways:
 % is pointing by using the phone's directional sensor and negating their direction (i.e. phone is facing east, tag on item must
 % be facing west).
 
+% \begin{figure*}[htb!]
+% \begin{center}
+% \includegraphics[width=\textwidth]{figs/mobileapp}
+% \caption{Screen shots of the mobile application.  The screens on the left are for editing the state of the deployment.
+% The graph on the right shows a live feed of a the sensor that's attached to the item that was scanned with the `Scan To
+% View Services' option in the mobile application.  It can also be resolved by scanning the QR code and following the re-direct
+% to the URL.}
+% \label{fig:mobileapp}
+% \end{center}
+% \end{figure*}
+
 
 \subsection{Data management layer}
 ACme meters are accessible via IPv6 and forward their data through router that run sMAP.  sMAP then forward the incoming data
@@ -171,7 +182,7 @@ associated data.  Our application is built on top of StreamFS.
 
 \subsubsection{Entity-Relationships}
 The main aspect we want to capture is entity-relationships between the objects.  Entity relationships are captured through naming and 
-interpreted by the Energ Lens application: $/path/to/device\_or\_item$, $/path/to/qrc$, $/path/to/space$, $/path/to/taxonomy$, 
+interpreted by the Energy Lens application: $/path/to/device\_or\_item$, $/path/to/qrc$, $/path/to/space$, $/path/to/taxonomy$, 
 $/path/to/users$.
 
 We maintain five separate namespaces and we specify a relationship between them through links between 
@@ -191,16 +202,16 @@ location, system\_device, category, and tag.  The following relationships we cap
 \end{itemize}
 
 
-\begin{figure}[htb!]
-\begin{center}
-\includegraphics[scale=0.55]{figs/bindattachstructs}
-\caption{This diagram shows the relationship capture between the objects and locations in the building for the 
-energy audit application.  Children of a space node have an ``is-in'' relationship with the space.  An item
-with another item as a child have a ``attached'' relationship and meters attached to items are bound to each other.
-Note, this is a \emph{subset} of the relationship diagrams generated across our three applications.}
-\label{fig:attachandbind}
-\end{center}
-\end{figure}
+% \begin{figure}[htb!]
+% \begin{center}
+% \includegraphics[scale=0.55]{figs/bindattachstructs}
+% \caption{This diagram shows the relationship capture between the objects and locations in the building for the 
+% energy audit application.  Children of a space node have an ``is-in'' relationship with the space.  An item
+% with another item as a child have a ``attached'' relationship and meters attached to items are bound to each other.
+% Note, this is a \emph{subset} of the relationship diagrams generated across our three applications.}
+% \label{fig:attachandbind}
+% \end{center}
+% \end{figure}
 
 The entity-relationship evolves over time, as items are moved from one location to another.  Occupants swipe
 locations and things to give the system information about when things have moved and how things have changed.
@@ -210,68 +221,106 @@ They also swipe items to tag things as belonging to them.
 
 
 
-
-
-
 \subsection{Application layer}
+The application consists of a web application that displays timeseries meter data and aggregate-streams calculated in StreamFS,
+as well as an inventory and relationship-capture application written for Android-based smart phones.
+%Figure~\ref{fig:mobileapp} shows a few of screen shots from the application.  
+The application interface is relatively simple, consisting of a menu with 4 main options.
+Swipe gestures manipualte a local portion of the entity-relationship graph -- local with respect to a user's current location.
+Since each location (room, floor) have a QR code attached to them and items are associated with those locations and 
+this relationship is identifyable by name ({\tt /buildings/SDH/spaces/4F/toaster}), we can always deduce the location
+of the person who is doing the swipe.  Figure~\ref{fig:swipes} goes through the various sets of swipes.
+
 
 \begin{figure*}[htb!]
 \begin{center}
 \includegraphics[width=\textwidth]{figs/swipes}
-\caption{Gestures. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has 
-been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of 
-type and scrambled it to make a type specimen book.  }
-\label{fig:gestures}
+\caption{Swiping gestures in the mobile application that }
+\label{fig:swipes}
 \end{center}
 \end{figure*}
 
-\subsubsection{Disconnected operation}
-
-
-\begin{figure}[htb!]
-\begin{center}
-\includegraphics[scale=0.50]{figs/standard_interaction}
-\caption{}
-\label{fig:interactions}
-\end{center}
-\end{figure}
-
-
-\subsubsection{Swiping gestures}
-\label{sec:swipes}
+The first set is called a `registration' swipe and we use it to register new items.  The user scans QR code and the item it's attached
+to.  This creates an `attached-to' link between them.  Adding, removing, binding, and attaching items is done with a pair of swipes.
+A lookup is done with by swiping the QR code attached to an item.
 
 \subsubsection{Tracking people and things}
-There are three major components in our architecture: QR codes, mobile phones, and StreamFS.
+% There are three major components in our architecture: QR codes, mobile phones, and StreamFS.
 
-How do we evaluate our ability to track people and things?
-This is a description evaluation.  We need to describe how the pieces interact.  What will fall out of the description is our strong dependence on occupants/users to give us information about the state of the physical world.  It’ll also fall out that what allows these pieces to fit together is network infrastructure.
+% How do we evaluate our ability to track people and things?
+% This is a description evaluation.  We need to describe how the pieces interact.  What will fall out of the description is our strong dependence on occupants/users to give us information about the state of the physical world.  It’ll also fall out that what allows these pieces to fit together is network infrastructure.
+We have designed a few heuristics for setting the context for an update, that piggybacks on top of the swipe gesture.
+The following is a list of rules for automatically setting the location of people and things:
+
+\begin{itemize}
+\item When a user swipes a location, they are presumed to be at that location for fixed period $\tau$.
+\item If the user swipes anything that's associated with a location $l$ at time $t \le \tau$, and $l(t)\ne$l($\tau$), 
+		then we set the new location of \emph{thing} they swiped to l(t).
+\item If the user swipes anything at location l at time $t \ge \tau$, we set the location of the \emph{person} to l(t).
+\item If a user registers a new location, they are presumed to be at that location.
+\end{itemize}
+
+For each of these, we provide an interactive option to ask for context-change confirmation from the user.  So if we think the
+user/item has moved but they have not, the preset action can be overriden.  The guiding principal we follow in your design
+is to leverage the swipe gesture for as much contextual information as possible.  Furthermore, we do not explicitly track users.
+Context is set on the phone and it represented as the root node in the ERG which you are either editing directly or
+adding creating/destroying a relationship link in the graph.
+
+Because location swipes give us direct confirmation of a user's location, it can be coupled with wifi localization mechanism and
+supervised learning to adjust the localization algorithm as the user interacts with their environment. 
+For future work we intend to experiment with this mechanism to enable supervised-learning-based indoor wifi localization.
 
 
+\subsubsection{Disconnected operation}
+Although connectivity is ubiquitous, network access is not.  There are various reasons for this, including dead zones, 
+idle-disconnect and failed hand-off between access points.  When encountered in practice, particularly while editing
+deployment state, it can be quite frustrating and potentially driver users away from using the system.  We designed a
+mechanism that does smart caching, not only to improve performance, but also to allow for disconnected operation.
+
+The Energy Lens application captures a portion of the entity-relationship.  When the user enters a new location or swipes
+the QR code for an item in a new location, the application fetches the portion of the graph rooted at the floor.  
+Figure~\ref{fig:sdh_4f_erg} shows just a small portion of that entity-relationship graph for the floor we are monitoring in
+our deployment.  A prefetch populates the cache with all entity nodes on that floor, their inter-relationship, associated metadata,
+and a 30 minutes of data from the entities that represent streams.  The full fetch of the 4th floor data set includes
+176 nodes and about 1 MB of meter data.  In total the app ends up downloading about 1.2 MB of data upon re-connection.
+The prefetching allows the user to interact with the application as if they were still connected, as long as they remain on
+the same floor.
+
+\begin{algorithm}
+\caption{Prefetch Loop}
+\label{alg:prefetch}
+	\begin{algorithmic}
+	\While {true}
+	\If {connected and active}
+	    \State $req\gets [t_{i-n}, OP_R]$
+	    \State $resp\gets $ send($req$)=$[t_{i-k}, OP_R],\dots, [t_{now}, OP_R]; $ 
+	    \State $n >= k$
+	    \For {$j = 1 \to size(resp)}$
+	    	\State $op \gets$ $resp[j]=[t_{i-k+e}, OP_R]$
+	    	\State apply($op$)
+	    \EndFor
+	\EndIf
+	\If {active}
+		\State Sleep for 10 minutes
+	\Else
+		\State Sleep for 1 hour
+	\EndIf
+	\EndWhile
+	\end{algorithmic}
+\end{algorithm}
 
 
-
-
-
-\subsubsection{consistency \& disconnected operations}
-
-The ability to provide real-time analytics for physical data application is driven by 
-
-The consistency and accuracy that we capture about the entities in the world and their relationships and associated metadata.
-How those relationships/metadata inform our analytical operations.
-
-Entities in the physical world can be difficult to capture and track over time.  Ideally we’d have a model of the world and the things in it and there would be a mechanism for tracking things that move.  We approximate this mechanism through the combination of QR codes, mobile phones, and people.  Items in the real-world are physically tagged with a QR code that serves as a reference for the “thing” in the physical world.  The mobile phone gives the person a ubiquitous QR code reader.  It also serves to provide the person with services associated with the physical world.
-
-\subsection{Managing consistency while disconnected}
-
-\subsubsection{Caching}
-Although network connectivity is theoretically ubiquitous, in practice, this is not always the case.  In order to enable updates while disconnection we need to cache as much of the relevant deployment state as possible.
-
-\subsubsection{Pre-fetching \& The state-change stream}
-We should pre-fetch, as the tags inform us about what the user might access next.  What are some things to pre-fetch?  All the paths from the current root to the leaves.  We should also fetch the object associated with each file and for streams, we should fetch 1 hours’ worth of data.  In most cases this means fetching about 200-400 KB of data.
+The application also periodically syncs with StreamFS to obtain any changes and keep a consistent view of the entity-relationship
+graph.  Let $OP_R$ be an operation performed on the node rooted at node $R$ and $t_i$ be the current time on the phone.  
+Algorithm~\ref{alg:prefetch} shows the pseudocode for the prefetch process.  After a set period, the phone sends the server
+its last performed operation and the time that operation was performed.  The server responds with any operations that have
+take place since then.  The client applies those operations internally to the cached version of the the ERG in order to 
+maintain consistency.  The \emph{active} checks is for energy savings on the phone.  If the phone application is active, the
+check occurs every 10 minutes, otherwise it occurs ever hour.
 
 \begin{figure}[htb!]
 \begin{center}
-\includegraphics[scale=0.55]{figs/SDH_4F_ERG_closeup}
+\includegraphics[scale=0.45]{figs/SDH_4F_ERG_closeup}
 \caption{A portion of the prefetched entities on the a single floor in our building.  This shows a snapshot of the entity-relationship
 graph for that floor.  Each node, link, and associated content is prefetched when the user swipes the floor
 tag or anything on that floor.}
@@ -279,38 +328,114 @@ tag or anything on that floor.}
 \end{center}
 \end{figure}
 
+The entire process is demonstrated in Figure~\ref{fig:interactions}.  The components shown on the ERG cache and the operation
+log (OpLog).  The figure also show the prefetch process.  
+All reads go to the cache (steps 1 and 2 of the READ process).  Writes go through the OpLog (steps 1 to 5 of the WRITE process).  
+The application makes a write request (1), that request is forwarded to StreamFS (2).  If StreamFS is reachable and the write is
+successful (3), the operation is applied to the ERG cache (4) and the success response to sent the application (5).
+If the operation is not successfuly step 4 is skipped.  If StreamFS could not be reached, step 3 is skipped and the operation
+is written to the OpLog.  The OpLog is flushed to the server through the prefetcher.  If there are any operations that were applied 
+to the cache that were not applied on the server, they must be applied to the server.
+
+The OpLog contains records of operations that should be applied to StreamFS to reflect the state of the world.  Some of those operations
+are actually mulitple operations that need to be applied atomically in order to accurately capture deployment state.  For example, 
+when a bind or attach operation takes place, we append the timestamp to the item(s) that are being connected, as well as create
+a link between them in the graph.  The application uses both the link and the added metadata to fetch the appropriate
+graph for display.  Therefore, the ``add\_link'' and ``update\_metadata'' operations must be applied atomically or not be applied at all.
+When the log is dumped, the global transaction manager (GTXM) that sit atop StreamFS, treats transactions accordingly.
+
+% \subsubsection{consistency \& disconnected operations}
+
+% The ability to provide real-time analytics for physical data application is driven by 
+
+% The consistency and accuracy that we capture about the entities in the world and their relationships and associated metadata.
+% How those relationships/metadata inform our analytical operations.
+
+% Entities in the physical world can be difficult to capture and track over time.  Ideally we’d have a model of the world and the things in it and there would be a mechanism for tracking things that move.  We approximate this mechanism through the combination of QR codes, mobile phones, and people.  Items in the real-world are physically tagged with a QR code that serves as a reference for the “thing” in the physical world.  The mobile phone gives the person a ubiquitous QR code reader.  It also serves to provide the person with services associated with the physical world.
+
+% \subsubsection{Caching}
+% Although network connectivity is theoretically ubiquitous, in practice, this is not always the case.  In order to enable updates while disconnection we need to cache as much of the relevant deployment state as possible.
+
+% \subsubsection{Pre-fetching \& The state-change stream}
+% We should pre-fetch, as the tags inform us about what the user might access next.  What are some things to pre-fetch?  All the paths from the current root to the leaves.  We should also fetch the object associated with each file and for streams, we should fetch 1 hours’ worth of data.  In most cases this means fetching about 200-400 KB of data.
+
+
+
 \subsubsection{Conflict resolution}
-All transactions are processed in timestamp order, to some rough approximation of the time that the transaction would have been committed.  When a transaction with an earlier timestamp than the last committed transaction is offered, the EnergyLens transaction manager checks if the current transaction conflicts with any previously committed transaction.  This is done by checking if the files that are touched overlap with a transaction that touches the same files and has a transaction timestamp that’s later than the current transaction being offered.  If so the transaction manager rolls back the state of StreamFS, only for the affected files, back to the last transaction before the last commit.  It then commits the offered transaction, adds it to the transaction log, and replays the transaction that was rolled back.  If the operations of the replayed transaction are no longer valid, the transaction fails silently.  Failing silently is acceptable in this context because we want to capture the latest state of the world.  By rejecting the transaction, we are assuming that it was based on false assumptions about the state of the world.  We believe this assumption to be true in most cases.
+When the Energy Lens application is started it makes contact with the server and attains the server's local clock time. 
+All transactions in the log are timestamped with a rough approximation of the time the operation would have been committed on the server. 
+When the OpLog is sent to the server, the server orders the operations in ascending order and applies them.
+A conflict occurs if there is any operation or transaction that was applied after the timestamp of the current operation
+being processed.  When this happens the GTXM does a rollback operation.  The rollback operation
+fetches all the oepration that need to be ``undone'', generates the negative operation, and applies them to StreamFS.
+StreamFS has no notion of an operation log and all state is maintained by the GTXM.  After the rollback is finished, 
+an attempt is made to apply the pending operation/transaction.  If it succeeds, the ``undone'' operations are re-applied.
+If it fails, it is placed in a failure log and the undone operations are re-applied.  Every successfully applied operation is logged
+to a success log.
+
+Failure is silent.  We make failures silent for two reasons: 1) There is nobody to contact when failure occurs.  Mobile
+users do not often have reversably reachable addresses.  2) Failure assumes the operation was based on a false assumption about the state
+of the world as captured through the local ERG.  However, this does not fully cover all cases.  It may be the case that
+there the state of the world was not reflected in StreamFS or the user's phone and that it was reflected on some else's phone that
+has not done a log dump yet.  We do not currently handle this case, however, we may be able to address it by attempting to re-apply
+failed operations that are logged in the failure log.
 
 
-\subsubsection{Maintaining, representing, and using physical state and inter-relationships}
-In order to provide relevant services, we need to capture the state of the physical environment within the building.  By “relevant”, we mean based on context and inter-relationships.  What are “the relevant services” we’re talking about?
+% when an operation has a timestamp larger than the
 
-\begin{itemize}
-\item Energy analytics on the physical world.
-\item How much does this floor consume?
-\item What fraction of that is going to the various energy-related categories?  plug-load, hvac, lighting.
-\item Personalized energy analytics.
-\item Access the the control interface for the physical world.
-\end{itemize}
 
-\subsubsection{General approach}
-Our approach is to abstractly represents things in the environment as logical entities and to capture their inter-relationships through an entity-relationship graph.  We use the entity relationships to track where objects and things are in the environment, which helps us maintain a more consistent view of the world.  We also use  it to inform our analytical approach and our choice of services to display.
+% Once the transaction/OpLog is dumped the server the server attempts to apply it in StreamFS.
+% When a transaction with an earlier timestamp than the last committed transaction is offered, the EnergyLens transaction manager checks 
+% if the current transaction conflicts with any previously committed transaction.  This is done by checking if the files that are touched 
+% overlap with a transaction that touches the same files and has a transaction timestamp that’s later than the current transaction being offered.  
+% If so the transaction manager rolls back the state of StreamFS, only for the affected files, back to the last transaction before the last commit.  
+% It then commits the offered transaction, adds it to the transaction log, and replays the transaction that was rolled back.  
+% If the operations of the replayed transaction are no longer valid, the transaction fails silently.  Failing silently is acceptable in 
+% this context because we want to capture the latest state of the world.  By rejecting the transaction, we are assuming that it was based 
+% on false assumptions about the state of the world.  We believe this assumption to be true in most cases.
 
-\subsubsection{Consistency management}
-Connecting the various components requires ubiquitous connectivity.  Although connectivity is available through the building and the access-point deployment is engineered to minimize dead spots, disconnections still occur (timeout, dead-spots, unsuccessful handoffs).  So, we need to design the system to deal disconnect operation.
 
-Evaluation will be of a protocol description and design rationale described in detail here.
-What’s the evaluation exactly?
+% \subsubsection{Maintaining, representing, and using physical state and inter-relationships}
+% In order to provide relevant services, we need to capture the state of the physical environment within the building.  By “relevant”, we mean based on context and inter-relationships.  What are “the relevant services” we’re talking about?
 
-\begin{enumerate}
-\item Time to download the associated contextual information from StreamFS: files, metadata information, data**
-\item Conflict resolution examples**
-\item Optimizations: Pre-fetching measurements**
-\end{enumerate}
+% \begin{itemize}
+% \item Energy analytics on the physical world.
+% \item How much does this floor consume?
+% \item What fraction of that is going to the various energy-related categories?  plug-load, hvac, lighting.
+% \item Personalized energy analytics.
+% \item Access the the control interface for the physical world.
+% \end{itemize}
+
+% \subsubsection{General approach}
+% Our approach is to abstractly represents things in the environment as logical entities and to capture their inter-relationships through an entity-relationship graph.  We use the entity relationships to track where objects and things are in the environment, which helps us maintain a more consistent view of the world.  We also use  it to inform our analytical approach and our choice of services to display.
+
+% \subsubsection{Consistency management}
+% Connecting the various components requires ubiquitous connectivity.  Although connectivity is available through the building and the access-point deployment is engineered to minimize dead spots, disconnections still occur (timeout, dead-spots, unsuccessful handoffs).  So, we need to design the system to deal disconnect operation.
+
+% Evaluation will be of a protocol description and design rationale described in detail here.
+% What’s the evaluation exactly?
+
+% \begin{enumerate}
+% \item Time to download the associated contextual information from StreamFS: files, metadata information, data**
+% \item Conflict resolution examples**
+% \item Optimizations: Pre-fetching measurements**
+% \end{enumerate}
+
+\begin{figure}[htb!]
+\begin{center}
+\includegraphics[scale=0.50]{figs/standard_interaction}
+\caption{Standard mechanisms for consistency management on the phone.  All READ request go to the local
+cached version of the ERG.  All WRITES must go through the OpLog.  They are eventually applied to the cache
+if successful and logged if the StreamFS is unreachable.}
+\label{fig:interactions}
+\end{center}
+\end{figure}
 
 \subsection{Real-time analytics}
 Discussion.  What to measure here?  Perhaps we discuss the relevant real-time analytics we run?  Will there be space?  For buildsys, include a half page talking about some of the analytics.
+
+
+
 % Pub/sub architecture
 % time decoupling
 % variable time-decoupling achieved through the datastore as a buffer
