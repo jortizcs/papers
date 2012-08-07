@@ -1,6 +1,6 @@
 \section{Evaluation}
 \label{sec:eval}
-In this section we evaluate the pretch download times and discuss strategies for providing scalability.  We also
+In this section we measure pretch download times and discuss strategies for providing scalability.  We also
 look at the transaction manager and evaluate conflict resolution times.
 
 % \begin{figure}[htb!]
@@ -11,6 +11,22 @@ look at the transaction manager and evaluate conflict resolution times.
 % \end{center}
 % \end{figure}
 
+
+\subsection{Prefetching}
+Prefetching occurs when a user enters a new floors, as detected by a floor scan or an item
+scan.  Table~\ref{tab:prefetchtimes} shows that the prefetch times scale linearly with the number of
+items (and data) to prefetch.  Each node holds approximate 100 bytes or information and for
+a 20-node deployment of power meters, producing 100 bytes of data per stream (3) every 20 seoncds, we fetch 
+approximately 1 MB of data.
+
+These prefetch times are non-trivial to deal with, especially since they cause the phone application to slow down
+until the data received and loaded into the local cache.  The overhead is dominated by the query in StreamFS that 
+constructs the entire subgraph to send to the application.  For future work,  we are will implement a
+callback facility and pass the application a reference to it.  The app can then periodically check back until
+the query completes and the data is ready to be downloaded.  We can also include partial responses to the query
+in the prefetch loop response.  This also allows user to continue using the application without any frustrating waits.
+
+% \subsection{Log dump measurements}
 \begin{table}
 \begin{center}
   \begin{tabular}{| r | c  c | }
@@ -28,54 +44,57 @@ that of fetching a single node.  A callback is used when cache is invalidated.}
 \end{center}
 \end{table}
 
-\subsection{Prefetching}
-Prefetching occurs when a user enters a new floors, as detected by a floor scan or an item
-scan.  Table~\ref{tab:prefetchtimes} shows that the prefetch times scale linearly with the number of
-items (and data) to prefetch.  Each node holds approximate 100 bytes or information and for
-a 20-node deployment of power meters, producing 100 bytes of data per stream (3) every 20 seoncds, we fetch 
-approximately 1 MB of data.
 
-These prefetch times are non-trivial to deal with, especially since they cause the phone application to slow down
-as the data is loaded into the local cache.  Although we do not currently have a solution implemented, we are
-looking to include a callback facility, whereby the prefetch can take place one room at a time, and can be staggard over
-a longer time frame.  This allows user to continue using the application without any frustrating waits.
+\subsection{Log replay latency}
+Table~\ref{tab:optimes} shows the  operation that the transaction manager calls on the StreamFS server.
+Log replay and transaction processing is entirely dependent on the time to execute these operations on StreamFS.
+There are two types of transactions, a \emph{move}, a \emph{un/bind}, \emph{un/attach}.  A move is a combination
+of a `delete' and a `create link', a bind is a `create link' and an `update tags', an unbind and unattach is a
+`delete' and `undate tag'.  The transaction latency is the sum of these operations.  By far the most expensive
+operation is a `create node' operation.  This occurs when a user adds a new item/space/person to the graph.
+The time to apply the operation scale linearly with the size of the logs.  
 
-% \subsection{Log dump measurements}
+All logs dumps are processed sequentially.  However, for future work we look to parallelize processing into
+parallel processes updating different portions of the graph.  For example, log updates rooted at different floors
+could occur simultaneously.
 
 
-\subsection{Global transaction manager}
-The global transaction manager implements three main high-level operations -- rollback, apply, and replay.  Our current implementation
-is limited by the time is takes to perform an operation on StreamFS.  Table~\ref{tab:optimes} shows the three 
-main operation that the transaction manager needs to do on the server.
-% Maybe we include another table that talks about the trace we ran through and the conflict times, etc.
+
+
+% The global transaction manager implements three main high-level operations -- rollback, apply, and replay.  Our current implementation
+% is limited by the time is takes to perform an operation on StreamFS.  Table~\ref{tab:optimes} shows the three 
+% main operation that the transaction manager needs to do on the server.
+% % Maybe we include another table that talks about the trace we ran through and the conflict times, etc.
+
+% Usually rollbacks consist of \emph{delete} operation and applies consist of \emph{creates}.  In a worst-cases analysis
+% of performance we expect the total conflict resolution time to be roughly bounded by
+% $rollback\_time + apply\_time + replay\_time$, since $replay\_time=3 X rollback\_time$ and apply\_time is negligable, 
+% the total time is approximately $4 X rollback\_time$.  Therefore the overhead is driven by how many new links were created
+% that have to be deleted and then re-created.  As an optimization, we limit the scope of a rollback.  The naive
+% approach is to blindly undo all operations up to a certain time.  However, we can use the location of the node
+% in the ERG to limit the conflict-scope to a subgraph, rather than the entire graph.  The simplest approach is to check if the operation
+% on a node either shares an immediate parent with the node that will have an operation undone on it or it the operation
+% is on the same node.  By limiting conflict-scope we minimize the number of operation that get execute and, hence, minimize the 
+% cost of resolution.
+
+
 
 \begin{table}
 \begin{center}
-  \begin{tabular}{| r | c  c | }
+  \begin{tabular}{| l | c  c | }
     \hline
-    {\bf Operation } & {\bf Avg. Exec. time (ms) } &\\ \hline
-    fetch & 1026 &\\ \hline
+    {\bf Operation } & {\bf Avg. exec. time (ms) } &\\ \hline
+    fetch & 250 &\\ \hline
     delete & 326  &\\ \hline
     update tags & 267  &\\ \hline
-    create node & 1036  &\\ \hline
-    create link & 250  &\\ 
+    create link & 250  &\\ \hline
+    create node & 1036  &\\ 
     \hline
   \end{tabular}
 \caption{Average operation execution time in StreamFS.}
 \label{tab:optimes}
 \end{center}
 \end{table}
-
-Usually rollbacks consist of \emph{delete} operation and applies consist of \emph{creates}.  In a worst-cases analysis
-of performance we expect the total conflict resolution time to be roughly bounded by
-$rollback\_time + apply\_time + replay\_time$, since $replay\_time=3 X rollback\_time$ and apply\_time is negligable, 
-the total time is approximately $4 X rollback\_time$.  Therefore the overhead is driven by how many new links were created
-that have to be deleted and then re-created.  As an optimization, we limit the scope of a rollback.  The naive
-approach is to blindly undo all operations up to a certain time.  However, we can use the location of the node
-in the ERG to limit the conflict-scope to a subgraph, rather than the entire graph.  The simplest approach is to check if the operation
-on a node either shares an immediate parent with the node that will have an operation undone on it or it the operation
-is on the same node.  By limiting conflict-scope we minimize the number of operation that get execute and, hence, minimize the 
-cost of resolution.
 
 % \begin{itemize}
 % \item Forwarding

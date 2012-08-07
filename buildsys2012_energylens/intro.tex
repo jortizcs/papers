@@ -41,8 +41,9 @@ Finally, certain physical-state transitions are represented as a set of updates 
 atomically.  We implement transactions in the log-replay and transaction manager.
 
 Our `Energy Lens' system is deployed in a building on our campus.  We discuss
-its archictecture and our design choices.  As the deployment is on-going, we evaluate the log-replay and 
-transaction manager via synthetic traces.  % -- capturing conflicts that we expect to occur
+its archictecture and our design choices.  
+% As the deployment is on-going, we evaluate the log-replay and 
+% transaction manager via synthetic traces.  % -- capturing conflicts that we expect to occur
 %at scale.  %, as more and more users interact with the system and need to deal with intermittent network connectivity.  
 We also discuss novel strategies for tracking moving people/things and describe how we implement these in our system.  In summary, our work
 makes the following contributions:
@@ -55,9 +56,7 @@ makes the following contributions:
 		state of the physical world.  To the best of our knowledge, this is radically different from the approaches in standard 
 		localization techniques.  However, we argue that it can be used to \emph{enhance} their accuracy and overall performance.
 \item We implement a prefetching algorithm to obtain context-depedent information to both improve performance and
-		enable disconnected operation.
-\item We design and implement a log-replay and transaction manager over our data management layer.  We describe how different 
-		conflict-resolution policies can be implemented and our rationale for the policies we chose.
+		enable disconnected operation.  We also design and implement a log-replay and transaction manager over our data management layer.  We describe how different conflict-resolution policies can be implemented and our rationale for the policies we chose.
 \end{itemize}
 
 \vspace{0.08in}

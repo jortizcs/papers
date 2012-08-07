@@ -43,11 +43,13 @@ is non-trivial, especially over time.  Historically, it has been difficult to co
 Various studies have used wireless power meters to accomplish just this~\cite{stephscale, lanz, aceee}.
 All previous work collected the data and performed post-processing to analyze it.  We want to take the next
 natural set of steps: perform processing in real-time and present the occupants with live information.  
-There are several systems challenges that must be overcome in order to achieve this vision.  We need to 
-place live metering on plug loads.  We need to integrate data from the BMS with plug load and other
-meter data.  We need to be able to approximate the attribution algorithms and tailor them for real-time processing.
 
-Most importantly, we need to deal with the systems challenges for tracking which things belong to whom, where people
+There are several systems challenges that must be overcome in order to achieve this vision.
+%One of the 
+% We need to place live metering on plug loads.  We need to integrate data from the BMS with plug load and other
+% meter data.  We need to be able to approximate the attribution algorithms and tailor them for real-time processing.
+We examine those dealing capturing and maintaining a view of the physical world.  We must record which things belong to whom, 
+where people
 and things are over time, how to deal with the mobile phone as the main interactive modality, and how to do this at the scale of 
 hundreds to thousands of users and meters.  We argue that \emph{without addressing these systems issues, this
 vision cannot be achieved}.  In our work, we start by deploying a network of wireless power meters and use the mobile
