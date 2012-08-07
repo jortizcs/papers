@@ -19,7 +19,7 @@ inside room Y.  We use the mobile smartphone as the main input tool.
 
 The use of mobile phones presents classical, fundamental challenges related to mobility.  Typically, mobility
 refers to the phone as the person carrying it moves from place to place.  However, in the energy-attribution
-context, we are also refering to the movement of energy-consuming objects.  Tracking their relationships to spaces 
+context, we are also referring to the movement of energy-consuming objects.  Tracking their relationships to spaces 
 and people is as important as tracking people.  In our deployment, we describe how we deal with \emph{both moving people and 
 moving objects}.  We show that these historically difficult problems can be addressed relatively easily, if the proper infrastructure is 
 in place.  We provide evidence that the approach is simple, incrementally deployable, and scalable.
@@ -41,7 +41,7 @@ Finally, certain physical-state transitions are represented as a set of updates 
 atomically.  We implement transactions in the log-replay and transaction manager.
 
 Our `Energy Lens' system is deployed in a building on our campus.  We discuss
-its archictecture and our design choices.  
+its architecture and our design choices.  
 % As the deployment is on-going, we evaluate the log-replay and 
 % transaction manager via synthetic traces.  % -- capturing conflicts that we expect to occur
 %at scale.  %, as more and more users interact with the system and need to deal with intermittent network connectivity.  
@@ -55,7 +55,7 @@ makes the following contributions:
 		We codify this observation in our \emph{context-tracker} and use it to maintain consistency between the entity-relationship graph and the 
 		state of the physical world.  To the best of our knowledge, this is radically different from the approaches in standard 
 		localization techniques.  However, we argue that it can be used to \emph{enhance} their accuracy and overall performance.
-\item We implement a prefetching algorithm to obtain context-depedent information to both improve performance and
+\item We implement a prefetching algorithm to obtain context-dependent information to both improve performance and
 		enable disconnected operation.  We also design and implement a log-replay and transaction manager over our data management layer.  We describe how different conflict-resolution policies can be implemented and our rationale for the policies we chose.
 \end{itemize}
 
@@ -75,7 +75,7 @@ by the system architecture, evaluation, and future directions.
 
 % \vspace{0.08in}
 
-% In addition, we describe how we address the following fundmanetal issues:
+% In addition, we describe how we address the following fundamental issues:
 
 % \begin{itemize}
 % \item Mobility.  In order to provide energy-visibility, we need to track people \emph{and} objects.
@@ -83,7 +83,7 @@ by the system architecture, evaluation, and future directions.
 % 		view of the physical world in our virtual representation; that is,
 % 		the objects and their inter-relationship.
 % \item Apportionment and aggregation.  In order to provide real-time energy analytics we need to deal with the
-% 		dynamics of a changing set data sources; fundamentally linked with the virutal view of the physical world.
+% 		dynamics of a changing set data sources; fundamentally linked with the virtual view of the physical world.
 % \end{itemize}
 
 % \vspace{0.08in}

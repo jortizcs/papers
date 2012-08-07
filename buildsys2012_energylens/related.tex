@@ -17,9 +17,9 @@
 Our work touches on several areas from smart home research to logistics.  In the building space, there has been
 some interest in building various kinds of energy-related visualization and control applications.
 This work focuses on the object definition, tracking, and management component of the architecture proposed by 
-Hsu et al.~\cite{hbci}.  Their work stratefied the set of challenges that one could potentially face if the application 
+Hsu et al.~\cite{hbci}.  Their work stratified the set of challenges that one could potentially face if the application 
 were deployed at scale.  Our
-work, in constrast, bases its design rationale on a \emph{real deployment} that is taking place at scale in a building 
+work, in contrast, bases its design rationale on a \emph{real deployment} that is taking place at scale in a building 
 on our campus.  We focus on solving fundamental systems challenges in dealing with intermittent connectivity
 and conflict resolution in tracking people and things over time.  We also focus on leveraging gestures to minimize
 the cost of interaction for users, while maximizing the information we can attain about the state of the world.
@@ -34,7 +34,7 @@ software and/or infrastrure.
 We take a radically different, simple approach.  We use cheap, easy to re/produce tags (QR codes), incrementally place them on things in the 
 environment and use the natural \emph{swiping gesture} that users make, when interacting with the Energy Lens 
 application, to track when they have moved or when the objects around them have moved.  The guiding principal is to attain as much 
-information from a gesture as possible, to determine a move has occured.  We discuss our heuristics in section~\ref{sec:tracking}.
+information from a gesture as possible, to determine a move has occurred.  We discuss our heuristics in section~\ref{sec:tracking}.
 
 % context-aware apps
 ACE~\cite{ACE} uses various sensors on the phone to infer a user's context.  The context domain consists of a set of user activities
@@ -46,7 +46,7 @@ when a user is actively swiping, rather
 than a continuous approach.  
 
 Prefetching is a fundamental technique used in many domains.  The cost of a prefetch for mobile
-application outways the benefits if the prefetched data is not useful.  Informed mobile prefetching~\cite{imp_mobisys2012} uses cost-benefit analysis 
+application out-weighs the benefits if the prefetched data is not useful.  Informed mobile prefetching~\cite{imp_mobisys2012} uses cost-benefit analysis 
 to determine when to prefetch content for the user.  In the Energy Lens app, we prefetch data based on location swipes.
 Caching prefetched content not only improve performance and interactivity, but it necessary to sustain normal
 operation during periods of disconnectedness.
@@ -68,7 +68,7 @@ later in the paper.
 % warehouse to the shelf and finally to the checkout counter in January of 2004?} -- energy-analytics requires queries to group
 % partial traces from meter data by tracking what meters the item attached to over the specified time-frame.
 % The Energy Lens system collects and manages this kind of information to enable such queries.
-Furthermore, we take advatange of natural gestures the user makes with the phone while scanning QR codes to extract
+Furthermore, we take advantage of natural gestures the user makes with the phone while scanning QR codes to extract
 information about the current location of the user or things.
 
 % Tagging items, virtual services
@@ -83,4 +83,3 @@ information about the current location of the user or things.
 % Furthermore, things are assumed to not move.  People are the main mobile entities.  The kind of applications
 % we wish to support must track where things are and their specific inter-relationships.  We imposed a richer set of 
 % semantics on our, centrally maintained, relationship graph and use it to provide detailed energy information.
-

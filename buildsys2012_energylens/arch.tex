@@ -7,7 +7,7 @@ attempt, we tagged items in a building with QR codes and allowed users to 1) tag
 The architecture consists of three layers: the sensing and tag layer, the data management and processing layer, and the application
 layer.  In this section we discuss each layer and their most important components.  In deploying the application in a real building, 
 we ran into various issues that informed our design.  For example, \emph{QR code reading times vary substantially across phones
-and lighting conditions}.  You must design for the least-common demoninator in terms of camera quality and lighting.
+and lighting conditions}.  You must design for the least-common denominator in terms of camera quality and lighting.
 
 Another aspect to consider is network access.  Within our building, although connectivity is mostly ubiquitous, network
 access can be intermittent.  Network access may be unavailable for several reasons, including disassociation from an access point due
@@ -23,7 +23,7 @@ especially troublesome.  We discuss various mechanisms and algorithms for dealin
 We deployed 20 ACme power meters~\cite{acme} on a single floor of a building on campus.  The data was made available through
 sMAP~\cite{smap} and forwarded to our processing and data management layer, StreamFS~\cite{streamfs}.  We distributed
 the ACmes throughout a single floor in our building and registered various plug loads as being measured by them.  We also tagged
-hundreds of items and locations throughout the entire building.  In total we tagged 20 meters, 20 metered items, 351 unmetered items,
+hundreds of items and locations throughout the entire building.  In total we tagged 20 meters, 20 metered items, 351 un-metered items,
  and 139 rooms.
 
 
@@ -53,7 +53,7 @@ We scanned each QR code shown in Figure~\ref{fig:qrcexcomp}, under light and dar
 Each experiment was run 10 times and Table~\ref{tab:qrscans} shows a statistical summary.  Scanning the simple QR code under well-lit 
 conditions performed the best.  The complex QR code under  the same condition takes about 28-36\% longer to scan.
 Perhaps even more important is the variance.  Notice that the variance with the simple QR code is smaller.
-QR code image complexity increases with the amount of information you encode on it.  Therefore, it was imporant to decrease the
+QR code image complexity increases with the amount of information you encode on it.  Therefore, it was important to decrease the
 amount of information we encoded, \emph{placing the complexity in the lookup rather than the tag.}
 
 \begin{figure}[htb!]
@@ -142,7 +142,7 @@ Notice the `Location' attribute in the header.  This is the location of the re-d
 flexibility in several ways:
 
 \begin{enumerate}
-\item It allows us to encode less information in the QR code, descreasing its visual construction, making it more
+\item It allows us to encode less information in the QR code, decreasing its visual construction, making it more
 		robust across phones with different camera quality, poor lighting conditions, and shaky hands.
 \item It allows the added layer of indirection to serve two versions of the applications:  the native application,
 		where users can \emph{deeply explore} and edit the entities and their relationships and the \emph{shallow lookup}, 
@@ -152,7 +152,7 @@ flexibility in several ways:
 
 
 % It provides a web address for users to re-direct to and find information and various read-only services for the object.  However, because
-% the {\tt URL} also contains a unqiue identifer \emph{qrc}, it can be used to provide for sophisticated services and capabilities.
+% the {\tt URL} also contains a unique identifier \emph{qrc}, it can be used to provide for sophisticated services and capabilities.
 % An example is the ability to change the virtual structure of inter-relationship between this object and other objects.  This
 % is demonstrated in our energy auditing application discussed in detail in section~\ref{sec:eaudit}.
 % Once items are tagged, they can be added and removed by swiping the tag and pressing the button for what you want to do with
@@ -185,13 +185,13 @@ flexibility in several ways:
 ACme meters are IP-enabled and forward their data through a router that runs sMAP.  sMAP then forward the incoming data
 to StreamFS, running in a machine in Amazon's EC2.  StreamFS is a web service that organizes streaming data and metadata using
 a hierarchical naming convention.  It also provide a pub/sub facility for streaming data.  We construct 
-a cononical naming convention within StreamFS to express the entity relationships between people, things, and meters.  The pub/sub
+a canonical naming convention within StreamFS to express the entity relationships between people, things, and meters.  The pub/sub
 mechanism allows us to combine the ERG with streaming data, and feeds our timeseries data viewers.
 
 \subsubsection{Entity-Relationship graph}
 We construct the entity relationship graph through naming in StreamFS.  StreamFS uses filesystem constructs, such as symbolic
-links and hiearchical naming which are useful for expressing an acyclic graph structure -- StreamFS disallows symlinks that causes cycles.  
-The following general path naming patterns are use to experess different portions of the ERG.
+links and hierarchical naming which are useful for expressing an acyclic graph structure -- StreamFS disallows symlinks that causes cycles.  
+The following general path naming patterns are use to express different portions of the ERG.
 % $/path/to/device\_or\_item$, 
 % $/path/to/qrc$, $/path/to/space$, $/path/to/taxonomy$, $/path/to/users$.  
 The first path is actually {\tt /dev}.  This directory
@@ -199,7 +199,7 @@ holds all registered meters.  Items are stored in {\tt /inventory}.  QR codes ar
 symbolic link is created from the specific qr code directory to the item.  {\tt /spaces} contains a hierarchy of floors, rooms, 
 and sub-spaces.  The placement association is captured with symbolic links as well.
 
-The various types inform the application of the nature of the relatinonship.  The types are item, meter, 
+The various types inform the application of the nature of the relationship.  The types are item, meter, 
 location, category, and tag.  The following relationships we capture are:
 
 \begin{itemize}
@@ -214,7 +214,7 @@ location, category, and tag.  The following relationships we capture are:
 		specified by the its label.
 \end{itemize}
 
-All symlinks are interpretted based on these rules of association.  As items move, symlinks are removed and re-created
+All symlinks are interpreted based on these rules of association.  As items move, symlinks are removed and re-created
 in a different folder.  We know your current location by following the path from the QR code directory, across a symlink, 
 to a file in the space directory.  Items associated with a space have a floor or room folder point to the item
 via a symlink.  This is how we record the location of things throughout the building.
@@ -293,7 +293,7 @@ The following is a list of rules for automatically setting the location of peopl
 
 
 For each of these, we provide an interactive option to ask for location-change confirmation from the user.  So if we think the
-user/item has moved but they have not, the preset action can be overriden.  The guiding principal we follow in our design
+user/item has moved but they have not, the preset action can be overridden.  The guiding principal we follow in our design
 is to leverage the swipe gesture for as much contextual information as possible.  Furthermore, we do not explicitly track users.
 Context is set on the phone and it represented as the root node in the ERG.
 %  which you are either editing directly or
@@ -316,7 +316,7 @@ Figure~\ref{fig:sdh_4f_erg} shows just a small portion of that entity-relationsh
 our deployment.  A prefetch populates the cache with all entity nodes on that floor, their associated metadata,
 and 30 minutes of data from the stream entities.  The full fetch of the 4th floor data set includes
 176 nodes and about 1 MB of meter data.  In total, the app downloads ~1.2 MB of data upon re-connection.
-Prefetching allows users to continue interactacting with the application as if they were still connected (as long as they remain on
+Prefetching allows users to continue interacting with the application as if they were still connected (as long as they remain on
 the same floor).  Without it, the application is not functional until a network connection is established.
 
 \begin{algorithm}
@@ -345,7 +345,7 @@ the same floor).  Without it, the application is not functional until a network 
 
 Energy Lens periodically syncs with StreamFS to obtain updates to the ERG and maintain a locally consistent view.  
 Let $OP_R$ be an operation performed on the node rooted at node $R$ and $t_i$ be the current time on the phone.  
-Algorithm~\ref{alg:prefetch} shows the pseudocode for the prefetch process.  After a set period, the phone sends the server
+Algorithm~\ref{alg:prefetch} shows the pseudo code for the prefetch process.  After a set period, the phone sends the server
 its last performed operation and the time that operation was performed.  The server responds with any operations that have
 take place since then.  The client applies those operations internally to the cached version of the the ERG in order to 
 maintain consistency.  The ``\emph{active}'' parameter-check, is for energy savings.  If the phone application is active, the
@@ -384,7 +384,7 @@ attempts to apply the log in timestamp order.
 % Although network connectivity is theoretically ubiquitous, in practice, this is not always the case.  In order to enable updates while disconnection we need to cache as much of the relevant deployment state as possible.
 
 % \subsubsection{Pre-fetching \& The state-change stream}
-% We should pre-fetch, as the tags inform us about what the user might access next.  What are some things to pre-fetch?  All the paths from the current root to the leaves.  We should also fetch the object associated with each file and for streams, we should fetch 1 hours’ worth of data.  In most cases this means fetching about 200-400 KB of data.
+% We should pre-fetch, as the tags inform us about what the user might access next.  What are some things to prefetch?  All the paths from the current root to the leaves.  We should also fetch the object associated with each file and for streams, we should fetch 1 hours’ worth of data.  In most cases this means fetching about 200-400 KB of data.
 
 
 \begin{figure}[htb!]

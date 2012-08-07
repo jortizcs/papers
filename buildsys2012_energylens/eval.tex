@@ -1,6 +1,6 @@
 \section{Evaluation}
 \label{sec:eval}
-In this section we measure pretch download times and discuss strategies for providing scalability.  We also
+In this section we measure prefetch download times and discuss strategies for providing scalability.  We also
 look at the transaction manager and evaluate conflict resolution times.
 
 % \begin{figure}[htb!]
@@ -16,12 +16,12 @@ look at the transaction manager and evaluate conflict resolution times.
 Prefetching occurs when a user enters a new floors, as detected by a floor scan or an item
 scan.  Table~\ref{tab:prefetchtimes} shows that the prefetch times scale linearly with the number of
 items (and data) to prefetch.  Each node holds approximate 100 bytes or information and for
-a 20-node deployment of power meters, producing 100 bytes of data per stream (3) every 20 seoncds, we fetch 
+a 20-node deployment of power meters, producing 100 bytes of data per stream (3) every 20 seconds, we fetch 
 approximately 1 MB of data.
 
 These prefetch times are non-trivial to deal with, especially since they cause the phone application to slow down
 until the data received and loaded into the local cache.  The overhead is dominated by the query in StreamFS that 
-constructs the entire subgraph to send to the application.  For future work,  we are will implement a
+constructs the entire sub graph to send to the application.  For future work,  we are will implement a
 callback facility and pass the application a reference to it.  The app can then periodically check back until
 the query completes and the data is ready to be downloaded.  We can also include partial responses to the query
 in the prefetch loop response.  This also allows user to continue using the application without any frustrating waits.
@@ -68,11 +68,11 @@ could occur simultaneously.
 
 % Usually rollbacks consist of \emph{delete} operation and applies consist of \emph{creates}.  In a worst-cases analysis
 % of performance we expect the total conflict resolution time to be roughly bounded by
-% $rollback\_time + apply\_time + replay\_time$, since $replay\_time=3 X rollback\_time$ and apply\_time is negligable, 
+% $rollback\_time + apply\_time + replay\_time$, since $replay\_time=3 X rollback\_time$ and apply\_time is negligible, 
 % the total time is approximately $4 X rollback\_time$.  Therefore the overhead is driven by how many new links were created
 % that have to be deleted and then re-created.  As an optimization, we limit the scope of a rollback.  The naive
 % approach is to blindly undo all operations up to a certain time.  However, we can use the location of the node
-% in the ERG to limit the conflict-scope to a subgraph, rather than the entire graph.  The simplest approach is to check if the operation
+% in the ERG to limit the conflict-scope to a sub graph, rather than the entire graph.  The simplest approach is to check if the operation
 % on a node either shares an immediate parent with the node that will have an operation undone on it or it the operation
 % is on the same node.  By limiting conflict-scope we minimize the number of operation that get execute and, hence, minimize the 
 % cost of resolution.
@@ -124,5 +124,4 @@ could occur simultaneously.
 % 	\end{itemize}
 
 % \end{enumerate}
-
 
