@@ -1,0 +1,117 @@
+\section{Design}
+
+With the goal of improving programability while maintaining robustness, we propose a new architecture for building systems; shown in Figure \ref{fig:arch}.  This architecture consists of four interlocking layers.  The {\bf hardware abstraction layer} consists of a hierarchical  set of interfaces which provide interfaces to the underlying physical building hardware at increasingly abstract levels.  Secondly, we provide a rich {\bf application runtime} for creating reliable software on top of a building, which includes a global {\it namespace} provided by the directory service, and time-series service for accessing and cleaning historical data.  Finally, the {\bf transaction} interface is the run-time abstraction responsible for implementing command decisions made by applications.  We have chosen a transactional metaphor for this interface, because it is required to provide isolation between concurrent control inputs; scheduling between different applications; and fault tolerance (at least across fault domains).
+Finally, {\bf control processes} implement the logic of the system and may represent existing control strategies, or novel new applications.  Robust control processes require support  for wrapping applications to allow them to be dynamically migrated by the system, and mediated access to other required functionality.  
+
+\begin{figure}[htb]
+\centering
+\includegraphics[width=\columnwidth]{figs/comm}
+\caption{System architecture.  Key components are the hardware abstraction layer (HAL), control processes (CP), Transaction Managers (TM), and time-series server (TSS).  Communication within a fault domain is unrestricted, but all control inputs must be mediated by a Transaction Manager (TM), located in the appropriate domain.}
+\label{fig:arch}
+\end{figure}
+
+\begin{table*}[htb]
+\centering
+\begin{tabularx}{\textwidth}{|l|X|X|}
+\hline
+Architectural component & Function & Placement \\
+\hline
+\hline
+Hardware presentation layer & Make the primitive low-level operations of the hardware available using a common set of interfaces. & As close to the physical sensors as possible; ideally, co-located with the transducer.\\ 
+
+Hardware abstraction layer & Map the low-level functions of the physical hardware into multiple higher level abstractions.  & Anywhere; should be persistent.\\
+
+Directory & Place devices from the HPL and HAL into a namespace. & Replicated; may be offsite.\\
+
+Historian & Maintain a history of readings from the sensors and actuators. & Replicated; may be offsite. \\
+
+Transaction manager & Provide ``all or nothing'' semantics when applying control inputs; schedule conflicting and concurrent commands.  & In the same failure domain as the HAL used to affect the changes. \\
+
+\hline
+\end{tabularx}
+\caption{Description of architectural components}
+\end{table*}
+
+% How does discovery work? What is the namespace? 
+%
+%\subsection{Fault domains}
+
+%Execution in this architecture is distributed across three conceptual domains: the lowest, the sensor and actuator plane, building-level controllers, and Internet services.  The purpose of distinguishing these domains is not because of a difference in capability (although there are surely huge differences), but rather because we wish to allow these to be reasoned about in terms of the implications of a failure; we call them ``failure domains.''  For instance, a failure of the network connecting a floor-level panel to other building controls does not compromise that panel's ability to actuate based on the directly-connected inputs and outputs, but it does prevent it from contacting an Internet service for instructions on what to do.  The tolerance of a particular control loop to failures can be determined by examining which data are needed as inputs, and from which tiers they originate.  
+%This model could be generalized to extend to an arbitrary number of domains, but we will carry thorough our analysis with this simple example.
+
+\subsection{Hardware Abstraction Layer}
+
+One function of traditional computer operating systems is to provide a convenient abstractions of physical resources.  The interface to hardware devices is low-level and heterogeneous in both computer systems and in building systems.  At the lowest level of the hardware interface stack is a Hardware Presentation Layer (HPL).  The HPL hides the complexity and diversity of the underlying communications protocols and presents hardware capabilities through a uniform, self-describing interface.  The HPL abstracts all sensing and actuation by mapping each individual sensor or actuator into a {\it point}: for instance, the temperature readings from a thermostat would be one sense point, while the damper position in a duct would be represented by an actuation point.  The HPL provides a consistent method of collecting data from the sensors and commanding individual actuators.
+The layer also provides the basis of naming in this system: each sense or actuation point is named with a single, globally unique identifier.  This functionality is distributed across the computing resources closest to each sensor and actuator; ideally it is implemented natively by each device.
+
+
+%We develop a distributed HPL which abstracts the numerous vendor-provided interfaces for retrieving data and effecting commands into a simple RESTful interface.  The HPL is distributed because the sense and control points are themselves distributed throughout the physical environment.  It is desirable to place the HPL for each piece of hardware as close, physically and topologically, to the device as possible.
+ 
+On top of HPL we form a Hardware Abstraction Layer.  The task of this layer is to provide the basis for mapping  underlying primitive hardware operations into useful higher-level relationships.  As in computer systems, it is often desirable to access the same physical hardware using multiple abstractions.  For instance, multiple network-layer protocols are run on top of the same physical network interface.  The corollary for the built environment is that multiple views of the same physical sensor and actuator points are possible.  For instance, answering the question of which sense points are in a particular room has no particular relationship to which systems: lighting, climate, security, that these sense points are part of. The HAL is responsible for representing the various types of metadata about the sense and actuation points.
+
+In order to represent the relationships between sensors and actuators, the HAL uses key-value {\it tags} which can be applied to each sense and actuation point.  By using tags, we avoid the need for imposing a schema on the metadata to be provided, allow representation of both hierarchical and subset relations, and support mapping multiple ontologies onto these points.  These tags can be applied directly at the device itself, or within the global namespace formed by the directory.  This is important, because some of this information such as the type of instrument present, and its sensing modalities are natural to apply at the point of instrumentation, while other information like the relationship of an actuator to other system components are only known later, once a global view of the system has been established.
+
+A HAL from a physical system differs from that for a computer system in several ways.  A major difference is that in a computer system, the ``virtual'' representation of the system (made up of the device drive state, \etc) contains essentially everything relevant about the state of the underlying physical system.  In the physical environment, the virtual representation is unlikely to be nearly as complete; the underlying physical system has complicated physical dynamics which is it extremely rare and difficult to fully capture.  Therefore, we have much less observability and control over how actions made on the virtual representation will impact the physical system and the observable quantities.  Furthermore, in a computer system the types of hardware are known ahead of time: the architecture of all computers falls essentially into one of several models of bus interconnections of the various components.  In contrast, although the individual components of building systems are relatively standardized, the relationships between them depend on the design of a particular building.    For instance, many buildings have similar systems for providing cooling: air is blown through ducts, where it is cooled and ultimately distributed into spaces through variable air-volume (VAV) boxes.  However, the behavior of this system depends heavily on the routing of the network of ducts and placement of VAV boxes, which is customized for each individual building.
+
+
+%Ultimately it is desirable that advanced building modeling and control be possible without manual setup, operating on computer-readable descriptions of the spaces and systems, and sensor data as input and outputting optimized parameters. Human intervention should only be required in order to specify comfort and safety requirement.  However, a key problem in achieving this is discovering the relationships between the data streams and the physical environments they interact with.  Ample descriptions of these relationships are already available in the form of architectural and engineering drawings of various spaces and systems, Building Information Models (BIM) which have been assembled as part of construction, renovation, or retrofitting, energy models such as those processed by Energy+ or DOE2 simulators, and operator screens presented by existing control systems.  However, this data also must be cleaned and validated in order to be useful, since the drawings may not always reflect as-built construction, and the BIM data could represent a concept that was subsequently scaled back.  It also often does not contain a complete representation of the installation building systems.  We have begun developing tools that can automatically process and extract information from architectural drawings, existing control systems screens, and other graphical representations of the building and produce computer representations of the spaces and systems therein through the use of OCR and other computer graphics techniques.  We have also begun importing, simplifying, and extracting from industry-standard BIM formats like IFC models of physical spaces, in order to extract the relevant metadata.
+
+% HAL
+
+\subsection{Directory}
+
+% key ideas: global search/namespace for poitns
+
+The HAL provides distributed real-time access to the system under control; however, implementing control strategies and applications requires a global view of the system and access to stored data.  The directory provides a {\bf global view} of this metadata.
+%
+The sensor and actuation points identified by the HPL are objects in the namespace of the system; because this information is distributed across all of the sensors and actuators, it is necessary to have an operating system component which allows applications to query it in a straightforward way.
+%
+The directory service allows applications to locate sense and actuation points by performing queries on the key-value metadata.  It is often desirable to query across multiple ontologies at the same time; for instance, ``locate the power reading (measured in kW) for the air conditioning component servicing a particular room.''  This requires accessing at least three separate mappings: the instrument mapping, recording information about the instrument, the spatial mapping locating that room, and the systems mapping that room to the system providing service.
+
+The directory can be thought of as an analog of the standard unix {\tt /dev} namespace which has been redesigned around database filesystem principles.  The {\tt /dev} tree is typically organized to match the underlying system architecture of the computer system; for instance, {\tt /dev/bus/usb/001} contains devices on the system's first USB bus.  Building systems have an analogous structure corresponding to the topology of building network, which specifies which PLCs and head-end nodes the sensors is accessed through.  Because this topology does not map neatly onto any more useful representation such as where the devices are in space or which system they are part of, it is difficult to explore.  
+
+\subsection{Historian}
+The historian provides access to historical data, frequently needed for analysis.  The data model is relatively simple: there are a large number of time-series generated by the sensors and actuators; a time series is simply a set of related {\tt (timestamp, value)} pairs which we call {\it readings}. 
+%
+Typical access patterns for historical data have characteristics somewhat different than those traditional relational databases are optimized for.  Data are typically accessed by performing range-queries over time stamps and streams; for instance a typical query might extract all room light-level readings for a period of one month.  Even a modest-sized installation will easily have tens of billions of readings stored and even simple queries have the potential to touch hundreds of points.  New data is nearly always gradually appended to the end of the time series, because the data comes from individual measurements taken by the sensors and published by the HPL.
+
+Furthermore, before stored data can be used, it must also typically be {\bf processed and cleaned} since raw sensor data is quite dirty; for instance, timestamps need to aligned and the data may be resampled and smoothed.  Finally, it is impractical to keep the highest-resolution data from all sensors forever since the value which can be extracted from this old data frequently can't justify the cost of maintaining the history; therefore the historian must have the facility for degrading or compressing older data.
+
+%Performing these operations efficiently is the task of the archiver.  The archiver forms the application interface for retrieving stored data.  Its design consists of two parts: a stream selection language, and a data transformation language.  Using the stream selection language, applications can inspect and retrieve meta-data about the different time-series in the stream.  The data-transformation language allows clients to apply a pipeline of operators to the retrieved data to perform common data-cleaning operations.  This both moves complex processing logic out of the applications, allowing them to focus on making the best use of the data, and also enables the possibility of optimizing common access patterns.  For instance, if the sensor data is generated by an instrument every 5 seconds, but only accessed after subsampling to 5 minute resolution, the system may materialize a 5-minute view of the data to avoid loading the source data for each request.
+
+
+\subsection{Control transactions (CTX)}
+
+It is desirable that control policies be extended or modified across multiple failure domains for a multitude of reasons.  Internet-based services may have more processing and storage than is available in the building, or may wish to implement proprietary logic.  It may also be simpler and more concise to express the desired outcome in terms of a set of changes to be made than to program the underlying controllers individually; ideally changes would be expressed in terms of desired outcome (make this room warmer) rather than the detailed implementation (increase the set point, re-set the chilled water temperature, and slow down the cooling loop pumps).  However there are real problems with performing automatic direct or supervisory control over the Internet or building network.  For direct control, latency may be an issue.  There can be concurrency issues when changes are made by multiple parties.  A failure of one  domain can leave the system in an uncertain state.
+
+In order to help resolve these issues, we propose using an extended {\it transaction} metaphor for affecting changes to control state.  Transactions in database systems are a way of reasoning about the guarantees made when modifying the data.  In a control system, a transaction is a similar way of reasoning about what happens when sequences of control inputs are made by different parties.
+
+Control transactions operate conceptually at the supervisory level; but we expose a significantly richer interface than simple set-point adjustment.  Most basically, a control transaction may write new values to a set of actuators, or update parameters being used by direct control loops; for instance, command the lights to turn on or change a term in a PID controller.  Generally, a transaction may replace the direct control logic with a new piece of logic; for instance, replace a PID loop with a new loop.  In addition to the action to be performed, a control transaction consists of several other concepts.  One is a {\it lease time} during which the control action is to be valid, or the new loop active.  When the lease expires, the transaction manager will execute a separate ``END'' block of the transaction and then restores control of the system to the next scheduled direct controller.  
+
+\begin{itemize}
+\item {\bf Concurrency Isolation}: Traditional database systems inform the user what view of the data he will see, when there are multiple writers are present.  The typical choice is to provide strong {\it isolation} between multiple accessing processes.  In a control system, isolation takes on a different meaning because control taken on one set of actuators could effect the outputs of other actuators and sensors.  We will define several senses in which transactions may be ``isolated'' while commanding a system.
+\item {\bf Scheduler}: Transaction scheduling goes hand-in-hand with concurrency; each transaction is, ultimately, a set of small changes which must be applied to the system.  These must be scheduled in some way, respecting the concurrency constraints of an underlying hardware as well as the impact one set of actions will have on other running transactions.
+\item {\bf Abort}: Running database transactions can be aborted when required due to a transient failure, a deadlock, or user command.  In a control system, there may be other causes.  A higher-priority transaction may require access to a resource currently used by a lower-priority transaction, or one of a set of changes may fail, requiring processing on the transaction to be aborted.  Unlike database transaction, the control transaction manager may not have control of the underlying data; for instance, there is no way to ``lock'' the value output by a sensor; it crossing a value could necessitate aborting a control sequence.
+\item {\bf Rollback}: Reverting a database transaction typically involves only throwing away changes which have yet to be committed; or not writing a commit record.  Reverting a sequence of control decisions may be possible in some cases; for instance, going back to an earlier set point.  Generally, control outcomes are frequently ``path dependent''; it's never possible to revert the physical state of the world but it is possible to shift to other control strategies. 
+\end{itemize}
+
+\subsubsection{Isolation}
+
+The notion of how two sets of control inputs can be isolated from each other in a control system is considerably more broad than that available in a database system, because transactions may interact through the physical environment.  Transactions may take complex actions which interact in physical space and occur at different levels of abstraction.
+
+\begin{enumerate}
+\item {\bf Actuator} isolation refers to isolation between the physical actuation points being accessed in the transaction.  Different transactions which are concurrent and access any of the same control points are considered to be in conflict.
+\item {\bf System} isolation uses hierarchical locking to guarantee that when a control input is made, no other control input is made to the same system that would cause a conflicting result in physical space.  For instance, consider a room with two lighting systems: it should not be possible for two concurrent transactions to actuate them simultaneously.
+\item {\bf Model-based} isolation is the most advanced type of isolation, at attempts to reason about isolation in terms of the effect of an action.  For instance, a transaction which increased the light level in a section of a room might or might not conflict with a second concurrent transaction which increased the light in a separate part of the same room, depending on a model of light propagation in that room.
+\end{enumerate}
+
+\subsubsection{Security and Authorization}
+
+The transaction manager is also the logical point at which to enforce a security policy, controlling which principals can perform which control inputs\dots
+
+
+\subsection{Control processes}
+
+The goal of this architecture is to enable the development of novel control strategies for CPS's in the built environment which use model-predictive control, occupant feedback, and many other innovative policies and then implement them in the real-world rather than leave them confined to either the research setting or proprietary, vertically integrated solutions.  Collectively, we call the software implementing these new strategies ``control processes,'' although this name belies the potential complexity in this layer.  Essentially, control processes use the interfaces presented by the Transaction Manager and the Archiver to implement control logic; we make no particular requirements about the architecture of the CP's themselves.  Equally possible CPs are a MATLAB script which subscribes to real-time data and submits control inputs based on a model, or a Ruby-on-Rails application which communicates with occupants and uses their input to make decisions.
+
+Because of the careful design of transactions and the archiver, many of these new applications can be developed without the stringent reliability requirements traditionally required of control logic.  Furthermore, they have fewer restraints on where they can be placed in the computing infrastructure, because if they fail or become partitioned from the actuator they control, the transaction manager will simply ``roll back'' their changes and revert to a different CP which has not experienced partition or failure.

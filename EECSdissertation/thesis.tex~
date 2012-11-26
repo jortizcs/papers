@@ -1,0 +1,216 @@
+\documentclass[11pt, draft]{ucthesis}
+%%% \documentclass[11pt/12pt/10pt, final/draft/comment]{ucthesis}
+%%% The first argument is the text size. The second argument changes
+%%% The margins and the spacing. 
+%%% FINAL mode prints double spaced with figures and thesis margins.
+%%% DRAFT mode prints single-spaced with 1" margins, with slightly
+%%%   narrower margins for the figure captions so that they stand out.
+%%% COMMENT mode prints an extra wide right margin and tiny margins
+%%% everywhere else. This allows your committee plenty of room to add
+%%% comments.
+%%% Margins can be changed in the last lines of the ucthesis.cls
+%%% with the geometry command.
+
+%% This information will get stored inside the PDF file
+%% [UNCOMMENT THIS IF USING pdflatex]
+\pdfinfo{
+       /Title      (U. C. Berkeley Dissertation)
+       /Author     (Your Name Here)
+       /Keywords   ()
+    }
+
+% This gives you control over how far down in the hierarchy the
+% table of contents will print. I use 2.
+\setcounter{tocdepth}{2}
+
+% This allows me to add directories to the graphics path
+% so that I don't need to specify directories in the individual
+% LATEX paths.
+% EACH PATH MUST END IN A '/' 
+% In other words, \includegraphics{Fig1} will first look in the current 
+% directory, but if it can't find the file Fig1, it will  look for
+% SUBDIRECTORY/Fig1 . If that's not there, it will look next in
+% SUBDIRECTORY2/Fig1 . If it finds that, it will ignore anything after
+% SUBDIRECTORY2. 
+%
+% As I have them now, they are:
+\graphicspath{{SUBDIRECTORY1/FIGURES_THESIS/},{SUBDIRECTORY2/FIGURES_THESIS/},{/ANOTHER/DIRECTORY/PATH/}}
+
+% ========================================= Extra commands
+% Degree Symbol
+\newcommand\degrees{\ensuremath{^\circ}}
+\newcommand{\tab}{\hspace{5mm}}
+\newcommand{\blankpage}{\clearpage ~ \newpage}
+
+
+
+% ========================================= DOCUMENT
+\begin{document}
+
+% Declarations for Front Matter
+
+% TITLE
+\title{The Thesis Title that Sailed a Thousand Ships}
+
+% NAME
+% Note that this must be exactly as it appears in University records.
+\author{Your Full Name Here}
+
+% PREVIOUS DEGREES
+% Put each previous degree on its own line in the following format:
+\prevdegrees{B.S. (Your Undergrad University) 2001}
+\prevdegrees{M.S. (Where You Did Your Masters) 2003}
+
+% DATE OF GRADUATION
+% This text will appear on the title page
+% Note that degrees are only granted in Fall and Spring at Berkeley.
+\degreemonth{Fall} \degreeyear{2007} \degree{Doctor of Philosophy}
+% This text will appear on the abstract page.
+% For Berkeley, it should be identical to the graduation month.
+\defensemonth{Fall} \defenseyear{2007}
+
+% COMMITTEE MEMBERS
+% You can have up to 5 members listed separately. 
+%After that, you throw them all into the "other members" category.
+\numberofmembers{3} 
+	\chair{Professor George Washington} 
+	\othermemberA{Professor Abe Lincoln} 
+	\othermemberB{Professor Susan B. Anthony}
+	%\othermemberC{Professor Arthur C. Clarke}
+	%\othermemberD{Professor Dee Light}
+	%\othermembers{Professor Too Many\\ Professor Another One}
+	
+% DEPARTMENT/DEGREE PROGRAM
+%Your Department. Make sure this is the department and/or program
+% name that you are enrolled in...
+\field{Electrical Engineeing and Computer Sciences} 
+
+% CAMPUS NAME
+% Your UC Campus, e.g., "Berkeley"
+% Note that if you are not at Berkeley, you may have to modify the
+% ucthesis.cls to change the wording on the Title page.
+\campus{Berkeley}
+
+
+\begin{frontmatter}
+
+% ===============================================
+% MAKE THE TITLE PAGE
+% ===============================================
+\maketitle
+
+
+% ===============================================
+% APPROVAL SIGNATURE PAGE
+% ===============================================
+\approvalpage
+
+% ===============================================
+% Copyright Page
+%
+% The copyright page is optional. However, the University
+% thesis guide says that a blank page should be inserted
+% if no copyright information is included.
+% ===============================================
+\copyrightpage
+% or the blankpage
+%\blankpage
+
+% ===============================================
+% ABSTRACT
+%
+% 	The Abstract should be stored in a file called abstract.tex
+%	"It is preferred that the abstract text be less than 350 words"
+%	Also generates a signature line at the end of the abstract
+% ===============================================
+\abstract
+	\input{abstract}
+	\abstractsignature	% This prints a signature line for the chair to sign.
+\endabstract
+
+\end{frontmatter}
+
+% ===============================================
+% OPTIONAL MATERIAL
+% Everything after this is optional and can appear in any order
+% you desire.
+\begin{optionalFrontMatter}
+
+% ===============================================
+% Dedication Page
+% The dedication is optional. 
+% ===============================================
+\begin{dedication}
+% Prints the text of the file dedication.tex centered vertically on the page.
+	\vspace*{\fill} 
+	\input{dedication}
+	\vspace*{\fill} 
+\end{dedication}
+
+% ===============================================
+% TABLE OF CONTENTS
+\addcontentsline{toc}{chapter}{Contents}		% Put the table of contents in the table of contents
+\tableofcontents
+
+% COMMENT OUT THIS LINE IF YOU WANT TITLE HEADERS
+% THROUGHOUT YOUR DOCUMENT
+\pagestyle{plain} 
+
+% Insert the List of Figures and List of Tables after the TOC
+% Like everything in this section, these are both optional.
+\listoffigures 
+\listoftables
+
+\begin{acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+% The Acknowledgements section should be stored in a file called acknowledgments.tex
+	\input{acknowledgements}
+\end{acknowledgements}
+
+\begin{vitae}
+%% The Vitae section should be stored in a file called vitae.tex
+	\input{vitae}
+\end{vitae}
+
+% BLANK PAGE AFTER VITAE
+\blankpage
+
+\end{optionalFrontMatter}
+%%%% END FRONT MATTER...
+
+
+% ============================= DISSERTATION TEXT
+% Begins regular arabic numeral page numbers...
+
+\begin{dissertationText}
+\renewcommand{\baselinestretch}{1.66}
+
+% CHAPTERS
+\chapter{Introduction}    % Put the title of the first chapter on this line
+	\input{introduction}  %% Adds the contents of the file introduction.tex
+	%%% The file should have no preamble -- the chapter body.
+	
+\chapter{Title of another chapter}  % Put the title of next chapter on this line
+	\input{chapter2}		%% Adds the contents of chapter2.tex here
+
+% Start Bibliography on its own page
+\clearpage
+
+% I use the AGU style references in agu.bst
+% You can substitute the name of another bibliography style file here.
+\bibliographystyle{IEEEtransS}
+\addcontentsline{toc}{chapter}{Bibliography}
+\ssp	% SINGLE SPACE REFERENCES (optional)
+\bibliography{bibliography}
+
+
+% ------------------- OPTIONAL APPENDICES
+%\appendix
+%\chapter{Some Ancillary Stuff}
+%	\input{appendixA}
+%\chapter{Some More Ancillary Stuff}
+%	\input{appendixA}
+\end{dissertationText}
+\end{document}
+
+% Congratulations, Doc!

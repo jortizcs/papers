@@ -1,0 +1,33 @@
+\section{Consistency management}
+Consistency management is a fundamental challenge for providing energy services.  Our system needs to maintain a consistent view
+of the objects in physical spaces, people, and to have a general sense of context.  Furthermore, the communication environment
+itself presents classic challenges in disconnected operations that must be addressed as well.  In this section
+we discuss our approach for solve both sides of this problem.  We introduce a technique we call local crowd sourcing, whereby
+building occupants help us maintain a consistent view of the world over time and state-change transactions, which combine
+local caching of application-level transactions on the backend system that maintains the state of the world and performs
+real-time analytics.  For either approach we follow the principle of \emph{eventual consistency}.
+
+\subsection{Distributed consistency management}
+We distribute the consistency task to building occupants in exchange for energy data and control services.  One of the fundamental challenges
+for providing detailed energy services is in tracking energy-consuming ``objects'' in the physical world and the association
+between the devices that meters them and the object itself.  With the large number of plug-loads in the building, a centralized 
+inventory-process approach does not scale.
+
+This problem can be broadly solved, at scale, with two basic approaches:
+
+\begin{enumerate}
+\item embedded metering and discovery.
+\item local crowd-sourcing: ad-hoc metering and human consistency management through the mobile phone.
+\end{enumerate}
+
+The first approach requries ubiquitious connectivity and embedded intelligence in the environment, as well as a discovery protocol
+that captures relative location and context.  In the ideal case these would be available.  Instead we choose the second solutions, as it
+approximates the first.
+
+\subsection{State-change transactions}
+Sometimes network connectivity can be problematic.  There are some locations in the building where wifi coverage is limted or 
+intermitent access-point issues cause periodic disconnections.  StreamFS supports update-transactions.  A transaction request
+can be submitted to StreamFS for processingly mutliple updates in a single transaction.  On the client side, if it becomes
+disconnected from the StreamFS server, a transaction request is constructed to include all update requests and send them to the
+server when a connection to the server is re-established.  Therefore a transaction manager is baked into the mobile application
+to assure that groups of changes occur all together or none at all.

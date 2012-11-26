@@ -1,0 +1,305 @@
+% \section{Outline}
+
+% StreamFS analytical contributions:
+
+% \begin{itemize}
+% \item Managing physical data with entity-relationship and naming.
+% \item Use entity-relationship graph to inform aggregate operations on the data
+% \item Data processing at aggregation points in the entity-relationship graph	
+% 	\begin{itemize}
+% 	\item re-sampling
+% 	\item aggregation
+% 	\end{itemize}
+% \end{itemize}
+
+
+% \section{Introduction 1}
+% %First opening
+% The days of oblivious energy consumption is quickly coming to an end.  With the rise in earth's surface 
+% temperature~\cite{b_earth}, due to green-house gas emissions, causing noticeable weather 
+% changes~\cite{climatechange} and 
+% increasing energy prices there's a pressing need to optimize and reduce our consumption of energy.
+% With the proliferation of embedded and mobile sensors in the environment, we have access to energy
+% information at a level of granularity that was previously unattainable.  Sensors provide physical
+% data about a phenomenon at a particular location in space over time.  Collections of sensors give us
+% a more holistic view of the phenomenon, providing views over larger and larger spatio-temporal intervals.
+
+% However, there are fundamental
+% challenges~\cite{jgray_sensorsdb} in collecting, organizing, and processing sensor data before we can extract 
+% information we can use to live and operate more sustainably.  Analysis goes beyond spatio-temporal associations,
+% they also include categorical and other dimensional groupings.  In this paper we describe StreamFS, an analytical
+% framework that addresses some of the challenges in doing energy analytics.  With a combination of naming,
+% entity-relationship data model, and use of the entity-relationship graph to do aggregation, we address these issues.
+
+\section{Introduction}
+StreamFS is a file system the represents the physical world as a collection of files.  
+
+Contributions:
+\begin{itemize}
+\item StreamFS treats metadata as a first-class citizen, allowing queries across snapshots of the structured, semi-structured,
+and timeseries data.
+
+\item The StreamFS view of the world revolves around signals or streams.  Streams with history, both in value and in metadata.  
+In StreamFS, a standard log file is decomposed into a collection of signals/streams files, whose associated pathnames and tags
+are maintained and querable in time.
+
+\item Job execution scheduling based to minimize calculation error, with backwards-updates for errors that occurred looking forward.
+		Gives results with approximate errors.
+
+\item Non append-only streaming output is handled as a function that minimizes historical error calculations.~\cite{syncsql}.
+		You should use LCM to determine when the reverse scan and update will take place.  The other trigger could be 
+		cumulative error -- if it gets too high, run the process again on the historical data and update.
+
+
+\end{itemize}
+
+
+\subsection{Sematics of a stream file}
+
+\subsection{Inputting to a file with Regex and mapper}
+Use a regular expression and a map file to parse incoming data and put it in a file(s).
+
+\section{Introduction}% 2}
+%Second opening
+Buildings consume 40\% of the energy produced in the United States and nearly three quarters of 
+the electricity produced~\cite{epabuildings}.  It is conjectured that as much as 30-80\% of their energy is 
+wasted~\cite{waste_science, next10_waste}.  With such astounding figures, buildings are a clear optimization
+target.  In order to optimize building performance, we need fine grained visibility into the energy flow
+throughout the building.  With over 70\% of commercial buildings, 100,000 square feet or 
+larger, having a building management system~\cite{cbecs2003}, the infrastructure to attain that level of 
+visibility is available and widespread.  
+
+Building management systems (BMS) consist of thousands of sensors
+deployed throughout the entire building, measuring temperature, pressure, flow, and other physical phenomenon.
+They collect data from each of these sensors and present them to the building manager to show the current
+state of building and the system components within it. 
+Despite this level of penetration and data availablity, energy-flow visibility is poor. 
+This is mainly due to two reasons:
+
+\begin{enumerate}
+\item Building management system are designed for monitoring, not analytics.
+\item Deep analysis requires careful meta/data management and processing to clean the sensor data.
+\end{enumerate}
+\vspace{0.08in}
+
+In this paper we describe a system we have designed to address these short-comings.  StreamFS is an
+analytical framework that uses an entity-relationship graph (ERG) to model the logical and physical objects and 
+inter-relationships that inform the questions posed to the system about energy-flow.
+StreamFS provides traditional \emph{slice and dice}, \emph{drill-down}, and \emph{roll-up} OLAP~\cite{olap} 
+operations; which come naturally from the graphical structure.  It also informs 
+our naming scheme, which we use to allow the user to see and manipulate the state of graph
+to capture the underlying physical and logical relationships and consequently update aggregate
+data calculations upstream.
+
+% making clear to the user how the data are inter-related. 
+% We also introduce a technique called \emph{dynamic aggregation}, that combines the graph
+% with stream-data processing techniques commonly used in continuous query systems~\cite{tcq,stream},
+% which allows us to maintain an accurate account of aggregate calculations even objects move
+% or inter-relationships change over time.
+
+% Our naming convention is hierarchically structured with support for linking between sub-trees.
+
+% StreamFS allows users to choose points of aggregation in the entity-relationship graph.
+
+% We describe our naming scheme which allows users to name arbitrary objects and annotate them with
+% descriptive properties.  We use
+
+Our naming scheme is hierarchically structured, like traditional filesystem naming, with support
+for symbolic links, allowing arbitrary links between sub-trees.  We argue that this naming scheme
+is crucial, as it exposes the inter-relationships which inform aggregation semantics intended
+by the user.  StreamFS distinguishes between nodes that represent streaming data sources in the real-world
+and those that do not.  Those that do not, however, can be tagged as aggregation points.  As part of the 
+tagging processes, a user specifies the units of aggregation, with additional options for cleaning
+and processing.
+
+We use StreamFS to organize and support applications using building data from three different
+buildings.  The first one is a 110,000 square foot, seven-story building, the second one is an eleven-story
+250,000 square-foot building, and the third is a 150,000 square-foot eleven-story building.
+Our contributions are:
+
+\begin{itemize}
+\item A naming scheme for physical objects and inter-relationship that is used to construct
+		an entity-relationship graph.
+\item Use of the entity-relationship graph to provide OLAP \emph{roll-up}, \emph{drill-down},
+		and \emph{slice and dice} operations.
+\item Show how sliding-window operations can be used on real-time data in combination with the entity-relationship
+		graph to maintain accurate aggregates as the underlying objects and inter-relationships change.
+\end{itemize}
+
+\vspace{0.08in}
+
+We also discuss how we deal with the fundamental challenges that come with sensor data.  Specifically, we 
+address \emph{re-sampling} and \emph{processing models}.  The incoming data does not have a common
+time source, so combining the signals meaningfully involves interpolation.  There are various options that we
+provide for performing the interpolation, chosen by the user depending on the units of the data.  For example,
+temperature data may involve fitting a heat model with the data to attain missing values in time.  In addition,
+aggregation is done as a function of the underlying constituents: they can be combined arbritarily, by adding
+subtracting, multiplying or dividing corresponding values.  We provide an interface to the user that
+allows them to specify how to combine the aggregate signals as a function of the child nodes in the entity-graph.
+Futhermore, they can filter the data by unit.  This kind of flexibility useful for visualizing
+energy consumption over time.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Entity-relationship model}
+
+%In the vast majority of cases, in-time answers are imperative.  
+Tracking the operational energy consumption of a building requires the ability answer a series of questions
+about energy flow -- energy data aggregated across multiple logical classes to determine how, where, and how 
+much is being used.  Sometimes, it even involves extrapolating forward in time to estimate 
+future consumption patterns that could influence immedaite decisions.  The ability to \emph{slice and dice} 
+the data allows the analyst
+to gain better insight into how the energy is being used, where it can be used more effectively, and how
+to change the operation of the building -- through better equipment or activity scheduling -- 
+in order to optimize and reduce its energy consumption.
+% For building-oriented energy analytics applications the building manager and occupants typically want answers
+% to the following set of questions:
+Below is a typical list of questions:
+
+\begin{enumerate}
+\item How much energy is consumed in this room/floor/building?  On average?
+\item What is the current power draw by this pump? cooling tower? heating sub-system?  Over
+		the last month?
+\item How much power is this device currently drawing? Over the last hour?
+%\item What percentage of the total building power is being drawn by the plug-load devices? 
+\item How much energy have I consumed today?  Versus yesterday?
+\item How much energy does the computing equipment in this building consume?
+%\item {\bf For all queries:} What's the trend over time?
+\end{enumerate}
+\vspace{0.08in}
+
+Notice, these question span spatial, temporal, and other arbitrary aggregates -- some physical, some
+categorical.  There is also
+an implicit hierarchical aspect to the grouping, in some cases.  For example, there are many
+rooms on a floor and many floors in a building.  Naturally, to answer the first question we can
+aggregate the data from the room up to the whole building.  This hierarchical relationship
+is not as evident in the HVAC sub-components specified in the second question.  However,
+local hierarchically relationships \emph{do exist}.  For example, the cooling system consists
+of the set of pumps, cooling towers, and condensers in the HVAC system that push condensor
+fluid and water to remove heat from spaces in the building.
+
+We can model this as a set of objects and inter-relationships which inform how
+to \emph{drill-down}, \emph{roll-up}, and \emph{slice and dice} the data -- traditional OLAP operations.
+The main difference between this setup and traditional OLAP is the underlying dynamics of the
+inter-relationships: objects, particularly those meant to represent physical entities, are added and removed and 
+their inter-relationships change over time.  \emph{The natural evolution of buildings and activities 
+within them makes tracking energy-flow fundamentally challenging}.
+
+In this paper, we show how the entity-relationship model~\cite{Chen76theentity-relationship} helps simplify 
+this problem, both as an interface
+to the user and a data structure for the aggregation processes.  We argue that the use of this model is a cleaner
+fit for this application scenario because it captures important semantic information about the real-world;
+facts critical for picking which questions to ask and how to answer them.  In contrast, it has been shown 
+that a relational model loses this information~\cite{SenkoDB}.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{An example}
+Lets examine the requirements for answering the first question.
+A building is unware that there are rooms. Typically spaces in a building are called \emph{zones} and, 
+at construction time, walls are added to make rooms within zones.  This makes rooms an abstract
+entity, used to group associated items with respect to it.  It also means
+%The basic control unit for the Heating, Ventilation, and Air conditioning (HVAC) system as well as the electrical 
+%panels and plugs, is a zone, not a room.  
+we typically do not have a single meter that is measuring the energy of a room; it
+must be calculated from the set of energy-consuming constituents.
+
+What are the energy consuming constituents of a typical room?  It is the set of energy-consumers that
+are active within or onto the room.  Broadly, it consists of three things:
+
+\begin{itemize}
+\item Plug-loads
+\item Lights
+\item HVAC
+\end{itemize}
+\vspace{0.08in}
+
+For simplicity of demonstration, lets consider only plug-loads.  In our construction of an entity-relationship
+graph lets assume there are nodes for each plug-load item and each room.  For the room in question, the relationship
+between the plug-loads and the room is child to parent, respectively.  The total energy consumed by
+the plug-loads can be aggregated at the parent node, the room, so the user can query the room for
+the total.  Over time, plug-loads are removed and added to/from the room, but the relationship does not
+change.  This simplifies the query; to obtain the total consumption over time, the query need only
+go to the room node.  The parent-child relationship informs which constituents to aggregate over time
+to calculate the total.
+
+\subsection{General Approach}
+To realize this design we need to maintain the entity-relationship graph, present it to the user in a meaningful
+way; allowing them to update it directly to capture physical state and relationship changes.  We also need to
+use this graphical structure to direct data flow throughout the underlying network.  This allows us
+to accurately maintain the running aggregates as the deployment and activities churn.
+
+We present the graph to the user through a filesystem-like naming and linking mechanisms.  The combination of a
+hierarhical naming scheme and support for symbolic links allows the user to access and manipualte underlying objects
+and relationships.  Moreover, the underlying graph structure is overloaded with upstream communication mechanisms
+and buffering to allow data to flow from the data-producing leave nodes to the aggregation-performing
+parent nodes.  Furthermore, the buffering lets us deal with the streaming nature of data flow from the physical
+world to StreamFS and lets us maintain a real-time view of energy flow in the system.
+Traversing the graph provides a natural way for the user to implicitly execute the OLAP operations necessary 
+to give the user the kind of insight into energy usage in the building necessary to understand, optimize and 
+reduce it.
+
+% Show how the OLAP operations are realized with this model
+% Drill-down
+% Roll up
+% slice and dice
+% pivot
+% You should show how to reduce the entity-relationship model to an OLAP data cube.  It's
+% not clear from your explanation thus far.
+
+% The plug-load and lights are easiest.  The as-built construction plans (as-builts, for short) contain light
+% fixtures in each room, and typically lights are only either on or off with a fix comsumption amount.  Plug-load
+% meters can be attached to all the plugs, with period power-readings reported.  The HVAC is a non-trivial.
+% It involves using a simple model to calculate the heat load in the room, so that we can determine how
+% much energy is takes to remove that load to maintain a constant temperature.  For simplicity we will
+% ignore the lights and the HVAC.  Once we have the list of plugs and their measurements in the that room we 
+% need to add them together.  
+
+% Notice the there's fundamentally a set of abstract and real, physical objects, classified under some physically
+% meaningful, logically arbirtrary label called a room.  This grouping is indicative of a physical relationship and that
+% physical relationship informs how we inter-related the physical measurements from each of the meters.
+% This is why we chose to use an entity-relationship data model.  It's natural for the organization of our
+% queries and semantic understanding of the physical relationships that we're trying to capture and learn
+% more about.  Furthermore, the entity-relationship model has many advanatages over other models, such as the 
+% relational data model, with respect to preserving semantic information~\cite{Chen76theentity-relationship};
+% a property that we show is of utmost importance for the applications we wish to support.
+
+
+
+
+% {\bf Keep it general, use building, mobile phone apps as a case studies}
+
+% Energy analytics is emerging as an important area of computing related to recording, tracking, 
+% and projecting energy usage data.  Applications range from personal energy accounting~\cite{personal} to buildings
+% energy tracking~\cite{buildings} to whole cities~\cite{cities}.  Understanding energy use is critical 
+% for optimizing and reducing our consumption of it.  It also involves dealing with fundamental challenges 
+% with data collection, organization, cleaning, and processing; issues fundamental to processing sensor 
+% data~\cite{jgray_sensorsdb}.
+
+%Motivation -->  Challenges --> Why are these challenges different? -->  What does StreamFS offer?
+
+

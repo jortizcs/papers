@@ -1,0 +1,41 @@
+\section{Background and Motivation}
+
+% Existing system architecture for buildings is rooted in past practice, and does not look forward to a networked future.
+
+\subsection{Existing Building Systems}
+
+A large modern commercial or industrial facility represents the work of thousands of individuals and tens or hundreds of millions of dollars of investment.  Most of these buildings contain extensive internal systems to manufacture a comfortable indoor environment: to provide thermal comfort (heating and cooling), a good air quality (ventilation), and sufficient lighting.  Other systems provide for life safety with fire alarms and security, and the design of a particular building takes into account many other considerations.  All of the active components of the system typically require management interfaces, just like components in a computer system.  System managers need the ability to troubleshoot problems, adjust schedules, and change set points. 
+
+This control in existing building systems operates on two levels.  Direct control is performed in open and closed control loops between sensors and actuators.  In a direct control loop, a piece of logic examines a set of input values, and computes a control decision which directly commands an actuator.   These direct control loops frequently also have configuration parameters which govern their operation; these are known as set points and are be set by the building operator, installer, or engineer.  Adjusting set points and schedules forms an outer logical loop, known as supervisory control.  This logical distinction between types of control is frequently reflected physically in the components and networking elements making up the system: direct control is performed by embedded devices called Programmable Logic Controllers (PLCs), which are directly connected to the sensors and actuators, while supervisory control is managed over a shared bus between the PLCs.  This architecture is logical for implementing direct control loops since it minimizes the number of pieces of equipment and network links information must traverse to affect a particular control policy, making the system more robust.  One property of this system is that interaction with the outside world is achieved through the changing of set points (and less frequently, control logic), over the supervisory control bus.  
+
+Figure: control system physical/logical architecture
+
+Figure: HVAC loop with VAVs, chiller, 
+
+% Something about lighting and HVAC.
+
+%However, it is highly desirable to integrate additional information into these control loops.  A simple addition of weather forecasts can make a huge difference in the efficiency with which a building operates, since it allows the system to take advantage of unexpectedly favorable conditions or otherwise adapt to changing climatic conditions.  However, adding new information must be done carefully, with an eye to preserving system qualities such as robustness, simplicity, and predictability.
+%
+%\subsection{Instrumentation heterogeneity}
+
+%Existing building systems typically have one o
+\subsection{Motivating Applications}
+
+The need for a new operating system for the building is motivated by several concrete applications we wished to deploy on our building.  Although versions of these applications can be deployed directly using existing systems, developing them requires low-level knowledge about the construction of a building, restricting their generality, and also requires careful reasoning in each case about the effect of various types of networking and system failures.  Experience with ad-hoc development of this style of application led us to the conclusion that better abstractions and shared services would admit both faster and easier application development, as well as more consistent and robust fault tolerance.
+
+The first motivating application is a {\it temperature float} application.  Ordinarily, temperatures within a zone is controlled to within a small number of degrees Celcius.  This drive for reaching an exact setpoint is actually quite inefficient, because it means that nearly every zone is heating or cooling at all times.  A more relaxed strategy would be one of {\it floating}: not attempting to effect the temperature of the room when it is within a relative wide band; however this is not one of the control policies available in typical commercial systems.  
+
+A second application was developed as part of a program to improve efficiency and comfort by giving occupants direct control of their spaces.  Using a smart-phone interface, occupants are able to directly control the lighting and HVAC systems in their spaces; a social component resolves conflicting preferences between neighboring occupants.  The application requires the ability to command the lights and dampers in the space to, for instance, guarantee that the lights are on for a period of time and to deliver services like a "blast" of hot or cold air to address temperature or ventilation complaints.
+
+%
+%\subsection{Challenges for BOSS Design}
+
+%\begin{itemize}
+%\item security
+%\item consistency
+%\item reliability
+%\item isolation
+%\item scheduling
+%\item naming
+%\item hardware abstraction
+%\end{itemize}

@@ -1,0 +1,44 @@
+This is a thesis template for use with LaTeX 2e. 
+I used PDFLaTeX and the MacOS X application TeXShop. Your mileage may vary. Be sure to check to make sure that the format of the thesis requirements
+have not changed. This was correct as of Fall 2004.
+
+Compiled by: 	Matthew A. d'Alessio, UC Berkeley
+		Ph.D., Geology
+Modified by:    Anand Sarwate, UC Berkeley
+		EECS Department
+
+ESSENTIAL FILES
+(should not need to be modified, though the end of ucthesis.cls is the best
+ place to look for things you might consider changing (like included packages,
+margins)
+   ucthesis.cls	-- The Class file for UC Format Thesis
+   uc10.clo -- sub-file for setting font size to 10pt
+   uc11.clo -- 11 pt
+   uc12.clo -- 12 pt
+
+   IEEEtranS.bst -- A version of IEEEtran.bst that sorts the entries. May be of interest for (non-IEEE) work such as theses. (Do not use for IEEE work.)  You can also use another .bst file if you want.
+
+
+EXAMPLE 
+(You'll need to fill in everything with your own information)
+   thesis.tex -- The example thesis file
+
+
+EXAMPLE PIECES
+(You'll probably just want to replace these with your own)
+   abstract.tex -- An example of an abstract.
+   introduction.tex -- An example of a chapter
+   chapter2.tex -- An example of a chapter
+   vitae.tex -- An example of a C.V. (optional)
+   dedication.tex -- An example of the optional dedication page.
+   acknowledgements.tex -- An example of acknowledgements
+   bibliography.bib -- An example file using LaTeX's BibTeX bibliography 
+			
+
+HTML FILES CONTAINING HELPFUL INFORMATION ON FILING A DISSERTATION
+  index.html -- this may or may not be useful.
+
+
+The ucthesis.cls file I started with came from:
+
+http://chemengr.ucsb.edu/~ceweb/computing/LaTeX/ucthesis/ucthesis_style.htm

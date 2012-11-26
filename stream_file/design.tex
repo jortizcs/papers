@@ -1,0 +1,101 @@
+\section{Design goals and rational}
+
+
+% \begin{enumerate}
+% \item Systems write logs to files.  Format tends to be unknown.
+% \item Sensor data is no different.
+% \item All data is timeseries in nature.  Treat it as such.
+% \end{enumerate}
+
+\begin{enumerate}
+\item The data pipeline between sensor deployments and logging systems and application is much too complicated.
+\item Most deployments continue to go through the same steps when writing their data-logging infrastructure:
+	\begin{enumerate}
+	\item Write code to receive data from sensors.
+	\item Format data into log format and write it to a file or set of files.
+	\item Write code to parse log files and import into analysis application.
+	\end{enumerate}
+\item Real-time analysis is a separate, but similar process:
+	\begin{enumerate}
+	\item Write code to receive data from sensors.
+	\item Pass data to code that consumes one or more data points and outputs a results or trigger.
+	\item Write output to file for post-analysis of events.
+	\item Write code to parse event-log files and import into analysis application.
+	\end{enumerate}
+\end{enumerate}
+
+All deployments essentially write they own data collection code, data translation and import code, and data extraction
+and application-specific formatting code.  This is redudant and wasteful of the programmer's time and increases the full
+analysis phase, since for each new deployment or experiment this process is repeated.
+
+\subsection{Data in, data out}
+Data from deployments can be divided into three classes: \emph{temporal, descriptive, and contextual}.  In order to
+determine the kind of data that is being collected we must label it with descriptive information that includes the units of
+measurement, sensor make and model, the owner of the sensor, and calibration parameters.  Since sensors
+are typically embedded in the physical environment, it's important to capture the contextual information about their placement.
+For example, sensors placed throughout a building are tagged with room or system-placement information (such as the heat pump or 
+air conditioner).  Finally, when taking physical measurements 
+there is a temporal component to the data to capture the time-varying nature of the phenomena being measured.  
+
+Most data-collection system designers either combine all three classes into a single data store or separate out the temporal
+data from the other two.  When all the sensors are deployed by the same organization and follow the same conventions, this is okay.  
+However, it becomes increasingly difficult to organize deployment information across systems designed by different vendors and that 
+complexity is reflected in the code; as developers write different drivers to translate between formats into a common schema and data 
+store.  Similarly, on the application side, different applications expect different incoming data formats and application developers
+write application-specific formatters that translate the data from the stored format to the application-specifc format.
+
+\subsubsection{Experiments}
+\begin{enumerate}
+\item Read microbenchmark.
+\item write microbenchmark 
+\item execute (query) microbenchmark 
+\end{enumerate}
+
+\subsection{Security}
+Access to sensor data across different systems also adds to code complexity, as the developer deals with security policies and
+mechanisms across systems.  Developers need to reason about both access to the data and access to the sensor or actuator.
+In some cases security policy is context-driven, whereby clients are granted access based on the location of the request or
+the location of the sensors.  For example, you may only want to grant global access to sensors in shared spaces, and limit
+access to personal sensors.  In other cases, security policy is granularity dependent.  For example, you may want to grant access
+to aggregate power-data for an entire building, but not to individual raw data streams.
+
+%BMS + acme + lighting
+%Alternative: ACLs
+\subsubsection{Experiments}
+\begin{enumerate}
+\item Read microbenchmark.
+\item write microbenchmark 
+\item execute (query) microbenchmark 
+\end{enumerate}
+
+\subsection{Processing and sharing data}
+A fundamental problem in dealing with sensor data is that it typically needs to be cleaned.  In many cases, this can be easily accomplished
+with thresholding, interpolation, and duplicate removal.  Developers typically leave this concern to external applications.  However, since 
+dirty sensor data is fundamental, we argue a cleaning facility should be part of the data collection system itself, rather than left
+to external applications.  Moreover, it should be trivial to safely share process output among applications.  Most systems treat processed
+data separately from raw sensor data.  We argue that these should be treated within the same framework.  Again, in the interest of reducing
+development complexity, we believe that processed streaming data should effectively be treated similarly within the data collection
+framework.
+
+% smap, fiap, bms
+
+
+\subsection{Common interface}
+Today, a broad range of applications are built on top of sensor data.  Beyond typical data collection and analysis, new applications
+are providing real-time analytics and control of sensor-rich environments.  Many applications run on single or multi-host
+environment and others are made to run on mobile phones.  Designing the right interface for such a broad range fo applications is a challenge
+that is typically offloaded to the application developer.  We argue that this is indeed the correct choice, however a common 
+organizational principal should be followed across different interfaces for all applications.  This makes it easier for the 
+application developer to reason about the the aforementioned issues.
+
+% smap, fiap, coap departure
+% bms, sensorml
+
+
+\subsection{sMAP, FIAP, CoAP comparison}
+
+
+
+
+\subsection{Why a file?}
+All real system implement logging and industry-standard logging system use \emph{syslog} and \emph{NFS}.

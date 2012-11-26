@@ -1,0 +1,57 @@
+\section{Background and Motivation}
+
+% Existing system architecture for buildings is rooted in past practice, and does not look forward to a networked future.
+
+\subsection{Existing Building Systems}
+
+A large modern commercial or industrial facility represents the work of thousands of individuals and tens or hundreds of millions of dollars of investment.  Most of these buildings contain extensive internal systems to manufacture a comfortable indoor environment: to provide thermal comfort (heating and cooling), a good air quality (ventilation), and sufficient lighting.  Other systems provide for life safety with fire alarms and security, and the design of a particular building takes into account many other considerations.  All of the active components of the system typically require management interfaces, just like components in a computer system.  System managers need the ability to troubleshoot problems, adjust schedules, and change set points. 
+
+This control in existing building systems operates on two levels.  Direct control is performed in open and closed control loops between sensors and actuators.  In a direct control loop, a piece of logic examines a set of input values, and computes a control decision which directly commands an actuator.   These direct control loops frequently also have configuration parameters which govern their operation; these are known as set points and are be set by the building operator, installer, or engineer.  Adjusting set points and schedules forms an outer logical loop, known as supervisory control.  This logical distinction between types of control is frequently reflected physically in the components and networking elements making up the system: direct control is performed by embedded devices called Programmable Logic Controllers (PLCs), which are directly connected to the sensors and actuators, while supervisory control is managed over a shared bus between the PLCs.  This architecture is logical for implementing direct control loops since it minimizes the number of pieces of equipment and network links information must traverse to affect a particular control policy, making the system more robust.  One property of this system is that interaction with the outside world is achieved through the changing of set points (and less frequently, control logic), over the supervisory control bus.  
+
+Figure: control system physical/logical architecture
+
+Figure: HVAC loop with VAVs, chiller, 
+
+% Something about lighting and HVAC.
+
+%However, it is highly desirable to integrate additional information into these control loops.  A simple addition of weather forecasts can make a huge difference in the efficiency with which a building operates, since it allows the system to take advantage of unexpectedly favorable conditions or otherwise adapt to changing climatic conditions.  However, adding new information must be done carefully, with an eye to preserving system qualities such as robustness, simplicity, and predictability.
+%
+%\subsection{Instrumentation heterogeneity}
+
+%Existing building systems typically have one o
+\subsection{Motivating Applications}
+
+The need for a new operating system for the building is motivated by several concrete applications we wished to deploy on our building.  Applications developed for the built environment range from fine-grained energy accounting to localized climate control.  Some of them require input from the occupants; data from sensors attached to personal items and control signals initiated by occupants.  While others require no direct occupant participation.  For example, control applications that override local control loops to maximize energy efficiency while maintaining occupant comfort.  We also wish to support dashboard applications that gives occupants and the building manager a global view of building performance, or analysis applications that run outside the built environment to analyze the operational performance of the building, feed performance forecasting models or combine building sensor data with external signals, such as weather and energy pricing.
+
+Although versions of these applications can be deployed directly using existing systems, developing them requires low-level knowledge about the construction of a building, restricting their generality. It also requires careful reasoning in each case about the effect of various types of networking and system failures.  Moreover, one needs to consider issues of privacy and controlled access to data and actuators, and more broadly provide mechanisms that provide isolation and fault tolerance in an environment where there may be many applications running on the same physical resources. Experience with ad-hoc development of this style of application led us to the conclusion that better abstractions and shared services would admit both faster and easier application development, as well as more consistent and robust fault tolerance.
+
+The first motivating application is a {\it temperature float} application.  Ordinarily, temperatures within a zone is controlled to within a small number of degrees Celcius.  This drive for reaching an exact setpoint is actually quite inefficient, because it means that nearly every zone is heating or cooling at all times.  A more relaxed strategy would be one of {\it floating}: not attempting to effect the temperature of the room when it is within a relative wide band; however this is not one of the control policies available in typical commercial systems.  
+
+A second application was developed as part of a program to improve efficiency and comfort by giving occupants direct control of their spaces.  Using a smart-phone interface, occupants are able to directly control the lighting and HVAC systems in their spaces; a social component resolves conflicting preferences between neighboring occupants.  The application requires the ability to command the lights and dampers in the space to, for instance, guarantee that the lights are on for a period of time and to deliver services like a ``blast'' of hot or cold air to address temperature or ventilation complaints.
+
+A third application is an energy audit and live energy viewer of the building.  Using a smart-phone interface, occupants input information about the structure of the building and the relationship between sensors and devices.  This requires access to a uniform naming structure and streaming sensor data coming from physically-placed sensors.  The former to capture the inter-relationships between building locations, sensors, and loads (energy consumers) and the latter to provide up-to-date information about physical measurements taken in locations throughout the building.  For example, an occupant may wish to see the total energy consumed by all plug-loads on a particular floor.
+
+Our final application is an offline analysis tool for characterizing data streams and finding if the semantic information, as captured by the naming structure mentioned above, is accurate.  This application requires access to the uniform naming structure and assocaited historical sensor data.
+
+\subsubsection{Architectural implications}
+
+The \emph{temperature float} application highlights the need for attaining feeds in real-time and locating the appropriate setpoint actuator for each temperature control unit.  The architecture must treat streaming data natively, providing mechanisms for subscribing to incoming feeds.  It must also provide a way to actuate devices explicitly.  Furthermore, contextual metadata should be in place so that application can determine which devices it is receiving data from and which device it is actuating.
+
+The \emph{mobile climate control} application highlights the need for leasing control to the HVAC components and lighting fixtures.  Access control is a concern here.  The ``lease'' is a useful mechanism for providing \emph{temporal isolation}.  A system must include a mechanism that allows application to temporarily own resources and forcibly reclaim those resources if necessary.
+
+The \emph{audit} application highlights the need to couple semantic information with streaming sensor data in a uniform fashion and a way to meaningfully combine it with raw sensor data.  Our system should provide a mechanism that allows users to leverage this structure when possible without constraining them if the structure needs to change over time.  It also emphasizes the need for real-time data cleaning and aggregation.  Sensor feeds are quite dirty, often containing errant or missing values.  Security and privacy play a factor here as well.  This application makes use of personal data quite explicitly this motivates the need for a way that applications and users can control who can access their personal feeds.
+
+The \emph{analysis} application highlights the need for generic interface for ease of integration with external tools.  The filesystem presents the deployment as a distributed filesystem and allows users to seamlessly interact with and query their environment without having to write tools to integrate with their local application.  In order to allow a broader range of applications, especially those that involve analysis rather than direct application building, our system must have multiple interfaces for access deployment information and sensor data.
+
+%
+%\subsection{Challenges for BOSS Design}
+
+%\begin{itemize}
+%\item security
+%\item consistency
+%\item reliability
+%\item isolation
+%\item scheduling
+%\item naming
+%\item hardware abstraction
+%\end{itemize}

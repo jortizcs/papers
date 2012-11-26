@@ -1,0 +1,54 @@
+This is BibTeX, Version 0.99c (TeX Live 2009)
+The top-level auxiliary file: IoT-App2012.aux
+The style file: abbrv.bst
+Database file #1: references.bib
+Warning--empty booktitle in AgarwalBDGW11
+Warning--empty booktitle in occmodels_buildsys11
+Warning--empty booktitle in Bellala_buildsys11
+Warning--empty booktitle in kaminthermo
+Warning--empty year in gutp
+Warning--empty booktitle in kim:buildsys2010
+Warning--empty booktitle in buildanomaly
+Warning--empty booktitle in japanbuildings
+You've used 16 entries,
+            2118 wiz_defined-function locations,
+            593 strings with 6907 characters,
+and the built_in function-call counts, 6038 in all, are:
+= -- 555
+> -- 368
+< -- 7
++ -- 147
+- -- 129
+* -- 448
+:= -- 1012
+add.period$ -- 46
+call.type$ -- 16
+change.case$ -- 112
+chr.to.int$ -- 0
+cite$ -- 24
+duplicate$ -- 219
+empty$ -- 424
+format.name$ -- 129
+if$ -- 1255
+int.to.chr$ -- 0
+int.to.str$ -- 16
+missing$ -- 13
+newline$ -- 80
+num.names$ -- 34
+pop$ -- 142
+preamble$ -- 1
+purify$ -- 96
+quote$ -- 0
+skip$ -- 159
+stack$ -- 0
+substring$ -- 239
+swap$ -- 49
+text.length$ -- 7
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 64
+warning$ -- 8
+while$ -- 49
+width$ -- 18
+write$ -- 172
+(There were 8 warnings)

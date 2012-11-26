@@ -1,0 +1,39 @@
+\section{Introduction}
+Machine generated data is increasing with the rise of cloud-computing and the increasing number of network-enabled
+embedded sensing.
+
+
+Log (and data logging) definition:
+\begin{enumerate}
+\item A record of computer activity used for statistical purposes as well as backup and recovery.
+\item The process of using a computer to collect data through sensors, analyze the data and save and output the results of the collection and analysis. 
+	\begin{itemize}
+		\item Data logging is commonly used in scientific experiments and in monitoring systems where there is the need to collect information faster than a human can possibly collect the information and in cases where accuracy is essential. Examples of the types of information a data logging system can collect include temperatures, sound frequencies, vibrations, times, light intensities, electrical currents, pressure and changes in states of matter.
+	\end{itemize}
+\item is the process of recording events, with an automated computer program, in a certain scope in order to provide an audit trail that can be used to understand the activity of the system and to diagnose problems.
+	\begin{itemize}
+		\item Logs are essential to understand the activities of complex systems particularly in the case of applications with little user interaction (such as server applications).
+		\item It can also be useful to combine log file entries from multiple sources. This approach, in combination with statistical analysis, may yield correlations between seemingly unrelated events on different servers. Other solutions employ network-wide querying and reporting.
+	\end{itemize}
+\end{enumerate}
+
+Most system focus only on log collection.  StreamFS provides facilities for log collection \emph{and} analysis.
+
+Transducers are defined for any file.  We use the filesystem to collect the logs.  We overload the pipe abstraction
+for dataflow programming.
+
+Most analysis systems are focused only on data collection.  We provide a framework for collection, sharing, and processing
+of log data, whether it comes from racks in a data center or sensors in a building.  We provide a structured format for 
+this log data and impose a transformation function on the data to give it a timeseries data structure.  By doing so
+we can efficiently store, process, and extract the data for processing.
+
+Our contributions:
+\begin{enumerate}
+\item We introduction a new kind of file called a \emph{stream file} for logging and querying data and 
+define the read, write, and execution semantics.
+\item We re-introduce the notion of transducers to transform semi-structured into timeseries-structured data and back.
+\item We design and implement a web-service called StreamFS that provides multiple interfaces, including a mounted
+POSIX compliant filesystem mount, which implements our stream file abstraction.
+\end{enumerate}
+
+

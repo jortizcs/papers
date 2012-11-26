@@ -1,0 +1,96 @@
+\begin{thebibliography}{10}
+
+\bibitem{AgarwalBDGW11}
+Y.~Agarwal, B.~Balaji, S.~Dutta, R.~K. Gupta, and T.~Weng.
+\newblock Duty-cycling buildings aggressively: The next frontier in
+  {H}{V}{A}{C} control.
+\newblock IPSN'11, pages 246--257, Chicago, IL, April 12-14, 2011.
+
+\bibitem{occmodels_buildsys11}
+Y.~Agarwal, B.~Balaji, S.~Dutta, R.~K. Gupta, and T.~Weng.
+\newblock Enabling building energy auditing using adapted occupancy models.
+\newblock Buildsys'11, page~6, Seattle, WA, Nov. 1, 2011.
+
+\bibitem{Bellala_buildsys11}
+G.~Bellala, M.~Marwah, M.~Arlitt, G.~Lyon, and C.~E. Bash.
+\newblock Towards an understanding of campus-scale power consumption.
+\newblock Buildsys'11, page~6, Seattle, WA, Nov. 1, 2011.
+
+\bibitem{kaminthermo}
+G.~Gao and K.~Whitehouse.
+\newblock The self-programming thermostat: optimizing setback schedules based
+  on home occupancy patterns.
+\newblock BuildSys'09, pages 67--72, Berkeley, California, Nov. 3, 2009.
+
+\bibitem{waste_science}
+N.~Gershenfeld, S.~Samouhos, and B.~Nordman.
+\newblock Intelligent infrastructure for energy efficiency.
+\newblock {\em Science}, 327(5969):3, 2010.
+
+\bibitem{gutp}
+GUTP.
+\newblock Green {U}niversity of {T}okyo {P}roject.
+\newblock {\em http://www.gutp.jp/}.
+
+\bibitem{huang:emd1998}
+N.~E. Huang, Z.~Shen, S.~R. Long, M.~C. Wu, H.~H. Shih, Q.~Zheng, N.-C. Yen,
+  C.~C. Tung, and H.~H. Liu.
+\newblock The empirical mode decomposition and the hilbert spectrum for
+  nonlinear and non-stationary time series analysis.
+\newblock {\em Proceedings of the Royal Society of London. Series A:
+  Mathematical, Physical and Engineering Sciences}, 454(1971):903--995, 1998.
+
+\bibitem{kim:buildsys2010}
+Y.~Kim, R.~Balani, H.~Zhao, and M.~B. Srivastava.
+\newblock Granger causality analysis on ip traffic and circuit-level energy
+  monitoring.
+\newblock BuildSys'10, pages 43--48, Zurich, Switzerland, Nov. 2, 2010.
+
+\bibitem{emd_process}
+{Max Lambert and Andrew Engroff and Matt Dyer and Ben Byer}.
+\newblock {Empirical Mode Decomposition:
+  http://www.clear.rice.edu/elec301/Projects02/empiricalMode/process.html}.
+
+\bibitem{buildanomaly}
+S.~Meyn, A.~Surana, Y.~Lin, and S.~Narayanan.
+\newblock Anomaly detection using projective markov models in a distributed
+  sensor network.
+\newblock CDC'09, Shanghai, China, December 16-18, 2009.
+
+\bibitem{simheatcool}
+M.~Modera, N.~M. andCharlie Huizenga, F.~Bauman, E.~Arens, and T.~Borgers.
+\newblock Efficient thermal energy distribution in commercial buildings final
+  report to california institute for energy efficiency.
+\newblock {\em Environmental Energy Technologies Division, LBNL Technical
+  Report}, May 1994.
+
+\bibitem{japanbuildings}
+S.~Murakami, M.~D. Levine, H.~Yoshino, T.~Inoue, T.~Ikaga, Y.~Shimoda,
+  S.~Miura, T.~Sera, M.~Nishio, Y.~Sakamoto, and W.~Fujisaki.
+\newblock Energy consumption and mitigation technologies of the building sector
+  in japan.
+\newblock 6th International Conference on Indoor Air Quality, Ventilation \&
+  Energy Conservation in Buildings IAQVEC 2007, Sendai, Japan, October 2007.
+
+\bibitem{next10_waste}
+{Next10}.
+\newblock {Untapped Potential of Commericial Buildings: Energy Use and
+  Emissions}, 2010.
+
+\bibitem{ogawa:lncs2011}
+Y.~Ogawa, S.~Shinoda, and Y.~Furui.
+\newblock Faculty-wide information system for energy saving.
+\newblock In Y.~Luo, editor, {\em Cooperative Design, Visualization, and
+  Engineering}, volume 6874 of {\em Lecture Notes in Computer Science}, pages
+  162--165. Springer Berlin / Heidelberg, 2011.
+
+\bibitem{rilling:biemd2007}
+G.~Rilling, P.~Flandrin, P.~Gonalves, and J.~M. Lilly.
+\newblock Bivariate empirical mode decomposition.
+\newblock {\em IEEE Signal Processing Letters}, 14(12):936--939, 2007.
+
+\bibitem{epabuildings}
+{U.S. Environmental Protection Agency}.
+\newblock {Buildings Energy Data Book}, 2010.
+
+\end{thebibliography}

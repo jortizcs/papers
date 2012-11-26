@@ -2,7 +2,8 @@
 %\documentclass[9pt,conference]{sig-alternate}
 %\documentclass[9pt,conference]{sig-alternate}
 %\documentclass[10pt,print,letterpaper,nocopyrightspace]{sigplan-proc-varsize}
-\documentclass[10pt,print,letterpaper]{sigplan-proc-varsize}
+%\documentclass[10pt,print,letterpaper]{sigplan-proc-varsize}
+\documentclass[10pt,print,letterpaper]{sensys-proc}
 
 \usepackage{amsmath,epsfig}
 \usepackage{url}
@@ -11,11 +12,11 @@
 \usepackage{subfigure}
 \usepackage{dsfont}
 \usepackage{boxedminipage}
-\ifx\pdfoutput\undefined
-\usepackage[hypertex]{hyperref}
-\else
-\usepackage[pdftex,hypertexnames=false]{hyperref}
-\fi
+% \ifx\pdfoutput\undefined
+% \usepackage[hypertex]{hyperref}
+% \else
+% \usepackage[pdftex,hypertexnames=false]{hyperref}
+% \fi
 
 \usepackage{amssymb}
 \usepackage{wasysym}
@@ -56,20 +57,20 @@
 
 \begin{document}
 
-%\conferenceinfo{Sensys'08,} {November 5--7, 2008, Raleigh, NC, USA.}  
-%\CopyrightYear{2008} 
-%\crdata{978-1-60558-096-8/08/09} 
+\crdata{978-1-4503-1170-0}
+\conferenceinfo{Buildsys'12,} {November 6, 2012, Toronto, ON, Canada.}
+\CopyrightYear{2012}
 
-\title{Towards real-time, fined-grained energy analytics in buildings through mobile phones}
+\title{Towards Real-time, Fine-grained Energy Analytics in Buildings Through Mobile Phones}
 %\title{Systems challenges in real-time, fined-grained energy analytics through mobile phones}
 %\title{Mobility and consistency management in real-time, fined-grained energy analytics for buildings through with mobile phones}
-%\numberofauthors{1} 
-%\author{\alignauthor Stephen Dawson-Haggerty, Jorge Ortiz, Xiaofan Jiang and David Culler\\
-%\affaddr{Computer Science Division}\\
-%\affaddr{University of California, Berkeley} \\ 
+\numberofauthors{1} 
+\author{\alignauthor Jorge Ortiz, Yongwoo Noh, Gavin Saldanha, David Su, and David Culler\\
+\affaddr{Computer Science Division}\\
+\affaddr{University of California, Berkeley} \\ 
 %\affaddr{Berkeley, California 94720} \\
-%\email{\{stevedh,jortiz,xjiang,culler\}@cs.berkeley.edu}
-%} 
+\email{\{jortiz,rnfn6292,gavin.saldanha,david.su,culler\}@cs.berkeley.edu}
+} 
 
 
 %\subtitle{Paper \# Insert Reg Number Here}
@@ -108,75 +109,83 @@
 % without further effort on your part as the last section in
 % the body of your article BEFORE References or any Appendices.
 
-\numberofauthors{2} %  in this sample file, there are a *total*
-% of EIGHT authors. SIX appear on the 'first-page' (for formatting
-% reasons) and the remaining two appear in the \additionalauthors section.
-%
-\author{
-% You can go ahead and credit any number of authors here,
-% e.g. one 'row of three' or two rows (consisting of one row of three
-% and a second row of one, two or three).
-%
-% The command \alignauthor (no curly braces needed) should
-% precede each author name, affiliation/snail-mail address and
-% e-mail address. Additionally, tag each line of
-% affiliation/address with \affaddr, and tag the
-% e-mail address with \email.
-%
-% 1st. author
-\alignauthor
-%Prabal Dutta\\
-%       \affaddr{Computer Science Division}\\
-%       \affaddr{Univ. of California, Berkeley}\\
-%       \affaddr{Berkeley, CA 94720}\\
-%       \email{prabal@cs.berkeley.edu}
-% 2nd. author
-%\alignauthor
-%David Culler\\
-%       \affaddr{Computer Science Division}\\
-%       \affaddr{Univ. of California, Berkeley}\\
-%       \affaddr{Berkeley, CA 94720}\\
-%       \email{culler@cs.berkeley.edu}
-% 3rd. author
-%\alignauthor
-%Scott Shenker\\
-%       \affaddr{Computer Science Division}\\
-%       \affaddr{Univ. of California, Berkeley}\\
-%       \affaddr{Berkeley, CA 94720}\\
-%       \email{shenker@cs.berkeley.edu}
-%}
-%%%Jorge Ortiz, Yongwoo Noh, Gavin Saldanha, David Su, Jason Trager, David Culler, and Paul Wright\\
-       %\affaddr{Department}\\
-	%%%\affaddr{Computer Science Division}\\
-       %%%\affaddr{University of California, Berkeley}\\
-       %\affaddr{City, State Zip}\\
-       %%%\email{jortiz@cs.berkeley.edu}
-}
+% \numberofauthors{2} %  in this sample file, there are a *total*
+% % of EIGHT authors. SIX appear on the 'first-page' (for formatting
+% % reasons) and the remaining two appear in the \additionalauthors section.
+% %
+% \author{
+% % You can go ahead and credit any number of authors here,
+% % e.g. one 'row of three' or two rows (consisting of one row of three
+% % and a second row of one, two or three).
+% %
+% % The command \alignauthor (no curly braces needed) should
+% % precede each author name, affiliation/snail-mail address and
+% % e-mail address. Additionally, tag each line of
+% % affiliation/address with \affaddr, and tag the
+% % e-mail address with \email.
+% %
+% % 1st. author
+% \alignauthor
+% %Prabal Dutta\\
+% %       \affaddr{Computer Science Division}\\
+% %       \affaddr{Univ. of California, Berkeley}\\
+% %       \affaddr{Berkeley, CA 94720}\\
+% %       \email{prabal@cs.berkeley.edu}
+% % 2nd. author
+% %\alignauthor
+% %David Culler\\
+% %       \affaddr{Computer Science Division}\\
+% %       \affaddr{Univ. of California, Berkeley}\\
+% %       \affaddr{Berkeley, CA 94720}\\
+% %       \email{culler@cs.berkeley.edu}
+% % 3rd. author
+% %\alignauthor
+% %Scott Shenker\\
+% %       \affaddr{Computer Science Division}\\
+% %       \affaddr{Univ. of California, Berkeley}\\
+% %       \affaddr{Berkeley, CA 94720}\\
+% %       \email{shenker@cs.berkeley.edu}
+% %}
+% %%%Jorge Ortiz, Yongwoo Noh, Gavin Saldanha, David Su, Jason Trager, David Culler, and Paul Wright\\
+%        %\affaddr{Department}\\
+% 	%%%\affaddr{Computer Science Division}\\
+%        %%%\affaddr{University of California, Berkeley}\\
+%        %\affaddr{City, State Zip}\\
+%        %%%\email{jortiz@cs.berkeley.edu}
+% }
 
 
 \maketitle
 
+
+\begin{abstract}
+In this paper we present a system called the Energy Lens -- a system that provides  
+deeper, real-time visibility of plug-load energy consumption in buildings.  Our initial work focuses
+on plug-load power metering, display, and real-time aggregation, presented to the user through
+a mobile phone.  We discuss the three main, non-trivial challenges that must be addressed to provide
+real-time energy analytics in buildings through mobile phones and our initial approach towards addressing 
+each challenge.
+\end{abstract}
+
+\category{H.4}{Information Systems Applications}{Miscellaneous}
+%A category including the fourth, optional field follows...
+%\category{D.2.8}{Software Engineering}{Metrics}[complexity measures, performance measures]
+\terms{Distributed Consistency, Mobile application}
+\keywords{Disconnected operations, network access, energy, power, plug loads}
+
 \input{intro}
-\input{motivation}
+%\input{motivation}
 \input{related}
 \input{arch}
-\input{eval}
-\input{conc}
+%\input{eval}
+%\input{conc}
 
 %\date{14 April 2007}
 %\maketitle
 
-% \begin{abstract}
-% \input{abstract}
-% \end{abstract}
 
 % A category with the (minimum) three required fields
-%\category{B.0}{Hardware}{General}
-%\category{B.4}{Hardware}{Input/Output \& Data Communication}
-
-%\terms{Design, Implementation, Performance, Experimentation}
-
-%\keywords{Churn, Link, Routing, Wireless, Sensor Network, Mote}
+%category{B.0}{Hardware}{General}
 
 %\newpage
 % \input{intro}
@@ -184,7 +193,6 @@
 %
 % The marriage of pub/sub, streaming dbms, and filesystems
 %
-
 
 \vspace{+0.5mm}
 \vspace{+2mm}

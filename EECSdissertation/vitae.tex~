@@ -1,0 +1,27 @@
+
+\begin{vitaesection}{Education}
+\item [2001] Your Undergrad University Here
+
+B.S., Electrical Engineering
+
+\item [2003] Where You Got Your MS
+
+M.S., Electrical Engineering
+
+\item [2007] University of California, Berkeley
+
+Ph.D., Electrical Engineering and Computer Science
+\end{vitaesection}
+
+
+\begin{vitaesection}{Personal}
+\item [Born] April 1, 1980, 
+Lausanne, Switzerland
+\end{vitaesection}
+
+%\begin{vitaesection}{Biographical Sketch}
+%\item [] 
+This can either be a formal CV, or include a more narrative biographical sketch. This is where people who discover your thesis decades down the road will find out about who you were.
+
+%\end{vitaesection}
+

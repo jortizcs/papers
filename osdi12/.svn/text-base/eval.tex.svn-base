@@ -1,0 +1,99 @@
+
+\section{Implementation}
+
+In order to evaluate our architecture for building software systems, we have developed a prototype implementation called \implname, or Building OS System.  The \implname contains prototype implementations of the hardware abstraction layer, application runtime, transaction manager, and a number of control processes and is currently being used by researchers.  After proposing a detailed design for each of these components, we evaluate each piece and show how traditional operating systems questions such as sharing, isolation, and abstraction are present.  As a whole, we take a distributed systems view of this operating system and consider how well our architecture represents a useful decomposition of the problem at hand.  In other words, we consider how well we can fully implement the desired functionality within our architecture; we make the case that this architecture admits clean, simple interfaces between the different components.  We also analyze how well the architecture meets higher-level goals like providing reliability in the face of network partition and component failure while allowing applications to be built using appropriate tools.
+
+Our evaluation considers the installation of \implname in our test building: a large commercial building located on our department's campus.  The building is approximately $90,000$ square feet and contains a mix of open collaborative spaces, faculty offices, and electronics fabrication laboratories.  The facility is managed using a traditional Building Management System (BMS) with control over the climate plant, lighting, security system, and other building systems.  In addition, we have added several additional sensing systems in order to enable various research goals; these included a wireless plug-load monitoring system and a prototype device-free localization system used for researching occupancy detection.
+
+figures: building image, climate plant diagram.
+
+\subsection{Hardware Presentation and Abstraction}
+
+Existing building systems are made up of a huge number and of sensors, actuators, communications links, and controller architectures.  A significant challenge is overcoming this heterogeneity and providing uniform access to these resources and mapping them into corresponding virtual representations of underlying physical hardware.  Another challenge is making sense of the relationships between these components.  The basis for these two tasks are provided by presentation and abstraction layers.
+
+figure: multiple views of the hardware figure of the building
+
+\subsubsection{HPL}
+
+The presentation layer allows higher layers to retrieve data and command actuators in a uniform way.  Our hardware presentation layer builds on previous work in this space and uses a simple RESTful protocol to  represent and encapsulate the data sources and actuators present in the building.  The profile presents transducers as embedded web servers which provide data from their sensors and actuators over HTTP.  The design of this system must address several practical considerations: consumers of data need the ability to subscribe to the data points they are interested in and receive notifications of new or changed data values.  % Overall, the design of 
+% Providing reliability is also useful at this layer  
+This layer also provides the basis for naming in the operating system: each individual sense point or actuator is durably named with universally unique identifier ({\tt uuid}).
+
+Of key importance when interfacing with existing systems is ease of integration.  In support of this, we have developed robust client library support for implementing the HPL.  It takes care of much of mechanics of providing the interface and allows driver writers to focus on implementing only sensor or actuator-specific logic.  It places sense and actuation points within a user-defined hierarchy of HTTP resources, while allowing the use of abstracted ``drivers'' which separate the device-specific logic needed for talking with a device (communications protocols, \etc) from the site-specific configuration (network locations, sampling rates, and the like).  The client library then manages the publication of new data from the device to any number of subscribers, supporting both push and pull modalities for data delivery.  Clients not needing to receive every reading from the device may simply poll it using HTTP, while other clients not wishing to miss data may install a subscription which causes the HPL to begin sending data to them within an HTTP {\tt POST} request.  The HPL will perform buffering for these clients if it is able, so that no data will be lost if the client encounters a partition or other failure.
+
+figure: example driver config file.
+
+figure: software architecture for HPL/HAL drivers.  container with drivers, publisher, config file, you got it baby.
+
+In our implementation, most sensors and actuators do not implement the HPL directly because they are existing legacy systems.  We elevate all of these existing sensors and actuators to this common level through the use of gateways and protocol translators; once completed, all of the inherent complexity in these legacy systems is hidden behind our simple RESTful interface.  In the course of integrating our test buildings (and other buildings) we have produced about 15 different HPL drivers; they are typically small since each driver contains only code specific to accessing a particular device.
+
+figures: example sMAP object, example actuation interaction, HPL library interface, table of drivers.
+
+\subsubsection{HAL}
+
+Retrieving data or commanding actuators without a semantic understanding of the relationships between the various components is not very useful.  
+%A building operating system must maintain multiple views of the relationships between the sensors and actuators present in a building.  Some relationships are {\bf spatial}; Room 463 is a subset of the fourth floor, and one might wish to know which thermostat controls the temperature in that room.  However, discovering what air conditioning component that thermostat will effect requires a {\bf systems} view of the building; in this case, the climate plant system.  This systems view is distinct from the physical view since neighboring rooms might be conditioned by completely different HVAC systems.  Finally, some equipment in an HVAC system is electrically powered; however, the {\bf electrical load-tree} view is also distinct yet overlapping of these other two views.
+%
+The hardware abstraction layer captures these complex relationships between system components.  
+% To meet this need, we propose the use of an abstraction based in the database filesystem literature.  In such a system, files are accessed through database-style relational queries rather than using absolute paths; this has the advantage of not imposing any particular hierarchy on the system.  This type of system is a good fit for a building operating system because there is fundamentally no single correct representation of the relationships.
+%
+Our HAL builds on top of the objects and naming provided by the presentation layer, by allowing key-value tags representing the metadata to be applied to sensing and actuation points.  In order to provide structure on an otherwise flat namespace of keys, we structure the names of the keys hierarchically.  We have standardized key names dealing with describing different types of instruments, the physical location of sense points, and various types of building systems.  Each of these different types of metadata receive their own namespace of keys; for example, all metadata regarding the location of an instrument is specified using keys starting with {\tt Metadata/Location/}.  This has the advantage of placing namespace clashes and also encoding which ontology a particular key name refers to.
+
+%The advantage of this system is existing ontologies are mapped directly into a hierarchal key space, but are not pre-defined; we sometimes call these keys ``tags.''  This allows us to capture meta-data from a wide variety of existing systems without being locked into predefined schemas.
+
+figure: example time-series with tags
+
+figure: example of existing ontologies: instrument, location, system, electric tree
+
+Our implementation of the HPL allows tags to be applied to data at the same place that the data is generated.  Although this might appear to be mixing layers, it is valuable for several reasons.  Primarily, it is because some meta-data is best provided automatically at this layer.  For instance, when collecting information from a wireless sensor network, it is natural to include the serial number of the device which produced the reading to make data searchable based on the instrument name. The client library sends changes in metadata to any subscribers who are interested so they can maintain a synchronized view of the metadata.
+%
+In general, these tags are supplied in one of roughly three places: an HPL driver may apply tags which generally provide information about the instrument in use.  A user may specify additional tags at installation time (generally in the sensor configuration file) which include information about the installation such as physical and network location.  Finally, third-party users may apply tags at a later point once more is known about the instrument -- how it relates to systems in the building, what it is used for, \etc.
+ 
+% We have defined several well-known key spaces for common types of meta-data, but also allow users to specify their own data model through the use of custom tags.  Standardize key spaces are present for specifying the geographic location of a sensor (which itself involves multiple coordinate systems), instrument metadata concerning the type of sensor in use, and a systems metadata space, recording what building system a particular sensor or actuator is part of.  
+%
+% By convention, the keyspace of this metadata is structured to be hierarchical; in this way, we can group ontologies together; for instance, all location metadata is present under the {\tt Location/} key.
+
+% We define several standardized ontologies in order to improve consistency when querying our system.  These include representations of
+
+\subsection{Directory service}
+
+The set of points created by the HPL and described by the HAL make up the namespace of the system; a classic distributed systems issue is specifying how this namespace is accessed.  Our prototype allows applications to query this namespace in a centralized manner.  Because users can specify any tag name, it is impossible to map this namespace cleanly into an SQL schema with tag names as columns.  However, relational databases have an attractive query model, allowing users to pose complicated queries to find records.  Therefore, we implemented a simple column-style store on top of a relational database in which tag names appear as virtual columns, and each row represents a single time-series.  This choice lets us quickly prototype the application interface to the metadata while receiving acceptable performance, while receiving acceptable performance.  
+
+Figure: example of virtual table with rows as streams and columns as tag names
+
+The directory subscribes to all streams present in the HPL, and listens for changes to metadata.  Internally, it represents the data using a single row for each {\tt (streamid, key, value)} tuple.  The directory service contains a sql-to-sql compiler which rewrites queries over metadata treating them as columns into queries on this table.  It also inserts access checks referencing a separate table which stores access control lists governing which streams are visible to which users.  
+%
+This language supports close-to-SQL syntax for {\bf select}, {\bf update}, and {\bf delete}, allowing users to explore and update the stored namespace using familiar syntax while also expressing complicated relationships between the different ontologies which are stored.  This addresses one of the key problems in storing metadata for building systems, which is that it impossible to pre-define both all of the types of metadata needed to describe the building system, and the ways of querying it.
+
+\subsection{Historian}
+
+Sensors and actuators in buildings have the potential to generate significant amounts of data. Currently, not much use is made of this data because it is difficult to access and the tools needed to do so are expensive.  Furthermore, it is sometimes desirable to place the stored data close to the sensors and actuators generating the data, so it will still be accessible in case of network partition and so that local control algorithms can run on stored data without needing access to a wide area network.  This suggests a solution which provides good single-node performance to avoid the need for excessive infrastructure located in each building. 
+
+We have built a prototype of a next-generation historian providing three key services:
+\begin{enumerate}
+\item Efficient storage of time-series data,
+\item High-speed importing and scanning of this data, and
+\item Optimized cleaning and resampling of data.
+\end{enumerate}
+
+The historian uses Berkeley DB for on-disk page management and transactional updates, and stores data in dynamically-sized buckets containing up to a day's worth of data.  We apply a compression algorithm to the data which first packs deltas between neighboring timestamps and readings into a variable-length code using Google Protobufs, and then applies a Huffman-tree compression to the result.  This gives good compression in many common cases; for instance when the readings are integer valued and change by only a small amount between successive readings.  Clients access the readings using a Python module (implemented in c) which makes parallel requests on the data store in order to maximize throughput when accessing a large number of streams.
+
+Before the data is sent back to users, the historian allows the user to apply a set of transformations to the data.  The processing model for these transformations is inspired by unix pipes: simple units of functionality which are combined into complicated processing pipelines.  Unlike pipes, which pass character streams between programs, we pass a slightly more complicated data structure: sets of time-series.  Like pipes, the data stream pushed through the operators isn't framed; the operators must be able to operate on both single readings and large vectors of data.  This is important for efficiency because the data consists of a large number of very small records; many operators can be implemented quite efficiently if they are given a large chunk of data to work on.  
+
+At the start of query processing, the pipeline of operators is bound to the actual streams to be processed.  Each operator in the pipeline inspects the output from the previous operator, and generates a set of output streams which are passed to the next operator.  Importantly, these intermediate products are named in the same {\tt uuid} namespace as the original streams; this allows us to store the output of operators as new streams in the historical database and in the directory.  
+
+Table \ref{tab:historianstuff} contains some of the operators currently implemented in the system.  Using simple combinations of these, users are able to perform common tasks like interpolating time-stamps, removing sections with missing data, and adding together several streams.  Extending the set of operators is simple since we provide support for wrapping arbitrary python functions which operate on vector data; in particular, we have imported most of the {\tt numpy} numerical library automatically.
+
+%   When initialized, the operators inspect the metadata for the streams they operate on and may use it to specialize themselves.  The then process time-series data in chunks, consisting of sets of data 
+
+\lstset{language=SQL}
+\begin{lstlisting}
+CREATE TABLE data (
+  INT streamid,
+  TIMESTAMP WITH TIME ZONE timestamp,
+  FLOAT value
+);
+
+\end{lstlisting}
+\subsection{Transaction Manager}
+

@@ -1,0 +1,185 @@
+\documentclass[10pt,twocolumn,letterpaper]{article}
+\usepackage{times}
+\usepackage{fullpage}
+\usepackage[margin=1.0in]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+%\geometry{letterpaper}                   % ... or a4paper or a5paper or ... 
+%\geometry{landscape}                % Activate for for rotated page geometry
+%\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\usepackage{tabularx}
+\usepackage{fancyvrb}
+\usepackage{listings}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+
+\title{Who's the BOSS? Getting Buildings under Control}
+%\author{Stephen Dawson-Haggerty}
+\newcommand{\etc}{\textit{etc}}
+\newcommand{\implname}{BOSS~}
+
+%\date{}                                           % Activate to display a given date or no datesen
+
+\begin{document}
+
+\maketitle
+\thispagestyle{empty}
+%\section{}
+%\subsection{}
+
+\input{intro}
+\input{background}
+\input{design}
+\input{eval}
+
+\input{control_process}
+%\begin{itemize}
+% \item MELS @scale
+% \item A-MAC/HYDRO/RPL/BLIP
+%\end{itemize}
+
+%Data pathway
+
+%Sensor -> 
+%   transducer -> 
+%   calibration, time synchronization -> 
+%   network fabric -> 
+%       - publish/subscribe (real time)
+%       - continuous query (real time)
+%       - control loops (real time)
+%       - alarms
+%       - archiving (historical)
+%       - data mining (historical)
+%       - degradation/compression
+%       - deletion  
+
+%\newpage
+%\section{Architecture}
+
+\subsection{Principles}
+\begin{itemize}
+\item Communicate with protocols, not APIs
+\item Scale like Internet services 
+\item Make trust relationships in shared computation explicit
+\item Multi-site cooperation without setup
+\item Name the computation and the data together
+\item Failure domains
+\end{itemize}
+
+
+\begin{itemize}
+\item Scheduling: priorities, interruptible, unit of atomicity 
+\item Security
+\item Isolation: access to building resources. points, system/spatial, model-predictive
+\item Fault tolerance: failure domains, interaction across interfaces
+\item Hardware abstraction: multi-level interfaces, building on sMAP, hardware probing to discover relations
+\end{itemize}
+
+\subsection{Components of a Resilient Cyber-Physical System}
+
+% Data sources: lots of different transducers and actuators.  Decouple using sMAP for publishing over the Internet and single-point actuation.  Describe with key-value information.  Everything is a tagged time-series.
+
+\begin{itemize}
+\item Control and actuator sources
+ \begin{itemize}
+  \item{Lots of diversity: hide in REST}
+  \item{Tag at source}
+  \item{Identify and name with a uuid}
+ \end{itemize}
+\item Stream processing infrastructure
+  \begin{itemize}
+    \item Main primitive is the time-series: progression of (time, value) tuples
+    \item Name all time-series; name derivatives by the series of computation steps you took.
+    \item Use database techniques and manual hints to decide what to 
+    \item Some inputs are from the raw sensor plane
+    \item Secondary sources of republished data  sent to control loops
+    \item Maintain distillates $\rightarrow$ by pushing data through operator graph $\rightarrow$ new streams (repeat)
+    \item Feed historian.
+    \item Real-time analyses, detectors, and alarms.
+\end{itemize} 
+\item Application runtime containers
+  \begin{itemize}
+    \item Connect to inputs (from stream processing)
+    \item Provide scheduling (between loops)
+    \item Make implementation decisions /  Compile to different implementations: the story of three PIDs.  Level of semantic understanding?
+    \item Provide transactional access to control points.
+  \end{itemize}
+
+\item Transactional access
+  \begin{itemize}
+    \item Transaction: set of instructions to implement on the CPS
+    \begin{itemize}
+      \item example: replace this PID loop with that loop
+      \item example: change schedule
+      \item example: hold that vent wide open for ten minutes
+      \item example: adjust a setpoint
+    \end{itemize}
+    \item Revert blocks -- app-specific rollback code
+    \item Based on timeouts or triggered in the transaction
+    \item Provided to controllers in all tiers
+  \end{itemize}
+  
+\item Distributed execution
+  \begin{itemize}
+    \item Execute over front end PLCs, computing devices in the building, the Internet (three domains).
+    \item Communicate with other tiers and services, connect with broker for location info
+    \item Allow dependency/failure analysis
+    \item Allow information flow analysis
+    \item Certain things are bound to physical location
+    \item Discover native/end-user logic; representation of the computation being performed?
+    \item Responsible for application container placement, migration, failover/faildown
+  \end{itemize}
+
+\item Core services
+  \begin{itemize}
+    \item Historian
+    \item Metadata
+    \item Stream processing
+    \item Authentication
+    \item Transaction manager
+    \item ``Service broker''
+   \end{itemize}
+   
+\item The semantics of time when processing
+  \begin{itemize}
+    \item wall clock time (for sensor data)
+    \item processing timeouts in boxes
+    \item real time (deadlines)
+   \end{itemize}
+\end{itemize}
+%
+%\newpage
+%\section{Related Work}
+%Process control, streaming sensing, AMP lab, sensorML, IEC CIM, BACNet, SNMP, XMPP, SkyFoundary/FluidInfo, IEEE1888, SEP 2, OpenADR, CORE/CoAP
+
+%SPEs == TelegraphCQ, Aurora, MapReduce Online, Pig, Hive, GeoRSS, SenseWeb, Semantic web stuff, flume/base, openTSDB, System S, LINQ/DryadLINQ, 
+
+%Twitter real time api, 
+
+%Siemens Apogee, ALC, Johnson Controls panoptix, pulse energy, 
+% - http://panoptix.johnsoncontrols.com/community/panoptix
+% Cisco EnergyWise
+% 
+% http://www.project-haystack.org/forum/topic
+% 
+% BuildingIQ, Scientific Conservation,
+% 
+%\begin{table*}
+%\centering
+%\begin{tabular}{|c|c|c|}
+%\hline
+%System & Network fabric & External Interfaces \\
+%\hline
+%\hline
+%Siemens Apogee \\
+%\hline
+%ALC \\
+%\hline
+%Johnson Control Panoptix \\
+%\hline
+%\end{tabular} 
+%\caption{Comparison of architectural features of existing building-management platforms}
+%\end{table*}
+% 
+
+\end{document}

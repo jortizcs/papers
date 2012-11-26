@@ -1,0 +1,27 @@
+\begin{thebibliography}{1}
+
+\bibitem{eugster}
+P.~T. Eugster, P.~A. Felber, R.~Guerraoui, and A.-M. Kermarrec.
+\newblock The many faces of publish/subscribe.
+\newblock {\em ACM Comput. Surv.}, 35(2):114--131, June 2003.
+
+\bibitem{waste_science}
+N.~Gershenfeld, S.~Samouhos, and B.~Nordman.
+\newblock Intelligent infrastructure for energy efficiency.
+\newblock {\em Science}, 327(5969):3, 2010.
+
+\bibitem{syncsql}
+T.~M. Ghanem, A.~K. Elmagarmid, P.-A. Larson, and W.~G. Aref.
+\newblock Supporting views in data stream management systems.
+\newblock {\em ACM Trans. Database Syst.}, 35(1):1:1--1:47, Feb. 2008.
+
+\bibitem{next10_waste}
+{Next10}.
+\newblock {Untapped Potential of Commericial Buildings: Energy Use and
+  Emissions}, 2010.
+
+\bibitem{epabuildings}
+{U.S. Environmental Protection Agency}.
+\newblock {Buildings Energy Data Book}, 2010.
+
+\end{thebibliography}

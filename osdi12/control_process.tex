@@ -1,0 +1,26 @@
+\section{Demand Ventilation Control Process}
+One example of a control process running on our system is a demand ventilation application. Building codes require a rate of fresh air ventilation per room based on occupancy and room size~\cite{title24,ashrae}. Keeping ventilation rates at this required minimum is highly desirable for energy savings since it reduces fan power and the need for air conditioning. However, this is difficult to do in traditional building control systems because separate control loops are in charge of varying the fresh air intake into the building, controlling the per-room airflow and detecting occupants. Reliability and consistency is crucial - even if the network goes down and the control process is disconnected, room airflow should meet the required minimums for occupant safety and comfort.
+
+We accomplish this with transactions and leases. Below is the pseudocode of our application built on top of our control architecture.
+
+\begin{Verbatim}[commandchars=\\\{\}]
+\textbf{Every 10 min:}
+  outside_temp=`SELECT data BEFORE NOW LIMIT 1
+    WHERE Metadata/Type = "Outside Air Temp"` 
+  avg_room_temp=`SELECT mean(data, axis="streams")
+    BEFORE NOW LIMIT 1
+    WHERE Metadata/Type = "Room Temp"` 
+
+  Solve for optimal fresh air intake
+  Solve for optimal supply air temperature
+
+  \textbf{BEGIN XACT}
+  \textbf{LEASE 10 min}
+    Set fresh air intake damper
+    for all rooms:
+      Set room airflow
+  \textbf{UNDO}
+    Set room airflow to conservative
+      minimum
+  \textbf{END}
+\end{Verbatim}
