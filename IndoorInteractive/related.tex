@@ -1,0 +1,39 @@
+\section{Related Work}
+Bayou~\cite{bayou} is a system architecture that is designed to provide high-availability,
+and variable consistency while supporting application-specifc conflict resolution
+and application-controlled inconsistency management.  The system was specifically
+designed for mobile clients with variable connection quality and periodic disconnection.
+In many ways, the design goals of Bayou are very similar to ours.  We both aim to provide highly 
+available read and write operations, we both rely on an eventual consistency model, both support
+application-level detection of conflicts, application-specific conflict resolution, permitting
+disconnected clients to see their own updates.  In contrast, we do not explicitly provide session
+guarantees.  We assume all clients are writing to the same application servers and that updates to the server
+by any client is consistency across a cluster of application servers.
+
+Our system, however, introduces the notion of variable consistency and availability with respect
+to energy consumption.  Typically applications are willing to spend more energy per I/O operation if 
+connectivity is available and the cost/bit is cheap.  Moreover, we include a prefetcher in our framework that
+is adjusts it prefetch download size based on time-based hierarchical clustering of object reference time, dictated
+largely by the proximity of physical objects to the user interacting with the application.  We focus on
+mobile applications that are interacting with objects in the physical world, not necessarily a virtual
+object on a server being edited by a random set of clients.  Most reads on the virtual object
+will come from clients near that object in physical space, thereby limiting the number of concurrent
+interactions and the prefetch size to the space physical space occuppied by those client's primary users.
+Bayou is a database system for mobile clients, we are mainly client-side framework with optional server-side
+support to stronger consistency and ordering guarantees.
+
+
+PocketWeb~\cite{pocketweb} is an prefetch framework for mobile phones that prefetching dynamic web content.
+PocketWeb uses a machine learning approach based on stochastic gradient boosting techniques to model 
+the mobile web browsing patterns of mobile users.  The main observation that allows their system to effectively
+prefetch content is that there are user-specific spatio-temporal access patterns.  Their technique builds a model
+per user and prefetches 80\%-90\% of the content for 60\% of users 2 minutes before they access it.  Proactive, periodic
+prefetching is necessary dynamic web content, in particular.  By limiting our framework to the class of indoor, interactive
+mobile application -- where the user is directly interacting with the space around her through her phone -- 
+we limit the scope and access pattern to the spatial proximity to the world around them.
+With the increase in embedded sensing, we will see more applications that fall into this class, and prefetching as many virtual
+objects near the user as possible, will become more important.  We also allow the application designer
+to control the frequency and scope of the prefetch.  Fetching larger sets more frequency when connectivity is good and
+energy level is high.
+
+
