@@ -37,3 +37,24 @@ to control the frequency and scope of the prefetch.  Fetching larger sets more f
 energy level is high.
 
 
+% IMP Notes
+%	mobile networks often experience low-bandwidth, high latency, and intermittent connectivy
+%	Data plans are capped over mobile networks
+% 	considers performance, energy usage, and wireless data consumption
+%		No two are evaluated with the same metric
+%		3G tail time makes it hard to predict to true quality of the connection -- it's better to send many request over 3G back to back
+%		Battery lifetime must be considered
+%	application typical prefetch everything, nothing, or only objects of an aribtrary size
+%	
+Informed Mobile Prefetch (IMP)~\cite{imp_mobisys2012} using an adaptive strategy for prefetcing user-specified application-level objects.
+IMP notes the objects that are referred to most often and treats the connection and energy-level as a resource to be budgeted
+depending on the anticipated demand for those object and the projected energy and bandwidth supply.
+{\bf We use the same prefetch decision criteria, except that we consider the cost benefit of fetching on a collection of items
+that considers the level in the hierarchical cluster tree, rather than calculate it on a per-item basis.}
+
+
+
+
+
+
+

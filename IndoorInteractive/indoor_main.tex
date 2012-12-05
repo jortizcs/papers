@@ -2,7 +2,8 @@
 %\documentclass[9pt,conference]{sig-alternate}
 %\documentclass[9pt,conference]{sig-alternate}
 %\documentclass[10pt,print,letterpaper,nocopyrightspace]{sigplan-proc-varsize}
-\documentclass[10pt,print,letterpaper]{sigplan-proc-varsize}
+%\documentclass[10pt,print,letterpaper]{sigplan-proc-varsize}
+\documentclass[10pt,print,letterpaper]{sig-alternate-10pt}
 
 \usepackage{amsmath,epsfig}
 \usepackage{url}
@@ -60,7 +61,7 @@
 %\CopyrightYear{2008} 
 %\crdata{978-1-60558-096-8/08/09} 
 
-\title{CAL: (C)onsistency, (A)vailability, and Battery (L)ifetime for Indoor, Interactive Mobile Applications}
+\title{CAL: A Framework for Managing Consistency, Availability, and Battery Lifetime in Mobile Applications}
 \numberofauthors{1} 
 \author{\alignauthor Jorge Ortiz, Yongwoo Noh, David Su, and David Culler\\
 \affaddr{Computer Science Division}\\
@@ -153,8 +154,23 @@
 
 \maketitle
 
+\begin{abstract}
+We propose a framework that allows mobile applications to continously choose between consistency, 
+availability, and battery lifetime as network bandwidth and availability change and battery levels drain.  
+Our system, CAL, provides various mechanisms and interfaces so applications can adjust their performance 
+along these three axes in the tradeoff space as operating conditions change.  We analyze a month's worth 
+of mobile and WIFI network-coverage data and characterize the variability of the underlying network and discuss 
+the implications on mobile application design.  We describe how CAL eases application design in this context and 
+demonstrate it in an indoor, energy-auditing application -- an application for collecting information and querying 
+the physical environment for live energy consumption feeds in buildings.  We introduce a new prefetching technique, 
+aimed to optimize fetch size and object set according physical proximity of the objects as inferred by object reference
+times.  We show that CAL helps provide higher consistency and availability at lower energy cost, and degrades gracesfully 
+as resources become exhausted.  
+\end{abstract}
+
 \input{intro}
 \input{related}
+\input{methodology}
 
 
 %\date{14 April 2007}

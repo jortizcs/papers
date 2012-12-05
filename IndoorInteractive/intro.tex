@@ -99,16 +99,20 @@ implement applications that dynamically adjust their position along these three 
   \begin{tabular}{| r | p{9cm}  | }
     \hline
     {\bf API call } & {\bf Description }  \\ \hline
-    read(objectName) & Reads the object from the server if a connection is available.  Otherwise, reads from the local cache. \\ \hline
-    read(objectName, freshness) & Reads the object from local cache if it's $\leq$ freshness time units old.  Otherwise, reads from server. \\ \hline
-    read(objectName, callback) & Reads from the server when the server is available.  Callback is triggered after the fetch is complete. \\ \hline
+    read(objectName, save) & Reads the object from the server if a connection is available.  Otherwise, reads from the local cache. \\ \hline
+    read(objectName, freshness,save) & Reads the object from local cache if it's $\leq$ freshness time units old.  Otherwise, reads from server. \\ \hline
+    read(objectName, callback, save) & Reads from the server when the server is available.  Callback is triggered after the fetch is complete. \\ \hline
+    readEOP(objectName, save) & Reads the object from the server if a connection is available and its within the energy budget.  Otherwise, reads from the local cache. \\ \hline
+    readEOP(objectName, freshness, save) & Reads the object from local cache if it's $\leq$ freshness time units old.  Otherwise, reads from server. \\ \hline
+    readEOP(objectName, callback, save) & Reads from the server when the server is available.  Callback is triggered after the fetch is complete. \\ \hline
     write(objectName, data, op) & Sends a request to the server to apply the operation remotely and copies the object locally after the operation complete.  If the server is unavailable, applies the operation locally and logs it. \\ \hline
     write(objectName, data, op, freshness) & Writes the operation to local copy if it is $\leq$ freshness time units.  Otherwise tries to write to the server. \\ \hline
     write(objectName, data, op, callback) & Writes to the server.  Callback is triggered when the write is complete.  A local copy is cached. \\
     \hline
-    query(args) & Send the query to the application server.  If the application server is unavailable, attempts execute the query locally. \\ \hline
-    query(args, freshness) & Attempts to answer the query locally if all the application objects involved were updated less than freshness time units ago. \\ \hline
-    query(args, callback) & Send the query to the server and triggers the given callback when the query returns. \\ \hline
+    writeEOP(objectName, data, op) & Sends a request to the server to apply the operation remotely and copies the object locally after the operation complete.  If the server is unavailable, applies the operation locally and logs it. \\ \hline
+    writeEOP(objectName, data, op, freshness) & Writes the operation to local copy if it is $\leq$ freshness time units.  Otherwise tries to write to the server. \\ \hline
+    writeEOP(objectName, data, op, callback) & Writes to the server.  Callback is triggered when the write is complete.  A local copy is cached. \\
+    \hline
   \end{tabular}
 \caption{Summary of the main API calls of the Context Object Layer.  Each call allows the designer to reason about and implement
 along different points in the tradeoff space between consistency, responsiveness/availability, and energy consumption.}
@@ -147,6 +151,17 @@ of dealing with stale objects.
 
 Table~\ref{tab:api} shows the basic API that is made available to the runtime of the client application.  We essentially support three
 types of calls, each with three different sets of parameter and their own semantics.
+
+\section{Fetch cost}
+To determine the energy cost of a fetch, we need to calculate the time it takes to fetch the object.  
+
+We have variable connection quality and variable object size.
+
+\begin{enumerate}
+\item Maintain a weighted average of the size of the object to fetch.
+\item Maintain a weighted average of the connection speed.
+\item Maintain availability of each network based on the number distribution of object transfers over particular networks.	
+\end{enumerate}
 
 
 \subsection{Server stub}

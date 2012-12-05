@@ -1,0 +1,36 @@
+\section{Traced-driven Analysis}
+For our experiments, we ran a trace-driven analysis using traces from a mobile energy application conducted
+in a campus building.  It includes the registration of new devices, meters, and spaces throughout the building
+as well as scans for information about those devices, from occupants in the building that want to learn more
+about the power-draw history of the devices.  The audit was conducted by multiple students simultaneously, each
+walking around the different floor in the building, registering new devices and inputting information about
+each device.  Because the traces do not include connectivity information, we 
+take the indoor connectivity traces and simulate the effect of those conditions on the application traces.
+
+We examine the consistency, availability and relative energy consumption of the application with and without
+the use of CAL.
+
+We measure the following:
+
+\begin{itemize}
+\item Percentage of time the application is unavailable.
+\item The total amount of energy consumed by the either application. 
+	\begin{itemize}
+
+	\end{itemize}
+\end{itemize}
+
+\subsection{Newsreader trace}
+To demonstrate how CAL performs for other application, we construct a newsfeed trace.  The newsfeeds trace is constructed in a
+as described by Higgins et al.~\cite{imp_mobisys2012}.  Google Reader provides statistics on the last 30
+days of feeds with the average.
+
+\emph{Take the most popular feeds, find the median article size, assume each article is read from a uniform distribution between
+30 and 60 seconds per article and then fetch the next one.  We compare the response time, energy consumption, and availability.
+We simulate the loss of internet connectivity and energy level?  Better consistency and availability (leverage the opportunity 
+to prefetch an article.)  What about energy?  We're not necessarily minimizing energy consumption, we're managing the energy budget.}
+
+\emph{We want to demonstrate how the application can choose between the 3 axes by changing the calls in the API.  }
+
+\emph{We also want to show that the prefetching strategy works well for a certain class of applications -- the ones driven by physical-object-based
+scanning of the environment.}

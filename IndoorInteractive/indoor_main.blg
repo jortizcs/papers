@@ -1,57 +1,60 @@
 This is BibTeX, Version 0.99c (TeX Live 2009)
 The top-level auxiliary file: indoor_main.aux
 The style file: abbrv.bst
-I found no \citation commands---while reading file indoor_main.aux
 Database file #1: references.bib
-I was expecting a `,' or a `}'---line 315 of file references.bib
+Repeated entry---line 53 of file references.bib
+ :  @inproceedings{imp_mobisys2012
+ :                                ,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 359 of file references.bib
  :  
  :  booktitle = {2011 Future of Instrumentation International Workshop},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 321 of file references.bib
+I was expecting a `,' or a `}'---line 365 of file references.bib
  :  
  :  booktitle = {American Council for an Energy-Efficient Economy Summer Study on Energy Efficient Buildings 2012},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-You've used 0 entries,
+You've used 3 entries,
             2118 wiz_defined-function locations,
-            497 strings with 3721 characters,
-and the built_in function-call counts, 18 in all, are:
-= -- 0
-> -- 0
-< -- 0
-+ -- 0
-- -- 0
-* -- 2
-:= -- 7
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
+            518 strings with 4591 characters,
+and the built_in function-call counts, 1681 in all, are:
+= -- 168
+> -- 94
+< -- 3
++ -- 37
+- -- 34
+* -- 124
+:= -- 263
+add.period$ -- 11
+call.type$ -- 3
+change.case$ -- 26
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 1
+cite$ -- 3
+duplicate$ -- 65
+empty$ -- 115
+format.name$ -- 34
+if$ -- 366
 int.to.chr$ -- 0
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 3
-num.names$ -- 0
-pop$ -- 0
+int.to.str$ -- 3
+missing$ -- 3
+newline$ -- 18
+num.names$ -- 6
+pop$ -- 29
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 23
 quote$ -- 0
-skip$ -- 1
+skip$ -- 52
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
-text.length$ -- 0
+substring$ -- 98
+swap$ -- 27
+text.length$ -- 3
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
+type$ -- 12
 warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 2
+while$ -- 15
+width$ -- 4
+write$ -- 41
 (There were 3 error messages)
