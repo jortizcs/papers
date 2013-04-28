@@ -1,0 +1,91 @@
+This is BibTeX, Version 0.99d (TeX Live 2012)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: streamfs_metadata_main.aux
+The style file: abbrv.bst
+Database file #1: references.bib
+Warning--string name "january" is undefined
+--line 3 of file references.bib
+I was expecting a `,' or a `}'---line 796 of file references.bib
+ :  
+ :  organization = "Center for Information Technology Research in the Interest of Society"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 865 of file references.bib
+ :    
+ :    title = "{Ensemble-level Power Management for Dense Blade Servers}",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 1033 of file references.bib
+ :  
+ :  month="August"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Unbalanced braces---line 1038 of file references.bib
+ :   author="{Ecos}
+ :                 }",
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 1047 of file references.bib
+ :  
+ :  month="March"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 1054 of file references.bib
+ :  
+ :  month="March"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 1061 of file references.bib
+ :  
+ :  month="January"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 1068 of file references.bib
+ :  
+ :  year="2007"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "papers"
+Warning--I didn't find a database entry for "paper"
+Warning--to sort, need author or key in intman
+You've used 1 entry,
+            2118 wiz_defined-function locations,
+            503 strings with 3873 characters,
+and the built_in function-call counts, 185 in all, are:
+= -- 16
+> -- 1
+< -- 0
++ -- 2
+- -- 0
+* -- 8
+:= -- 27
+add.period$ -- 2
+call.type$ -- 1
+change.case$ -- 3
+chr.to.int$ -- 0
+cite$ -- 2
+duplicate$ -- 7
+empty$ -- 24
+format.name$ -- 0
+if$ -- 42
+int.to.chr$ -- 0
+int.to.str$ -- 1
+missing$ -- 0
+newline$ -- 7
+num.names$ -- 0
+pop$ -- 8
+preamble$ -- 1
+purify$ -- 2
+quote$ -- 0
+skip$ -- 7
+stack$ -- 0
+substring$ -- 6
+swap$ -- 1
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 4
+warning$ -- 1
+while$ -- 0
+width$ -- 2
+write$ -- 10
+(There were 8 error messages)

@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99c (TeX Live 2009)
+The top-level auxiliary file: metamain.aux
+The style file: abbrv.bst
+Database file #1: references.bib
+I was expecting a `,' or a `}'---line 362 of file references.bib
+ :  
+ :  booktitle = {2011 Future of Instrumentation International Workshop},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 368 of file references.bib
+ :  
+ :  booktitle = {American Council for an Energy-Efficient Economy Summer Study on Energy Efficient Buildings 2012},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+You've used 1 entry,
+            2118 wiz_defined-function locations,
+            506 strings with 4062 characters,
+and the built_in function-call counts, 585 in all, are:
+= -- 49
+> -- 53
+< -- 0
++ -- 21
+- -- 20
+* -- 61
+:= -- 110
+add.period$ -- 3
+call.type$ -- 1
+change.case$ -- 13
+chr.to.int$ -- 0
+cite$ -- 1
+duplicate$ -- 11
+empty$ -- 26
+format.name$ -- 20
+if$ -- 105
+int.to.chr$ -- 0
+int.to.str$ -- 1
+missing$ -- 1
+newline$ -- 8
+num.names$ -- 2
+pop$ -- 11
+preamble$ -- 1
+purify$ -- 12
+quote$ -- 0
+skip$ -- 7
+stack$ -- 0
+substring$ -- 24
+swap$ -- 1
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 4
+warning$ -- 0
+while$ -- 4
+width$ -- 2
+write$ -- 13
+(There were 2 error messages)

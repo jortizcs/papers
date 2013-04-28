@@ -1,0 +1,20 @@
+
+\section{Metadata}
+In sensor deployments, metadata is as important as the data being collected. Without the metadata, the data is effectively useless. 
+Therefore it is very important to not only track changes in the metadata, but take them into account when the user is querying 
+the data. The metadata must be a first-class citizen in the system.
+
+Like the timeseries data collected from the sensors, metadata should also be maintained as a timeseries and 
+used in conjunction with timeseries queries performed on the data. In querying deployment data, the user has two 
+options: 1) she queries for some information from the logical context, which may include a changing set of sensor 
+items over the time interval of interest or 2) she queries a specific sensor item, whose logical context may change 
+during the interval of the query. In either case if the change is not noted and accounted for, the data can be return 
+incorrect results.
+
+Lets consider a concrete example where temperature sensors are deployed in a room. For the sake of demon- stration, lets 
+assume that the temperature in that room is being taken by a mobile temperature sensor on cell phones of the occupants. For 
+now we can assume that
+context is accurately maintained as occupants with this application enter and leave the room. If the user queries for the average temperature in that room throughout the day the room for all temperature sensor readings taken and take the average. It is important to only consider the temperature readings taken when the cell phone was inside that room. The user, however, should not be con- cerned with how this accounted for, it should occur au- tomatically at query runtime.
+
+Using the same scenario, lets imagine that the user wishes to know the average temperature reading taken by her cell phone throughout the day. In order to assure that the data is correctly interpreted, the query should return several averages; one for each setting as well as the aggregate average. Moreover, if the sensor was re- moved from the system before the upper-bound of the time interval constraint, the user should be alerted and the missing readings should not be counted in the aver- age.
+These mechanisms should exist to assure the integrity of the interpretation of the data. Misinterpretation of the data can lead to gross discrepancies in the conclusions that are drawn from the data analysis and in the context of sensor deployments, where the sensor context is not always static, the analysis is even more prone to error without such treatment of the metadata.

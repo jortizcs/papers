@@ -1,0 +1,63 @@
+\section{Motivating example}
+
+Indoor localization work is on the rise again~\cite{papers}.  In buildings, the community has realized that coarse 
+grained (room-level) localization is sufficient for most applications.  Although challenges remain in 
+boundary-discovery~\cite{papers} and auto-calibration~\cite{papers}.
+
+\section{Data}
+In buildings, we collect data about the internal sub-systems, the spatial organization, and the sensors throughout the 
+infrastructure.  We also collect data from sensors and use the infrastructural information to organize and categorize
+the data collected from the sensors.  For example, we note which temperature sensors are in which room and which pumps,
+cooling coils, fans are driven by their readings.  The former denotes physical placement, while the latter denotes
+the control-loop relationship.  We also categorize according to various classification schemes~\cite{paper} 
+which help us understand the data better.
+
+\section{Queries}
+
+% metadata search 
+We might just want to get a list of all sensors of a certain type that are manufactured by Seimens.
+
+%graph + timeseries
+We might want to ascertain the temperature distribution on the first floor
+of a building, or determine the average temperature for all rooms controlled by a particular heat-pump.  The former allows the
+user to examine how well the HVAC system is maintaining a consistent climate while the latter can be used to determine if
+there are any problems in the system by seeing which rooms are driving the energy consumption for that heat-pump.
+
+%graph + timeseries + provenance
+We are seeing a move towards mobile sensing~\cite{paper}.  Sensors produce a stream of readings,
+temporally associated with locations in the building.  If we have a CO2 sensors on every occupant's phone 
+and we have wifi to determine coarse-grained association with locations in the building, then the query that determines the
+CO2 distribution at a particularly location becomes non-trivial, as it requires the association history for segments of the 
+reading-stream produced over a certain time interval.  For a given time interval, we must determine all the phones
+that passed through a location and gather only the segment in those intervals when the phone produced readings at that location.
+%graph + timeseries + provenance + metadata search
+We can narrow it further, by adding a filter by owner.  So if i want to know the CO2 distribution experience by me at a particular
+location in the building for the coarse of a week, I would filter the list according to an ownership tag on the stream.
+
+The queries we ask fall into three categories:
+\begin{enumerate}
+\item Graph queries
+\item timeseries queries
+\item metadata search
+\end{enumerate}
+
+timeseries queries imply consistent association between inter-relationship state and labels -- all change over time
+
+By exposing the referential namespace, we expose the vocabulary and relationships between the objects, explicitly.	
+
+\section{Implementation}
+
+When you get information about a node, the children bins are labeled by type.  The type information can
+be fetched from the filesystem as well in {\tt /rel}.
+
+\section{Timeseries metadata}
+On create, increase the version number of all entries and set the initial version for the newly created entry.
+On an update, increase the version for all entries.  On delete, increase the version of all node except the one that
+is deleted.
+
+
+\section{Rationale}
+We need the ability to integrate external applications easily.  Therefore we implement a POSIX-compliant FS interface.
+
+Hierarchical naming and symbolic linking can express a directed graph.  Symbolic links also enable 
+aliasing -- multiple names to refer to a object.

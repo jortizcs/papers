@@ -1,0 +1,34 @@
+\section{Data workload}
+Dominated by short writes that occur aperiodically.
+
+Because it's aperiodic, you lose physical reference locality at the scope of the logical stream.  Timeseries databases bin by time
+and dump all the data collected from all sensors within a certain interval into the same time-interval bin.
+However, no individual stream produces much data on it's own.  So it would be a waste of space to create bins of data on a per-stream
+basis.
+
+But which streams does it make sense to group together?  How does context (metadata) affect how the data is referenced?  If the two are
+closely related, then binning by context could maximize locality of reference and minimize random data access patterns.
+Moreoever, we don't have to place all the data in the same place all the time.  If the context changes, then the placement of the data changes.
+
+Could this work?  It's not clear.  We need to experiment.  Sometimes it's more time-efficient to fetch lots of data and filter out what you
+need, instead of trying to be precise about the placement of all logically-related data on disk.
+
+% \section{Metadata workload}
+% Typically a complete scan of the data is irrelevant because the context is the most important driver for the fetch.  We leverage the graphical
+% structure of the metadata components to minimize the query time for context-based timeseries queries.
+
+% Can we combine typical timeseries architecture, but bucket the data by context.  A bucket is a group of timeseries data produced by
+% sensors whose hardlink 
+
+\section{Multi-dimensional array storage}
+All the data is placed in the same time-range bin.  Probably the most efficient approach is to fetch all the data in the bins 
+that capture all the data in a timeseries range, then filter the streams needs from there.
+
+Things to try:
+\begin{enumerate}
+\item put it in opentsdb, one metric, no labels, filter that result.
+	\begin{itemize}
+	\item Because of the way opentsdb runs its queries, it's already grabbing more data than your queried for
+			so makes sense to simple grab everything, keep that in cache, and go from there.
+	\end{itemize}
+\end{enumerate}

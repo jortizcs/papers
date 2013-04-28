@@ -1,0 +1,47 @@
+\section{Introduction}
+% The amount of sensor data produced continues to grow at a tremendous rate. From wired sensors distributed
+% throughout an office building to senor data col- lected from smart phones, PCs, and laptops. Most of the data, 
+% however, is lost and unused, largely due to the management complexity of collecting, maintaing and sharing
+% these streams of information. Sensor data can be produced from widely heterogeneous sensors in dis- parate
+% locations at various production rates. In addition, sensors data quality varies significantly. The data 
+% can be noisy, incomplete, and/or require calibration before use. A recent article [3] highlights some of 
+% the fundamental challenges in dealing with sensor data. Because of these issues, exploration and analysis 
+% is non trivial. Statistical techniques are necessary to deal with noisy or missing data. Moreoever, in most 
+% cases, data is constantly streaming and these techniques need to be adapted to handle the streaming case.
+
+A recent article ~\cite{sensordatamngt} highlights some of 
+the fundamental challenges in dealing with sensor data.
+These fundamental issues have led to various research efforts [6, 8],almost exclusively dealing with 
+efficient querying and data quality. Sensor metadata is often treated as a second-class citizen. However, we 
+contend that metadata management just is as fundamental. Sen- sors are embedded in the environment and their 
+placement, categorization, and other metadata is as important as the data being collected from them. As such, 
+the operations and queries we perform should always consider the associated metadata. If changes in the metadata 
+imply changes in placement, calibration, or other deployment state, the system should account for these changes 
+and resolve them when possible or inform the user.
+
+Any sensing environment collecting data about the physical environment must formulate a solution for managing the 
+metadata. As the deployment grows, so does the management complexity. File systems have been used for organizing a 
+wide range of data and we believe that this abstraction can serve to alleviate the complexity of organizing, locating, 
+and tracking application metadata in sensor deployments. In addition, the file system abstraction can simplify sharing 
+data across de- ployments by canonizing the hierarchical organization of the data; similar to the the File System Hierarchy 
+standard [1] used in Linux-based systems.
+
+Much of the deployment metadata can be decomposed hierarchically and when coupled with symbolic linking it can capture 
+the interrelationships between multiple deployment contexts. For example, when a power meter is attached to an outlet, 
+it is bound to the device is it attached to, bound to the location in which it is placed, and bound to a load element in 
+the electrical load tree. All three describe where the sensor is placed and are valid ways of referring to that sensor and 
+its data. Furthermore, that sensor denotes a point of interaction between each context. File system constructs naturally 
+accommodate multiple namespaces by partitioning each namespace into separate directories and linking files symbolically 
+between them. In addition, we can version the hierarchy to track context changes and consider them when queries are performed 
+by the user.
+
+Sensor placement can vary over time and this change in context affects how the data is interpreted. Therefore, the metadata should 
+always be considered when data is retrieved. Queries on the data should run in the right context and that context should be tracked 
+as it changes throughout the lifetime of the deployment.
+
+% Aside from metadata management, data quality is- sues still remain. Following the file system, Unix-based abstraction approach we propose a model file-type. A model file defines a process through which data can be piped. Our system, StreamFS, provides these features for managing streaming physical data. In the rest of the paper we describe how these features are used and talk in depth about the StreamFS metadata hierarchy, symbolic linking, file types and pipe abstraction. We also discuss the interface choices we have made to fulfill other important requirements related to enabling application development.
+
+\begin{itemize}
+\item Snap shot rebuilding of hierarchy and associated metadata.
+\item Query of timeseries data stream w.r.t. metadata associations.
+\end{itemize}

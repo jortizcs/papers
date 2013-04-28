@@ -1,5 +1,13 @@
 \begin{thebibliography}{1}
 
+\bibitem{tailender}
+N.~Balasubramanian, A.~Balasubramanian, and A.~Venkataramani.
+\newblock Energy consumption in mobile phones: a measurement study and
+  implications for network applications.
+\newblock In {\em Proceedings of the 9th ACM SIGCOMM conference on Internet
+  measurement conference}, IMC '09, pages 280--293, New York, NY, USA, 2009.
+  ACM.
+
 \bibitem{imp_mobisys2012}
 B.~D. Higgins, J.~Flinn, T.~J. Giuli, B.~Noble, C.~Peplin, and D.~Watson.
 \newblock Informed mobile prefetching.

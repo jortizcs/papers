@@ -9,50 +9,46 @@ we expect the participants to be the authority in the construction of the enviro
 
 This work will have similarities to Informed Mobile Prefetching (IMP, mobisys2012).
 
-\section{Related work}
+\section{Mobile Connectivity Characteristics}
 
-% increase indoor localization work: mobile energy auditing, mobile asset management, live advertisements and sales announcements
-% 	Indoor -- variable coverage
-%	Many users, shared state on server, locally copied
-%	Real-time, interactive
-%		Live updates pushed to the application
-% 		Continuous process to maintain consistent view of the world
-%	Examples
-%		Sudden spike in energy consumption for a device near the user
-%		Alert to customers that an item is about to go out of stock
-%		Sale advertisement for an item just placed on the shelf
+\begin{figure}[htbp] %htbp
+\centering
+\includegraphics[width=0.9\columnwidth]{figs/Locations}
+\caption{Locations.}
+\label{fig:sdh_power}
+\end{figure}
 
-\section{Indoor network access profile}
+\begin{figure}[htbp] %htbp
+\centering
+\includegraphics[width=0.9\columnwidth]{figs/indoor_outdoor_cdf}
+\caption{CDF for indoor and outdoor mobile signal strength measured indoors and outdoors.  The distributions
+are very close and only slighlty different in strength.}
+\label{fig:sdh_power}
+\end{figure}
+
+\begin{figure}[htbp] %htbp
+\centering
+\includegraphics[width=\columnwidth]{figs/time_hist.png}
+\caption{Percentage of time on each network.}
+\label{fig:sdh_power}
+\end{figure}
+
+
 
 \subsection{Methodology}
+We collected approximately 10-days worth of data traces from 6 participants in our lab using an application called the 
+`Network Signal Info Pro'.  The application logs both mobile network and wifi network connectivity, passively, taking 
+samples of the network state every 10 seconds.  In order to determine the connectivity characteristics indoors
+versus outdoors, we filtered the data points by location, where a location is defined by a enter and a 100 meter boundary
+around that location.  If the the user remains at the location for long then 45 minutes, they classify that location to 
+be an `indoor' location, all other locations are `outdoor' locations.  We verified our indoor locations by 
+inspecting them their latitude, longitude coordinates on a map.  
+
+For each class (indoor/outdoor), we examine the time-of-day connection characterisitics.  We specifically examine the 
+distribution of signal strength at different times of day.  We also look at the frequency and length of disconnection
+events.
 
 \subsection{General connectivity and access}
-
-\subsection{Building 1}
-
-%figure of a single floor with signal-strength contour map
-%figure of same floor with network access binary map
-
-\subsection{Building 2}
-
-%figure of a single floor with signal-strength contour map
-%figure of same floor with network access binary map
-
-\subsection{Building 3}
-
-%figure of a single floor with signal-strength contour map
-%figure of same floor with network access binary map
-
-\subsection{Summary}
-
-% total number of access points observed
-% signal-strength distribution - CDF
-% fraction of access through wifi, 3g, 4g
-% binary strip of network access results
-
-% CDF of average network access time - this one matter for tuning the prefetch data size
-% bandwidth availability CDF - this one matters for tuning the prefetch data size
-% prefetch data size is average bandwidth * average time network-access time available
 
 \section{System design}
 Our system is designed to provide a set of basic services and an API that application designers can use to both reason
@@ -163,14 +159,14 @@ We have variable connection quality and variable object size.
 \item Maintain availability of each network based on the number distribution of object transfers over particular networks.	
 \end{enumerate}
 
+\section{Energy Budgeting}
+The energy budgeter keeps track of the energy consumed by this application using the same energy model formulated by 
+Balasubramanian et al.~\cite{tailender}.
 
-\subsection{Server stub}
 
 \section{Application example: Energy Lens}
 
 \subsection {Access pattern and available}
-
-\subsection {Uptime distribution}
 
 
 

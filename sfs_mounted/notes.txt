@@ -1,0 +1,46 @@
+legacy apps - energy plus, matlab, R
+
+Single write - many readers
+	Applications read only, sensors and streams write only
+We need to scale: hundreds of thousands of streams, period on the order or seconds/minutes
+
+
+Main argument:
+Use the file abstraction to enable simpler interaction between stream data apps and 
+
+The ecosystem of applications available for buildings is vast.  Some of the applications include
+
+energy plus
+
+
+
+Design considerations
+
+Why cache at the client?
+
+Network latency causes a poor user experience.  Remote file access should be as transparent as possible to the 
+client application, therefore caching is necessary to improve application performance.
+
+Why a file?
+
+All the legacy programs that integrate with building information read formatted files.  It's the basic data and modeling
+input to these programs.
+
+Why not build a script to fetch the necessary data and create the file for each program?
+
+This is effectively what we're enabling, except we're increasing the re-use of the software components necessary to achieve this.
+Most programs would, for example, have to write scripts to fetch data from the necessary system, build their own metadata store,
+and associated schema, and translate to the associated native format for the client application.
+
+=====================
+== Data structures ==
+=====================
+RDBMS: names::[id, path, type, timestamp]
+RDBMS: bitvectors::[fid, filepath]
+OpenTSDB: sfs.data.[pubid]::[timestamp, fid], sfs.metadata.history::[timestamp, fid]
+MongoDB: sfs.tags::{id, timestamp, tags...}
+
+The file containts a bitvector with a bit per entry in the 'names' table.  The index of a set bit denotes the inclusion
+of corresponding path where the index is used as a reference into the id field in the 'names' table.
+Each node is loaded into memory and the corresponding namespace is exposed to the user through the filename namespace.
+Construct the graph with JUNG or JGraphT -- it should all fit in memory.

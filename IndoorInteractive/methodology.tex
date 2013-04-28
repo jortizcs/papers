@@ -1,3 +1,5 @@
+
+
 \section{Traced-driven Analysis}
 For our experiments, we ran a trace-driven analysis using traces from a mobile energy application conducted
 in a campus building.  It includes the registration of new devices, meters, and spaces throughout the building
@@ -16,9 +18,47 @@ We measure the following:
 \item Percentage of time the application is unavailable.
 \item The total amount of energy consumed by the either application. 
 	\begin{itemize}
-
+	\item something
 	\end{itemize}
+\item Graph of object id and absolutel access time (by offset from first access).
+\item Graph of the trace based on object id and color each cell according to the closeness in time for the weight
+		absolute difference in object access times.
 \end{itemize}
+
+\subsection{Energy Lens Application Trace-Based Simulation}
+
+We collected several months of logs from a mobile energy audit application summarized here:
+
+\begin{enumerate}
+\item How many unique user scans?
+\item How many items were scanned in sequence per user?
+\item How many moves?
+\item How many removals?
+\item How many updates?
+\end{enumerate}
+
+We extracted the portion of the trace during which an audit took place.  With the original version of the application
+an audit event must be aborted if the connection to the network becomes unavailable.  We modified the application using CAL,
+allowing auditors to make local updates to the state of the audit and update the server when the connection becomes 
+available.  The portion of the audit trace that we use took place on a single floor.  For energy audits in larger, older buildings
+in locations with poor coverage, we expect that battery consumption will become an issue.  Moreover, auditors
+ typically audit more than one building while on assignment~\cite{somethingHere}.
+
+We used these as the basis for a simulation of the application with multiple simultaneous users.  We look to observe the 
+effects of increased contention for physical interaction and virtual updates of the item
+observe how CAL helps manage that contention along the aforementioned tradeoff space.  With connection-quality log traces
+to simulated the effects of varying connectivity.
+
+\begin{enumerate}
+\item Items scans in a room.
+\item Item tag updates.
+\item Item movement.
+\item Item removal.
+\item Probability of going to another room.
+\item Probability of going to another floor.
+\end{enumerate}
+
+Essentially we're simulating a many, simulatenous of readers and writers.
 
 \subsection{Newsreader trace}
 To demonstrate how CAL performs for other application, we construct a newsfeed trace.  The newsfeeds trace is constructed in a
