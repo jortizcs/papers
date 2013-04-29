@@ -1,0 +1,34 @@
+\section{Introduction}
+
+Fundamentally what we want to represent is our knowledge about the building.  Any description
+of our knowledge ultimately describes a family of subjects and objects and some predicate to indicate
+the relationship between them.  For example, we wish to query about the location
+of the temperature sensors in room 410.  Internally, we must capture the notion of an ``is-in'' relationship
+and the notion of an ``is-a'' relationship.  In this example, the sensor \emph{is-a} temperature devices,
+410 \emph{is-a} room, and every sensor in 410 would be listed individually as ``is-in'' room 410.
+In this example, we want the list of all sensors with an ``is-in'' relationship with 410 and 
+that have an ``is-a'' relationship with temperature.
+
+\subsection{Filesystem representation}
+The main challange is buildings is related to data integration.  Every building is uniquely described in
+the various systems and sketches that describe it.  Even across the various representations of the building's internals
+there is no standard naming or labeling convention.  This unsystematic approach to capturing the building's state
+(the subsystem, locations, and sensors) makes it almost impossible to scale any solution for
+collecting and managing large collections of buildings.
+
+Fundamentally, each of the representations attempt to capture physical and abstract objects in the building
+and their inter-relationship, however the vocabulary -- what the objects and relatinos are actually called --
+is different from building to building.  There is lots of overlap from building to building, but the actual
+names change from building to building.  Therefore any system or user that wishes to run a query must first
+discover the vocabulary and semantics for each building, uniquely.
+
+The filesystem abstraction fulfills three needs:
+
+\begin{enumerate}
+\item Vocab and relationship discovery
+\item Limiting the view and interation with the underlying objects
+%\item Integration with external applications
+\end{enumerate}
+
+
+

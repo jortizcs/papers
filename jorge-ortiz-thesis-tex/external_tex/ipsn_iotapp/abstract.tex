@@ -1,0 +1,15 @@
+\begin{abstract}
+In this paper we investigate the utility of empirical mode decomposition (EMD) to identify intrinsically
+correlated usage patterns among sensors in a large deployment.  We use data collected from almost $700$
+sensors in a 12-story building measuring power, pressure, temperature, and other physical
+phenomena.  We discover that doing a correlation analysis on the raw traces does not discriminate well enough
+to identify meaningful relationships between sensors.  We correlate the trace from a pump with the rest of
+the sensor traces and find that simple correlation filters only $50\%$ of the sensors as being correlated
+with the behavior of the pump. 
+In contrast, by running the correlation analysis on the constituent frequencies extracted by
+the EMD process, we filter out over $99\%$ of the sensors as being correlated -- with the highest correlation coming 
+from sensors that serve the same room as the pump.  We believe our approach can be used to 
+construct inter-device correlation models that can help understand and identify misbehaving or inefficient
+usage patterns.
+\end{abstract}
+

@@ -1,0 +1,32 @@
+\section{Queries: Graphical, historical, histgraphical?}
+The building can be represented as a collection of objects and the inter-relationship between them.
+
+Typically the vocabulary is unknown, only general descriptions tend to be known beforehand.  We expose the inter-relationships
+through hierarchical naming and symbolic links.  We also also allow arbitrary tags on the nodes.  These can be used to 
+support general name search and queries based on general descriptions.
+For example, a building analyst may want to know how many occupants were the chillers in the building or
+to compare the relative occupancy load handled by the chillers versus the heaters, without having knowing specifically
+which how each chiller/heater is physically connected to each space in the building and without knowing exactly when/where
+each occupant was throughout the day.
+Another, perhaps even more important query, is one related to mobile sensors -- i.e. ambient sensors on a mobile 
+phone carried by occupants.  What's the distribution of temperature for the chillers versus the heaters, as experienced
+by the occupants throughout the day.
+
+Lets take an example in a different domain.  We could imagine a mobile environmental sensing application that associates individuals
+with different locations (based on coordinate-based boundary conditions) as you walk around and passively collect environmental
+readings, such as sound, light, Co2, temperature, etc.  A example query in this domain is ``what is the average Co2 level
+in location 1 from time 1 to time 2?'' or ``what's the path with the smallest polution between location 1 and location 2 between time 1 and
+time 2?''.
+
+In manufactoring applications tracking context and associations over time is also necessary.  They ask questions like 
+``which batches of powder are being used to form the ceramics at the heart of the batteries, how high a temperature is being used to bake them, how much energy is required to make each battery, and even the local air pressure.''~\cite{intman}.  In some cases, there is only a single
+power meter taking measurement for a multi-stage machine with other sensors at each stage.  A related energy question, then, is 
+what's the total power drawn by this machine for a specific batch of widgets -- requiring a search through the database to deduce
+an indirect relationship between the meter and the widget over a certain time interval.
+
+In a traditional database, these would have to be constructed iteratively.  We would have to determine the equipment and sensors involved, 
+and their inter-relationship.  We would have to determine when that relationship existed and for how long and use those intervals 
+to fetch the associated sensor readings for processing.  The implication for each is that a relationship history is maintained \emph{along with}
+timeseries data produced by sensors.  In addition, this process implies the need for the end-user to know the names of the devices in order
+to query for them explicitly, since the relationship between the equipment, the sensors, and other objects is a uniquely component in
+the aggregate analysis.

@@ -1,0 +1,42 @@
+
+
+
+\section{Methodology}\label{method}
+% Fundamentally, the readings are driven by the same underlying phenomena: 
+% weather and occupancy.  Weather influences \emph{all} the data similarly.  Occupancy, however, changes
+% throughout the building and should be used as a differentiating component in the trace
+% comparisons.  Sensors that share spatio-temporal elements should be correlated after the removal
+% of the underlying trend driven by the weather.  In order to find unique relationships we need to remove 
+% this common trend.
+
+% \subsection{Empirical Mode Decomposition}
+Empirical Mode Decomposition (EMD) \cite{huang:emd1998} is a new technique used for detrending data.
+Specifically, EMD detrends non-stationary, non-linear timeseries data.  
+% A trend is defined as 
+% an intrinsically determined monotonic function within a certain temporal span or a function in which there 
+% can be at most one extremum within that temporal span.  
+A non-stationary signal is a signal whose mean and
+variance change over time.  EMD is a process, not a theoretical tool, and its main use is for removing trends 
+to enable more useful spectral analysis.
+
+We describe the EMD process as follows:  for a signal \emph{X(t)}, let $m_1$ be the mean of its upper and
+lower envelopes as determined from a cubic-spline interpolation of local maxima and minima. The locality 
+is determined by an arbitrary parameter.
+
+\begin{enumerate}
+\item The first component $h_1$ is computed: $h_1=X(t)-m_1$
+\item In the second sifting process, $h_1$ is treated as the data, and $m_{11}$ is the mean of $h_1$'s upper and lower envelopes: $h_{11}=h_1-m_{11}$
+\item The procedure is repeated $k$ times, until $h_{1k}$ is a function: $h_{1(k-1)}-m_{1k}=h_{1k}$
+\item Then it is designated as $c_1=h_{1k}$, the first functional component from the data, which contains the shortest period component of the signal. We separate it from the rest of the data: $X(t)-c_1 = r_1$, and the procedure is
+repeated on $r_j: r_1-c_2 = r_2,\dots,r_{n-1} - c_n = r_n$
+\end{enumerate}
+
+The result is a set of functions called intrinsic mode functions (IMF); the number of functions in 
+the set depends on the original signal~\cite{emd_process}.  An IMF is any 
+function with the same number of extrema and zero crossings, with its envelopes being symmetric with respect to zero.
+We run our correlation analysis on the shared IMF outputs between a pairs of traces.  In order to ensure 
+that the IMFs corresponding to two distinct traces are on the same time scale, we use 
+bivariate EMD \cite{rilling:biemd2007} to decompose two traces at once.
+
+We use EMD to detrend each of the traces and pay particularly close attention to the high-frequency IMFs.  Our 
+hypothesis is that correlating at the higher frequencies will yield more meaningful comparisons.

@@ -1,0 +1,65 @@
+\documentclass{sig-alternate}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage[caption=false,font=footnotesize]{subfig}
+
+\DeclareMathOperator{\median}{median}
+\DeclareMathOperator{\dis}{d}
+\DeclareMathOperator{\mad}{MAD}
+
+\title{Strip, Bind, and Search: A Method for Identifying Abnormal Energy Consumption in Buildings}
+% Mining Devices Intrinsic-Relationships to Identify Energy Saving Opportunities in Buildings
+
+
+\author{
+Romain Fontugne{\large$^{1,5}$}, Jorge Ortiz{\large$^2$}, Nicolas Tremblay{\large$^3$}, Pierre Borgnat{\large$^3$}
+\\
+Patrick Flandrin{\large$^3$}, Kensuke Fukuda{\large$^4$}, David Culler{\large$^2$} and Hiroshi Esaki{\large$^1$}
+\\~\\
+{\large$^1$}The University of Tokyo~~~~~{\large$^2$}University of California, Berkeley\\
+{\large$^3$}CNRS, Ecole Normale Sup\'erieure de Lyon~~~{\large$^4$}National Institute of Informatics\\
+{\large$^5$}Japanese-French Laboratory for Informatics
+}
+
+\begin{document}
+
+\conferenceinfo{IPSN'13,} {April 8--11, 2013, Philadelphia, Pennsylvania, USA.} 
+\CopyrightYear{2013} 
+\crdata{978-1-4503-1959-1/13/04} 
+\clubpenalty=10000 
+\widowpenalty = 10000
+
+
+\maketitle
+
+\input{abstract}
+
+%Category H.4, J.7
+
+\category{H.4}{Information Systems Applications}{Miscellaneous}
+
+
+\begin{keywords}
+Building; Energy Consumption; Anomaly Detection
+\end{keywords}
+
+\input{introduction}
+
+\input{problem}
+
+\input{method}
+
+\input{dataset}
+
+\input{evaluation}
+
+\input{relatedwork}
+
+\input{discussion}
+
+\input{conclusion}
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+\end{document}

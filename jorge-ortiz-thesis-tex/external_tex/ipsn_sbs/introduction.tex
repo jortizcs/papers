@@ -1,0 +1,75 @@
+\section{Introduction}
+Buildings are one of the prime targets to reduce energy consumption around the world.
+In the United States, the second largest energy consumer in the world, buildings account for 41\% of the country's total energy consumption \cite{aer2011}.
+The first measure towards reducing the building's energy consumption is to prevent electricity waste due to the improper use of the buildings equipment.
+
+Large building infrastructure is usually monitored by numerous sensors.
+Some of these sensors enable building administrators to view device power-draw in real time.  This allows administrators
+ to determine proper device behavior and system-wide inefficiencies.
+%,  and identify devices providing inappropriate services.
+% sensors providing a service is weird to think about  -- i like how the next paragraph explains it
+Detecting misbehaving devices is crucial, as many are sources of energy waste.  % a light not turning on properly is NOT WASTEFUL, but does affect service quality
+However, identifying these saving opportunities is impractical for administrators because large buildings usually contain hundreds of monitored devices
+producing thousands of streams and it requires continuous monitoring. % attention as abnormal usages may happen at any time.
+%Consequently, the goal of this work is to establish a methodology that reports to building administrators devices abnormal uses.  
+As such, the goal of this work is to establish a method that automatically reports abnormal device-usage patterns to the administrator by closely examining 
+all of the continuous power streams.
+
+The intuition behind the proposed approach is that each service provided by the building requires a minimum subset of devices.
+The devices within a subset are used at the same time when the corresponding service is needed and a savings opportunity is characterized by the partial activation of the devices.
+For example, office comfort is attained through sufficient lighting, ventilation, and air conditioning.
+These are controlled by the lighting and HVAC (Heating, Ventilation, and Air Conditioning) system.
+%controlled by the lighting system and air conditioner.% the light and air conditioning.
+Thus, when the room is occupied both the air conditioner (heater on a cold day) and lights are used together and should be turned off 
+when the room is empty.
+In principal, if a person leaves the room and turns off \emph{only} the lights then the air conditioner (or heater) is a source of electricity waste.
+
+Following this basic idea we propose \emph{Strip, Bind and Search} (SBS), an unsupervised methodology that systematically detects electricity waste.
+Our proposal consists of two key components:
+% \begin{enumerate}
+%  \item The strip and bind method (SBM) mines raw sensor data, identifying devices that are used in concert.
+%  It uncovers the devices relationships by looking at the correlation of their activities. 
+%  Therefore it allows us to differentiate the devices that are used all together (high correlation), devices used independently (no correlation) and the mutually exclusive usages of devices (negative correlation).
+%  \item The anomaly detector monitors devices relationships over time and reports misbehaving devices.
+%  It learns the devices normal usages using a robust and longitudinal analysis of the building data and detect anomalous usages that stand for electricity wastes.
+% \end{enumerate}
+
+\begin{description}
+ \item[Strip and Bind] The first part of the proposed method mines the raw sensor data, identifying inter-device usage patterns. % that are typically used in concert to provide a service.
+We first \emph{strip} the underlying traces of occupancy-induced trends.  Then we \emph{bind} devices  whose underlying behavior is highly correlated. %, by placing them into a correlated device set.
+ %  Then
+ % It uncovers the devices relationships by looking at the correlation of their activities. 
+ This allows us to differentiate between devices that are used together (high correlation), used independently (no correlation), and used mutually exclusively (negative correlation).
+ \item[Search] The second part of the method monitors devices relationships over time and reports deviations from the norm.  % misbehaving devices.
+ It learns the normal inter-device usage using a robust, longitudinal analysis of the building data and detect anomalous usages.  Such abnormalities usually present an opportunity to reduce electricity waste or events that deserve careful attention (e.g. faulty device).
+ % that may represent that stand for electricity wastes.
+\end{description}
+
+SBS overcomes several challenges.  First, 
+%The main challenge we overcame with our approach is uncovering the device relationships from numerous, 
+noisy sensor traces that all share a similar trend, making direct correlation analysis non-trivial.
+%The main difficulty in this approach is to uncover the devices relationship from the numerous and noisy sensor traces. 
+Device energy consumption is mainly driven by occupancy and weather, all the devices display a similar daily pattern, in 
+roughly overlapping time intervals and phases.
+%and seem to be used all at once.
+Therefore, one of the main contributions of this work is uncovering the intrinsic device relationships by filtering out the 
+dominant trend.  For this task we use 
+%% Romain
+%This is achieved using a signal processing technique that exhibit the inherent characteristics of time series data, the 
+Empirical Mode Decomposition \cite{huang:emd1998}, a known method for de-trending time-varying signals.
+%% Romain
+
+Another key contribution of this work is in using SBS to practically monitor building energy consumption.
+Moreover, the proposed method is easy to use and functions in any building, as it does not require prior knowledge of the building nor extra sensors.  
+It is also tuned through a single intuitive parameter.  %which parameter?
+
+We validate the effectiveness of our approach using 10 weeks of data from a modern Japanese building containing 135 sensors and 
+8 weeks of data from an older American building containing 70 sensors.
+These experiments highlight the effectiveness of SBS to uncover device relationships in a large deployment of 135 sensors.
+Furthermore, we inspect the SBS results and show that the reported alarms correspond to significant opportunities to save energy.
+The major anomaly reported in the American building lasts 18 days and accounts for a waste of 2500 kWh. % for a single device whereas the building average power consumption is 600 kW per hour.
+% SBS also reported numerous smaller anomalies that are hidden in the building's overall consumption, thus, difficult for building operators to identify without the proposed method.
+SBS also reports numerous small anomalies, hidden deep within the building's overall consumption data.  Such errors are very difficult to find
+without SBS.
+
+In the rest of this paper, we detail the mechanisms of SBS (Section \ref{methodo}) before evaluating it with real data (Section \ref{eval}) then we discuss different outcomes of the proposed methodology (Section \ref{discussion}) and conclude.

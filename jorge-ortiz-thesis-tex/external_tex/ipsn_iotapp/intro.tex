@@ -1,0 +1,94 @@
+\section{Introduction}
+Buildings consume an enormous amount of energy in countries around the world.  In 
+Japan, 28\% of the energy produced is consumed in buildings~\cite{japanbuildings} while in the United 
+States it is as high as 40\%~\cite{epabuildings}.  Moreover, studies show that between 30-80\% of it
+is wasted~\cite{waste_science, next10_waste}.  Large commercial buildings are typically instrumented
+with a large number of sensors measuring various aspects of building operation.  Although this data is
+typically used to assure operational stability, they may also be used to measure, observe, and identify
+instances of wasted use.
+
+Identifying instances of wasted energy use is non-trivial.  System efficiency is defined as the ratio of the 
+useful work done to the energy it consumes.  In the case of buildings, we broadly define useful work as 
+the energy used to support occupant activities.  From the perspective of the building that means maintaining
+a comfortable temperature setting, providing power for plug-load devices, and providing adequate lighting
+conditions; particularly in spaces that are occupied.  However, identifying efficient use of resources,
+\emph{especially} when a space is occupied, is difficult.  Typically it involves deep knowledge of the usage scenario and
+a meaningful understanding of what it takes to support the activity.  Furthermore, situations and activities differ
+greatly.  The outside weather changes, varying schedules affect occupancy, rooms have lectures, class,
+or other office activities.  Simply put, the process is time consuming, requires specialized knowledge,
+and does not scale.
+
+Devices are typically used together in some fashion.  For example, in an office
+setting a person enters their office, turns on their PC and lights, etc.
+When the person leaves the office, they revert back to the state their devices were in before arrival.
+If one of the items is not reverted to its pre-arrival state, waste occurs. 
+%Waste occurs when something is left on.
+The same is true about equipment usage.  When the outside temperature is low the heater turns on.
+% and
+%the negation is also true.  If the temperature is high and the heater is on, waste occurs.  
+\emph{Waste occurs when abnormal in-concert usage patterns arise}.  
+%For example, 
+% Moreover, if the heating and cooling system are on 
+% simultaneously~\cite{simheatcool}, that is a problem that is \emph{particularly} wasteful and hard to 
+% detect by occupants.  
+Fundamentally, understanding ``normal'' spatio-temporal usage patterns between devices could help
+identify problems when devices are not being used correctly.
+We conjecture that inefficient energy use can be identified through anomalies in the correlation
+patterns between devices.  We examine device correlation patterns in this paper and look specifically
+at processing raw sensor traces, such that the correlations we find are meaningful.
+
+In this paper, we present early results for correlating usage patterns across a large number of sensors
+in a single deployment.  We analyze data from a 12-story office building at the University of Tokyo.  
+The deployment consists of almost 700 sensors monitoring a broad range of devices inside and outside 
+the building.  Our initial observations and results include the following:
+
+\begin{enumerate}
+\item Raw-trace correlation analysis is too strongly influenced by the common low-frequency trends in the data
+	to identify meaningful relationships.
+\item Using a technique called empirical model decomposition (EMD)~\cite{huang:emd1998} removes this 
+		 trend and helps identify truly correlated sensor traces.
+\item We can construct clusters of correlated sensors that are spatio-temporally correlated, \emph{without
+		a priori knowledge of their placement}.
+\end{enumerate}
+
+In the rest of the paper we explain EMD and how we use it, we show various examples of our technique on real-world
+traces, and we discuss the implications and future work.
+
+% Green IT
+
+% Understand the energy consumption of a building and identify savings opportunities.
+
+% Identification of energy consuming devices that are correlated.
+% Uncover usage patterns of correlated device that are energy efficient.
+% Detect deviation from the energy efficient pattern and report to the user.
+
+% During the design of our application the first difficulty was to identify the set of devices that have related energy consumption.
+
+% This article focuses on this problem.
+
+% Results:
+% \begin{enumerate}
+% \item Correlation is noisy and can't find inter-relationships between sensors
+% 		with subtle differences.
+% \item Underlying behavior should extract most-common denominator in comparing traces
+% 		to observe truly correlated behavior.
+% \item Empirical mode decomposition (EMD) can be used to compare underlying behavior after the
+% 		removal of the dominant frequencies in the signal.
+% \end{enumerate}
+
+% \subsection{ideas}
+
+% Future work:
+% \begin{enumerate}
+% \item We can create a time-varying dependency graph to compare ``normal'' versus ``abnormal'' behavioral
+% 		patterns in underlying use.
+% \item We can codify ``normal'' or ``efficient'' graphs and compare with real graph constructs over time.
+% \end{enumerate}
+
+% Possible algorithms:
+% \begin{enumerate}
+% \item find correlated and uncorrelated sensors
+% \item construct correlation network where the nodes are the sensors and an edge implies correlation above
+% 		threshold. (We can also construct the complement of that.)
+% \end{enumerate}
+

@@ -1,0 +1,41 @@
+\section{Discussion} \label{discussion}
+%The additional advantages of SBS are discussed in this section.
+%practical
+SBS is a practical method for mining device traces, uncovering hidden relationships and abnormal behavior. 
+In this paper, we validate the efficacy of SBS using the sensor metadata (i.e. device types and location), however, these 
+tags are not needed by SBS to uncover devices relationships.
+Furthermore, SBS requires no prior knowledge about the building and deploying our tool to other buildings requires no human intervention --
+neither extra sensors nor a training dataset is needed. 
+
+%best effort
+SBS is a best effort approach that takes advantage of all the existing building sensors.
+For example, our experiments revealed that SBS indirectly uncovers building occupancy through device use (e.g. the elevator in the Building 2). 
+The proposed method would benefit from existing sensors that monitor room occupancy as well (e.g. those deployed in~\cite{agarwal:ipsn2011,erickson:ipsn2011}).  % albeit they are no needed.
+Savings opportunities are also observable with a minimum of 2 monitored devices and building energy consumption can be better understood after using SBS.
+
+% good=bad..
+SBS constructs a model for normal inter-device behavior by looking at the usage patterns over time, thus, we run the risk that
+a device that constantly misbehaves is labeled as normal.  % is considered as normal by SBS.
+Nevertheless, building operators are able to quickly identify such perpetual anomalies by validating the clusters of correlated devices uncovered by SBS.
+The inspection of these clusters is effortless compare to the investigation of the numerous raw traces.  
+Although this kind of scenario is possible it was not observed in our experiments.
+%Note, that this type of anomaly is unseen in our experiments and is expected to be rare.
+
+%EMD
+%Striping sensor data with EMD is beneficial for other work.
+In this paper, we analyze only the data at medium frequencies, however, we observe that data at the high frequencies and residual data (Figure \ref{fig:heatmap}) also permits us to determine the device type.  % as well.
+This information is valuable to automatically retrieve and validate device labels -- a major challenge in building metadata
+management.
+
+% future work
+This paper aims to establish a methodology to identify abnormalities in device power traces and inter-device usage patterns.
+In addition, we are planning to apply this method to online detection using, for example, a sliding window to compute an adaptive reference matrix that evolve in time.
+However, designing such system raises new challenges that are left for future work.
+
+% %limitation
+% The goal of this article is to develop an unsupervised tool that identifies energy wastes in buildings.
+% However, the design of the system that reports these energy waste in real time is beyond the goal of this work.
+% more work is needed to allow on line detection: use of smaller time bin.
+% 
+% 
+% season changes; devices relationships have seasonal pattern thus we may need forecast models such as ARIMA to make the reference matrix evolve in time.

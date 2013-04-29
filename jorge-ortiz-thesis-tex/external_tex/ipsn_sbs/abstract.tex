@@ -1,0 +1,46 @@
+\begin{abstract}
+% % Buildings in the United State consume 41\% of the total energy produced.
+% % In order to reduce the electrical footprint of buildings we present a new methodology to monitor building consumption and identify saving opportunities.
+% % The proposed method uncovers the relationships between the building's electrical devices and determines the devices normal behavior.
+% % Furthermore, by monitoring the devices relationships over time and comparing it to their usual relationships the misbehaving devices are automatically identified.
+% % We demonstrate that these misbehaviors correspond to incorrect usages of the devices thus sources of electricity wastes.
+% % The main challenge in this approach is to retrieve devices intrinsic-relationships from the sensor raw data.
+% % Indeed these relationships are hidden by noise and common trends inherent to all the sensors in the building.
+% % We overcome this issue by filtering the raw data using a recent signal processing technique: Empirical Mode Decomposition.
+% % The proposed method is evaluated with 18 weeks of data from two buildings located in U.S. and Japan.
+% % In spite of the national post-Fukushima measures to reduce the electricity consumption in Japan the proposed method found several saving opportunities in the Japanese dataset.
+% % In the other dataset it also detected several electricity wastes that account for up to 2500~kWh.
+% 
+% A typical medium-to-large building %($\geq 10^{5}$ square-feet) 
+% contains thousands of sensors, monitoring the HVAC system, lighting, and
+% other operational sub-systems.  With the increased push for operational efficiency,
+% operators are relying more on historical data processing to uncover opportunities for savings.  
+% However, they are overwhelmed 
+% with the deluge of data and seek more efficient ways to identify potential problems.  In this paper we present a new approach,
+% called the Strip and Bind Method (SBM), for uncovering potential problems in equipment behavior and in-concert usage.  
+% SBM uncovers relationships between devices and constructs a model for their in-concert usage.  It then flags deviations from the model as abnormal.
+% 
+% Unlike other approaches, SBM requires no a priori 
+% knowledge about the building and runs on all sensors data -- treating each stream as a time-varying signal.
+% % Since most sensors in the building are driven by the same underlying activity and weather patterns, we first had to remove
+% % the dominant trend to obtain the instrinstic behavioral pattern.  Detrending is done using 
+% % Empirical Mode Decomposition -- a recent signal processing tool.  We then construct a correlation-based model on the underlying 
+% % intrinsic signals. 
+% We run SBM on a set of building sensor traces; each containing up to several thousand sensors and over 500 GB of data, collected over
+% 18 weeks from two separate buildings in different geographic locations and climates.  We demonstrate that, in many cases, SBM uncovers
+% misbehaviors correspond to inefficient device usage that leads to energy waste.  The average waste uncovered is as high as 2500 kWh per 
+% device.
+
+
+A typical large building contains thousands of sensors, monitoring the HVAC system, lighting, and other operational sub-systems.
+With the increased push for operational efficiency, operators are relying more on historical data processing to uncover opportunities for energy-savings.
+However, they are overwhelmed with the deluge of data and seek more efficient ways to identify potential problems.
+In this paper, we present a new approach called the Strip, Bind and Search (SBS); a method for uncovering abnormal 
+equipment behavior and in-concert usage patterns.
+SBS uncovers relationships between devices and constructs a model for their usage pattern relative to other devices.
+It then flags deviations from the model. 
+% Unlike other approaches, SBS requires no a priori knowledge about the building.
+We run SBS on a set of building sensor traces; each containing hundred sensors reporting data flows over 18 weeks from two separate buildings with fundamentally different infrastructures.  
+We demonstrate that, in many cases, SBS uncovers misbehavior corresponding to inefficient device usage that leads to energy waste.  
+The average waste uncovered is as high as 2500~kWh per device. 
+\end{abstract}

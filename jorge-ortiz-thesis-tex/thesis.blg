@@ -20,9 +20,25 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated field_info (elt_size=4) to 10712 items from 5000.
 Database file #1: thesis-blx.bib
 Database file #2: references.bib
-Warning--I didn't find a database entry for "wrinch:pes2012"
+Warning--I didn't find a database entry for "japanbuildings"
+Warning--I didn't find a database entry for "epabuildings"
+Warning--I didn't find a database entry for "waste_science"
+Warning--I didn't find a database entry for "next10_waste"
+Warning--I didn't find a database entry for "huang:emd1998"
+Warning--I didn't find a database entry for "occmodels_buildsys11"
+Warning--I didn't find a database entry for "Bellala_buildsys11"
+Warning--I didn't find a database entry for "kim:buildsys2010"
+Warning--I didn't find a database entry for "AgarwalBDGW11"
+Warning--I didn't find a database entry for "kaminthermo"
+Warning--I didn't find a database entry for "buildanomaly"
+Warning--I didn't find a database entry for "gutp"
+Warning--I didn't find a database entry for "ogawa:lncs2011"
+Warning--I didn't find a database entry for "emd_process"
+Warning--I didn't find a database entry for "rilling:biemd2007"
+Warning--I didn't find a database entry for "simheatcool"
 Warning--I didn't find a database entry for "katipamula:1review2005"
 Warning--I didn't find a database entry for "katipamula:2review2005"
 Warning--I didn't find a database entry for "schein:hvacr2006"
@@ -31,18 +47,29 @@ Warning--I didn't find a database entry for "bellala:buildsys2012"
 Warning--I didn't find a database entry for "seem:energybldg2007"
 Warning--I didn't find a database entry for "brown:buildperf2012"
 Warning--I didn't find a database entry for "zhou:wiley2009"
-Warning--I didn't find a database entry for "Bellala_buildsys11"
+Warning--I didn't find a database entry for "wrinch:pes2012"
 Warning--I didn't find a database entry for "chen:aaaiw2011"
 Warning--I didn't find a database entry for "romain:iotapp12"
 Warning--I didn't find a database entry for "agarwal:ipsn2011"
 Warning--I didn't find a database entry for "erickson:ipsn2011"
-Warning--I didn't find a database entry for "kim:buildsys2010"
+Warning--I didn't find a database entry for "aer2011"
+Warning--I didn't find a database entry for "lee:climateEMD2011"
+Warning--I didn't find a database entry for "blanco:bioMed2008"
+Warning--I didn't find a database entry for "huang:signalProc2006"
+Warning--I didn't find a database entry for "hasan:ieeeletter2009"
+Warning--I didn't find a database entry for "nunes:vision2005"
+Warning--I didn't find a database entry for "torres:icassp2012"
+Warning--I didn't find a database entry for "huang:aada2009"
+Warning--I didn't find a database entry for "huang:patent2006"
+Warning--I didn't find a database entry for "huber:wiley2009"
+Warning--I didn't find a database entry for "chan:springer2005"
+Warning--I didn't find a database entry for "blondel:unfolding"
 Biblatex version: 1.7
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 You've used 1 entry,
             6019 wiz_defined-function locations,
-            1144 strings with 8363 characters,
+            1174 strings with 8802 characters,
 and the built_in function-call counts, 1306 in all, are:
 = -- 64
 > -- 58
@@ -81,4 +108,4 @@ warning$ -- 0
 while$ -- 50
 width$ -- 0
 write$ -- 20
-(There were 15 warnings)
+(There were 41 warnings)

@@ -1,0 +1,84 @@
+\documentclass[conference]{IEEEtran}
+
+\usepackage{graphicx}
+\usepackage{subfigure}
+
+\usepackage{ifpdf}
+\ifpdf
+\setlength{\pdfpagewidth}{8.5in}
+\setlength{\pdfpageheight}{11in}
+\else
+\fi
+
+
+\begin{document}
+
+\title{Empirical Mode Decomposition for Intrinsic-Relationship Extraction in Large Sensor Deployments}
+
+% \numberofauthors{2}
+% \author{
+% % 1st. author
+% \alignauthor
+% Romain Fontugne\\
+%        \affaddr{The University of Tokyo / JFLI, CNRS}
+% % 2nd. author
+% \alignauthor
+% Jorge Ortiz\\
+%        \affaddr{University of California, Berkeley}
+% \and  % use '\and' if you need 'another row' of author names
+% % 3rd. author
+% \alignauthor
+% David Culler\\
+%        \affaddr{University of California, Berkeley}
+% % 4th. author
+% \alignauthor 
+% Hiroshi Esaki\\
+%        \affaddr{The University of Tokyo}
+% }
+
+\author{\IEEEauthorblockN{Romain Fontugne}
+\IEEEauthorblockA{University of Tokyo /\\ JFLI, CNRS}
+\and
+\IEEEauthorblockN{Jorge Ortiz, David Culler}
+\IEEEauthorblockA{Computer Science Division\\
+University of California, Berkeley}
+\and
+% \IEEEauthorblockN{David Culler}
+% \IEEEauthorblockA{
+% Unversity of California, Berkeley}
+% \and
+\IEEEauthorblockN{Hiroshi Esaki}
+\IEEEauthorblockA{University of Tokyo}
+}
+
+
+\maketitle
+
+% % A category with the (minimum) three required fields
+% \category{H.4}{Information Systems Applications}{Miscellaneous}
+% %A category including the fourth, optional field follows...
+% \category{D.2.8}{Software Engineering}{Metrics}[complexity measures, performance measures]
+% 
+% \terms{Delphi theory}
+% 
+% \keywords{ACM proceedings, \LaTeX, text tagging}
+
+
+\input{abstract}
+\input{intro}
+\input{related}
+\input{dataset}
+\input{methodology}
+\input{results}
+\input{conc}
+
+
+\section*{Acknowledgments}
+The authors thank Gabriel Rilling, Patrick Flandrin, Patrice Abry, Pierre Borgnat for their source code and help on EMD, Hideya Ochiai for sharing the data, Kensuke Fukuda and Young Jon Won for constructive discussions.
+This research was partially supported by the JSPS fellowship program.  This
+work is also supported in part by the National Science Foundation under grants CPS-0932209 and CPS-0931843.
+
+\bibliographystyle{abbrv}
+\bibliography{references}
+
+\end{document}
