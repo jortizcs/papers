@@ -8,6 +8,10 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Correlation coefficients of the raw traces from the Building 1 dataset (Section \G@refundefinedtrue {\unhbox \voidb@x \hbox {\normalfont \bfseries ??}}\GenericWarning { }{LaTeX Warning: Reference `data:engbldg2' on page 6 undefined}). The matrix is ordered such as the devices serving same/adjacent rooms are nearby in the matrix.}}{6}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Auto-correlation of a usual signal from the Building 1 dataset. The signal features daily and weekly patterns (resp. $x=24$ and $x=168$).}}{7}
+\defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}

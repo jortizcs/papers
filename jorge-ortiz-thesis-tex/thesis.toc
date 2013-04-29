@@ -82,56 +82,58 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.3}Structural Verification With Empirical Mode Decomposition}{5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.4}Functional Verification through Classification and Experimentation}{5}
+\contentsline {section}{\numberline {4.4}Problem description}{5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.5}Value-Based Verification Through Physical-Model Checking}{5}
+\contentsline {section}{\numberline {4.5}Functional Verification through Classification and Experimentation}{7}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.6}Related Work}{5}
+\contentsline {section}{\numberline {4.6}Value-Based Verification Through Physical-Model Checking}{7}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\chapternumberline {5}Context in Building Systems Analysis}{6}
+\contentsline {section}{\numberline {4.7}Related Work}{7}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Keeping Metadata History}{6}
+\contentsline {chapter}{\chapternumberline {5}Context in Building Systems Analysis}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Querying the Data Through the Metadata}{6}
+\contentsline {section}{\numberline {5.1}Keeping Metadata History}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Coupling Metadata and Data}{6}
+\contentsline {section}{\numberline {5.2}Querying the Data Through the Metadata}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Supporting Ad-hoc Queries}{6}
+\contentsline {subsection}{Coupling Metadata and Data}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Context-based Timeseries Queries}{6}
+\contentsline {subsection}{Supporting Ad-hoc Queries}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.4}Benchmarks and Overhead Assessment}{6}
+\contentsline {section}{\numberline {5.3}Context-based Timeseries Queries}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.5}Related Work}{6}
+\contentsline {section}{\numberline {5.4}Benchmarks and Overhead Assessment}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\chapternumberline {6}StreamFS: A System for Streaming Physical Information Management}{7}
+\contentsline {section}{\numberline {5.5}Related Work}{9}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}The Filesystem Metadataphore}{7}
+\contentsline {chapter}{\chapternumberline {6}StreamFS: A System for Streaming Physical Information Management}{10}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.2}Publish-Subscribe Facility}{7}
+\contentsline {section}{\numberline {6.1}The Filesystem Metadataphore}{10}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.3}Internal Process Management}{7}
+\contentsline {section}{\numberline {6.2}Publish-Subscribe Facility}{10}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.4}External Process Management}{7}
+\contentsline {section}{\numberline {6.3}Internal Process Management}{10}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.5}Query Interface}{7}
+\contentsline {section}{\numberline {6.4}External Process Management}{10}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{RESTful API}{7}
+\contentsline {section}{\numberline {6.5}Query Interface}{10}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Programmatic APIs}{7}
+\contentsline {subsection}{RESTful API}{10}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{File System Mount}{7}
+\contentsline {subsection}{Programmatic APIs}{10}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.6}Comparison To Related Systems}{7}
+\contentsline {subsection}{File System Mount}{10}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\chapternumberline {7}Applications}{8}
+\contentsline {section}{\numberline {6.6}Comparison To Related Systems}{10}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.1}Anomaly Detection}{8}
+\contentsline {chapter}{\chapternumberline {7}Applications}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.2}Visualization and Analysis of Streaming Data}{8}
+\contentsline {section}{\numberline {7.1}Anomaly Detection}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.3}Energy Audition with Mobile Phones}{8}
+\contentsline {section}{\numberline {7.2}Visualization and Analysis of Streaming Data}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\chapternumberline {8}Lessons Learned and Future Work}{9}
+\contentsline {section}{\numberline {7.3}Energy Audition with Mobile Phones}{11}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\chapternumberline {9}Conclusion}{10}
+\contentsline {chapter}{\chapternumberline {8}Lessons Learned and Future Work}{12}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\chapternumberline {9}Conclusion}{13}
