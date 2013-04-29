@@ -20,7 +20,7 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated field_info (elt_size=4) to 10712 items from 5000.
+Reallocated field_info (elt_size=4) to 12752 items from 5000.
 Database file #1: thesis-blx.bib
 Database file #2: references.bib
 Warning--I didn't find a database entry for "japanbuildings"
@@ -39,20 +39,13 @@ Warning--I didn't find a database entry for "ogawa:lncs2011"
 Warning--I didn't find a database entry for "emd_process"
 Warning--I didn't find a database entry for "rilling:biemd2007"
 Warning--I didn't find a database entry for "simheatcool"
-Warning--I didn't find a database entry for "katipamula:1review2005"
-Warning--I didn't find a database entry for "katipamula:2review2005"
-Warning--I didn't find a database entry for "schein:hvacr2006"
-Warning--I didn't find a database entry for "patnaik:toist2011"
-Warning--I didn't find a database entry for "bellala:buildsys2012"
-Warning--I didn't find a database entry for "seem:energybldg2007"
-Warning--I didn't find a database entry for "brown:buildperf2012"
-Warning--I didn't find a database entry for "zhou:wiley2009"
-Warning--I didn't find a database entry for "wrinch:pes2012"
-Warning--I didn't find a database entry for "chen:aaaiw2011"
-Warning--I didn't find a database entry for "romain:iotapp12"
-Warning--I didn't find a database entry for "agarwal:ipsn2011"
-Warning--I didn't find a database entry for "erickson:ipsn2011"
+Warning--I didn't find a database entry for "syncsql"
+Warning--I didn't find a database entry for "cbecs2003"
+Warning--I didn't find a database entry for "olap"
+Warning--I didn't find a database entry for "Chen76theentity-relationship"
+Warning--I didn't find a database entry for "SenkoDB"
 Warning--I didn't find a database entry for "aer2011"
+Warning--I didn't find a database entry for "wrinch:pes2012"
 Warning--I didn't find a database entry for "lee:climateEMD2011"
 Warning--I didn't find a database entry for "blanco:bioMed2008"
 Warning--I didn't find a database entry for "huang:signalProc2006"
@@ -63,13 +56,35 @@ Warning--I didn't find a database entry for "huang:aada2009"
 Warning--I didn't find a database entry for "huang:patent2006"
 Warning--I didn't find a database entry for "huber:wiley2009"
 Warning--I didn't find a database entry for "chan:springer2005"
+Warning--I didn't find a database entry for "romain:iotapp12"
 Warning--I didn't find a database entry for "blondel:unfolding"
+Warning--I didn't find a database entry for "agarwal:ipsn2011"
+Warning--I didn't find a database entry for "erickson:ipsn2011"
+Warning--I didn't find a database entry for "katipamula:1review2005"
+Warning--I didn't find a database entry for "katipamula:2review2005"
+Warning--I didn't find a database entry for "schein:hvacr2006"
+Warning--I didn't find a database entry for "patnaik:toist2011"
+Warning--I didn't find a database entry for "bellala:buildsys2012"
+Warning--I didn't find a database entry for "seem:energybldg2007"
+Warning--I didn't find a database entry for "brown:buildperf2012"
+Warning--I didn't find a database entry for "zhou:wiley2009"
+Warning--I didn't find a database entry for "chen:aaaiw2011"
+Warning--I didn't find a database entry for "oecd2011"
+Warning--I didn't find a database entry for "stephscale"
+Warning--I didn't find a database entry for "lanz"
+Warning--I didn't find a database entry for "aceee"
+Warning--I didn't find a database entry for "ACE"
+Warning--I didn't find a database entry for "hbci"
+Warning--I didn't find a database entry for "aceee_mobileaudit"
+Warning--I didn't find a database entry for "acme"
+Warning--I didn't find a database entry for "smap"
+Warning--I didn't find a database entry for "streamfs"
 Biblatex version: 1.7
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 You've used 1 entry,
             6019 wiz_defined-function locations,
-            1174 strings with 8802 characters,
+            1192 strings with 8962 characters,
 and the built_in function-call counts, 1306 in all, are:
 = -- 64
 > -- 58
@@ -108,4 +123,4 @@ warning$ -- 0
 while$ -- 50
 width$ -- 0
 write$ -- 20
-(There were 41 warnings)
+(There were 56 warnings)

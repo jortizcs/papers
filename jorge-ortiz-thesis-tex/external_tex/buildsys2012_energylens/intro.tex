@@ -1,0 +1,68 @@
+\section{Introduction}
+The United States leads the world in per-capita energy consumption.
+Our electricity use has consistently increased over the last 40 years~\cite{oecd2011} and other parts of the world are rising all 
+too rapidly.  With the specter of climate change and the increasing cost of energy, we must explore new
+ways for individuals to gain visibility and insight into their energy consumption in order to optimize and reduce it. 
+With the increasing penetration of embedded sensors in the environment and
+the continued rise in smartphone adoption, we see an opportunity for smartphones to bridge the physical world
+to our computational infrastructure and provide an `energy lens' on the physical world.  
+
+We use mobile phones to construct an entity-relationship 
+graph of the physical world and combine it with streaming sensor data in order to perform detailed energy-attribution.
+We limit the scope of the world to a single building domain.  We have designed and implemented a real-time, mobile energy auditing
+application, called the `Energy Lens', that allows us to collect information about 
+things throughout the building and how they are related to each other.  For example, computer X is inside 
+room Y and connected to meter Z.  Then, we use these relationships to guide our data look-up and analytical
+calculations.  For example, the load curve of room Y consists of the sum of all the power traces for loads
+inside room Y.  We use the mobile smartphone as the main input tool.  Our work examines \emph{three main challenges} in setting up and 
+deploying a real, whole-building infrastructure to support real-time, 
+fined grained energy analytics.  
+
+The first challenge is related to tracking and mobility.
+The use of mobile phones presents classical, fundamental challenges related to mobility.  Typically, mobility
+refers to the phone, as the person carrying it moves from place to place.  However, in the energy-attribution
+context, we are also referring to the movement of energy-consuming objects.  Tracking their relationships to spaces 
+and people is as important as tracking people.  We describe how we deal with \emph{both moving people and 
+moving objects} and show that these historically difficult problems can be addressed relatively easily, if the proper infrastructure is 
+in place.  %We provide evidence that the approach is simple, incrementally deployable, and scalable.
+
+The second challenge is about capturing the inter-relationship semantics and having these inform our  analytics.
+We adopt the general notion of physical tags that identify objects in the world.  Our system uses \emph{QR codes} to tag things and locations 
+in the physical world.  However, \emph{any tag that provides a unqiue identifier for an object could serve the same purpose}.
+Once tagged, there are three types of interactions -- 
+registration, linking, and scanning -- which establish important relationships.  Registration is the act of creating a virtual object 
+to represent a physical one.  Linking captures the relationship between pairs of objects.  Scanning is the act of performing an item-lookup.
+Each of these interactions requires a set of swiping gestures.  Linking requires two tag swipes while the other two actions
+require a single tag swipe.  Internally, we maintain a \emph{entity-relationship graph (ERG)} of things, people, and locations, that gets
+updated through these sets of gestures.
+
+The third challenge is about indoor network connectivity and access.
+In order to connect these components, we rely on having `ubiquitous' network connectivity.  However, in practice, network
+\emph{availability} is intermittent and our system must deal with the challenges of intermittency.  We discuss how caching
+and logging are used to address these challenges.  Moreover, when connectivity is re-established, we must deal with
+applying updates to the ERG, as captured by the phone while disconnected.  
+% Conflicts can also occur during an update.  For example, the two updates may disagree about which items are attached
+% to which meters.  We implement a very simple conflict resolution scheme, described in section~\ref{sec:conflicts}.
+% Finally, certain physical-state transitions are represented as a set of updates to the ERG that must be applied 
+% atomically.  We implement transactions in the log-replay and transaction manager.
+% Our `Energy Lens' system is deployed in a building on our campus.  We discuss
+% its architecture and our design choices.  
+  
+% We also discuss novel strategies for tracking moving people/things and describe how we implement these in our system.  In summary, our work
+% makes the following contributions:
+
+% \begin{itemize}
+% \item We design and implement a system that captures and combines physical entities, their inter-relationships, and real-time sensor data 
+% 		in buildings.% using mobile phones, qr code, and a cloud-based infrastructure.
+% \item We observe that certain combinations of swipes give us useful information to set the location of people and things over time.
+% 		We codify this observation in our \emph{context-tracker} and use it to maintain consistency between the entity-relationship graph and the 
+% 		state of the physical world.  To the best of our knowledge, this is radically different from the approaches in standard 
+% 		localization techniques.  However, we argue that it can be used to \emph{enhance} their accuracy and overall performance.
+% \item We implement a prefetching algorithm to obtain context-dependent information to both improve performance and
+% 		enable disconnected operation.  We also design and implement a log-replay and transaction manager over our data management layer.  We describe how different conflict-resolution policies can be implemented and our rationale for the policies we chose.
+% \end{itemize}
+
+% \vspace{0.08in}
+
+% In the next sections we go through a motivating scenario.  We then discuss some related work, followed 
+% by the system architecture, evaluation, and future directions.

@@ -8,57 +8,75 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Decomposition of the EHP and light trace using bivariate EMD. IMFs correlation coefficients highlight the intrinsic relationship of the two traces.}}{8}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Decomposition of the EHP and light trace using bivariate EMD. IMFs correlation coefficients highlight the intrinsic relationship of the two traces.}}{8}{figure.48}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Decomposition of the EHP and GHP trace using bivariate EMD. IMFs correlation coefficients highlight the intrinsic independence of the two traces.}}{9}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Decomposition of the EHP and GHP trace using bivariate EMD. IMFs correlation coefficients highlight the intrinsic independence of the two traces.}}{9}{figure.50}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Map of the floor where the analyzed EHP serves (room $C2$). The location of the sensors identified as related by the proposed approach are highlighted, showing a direct relationship between IMF correlation and spatial proximity.}}{12}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Distribution of the correlation coefficients of the raw traces and correlation coefficients average of the corresponding IMFs using 3 weeks of data from 674 sensors.}}{12}{figure.61}
+\defcounter {refsection}{0}\relax 
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Raw traces correlation coefficients}}}{12}{subfigure.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Average IMFs correlation coefficients}}}{12}{subfigure.3.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Map of the floor where the analyzed EHP serves (room $C2$). The location of the sensors identified as related by the proposed approach are highlighted, showing a direct relationship between IMF correlation and spatial proximity.}}{13}{figure.62}
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.1}{\ignorespaces This shows an illustration of the aggregation tree used by \emph {dynamic aggregation}. Data flows from the leaves to the root through user-specified aggregation points. When the local buffer is full the streams are separated by source, interpolated, and summed. The aggregated signal is foward up the tree.}}{26}{figure.116}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {6.2}{\ignorespaces The power consumes by a laptop in \emph {room 1} is shifted to \emph {room 2} a time t=7. Notice the aggregagate drops in room 1 while it rises in room 2. }}{27}{figure.121}
+\defcounter {refsection}{0}\relax 
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Room 1 object and aggregate streams.}}}{27}{subfigure.2.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Room 2 aggregate.}}}{27}{subfigure.2.2}
+\defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Correlation coefficients of the raw traces from the Building 1 dataset (Section 7.5\hbox {}). The matrix is ordered such as the devices serving same/adjacent rooms are nearby in the matrix.}}{20}
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Correlation coefficients of the raw traces from the Building 1 dataset (Section \ref {data:engbldg2}). The matrix is ordered such as the devices serving same/adjacent rooms are nearby in the matrix.}}{30}{figure.133}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Auto-correlation of a usual signal from the Building 1 dataset. The signal features daily and weekly patterns (resp. $x=24$ and $x=168$).}}{21}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Auto-correlation of a usual signal from the Building 1 dataset. The signal features daily and weekly patterns (resp. $x=24$ and $x=168$).}}{31}{figure.134}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.3}{\ignorespaces \emph {Strip and Bind} using two raw signals standing for one week of data from two different HVACs. (1)\nobreakspace {}Decomposition of the signals in IMFs using EMD (top to bottom: $c_1$ to $c_n$); (2)\nobreakspace {}aggregation of the IMFs based on their time scale; (3)\nobreakspace {}comparison of the partial signals (aggregated IMFs) using correlation coefficient.}}{22}
+\contentsline {figure}{\numberline {7.3}{\ignorespaces \emph {Strip and Bind} using two raw signals standing for one week of data from two different HVACs. (1)\nobreakspace {}Decomposition of the signals in IMFs using EMD (top to bottom: $c_1$ to $c_n$); (2)\nobreakspace {}aggregation of the IMFs based on their time scale; (3)\nobreakspace {}comparison of the partial signals (aggregated IMFs) using correlation coefficient.}}{32}{figure.137}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Generalized Zero Crossing: the local mean period at the point $p$ is computed from one quarter period $T_4$, two half periods $T_2^x$ and four full periods $T_1^y$ (where $x=1, 2$, and, $y=1,2,3,4$).}}{25}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Generalized Zero Crossing: the local mean period at the point $p$ is computed from one quarter period $T_4$, two half periods $T_2^x$ and four full periods $T_1^y$ (where $x=1, 2$, and, $y=1,2,3,4$).}}{35}{figure.146}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Reference matrices for the four time scale ranges (the diagonal $x=y$ is colored in black for better reading). The medium frequencies highlight devices that are located next to each other thus intrinsically related. The low frequencies contains the common daily pattern of the data. The residual data permits to visually identify devices of the similar type.}}{29}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Reference matrices for the four time scale ranges (the diagonal $x=y$ is colored in black for better reading). The medium frequencies highlight devices that are located next to each other thus intrinsically related. The low frequencies contains the common daily pattern of the data. The residual data permits to visually identify devices of the similar type.}}{39}{figure.158}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {High Frequencies}}}{29}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {High Frequencies}}}{39}{subfigure.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Medium Frequencies}}}{29}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Medium Frequencies}}}{39}{subfigure.5.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Low Frequencies}}}{29}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Low Frequencies}}}{39}{subfigure.5.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Residual data}}}{29}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Residual data}}}{39}{subfigure.5.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.6}{\ignorespaces Number of reported alarms for various threshold value ($\tau =[3,10]$).}}{32}
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Number of reported alarms for various threshold value ($\tau =[3,10]$).}}{42}{figure.168}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.7}{\ignorespaces Example of alarms (red rectangles) reported by SBS on the Eng. Bldg 2 dataset}}{33}
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Example of alarms (red rectangles) reported by SBS on the Eng. Bldg 2 dataset}}{44}{figure.175}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {High power usage where the HVAC (EHP) is turned on at night}}}{33}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {High power usage where the HVAC (EHP) is turned on at night}}}{44}{subfigure.7.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {High power usage where the light is left on at night}}}{33}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {High power usage where the light is left on at night}}}{44}{subfigure.7.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Low power usage where the HVAC (EHP) is not used during office hours}}}{33}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Low power usage where the HVAC (EHP) is not used during office hours}}}{44}{subfigure.7.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Long term high power usage partially detected}}}{33}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Long term high power usage partially detected}}}{44}{subfigure.7.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.8}{\ignorespaces Example of alarms (red rectangles) reported by SBS on the Cory Hall dataset}}{34}
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Example of alarms (red rectangles) reported by SBS on the Cory Hall dataset}}{45}{figure.181}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Low power usage due to a chiller failure}}}{34}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Low power usage due to a chiller failure}}}{45}{subfigure.8.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {High power usage highlighted by the elevator usage}}}{34}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {High power usage highlighted by the elevator usage}}}{45}{subfigure.8.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Normal power and elevator usage}}}{34}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Normal power and elevator usage}}}{45}{subfigure.8.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Long term high power usage due to competing heating and cooling}}}{34}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Long term high power usage due to competing heating and cooling}}}{45}{subfigure.8.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Standard mechanisms for consistency management on the phone. All READ request go to the local cached version of the ERG. All WRITES must go through the OpLog.}}{53}{figure.195}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {7.10}{\ignorespaces Power traces obtained from power meters atextttached to various plug load on one of the floors of a building on campus. These show screen shots of the Energy Lens timerseries data display.}}{53}{figure.197}
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 

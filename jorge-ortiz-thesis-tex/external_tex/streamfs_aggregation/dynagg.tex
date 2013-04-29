@@ -22,8 +22,8 @@ and each stream of data they produce is a stream node.
 
 When an aggregation point is chosen and enabled, dynamic aggregation places a buffer at the node for the type
 of data that should be aggregated.  If we want to aggregate \emph{KW} data, we specify the type and send an enable-aggregation
-request to the node through an HTTP {\tt POST} to the path for that node.  The flow of data starts at the leaves when
-a stream node received data from a sensor through HTTP {\tt POST}.  As data arrives it is immediately
+request to the node through an HTTP {\texttt POST} to the path for that node.  The flow of data starts at the leaves when
+a stream node received data from a sensor through HTTP {\texttt POST}.  As data arrives it is immediately
 forwarded upstream to the parent(s).  If a node that receives data from its children is an aggregation point it buffers
 the data, otherwise it fowards it to its parent.
 
@@ -73,11 +73,11 @@ all actions are being recorded in StreamFS.
 %FILL IN WITH REAL GRAPH
 \begin{figure}[htb!]
 \begin{center}
-\subfigure[Room 1 object and aggregate streams.]{%
+\subfloat[Room 1 object and aggregate streams.]{%
             \label{fig:dynaggs1room1}
             \includegraphics[scale=0.4]{figs/dynagg_scenario1_room1}
         }
-\subfigure[Room 2 aggregate.]{%
+\subfloat[Room 2 aggregate.]{%
             \label{fig:dynaggs1room2}
             \includegraphics[scale=0.4]{figs/dynagg_scenario1_room2}
         }

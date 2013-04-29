@@ -1,0 +1,97 @@
+\section{Related Work}
+
+%\begin{itemize}
+% \item dashboard
+% \item andrew's lightin control work
+% \item Kamin's hvac control work
+% \item BEMs
+% \item sMAP stuff
+%\item Buildsys 2010 work~\cite{hbci}
+%\item distributed consistency management: COPS
+%\item mobility: tracking things with RFID~\cite{rfid_gonz2006}
+%\item mobility: tracking of people, wifi indoor localization
+%\item entity-relationship graphs
+%\item homeOS [microsoft]
+%\item HP Cooltown~\cite{cooltown}
+% %\end{itemize}
+% Our work touches on several areas from smart home research to logistics.  In the building space, there has been
+% some interest in building various kinds of energy-related visualization and control applications.
+% This work focuses on the object definition, tracking, and management component of the architecture proposed by 
+% Hsu et al.~\cite{hbci}.  Their work stratified the set of challenges that one could potentially face if the application 
+% were deployed at scale.  Our
+% work, in contrast, bases its design rationale on a \emph{real deployment} that is taking place at scale in a building 
+% on our campus.  We focus on solving fundamental systems challenges in dealing with intermittent connectivity
+% and conflict resolution in tracking people and things over time.  We also focus on leveraging gestures to minimize
+% the cost of interaction for users, while maximizing the information we can attain about the state of the world.
+%smart home research~\cite{cooltown} to
+
+Our work touches on several areas from logistics%~\cite{rfid_gonz2006} 
+to context-aware 
+mobile applications~\cite{ACE}.  
+In the building space, there has been
+some interest in building various kinds of energy-related visualization and control applications.
+HBCI~\cite{hbci} proposes a high level archiecture that also relies on QR codes, mobile phones, and ubiquitous network access.  HBCI introduces 
+the notion of object capture through 
+the mobile phone and  individual services provides by the object, accessible via an object lookup.  The proposed service model is 
+\emph{object-centric}, such as individual power traces or direct control accesss.  Their ``query'' service is a tag lookup mechanism realized through
+ QR code scanning of items.  The `Energy Lens' also embodies the ``query'' via a tag lookup, however 
+we focus on context-related services rather than object-centric services.  We build and maintain an entity-relationship graph (ERG) to
+capture the inter-relationships between items.  The ERG informs our analytical processing.  We use an eventual-consistency model to 
+maintain the inter-relationship graph over time.  HBCI does not address the challenges faced in realizing an indoor, interactive application 
+that relies on ubiquitous network connectivity.  Our architecture directly addresses this challenge, as we observe that indoor connectivity characteristics do 
+not comply with the ubiquitous connectivity requirement for this class of application.
+
+
+% Tracking people/indoor localization
+% An important aspect of the Energy Lens is determining when people and things have moved.  This requires some form 
+% of indoor localization.  There's a large body of literature in the area of indoor localization with mobile phones ranging from 
+% using wifi~\cite{radar}, to sonar~\cite{cricket}, to ambient noise~\cite{abs}, and a combination of sensors on the 
+% phone~\cite{surroundsense}.  Dita~\cite{dita} uses acoustic localization of mobile phones and also uses the infrastructure 
+% to determine gestures in free-space that are classified into pre-defined control actions.  Each of these require relatively complex 
+% software and/or infrastrure.  
+% We take a radically different, simple approach.  We use cheap, easy to re/produce tags (QR codes), incrementally place them on things in the 
+% environment and use the natural \emph{swiping gesture} that users make, when interacting with the Energy Lens 
+% application, to track when they have moved or when the objects around them have moved.  The guiding principal is to attain as much 
+% information from a gesture as possible, to determine a move has occurred.  We discuss our heuristics in section~\ref{sec:tracking}.
+
+% context-aware apps
+% ACE~\cite{ACE} uses various sensors on the phone to infer a user's context.  The context domain consists of a set of user activities
+% and semantic locations.  For example, ACE distinguishes between {\tt Running, Driving, AtHome, or InOffice}.  ACE can also infer 
+% one from the other.  If a user is {\tt AtHome} then they are not {\tt InOffice}.  Energy Lens uses inference to determine
+% when a person or thing has moved.  Certain swipe combinations give us information about whether they moved or
+% whether an item moved. The main difference is that we only infer context when a user is actively swiping, rather
+% than a continuous approach.  
+
+% Prefetching is a fundamental technique used in many domains.  The cost of a prefetch for mobile
+% application out-weighs the benefits if the prefetched data is not useful.  Informed mobile prefetching~\cite{imp_mobisys2012} uses cost-benefit analysis 
+% to determine when to prefetch content for the user.  We prefetch data based on location swipes.
+% Caching prefetched content not only improves performance and interactivity, but it is \emph{necessary} to sustain normal
+% operation during periods of disconnectedness.
+
+% Tracking things
+% Logistic systems focus on tracking objects as the move from distribution sites, to warehouses, and across purchase counters.  
+% Items are tracked through their unique bar codes, often embedded in an RFID.  The workload in logistic systems is very structured 
+% and well defined.  The authors of~\cite{rfid_gonz2006} describe this structure and leverage it to minimize storage
+% requirements and optimize query-processing performance.  The Energy Lens uses QR codes as tags and the phone as an active
+% reader.  As objects move, users scan those items to their new location.  However, objects may belong to one or
+% many people, they can be metered by multiple meters a day, and their history in the system
+% is on-going.  In contrast, a typical logistics workload has a start (distribution site) and end point (leaving the store
+% after a sale).  Our workload is less well-defined.  Furthermore, relationship semantics are important; 
+% For example, we interpret a bind relationship differently from an attach relationship.  We discuss the difference
+% later in the paper.
+
+% Furthermore, we take advantage of natural gestures the user makes with the phone while scanning QR codes to extract
+% information about the current location of the user or things.
+
+% Tagging items, virtual services
+% The key idea in the HP Cooltown~\cite{bridgingphysical,cooltown} work is to web-enable `things' in the world, grouped-by
+% `place', and accessed by `people' via a standardized acquisition protocol (HTTP) and format (HTML, XML).  
+% Cooltown creates a web presence for things in the world either directly (embedded web server) or indirectly 
+% (URL-lookup tag) as a web page page that display the services it provides.  Many of the core concepts in Cooltown 
+% also show up in Energy Lens.  The main overlap is the use of tags in the world that contain a reference to a virtual 
+% resource, accessible via HTTP through
+% a network connection.  Cooltown, however, explicitly chooses not maintain a centralized relationship
+% graph, it leverages the decentralized, linking structure of the web to group associated web pages together.
+% Furthermore, things are assumed to not move.  People are the main mobile entities.  The kind of applications
+% we wish to support must track where things are and their specific inter-relationships.  We imposed a richer set of 
+% semantics on our, centrally maintained, relationship graph and use it to provide detailed energy information.
