@@ -1,8 +1,8 @@
-PWD /Users/jortiz/dropbox/dissertation/jorge-ortiz-thesis-tex
+PWD /Users/jortiz/dropbox/dissertation/papers.git/jorge-ortiz-thesis-tex
 INPUT /usr/local/texlive/2012/texmf.cnf
 INPUT /usr/local/texlive/2012/texmf/web2c/texmf.cnf
 INPUT /usr/local/texlive/2012/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/jortiz/Dropbox/dissertation/jorge-ortiz-thesis-tex/thesis.tex
+INPUT /Users/jortiz/Dropbox/dissertation/papers.git/jorge-ortiz-thesis-tex/thesis.tex
 OUTPUT thesis.log
 INPUT ucbthesis.cls
 INPUT ucbthesis.cls
@@ -114,6 +114,7 @@ INPUT chap1.tex
 INPUT chap1.tex
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/public/cm/cmr17.tfm
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
+INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/public/cm/cmsl12.tfm
 OUTPUT chap2.aux
 INPUT chap2.tex
 INPUT chap2.tex
@@ -151,3 +152,4 @@ INPUT thesis.run.xml
 OUTPUT thesis.run.xml
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb
+INPUT /usr/local/texlive/2012/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb
