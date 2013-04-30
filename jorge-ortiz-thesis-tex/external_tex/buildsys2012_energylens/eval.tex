@@ -1,4 +1,4 @@
-\section{Evaluation}
+\subsection{Evaluation}
 \label{sec:eval}
 
 
@@ -12,14 +12,14 @@ look at the transaction manager and discuss conflict resolution.
 % \label{fig:acmenetwork_SDH_4F}
 % \end{center}
 % \end{figure}
-\subsection{Sensing and tag layer}
+\subsubsection{Sensing and tag layer}
 We deployed 20 ACme power meters~\cite{acme} on a single floor of a building on campus.  The data was made available through
 sMAP~\cite{smap} and forwarded to our processing and data management layer, StreamFS~\cite{streamfs}.  We distributed
 the ACmes throughout a single floor in our building and registered various plug loads as being measured by them.  We also tagged
 hundreds of items and locations throughout the entire building.  In total we tagged 20 meters, 20 metered items, 351 un-metered items,
  and 139 rooms over 7 floors.
 
-\subsection{Prefetching}
+\subsubsection{Prefetching}
 Prefetching occurs when a user enters a new floor, as detected by a floor scan or an item
 scan.  Table~\ref{tab:prefetchtimes} shows that the prefetch times scale linearly with the number of
 items (and data) to prefetch.  Each node holds approximate 100 bytes or information and for
@@ -52,7 +52,7 @@ that of fetching a single node.  A callback is used when cache is invalidated.}
 \end{table}
 
 
-\subsection{Log replay latency}
+\subsubsection{Log replay latency}
 Table~\ref{tab:optimes} shows the  operations that the transaction manager calls on the StreamFS server.
 Log replay and transaction processing is entirely dependent on the time to execute these operations on StreamFS.
 There are five types of transactions, a \emph{move}, a \emph{un/bind}, \emph{un/attach}.  A move is a combination

@@ -1,9 +1,9 @@
-\section{Data sets}
+\subsection{Data sets}
 We evaluate SBS using data collected from buildings in two different geographic locations.  
 One is a new building on main campus of the University of Tokyo and the other is an older building at 
 the University of California, Berkeley.
 
-\subsection{Engineering Building 2 - Todai}\label{data:engbldg2}
+\subsubsection{Engineering Building 2 - Todai}\label{data:engbldg2}
 %The data from building 1 is collected at the Engineering Building 2 of the Hongo campus. 
 Engineering building 2, at the University of Tokyo (Todai), is a 12-story building completed in 2005 and is now 
 hosting classrooms, laboratories, offices 
@@ -28,7 +28,7 @@ relationships.
 
 % Due to privacy concern this dataset is not publicly available on the Internet but accessible upon request.
 
-\subsection{Cory Hall - UC Berkeley}
+\subsubsection{Cory Hall - UC Berkeley}
 Cory Hall, at UC Berkeley, is a 5-story building hosting mainly classrooms, meeting rooms, laboratories and a datacenter.
 This building was completed in 1950, thus its infrastructure is significantly different from the Japanese one.
 The HVAC system in the building is centralized and serves several floors per unit.
@@ -43,7 +43,7 @@ These two building infrastructures are fundamentally different.
 This enables us to evaluate the practical efficacy of the proposed, unsupervised method in two very different environments.
 
 
-\subsection{Data pre-processing}
+\subsubsection{Data pre-processing}
 Data pre-processing is not generally required for the proposed approach.  
 Nevertheless, we observe in a few exceptional cases that sensors reporting excessively high values (i.e. values higher than the device actual capacity) that  greatly alter the performance of SBS by inducing a large bias in the computation of the correlation coefficient.
 Therefore, we remove values that are higher than the maximum capacity of the devices, from the raw data.

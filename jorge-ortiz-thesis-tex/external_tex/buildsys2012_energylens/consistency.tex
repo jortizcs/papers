@@ -1,4 +1,4 @@
-\section{consistency \& disconnected operations}
+\subsection{consistency \& disconnected operations}
 
 The ability to provide real-time analytics for physical data application is driven by 
 
@@ -32,7 +32,7 @@ When a meter/item is inside a location, we say that the meter/item is “inside-
 {\bf Type-of}\\
 When an item is labeled by as a known, specific, type, we say that the item is a “type-of” thing specified by the its label.
 
-\subsection{Managing consistency while disconnected}
+\subsubsection{Managing consistency while disconnected}
 
 \subsubsection{Caching}
 Although network connectivity is theoretically ubiquitous, in practice, this is not always the case.  In order to enable updates while disconnection we need to cache as much of the relevant deployment state as possible.
@@ -40,5 +40,5 @@ Although network connectivity is theoretically ubiquitous, in practice, this is 
 \subsubsection{Pre-fetching \& The state-change stream}
 We should pre-fetch, as the tags inform us about what the user might access next.  What are some things to pre-fetch?  All the paths from the current root to the leaves.  We should also fetch the object associated with each file and for streams, we should fetch 1 hours’ worth of data.  In most cases this means fetching about 200-400 KB of data.
 
-\subsection{Conflict resolution}
+\subsubsection{Conflict resolution}
 All transactions are processed in timestamp order, to some rough approximation of the time that the transaction would have been committed.  When a transaction with an earlier timestamp than the last committed transaction is offered, the EnergyLens transaction manager checks if the current transaction conflicts with any previously committed transaction.  This is done by checking if the files that are touched overlap with a transaction that touches the same files and has a transaction timestamp that’s later than the current transaction being offered.  If so the transaction manager rolls back the state of StreamFS, only for the affected files, back to the last transaction before the last commit.  It then commits the offered transaction, adds it to the transaction log, and replays the transaction that was rolled back.  If the operations of the replayed transaction are no longer valid, the transaction fails silently.  Failing silently is acceptable in this context because we want to capture the latest state of the world.  By rejecting the transaction, we are assuming that it was based on false assumptions about the state of the world.  We believe this assumption to be true in most cases.

@@ -19,7 +19,7 @@
 % especially troublesome.  We discuss various mechanisms and algorithms for dealing with disconnected operation.
 
 
-\section{Challenge 1: Tracking People and Things}
+\subsection{Challenge 1: Tracking People and Things}
 \label{sec:tracking}
 
 The Energy Lens app consists of a web application that displays timeseries data and an Android-based smartphone
@@ -247,7 +247,7 @@ symbolic link is created from the specific qr code directory to the item.  {\tex
 and sub-spaces.  {\texttt /users} contains the list of usernames.  We also have a {\texttt /tax} directory, where we construct an
 device hierarchy for access by plug-load category.  Placement (location) is also captured with symbolic links. 
 
-\section{Challenge 2: Consistency Management}
+\subsection{Challenge 2: Consistency Management}
 We use an eventual-consistency model for maintaining the ERG over time.  Naturally, the spatial inter-relationships
 change over time as items are moved and replaced.  In order to deal with this we offer two options: 1) we periodically
 re-scan the items and their locations, essentially re-capturing the inventory collection portion of the audit or
@@ -310,7 +310,7 @@ time~\cite{aceee_mobileaudit}.
 
 
 
-\section{Challenge 3: Disconnected Operation}
+\subsection{Challenge 3: Disconnected Operation}
 Although connectivity is ubiquitous, network access is not.  This occurs due to dead zones, 
 idle-disconnect and failed hand-off between access points.  When encountered in practice, especially while editing
 deployment state, it can be quite frustrating and discourage use of the application.  We designed a
@@ -427,7 +427,7 @@ cached version of the ERG.  All WRITES must go through the OpLog.}
 % is necessary.  StreamFS offers a real-time processing facility, whereby javascript operaters can be applied
 % to streaming data.  This allows us to clean it as it comes in and compute the aggregate traces.  We are currently experimenting
 % with various aggregation models to give occupants deeper insights.  
-\section{Deployment Experience}
+\subsection{Deployment Experience}
 \label{sec:eval}
 
 We deployed 20 ACme power meters~\cite{acme} on a single floor of a building on campus.  The data was made available through
@@ -452,9 +452,9 @@ were particularly difficult to keep track of.  Finally, our disconnected operati
 intermitextttent connectivity.  For future work we will baseline the floor's energy consumption before and after the deployment 
 and measure if more visibility and analytics indeed motivates occupants to use less.
 
-\section{Acknowledgements}
-This work is support by the LoCal NSF Grant \#CPS-0932209 and ActionWebs NSF Grant \#CPS-0931843.  We would also like
-to thank Albert Goto for deployment help and Amazon for providing our computing infrastructure.
+% \section{Acknowledgements}
+% This work is support by the LoCal NSF Grant \#CPS-0932209 and ActionWebs NSF Grant \#CPS-0931843.  We would also like
+% to thank Albert Goto for deployment help and Amazon for providing our computing infrastructure.
 
 % Pub/sub architecture
 % time decoupling

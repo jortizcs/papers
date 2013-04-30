@@ -1,4 +1,4 @@
-\section{Dynamic Aggregation}
+\subsection{Dynamic Aggregation}
 \label{sec:dynagg}
 Dynamic aggregation combines the underlying entity-relationship graph with in-network aggregation.  It treats
 each node in the graph as a potential point of aggregation on a particular data type.  For example,
@@ -13,7 +13,7 @@ each view is a managed as an independent hierarchy.  So the hierarchy of \emph{s
 the \emph{inventory} hierarchy or the \emph{taxonomy} hierarchy.  This allows us to ask questions with a particular
 view in mind, without conflict, and is a natural fit for our aggregation scheme.
 
-\subsection{How it works}
+\subsubsection{How it works}
 Although there are different semantics applied to different node types at the application layer, StreamFS only knows
 about two types of nodes: (1) default nodes and (2) stream nodes.  The main difference is that \emph{default} nodes
 are not explicitly associated with data coming from a sensor and \emph{stream} nodes are.  Furthermore, default

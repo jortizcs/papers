@@ -8,13 +8,13 @@
 \label{fig:heatmap}
 \end{figure*}
 
-\section{Experimental Results}
+\subsection{Experimental Results}
 \label{eval}
 In this section we evaluate SBS on our building traces.  We demonstrate
  the benefits of striping the data by monitoring patterns captured at different time scales.
 Then, we thoroughly investigate the alarms reported by SBS.  
 
-\subsection{Shortcomings}
+\subsubsection{Shortcomings}
 Because our analysis is done on historical data, some of the faults found by SBS could not be fully
 corroborated.  In order to fully examine the effectiveness of our approach, we must run it in real time and
 physically check that the problem is actually occurring.  When a problem is detected
@@ -35,7 +35,7 @@ difficult to find by the building manager.  We forego a comparison of SBS with c
  related algorithms require detailed knowledge of the building, \emph{a priori}.  The advantage of SBS is that it 
 requires no such information to provide immediate value.
 
-\subsection{Device behavior at different time scales}
+\subsubsection{Device behavior at different time scales}
 The Strip and Bind part of SBS is evaluated using the data from Eng. Bldg 2. %, since we can verify how items are being used and use it as ground truth.
 This dataset is appropriate to measure SBS's performance, since lighting and HVAC systems serving the same room are usually used 
 simultaneously.
@@ -88,7 +88,7 @@ We conduct the same experiments by splitting the dataset in 70 bins of 1 day lon
 
 % TODO add some info about the reference matrix for the Building 2?
 
-\subsection{Anomalies}
+\subsubsection{Anomalies}
 We evaluate the \emph{search} performance of SBS using the traces from the Eng. Bldg 2 and Cory Hall.
 %% Romain
 Due to the lack of historical data, such as room schedule or reports of energy waste, the evaluation is non-trivial.
