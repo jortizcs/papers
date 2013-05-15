@@ -20,9 +20,16 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated field_info (elt_size=4) to 12752 items from 5000.
+Reallocated field_info (elt_size=4) to 13704 items from 5000.
 Database file #1: thesis-blx.bib
 Database file #2: references.bib
+Warning--I didn't find a database entry for "buildings_study"
+Warning--I didn't find a database entry for "doe_2"
+Warning--I didn't find a database entry for "eplus"
+Warning--I didn't find a database entry for "osisoft"
+Warning--I didn't find a database entry for "andrew_lighting"
+Warning--I didn't find a database entry for "buildsys1"
+Warning--I didn't find a database entry for "buildsys2"
 Warning--I didn't find a database entry for "japanbuildings"
 Warning--I didn't find a database entry for "epabuildings"
 Warning--I didn't find a database entry for "waste_science"
@@ -84,7 +91,7 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 You've used 1 entry,
             6019 wiz_defined-function locations,
-            1192 strings with 8962 characters,
+            1199 strings with 9027 characters,
 and the built_in function-call counts, 1306 in all, are:
 = -- 64
 > -- 58
@@ -123,4 +130,4 @@ warning$ -- 0
 while$ -- 50
 width$ -- 0
 write$ -- 20
-(There were 56 warnings)
+(There were 63 warnings)

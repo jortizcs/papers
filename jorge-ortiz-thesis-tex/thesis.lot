@@ -14,11 +14,11 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {7.1}{\ignorespaces Classification of the alarms reported by SBS for both dataset (and the number of corresponding anomalies).}}{42}{table.169}
+\contentsline {table}{\numberline {7.1}{\ignorespaces Classification of the alarms reported by SBS for both dataset (and the number of corresponding anomalies).}}{43}{table.169}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {7.2}{\ignorespaces Shows the time to fetch nodes based on the size of the fetch. The fetch time increased linearly with the number of nodes. Caching maintain fetch time near that of fetching a single node. A callback is used when cache is invalidated.}}{54}{table.200}
+\contentsline {table}{\numberline {7.2}{\ignorespaces Shows the time to fetch nodes based on the size of the fetch. The fetch time increased linearly with the number of nodes. Caching maintain fetch time near that of fetching a single node. A callback is used when cache is invalidated.}}{55}{table.200}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {7.3}{\ignorespaces Average operation execution time in StreamFS.}}{55}{table.202}
+\contentsline {table}{\numberline {7.3}{\ignorespaces Average operation execution time in StreamFS.}}{56}{table.202}
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 

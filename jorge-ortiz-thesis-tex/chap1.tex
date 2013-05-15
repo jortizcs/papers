@@ -13,15 +13,56 @@
 % \section{Building Applications}
 
 \section{Background}
+Buildings consume nearly 40\% of the total energy produced in the United States and 72\% of the electricity.  Similar figures 
+have been recorded in other industrialized countries~\cite{buildings_study}.  Furthermore, studies show that they waste from
+30-80\% of the energy they consume.  With specter of global warming and the continued decrease in the cost of storage and 
+communication, buildings have become a major target for improved energy efficiency.
+
 
 \section{Building Information Systems}
+Nearly three-quarter of building 100,000 square feet or larger, have a building management system (BMS) installed.  
+A BMS typically consists of thousands of sensors, distributed through the internal spaces in the building, periodically reporting 
+the state of the environment and the health of the individual sub-systems.  Their primary use is to maintain and diagnose problems
+in throughout the building, as they are reported to the building manager.  However, recent interest in energy has motivated the 
+expanded use of their data-gather capabilities in order to uncover opportunities to improve their overall performance, increase the
+lifetime of the building, and make buildings more comfortable its occupants.
+
+The suite of software available to contractors and architects is quite fast.  Ranging from pure simulation engines, such as 
+DOE-2~\cite{doe_2} and EnergyPlus~\cite{eplus} to offline analytical packages that combine the strength of statistical analysis
+with building models~\cite{osisoft}.
+
 \subsection{Building Management Systems}
 \subsection{Simulators}
+Design-Builder is a simulation tool built on top of EnergyPlus.  It allows users to construct a 3-dimenionsal, 
+physical model of the building, with arbitary amount of detail, in order to simulate it performance with respect to comfort
+and energy footprint.
+
+Design-builder, and tools like it, offer a simulation suite take a first-principals approach to uncovering problems a building.
+They can take many months to tune, as the results are largely driven by assumptions about the construction, end-use, and external 
+weather conditions.  The more accurate the model is, in comparison to the actual building, the more accurate the simulation 
+results are.
+
 
 \section{Building Applications Today}
+The notion of applications in building has been around for some time, but almost exclusively in research.  The bulk of commercial
+applications revolve around better visualization of building data through the web.  Recently~\cite{andrew_lighting, buildsys1, buildsys2},
+there has been to work to expand the notion of building applications to include both visualization \emph{and} control.  Visualization, itself,
+has broadened its reach to include personalized, aggregate, real-time views of energy consumption.
+
 \subsection{Code Compliance}
+The primary use of simulators on the market, is for code compliance.  There are building codes that are mandated by each state and across
+the nation, that dictate the construction and health of newly constructed buildings.
+
 \subsection{Energy Auditing}
+Energy auditing is now seen like an application in buildings.
+
 \subsection{Retrofitting}
+Retrofits refers to the addition of new technology or the replacement of old technology to improve the performance of a system.  In the case
+of buildings, this means improving some aspect of the construction of the building in order to improve its performance.  Often, simulations
+are used to test the effects of retrofits in simulations and made decisions about whether or not to invest in a retrofit.  For example, 
+the physical construction and replacement of the windows, the addition of sky lightings, the addition or replacement of HVAC components, are
+all examples of retrofits that can be tested in simulation before they are purchased.
+
 
 %\section{Related Work}
 \section{Building Analysis: First principals}
@@ -35,6 +76,8 @@
 \subsection{Context Is Everything}
 
 \section{Building Applications of Tomorrow}
+The notion of combining is not new, but it has not really become a reality until now.  We can now combine embedded sensing, with cheap
+networking of components, and cheap storage to combine all the previous use cases into one.
 
 
 

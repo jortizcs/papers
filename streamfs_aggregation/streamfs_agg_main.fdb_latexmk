@@ -1,8 +1,12 @@
-# Fdb version 2
-["bibtex streamfs_agg_main"] 1326199926 "streamfs_agg_main.aux" "streamfs_agg_main.bbl" "streamfs_agg_main" 
+# Fdb version 3
+["bibtex streamfs_agg_main"] 1326199926 "streamfs_agg_main.aux" "streamfs_agg_main.bbl" "streamfs_agg_main" 1367255621
   "references.bib" 1324910766 75929 8b8ed38079e6b64ba83b2368c40a4816 ""
-  "streamfs_agg_main.aux" 1326199926 4405 34956340148f7cd70e0dab6f00fdefa5 ""
-["pdflatex"] 1326199926 "/Users/jortiz81/Dropbox/dissertation/papers/streamfs_aggregation/streamfs_agg_main.tex" "streamfs_agg_main.pdf" "streamfs_agg_main" 
+  "streamfs_agg_main.aux" 1326199927 4405 34956340148f7cd70e0dab6f00fdefa5 ""
+  (generated)
+  "streamfs_agg_main.bbl"
+  "streamfs_agg_main.blg"
+["pdflatex"] 1326199926 "/Users/jortiz/Dropbox/dissertation/papers.git/streamfs_aggregation/streamfs_agg_main.tex" "streamfs_agg_main.pdf" "streamfs_agg_main" 1367255621
+  "/Users/jortiz/Dropbox/dissertation/papers.git/streamfs_aggregation/streamfs_agg_main.tex" 1326199377 5636 03f8dbec7c2b682bc6820a8ff825e234 ""
   "/Users/jortiz81/Dropbox/dissertation/papers/streamfs_aggregation/streamfs_agg_main.tex" 1326199377 5636 03f8dbec7c2b682bc6820a8ff825e234 ""
   "/usr/local/texlive/2009/texmf-dist/tex/context/base/supp-pdf.mkii" 1251025892 71625 fad1c4b52151c234b6873a255b0ad6b3 ""
   "/usr/local/texlive/2009/texmf-dist/tex/generic/ifxetex/ifxetex.sty" 1233273963 1340 39350e9c1d02c796fb8a1221fddbdd7c ""
@@ -77,3 +81,6 @@
   "streamfs_agg_main.aux" 1326199927 4405 34956340148f7cd70e0dab6f00fdefa5 ""
   "streamfs_agg_main.bbl" 1326199926 1106 fd5830dfe0801ab9b1a3a3e752a16e08 "bibtex streamfs_agg_main"
   "streamfs_agg_main.out" 1326199927 1096 bd0aa323b119d8ce8fe7731b368af1d6 ""
+  (generated)
+  "streamfs_agg_main.pdf"
+  "streamfs_agg_main.log"
