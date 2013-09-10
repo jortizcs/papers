@@ -1,0 +1,73 @@
+\section{Motivation}
+
+As networked, embedded sensing becomes more and more ubiquitous, it becomes important to formulate new ways to use the data produced by these devices.  One can view these devices as fundamentally linked to the physical world, reporting on physical measurement taken in the context of where they are placed.  For example, a sensor deployment on the Golden Gate bridge \cite{GGB} were used to monitor its structural health over time.  By taking fine-grained, high-frequency accelerometer readings, the authors were able to formulate a time-varying view of the bridge as a whole.  Another important application is in buildings, where sensors on embedded throughout the building environment to measure the ambient condition and to monitor the health of the equipment used to maintain safety, comfort, and security.  In either application, the placement of sensors must be known a priori in order to construct a wholistic view of the phenomena being observed.
+
+The building context is particularly challenging in this regard.  The GGB project, for example, used 64 nodes spread 
+throughout the bridge.  The location of each node was carefully recorded.  Buildings, on the other hand, typically have 
+over an order of magnitude more sensors, distributed throughout the building.  Sutardja Dai Hall contains over 3000 
+sensors spread throughout the building, and the number of sensors typically increases with the size (in square feet) 
+of the building.  In each case, the location, type, and other information is important to record.  This metadata, is 
+crucial for data interpretation.  Moreover, the relationship between the sensors, as described through the metadata, 
+serves an even more critical role, as it allows the analyst to construct a holistic view/interpretation of the data.  
+Without it, the data is useless.
+
+{\bf Observation 1}:  The metadata that describes the context of the embedded device, is as important as the data the 
+device produces.
+
+{\bf Observation 2}:  The metadata must be normalized, for each deployment, in order to formulate a holistic interpretation 
+of the measurements.
+
+The phenomena being sensed is time-varying in nature.  Each data value has an associated timestamp and there’s some work 
+must be done to either synchronized, normalize, or align timestamps across streams before analysis.  However, the real 
+challenge lies in long-lived deployments.  Long-lived are challenging because the physical environment changes and these 
+changes are difficult to track, at scale.  For example, buildings have lifespans that last multiple decades.  In that 
+time, the environment and placement of sensors in them, goes through many, many changes.  In order to maintain an accurate, 
+continuous assessment of the environment, such changes must be tracked.
+
+{\bf Observation 3}:  Changes in the physical environment must be systematically tracked in order to maintain an accurate 
+interpretation of the data produced by sensors embedded in that environment.
+
+This observation is corroborated in several experimental deployments [references?] and captured in simulation engines, 
+such as EnergyPlus, explicitly.  Most deployments collect data throughout the lifetime of the deployment and do both real-time 
+and historical analysis of the data.  Designing for the physical changes, then, has deep implications on the design of the system.  
+The first is that there should be mechanisms in place either 1) automatically describe the environment/placement, type, etc. and 
+2) there are verification processes that continuous check the validity of the metadata.  Both are necessary to assure the accuracy 
+of the analysis.  Moreover, 3) history must be recorded and accounted for throughout the lifetime of the deployment.  This assures 
+that the analyst will place the data in the appropriate context, even as she runs through the historical data.
+
+Finally, soft context should also be systematically tracked.  Software changes can cause changes in stream behavior that are an 
+actual source of error during analysis.  This should also be captured in the metadata history.
+
+{\bf Observation 4}: Metadata history is necessary in order to properly audit the environment and accurately perform a historical 
+analysis.
+
+We have designed a system, StreamFS, that address each of these observations for sensor deployments.  However, for this paper we focus on
+the portion of the system that specifically addresses observations 1, 2, and 4.  We discuss the part of the system that addresses
+observation 3, but refer the reader to other papers that specifically address this issue.  We also describe the use of StreamFS for
+managing sensor deployments in buildings.  We integrate StreamFS into the Building Applciation Stack~\cite{BAS} and benchmark it i
+a real world deployment.
+
+\section{Related work}
+
+All the data values are compressed using snappy~\cite{snappy}, before insertion into the database.
+
+\begin{enumerate}
+\item Git version control
+	\begin{itemize}
+	\item any change in the metadata is ``committed''
+	\item tags name commits
+	\item SHA-1 is used to save the contents of a commit operation (i.e. the struct that described the operation)
+	\end{itemize}
+\item Log-structured file system
+	\begin{itemize}
+	\item all changes made to the metadata is recorded as a timestamped operation in the database
+	\item the details of the operation are stored elsewhere and \emph{only} fetched if explicitly queried
+	\item The log is replayed from the start time to the end time of a query 
+	\end{itemize}
+\item provenance database systems
+\item timeseries databases systems
+\item BAS and BOSS
+\item spatio-temporal databases
+\end{enumerate}
+
+
