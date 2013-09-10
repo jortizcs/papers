@@ -1,24 +1,53 @@
-\chapter{Building Data and Metadata}
+\chapter{StreamFS System Architecture}
 
-\section{Representation of Physical Data}
+\begin{figure}[t!] %htbp
+\centering
+\includegraphics[width=0.75\columnwidth]{figs/sfsarch}
+\caption{StreamFS system architecture.}
+\label{fig:sfsarch}
+\end{figure}
 
-\section{Other Sources of Information}
+\section{Name Management}
+\input{external_tex/streamfs_system/intro}
+\input{external_tex/streamfs_aggregation/namespaces}
+
+\section{Process Management}
+%\input{external_tex/streamfs_aggregation/}
+
+\section{Internal Process Management}
+\input{external_tex/streamfs_aggregation/olap_to_erg}
+\input{external_tex/streamfs_aggregation/dynagg}
+
+\section{External Process Management}
 
 
-\section{Building Metadata}
-\subsection{Building Entities}
-\subsection{Entity Relationships}
 
-\section{Constructing Multiple Views}
-\subsection{Capturing System Relationships}
-\subsection{Capturing Spatial Relationships}
-\subsection{Capturing Functional Relationships}
+\section{Pub-Sub Subsystem}
+%\input{external_tex/streamfs_aggregation/intro}
 
-\section{Queries in the Built Environment}
 
-\section{Related Work}
+%\subsection{Graph Maintenance}
 
-\section{Remaining Challenges}
+
+
+
+\section{Comparison To Related Systems}
+\input{external_tex/streamfs_aggregation/related}
+
+\section{Summary}
+
+
+
+% \section{Building Data and Metadata}
+
+% \section{Representation of Physical Data}
+
+% \section{Other Sources of Information}
+
+
+
+
+
 
 
 % draw out the queries, mostly related to energy, occupancy, etc.

@@ -16,6 +16,182 @@
   {}
 \endgroup
 
+\entry{BuildingEnergyData}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {{Department of Energy}}{D.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{D1}
+  \strng{fullhash}{D1}
+  \field{sortinit}{D}
+  \field{note}{\url{http://buildingsdatabook.eren.doe.gov/}}
+  \field{title}{{2011 Buildings Energy Data Book}}
+\endentry
+
+\entry{dynamicLeed}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {{Department of Energy}}{D.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{D1}
+  \strng{fullhash}{D1}
+  \field{sortinit}{D}
+  \field{note}{\url{http://www.leeduser.com/blogs/usgbc-exploring-new-kind-leed-plaque-v4-gbci-certification-platinum}}
+  \field{title}{{USGBC Exploring A New Kind of LEED Plaque}}
+\endentry
+
+\entry{gardner1987energy}{book}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Gardner}{G.}%
+     {P.}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ward}{W.}%
+     {L.}{L.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Energy Publications}%
+  }
+  \strng{namehash}{GPWL1}
+  \strng{fullhash}{GPWL1}
+  \field{sortinit}{G}
+  \field{isbn}{9780905332543}
+  \field{title}{Energy Management Systems in Buildings: The Practical Lessons}
+  \verb{url}
+  \verb http://books.google.com/books?id=\_1wKfAEACAAJ
+  \endverb
+  \field{year}{1987}
+\endentry
+
+\entry{MITBuildingScience}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Gershenfeld}{G.}%
+     {Neil}{N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Samouhos}{S.}%
+     {Stephen}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Nordman3}{N.}%
+     {Bruce}{B.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{GNSSNB1}
+  \strng{fullhash}{GNSSNB1}
+  \field{sortinit}{G}
+  \field{title}{Intelligent Infrastructure for Energy Efficiency}
+  \field{journaltitle}{Science Magazine}
+  \field{year}{2010}
+\endentry
+
+\entry{ACme}{inproceedings}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Jiang}{J.}%
+     {Xiaofan}{X.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Dawson-Haggerty}{D.-H.}%
+     {Stephen}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Dutta}{D.}%
+     {Prabal}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Culler}{C.}%
+     {David}{D.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {IEEE Computer Society}%
+  }
+  \strng{namehash}{JX+1}
+  \strng{fullhash}{JXDHSDPCD1}
+  \field{sortinit}{J}
+  \field{booktitle}{Proceedings of the 2009 International Conference on
+  Information Processing in Sensor Networks}
+  \field{isbn}{978-1-4244-5108-1}
+  \field{pages}{253\bibrangedash 264}
+  \field{series}{IPSN '09}
+  \field{title}{Design and implementation of a high-fidelity AC metering
+  network}
+  \verb{url}
+  \verb http://dl.acm.org/citation.cfm?id=1602165.1602189
+  \endverb
+  \list{location}{1}{%
+    {Washington, DC, USA}%
+  }
+  \field{year}{2009}
+\endentry
+
+\entry{mpc}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Ma}{M.}%
+     {Yudong}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kelman}{K.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Daly}{D.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Borrelli}{B.}%
+     {F.}{F.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{Buildings;Construction industry;Energy efficiency;Predictive
+  control;Thermal engineering}
+  \strng{namehash}{MY+1}
+  \strng{fullhash}{MYKADABF1}
+  \field{sortinit}{M}
+  \verb{doi}
+  \verb 10.1109/MCS.2011.2172532
+  \endverb
+  \field{issn}{1066-033X}
+  \field{number}{1}
+  \field{pages}{44\bibrangedash 64}
+  \field{title}{Predictive Control for Energy Efficient Buildings with Thermal
+  Storage: Modeling, Stimulation, and Experiments}
+  \field{volume}{32}
+  \field{journaltitle}{Control Systems, IEEE}
+  \field{year}{2012}
+\endentry
+
+\entry{Leed}{misc}{}
+  \field{sortinit}{U}
+  \field{note}{\url{http://www.usgbc.org/leed/}}
+  \field{title}{{U.S. Green Building Council Leadership in Energy and
+  Environmental Design}}
+\endentry
+
 \lossort
 \endlossort
 
