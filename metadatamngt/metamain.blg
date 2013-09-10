@@ -1,13 +1,14 @@
-This is BibTeX, Version 0.99c (TeX Live 2009)
+This is BibTeX, Version 0.99d (TeX Live 2012)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: metamain.aux
 The style file: abbrv.bst
 Database file #1: references.bib
-I was expecting a `,' or a `}'---line 362 of file references.bib
+I was expecting a `,' or a `}'---line 368 of file references.bib
  :  
  :  booktitle = {2011 Future of Instrumentation International Workshop},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 368 of file references.bib
+I was expecting a `,' or a `}'---line 374 of file references.bib
  :  
  :  booktitle = {American Council for an Energy-Efficient Economy Summer Study on Energy Efficient Buildings 2012},
 (Error may have been on previous line)

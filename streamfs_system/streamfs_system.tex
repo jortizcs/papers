@@ -246,8 +246,81 @@ larger the average error and variance of job completion times.
 
 Now I have to show this experimentally and describe the methodology and job scheduling/migration algorithm.
 
-\subsection{Job scheduling and migration}
+% \subsection{Job scheduling and migration}
+% Lets assume we have a job $J$ that takes $T_{c}$ to complete is scheduled to run every $T_{p}$ seconds. 
+
+
+
+\section{Processes Job Scheduling}
 Lets assume we have a job $J$ that takes $T_{c}$ to complete is scheduled to run every $T_{p}$ seconds. 
+
+
+\section{Process and sample scheduling}
+A job specifies both the report period and timeout time.  The job also specifies, implicitly or
+explicitly, which sensor streams will be consumed.  These parameters are used by the process manager
+for scheduling those streams such that 1) we maximize the number of jobs that make use of a report
+and 2) we minimize the error introduced by waiting for a report; interpolating later in time, introducing
+more error.  The former keeps the CPU more highly utilized doing active work, the latter allows jobs to 
+run on the freshest data (or its closest approximation).  
+
+The driver has two reporting modes.  The first is for sensors whose report period can be set
+and the other is for those whose report period cannot be set.  The driver decouples the report
+capabilities of the underlying hardware from the report mechanism to the process manager.  This 
+allows for scheduling flexibility in the process
+manager.  We argue that this is a critical design choice, for processing efficiency, when dealing 
+with the integration of heterogenous physical data streams.  In addition, we embedded a simple linear
+interpolation process in the driver code itself.  This gives the scheduler flexibility in choosing the
+data value from the sensor for timestamp alignment with the other sensors.  We observe that readings,
+in close temporal proximity, are linearly associated with prior readings; especially as
+the temporal distance decreases.
+
+Jobs in the system specify a maximum report period of the job and the $k$ streams it consumes.  
+Data streams fall into two categories: those that can be scheduled and those that cannot.  For
+those that can be scheduled the questions are how do we \dots
+
+\begin{enumerate}
+\item schedule their report periods such that each job as the minimum number of data points per stream in 
+less than the maximum report period for that job?
+%\item schedule their report period to maximize overlap with the job report period?
+%\item schedule their report period to minimize the wait time between the actual reading and the report time?
+\end{enumerate}
+
+By default, drivers linearly interpolate pairs of readings.  We assume, for simplicity, that
+1) a reading contains no error and 2) the longer we wait, the larger the error.  The 
+error is proportional to the amount of time since the last reading, times a constant.
+The constant is stream specific.  We capture this, using a stream-specific weight constant.
+For streams that cannot be scheduled, we ask, how do we \dots
+
+\begin{enumerate}
+\item set their report periods such that the time distance between the interpolated (reported) value
+and the raw (actual) value is minimized across all $k$ streams.
+\end{enumerate}
+
+\subsection{Sample scheduling}
+There are $n$ jobs, each with a period $P_{i}$ for some job $j_{i}$.  Each stream, $j_{i}$, consumes a set
+of streams $K_{i}$.  A job also specifies the minimum number of data points necessary from each stream.
+In this scenario, each stream $s \in K_{i}$ can be scheduled with any period $p$
+and start time, $t_{init}$.  For our jobs, we can stop and re-start them to get them to re-align after
+a scheduling decision has been made.  The goal is to meet the maximum deadline while providing each job
+the number of necessary data points from each stream.
+
+
+\subsubsection{Variable Sensing Schedule}
+
+\subsubsection{Fixed Sensing Schedule}
+Let $t_{i}$ be the  next time the job will run.
+
+
+\subsubsection{Error Minimization}
+
+\section{Mixed Strategy}
+
+
+
+
+
+
+
 
 
 \subsection{Experimental results}
@@ -364,7 +437,7 @@ data explicitly between applications.  There are 5 levels of access:
 \item operation (read/get, write/post,put, execute/put,post)
 \end{enumerate}
 
-Application boundaries are useufl for separating data-only (read/write only data) application from control applications.
+Application boundaries are useful for separating data-only (read/write only data) application from control applications.
 For example, we have one application that wants to display the total energy consumed by the lights in the building and 
 it even writes the aggregate light energy consumption data to a resource and makes that resource available.  The light-control
 application also read data coming from the lights through resources owned by the light data application, but it produces

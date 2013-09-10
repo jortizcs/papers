@@ -1,4 +1,4 @@
-PWD /Users/jortiz/Dropbox/dissertation/papers.git/streamfs_system
+PWD /Users/jortiz/dropbox/dissertation/papers.git/streamfs_system
 INPUT /usr/local/texlive/2012/texmf.cnf
 INPUT /usr/local/texlive/2012/texmf/web2c/texmf.cnf
 INPUT /usr/local/texlive/2012/texmf-var/web2c/pdftex/pdflatex.fmt
@@ -219,16 +219,19 @@ INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/public/wasy/wasy10.tfm
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/public/wasy/wasy6.tfm
+INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/adobe/times/ptmri7t.tfm
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/vf/adobe/times/zptmcmrm.vf
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/vf/adobe/times/zptmcmrm.vf
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/public/cm/cmmi10.tfm
+INPUT /usr/local/texlive/2012/texmf-dist/fonts/vf/adobe/times/ptmri7t.vf
+INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/adobe/times/ptmri8r.tfm
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/adobe/times/ptmr7t.tfm
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/adobe/times/ptmr7t.tfm
-INPUT streamfs_system.bbl
-INPUT streamfs_system.bbl
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/vf/adobe/times/zptmcmr.vf
+INPUT streamfs_system.bbl
+INPUT streamfs_system.bbl
 INPUT streamfs_system.aux
 INPUT ./streamfs_system.out
 INPUT ./streamfs_system.out

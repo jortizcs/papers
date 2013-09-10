@@ -6,4 +6,16 @@ An internet for manufactoring.
   \url{http://www.technologyreview.com/news/509331/an-internet-for-manufacturing/},
   2013.
 
+\bibitem{snappy}
+Snappy.
+\newblock \url{https://code.google.com/p/snappy/}, Feb. 2013.
+
+\bibitem{GGB}
+S.~Kim, S.~Pakzad, D.~Culler, J.~Demmel, G.~Fenves, S.~Glaser, and M.~Turon.
+\newblock Health monitoring of civil infrastructures using wireless sensor
+  networks.
+\newblock In {\em Proceedings of the 6th international conference on
+  Information processing in sensor networks}, IPSN '07, pages 254--263, New
+  York, NY, USA, 2007. ACM.
+
 \end{thebibliography}

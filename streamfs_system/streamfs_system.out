@@ -1,0 +1,37 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [2][-]{subsection.2}{Sematics of a stream file}{section.1}% 2
+\BOOKMARK [2][-]{subsection.3}{Inputting to a file with Regex and mapper}{section.1}% 3
+\BOOKMARK [1][-]{section.4}{Introduction}{}% 4
+\BOOKMARK [2][-]{subsection.7}{Entity-relationship model}{section.4}% 5
+\BOOKMARK [2][-]{subsection.13}{An example}{section.4}% 6
+\BOOKMARK [2][-]{subsection.14}{General Approach}{section.4}% 7
+\BOOKMARK [1][-]{section.15}{Physical-data applications}{}% 8
+\BOOKMARK [2][-]{subsection.16}{Data organization, data services}{section.15}% 9
+\BOOKMARK [2][-]{subsection.17}{Context consistency maintenance}{section.15}% 10
+\BOOKMARK [2][-]{subsection.18}{Dashboards}{section.15}% 11
+\BOOKMARK [2][-]{subsection.19}{Analytics}{section.15}% 12
+\BOOKMARK [2][-]{subsection.20}{Control}{section.15}% 13
+\BOOKMARK [1][-]{section.21}{Subscription semantics}{}% 14
+\BOOKMARK [2][-]{subsection.22}{Continuous group-by for aggregation}{section.21}% 15
+\BOOKMARK [1][-]{section.24}{Stream processing}{}% 16
+\BOOKMARK [1][-]{section.27}{Processes Job Scheduling}{}% 17
+\BOOKMARK [1][-]{section.28}{Process and sample scheduling}{}% 18
+\BOOKMARK [2][-]{subsection.32}{Schedule Overlap Maximization}{section.28}% 19
+\BOOKMARK [3][-]{subsubsection.33}{Variable Sensing Schedule}{subsection.32}% 20
+\BOOKMARK [3][-]{subsubsection.34}{Fixed Sensing Schedule}{subsection.32}% 21
+\BOOKMARK [3][-]{subsubsection.35}{Error Minimization}{subsection.32}% 22
+\BOOKMARK [1][-]{section.36}{Mixed Strategy}{}% 23
+\BOOKMARK [2][-]{subsection.37}{Experimental results}{section.36}% 24
+\BOOKMARK [1][-]{section.38}{Filesystem for streaming data}{}% 25
+\BOOKMARK [2][-]{subsection.39}{Naming and access}{section.38}% 26
+\BOOKMARK [2][-]{subsection.40}{File types: directories, regular, special, pipes}{section.38}% 27
+\BOOKMARK [2][-]{subsection.41}{Filesystem tools: grep, find, ls}{section.38}% 28
+\BOOKMARK [1][-]{section.42}{Publish/subscribe model}{}% 29
+\BOOKMARK [2][-]{subsection.43}{Space decoupling}{section.42}% 30
+\BOOKMARK [2][-]{subsection.44}{Time decoupling}{section.42}% 31
+\BOOKMARK [2][-]{subsection.45}{Synchronization decoupling}{section.42}% 32
+\BOOKMARK [1][-]{section.46}{Security}{}% 33
+\BOOKMARK [2][-]{subsection.47}{Confidentiality}{section.46}% 34
+\BOOKMARK [2][-]{subsection.48}{Authentication}{section.46}% 35
+\BOOKMARK [2][-]{subsection.51}{Access control and privacy}{section.46}% 36
+\BOOKMARK [1][-]{section.57}{References}{}% 37
