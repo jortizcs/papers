@@ -54,9 +54,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{Introduction}{17}{section*.41}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Sematics of a stream file}{17}{section*.42}
+\contentsline {subsubsection}{Sematics of a stream file}{19}{section*.42}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Inputting to a file with Regex and mapper}{17}{section*.43}
+\contentsline {subsubsection}{Inputting to a file with Regex and mapper}{19}{section*.43}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{Introduction}{19}{section*.44}
 \defcounter {refsection}{0}\relax 
@@ -68,7 +68,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{Namespaces}{22}{section*.55}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Object identifier namespace}{22}{section*.56}
+\contentsline {subsubsection}{Object identifier namespace}{23}{section*.56}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Hierarchical namespace}{23}{section*.57}
 \defcounter {refsection}{0}\relax 
@@ -78,19 +78,19 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{Mapping OLAP to ERG}{23}{section*.60}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Measures, Dimenions, and Levels}{23}{section*.61}
+\contentsline {subsubsection}{Measures, Dimenions, and Levels}{24}{section*.61}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Operations: drill-down and roll-up}{23}{section*.62}
+\contentsline {subsubsection}{Operations: drill-down and roll-up}{24}{section*.62}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Operations: slice and dice}{23}{section*.63}
+\contentsline {subsubsection}{Operations: slice and dice}{24}{section*.63}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Operations: pivoting}{23}{section*.64}
+\contentsline {subsubsection}{Operations: pivoting}{24}{section*.64}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Dynamic Aggregation}{23}{section*.65}
+\contentsline {subsection}{Dynamic Aggregation}{24}{section*.65}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{How it works}{24}{section*.66}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Dealing with dynamics}{24}{section*.68}
+\contentsline {subsubsection}{Dealing with dynamics}{25}{section*.68}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Two scenarios}{25}{section*.69}
 \defcounter {refsection}{0}\relax 
@@ -106,172 +106,178 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\chapternumberline {4}Filesystem Metaphore and the Pipe Abstraction}{27}{chapter.78}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.1}File abstraction and Supporting Multiple Names}{27}{section.79}
+\contentsline {section}{\numberline {4.1}Related Work}{28}{section.83}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.2}Processing Pipelines and Management}{27}{section.80}
+\contentsline {section}{\numberline {4.2}File abstraction and Supporting Multiple Names}{28}{section.84}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Entity Relationships}{27}{section*.81}
+\contentsline {subsection}{File types and operations}{29}{section*.86}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.3}Internal Processes}{27}{section.82}
+\contentsline {section}{\numberline {4.3}Processing Pipelines and Management}{31}{section.90}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.4}External Processes}{27}{section.83}
+\contentsline {subsection}{Entity Relationships}{31}{section*.91}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.5}API Overview}{27}{section.84}
+\contentsline {section}{\numberline {4.4}Internal Processes}{31}{section.92}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{RESTful API}{27}{section*.85}
+\contentsline {section}{\numberline {4.5}External Processes}{31}{section.93}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Programmatic API}{27}{section*.86}
+\contentsline {section}{\numberline {4.6}API Overview}{31}{section.94}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.6}Example Application: Deployment Viewer}{27}{section.87}
+\contentsline {subsection}{RESTful API}{31}{section*.95}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.7}Example Application: Mounted Filesystem and Matlab Integration}{27}{section.88}
+\contentsline {subsection}{Programmatic API}{31}{section*.96}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4.8}Summary}{27}{section.89}
+\contentsline {section}{\numberline {4.7}Example Application: Deployment Viewer}{31}{section.97}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\chapternumberline {5}Process Management and Scheduling}{28}{chapter.90}
+\contentsline {section}{\numberline {4.8}Example Application: Mounted Filesystem and Matlab Integration}{31}{section.98}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.1}Designing for Horizontal Scalability}{28}{section.91}
+\contentsline {section}{\numberline {4.9}Summary}{31}{section.99}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.2}Minimizing Data Time in Buffer}{28}{section.92}
+\contentsline {chapter}{\chapternumberline {5}Process Management and Scheduling}{32}{chapter.100}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Experimental Results}{28}{section.93}
+\contentsline {section}{\numberline {5.1}Related Work}{32}{section.101}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.4}Summary}{28}{section.94}
+\contentsline {section}{\numberline {5.2}Designing for Horizontal Scalability}{32}{section.102}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\chapternumberline {6}Metadata Evolution and Verification}{29}{chapter.95}
+\contentsline {section}{\numberline {5.3}Maximizing Data Freshness}{32}{section.103}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Verication through Sensor Data}{29}{section.96}
+\contentsline {section}{\numberline {5.4}Experimental Results}{34}{section.112}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.2}Types of Verification}{29}{section.97}
+\contentsline {section}{\numberline {5.5}Summary}{34}{section.115}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Geometric Verification}{29}{section*.98}
+\contentsline {chapter}{\chapternumberline {6}Metadata Evolution and Verification}{36}{chapter.116}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Functional Verification}{29}{section*.99}
+\contentsline {section}{\numberline {6.1}Verication through Sensor Data}{36}{section.117}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Value Verification}{29}{section*.100}
+\contentsline {section}{\numberline {6.2}Types of Verification}{36}{section.118}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.3}Structural Verification With Empirical Mode Decomposition}{29}{section.101}
+\contentsline {subsection}{Geometric Verification}{36}{section*.119}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Introduction}{29}{section*.102}
+\contentsline {subsection}{Type Verification}{36}{section*.120}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Related Work}{30}{section*.106}
+\contentsline {subsection}{Functional Verification}{36}{section*.121}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Dataset}{31}{section*.107}
+\contentsline {subsection}{Value Verification}{36}{section*.122}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.4}Problem statement and Initial approach}{32}{section.109}
+\contentsline {section}{\numberline {6.3}Structural Verification With Empirical Mode Decomposition}{36}{section.123}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Methodology}{34}{section*.111}
+\contentsline {subsection}{Introduction}{36}{section*.124}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Results}{34}{section*.116}
+\contentsline {subsection}{Related Work}{37}{section*.128}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Initial analysis}{35}{section*.117}
+\contentsline {subsection}{Dataset}{38}{section*.129}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Validation}{35}{section*.118}
+\contentsline {section}{\numberline {6.4}Problem statement and Initial approach}{39}{section.131}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Limitations}{36}{section*.123}
+\contentsline {subsection}{Methodology}{41}{section*.133}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Discussion}{37}{section*.124}
+\contentsline {subsection}{Results}{41}{section*.138}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Conclusion}{38}{section*.125}
+\contentsline {subsubsection}{Initial analysis}{42}{section*.139}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.5}Functional Verification through Classification and Experimentation}{38}{section.126}
+\contentsline {subsubsection}{Validation}{42}{section*.140}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.6}Value-Based Verification Through Physical-Model Checking}{38}{section.127}
+\contentsline {subsection}{Limitations}{43}{section*.145}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.7}Related Work}{38}{section.128}
+\contentsline {subsection}{Discussion}{44}{section*.146}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.8}Summary}{38}{section.129}
+\contentsline {subsection}{Conclusion}{45}{section*.147}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\chapternumberline {7}Applications}{39}{chapter.130}
+\contentsline {section}{\numberline {6.5}Functional Verification through Classification and Experimentation}{45}{section.148}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.1}Anomaly Detection}{39}{section.131}
+\contentsline {subsection}{Introduction}{45}{section*.149}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Introduction}{39}{section*.132}
+\contentsline {subsection}{Problem description}{47}{section*.150}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Problem description}{40}{section*.133}
+\contentsline {subsection}{Methodology}{49}{section*.153}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Methodology}{42}{section*.136}
+\contentsline {subsubsection}{Strip and Bind}{49}{section*.154}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Strip and Bind}{42}{section*.137}
+\contentsline {subsubsection}{Empirical Mode Decomposition}{50}{section*.156}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Empirical Mode Decomposition}{43}{section*.139}
+\contentsline {subsubsection}{IMF aggregation}{51}{section*.163}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{IMF aggregation}{45}{section*.146}
+\contentsline {subsubsection}{Search}{53}{section*.165}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Search}{46}{section*.148}
+\contentsline {subsubsection}{Reference}{53}{section*.166}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Reference}{47}{section*.149}
+\contentsline {subsubsection}{Behavior change}{53}{section*.167}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Behavior change}{47}{section*.150}
+\contentsline {subsection}{Data sets}{54}{section*.168}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Data sets}{48}{section*.151}
+\contentsline {subsubsection}{Engineering Building 2 - Todai}{54}{section*.169}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Engineering Building 2 - Todai}{48}{section*.152}
+\contentsline {subsubsection}{Cory Hall - UC Berkeley}{55}{section*.170}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Cory Hall - UC Berkeley}{49}{section*.153}
+\contentsline {subsubsection}{Data pre-processing}{55}{section*.171}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Data pre-processing}{49}{section*.154}
+\contentsline {subsection}{Experimental Results}{55}{section*.177}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Experimental Results}{49}{section*.160}
+\contentsline {subsubsection}{Shortcomings}{56}{section*.178}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Shortcomings}{49}{section*.161}
+\contentsline {subsubsection}{Device behavior at different time scales}{57}{section*.179}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Device behavior at different time scales}{51}{section*.162}
+\contentsline {paragraph}{High frequencies}{57}{section*.180}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{High frequencies}{51}{section*.163}
+\contentsline {paragraph}{Medium frequencies}{57}{section*.181}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Medium frequencies}{51}{section*.164}
+\contentsline {paragraph}{Low frequencies}{58}{section*.182}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Low frequencies}{52}{section*.165}
+\contentsline {paragraph}{Residual data}{58}{section*.183}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Residual data}{52}{section*.166}
+\contentsline {subsubsection}{Anomalies}{58}{section*.184}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Anomalies}{52}{section*.167}
+\contentsline {paragraph}{Anomaly classification}{59}{section*.185}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Anomaly classification}{52}{section*.168}
+\contentsline {paragraph}{Experimental setup}{59}{section*.188}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Experimental setup}{54}{section*.171}
+\contentsline {subsubsection}{Engineering Building 2}{61}{section*.194}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Engineering Building 2}{55}{section*.177}
+\contentsline {subsubsection}{Cory Hall}{62}{section*.200}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Cory Hall}{56}{section*.183}
+\contentsline {subsection}{Discussion}{63}{section*.201}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Discussion}{56}{section*.184}
+\contentsline {subsection}{Conclusions}{63}{section*.202}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Conclusions}{57}{section*.185}
+\contentsline {subsection}{Related work}{64}{section*.203}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Related work}{58}{section*.186}
+\contentsline {section}{\numberline {6.6}Type Verification With K-Nearest Neighbors}{65}{section.204}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.2}Visualization and Analysis of Streaming Data}{59}{section.187}
+\contentsline {section}{\numberline {6.7}Related Work}{65}{section.213}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.3}Energy Audition with Mobile Phones}{59}{section.188}
+\contentsline {section}{\numberline {6.8}Summary}{65}{section.214}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Introduction}{59}{section*.189}
+\contentsline {chapter}{\chapternumberline {7}Architectural Evaluation}{73}{chapter.215}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Motivating scenario}{60}{section*.190}
+\contentsline {section}{\numberline {7.1}Visualization and Analysis of Streaming Data}{73}{section.216}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Related Work}{61}{section*.191}
+\contentsline {section}{\numberline {7.2}Energy Audition with Mobile Phones}{73}{section.217}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Challenge 1: Tracking People and Things}{61}{section*.192}
+\contentsline {subsection}{Introduction}{73}{section*.218}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Challenge 2: Consistency Management}{62}{section*.193}
+\contentsline {subsection}{Motivating scenario}{74}{section*.219}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Challenge 3: Disconnected Operation}{63}{section*.194}
+\contentsline {subsection}{Related Work}{75}{section*.220}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Deployment Experience}{63}{section*.196}
+\contentsline {subsection}{Challenge 1: Tracking People and Things}{76}{section*.221}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Evaluation}{64}{section*.198}
+\contentsline {subsection}{Challenge 2: Consistency Management}{77}{section*.222}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Sensing and tag layer}{64}{section*.199}
+\contentsline {subsection}{Challenge 3: Disconnected Operation}{77}{section*.223}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Prefetching}{65}{section*.200}
+\contentsline {subsection}{Deployment Experience}{77}{section*.225}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Log replay latency}{65}{section*.202}
+\contentsline {subsection}{Evaluation}{79}{section*.227}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Future work and conclusion}{66}{section*.204}
+\contentsline {subsubsection}{Sensing and tag layer}{79}{section*.228}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\chapternumberline {8}Lessons Learned and Future Work}{67}{chapter.205}
+\contentsline {subsubsection}{Prefetching}{79}{section*.229}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\chapternumberline {9}Conclusion}{68}{chapter.206}
+\contentsline {subsubsection}{Log replay latency}{80}{section*.231}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Bibliography}{69}{section*.208}
+\contentsline {subsection}{Future work and conclusion}{80}{section*.233}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\chapternumberline {8}Lessons Learned and Future Work}{81}{chapter.234}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\chapternumberline {9}Conclusion}{82}{chapter.235}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Bibliography}{83}{section*.237}

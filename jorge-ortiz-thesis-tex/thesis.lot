@@ -8,17 +8,23 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
-\addvspace {10pt}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Summary of the 4 main file types and their valid operations in StreamFS.}}{29}{table.87}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.2}{\ignorespaces Summary of the 6 special-file sub-types and their valid operations in StreamFS.}}{30}{table.88}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {4.3}{\ignorespaces Summary of the 6 special-file sub-types and their valid operations in StreamFS.}}{30}{table.89}
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {7.1}{\ignorespaces Classification of the alarms reported by SBS for both dataset (and the number of corresponding anomalies).}}{53}{table.170}
+\contentsline {table}{\numberline {6.1}{\ignorespaces Classification of the alarms reported by SBS for both dataset (and the number of corresponding anomalies).}}{60}{table.187}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {7.2}{\ignorespaces Shows the time to fetch nodes based on the size of the fetch. The fetch time increased linearly with the number of nodes. Caching maintain fetch time near that of fetching a single node. A callback is used when cache is invalidated.}}{65}{table.201}
+\addvspace {10pt}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {7.3}{\ignorespaces Average operation execution time in StreamFS.}}{66}{table.203}
+\contentsline {table}{\numberline {7.1}{\ignorespaces Shows the time to fetch nodes based on the size of the fetch. The fetch time increased linearly with the number of nodes. Caching maintain fetch time near that of fetching a single node. A callback is used when cache is invalidated.}}{79}{table.230}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {7.2}{\ignorespaces Average operation execution time in StreamFS.}}{80}{table.232}
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
