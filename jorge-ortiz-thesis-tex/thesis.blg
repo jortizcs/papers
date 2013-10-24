@@ -3,7 +3,7 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: thesis.aux
 The style file: biblatex.bst
 A level-1 auxiliary file: abstract.aux
-A level-1 auxiliary file: chap1.aux
+A level-1 auxiliary file: SensingBuiltEnvironment.aux
 Case mismatch error between cite keys MPC and mpc
 ---line 54 of file thesis.aux
  : \citation{MPC
@@ -19,17 +19,18 @@ Case mismatch error between cite keys DynamicLeed and dynamicLeed
  : \citation{DynamicLeed
  :                      }
 I'm skipping whatever remains of this command
-A level-1 auxiliary file: chap2.aux
-A level-1 auxiliary file: chap3.aux
-A level-1 auxiliary file: chap4.aux
-A level-1 auxiliary file: chap6.aux
+A level-1 auxiliary file: SFSArch.aux
+A level-1 auxiliary file: FSandPipe.aux
+A level-1 auxiliary file: ProcMngtSched.aux
+A level-1 auxiliary file: MetaVerification.aux
+A level-1 auxiliary file: ArchEval.aux
 Case mismatch error between cite keys acme and ACme
----line 131 of file thesis.aux
+---line 132 of file thesis.aux
  : \citation{acme
  :               }
 I'm skipping whatever remains of this command
 Case mismatch error between cite keys acme and ACme
----line 134 of file thesis.aux
+---line 135 of file thesis.aux
  : \citation{acme
  :               }
 I'm skipping whatever remains of this command
@@ -56,6 +57,7 @@ Warning--I didn't find a database entry for "buildsys1"
 Warning--I didn't find a database entry for "buildsys2"
 Warning--I didn't find a database entry for "EnergyPlus"
 Warning--I didn't find a database entry for "mobile2020"
+Warning--I didn't find a database entry for "fig:everythingfile"
 Warning--I didn't find a database entry for "syncsql"
 Warning--I didn't find a database entry for "epabuildings"
 Warning--I didn't find a database entry for "waste_science"
@@ -64,22 +66,14 @@ Warning--I didn't find a database entry for "cbecs2003"
 Warning--I didn't find a database entry for "olap"
 Warning--I didn't find a database entry for "Chen76theentity-relationship"
 Warning--I didn't find a database entry for "SenkoDB"
-Warning--I didn't find a database entry for "fig:everythingfile"
 Warning--I didn't find a database entry for "japanbuildings"
 Warning--I didn't find a database entry for "huang:emd1998"
-Warning--I didn't find a database entry for "occmodels_buildsys11"
-Warning--I didn't find a database entry for "Bellala_buildsys11"
-Warning--I didn't find a database entry for "kim:buildsys2010"
-Warning--I didn't find a database entry for "AgarwalBDGW11"
-Warning--I didn't find a database entry for "kaminthermo"
-Warning--I didn't find a database entry for "buildanomaly"
+Warning--I didn't find a database entry for "aer2011"
+Warning--I didn't find a database entry for "wrinch:pes2012"
 Warning--I didn't find a database entry for "gutp"
 Warning--I didn't find a database entry for "ogawa:lncs2011"
 Warning--I didn't find a database entry for "emd_process"
 Warning--I didn't find a database entry for "rilling:biemd2007"
-Warning--I didn't find a database entry for "simheatcool"
-Warning--I didn't find a database entry for "aer2011"
-Warning--I didn't find a database entry for "wrinch:pes2012"
 Warning--I didn't find a database entry for "lee:climateEMD2011"
 Warning--I didn't find a database entry for "blanco:bioMed2008"
 Warning--I didn't find a database entry for "huang:signalProc2006"
@@ -92,8 +86,12 @@ Warning--I didn't find a database entry for "huber:wiley2009"
 Warning--I didn't find a database entry for "chan:springer2005"
 Warning--I didn't find a database entry for "romain:iotapp12"
 Warning--I didn't find a database entry for "blondel:unfolding"
-Warning--I didn't find a database entry for "agarwal:ipsn2011"
-Warning--I didn't find a database entry for "erickson:ipsn2011"
+Warning--I didn't find a database entry for "occmodels_buildsys11"
+Warning--I didn't find a database entry for "Bellala_buildsys11"
+Warning--I didn't find a database entry for "kim:buildsys2010"
+Warning--I didn't find a database entry for "AgarwalBDGW11"
+Warning--I didn't find a database entry for "kaminthermo"
+Warning--I didn't find a database entry for "buildanomaly"
 Warning--I didn't find a database entry for "katipamula:1review2005"
 Warning--I didn't find a database entry for "katipamula:2review2005"
 Warning--I didn't find a database entry for "schein:hvacr2006"
@@ -103,6 +101,9 @@ Warning--I didn't find a database entry for "seem:energybldg2007"
 Warning--I didn't find a database entry for "brown:buildperf2012"
 Warning--I didn't find a database entry for "zhou:wiley2009"
 Warning--I didn't find a database entry for "chen:aaaiw2011"
+Warning--I didn't find a database entry for "agarwal:ipsn2011"
+Warning--I didn't find a database entry for "erickson:ipsn2011"
+Warning--I didn't find a database entry for "simheatcool"
 Warning--I didn't find a database entry for "oecd2011"
 Warning--I didn't find a database entry for "stephscale"
 Warning--I didn't find a database entry for "lanz"
@@ -117,7 +118,7 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
 You've used 8 entries,
             6019 wiz_defined-function locations,
-            1251 strings with 10537 characters,
+            1252 strings with 10592 characters,
 and the built_in function-call counts, 22484 in all, are:
 = -- 903
 > -- 738

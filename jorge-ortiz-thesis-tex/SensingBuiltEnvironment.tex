@@ -1,18 +1,5 @@
 \chapter{Sensing in the Built Environment}
 
-% \section{Metadata And Context Extraction}
-
-% \section {Geometric, Functional, and Interactive Relationships}
-
-% \section{Modeling Interaction From Geometric, Functional Information}
-
-% \section{Verifying Geometric and Functional Relationships From Empirically-Inferred Interactions}
-
-% \section{Evolution of the Built Environment}
-
-% \section{Building Applications}
-
-\section{Introduction}
 Buildings consume nearly 40\% of the total energy produced in the United States and 72\% of the electricity.  Similar figures 
 have been recorded in other industrialized countries~\cite{buildings_study}.  Furthermore, studies show that they waste from
 30-80\% of the energy they consume.  With specter of global warming and the continued decrease in the cost of storage and 
@@ -107,11 +94,11 @@ The user interacts with the system through a graphical interface, constructed fr
 for the component in the system that is being monitored.  The BMS running on the PC communicates with the outstations through either a 
 proprietary protocol or an open one like BACNet~\cite{Bacnet} or LonTalk~\cite{LonTalk}.
 
-\begin{figure}[t!] %htbp
+\begin{figure}[h!] %htbp
 \centering
-\includegraphics[width=0.25\columnwidth]{figs/bacnet_device}
-\caption{BACNet device example.}
-\label{fig:bacnet_device}
+\includegraphics[width=0.50\columnwidth]{figs/BMS_network}
+\caption{High-level control board architecture.}
+\label{fig:bms_network}
 \end{figure}
 
 Both protocols define both a wire protocol and packet structure for communicating with the outstations.  From these there's a high-level
@@ -125,13 +112,6 @@ This name is typically what is exposed by the protocol to the application.  All 
 constructed from the building schematics, is also designed and constructed by the vendor.  The building manger is the primary user of the system,
 so rather than expose the underlying protocol, he/she interacts with the building via the graphical interface.
 
-\begin{figure}[t!] %htbp
-\centering
-\includegraphics[width=0.50\columnwidth]{figs/BMS_network}
-\caption{High-level control board architecture.}
-\label{fig:bms_network}
-\end{figure}
-
 In order to interact with the underlying sensor and actuator layer, the application must use a stub that communicates directly with the 
 sensor/actuator through the BACnet stack.  Services treated similarly to sensors/actuators.  They are represented as a collection of 
 objects with readable/writable properties.  An example service that is provided in BACNet is  \emph{WhoIs} and \emph{EventNotification}.
@@ -141,9 +121,15 @@ and over 50 types of object types in the baseline protocol, which is extensible.
 on either the number of characters (specified by the vendor) or the encoding.
 
 
+\begin{figure}[t!] %htbp
+\centering
+\includegraphics[width=0.25\columnwidth]{figs/bacnet_device}
+\caption{BACNet device example.}
+\label{fig:bacnet_device}
+\end{figure}
 
-
-\section{Current and Future Building Applications}
+% \section{Current and Future Building Applications}
+\section{From Supervisory Control to Application Development in Buildings}
 Building information systems were built as tightly integrated silos, where the main application is the graphical user interface.
 Features for interoperability were designed at two interface layers: 1) the protocol layer and 2) data export features in the 
 graphical interface.  The protocol layer -- we focus on BACNet, but the similar features exist in othe protocols, such as LonTalk --
@@ -193,7 +179,8 @@ have pushed the boudanries of the capabilities of building information systems a
 
 
 
-\section{BMS Design Flaws for Supporting Future Building Applications}
+% \section{BMS Design Flaws for Supporting Future Building Applications}
+\section{BMS Architectural Shortcomings for Supporting Emerging Application Development}
 
 \begin{figure}[t!] %htbp
 \centering
@@ -202,14 +189,30 @@ have pushed the boudanries of the capabilities of building information systems a
 \label{fig:soda_bms_screenshot}
 \end{figure}
 
-In this section we dissect the current architecture in the context of current and future applications
-for buildings.  The first two describe how the current architecture is used to provide the intended service
-that these application provide.  The latter two are emerging applications that we would like to available
-throughout the entire building stock.  We will see, however, that these are very difficult to build at scale
-and we pose the question ``what is missing in the current architecture to enanble the system properties that help
-support these and other emerging applications?''.  Through close inspection it will hopefully become clear that
-the current architecture is fundamentally flawed; built largely to support a small set of vendor-specific
-applications and not much else.
+% In this section we dissect the current architecture in the context of current and future applications
+% for buildings.  The first two describe how the current architecture is used to provide the intended service
+% that these application provide.  The latter two are emerging applications that we would like to available
+% throughout the entire building stock.  We will see, however, that these are very difficult to build at scale
+% and we pose the question ``what is missing in the current architecture to enanble the system properties that help
+% support these and other emerging applications?''.  Through close inspection it will hopefully become clear that
+% the current architecture is fundamentally flawed; built largely to support a small set of vendor-specific
+% applications and not much else.
+
+In this section we dissect the BMS architecture and closely examine how well it can support broad application development
+in buildings, rather than the single supervisory control function it supports today.  We examine the architecture in the context
+of 4 potential services with distinct operational requirements that need to be supported.  The first two services that 
+are offered today and enabled by the BMS.  We describe how emerging requirements are driving the evolution of these
+services and how BMS's are struggling to meet the new requirements due to limitations in their architectural design.
+The next two are emerging services that BMS's cannot support today.  We describe which architectural components must be included
+or how current components must be modified in order to support these.  We also make the broader argument that 
+building systems should be built to support a much wider range of applications that we cannot currently anticipate.
+We will show why this requires a fundamental re-design and propose an architectural composition for such a system.
+In the rest of the thesis, we will examine an instance of our architecture and describe the challenges in realizing
+the use and effectiveness of our system in real building deployments.
+
+% while the latter are potential applications we imagine will be supported in future
+% smart buildings.  Through this exercise, we build our argument for a systematic re-design of such systems and propose
+% a set of necessary architectural components necessary to enable and support emerging applications.
 
 \subsection{Monitoring and Supervisory Control}
 The primary objective in the design of building information systems is for centralized monitoring and supervisor
@@ -297,7 +300,7 @@ that much data.
 \begin{figure}[t!] %htbp
 \centering
 \includegraphics[width=0.75\columnwidth]{figs/mpc1}
-\caption{Hierachical MPC for a stock of buildings.}
+\caption{Emerging Application: Hierachical MPC for a stock of buildings.}
 \label{fig:mpc1}
 \end{figure}
 
@@ -329,7 +332,7 @@ and their associated digital information has historically followed the same prin
 \begin{figure}[h!] %htbp
 \centering
 \includegraphics[width=0.75\columnwidth]{figs/mobileEnergy1}
-\caption{Mobile phone interfacing with the physical infrastructure.}
+\caption{Emerging Application: Mobile phone interfacing with the physical infrastructure.}
 \label{fig:mobileEnergy1}
 \end{figure}
 
@@ -355,7 +358,7 @@ The mobile energy viewer application not only require these but requires that th
 
 \section{Addressing BMS Shortcomings}
 The current architecture of building information systems is very tightly integrated and based on monitoring and supervisory control
-of local control loops.  Building information systems we built as tightly integrated systems with a single application.  The main
+of local control loops.  Building information systems were built as tightly integrated systems with a single application.  The main
 layer of interaction is been the underlying network layer.  However, because of the complexity of dealing directly with the network,
 later iterations of BMS's included an export feature which decoupled the protocol from the necessary information, namely, time-value
 pairs for each point in the system.  As auditing applications emerged and energy became a prime target for reduction in buildings, 
@@ -363,13 +366,15 @@ these interface choices became overloaded.  Moreover, as the need to build new k
 that are missing become more clear.  The following is a list of some of them:
 
 \begin{enumerate}
-\item Network protocol details should remain opaque to end-user applications.
+% \item Network protocol details should remain opaque to end-user applications.
+\item Narrow waist should be above the network layer.
 \item A time-series store is necessary.
-\item Mechanisms to distill the readings should be availble.
-\item Real-time data forwarding should be available, especially for control-related applications.
+\item Mechanisms to distill the readings must be availble.
+\item Real-time data forwarding should be available, especially for control applications.
+\item Contextual relationships between sensor should be verified.
 \end{enumerate}
 
-These four items are commonly built and re-built in emerging applications.  Therefore, we argue that they are fundamental 
+The first four items are commonly built and re-built in emerging applications.  Therefore, we argue that they are fundamental 
 to the future architecture of building information systems.  Moreoever, we observe that dealing with network-protocol specific
 calls is not only cumbersome, but usually circumvented in order to deal directly with the data.  Most applications that do
 use the underlying protocol expose a name-time-value (NTV) tuple to the layers above.  This observation leads us to believe that
@@ -411,8 +416,13 @@ Contextual accuracy is the notion that the context -- physical location, type, e
 to interpret the results for the analysis accurately.  For example, an application that is providing aggregate statistics on the 
 power consumption by plug-load items on each floor of a building, must be sure that all the data used for the analysis 
 is power-meter data on the specified floor.  If power meter A on floor 1 is moved to floor 2, the code doing the aggregation
-should discover the change and adjust the aggregates for floor 1 and floor 2.  This example may seem contrived, however it is a
-more general example that has to do with the verification of the underlying metadata/tags associated with the stream names.
+should discover the change and adjust the aggregates for floor 1 and floor 2.  Another example is related to model predictive 
+control processes that assume contextual relationships among a set of sensors to derive the state of a physical space and 
+make control decision that affect that state.  If sensors are update, moved, added, or changed, the queries made by such processes
+will be inaccurate and lead to incorrect control decisions.  Many such processes will exists in future smart buildings, so
+automating the verification process as much as possible, is crucial.
+% This example may seem contrived, however it is a
+% more general example that has to do with the verification of the underlying metadata/tags associated with the stream names.
 
 All of the metadata for each point is inputted by a human being.  Given the scale of the task -- thousands of sensors per building --
 it is highly error prone.  So what may seem like a trivial problem for a single instance (as described above) leads to gross
@@ -574,3 +584,5 @@ virtual models of the building.
 
 
 % sportsman grin\cite[page 45]{waveshaping} historic stockpile.
+
+

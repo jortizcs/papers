@@ -1,6 +1,0 @@
-PWD /Users/jortiz/Dropbox/dissertation/papers.git/jorge-ortiz-thesis-tex
-INPUT /usr/local/texlive/2012/texmf.cnf
-INPUT /usr/local/texlive/2012/texmf/web2c/texmf.cnf
-INPUT /usr/local/texlive/2012/texmf-var/web2c/pdftex/pdflatex.fmt
-INPUT /Users/jortiz/Dropbox/dissertation/papers.git/jorge-ortiz-thesis-tex/chap1.tex
-OUTPUT chap1.log

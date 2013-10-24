@@ -17,24 +17,10 @@ buildings and several applications were built on top of it over a 2 years period
 \end{figure}
 
 \section{Name Management}
-\input{external_tex/streamfs_system/intro}
 \input{external_tex/streamfs_aggregation/namespaces}
 
-\section{Process Management}
-%\input{external_tex/streamfs_aggregation/}
-Sensor data is fundamentally challenging to deal with because much of it must be cleaned before it can be processed.  For example,
-it is not uncommon to receive readings that is out of operational range, that is erroneous with respect to the previous observed trend,
-or to stop receiving readings altogether.  This implies the need for processing jobs to provide a level of filtering over the raw streams.
-Once the data is cleaned, it is typically consumed more sophisticated processes that aggregate the information or use it for control
-of the space or equipment.  We provide the mechanisms for handling both classes of processing jobs with our process management layer.
-In the next section we will discuss our process management layer and how users can both submit jobs to StreamFS for management or link
-their own external processing elements so that they can be managed through StreamFS but run outside of StreamFS.
-
 \section{Internal Process Management}
-Internal processes are jobs submitted to StreamFS that are written in Javascript and managed within a StreamFS cluster.
 
-\input{external_tex/streamfs_aggregation/olap_to_erg}
-\input{external_tex/streamfs_aggregation/dynagg}
 
 \section{External Process Management}
 

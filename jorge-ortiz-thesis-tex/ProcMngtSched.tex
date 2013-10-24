@@ -1,0 +1,140 @@
+
+
+
+\chapter{Process Management and Scheduling}
+Data is coming in at different, independent rate from sensors and is produced asynchronously from internal processing elements.
+For certain processes, processing the incoming data as quickly as possible is key, however, this is challenging for several reasons:
+1) a process may subscribe to multiple, independent streams with asychronized report schedules and 2) interpolated values
+should be avoided to minimize prediction inaccuracies in interpolated values.  Therefore, a process actually wants all the freshest
+data from all the streams they are subscribing to, while minimizing the average time that the data for each respective stream has 
+been waiting in the buffer.
+
+
+\section{Related Work}
+\section{Designing for Horizontal Scalability}
+
+%\section{Minimizing Data Time in Buffer}
+\section{Maximizing Data Freshness}
+Certain jobs only care about consuming the latest readings from their subscription streams.  They are willing to discard reading until two
+conditions are met:
+
+\begin{enumerate}
+\item There is at least one data point from each stream in the subscription buffer.
+\item The statelness factor is minimized within the immediate time window.
+\end{enumerate}
+
+This is of particular interest to controllers that need to make control decision based on the freshest data possible and can tolerate some variability
+in the completion time of the control task.  It is also useful in analytical jobs that want to process the latest data from multiple streams while also
+allowing some variability in the completion of the processing task.  Note, there's a fundamental tradeoff
+between the staleness factor and variability of consumption.  It is sometimes better to wait for the next incoming data point than it is to use what
+is currently in the buffer, as waiting will decrease the overall staleness factor.  Other times, it is better to consume the bufferred data immedaitely.
+This causes a certain amount of variability in the delivery period to the control process.  However, for some applications, this is a reasonable tradeoff
+to make.  Making use of the freshest data is desirable for minimizing errors, either in the control of a system or the calculation of some aggregate state.
+Generally, the error grows with staleness, therefore the goal of this mechanism is to continuously minimize the error associated with staleness through
+scheduling.
+
+
+\begin{figure}[t!] %htbp
+\centering
+\includegraphics[width=0.75\columnwidth]{figs/min_buffer}
+\caption{Multiple streams in a subscription and their associated parameters.}
+\label{fig:min_buffer}
+\end{figure}
+
+Let $A_{i}$ be the arrival time of the last data point received from stream $i$ and $D_{i}$ be the arrival time for the next data point from stream $i$
+and their relationship as described in equation \ref{eqn:deadline}, where $T(i)$ is the average period between the arrivals from stream $i$.
+
+\begin{equation}
+D_{i} = A_{i} + T(i)
+\label{eqn:deadline}
+\end{equation}
+
+
+Periodically, our algorithm runs and checks if there is a data point for each stream in the subscription.  If so, the \emph{min\_buffer} algorithm runs 
+and effectively decides whether to execute the job on the current buffer immediately or whether to wait until later, when the \emph{staleness factor} of
+the buffer will be at a minimum.  This decision is driven by equation~\ref{eqn:later_better_condition}, whereby we find the next deadline, computed with
+equation~\ref{eqn:last_deadline}, for each stream in the set and determine the staleness factor will be for the entire buffer if we wait until that deadline arrives.
+
+\begin{equation}
+t_{L,i} = A_{i} + \Bigl\lfloor \frac{D_{k}-A_{i}}{T(i)} \Bigr\rfloor T(i)
+\label{eqn:last_deadline}
+\end{equation}
+
+If there is no deadline $D_{k}$ for some stream $k$ such that equation~\ref{eqn:later_better_condition} holds, then we execute now.  Otherwise we choose to wait
+until $D_{k}$ for the stream whose next deadline minimizes the staleness factor of the buffer.
+
+
+\begin{equation}
+\sum_{i=1}^{k-1} D_{k} - t_{L,i} < \sum_{i=1}^{k} t_{now} - A_{i}
+\label{eqn:later_better_condition}
+\end{equation}
+
+The algorithm is sketched our below.
+
+
+\begin{algorithm}[h!]
+ \SetAlgoLined
+ Given a full buffer $b[n]$:\\
+  \For{all elements in the $b$}{
+  (1) Calculate the staleness of element $i$ and add to total stalness, $S_n$\;
+  \For{all other elements in the buffer}{
+  	(1) Determine the next report time $D_i$ for this element\;
+  	(2) Determine the staleness of all the elements if we wait until $D_i$\;
+  	(3) If it is the smallest staleness figure calculate, replace minimum cost, $S_l$.
+  	}
+  }
+  \If{$S_l$ is less than $S_n$}{
+  (1) Wait until later to consume\;
+  \Else{
+  (1) Consume now}
+  }
+ \caption{Staleness algorithm.}
+ \label{alg:emd}
+\end{algorithm}
+
+\section{Experimental Results}
+
+\begin{figure}[t!] %htbp
+\centering
+\includegraphics[width=0.9\columnwidth]{figs/staleness_vs_numstreams}
+\caption{}
+\label{fig:stalevsstreams}
+\end{figure}
+
+\begin{figure}[t!] %htbp
+\centering
+\includegraphics[width=1.0	\columnwidth]{figs/period_vs_streams}
+\caption{}
+\label{fig:report_periods}
+\end{figure}
+
+
+\section{Summary}
+
+
+
+
+% \chapter{Metadata Evolution and Verification}
+% \section{Verication through Sensor Data}
+
+% \section{Types of Verification}
+% \subsection{Geometric Verification}
+% \subsection{Functional Verification}
+% \subsection{Value Verification}
+
+% \section{Structural Verification With Empirical Mode Decomposition}
+
+% \input{external_tex/ipsn_iotapp/intro}
+% \input{external_tex/ipsn_iotapp/related}
+% \input{external_tex/ipsn_iotapp/dataset}
+% \input{external_tex/ipsn_iotapp/methodology}
+% \input{external_tex/ipsn_iotapp/results}
+% \input{external_tex/ipsn_iotapp/conc}
+
+
+% \section{Functional Verification through Classification and Experimentation}
+
+% \section{Value-Based Verification Through Physical-Model Checking}
+
+% \section{Related Work}
+
