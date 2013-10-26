@@ -1,0 +1,31 @@
+\section{Experimental Building Deployments and Datasets}
+
+\subsection{Engineering Building 2 - Todai}\label{data:engbldg2}
+%The data from building 1 is collected at the Engineering Building 2 of the Hongo campus. 
+Engineering building 2, at the University of Tokyo (Todai), is a 12-story building completed in 2005 and is now 
+hosting classrooms, laboratories, offices 
+and server rooms.  
+The electricity consumption of the lighting and HVAC systems of 231 rooms is monitored by 135 sensors.
+Rather than a centralized HVAC system, small, local HVAC systems are set up throughout the buidling.  
+The HVAC systems are classified into two categories, EHP (Electrical Heat Pump) and GHP (Gas Heat Pump).
+The GHPs are the only devices that serve numerous rooms and multiple floors.  The 5 GHPs in the dataset serve 154 rooms.
+The EHP and lighting systems serve only pairs of rooms and which are directly controlled by the occupants.
+In addition, the sensor metadata provides device-type and location information (room number), 
+therefore, the electricity consumption of each pair of rooms is separately monitored.
+
+
+% In addition, we expect the anomaly detector to identify discontinuities in these relationships that represent obvious electricity saving opportunities (e.g. a room HVAC left on during night while the room lights have been turned off).
+
+% Due to privacy concern this dataset is not publicly available on the Internet but accessible upon request.
+
+\subsection{Cory Hall - UC Berkeley}
+Cory Hall, at UC Berkeley, is a 5-story building hosting mainly classrooms, meeting rooms, laboratories and a datacenter.
+This building was completed in 1950, thus its infrastructure is significantly different from the Japanese one.
+The HVAC system in the building is centralized and serves several floors per unit.
+There is a separate unit for an internal fabricated laboratory, inside the building.
+%Nevertheless, we notice an independent HVAC system that was serving a particular laboratory; the Microfabrication Laboratory (Microlab).
+
+\subsection{Sutardja Dai Hall - UC Berkeley}
+Sutardja Dai Hall is a large buildings at Berkeley.
+
+

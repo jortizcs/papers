@@ -1,0 +1,605 @@
+
+
+\chapter{Metadata Evolution and Verification}
+
+Buildings consume an enormous amount of energy in countries around the world.  In 
+Japan, 28\% of the energy produced is consumed in buildings~\cite{japanbuildings} while in the United 
+States it is as high as 40\%~\cite{epabuildings}.  Moreover, studies show that between 30-80\% of it
+is wasted~\cite{waste_science, next10_waste}.  Large commercial buildings are typically instrumented
+with a large number of sensors measuring various aspects of building operation.  Although this data is
+typically used to assure operational stability, they may also be used to measure, observe, and identify
+instances of wasted use.
+
+\subsection{Functional Verification}
+\input{external_tex/ipsn_sbs/introduction}
+\input{external_tex/ipsn_sbs/problem}
+\subsection{Spatial Verification}
+\input{external_tex/ipsn_iotapp/intro}
+\subsection{Type Verification}
+\subsection{Value Verification}
+
+
+
+\section{Functional Verification through Classification and Experimentation}
+% \section{Anomaly Detection}
+
+\input{external_tex/ipsn_sbs/method}
+\input{external_tex/ipsn_sbs/dataset}
+\input{external_tex/ipsn_sbs/evaluation}
+
+
+
+
+
+
+
+
+
+
+
+\section{Spatial Verification and Empirical Mode Decomposition}
+
+\input{external_tex/ipsn_iotapp/dataset}
+\input{external_tex/ipsn_iotapp/methodology}
+\input{external_tex/ipsn_iotapp/results}
+
+Typically, placement information is embedded in the name or associated metadata for each sensor in the building.
+These are used to group sensors by location.  For example, in our building data, all sensors that contain the string
+ `410' in their name are in room 410.  Processes typically group streams in this fashion: using regular-expression matching 
+or field-matching queries on the characters in the sensor name or metadata.  If these are not updated to reflect changes
+then such group-by query results will not accurately represent true spatial relationships.  
+Fontugne et al.~\cite{IOT} observe that spatial associations can be derived empirically.  We start with this approach in our 
+work and explore, more deeply, the extent to which it can be used 
+as a verification tool for corroborating the groups constructed from character-matching queries.  We refer
+to this process as \emph{spatial verification}.
+
+Prior work~\cite{IOT} makes use of a technique called Empirical Mode Decomposition (EMD)~\cite{EMD} to statistically cluster correlated
+usage patterns.  Sensors close to each other show strong statistical correlations while sensors further apart show weaker correlations.  
+The main parameter in their approach, the correlation threshold, is explored to demonstrate how it relates to characteristic spatial patterns
+ in the sensor feeds.  However, they do not characterize the threshold as it relates to physical configuration.
+Fontugne et al.~\cite{SBS} expand the work by applying EMD to uncover functional device patterns.  They develop
+an unsupervised learning method to model normal usage patterns and apply an anomaly detection algorithm to alert when patterns
+have deviated from the norm.  The methodology used in their work divides raw signals into four separate frequency bands
+and shows the medium band to carry the most spatial information.
+
+In this section, we explore the threshold parameter in~\cite{IOT} more deeply, in order to move towards automatic spatial clustering, 
+to be used as a form of verification. We use EMD and the intrinsic mode function (IMF) re-aggregation methodology described in~\cite{SBS}, with some modifications, to statistically analyze the threshold parameter
+and its relationship to spatial separation in a building.  We explore the hypothesis that \emph{a statistical boundary, analogous to a physical one,
+exists and is empirically discoverable}.
+We conduct an empirical analysis on the data collected from 15 sensors in 5 rooms over a one-month period.  Our study makes the following contributions:
+
+\begin{itemize}
+\item We corroborate the results in~\cite{IOT}, verifying the spatial correlation pattern in a very different building.
+\item We characterize the correlation coefficient (corrcoeff) distribution of sensors in the same room and different rooms and validate our existence hypothesis for this preliminary sample.
+\item We demonstrate that the statistical boundary between sensors in various rooms converges to a similar value and this value generalizes across rooms in this study.
+\item We show the tradeoff between the true and false positive rate inherent to threshold selection. We also show that our method improves the classification accuracy from 80\% to 93.3\%.
+\end{itemize}
+
+Our results are promising yet preliminary.  We are able to find a statistical separation across a small number of rooms, quite well.
+Our study, however, does not explore the extent to which the physical separation affects the results.  Certainly for rooms that
+are far apart we observe a statistical distinction using our methodology.  However, we also find that in some cases, our approach
+does not work as well.  We discuss the approach and results in the rest of the paper, followed by a short discussion and future work.
+
+\begin{figure*}[ht!]
+\centering
+    \includegraphics[width=0.95\textwidth]{figs/IMFReAggExample}
+\caption{(a) EMD decomposes a signal and exposes intrinsic oscillatory components; (b) Aggregation of IMFs within a pre-defined frequency range makes seemingly similar signals from different locations more distinguishable; (c) IMF aggregation makes seemingly distinct signals of different sensors in the same room show high correlation.}
+\end{figure*}
+
+\subsection{Methodology}
+We start our analysis by extending the methodology used in SBS~\cite{SBS}, based on empirical mode decomposition (EMD).  
+In our analysis, we collect traces from several sensors and run EMD on them.  This produces a set of 
+constituent sub-signals called ``intrinsic mode functions'' (IMF), which we separate by frequency range and re-aggregate into distinct bands.
+Then, we inspect the relationship between the sensors by computing the corrcoeff within a particular band, which 
+gives us the spatial information we are interested in. 
+Finally, we separate the result set into sub-sets, and closely examine their statistical characteristics. 
+Before describing our methodology in detail, we introduce some definitions and notation.
+
+
+
+\subsection{Correlation}
+We make extensive use of the correlation coefficient function defined as: 
+
+\begin{displaymath}
+r(X,Y) = r_{X, Y} = \frac{\sum_{i=1}^{n} (X_{i} - \overline{X})(Y_{i} - \overline{Y})}
+{\sqrt{\sum_{i=1}^{n} (X_{i} - \overline{X})^2}\sqrt{\sum_{i=1}^{n} (Y_{i} - \overline{Y})^2}}
+\end{displaymath}
+
+where $X$, $Y$ are separate sets of values, $n$ is the total number of sample points in 
+each set, and $\overline{X}$ is the mean value of $X$ (same for $\overline{Y}$ and Y).  % over the entire sampling period.
+For each pair of sensors, we compute the corrcoeff to ascertain the relationship between them.
+
+
+\subsection{EMD Basics}
+Non-stationary signals refer to those whose frequencies change over time.  The data generated in buildings is naturally non-stationary, since 
+physical readings are highly influenced by the dynamics of physical properties in the immediate surroundings of the sensor.  
+ Empirical mode decomposition \cite{EMD} is a method designed for non-linear, non-stationary signal analysis.  We use it to detrend our 
+ sensor data and re-aggregate output components within a specific frequency band, based on the SBS methodology~\cite{SBS}. We give a quick overview of EMD and present observations from our data analysis to show a threshold for discovering the boundary between sensor feeds.
+
+\begin{algorithm}[h!]
+ \SetAlgoLined
+ Give signal $X(t)$:\\
+  \While{the \# of maxima in $X(t)$ >3}{
+  (1) identify all the local extrema in $X(t)$\;
+  (2) perform a cubic spline interpolation of maxima to get the upper envelope\;
+  (3) repeat (2) on minima to get the lower envelope\;
+  (4) $h(t) = X(t) - mean((2),(3))$ \;
+  (5) repeat (2)-(4) until $h(t)$ is an IMF\;
+  (6) $X(t) = X(t) - h(t)$, and return the IMF\;
+  }
+ \caption{Empirical Mode Decomposition}
+ \label{alg:emd}
+\end{algorithm}
+
+EMD is similar to Fourier transform (FT).  However, for FT to be useful the system (or signal) must be linear and the data must 
+be strictly periodic or stationary.  In contrast, EMD directly extracts components associated with different energy from the signal 
+and generates a collection of intrinsic mode functions at different time scales.  IMFs are extracted locally and 
+normalized to fluctuate around zero.  An IMF is a function with equal number of extrema 
+and zero crossings (or differ by one at most), with its envelopes being symmetric with respect to zero.  A summary of the process of 
+EMD is depicted in Algorithm~\ref{alg:emd} and the 
+reader is referred to~\cite{EMD} for further reading on EMD.  The number of IMFs depends on the original signal and is automatically determined
+by a pre-determined stoppage criteria.
+
+\subsection{Re-aggregation}\label{sec:aggr}
+In Figure~\ref{fig:emd}, we present example of IMFs extracted using EMD. The original data is generated by a thermometer during a week deployed in a classroom in our testbed building.  The graphs following show the result of the decomposition and re-aggregation methodology in SBS~\cite{SBS}
+on this signal.
+EMD is able to extract the predominant diurnal pattern (IMF12), induced by occupant activity, from the signal and separate 
+distinct flows (IMF9) from other components.  
+EMD yields distinct components in different time scales and we compute the instantaneous frequencies \cite{IF} of IMFs using Generalized Zero-Crossing \cite{GZC}. We break the time scales into four frequency bands:
+\begin{itemize}
+\item High Frequency: a time scale smaller than 30 minutes, mainly reflecting the operation characteristics of devices and noise in system. 
+\item Medium Frequency: a time scale between 30 minutes and 6 hours, which is within the time span of daily activities inside a building.
+\item Low Frequency: a time scale between 6 hours and 7 days. %This category usually captures patterns repeated in a longer cycle, say, days. 
+\item Residue: everything has a time scale longer than 7 days and shows long-term patterns, such as seasonal changes.
+\end{itemize}
+Figure~\ref{fig:aggr1} shows a comparison of two temperature sensor feeds from different rooms and their respective
+decomposition.  Despite strong correlation in the raw time series, the medium frequency IMF shows little correlation.
+Only the low frequency diurnal pattern is correlated.  Alternatively,  Figure~\ref{fig:aggr2} shows a $CO_{2}$ trace and a humidity trace.
+
+While the raw signals appear to be very different, and indeed have modest correlation, the medium frequency components
+are strongly correlated.  We conjecture that the medium frequency band ``records'' local activity.  Occupants
+and movement in the space affect the levels of various physical phenomenon, namely temperature, humidity, $CO_{2}$ levels, etc.
+Over shorter time spans, noise in the system hides the effects of local activity.  Longer time-spans capture long-term trends 
+related to weather or building operation schedules.  The medium frequency band
+captures activities such as meetings and office occupation times.  
+These examples illustrate the basis for an automated process.  By isolating a particular component of the signal
+we seek to strip away common diurnal factors and also eliminate differences in the response of various sensors to environmental factors.
+We combine this observation with a simple classifier to derive colocation.
+
+\subsection{Distribution}
+Let $ts^{i}_{j,t}$ be a time-series for sensor $j$ in room $i$ observed over some time interval $t$.  For simplicity, we ignore
+$t$ in defining subsequent functions and re-introduce it where necessary.
+For each trace we run EMD and obtain a set of $n$ IMFs, denoted as follows:
+ % and applying EMD on such a trace will produce,
+\begin{displaymath}
+\Phi^i_j = EMD(ts^i_j) = \left \{ IMF_{1\sim n} \right \}
+\end{displaymath}
+
+IMFs are traces themselves, so we divide and re-aggregate them into the four bands, $B$,
+further described in Section~\ref{sec:aggr}.
+\begin{displaymath}
+B = \left \{ H(igh), M(edium), L(ow), R(esidue) \right \}
+\end{displaymath} 
+
+Let the re-aggregation of the bands be denoted as:
+\begin{displaymath}
+Aggr(\Phi^i_j) = \left \{ IMF^i_{f,j} \right \}
+\end{displaymath} 
+
+where $f \in B$.  We pick the \emph{medium} frequency band ($M$) to compute the pairwise corrcoeff of the sensor traces. 
+In order to understand and characterize the boundary between sensors we consider two sets of corrcoeffs for each room; the ``intra"-room set and 
+``inter"-room set, as defined:
+\begin{displaymath}
+R^{i}_{intra,t} = \left \{ r(IMF^{i}_{M,j,t}, IMF^{i}_{M,k,t}) \right \}, \,
+s.t.\, \forall j,k \in S_i
+\end{displaymath}
+
+The intra set only contains pairs of sensors in the same room, so both $ts^{i}_{j,t}$ and $ts^{i}_{k,t}$ are traces from 
+sensors in room $i$.
+\begin{displaymath}
+R^{i}_{inter,t} = \left \{ r(IMF^{i}_{M,j,t}, IMF^{i'}_{M,k,t}) \right \},
+\end{displaymath}
+\begin{displaymath}
+s.t. \, \forall j \in S_i, \, \forall k \in S_i', \, i \neq i' 
+\end{displaymath}
+
+By contrast, the \emph{inter} set contains pairs across rooms, meaning $ts_{j,t}$ is a trace from a sensor in room $i$ and 
+$ts_{k,t}$ is a sensor trace from some other room $i'$.  %, and $t$ is the time span of the sensor trace the IMFs are derived from.
+Note the use of $t$ in the definitions.  We re-introduce $t$ here to denote that the construction of each set is performed with respect to a specific time interval.
+
+Finally, we examine populations, $R^i_{intra}$ and $R^i_{inter}$, across multiple time intervals (in days):%which are defined as,
+\begin{displaymath}
+R^{i}_{intra} = \bigcup_{\forall t}^{} R^i_{intra, t}, \; s.t. \; t \in \left \{ 1,3,5,7,14,21,28\right \}
+\end{displaymath}
+
+\begin{displaymath}
+R^{i}_{inter} = \bigcup_{\forall t}^{} R^i_{inter, t}, \; s.t. \; t \in \left \{  1,3,5,7,14,21,28\right \}
+\end{displaymath}
+
+We generate a CDF for each of the two populations with respect to each room.  
+This allows us to closely examine the statistical characteristics 
+of the relationship between sensors in the same space and those in different spaces.  Each room offers a potentially different 
+perspective on this relationship.
+
+
+\subsection{Threshold Analysis}
+In order to understand the statistical properties, we generate two corrcoeff distributions by computing the corrcoeff between pairs of traces within and across each room, as detailed in the previous section.
+Figure~\ref{fig:group} shows how we divide the corrcoeff values into two sets.
+The figure shows two intra and two inter sets. Specifically, we examine how a choice in cut-off threshold affects the ability
+to separate the sets, when their separation is not known a priori, relative to each room.
+Our hypothesis is that there exists a computable, statistical boundary between sensors in different rooms.
+
+To test our hypothesis, we choose a threshold value relative to the distribution of corrcoeffs.  
+All pairs with a corrcoeff larger than the threshold will be classified as being in the same room.  To closely analyze the threshold parameter, 
+we generate a receiver operating characteristic (ROC) curve by varying the threshold value.  Then, we look for a good tradeoff point between the true-positive and false-positive rate; one that maximizes the difference between TPR and FPR.  We compare the ROCs generated 
+for our ``medium'' frequency band IMFs against raw-signal, cross-correlation values, in order to ascertain the extent to which 
+the SBS~\cite{SBS} methodology is advantageous for discovering a statistical separation, analogous to a physical one.
+We also examine whether there is a uniform boundary between clusters across all the rooms. 
+
+
+\begin{figure*}[ht!]
+\centering
+	 \includegraphics[width=0.95\textwidth]{figs/ROCgraphs}
+\caption{The ROC curves depict the sensitivity of the raw signal and mid-frequency IMFs to the threshold value. We choose the 0.2 FPR point as the boundary threshold for each room. }
+\label{fig:roc}
+\end{figure*}
+
+\section{Spatial Clustering Experimental Results}
+We conduct two sets of experiments. First, we quantify the sensitivity of our method for different threshold values 
+and examine the effect of different time spans on the threshold. We then cluster the traces based on our threshold analysis 
+and compare it with a baseline approach using multidimensional scaling and k-means.
+% as well as with an approach combining multidimensional scaling and k-meas. 
+% Last, we validate the usefulness of the proposed method in a case study.
+
+\subsection{Experimental Setup}
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=0.45\textwidth]{figs/SDH3_crop}
+\caption{We collect data from 15 sensors in 5 rooms sitting on 4 different floors. This is a map of a section of the 3rd floor
+in Sutardja Dai Hall.}
+\label{fig:sdh}
+\end{figure}
+
+We perform an empirical study on sensor data collected from 15 sensors across 5 rooms on 4 different floors of a large building, as detailed in Table~\ref{table:roomspec}. 
+Each room has three sensors: a temperature sensor, a $CO_{2}$ sensor,  and a humidity sensor. 
+The data from these is reported to an sMAP~\cite{smap} archiver. The data set used comes from a deployment~\cite{Jay} lasting 
+over 6 months on several floors in Sutardja Dai Hall (SDH) at UC Berkeley, where one sensor box -- which contains a thermometer, a humidity sensor and a $CO_{2}$ sensor -- is placed in each room. The box reports data over 6LowPAN~\cite{6lowpan} to a sMAP archiver every 15 seconds. 
+ % The other is a long-term deployment comprised of thousands of sensors that are part of the Building Management System (BMS).
+ % We choose the portion of the SDH data set where the sensor devices, accessible via BACnet~\cite{BACnet}, report data to the archiver every 
+ %few minutes. 
+ Due to intermittent data loss, we pick a time span without interruption, starting in January until mid-Feburary, 2013, for evaluation.
+
+\begin{table}[ht!]
+\caption{Room Specs}
+\centering % used for centering table
+\begin{tabular}{c c c c}% centered columns (4 columns)
+\hline %inserts single horizontal lines
+Room\# & Orientation & Floor & Type \\ % inserts table 
+%heading
+\hline\hline % inserts double horizontal line
+A & West & 2 & Computer Lab \\ % inserting body of the table
+B & South & 4 & Conference Room \\
+C & No Window & 2 & Classroom \\
+D & North & 7 & Conference Room \\
+E & South & 5 & Conference Room \\ % [1ex] adds vertical space
+\hline %inserts single line
+\end{tabular}
+\label{table:roomspec} % is used to refer this table in the text
+\end{table}
+
+\subsection{Baseline and Metrics}
+% We exploit a simple approach as baseline to compare with our proposed approach: instead of computing the correlation coefficients between re-aggregated IMFs of sensor feeds, we directly use the raw sensor data to do the correlation analysis and generate the two distributions for thresholding approach evaluation similarly to what described previously.
+
+% As a baseline, we perform correlation analysis on the raw data. We generate two distributions, as previously described, and observe the effects of the choice of threshold on the true/false positive rate.
+As a baseline, after we generate the two distributions described previously, we apply multidimensional scaling (MDS) to the corrcoeff matrix, in order to transform the original high-dimensional relative space to a 3-D space with an absolute origin, and run the k-means clustering algorithm.
+We choose the true-positive rate (TPR, also known as recall rate) and false-positive rate (FPR) as metrics to evaluate the performance of our method versus the naive approach, which correlates the raw traces. A true-positive (TP) is when a sensor pair in a room is classified as being co-located 
+while a false-positive (FP) is when a sensor that is not in room is classified as being so.
+%is that a sensor not in room A is clustered as in room A.
+
+\begin{figure}[h!]
+\centering
+	\includegraphics[width=0.45\textwidth]{figs/Inter_intra_relationships}
+\caption{Two populations are examined for our threshold analysis.  A solid line connects sensors in the same room while a dotted line connects
+ to a pairs in different rooms.}
+\label{fig:group}
+\end{figure}
+
+\begin{figure}[h!]
+\centering
+	\includegraphics[width=0.45\textwidth]{figs/corrcoeff_cdf_in_out}
+\caption{CDF of correlation coefficients between IMFs of sensor feeds: the dotted lines point to some threshold which divides
+ the distribution and produces a TPR and FPR.
+}
+\label{fig:cdf}
+\end{figure}
+
+\subsection{Characterizing the Boundary}
+To corroborate our boundary-existence hypothesis, we first need to characterize the boundary between sensors in different rooms. 
+We compute the pairwise correlation coefficients (corrcoeffs) between sensor traces in both of populations depicted in Figure~\ref{fig:group}, 
+over different time spans -- ranging from one day to one month.
+After generating points over different time 
+spans for each room, we accumulate the corrcoeffs to obtain distributions as shown in Figure~\ref{fig:cdf}, for each of the five rooms. 
+
+The dashed vertical lines in Figure~\ref{fig:cdf} 
+represent an arbitrary threshold that partitions the distribution into two sets.  Pairs of sensors to the right of the line
+are classified as being in the same room.  Pairs of sensors to the left are classified as being in different rooms.
+The CDFs on the left column show the distribution of corrcoeffs for pairs known to be in the same room and the CDFs on the right
+show the distribution of corrcoeffs in different rooms.
+Note in the figure, we set the threshold to the same value to both the left and right side, in order to observe the effect of the true/false positive
+rates.
+By adjusting the threshold, we get different TPRs/FPRs parameterized by the threshold. Figure~\ref{fig:roc} captures the range tradeoff in a corresponding ROC curve.
+
+
+Figure~\ref{fig:roc} illustrates the TPR/FPR sensitivity to different threshold values for our method and the naive approach. A good cluster achieves a high TPR and a low FPR. 
+As we vary the threshold, we see that our approach 
+achieves a TPR between 52\%--93\% and a FPR between 5\%--59\%.  %The baseline, mostly remains along the diagonal, meaning it is practically random. 
+We can see that the average TPR for the ROC graph on the right is higher than the 
+ROC graph on the left.  Moreover, the corresponding average FPR is lower on the right than on the left.
+In general, as the TPR rises, the FPR also goes up -- \emph{a tradeoff exists between maximizing TPR and maintaining a lower FPR}.
+
+
+ The ``boundary'' is represented as the corrcoeff that produces a ``good" TPR with an ``acceptable" FPR.  In Figure~\ref{fig:rocA}, 
+  we choose 0.2 FPR as the boundary threshold.  This point represents the largest difference between TPR and FPR -- an acceptable tradeoff point. 
+Looking at Figure~\ref{fig:cdf}, the 0.2 FPR corresponds roughly to the 80th-percentile correlation coefficient, on the ``inter''
+set (the set of CDFs on the right).
+  The recall rate for each room -- using a 80th-percentile corrcoeff threshold value -- ranges between 62\%-86\% and the 
+  threshold value falls into a narrow interval between 0.1 to 0.12. This shows that \emph{we are able to choose a uniform value 
+  for all the rooms regardless of the sensor type.}
+
+\subsection{Convergence over Time}
+\begin{figure}[h!]
+\centering
+	\includegraphics[width=0.48\textwidth]{figs/lengtheffect.eps}
+\caption{The threshold values all converge to a similar value and we can derive the optimal value with as minimal as 14 days data.}
+\label{fig:leneff}
+\end{figure}
+
+Using the threshold the roughly 80th-percentile corrcoeff corresponds to in the distribution, we examine how it affects the classification rate across traces
+that span different lengths of time.  Convergence and consistency across different time spans is critical to automate the parameter selection
+process.
+Observe how the  threshold values differ quite significantly in Figure~\ref{fig:leneff}.  However, 
+the threshold values 
+gradually converge, as the length of training data increases from one day to one month.  The values derived after 14 days of data
+are approximately the same as the final convergence value (around 0.07).  In other words, we can determine a threshold from two weeks of data.
+
+\subsection{Clustering Results}
+We cluster the sensor traces over the entire one-month period, and use the roughly 80th percentile corrceff (0.07) as the boundary threshold. 
+A sensor is classified into the cluster with the largest corrcoeff. The clustering result is shown in Table~\ref{tab:cluster}.  A ``1" means the sensor is classified as inside the corresponding room. 
+In general, after obtaining the sensor clusters, we don't know which room each cluster corresponds to without further information such as the metadata of sensors. The labels ``A-E" in Table~\ref{tab:cluster} are used to indicate the ground truth of where each sensor is physically placed since we have such information. Overall, the classification accuracy 
+is 93.3\%.  We do not cluster on the corrcoeffs obtained among raw signals because the 80\%-percentile corrcoeff values do not converge across rooms.
+The reason that we are able to get such a high accuracy, which is seemingly different from the statistics in Figure~\ref{fig:cdf} and Figure~\ref{fig:roc}, is because the statistics in the two figures are generated out of the corrcoeffs accumulated over different time spans (the same intervals in Figure~\ref{fig:leneff}) while the clustering here is performed on the corrcoeffs from the entire one-month period. 
+% vary a lot and it doesn't make much sense to use different threshold for each room individually.
+
+\begin{table}[h!]\footnotesize
+ \begin{center}
+	\begin{tabular}{ r|c|c|c|c|c|c }
+	\multicolumn{1}{r}{}
+	 &  \multicolumn{1}{c}{$A$}
+	 & \multicolumn{1}{c}{$B$}
+	 & \multicolumn{1}{c}{$C$}
+	 & \multicolumn{1}{c}{$D$}
+	  & \multicolumn{1}{c}{$E$} \\
+	\cline{2-6} 
+	$SensorA_{1}$ & 1 & 0 & 0 & 0 & 0 & \checkmark\\
+	\cline{2-6}
+	$A_{2}$ & 1 & 0 & 0 & 0 & 0 & \checkmark\\
+	\cline{2-6}
+	$A_{3}$ & 1 & 0 & 0 & 0 & 0 & \checkmark\\
+	\cline{2-6}
+	$B_{1}$ & 0 & 1 & 0 & 0 & 0 & \checkmark\\
+	\cline{2-6}
+	$B_{2}$ & 0 & 1 & 0 & 0 & 0 & \checkmark\\
+	\cline{2-6}
+	$B_{3}$ & 0 & 1 & 0 & 0 & 0 & \checkmark\\
+	\cline{2-6}
+	$C_{1}$ & 0 & 0 & 1 & 0 & 0 & \checkmark\\
+	\cline{2-6}
+	$C_{2}$ & 0 & 0 & 1 & 0 & 0 & \checkmark\\
+	\cline{2-6}
+	$C_{3}$ & 0 & 0 & 1 & 0 & 0 & \checkmark\\
+	\cline{2-6}
+	$D_{1}$ & 0 & 0 & 0 & 1 & 0 & \checkmark\\
+	\cline{2-6}
+	$D_{2}$ & 0 & 0 & 0 & 1 & 0 & \checkmark\\
+	\cline{2-6}
+	$D_{3}$ & 0 & 0 & 1 & 0 & 0 & $\times$\\
+	\cline{2-6}
+	$E_{1}$ & 0 & 0 & 0 & 0 & 1 & \checkmark\\
+	\cline{2-6}
+	$E_{2}$ & 0 & 0 & 0 & 0 & 1 & \checkmark\\
+	\cline{2-6}
+	$E_{3}$ & 0 & 0 & 0 & 0 & 1 & \checkmark\\
+	\cline{2-6}
+	\end{tabular}
+ \end{center}
+ \caption{Clustering result using the thresholding method: a ``1" means the sensor is classified as inside the room. We get the ``\checkmark" and ``$\times$" by comparing the clustering results with ground truth.}
+ \label{tab:cluster}
+\end{table}
+
+\begin{figure*}[ht!]
+\centering
+	\includegraphics[width=0.48\textwidth]{figs/Space_KmeanClustering}
+\caption{Clustering with k-means on the corrcoeff matrix after applying multidimensional scaling (MDS): The EMD-based set achieves an accuracy of 80\% while the results with raw-trace is only 53.3\% classification accuracy.}
+\label{fig:mds}
+\end{figure*}
+
+To compare with our threshold-based method, we also cluster using a baseline approach. The pairwise corrcoeff for sensors in different rooms can be interpreted as a ``distance" between them.
+A larger coefficient indicates a closer ``distance", and vice versa.  However, since the distances between pairs is relative, we use
+multidimensional scaling~\cite{MDS} to find a common basis in three dimensions, re-map the relative distance metric (feature vector) into 
+this three-dimensional grid and use k-means to classify the traces. % assuming the value of k is known a priori, which is the number of rooms.
+We set k to equal the number of rooms, since the goal of the approach is to verify spatial placement at room-level granularity.  Generally, 
+we believe that k should equal the number of rooms you wish to classify the sensors into. 
+The clustering results are shown in Figure~\ref{fig:mds}.  Ground truth is shown through different markers (x, o, +, star, box). Each marker stands for one room. 
+The cluster each sensor assigned to is denoted with a number. The classification accuracy of the baseline approach on corrcoeffs matrix of re-aggregated IMFs is 80\%. 
+For raw traces, the baseline approach achieves an accuracy of only 53.3\%.
+
+\subsection{Discussion}
+\paragraph{Bi-modal Distribution} From the results illustrated in Figure~\ref{fig:cdf}, we observe a bi-modality in the corrcoeff 
+distribution for the two population sets.  Sensors in the same room correlate to each other more (typically a corcoeff of 0.4 or higher)
+than sensors in different rooms.  % have much smaller corrcoeff values. 
+This bi-modal distribution may provide insight for us to 
+% lays the foundation for us to 
+understand the boundary and search for an effective discriminator more broadly.
+
+\paragraph{Across Different Sources}
+To further validate the effectiveness of the proposed method, we should consider using data from different sources.
+For example, in room B in Sutardja Dai Hall, there are two different sets of temperature sensors reporting data at different rates and granularities.
+We demonstrate our ability to classify sensor streams on the same platform (recall the sensor box we used to collect data). 
+It would be more convincing to verify the effectiveness of our method with sensor streams generated from devices on
+ different systems -- since separate systems are independent.  For instance, we can use temperature data from the second deployment 
+ and use the $CO_{2}$ and humidity sensor data from the first deployment and compare the results to what we have gathered.
+
+\paragraph{Generalizability} In our results, the boundary threshold parameter converges to a narrow interval, as the data set expands 
+over a longer time range.  This may suggest that our method generalizes across rooms in a building, although further validation in a 
+larger, more representative data set is necessary.  This study looked at 5 different rooms with a large physical separation from one
+another.  A more representative data set would consider all the rooms and pay special attention to rooms that share a common orientation
+and are separated by a single wall or floor slab.
+  
+Based on this study, and the previous, related one~\cite{IOT}, we conjecture that local activity modulates various types of physical 
+signals -- captured by the various kinds of physical sensors embedded
+throughout the building -- and that those signals are attenuated
+over distance and physical boundaries (such as walls).  We believe that this is what drives our observations. 
+If the conjecture is true, the effects will be less pronounced in larger rooms, such as an auditorium or a large laboratory space.
+
+
+As our approach performs slightly better than traditional learning techniques, we must further evaluate its robustness
+versus the baseline method; across the entire building and across multiple buildings.  In future work, we will examine the 
+two approaches across larger intra-building data sets and compare results across multiple buildings.
+A key factor is the variance of classification accuracy -- smaller variance demonstrates robustness.  
+
+
+\subsection{Spatial Verification Take-aways}
+We present a new method for spatial placement clustering.  
+We first characterize the corrcoef distribution of medium frequencies IMFs between sensors in the same/different room(s), and then we learn the tradeoff between achieving a higher TPR and maintaining a lower FPR by manipulating a discriminator parameter within these two distributions. 
+For a preliminary sample of relatively well separated rooms, we find that there is a clear boundary between sensor clusters in terms of their spatial placement and the boundary can be probed statistically.  We also find 
+a uniform discriminator can be learned and generalized across these rooms.  
+For this initial study, our method is able to classify the sensors of 93.3\% accuracy, which is 13\% higher than a tradition k-means approach, with a TPR between 62\%-86\% and a FPR less than 20\%. 
+
+These results are very encouraging. However, we recognize that they are far from definitive. While the rooms in the study were picked arbitrarily, they are neither comprehensive nor a systematic sampling.  While they are clearly separated by our approach, and not by analyses of the raw time series, they do differ substantially in placement and usage.  A key question going forward is, ``how well will highly similar rooms be separated?"  - say, adjacent rooms facing the same side of the building and with similar occupancy. Will these techniques hold, more powerful techniques be required, or is further discrimination intractable? In future work, we will examine how far this method takes us and explore how it may be used in combination with other techniques to improve the results more generally. Automated metadata verification is important to include in the lifecycle of building data management.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Type Verification With K-Nearest Neighbors}
+
+
+\section{Type Verification: Experimental Results}
+
+\begin{figure}[t!] %htbp
+\centering
+\includegraphics[width=0.75\columnwidth]{figs/KETI413_co2_light_raw}
+\caption{}
+\label{fig:co2_light_raw}
+\end{figure}
+
+\begin{figure}[t!] %htbp
+\centering
+\includegraphics[width=0.75\columnwidth]{figs/EMD_LF_PCA_413_co2_light}
+\caption{}
+\label{fig:EMD_LF_PCA}
+\end{figure}
+
+\begin{figure}[t!] %htbp
+\centering
+\includegraphics[width=0.75\columnwidth]{figs/KETI413_6h_light_3IMF}
+\caption{}
+\label{fig:light_3IMF}
+\end{figure}
+
+\begin{figure}[t!] %htbp
+\centering
+\includegraphics[width=0.75\columnwidth]{figs/KETI413_co2_6h_3IMFs}
+\caption{}
+\label{fig:co2_3IMFs}
+\end{figure}
+
+
+\begin{figure}[t!] %htbp
+\centering
+\includegraphics[width=1.0\columnwidth]{figs/ASOvsAGN}
+\caption{}
+\label{fig:asovsagn}
+\end{figure}
+
+\begin{figure}[t!] %htbp
+\centering
+\includegraphics[width=1.0\columnwidth]{figs/temperature_streams}
+\caption{}
+\label{fig:tstreams}
+\end{figure}
+
+
+\begin{figure}[t!] %htbp
+\centering
+\includegraphics[width=1.0\columnwidth]{figs/VR}
+\caption{}
+\label{fig:tstreams}
+\end{figure}
+
+\begin{figure}[t!] %htbp
+\centering
+\includegraphics[width=1.0\columnwidth]{figs/gmm_centers}
+\caption{}
+\label{fig:tstreams}
+\end{figure}
+
+
+% \section{Value-Based Verification Through Physical-Model Checking}
+\section{Related Work}
+\input{external_tex/ipsn_iotapp/related}
+\input{external_tex/ipsn_sbs/relatedwork}
+\subsection{Spatial Verifiction: Related Work}
+There has been much research work on sensor stream clustering and trace analysis. Chen and Tu~\cite{DStream} investigate 
+how to cluster data streams in real-time using a density-based approach with a two-tiered framework. The first tier captures 
+the dynamics of a data stream with a density decaying technique and then maps it to a grid.  The second tier computes a grid 
+density based on how it clusters the grid. Their approach differs from ours in that they focus on decreasing algorithm 
+complexity for real-time sensor stream clustering.  We run our analysis on historical traces and use correlation analysis
+in our clustering algorithm.
+
+Kapitanova et al.~\cite{failure} describe a technique to monitor sensor operations in the home and identify sensor failures. 
+The classifier is trained on historical sensor data to obtain the relationship between sensors, assuming the number and location of 
+sensors is known.  When a failure or removal of a sensor occurs, the classifier's behavior deviates and the event is captured. Our method does not require any prior knowledge and instead tries to cluster feeds to discover their relative placement.
+
+Lu and Whitehouse~\cite{blueprints} formulate a new algorithm, particularly leveraging the semantic constraints interpreted from sensor 
+data to determine sensor locations. The algorithm identifies how many rooms are present using motion sensors and determines room position based on physical constraints. Finally, it maps each sensor into the associated room. Our efforts focus on using intrinsic patterns typically pre-existing in building system sensor feeds to uncover physical relationships.
+
+Fontugne et al.~\cite{IOT} propose a new method to decompose sensor signals with EMD.
+They extract the intrinsic usage pattern from the raw traces and show that sensors close to each other have higher intrinsic correlation. However, they do not explore the observation more deeply by answering whether there is a statistically discoverable boundary between sensor clusters in different rooms, or if there is a uniform threshold in the correlation coefficients able to be generalized to different rooms.
+
+Fontugne et al.~\cite{SBS} carry on the work and propose an unsupervised method to monitor sensor behavior in buildings. They constructed 
+a reference model out of the underlying pattens, obtained with EMD,  and use it to compare future activity against it.  They report an anomaly whenever a device deviates from the reference. This work exploits EMD as a method to detrend the signals and capture the inter-device relationships.
+
+Much work utilizes EMD on medical data~\cite{ecg}, speech analysis~\cite{speech}, image processing~\cite{ip} 
+and climate analysis~\cite{climate}. Our method adopts EMD to determine whether a discoverable statistical boundary exists in sensors traces
+from sensors in different rooms and whether such a boundary
+ can be generalized across rooms with various kinds of sensors.
+
+
+\section{Summary}
+\input{external_tex/ipsn_iotapp/conc}
+\input{external_tex/ipsn_sbs/discussion}
+\input{external_tex/ipsn_sbs/conclusion}
+
+
+

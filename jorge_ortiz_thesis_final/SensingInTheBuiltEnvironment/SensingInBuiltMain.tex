@@ -1,0 +1,39 @@
+\chapter{Sensing in the Built Environment}
+
+Buildings consume nearly 40\% of the total energy produced in the United States and 72\% of the electricity.  Similar figures 
+have been recorded in other industrialized countries~\cite{buildings_study}.  Furthermore, studies show that they waste from
+30-80\% of the energy they consume.  With specter of global warming and the continued decrease in the cost of storage and 
+communication, buildings have become a major target for improved energy efficiency.
+
+Large commercial buildings typically contain thousands of sensors embedded in them which report periodic readings to 
+a centralized system called a building management system.  Typically these have been installed for supervisory control and
+centralized observation of the building.  The kinds of sensors installed including temperature sensors on the thermostats,
+valve position meters and actuators on pipes, pressure sensors in the vents, temperature sensors on the vents and pipes, etc.
+These readings are combined with a graphical interface for building managers to visually locate them according to their location.
+The interface also allows them to visually inspect and quickly try to diagnose a problem, typically in response to occupant
+complaints.
+
+Although these systems have been revolutionary from a building management perspective, they lack many fundamental components for
+truly enabling sophisticated analysis -- the kind of analysis that is needed to understand how the building is performing
+and will perform in the future.  Also, building practices for software-driven building systems serve more as guideline than
+ as a standard.  This presents major challenges with respect to software re-use and scalability.  In this thesis
+we will discuss the how we address these challenges through architectural design choices and analytical metholodology.  
+The achitectural choices reconstruct the software layer that sits on top of existing building management systems and presents
+a unified interface and standard API for analytical and control building applications.
+The analytical methodology offers a general approach to verifying the construction of point names -- the naming scheme for 
+sensors distributed throughout the building.  Both set a foundation for ongoing and future work.
+
+The thesis is presented in the context of building systems and building-related applications.  We draw out the fundamental 
+components in our analysis and design and discuss where it fits in the broader context of prior, computer science related,
+literature.  In the next section, we describe the state-of-the-art practices followed by vendors of building information systems.
+We describe the architecture features and design principals both implicitly and explicitly implemented into these systems.
+We present the pros and cons of these decisions and their implications and include a high-level description of our approach.
+Later chapters delve more deeply into the implications of our design decisions.
+
+\input{SensingInTheBuiltEnvironment/IntegratedBMS}
+\input{SensingInTheBuiltEnvironment/SupervisoryCtrlToApps}
+\input{SensingInTheBuiltEnvironment/BMSShortcomings}
+\input{SensingInTheBuiltEnvironment/AddressingBMSShort}
+\input{SensingInTheBuiltEnvironment/ContextAccuracy}
+\input{SensingInTheBuiltEnvironment/Summary}
+

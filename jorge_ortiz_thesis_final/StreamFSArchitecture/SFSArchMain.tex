@@ -1,0 +1,29 @@
+\chapter{StreamFS System Architecture}
+
+StreamFS is a system that we built to address some of the shortcomings in the current architecture.  StreamFS uses the filesystem
+metaphore to represent all building information.  This include sensors, actuators, location, processing elements, 
+streams, categorical organization, etc.  It borrow several mechanisms uses in a Unix-style filesystem, namely, files, folders,
+and the pipe abstraction for processing streaming data.  It also borrows the notion that all interaction is through the filesystem.
+This eases management of both the raw data and the processing elements that produce derivative streams for further processing.
+
+In this section, we give an overview of the architecture -- all the components, their organization, and how they interact with one
+another.  StreamFS consists of over 20,000 lines of code and was implemented in mostly Java.  It was deployed across multiple
+buildings and several applications were built on top of it over a 2 years period.
+
+\input{StreamFSArchitecture/NameMngt}
+\input{StreamFSArchitecture/erg}
+\input{StreamFSArchitecture/timeseries}
+\input{StreamFSArchitecture/pubsub}
+\input{StreamFSArchitecture/processing}
+
+\begin{figure}[t!] %htbp
+\centering
+\includegraphics[width=0.75\columnwidth]{figs/sfsarch}
+\caption{StreamFS system architecture.}
+\label{fig:sfsarch}
+\end{figure}
+
+\input{StreamFSArchitecture/related}
+\input{StreamFSArchitecture/summary}
+
+

@@ -1,0 +1,33 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\addvspace {10pt}
+\defcounter {refsection}{0}\relax 
+\addvspace {10pt}
+\defcounter {refsection}{0}\relax 
+\addvspace {10pt}
+\defcounter {refsection}{0}\relax 
+\addvspace {10pt}
+\defcounter {refsection}{0}\relax 
+\addvspace {10pt}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {5.1}{\ignorespaces Summary of the 4 main file types and their valid operations in StreamFS.}}{32}{table.91}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {5.2}{\ignorespaces File opertaitons, the file types that support them, and their general semantics.}}{33}{table.92}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {5.3}{\ignorespaces Summary of the 6 special-file sub-types and their valid operations in StreamFS.}}{33}{table.95}
+\defcounter {refsection}{0}\relax 
+\addvspace {10pt}
+\defcounter {refsection}{0}\relax 
+\addvspace {10pt}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {7.1}{\ignorespaces Classification of the alarms reported by SBS for both dataset (and the number of corresponding anomalies).}}{54}{table.155}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {7.2}{\ignorespaces Correlation coefficients of the analyzed trace and their IMFs uncovered by EMD}}{62}{table.178}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {7.3}{\ignorespaces Room Specs}}{67}{table.190}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {7.4}{\ignorespaces Clustering result using the thresholding method: a ``1" means the sensor is classified as inside the room. We get the ``\text {$\mathsurround \z@ \mathchar "458$}" and ``$\times $" by comparing the clustering results with ground truth.}}{70}{table.198}
+\defcounter {refsection}{0}\relax 
+\addvspace {10pt}
+\defcounter {refsection}{0}\relax 
+\addvspace {10pt}

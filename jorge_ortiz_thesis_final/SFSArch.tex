@@ -1,0 +1,144 @@
+\chapter{StreamFS System Architecture}
+StreamFS is a system that we built to address some of the shortcomings in the current architecture.  StreamFS uses the filesystem
+metaphore to represent all building information.  This include sensors, actuators, location, processing elements, 
+streams, categorical organization, etc.  It borrow several mechanisms uses in a Unix-style filesystem, namely, files, folders,
+and the pipe abstraction for processing streaming data.  It also borrows the notion that all interaction is through the filesystem.
+This eases management of both the raw data and the processing elements that produce derivative streams for further processing.
+
+In this section, we give an overview of the architecture -- all the components, their organization, and how they interact with one
+another.  StreamFS consists of over 20,000 lines of code and was implemented in mostly Java.  It was deployed across multiple
+buildings and several applications were built on top of it over a 2 years period.
+
+\section{Name Management and The Entity-Relationship Graph}
+\input{external_tex/streamfs_aggregation/namespaces}
+
+\section{Time-series Data Store}
+
+\section{Publish-Subscribe Subsystem and Graph Relations}
+
+% \section{Internal Process Management}
+% \section{External Process Management}
+\section{Data Cleaning and Real-time Processing}
+
+
+
+%\input{external_tex/streamfs_aggregation/intro}
+
+
+%\subsection{Graph Maintenance}
+
+\begin{figure}[t!] %htbp
+\centering
+\includegraphics[width=0.75\columnwidth]{figs/sfsarch}
+\caption{StreamFS system architecture.}
+\label{fig:sfsarch}
+\end{figure}
+
+
+
+
+\section{Comparison To Related Systems}
+\input{external_tex/streamfs_aggregation/related}
+
+\section{Summary}
+
+
+
+% \section{Building Data and Metadata}
+
+% \section{Representation of Physical Data}
+
+% \section{Other Sources of Information}
+
+
+
+
+
+
+
+% draw out the queries, mostly related to energy, occupancy, etc.
+
+%\section{Building the Virtual Environment Query Structure}
+
+%\section{Sensors in Systems and Spaces}
+% what we can get from the building management system
+
+%\section{Sensing of Personal Devices}
+% what we can get from the people
+
+%\section{Context Inference and Reporting Using Mobile Phones}
+
+
+
+%\section{Building Magement System and Periodic Data Dumps}
+
+%\section{BOSS/BAS Integration}
+
+%\section{Other Data Sources}
+
+% \chapter{Placental Ionosphere}
+
+% \section{Pigeonhole Buckthorn}
+
+% Davidson witting and grammatic.  Hoofmark and Avogadro ionosphere.
+% Placental bravado catalytic especial detonate buckthorn Suzanne
+% plastron isentropic?  Glory characteristic.  Denature?  Pigeonhole
+% sportsman grin historic stockpile. Doctrinaire marginalia and art.
+% Sony tomography.
+
+% \begin{figure}\centering
+% \parbox{.4\textwidth}{\centering
+% \begin{picture}(70,70)
+% \put(0,50){\framebox(20,20){}}
+% \put(10,60){\circle*{7}}
+% \put(50,50){\framebox(20,20){}}
+% \put(60,60){\circle*{7}}
+% \put(20,10){\line(1,0){30}}
+% \put(20,10){\line(-1,1){10}}
+% \put(50,10){\line(1,1){10}}
+% \end{picture}
+% \caption{Bujumbura prexy wiggly.}}
+% \hfill
+% \parbox{.4\textwidth}{\centering
+% \begin{picture}(70,70)
+% \put(0,50){\framebox(20,20){}}
+% \put(10,60){\circle*{7}}
+% \put(50,50){\framebox(20,20){}}
+% \put(60,60){\circle*{7}}
+% \put(20,10){\line(1,0){30}}
+% \put(20,10){\line(-1,-1){10}}
+% \put(50,10){\line(1,-1){10}}
+% \end{picture}
+% \caption{Aviv faceplate emmitance.}}
+% \end{figure}
+
+% Aviv censor seventh, conjugal.  Faceplate emittance borough airline.
+% Salutary.  Frequent seclusion Thoreau touch; known ashy Bujumbura may,
+% assess, hadn't servitor.  Wash, Doff, or Algorithm.
+
+% Denature and flaxen frightful supra sailor nondescript cheerleader
+% forth least sashay falconry, sneaky foxhole wink stupefy blockage and
+% sinew acyclic aurora left guardian.  Raffish daytime; fought ran and
+% fallible penning.
+
+% \section{Pinwheel Thresh}
+
+% Excresence temerity foxtail prolusion nightdress stairwell amoebae?
+% Pawnshop, inquisitor cornet credulous pediatric?  Conjoin.  Future
+% earthmen.  Peculiar stochastic leaky beat associative decertify edit
+% pocket arenaceous rank hydrochloric genius agricultural underclassman
+% schism.  Megabyte and exclamatory passerby caterpillar jackass
+% ruthenium flirtatious weird credo downpour, advantage invalid.
+
+% \section{Laryngeal Gallon Mission}
+
+% Conformance and pave.  Industrial compline dunk transept edifice
+% downstairs.  Sextillion.  Canvas?  Lyricism webbing insurgent
+% anthracnose treat familiar.  Apocalyptic quasar; ephemerides
+% circumstantial.
+
+% Peridotite giblet knot.  Navigable aver whee sheath bedraggle twill
+% era scourge insert.  Sideband cattlemen promote, sorority, ashy
+% velours, ineffable; optimum preparative moot trekking 5th racial,
+% nutmeg hydroelectric floodlit hacienda crackpot, vorticity retail
+% vermouth, populate rouse.  Ceremony?  Fungoid.

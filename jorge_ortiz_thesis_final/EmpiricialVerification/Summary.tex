@@ -1,0 +1,117 @@
+\section{Summary}
+
+
+\section{Functional Verification}
+
+% future work
+This paper aims to establish a methodology to identify abnormalities in device power traces and inter-device usage patterns.
+In addition, we are planning to apply this method to online detection using, for example, a sliding window to compute an adaptive reference matrix that evolve in time.
+However, designing such system raises new challenges that are left for future work.
+
+The goal of this work is to assist building administrators in identifying misbehaving devices in large building sensor
+deployments.  
+We proposed an unsupervised method to systematically detect abnormal energy consumption in buildings: the Strip, Bind, and Search (SBS) method.
+SBS uncovers inter-device usage patterns by striping dominant trends off the devices energy-consumption trace.
+Then, it monitors device usage and reports devices that deviate from the norm.  
+Our main contribution is to develop an unsupervised technique to uncover the true inter-device relationships that are hidden by noise and 
+dominant trends inherent to the sensor data.  
+SBS is used on two sets of traces captured from two buildings with fundamentally different infrastructures.
+The abnormal consumption identified in these two buildings are mainly energy waste.
+The most important one is an instance of a competing heater and cooler that caused the heater to waste around 2500~kWh.
+
+
+\subsection{Spatial Verification}
+
+EMD allows us to effectively identify fundamental relationships between sensor traces.
+We believe that identifying meaningful usage-correlation patterns can help reduce oversights
+by the occupants and faults that lead to energy waste.  A direct application of this is the identification
+of simultaneous heating and cooling~\cite{simheatcool}.  Simultaneous heating and cooling is when the heating
+and cooling system either compete with one another or compete with the incoming air from outside.  If
+their combined usage is incorrect, there is major energy waste.
+This problem is notoriously difficult to identify, since the occupants do not notice
+changes in temperature and building management systems do not perform cross-signal comparisons.  For 
+future work, we intend to run our analysis on the set of sensors that will
+allow us to identify this problem: the outside temperature sensors, the cooling
+coil temperature, and the air vent position sensor.  If their behavior
+is not correlated as expected, an alarm will be raised.
+
+We can also apply it to other usage scenarios.  In our traces, we found an instance where the pump
+was on but the lights were off; where, typically, they are active simulatenously.
+The air conditioning was pumping cool air into a room without occupants.
+With our approach this could have been identified and corrected.  In future work, we intend to
+package our solution to serve these kinds of applications.
+
+
+This paper set out to examine the underlying relationship between sensor traces to find interesting correlations
+in use.  We used data from a large deployment of sensors in a building and found that direct correlation analysis on the raw
+traces was not discriminatory enough to find interesting relationships.  Upon closer inspection, we noticed that
+the underlying trend was dominating the correlation calculation.  In order to extract meaningful behavior this trend has
+to be removed.  We show that empirical mode decomposition is a helpful analytical tool for detrending 
+non-linear, non-stationary data; inherent attributes contained in our traces.
+
+We ran our correlation analysis across IMFs, extracted from each trace by the EMD process, and found that the pump and light
+that serve the same room were highly correlated, while the the other pump was not correlated to either.
+In order to corroborate the applicability
+of our approach, we compared the pump trace with \emph{all} 674 sensor traces and found a strong correlation
+between the relative spatial position of the sensors and their IMF correlations.  The most highly-correlated IMFs were 
+serving the same
+area in the building.  As we relax the admittance criteria we find that the spatial correlation expands radially from
+the main location served by the reference trace.
+
+We plan to examine the use of this method in applications that help discover changes in underlying relationships over time
+in order to identify opportunities for energy savings in buildings.  We will use it to build inter-device correlation models
+and use these models to establish ``(ab)normal'' usage patterns.  We hope to take it a step further and include a
+supervised learning approach to distinguish between ``(in)efficient'' usage patterns as well.
+
+
+\paragraph{Bi-modal Distribution} From the results illustrated in Figure~\ref{fig:cdf}, we observe a bi-modality in the corrcoeff 
+distribution for the two population sets.  Sensors in the same room correlate to each other more (typically a corcoeff of 0.4 or higher)
+than sensors in different rooms.  % have much smaller corrcoeff values. 
+This bi-modal distribution may provide insight for us to 
+% lays the foundation for us to 
+understand the boundary and search for an effective discriminator more broadly.
+
+\paragraph{Across Different Sources}
+To further validate the effectiveness of the proposed method, we should consider using data from different sources.
+For example, in room B in Sutardja Dai Hall, there are two different sets of temperature sensors reporting data at different rates and granularities.
+We demonstrate our ability to classify sensor streams on the same platform (recall the sensor box we used to collect data). 
+It would be more convincing to verify the effectiveness of our method with sensor streams generated from devices on
+ different systems -- since separate systems are independent.  For instance, we can use temperature data from the second deployment 
+ and use the $CO_{2}$ and humidity sensor data from the first deployment and compare the results to what we have gathered.
+
+\paragraph{Generalizability} In our results, the boundary threshold parameter converges to a narrow interval, as the data set expands 
+over a longer time range.  This may suggest that our method generalizes across rooms in a building, although further validation in a 
+larger, more representative data set is necessary.  This study looked at 5 different rooms with a large physical separation from one
+another.  A more representative data set would consider all the rooms and pay special attention to rooms that share a common orientation
+and are separated by a single wall or floor slab.
+  
+Based on this study, and the previous, related one~\cite{IOT}, we conjecture that local activity modulates various types of physical 
+signals -- captured by the various kinds of physical sensors embedded
+throughout the building -- and that those signals are attenuated
+over distance and physical boundaries (such as walls).  We believe that this is what drives our observations. 
+If the conjecture is true, the effects will be less pronounced in larger rooms, such as an auditorium or a large laboratory space.
+
+
+As our approach performs slightly better than traditional learning techniques, we must further evaluate its robustness
+versus the baseline method; across the entire building and across multiple buildings.  In future work, we will examine the 
+two approaches across larger intra-building data sets and compare results across multiple buildings.
+A key factor is the variance of classification accuracy -- smaller variance demonstrates robustness.  
+
+We present a new method for spatial placement clustering.  
+We first characterize the corrcoef distribution of medium frequencies IMFs between sensors in the same/different room(s), and then we learn the tradeoff between achieving a higher TPR and maintaining a lower FPR by manipulating a discriminator parameter within these two distributions. 
+For a preliminary sample of relatively well separated rooms, we find that there is a clear boundary between sensor clusters in terms of their spatial placement and the boundary can be probed statistically.  We also find 
+a uniform discriminator can be learned and generalized across these rooms.  
+For this initial study, our method is able to classify the sensors of 93.3\% accuracy, which is 13\% higher than a tradition k-means approach, with a TPR between 62\%-86\% and a FPR less than 20\%. 
+
+These results are very encouraging. However, we recognize that they are far from definitive. While the rooms in the study were picked arbitrarily, they are neither comprehensive nor a systematic sampling.  While they are clearly separated by our approach, and not by analyses of the raw time series, they do differ substantially in placement and usage.  A key question going forward is, ``how well will highly similar rooms be separated?"  - say, adjacent rooms facing the same side of the building and with similar occupancy. Will these techniques hold, more powerful techniques be required, or is further discrimination intractable? In future work, we will examine how far this method takes us and explore how it may be used in combination with other techniques to improve the results more generally. Automated metadata verification is important to include in the lifecycle of building data management.
+
+
+
+
+
+
+
+
+
+
+

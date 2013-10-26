@@ -1,0 +1,56 @@
+
+\section{Addressing BMS Shortcomings}
+The current architecture of building information systems is very tightly integrated and based on monitoring and supervisory control
+of local control loops.  Building information systems were built as tightly integrated systems with a single application.  The main
+layer of interaction is been the underlying network layer.  However, because of the complexity of dealing directly with the network,
+later iterations of BMS's included an export feature which decoupled the protocol from the necessary information, namely, time-value
+pairs for each point in the system.  As auditing applications emerged and energy became a prime target for reduction in buildings, 
+these interface choices became overloaded.  Moreover, as the need to build new kind of applications emerges, the architecture pieces
+that are missing become more clear.  The following is a list of some of them:
+
+\begin{enumerate}
+% \item Network protocol details should remain opaque to end-user applications.
+\item Narrow waist should be above the network layer.
+\item A time-series store is necessary.
+\item Mechanisms to distill the readings must be availble.
+\item Real-time data forwarding should be available, especially for control applications.
+\item Contextual relationships between sensor should be verified.
+\end{enumerate}
+
+The first four items are commonly built and re-built in emerging applications.  Therefore, we argue that they are fundamental 
+to the future architecture of building information systems.  Moreoever, we observe that dealing with network-protocol specific
+calls is not only cumbersome, but usually circumvented in order to deal directly with the data.  Most applications that do
+use the underlying protocol expose a name-time-value (NTV) tuple to the layers above.  This observation leads us to believe that
+that's where the interface should be.
+
+The NTV layer also allows us to decouple of the data from the network protocol.  This makes it easier to include 
+new sensors that may not be directly on the building network.  For example, wireless plug-load power meters~\cite{ACme}
+can simply join the NTV layer by registering the individual points, while a translation layer between the NTV layer and the
+main router can provide the transformation of read/write request to/from points in the network.  The same is true for BACNet
+or any point protocols for sensors/actuators.
+
+Each of the services that require the end user to have a deeper understanding of the underyling dynamics or performance
+of the building \emph{must} capture the notion of time.  Almost all anlytical process or control decision needs a set of readings
+over time.  Therefore, there a time-series data store must be part of future BIS design.  The service should be made available
+through the NTV.  This will allow applications to fetch the necessary data for analysis either for display or complex processing.
+
+The third point is motivated by the observation that sensor data, especially from cheap sensors, is dirty and typically goes
+through a cleaning process before being forwarded to the end-use application.  There are various operations that are commonly
+performed on the data, that we think should be provided as primitives.  These mainly include re-sampling, filtering,  
+missing-data identification, and aggregation.  Re-sampling refers to taking a set of streams and interpolating missing values to 
+align their timestamps.  This is typically performed before aggregation, especially for generating time-varying aggregate statistics.
+Filtering simply refers to the removal of certain values based on some criteria of acceptance.  Usually the criteria is defined
+by a threshold, both lower-bound and upper-bound value threshold for a particular stream or set of streams.
+Since data is often missing, due to intermittent connectivity problems or faulty sensor equipment, it becomes important to 
+get a summary of missing time intervals in order to adjust the fetch parameters.  Finally, the data is usually more
+useful in aggregate than as a univariate signal, for example, for generating a load curve for a set of energy-consuming items.
+Simple operators for combining values of various streams is key to enabling this analysis.
+
+Finally, in order to enable control, real-time mechanisms must be exposed to the control application, while maintaining the 
+layered integrity of the NTV layer.  In addition, we have observed the need to provide real-time services for analytical applications
+as well.  For example, LEED is now proposing the use of building data to provide a dynamic performance meter~\cite{DynamicLeed}.
+There are also many dashboard companies that make use of streaming data to provide real-time statistics on the performance of the
+building.  The mobile application described in section~\ref{sec:mobile} also requires a real-time forwarding and processing service to
+enable the application.  We believe that as more applications emerge they will likely need make use of real-time sensor data.
+
+

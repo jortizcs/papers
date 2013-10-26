@@ -1,0 +1,25 @@
+\chapter{Process Management and Scheduling}
+
+Data is coming in at different, independent rate from sensors and is produced asynchronously from internal processing elements.
+For certain processes, processing the incoming data as quickly as possible is key, however, this is challenging for several reasons:
+1) a process may subscribe to multiple, independent streams with asychronized report schedules and 2) interpolated values
+should be avoided to minimize prediction inaccuracies in interpolated values.  Therefore, a process actually wants all the freshest
+data from all the streams they are subscribing to, while minimizing the average time that the data for each respective stream has 
+been waiting in the buffer.
+
+Sensor data is fundamentally challenging to deal with because much of it must be cleaned before it can be processed.  For example,
+it is not uncommon to receive readings that is out of operational range, that is erroneous with respect to the previous observed trend,
+or to stop receiving readings altogether.  This implies the need for processing jobs to provide a level of filtering over the raw streams.
+Once the data is cleaned, it is typically consumed more sophisticated processes that aggregate the information or use it for control
+of the space or equipment.  We provide the mechanisms for handling both classes of processing jobs with our process management layer.
+In the next section we will discuss our process management layer and how users can both submit jobs to StreamFS for management or link
+their own external processing elements so that they can be managed through StreamFS but run outside of StreamFS.
+
+% \input{ProcessMngt}
+\input{ProcessManagementAndScheduling/InternalProcs}
+\input{ProcessManagementAndScheduling/ExternalProcs}
+\input{ProcessManagementAndScheduling/DataFreshness}
+\input{ProcessManagementAndScheduling/results}
+\input{ProcessManagementAndScheduling/summary}
+
+

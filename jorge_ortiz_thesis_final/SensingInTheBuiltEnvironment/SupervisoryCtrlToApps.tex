@@ -1,0 +1,26 @@
+\section{From Supervisor Control to Application Development in Buildings}
+
+
+Building information systems were built as tightly integrated silos, where the main application is the graphical user interface.
+Features for interoperability were designed at two interface layers: 1) the protocol layer and 2) data export features in the 
+graphical interface.  The protocol layer -- we focus on BACNet, but the similar features exist in othe protocols, such as LonTalk --
+provides services for enabling devices to talk to one another through the network.  Several features were explicitly designed around
+the notion of interoperabilty, namely trending, scheduling, management services, alarms and events, direct sharing.  The graphical
+interface layer is mainly focused on providing periodically reports, typically in the form of a comma-separated value file, which
+contains point-name information and time-value pairs of data.
+
+Historically, the extent of interoperability objectives has included mainly the introduction of new devices onto the network or
+the exporting of data for other software program to use for analysis and report generation.  Building informtation systems themselves
+were constructed mainly to support the in-time management and supervisor control of the building.  Analysis does not 
+extend far beyong univariate plotting and individualized assessment of equipment and control not far beyond manual parameter tuning
+of hard-wired control logic at the outstation.
+
+Over the last few years, however, there has been in increased interest in energy management and comfort as a primary objective 
+in the design of new building applications~\cite{}.  Moreoever, there is a broad interest in having buildings participating in hierarchical, 
+global control schemes that optimize the performance of the grid in response to renewable source penetration and its inherent 
+generation volatility~\cite{}.  Model predictive control has introduced new ways of controling the components in the building
+to make them more energy efficient~\cite{mpc}, there is an interest in performaning dynamic, real-time analysis of building health
+and efficiency~\cite{dynamicLeed}.  There has even been interest is improving the visibility of the state of the building to the 
+occupants through various modalities, including touch-screens~\cite{} and mobile phones~\cite{andrew_lighting, buildsys1, buildsys2}.  
+These are other emerging applications
+have pushed the boudanries of the capabilities of building information systems and a re-design must be considered.
