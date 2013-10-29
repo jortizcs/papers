@@ -1,4 +1,27 @@
-\section{Publish-Subscribe Subsystem and Entity-Relationships}
+\section{Publish-Subscribe Subsystem}
 
+StreamFS uses a flexible construction of the publish/subscribe model in order to support a wide range of applications.  
+Publish/subscribe is necessary is physical data application development in order to scale in the number of supported
+applications.  The publish/subscribe model used in StreamFS provides mechanisms that enable a flexible combination 
+of space and time decoupling that enable StreamFS to support of a wide arrange of application requirements, as described by
+Eugster et al.~\cite{eugster}..
 
+Our pub/sub engine is also tightly coupled with the namespaces expose to users, and this design choice allows an application
+to control the space coupling between the publisher and the subscriber (similar to TIBCO~\cite{tibco}).
 
+\subsection{Space decoupling}
+By its very design, space decoupling is achieved.  Publisher do not hold a reference to the subscriber and subscribers do not
+hold references to publisher.  However, because of the coupling of a full pathname and an object, subscriptions to topics
+expressed as a full pathname refer to the single publisher.
+
+\subsection{Time decoupling}
+Time decoupling is achievable through the timeseries data store.  Publisher push data to StreamFS whether or not subscribers are
+online.  Moreover, data may be received at the subscriber even if the publisher becomes disconnected.  Currently, subscribers do
+not receive all information that was missed.  In order to achieve fill time-decoupling, we allow the subcription
+target to enable or disable the option to buffer all missed readings for an associated subscription target, while the subscription
+target it offline.
+
+\subsection{Synchronization decoupling}
+Sychronization decoupling is achieved by the publisher and subscribers through StreamFS.  Events are received out of sequence
+from their arrival to StreamFS.  This is true even when the subscription target is a processing element.  The thread that buffers
+incoming data for each processing element is seperate from the thread where the process is executed.

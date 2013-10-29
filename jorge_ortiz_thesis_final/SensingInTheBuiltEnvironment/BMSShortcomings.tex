@@ -154,12 +154,40 @@ and their associated digital information has historically followed the same prin
 \label{fig:mobileEnergy1}
 \end{figure}
 
-Mobile phone penetration continues to rise and is predicted to reach 50 billion by 2020~\cite{mobile2020}.  As such, it is a ubiquitous,
-powerful tool to serve as an interface between occupants and the built environment.  Mobile phones are constantly connected, 
-are personal devices that can serve as a proxy for the individual, and provide large viewing screen for display of critical information
-to its owner.  By combining the data streams available in the building with mobile phone, we could provide a way to
-do in-situ diagnosis of opertional problem in the building, monitor personal energy consumption, and share information about
-the building with our neighbors in the building.
+Imagine having the ability to walk through a building and see live, detailed energy data as
+you point your phone at various things and locations.  As you enter the building, you scan its tag and see
+the live breakdown of energy consumption traces, including HVAC, lighting, and plug-loads.  You continue
+your walk through the building as you head to your office.  When you arrive to your floor
+you scan the tag for the floor and observe similar figures, only this time they are in relation to that floor
+alone.  Since there are several meeting rooms on that floor, you are curious how much is consumed by 
+occupants versus visitors.  You choose to view the total load curve co-plotted with the occupant
+load curve, specifically for that floor.  You see that approximately half the total energy is consumed
+by visitors during the day.  
+
+Curious about what portion of total are attributed to you, you select the 
+personalized attribution option and you see \emph{your} personal load curve plotted
+with the total load curve -- as well as accompanying statistics, such as the percent of total over time.
+As you quickly examine the data on your phone, you see that you consumed energy during hours that you were not
+there.  You choose to see a more detailed breakdown.  You enter your office, scan various items that you own, and see that
+your computer did not shut down properly and your light switch was set to manual.  You immediately 
+correct these.
+
+Being able to interact with your environment and get a complete energy break-down can provide a useful tool
+for tracing and correcting rampant energy consumption.  In buildings, having the occupants actively participate
+allows for localized, personal solutions to efficiency management and is crucial to scaling to large buildings.
+However, providing this detailed level of attribution is challenging.  There's lots of data coming from various systems 
+in the building, and integrating them in real time is difficult.  Furthermore, attribution is non-trivial.  
+We must be able to answer to following: How much of the total consumed on this floor went to charging laptops?  How
+many of those charging laptops belong to registered occupants of this floor?
+For centralized systems, multiple locations are served simultaneously.  It is non-trivial to determine the exact
+break-down for each location.  At the plug-load level, some plug loads move from place to place throughout the building
+over the course of the day.  Tracking where they are at any given time is difficult.
+
+Answering these queries is relatively easy once the information is available, however, collecting the information
+is non-trivial, especially over time.  Historically, it has been difficult to collect plug-load information.
+Various studies have used wireless power meters to accomplish just this~\cite{stephscale, lanz, aceee}.
+All previous work collected the data and performed post-processing to analyze it.  We want to take the next
+natural set of steps: perform processing in real-time and present the occupants with live information.
 
 Currently, in order to enable this application, a detailed digital model of the building is necessary, data streams from the building must
 be easy to query, and it should work across buildings.  Also, there needs to be a way to localize the user. 
@@ -172,5 +200,8 @@ Cheap sensors are unreliable.  They produce erroneous data and randomly stop and
 Moreoever, within building information systems provided by a single vendor, there is no time synchronization across sensors, so
 aggregation, filtering, and re-sampling are common operations that must be performed on the data in order to summarize and display it.
 The mobile energy viewer application not only require these but requires that they be performed in real time.
+
+
+
 
 

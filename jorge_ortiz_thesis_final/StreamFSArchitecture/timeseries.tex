@@ -1,1 +1,26 @@
 \section{Time-series Data Store}
+
+
+The data collected from sensor in timeseries in nature.  A sensor produces data periodically.  The imporant aspect of
+the stream are the name of the feed, the time the reading was received, and the value for that reading.  There is also
+metadata that needs to be stored about the stream.  For example, we want to know what the units of measure are, 
+the make/model of the sensor, the date it was installed, any calibration parameters or other information that will help 
+the user locate the sensor or interpret it correct.  We actively separate the storage of the metadata from the storage 
+of the data.
+
+In constructing a design for the data store, we considered 3 main questions:
+
+\begin{enumerate}
+\item What is the typical access pattern or what are the top queries?
+\item Should we compress it?
+\item How is the data stored long-term?
+\end{enumerate}
+
+The typically access pattern is that of scans.  Many of the applications that we consider that make use of historical data, fetch the data
+is a temporally meaningful manner.  The query specifies the interval of time over which to fetch the data from a particular feed
+and either perform cleaning operations on the data, display it, or adjust the scan parameters for a subsequent query.
+The data is largely self-similar and highly compressable.  Simple compression tests we ran on real data showed a compression factor 
+between 15 and 30.  Also, the data is essentially append-only, forever.  It can grow quite large, but grows have a fairly 
+slow rate, especially after compression.  In either case, we decided a good option would be to use OpenTSDB~\cite{opentsdb}.
+We enabled the compression feature and indexed based on the same and timestamps of the feed.
+

@@ -1,95 +1,9 @@
 \section{Functional Verification Experimental Results}
 \label{eval}
 
-\begin{figure*}[t!]
-% \subfloat[Raw signals]{\includegraphics[width=.48\textwidth]{img/heatMap_raw_201106-eps-converted-to.pdf}}\\
-\subfloat[High Frequencies\label{fig:heatmap:high}]{\includegraphics[width=.48\textwidth]{figs/heatMap_1_201106-eps-converted-to.pdf}}\hfill
-\subfloat[Medium Frequencies\label{fig:heatmap:med}]{\includegraphics[width=.48\textwidth]{figs/heatMap_2_201106-eps-converted-to.pdf}}\\
-\subfloat[Low Frequencies\label{fig:heatmap:low}]{\includegraphics[width=.48\textwidth]{figs/heatMap_3_201106-eps-converted-to.pdf}}\hfill
-\subfloat[Residual data\label{fig:heatmap:res}]{\includegraphics[width=.48\textwidth]{figs/heatMap_4_201106-eps-converted-to.pdf}}
-\caption{Reference matrices for the four time scale ranges (the diagonal $x=y$ is colored in black for better reading). The medium frequencies highlight devices that are located next to each other thus intrinsically related. The low frequencies contains the common daily pattern of the data. The residual data permits to visually identify devices of the similar type.}
-\label{fig:heatmap}
-\end{figure*}
 
-In this section we evaluate SBS on our building traces.  We demonstrate
- the benefits of striping the data by monitoring patterns captured at different time scales.
-Then, we thoroughly investigate the alarms reported by SBS.  
 
-\subsection{Shortcomings}
-Because our analysis is done on historical data, some of the faults found by SBS could not be fully
-corroborated.  In order to fully examine the effectiveness of our approach, we must run it in real time and
-physically check that the problem is actually occurring.  When a problem is detected
-in the historical trace, months after it has occurred, the current state of the building may no longer reflect
-what is in the traces.  Some of the anomalies discussed in this section uncover interpretable patterns 
-that are difficult to find in practice.  For example, simultaneous heating and cooling is a known, recurring problem
- in buildings, but it is very hard to identify  when it is occurring.  Some of the anomalies we could not interpret
-might be interpretable by a building manager, however, we did not consult either building manager for this study.
-Therefore, the results of this study do not examine the true/false positive rate exhaustively.
-
-The true/false negative rate is impractical to assess.  It may be examined through synthetic stimulation of
-the building via the control system.  However, getting cooperation from a building manager to hand over control of the building
-for experimentation in non-trivial.  Therefore, we forgo a full true/false negative analysis in our evaluation.
-
-Because of these challenges, the evaluation of SBS focuses on comparing the output with known fault
-signatures.  We examine anomalies, in either building, where the anomaly is easily interpretable but
-difficult to find by the building manager.  We forego a comparison of SBS with competing algorithms because
- related algorithms require detailed knowledge of the building, \emph{a priori}.  The advantage of SBS is that it 
-requires no such information to provide immediate value.
-
-\subsection{Device behavior at different time scales}
-The Strip and Bind part of SBS is evaluated using the data from Eng. Bldg 2. %, since we can verify how items are being used and use it as ground truth.
-This dataset is appropriate to measure SBS's performance, since lighting and HVAC systems serving the same room are usually used 
-simultaneously.
-Consequently, we analyze this data using SBS and verify that the higher correlations at medium frequencies correspond to devices located in the same room. % and the unwanted data is captured at the other frequencies.
-
-The dataset is split into 10, one-week bins and each bin is processed by SBS.
-Using the 10 correlation matrices at each time scale range, SBS uncovers the four reference matrices depicted in 
-Figure~\ref{fig:heatmap}.
-
-\paragraph{High frequencies}
-In this work the high frequencies correspond to the signals \emph{noise}, 
-therefore, we do not expect any useful information from the corresponding matrix (Figure \ref{fig:heatmap:high}).
-Indeed, the corresponding reference matrix does not provide any help to determine a device's relative location.
-Thus, we emphasize that high frequency data should be ignored for uncovering device relationships (in contrast to \cite{romain:iotapp12}).
-Interestingly, we find that the sensors monitoring the lights generate consistent noise. % and could help one to cluster this type of sensor.
-  
-\paragraph{Medium frequencies}
-Our main focus is on the medium frequencies as it is designed to capture the intrinsic device relationships.
-Figure \ref{fig:heatmap:med} shows the correlation matrix at medium frequencies.
-It is significantly different from the one obtained with the raw signals (Figure \ref{fig:heatmap:raw}): high correlation coefficients are concentrated along the matrix diagonal. 
-Since devices serving the same or adjacent rooms are placed nearby in the matrix it validates our hypothesis: \emph{high correlation scores within the medium frequency band shows strong inter-device relationships}.
-
-Considering this reference matrix as an adjacency matrix of a graph, in which the nodes are the devices, we identify the clusters of 
-correlated devices using a community mining algorithm~\cite{blondel:unfolding}.
-As expected we obtain mainly clusters of only two devices (light and HVAC serving the same room), but we also find clusters that are composed of more devices.
-For example a cluster contains 3 HVAC systems serving the three server rooms. Although these server rooms are located on
- different floors, SBS shows a strong correlation between these devices.  Coincidentally, they are managed similarly.
-Interestingly, we also observe a couple of clusters that consist of independent devices serving adjacent rooms belonging to the same lab.
-The bigger cluster contains 33 devices that are 2 GHP devices and the corresponding lights.
-This correlation matrix and the corresponding clusters 
-highlight the ability for SBS to identify such hidden inter-device usage relationships.
- 
-\paragraph{Low frequencies}
-Low frequencies capture daily patterns, embedded in all the device traces.  
-Figure \ref{fig:heatmap:low} depicts the corresponding reference matrix which is similar to the one of raw signal traces (Figure \ref{fig:heatmap:raw}) 
-and it shows no particular structure.% (daily patterns account for the coefficients high values).  
-% Since this matrix contains mainly high values, most of the partial signals at low frequencies features similar characteristics (i.e. daily patterns).
-These partial signals are discarded as they do not help us in identifying inter-device usage patterns.
- 
-\paragraph{Residual data}
-The residual data shows the weekly trend, which gives us no information about device relationships.
-But, surprisingly, by reordering the correlation matrix based on the type of the devices (Figure \ref{fig:heatmap:res}) 
-we can visually identify two major clusters.
-The first cluster consists of HVAC devices (see EHP and GHP in Figure \ref{fig:heatmap:res}) and the second one contains only lights. 
-An in-depth examination of the data reveals that long-term trends are inherent to the device types. 
-For example, as the consumption of both the EHP and GHP devices is driven by the building occupancy and the outside temperature, these two types of devices follow the same trend. 
-However, the use of light is independent from the outside temperature thus the lighting systems follow a common trend different from the EHP and GHP one.
-
-We conduct the same experiments by splitting the dataset in 70 bins of 1 day long and observe analogous results at high and medium frequencies but not at lower frequencies.  This is because the bins are too short to exhibit daily oscillations and the residual data captures only the daily trend.
-
-% TODO add some info about the reference matrix for the Building 2?
-
-\subsection{Anomalies}
+% \subsection{Anomalies}
 We evaluate the \emph{search} performance of SBS using the traces from the Eng. Bldg 2 and Cory Hall.
 %% Romain
 Due to the lack of historical data, such as room schedule or reports of energy waste, the evaluation is non-trivial.

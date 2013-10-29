@@ -1,3 +1,4 @@
+
 \section{Spatial Verification Results}
 
 Our initial results on the Todai dataset were not surprising.  The diurnal pattern dominates the comparison between the sensors.
@@ -28,21 +29,18 @@ EHP, GHP & 0.6370 & 0.0060274 & 0.063546 & 0.16764 & 0.79378 \\ \hline
 \label{tab:corr}
 \end{center}
 \end{table}
-\subsection{Simple Scenario}
 
-\begin{figure*}[tb]
-\hspace{-2cm}
-\includegraphics[width=1.2\textwidth]{figs/emd_25_41-eps-converted-to}
-\vspace{-1cm}
-\caption{Decomposition of the EHP and GHP trace using bivariate EMD. IMFs correlation coefficients highlight the intrinsic independence of the two traces.}
-\label{fig:emd2}
-\end{figure*}
 
+% \subsection{Simple Scenario}
 We test our hypothesis in this section by using EMD to remove low-frequency trends in the data
 and run correlation calculation at overlapping IMF timescales.  We discover that EMD allows us
 to find and compare high-frequency instrinsic behavior that is spatially correlated across
 sensors.  We begin with a small set of three sensors (EHP, GHP, light) and expand our scope
 to include all the sensors in the dataset.
+
+
+
+
 
 
 
@@ -70,6 +68,11 @@ By comparing IMFs, we see both intrisically correlated and \emph{uncorrelated} b
 section we expand our analysis and show the effectiveness of our methodology. 
 % Although promising, these results must be validated across the rest of the
 % dataset to confirm their significance.  
+
+
+
+
+
 
 
 \subsection{Validation}
@@ -149,6 +152,9 @@ We combine this observation with a simple classifier to derive colocation.
 
 
 
+
+
+
 \subsection{Spatial Clustering Experimental Results}
 We conduct two sets of experiments. First, we quantify the sensitivity of our method for different threshold values 
 and examine the effect of different time spans on the threshold. We then cluster the traces based on our threshold analysis 
@@ -156,41 +162,6 @@ and compare it with a baseline approach using multidimensional scaling and k-mea
 % as well as with an approach combining multidimensional scaling and k-meas. 
 % Last, we validate the usefulness of the proposed method in a case study.
 
-\subsection{Experimental Setup}
-\begin{figure}[h!]
-\centering
-  \includegraphics[width=0.45\textwidth]{figs/SDH3_crop}
-\caption{We collect data from 15 sensors in 5 rooms sitting on 4 different floors. This is a map of a section of the 3rd floor
-in Sutardja Dai Hall.}
-\label{fig:sdh}
-\end{figure}
-
-We perform an empirical study on sensor data collected from 15 sensors across 5 rooms on 4 different floors of a Sutardja Dai Hall, 
-as detailed in Table~\ref{table:roomspec}. 
-Each room has three sensors: a temperature sensor, a $CO_{2}$ sensor,  and a humidity sensor. 
-The data from these is reported to an sMAP~\cite{smap} archiver. The data set used comes from a deployment~\cite{Jay} lasting 
-over 6 months on several floors in Sutardja Dai Hall (SDH) at UC Berkeley, where one sensor box -- which contains a thermometer, 
-a humidity sensor and a $CO_{2}$ sensor -- is placed in each room. The box reports data over 6LowPAN~\cite{6lowpan} to a sMAP archiver 
-every 15 seconds. 
-Due to intermittent data loss, we pick a time span without interruption, starting in January until mid-Feburary, 2013, for evaluation.
-
-\begin{table}[ht!]
-\caption{Room Specs}
-\centering % used for centering table
-\begin{tabular}{c c c c}% centered columns (4 columns)
-\hline %inserts single horizontal lines
-Room\# & Orientation & Floor & Type \\ % inserts table 
-%heading
-\hline\hline % inserts double horizontal line
-A & West & 2 & Computer Lab \\ % inserting body of the table
-B & South & 4 & Conference Room \\
-C & No Window & 2 & Classroom \\
-D & North & 7 & Conference Room \\
-E & South & 5 & Conference Room \\ % [1ex] adds vertical space
-\hline %inserts single line
-\end{tabular}
-\label{table:roomspec} % is used to refer this table in the text
-\end{table}
 
 \subsection{Baseline and Metrics}
 % We exploit a simple approach as baseline to compare with our proposed approach: instead of computing the correlation coefficients between re-aggregated IMFs of sensor feeds, we directly use the raw sensor data to do the correlation analysis and generate the two distributions for thresholding approach evaluation similarly to what described previously.
@@ -203,7 +174,7 @@ while a false-positive (FP) is when a sensor that is not in room is classified a
 
 \begin{figure}[h!]
 \centering
-	\includegraphics[width=0.45\textwidth]{figs/Inter_intra_relationships}
+	\includegraphics[width=0.65\textwidth]{figs/Inter_intra_relationships}
 \caption{Two populations are examined for our threshold analysis.  A solid line connects sensors in the same room while a dotted line connects
  to a pairs in different rooms.}
 \label{fig:group}
@@ -211,7 +182,7 @@ while a false-positive (FP) is when a sensor that is not in room is classified a
 
 \begin{figure}[h!]
 \centering
-	\includegraphics[width=0.45\textwidth]{figs/corrcoeff_cdf_in_out}
+	\includegraphics[width=1.0\textwidth]{figs/corrcoeff_cdf_in_out}
 \caption{CDF of correlation coefficients between IMFs of sensor feeds: the dotted lines point to some threshold which divides
  the distribution and produces a TPR and FPR.
 }
@@ -324,7 +295,7 @@ The reason that we are able to get such a high accuracy, which is seemingly diff
 
 \begin{figure*}[ht!]
 \centering
-	\includegraphics[width=0.48\textwidth]{figs/Space_KmeanClustering}
+	\includegraphics[width=1.0\textwidth]{figs/Space_KmeanClustering}
 \caption{Clustering with k-means on the corrcoeff matrix after applying multidimensional scaling (MDS): The EMD-based set achieves an accuracy of 80\% while the results with raw-trace is only 53.3\% classification accuracy.}
 \label{fig:mds}
 \end{figure*}

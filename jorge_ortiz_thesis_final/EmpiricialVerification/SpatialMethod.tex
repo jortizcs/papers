@@ -1,12 +1,47 @@
 \section{Spatial Verification Methodology}
 
-\begin{figure*}[tb]
+\begin{figure}[th!]
 \hspace{-2cm}
 \includegraphics[width=1.2\textwidth]{figs/emd_25_26-eps-converted-to}
 \vspace{-1cm}
 \caption{Decomposition of the EHP and light trace using bivariate EMD. IMFs correlation coefficients highlight the intrinsic relationship of the two traces.}
 \label{fig:emd}
-\end{figure*}
+\end{figure}
+
+\begin{figure}[tb]
+\hspace{-2cm}
+\includegraphics[width=1.2\textwidth]{figs/emd_25_41-eps-converted-to}
+\vspace{-1cm}
+\caption{Decomposition of the EHP and GHP trace using bivariate EMD. IMFs correlation coefficients highlight the intrinsic independence of the two traces.}
+\label{fig:emd2}
+\end{figure}
+
+
+\begin{figure}[ht!]
+\centering
+	\includegraphics[width=.4\textwidth]{figs/25.png}
+\caption{Trace from an Electric Heat Pump (EHP) captured in 2011 from July 4th to July 24th. Data is 
+normalized and aggregated into 30 minutes time bins.}
+\label{fig:raw_ehp}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+	\includegraphics[width=.4\textwidth]{figs/26.png}
+\caption{Light traces from captured in 2011 from July 4th to July 24th. Data is 
+normalized and aggregated into 30 minutes time bins.}
+\label{fig:raw_light}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+	\includegraphics[width=.4\textwidth]{figs/41.png}
+\caption{Traces from a Gas Heat Pump (EHP) captured in 2011 from July 4th to July 24th. Data is 
+normalized and aggregated into 30 minutes time bins.}
+\label{fig:raw_ghp}
+\end{figure}
+
+
 
 For this investigation, we focus on a three-week span in the summer of 2011 (from July 4th to July 24th).
 The dataset captures regular work days, weekends, and one holiday (July 18th).  This timeframe captures
@@ -45,29 +80,6 @@ due to their underlying daily usage pattern.
 %  \label{fig:raw}
 % \end{figure}
 
-\begin{figure}[ht!]
-\centering
-	\includegraphics[width=.4\textwidth]{figs/25.png}
-\caption{Trace from an Electric Heat Pump (EHP) captured in 2011 from July 4th to July 24th. Data is 
-normalized and aggregated into 30 minutes time bins.}
-\label{fig:raw_ehp}
-\end{figure}
-
-\begin{figure}[ht!]
-\centering
-	\includegraphics[width=.4\textwidth]{figs/26.png}
-\caption{Light traces from captured in 2011 from July 4th to July 24th. Data is 
-normalized and aggregated into 30 minutes time bins.}
-\label{fig:raw_light}
-\end{figure}
-
-\begin{figure}[ht!]
-\centering
-	\includegraphics[width=.4\textwidth]{figs/41.png}
-\caption{Traces from a Gas Heat Pump (EHP) captured in 2011 from July 4th to July 24th. Data is 
-normalized and aggregated into 30 minutes time bins.}
-\label{fig:raw_ghp}
-\end{figure}
 
 \subsection{Distribution}
 Let $ts^{i}_{j,t}$ be a time-series for sensor $j$ in room $i$ observed over some time interval $t$.  For simplicity, we ignore
@@ -140,10 +152,48 @@ the SBS~\cite{SBS} methodology is advantageous for discovering a statistical sep
 We also examine whether there is a uniform boundary between clusters across all the rooms. 
 
 
-\begin{figure*}[ht!]
+\begin{figure}[ht!]
 \centering
-	 \includegraphics[width=0.95\textwidth]{figs/ROCgraphs}
+	 \includegraphics[width=1.00\textwidth]{figs/ROCgraphs}
 \caption{The ROC curves depict the sensitivity of the raw signal and mid-frequency IMFs to the threshold value. We choose the 0.2 FPR point as the boundary threshold for each room. }
 \label{fig:roc}
-\end{figure*}
+\end{figure}
+
+
+
+\subsection{Experimental Setup}
+\begin{figure}[h!]
+\centering
+  \includegraphics[width=0.45\textwidth]{figs/SDH3_crop}
+\caption{We collect data from 15 sensors in 5 rooms sitting on 4 different floors. This is a map of a section of the 3rd floor
+in Sutardja Dai Hall.}
+\label{fig:sdh}
+\end{figure}
+
+We perform an empirical study on sensor data collected from 15 sensors across 5 rooms on 4 different floors of a Sutardja Dai Hall, 
+as detailed in Table~\ref{table:roomspec}. 
+Each room has three sensors: a temperature sensor, a $CO_{2}$ sensor,  and a humidity sensor. 
+The data from these is reported to an sMAP~\cite{smap} archiver. The data set used comes from a deployment~\cite{Jay} lasting 
+over 6 months on several floors in Sutardja Dai Hall (SDH) at UC Berkeley, where one sensor box -- which contains a thermometer, 
+a humidity sensor and a $CO_{2}$ sensor -- is placed in each room. The box reports data over 6LowPAN~\cite{6lowpan} to a sMAP archiver 
+every 15 seconds. 
+Due to intermittent data loss, we pick a time span without interruption, starting in January until mid-Feburary, 2013, for evaluation.
+
+\begin{table}[ht!]
+\caption{Room Specs}
+\centering % used for centering table
+\begin{tabular}{c c c c}% centered columns (4 columns)
+\hline %inserts single horizontal lines
+Room\# & Orientation & Floor & Type \\ % inserts table 
+%heading
+\hline\hline % inserts double horizontal line
+A & West & 2 & Computer Lab \\ % inserting body of the table
+B & South & 4 & Conference Room \\
+C & No Window & 2 & Classroom \\
+D & North & 7 & Conference Room \\
+E & South & 5 & Conference Room \\ % [1ex] adds vertical space
+\hline %inserts single line
+\end{tabular}
+\label{table:roomspec} % is used to refer this table in the text
+\end{table}
 

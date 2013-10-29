@@ -16,6 +16,48 @@
   {}
 \endgroup
 
+\entry{occmodels_buildsys11}{inproceedings}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Agarwal}{A.}%
+     {Yuvraj}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Balaji}{B.}%
+     {Bharathan}{B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Dutta}{D.}%
+     {Seemanta}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Gupta}{G.}%
+     {Rajesh~K.}{R.~K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Weng}{W.}%
+     {Thomas}{T.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{AY+1}
+  \strng{fullhash}{AYBBDSGRKWT1}
+  \field{sortinit}{A}
+  \field{pages}{6}
+  \field{series}{Buildsys'11}
+  \field{title}{Enabling Building Energy Auditing Using Adapted Occupancy
+  Models}
+  \list{location}{1}{%
+    {Seattle, WA}%
+  }
+  \field{year}{2011}
+  \warn{\item Invalid format of field 'month'}
+\endentry
+
 \entry{Bacnet}{misc}{}
   \name{author}{1}{}{%
     {{}%
@@ -60,6 +102,78 @@
   \field{title}{{Automatic detection of ECG wave boundaries using empirical
   mode decomposition}}
   \field{year}{2009}
+\endentry
+
+\entry{Bellala_buildsys11}{inproceedings}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Bellala}{B.}%
+     {Gowtham}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Marwah}{M.}%
+     {Manish}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Arlitt}{A.}%
+     {Martin}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Lyon}{L.}%
+     {Geoff}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Bash}{B.}%
+     {Cullen~E.}{C.~E.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BG+1}
+  \strng{fullhash}{BGMMAMLGBCE1}
+  \field{sortinit}{B}
+  \field{pages}{6}
+  \field{series}{Buildsys'11}
+  \field{title}{Towards an Understanding of Campus-Scale Power Consumption}
+  \list{location}{1}{%
+    {Seattle, WA}%
+  }
+  \field{year}{2011}
+  \warn{\item Invalid format of field 'month'}
+\endentry
+
+\entry{blondel:unfolding}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Blondel}{B.}%
+     {Vincent~D.}{V.~D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Guillaume}{G.}%
+     {Jean-Loup}{J.-L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Lambiotte}{L.}%
+     {Renaud}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Lefebvre}{L.}%
+     {Etienne}{E.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BVD+1}
+  \strng{fullhash}{BVDGJLLRLE1}
+  \field{sortinit}{B}
+  \field{title}{Fast unfolding of communities in large networks}
+  \field{journaltitle}{J.STAT.MECH.}
+  \field{year}{2008}
 \endentry
 
 \entry{DStream}{inproceedings}{}
@@ -188,6 +302,55 @@
   \field{year}{2001}
 \endentry
 
+\entry{eugster}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Eugster}{E.}%
+     {Patrick~Th.}{P.~T.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Felber}{F.}%
+     {Pascal~A.}{P.~A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Guerraoui}{G.}%
+     {Rachid}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kermarrec}{K.}%
+     {Anne-Marie}{A.-M.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {ACM}%
+  }
+  \keyw{Distribution, interaction, publish/subscribe}
+  \strng{namehash}{EPT+1}
+  \strng{fullhash}{EPTFPAGRKAM1}
+  \field{sortinit}{E}
+  \verb{doi}
+  \verb 10.1145/857076.857078
+  \endverb
+  \field{issn}{0360-0300}
+  \field{number}{2}
+  \field{pages}{114\bibrangedash 131}
+  \field{title}{The many faces of publish/subscribe}
+  \verb{url}
+  \verb http://doi.acm.org/10.1145/857076.857078
+  \endverb
+  \field{volume}{35}
+  \list{location}{1}{%
+    {New York, NY, USA}%
+  }
+  \field{journaltitle}{ACM Comput. Surv.}
+  \field{month}{06}
+  \field{year}{2003}
+\endentry
+
 \entry{IOT}{inproceedings}{}
   \name{author}{4}{}{%
     {{}%
@@ -277,6 +440,42 @@
   \field{year}{2013}
 \endentry
 
+\entry{kaminthermo}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Gao}{G.}%
+     {Ge}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Whitehouse}{W.}%
+     {Kamin}{K.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{building energy, home monitoring, programmable thermostats, wireless
+  sensor networks}
+  \strng{namehash}{GGWK1}
+  \strng{fullhash}{GGWK1}
+  \field{sortinit}{G}
+  \verb{doi}
+  \verb http://doi.acm.org/10.1145/1810279.1810294
+  \endverb
+  \field{isbn}{978-1-60558-824-7}
+  \field{pages}{67\bibrangedash 72}
+  \field{series}{BuildSys'09}
+  \field{title}{The self-programming thermostat: optimizing setback schedules
+  based on home occupancy patterns}
+  \verb{url}
+  \verb http://doi.acm.org/10.1145/1810279.1810294
+  \endverb
+  \list{location}{1}{%
+    {Berkeley, California}%
+  }
+  \field{year}{2009}
+  \warn{\item Invalid format of field 'month'}
+\endentry
+
 \entry{gardner1987energy}{book}{}
   \name{author}{2}{}{%
     {{}%
@@ -304,6 +503,35 @@
   \field{year}{1987}
 \endentry
 
+\entry{waste_science}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Gershenfeld}{G.}%
+     {Neil}{N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Samouhos}{S.}%
+     {Stephen}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Nordman}{N.}%
+     {Bruce}{B.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{GNSSNB1}
+  \strng{fullhash}{GNSSNB1}
+  \field{sortinit}{G}
+  \field{number}{5969}
+  \field{pages}{3}
+  \field{title}{Intelligent Infrastructure for Energy Efficiency}
+  \field{volume}{327}
+  \field{journaltitle}{Science}
+  \field{year}{2010}
+\endentry
+
 \entry{MITBuildingScience}{article}{}
   \name{author}{3}{}{%
     {{}%
@@ -322,8 +550,8 @@
      {}{}%
      {}{}}%
   }
-  \strng{namehash}{GNSSNB1}
-  \strng{fullhash}{GNSSNB1}
+  \strng{namehash}{GNSSNB2}
+  \strng{fullhash}{GNSSNB2}
   \field{sortinit}{G}
   \field{title}{Intelligent Infrastructure for Energy Efficiency}
   \field{journaltitle}{Science Magazine}
@@ -492,6 +720,77 @@
   \field{year}{2009}
 \endentry
 
+\entry{huang:emd1998}{article}{}
+  \name{author}{9}{}{%
+    {{}%
+     {Huang}{H.}%
+     {Norden~E.}{N.~E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Shen}{S.}%
+     {Zheng}{Z.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Long}{L.}%
+     {Steven~R.}{S.~R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Wu}{W.}%
+     {Manli~C.}{M.~C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Shih}{S.}%
+     {Hsing~H.}{H.~H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Zheng}{Z.}%
+     {Quanan}{Q.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Yen}{Y.}%
+     {Nai-Chyuan}{N.-C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Tung}{T.}%
+     {Chi~Chao}{C.~C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Liu}{L.}%
+     {Henry~H.}{H.~H.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{HNE+1}
+  \strng{fullhash}{HNESZLSRWMCSHHZQYNCTCCLHH2}
+  \field{sortinit}{H}
+  \verb{doi}
+  \verb 10.1098/rspa.1998.0193
+  \endverb
+  \verb{eprint}
+  \verb http://rspa.royalsocietypublishing.org/content/454/1971/903.full.pdf+ht
+  \verb ml
+  \endverb
+  \field{number}{1971}
+  \field{pages}{903\bibrangedash 995}
+  \field{title}{The empirical mode decomposition and the Hilbert spectrum for
+  nonlinear and non-stationary time series analysis}
+  \verb{url}
+  \verb http://rspa.royalsocietypublishing.org/content/454/1971/903.abstract
+  \endverb
+  \field{volume}{454}
+  \field{journaltitle}{Proceedings of the Royal Society of London. Series A:
+  Mathematical, Physical and Engineering Sciences}
+  \field{year}{1998}
+\endentry
+
 \entry{6lowpan}{article}{}
   \name{author}{2}{}{%
     {{}%
@@ -601,6 +900,51 @@
   \field{year}{2012}
 \endentry
 
+\entry{kim:buildsys2010}{inproceedings}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Kim}{K.}%
+     {Younghun}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Balani}{B.}%
+     {Rahul}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Zhao}{Z.}%
+     {Han}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Srivastava}{S.}%
+     {Mani~B.}{M.~B.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{causality, energy consumption profile, network traffic analysis}
+  \strng{namehash}{KY+1}
+  \strng{fullhash}{KYBRZHSMB1}
+  \field{sortinit}{K}
+  \verb{doi}
+  \verb http://doi.acm.org/10.1145/1878431.1878442
+  \endverb
+  \field{isbn}{978-1-4503-0458-0}
+  \field{pages}{43\bibrangedash 48}
+  \field{series}{BuildSys'10}
+  \field{title}{Granger causality analysis on IP traffic and circuit-level
+  energy monitoring}
+  \verb{url}
+  \verb http://doi.acm.org/10.1145/1878431.1878442
+  \endverb
+  \list{location}{1}{%
+    {Zurich, Switzerland}%
+  }
+  \field{year}{2010}
+  \warn{\item Invalid format of field 'month'}
+\endentry
+
 \entry{climate}{article}{}
   \name{author}{2}{}{%
     {{}%
@@ -692,6 +1036,81 @@
   \field{year}{2012}
 \endentry
 
+\entry{buildanomaly}{inproceedings}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Meyn}{M.}%
+     {Sean}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Surana}{S.}%
+     {Amit}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Lin}{L.}%
+     {Yiqing}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Narayanan}{N.}%
+     {Satish}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{MS+1}
+  \strng{fullhash}{MSSALYNS1}
+  \field{sortinit}{M}
+  \field{series}{CDC'09}
+  \field{title}{Anomaly detection using projective Markov models in a
+  distributed sensor network}
+  \list{location}{1}{%
+    {Shanghai, China}%
+  }
+  \field{year}{2009}
+  \warn{\item Invalid format of field 'month'}
+\endentry
+
+\entry{simheatcool}{article}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Modera}{M.}%
+     {Mark}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Huizenga}{H.}%
+     {Nance~Matson}{N.~M.}%
+     {andCharlie}{a.}%
+     {}{}}%
+    {{}%
+     {Bauman}{B.}%
+     {Fred}{F.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Arens}{A.}%
+     {Edward}{E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Borgers}{B.}%
+     {Tom}{T.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{MM+1}
+  \strng{fullhash}{MMHNMaBFAEBT1}
+  \field{sortinit}{M}
+  \field{title}{Efficient Thermal Energy Distribution in Commercial Buildings
+  Final Report to California Institute for Energy Efficiency}
+  \field{journaltitle}{Environmental Energy Technologies Division, LBNL
+  Technical Report}
+  \field{year}{1994}
+  \warn{\item Invalid format of field 'month'}
+\endentry
+
 \entry{ip}{inproceedings}{}
   \name{author}{4}{}{%
     {{}%
@@ -728,6 +1147,25 @@
   Signal Processing (ICASSP)}
   \field{title}{{BEMD for expression transformation in face recognition}}
   \field{year}{2011}
+\endentry
+
+\entry{next10_waste}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {{Next10}}{N.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{N1}
+  \strng{fullhash}{N1}
+  \field{sortinit}{N}
+  \field{title}{{Untapped Potential of Commericial Buildings: Energy Use and
+  Emissions}}
+  \verb{url}
+  \verb http://next10.org/next10/pdf/NXT10_BuildingEfficiencies_final.pdf
+  \endverb
+  \field{year}{2010}
 \endentry
 
 \entry{Jay}{report}{}
@@ -768,6 +1206,24 @@
   \field{type}{techreport}
   \field{year}{2013}
   \warn{\item Invalid format of field 'month'}
+\endentry
+
+\entry{epabuildings}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {{U.S. Environmental Protection Agency}}{U.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{U1}
+  \strng{fullhash}{U1}
+  \field{sortinit}{U}
+  \field{title}{{Buildings Energy Data Book}}
+  \verb{url}
+  \verb http://buildingsdatabook.eren.doe.gov/docs/DataBooks/2010_BEDB.pdf
+  \endverb
+  \field{year}{2010}
 \endentry
 
 \entry{Leed}{misc}{}

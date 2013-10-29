@@ -7,7 +7,7 @@
 	<key>ApplicationVersion</key>
 	<array>
 		<string>com.omnigroup.OmniGrafflePro</string>
-		<string>139.18.0.187838</string>
+		<string>139.17.0.185490</string>
 	</array>
 	<key>AutoAdjust</key>
 	<true/>
@@ -46,14 +46,14 @@
 	<key>Creator</key>
 	<string>Jorge Jose Ortiz</string>
 	<key>DisplayScale</key>
-	<string>1 0/72 in = 1.0000 in</string>
+	<string>1 0/72 in = 1 0/72 in</string>
 	<key>GraphDocumentVersion</key>
 	<integer>8</integer>
 	<key>GraphicsList</key>
 	<array>
 		<dict>
 			<key>Bounds</key>
-			<string>{{375, 267.5}, {25, 14}}</string>
+			<string>{{232, 212.5}, {25, 14}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -112,9 +112,9 @@
 			<real>-1</real>
 			<key>Points</key>
 			<array>
-				<string>{346, 262}</string>
-				<string>{368, 284}</string>
-				<string>{346, 289}</string>
+				<string>{203, 207}</string>
+				<string>{225, 229}</string>
+				<string>{203, 234}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -133,7 +133,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{253, 332}, {25, 14}}</string>
+			<string>{{110, 277}, {25, 14}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -192,9 +192,9 @@
 			<real>-1</real>
 			<key>Points</key>
 			<array>
-				<string>{248, 313}</string>
-				<string>{248, 327}</string>
-				<string>{281, 313}</string>
+				<string>{105, 258}</string>
+				<string>{105, 272}</string>
+				<string>{138, 258}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -213,7 +213,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{196, 248}, {39, 14}}</string>
+			<string>{{53, 193}, {39, 14}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -261,7 +261,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{207.5, 227}, {43, 14}}</string>
+			<string>{{64.5, 172}, {43, 14}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -309,7 +309,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{275.5, 227}, {43, 14}}</string>
+			<string>{{132.5, 172}, {43, 14}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -367,8 +367,8 @@
 			<integer>37</integer>
 			<key>Points</key>
 			<array>
-				<string>{247.736, 282.611}</string>
-				<string>{278.264, 265.389}</string>
+				<string>{104.736, 227.611}</string>
+				<string>{135.264, 210.389}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -402,8 +402,8 @@
 			<integer>36</integer>
 			<key>Points</key>
 			<array>
-				<string>{248.5, 285}</string>
-				<string>{277.5, 285}</string>
+				<string>{105.5, 230}</string>
+				<string>{134.5, 230}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -437,8 +437,8 @@
 			<integer>35</integer>
 			<key>Points</key>
 			<array>
-				<string>{243.5, 280.5}</string>
-				<string>{243.5, 267.5}</string>
+				<string>{100.486, 225.5}</string>
+				<string>{100.446, 212.5}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -470,8 +470,8 @@
 			<integer>34</integer>
 			<key>Points</key>
 			<array>
-				<string>{247.736, 265.389}</string>
-				<string>{278.264, 282.611}</string>
+				<string>{104.736, 210.389}</string>
+				<string>{135.264, 227.611}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -505,8 +505,8 @@
 			<integer>33</integer>
 			<key>Points</key>
 			<array>
-				<string>{282.5, 267.5}</string>
-				<string>{282.5, 280.5}</string>
+				<string>{139.5, 212.5}</string>
+				<string>{139.502, 225.5}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -538,8 +538,8 @@
 			<integer>32</integer>
 			<key>Points</key>
 			<array>
-				<string>{248.5, 263}</string>
-				<string>{277.5, 263}</string>
+				<string>{105.5, 208}</string>
+				<string>{134.5, 208}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -563,7 +563,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{239, 259}, {9, 8}}</string>
+			<string>{{96, 204}, {9, 8}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -593,7 +593,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{278, 281}, {9, 8}}</string>
+			<string>{{135, 226}, {9, 8}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -623,7 +623,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{278, 259}, {9, 8}}</string>
+			<string>{{135, 204}, {9, 8}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -653,7 +653,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{239, 281}, {9, 8}}</string>
+			<string>{{96, 226}, {9, 8}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -683,7 +683,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{268, 242}, {69, 63}}</string>
+			<string>{{125, 187}, {69, 63}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -701,7 +701,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{189, 242}, {69, 63}}</string>
+			<string>{{46, 187}, {69, 63}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -765,7 +765,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2013-07-30 12:53:18 -0700</string>
+	<string>2013-07-29 15:26:44 -0700</string>
 	<key>Modifier</key>
 	<string>Jorge Jose Ortiz</string>
 	<key>NotesVisible</key>
