@@ -16,6 +16,119 @@
   {}
 \endgroup
 
+\entry{Bacnet}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {{American Society of Heating, Refrigerating and Air-Conditioning
+  Engineers}}{A.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{A1}
+  \strng{fullhash}{A1}
+  \field{sortinit}{A}
+  \field{note}{ASHRAE, Inc., 1995}
+  \field{title}{{ASHRAE Standard 135-1995: BACnet}}
+\endentry
+
+\entry{ecg}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Arafat}{A.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Hasan}{H.}%
+     {T.}{T.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{electrocardiography;medical signal detection;ECG wave boundaries
+  detection;arrhythmia database;empirical mode decomposition;intrinsic mode
+  functions;reference annotated database;threshold-based
+  detector;Databases;Detectors;Electrocardiography;Filtering;Finite impulse
+  response filter;Frequency;Noise reduction;Power engineering and
+  energy;Robustness;Signal analysis;ECG characteristic waves;empirical mode
+  decomposition;intrinsic mode function}
+  \strng{namehash}{AAHT1}
+  \strng{fullhash}{AAHT1}
+  \field{sortinit}{A}
+  \field{booktitle}{IEEE International Conference on Acoustics, Speech and
+  Signal Processing (ICASSP)}
+  \field{title}{{Automatic detection of ECG wave boundaries using empirical
+  mode decomposition}}
+  \field{year}{2009}
+\endentry
+
+\entry{DStream}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Chen}{C.}%
+     {Yixin}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Tu}{T.}%
+     {Li}{L.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{d-stream, density-based clustering, sporadic grids, stream data mining}
+  \strng{namehash}{CYTL1}
+  \strng{fullhash}{CYTL1}
+  \field{sortinit}{C}
+  \field{booktitle}{Proceedings of the 13th ACM SIGKDD international conference
+  on Knowledge discovery and data mining}
+  \field{series}{KDD '07}
+  \field{title}{Density-based clustering for real-time stream data}
+  \field{year}{2007}
+\endentry
+
+\entry{smap}{inproceedings}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Dawson-Haggerty}{D.-H.}%
+     {Stephen}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Jiang}{J.}%
+     {Xiaofan}{X.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Tolle}{T.}%
+     {Gilman}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ortiz}{O.}%
+     {Jorge}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Culler}{C.}%
+     {David}{D.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{instrumentation, sensor data}
+  \strng{namehash}{DHS+1}
+  \strng{fullhash}{DHSJXTGOJCD1}
+  \field{sortinit}{D}
+  \field{booktitle}{Proceedings of the 8th ACM Conference on Embedded Networked
+  Sensor Systems}
+  \field{series}{SenSys '10}
+  \field{title}{{sMAP: a simple measurement and actuation profile for physical
+  information}}
+  \list{location}{1}{%
+    {Z\&\#252;rich, Switzerland}%
+  }
+  \field{year}{2010}
+\endentry
+
 \entry{BuildingEnergyData}{misc}{}
   \name{author}{1}{}{%
     {{}%
@@ -44,6 +157,124 @@
   \field{sortinit}{D}
   \field{note}{\url{http://www.leeduser.com/blogs/usgbc-exploring-new-kind-leed-plaque-v4-gbci-certification-platinum}}
   \field{title}{{USGBC Exploring A New Kind of LEED Plaque}}
+\endentry
+
+\entry{MDS}{book}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Duda}{D.}%
+     {R.O.}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Hart}{H.}%
+     {P.E.}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Stork}{S.}%
+     {D.G.}{D.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Wiley}%
+  }
+  \keyw{imported}
+  \strng{namehash}{DRHPSD1}
+  \strng{fullhash}{DRHPSD1}
+  \field{sortinit}{D}
+  \field{title}{Pattern Classification}
+  \field{year}{2001}
+\endentry
+
+\entry{IOT}{inproceedings}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Fontugne}{F.}%
+     {Romain}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ortiz}{O.}%
+     {Jorge}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Culler}{C.}%
+     {David}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Esaki}{E.}%
+     {Hiroshi}{H.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{anomaly detection, building, energy consumption}
+  \strng{namehash}{FR+1}
+  \strng{fullhash}{FROJCDEH1}
+  \field{sortinit}{F}
+  \field{booktitle}{Workshop on Internet of Things Applications}
+  \field{series}{IoT-App'12}
+  \field{title}{Empirical mode decomposition for intrinsic-relationship
+  extraction in large sensor deployments}
+  \field{year}{2012}
+\endentry
+
+\entry{SBS}{inproceedings}{}
+  \name{author}{8}{}{%
+    {{}%
+     {Fontugne}{F.}%
+     {Romain}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ortiz}{O.}%
+     {Jorge}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Tremblay}{T.}%
+     {Nicolas}{N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Borgnat}{B.}%
+     {Pierre}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Flandrin}{F.}%
+     {Patrick}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Fukuda}{F.}%
+     {Kensuke}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Culler}{C.}%
+     {David}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Esaki}{E.}%
+     {Hiroshi}{H.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{anomaly detection, building, energy consumption}
+  \strng{namehash}{FR+1}
+  \strng{fullhash}{FROJTNBPFPFKCDEH1}
+  \field{sortinit}{F}
+  \field{booktitle}{Proceedings of the 12th international conference on
+  Information processing in sensor networks}
+  \field{series}{IPSN '13}
+  \field{title}{{Strip, bind, and search: a method for identifying abnormal
+  energy consumption in buildings}}
+  \field{year}{2013}
 \endentry
 
 \entry{gardner1987energy}{book}{}
@@ -99,6 +330,192 @@
   \field{year}{2010}
 \endentry
 
+\entry{speech}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Huang}{H.}%
+     {Hai}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Pan}{P.}%
+     {Jiaqiang}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{Speech analysis}
+  \strng{namehash}{HHPJ1}
+  \strng{fullhash}{HHPJ1}
+  \field{sortinit}{H}
+  \verb{doi}
+  \verb http://dx.doi.org/10.1016/j.sigpro.2005.06.011
+  \endverb
+  \field{issn}{0165-1684}
+  \field{number}{4}
+  \field{pages}{792 \bibrangedash  803}
+  \field{title}{{Speech pitch determination based on Hilbert-Huang transform}}
+  \verb{url}
+  \verb http://www.sciencedirect.com/science/article/pii/S0165168405002367
+  \endverb
+  \field{volume}{86}
+  \field{journaltitle}{Signal Processing}
+  \field{year}{2006}
+\endentry
+
+\entry{EMD}{article}{}
+  \name{author}{9}{}{%
+    {{}%
+     {Huang}{H.}%
+     {N.~E.}{N.~E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Shen}{S.}%
+     {Z.}{Z.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Long}{L.}%
+     {S.~R.}{S.~R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Wu}{W.}%
+     {M.~C.}{M.~C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Shih}{S.}%
+     {H.~H.}{H.~H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Zheng}{Z.}%
+     {Q.}{Q.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Yen}{Y.}%
+     {N.~C.}{N.~C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Tung}{T.}%
+     {C.~C.}{C.~C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Liu}{L.}%
+     {H.~H.}{H.~H.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {The Royal Society}%
+  }
+  \strng{namehash}{HNE+1}
+  \strng{fullhash}{HNESZLSRWMCSHHZQYNCTCCLHH1}
+  \field{sortinit}{H}
+  \field{title}{{The empirical mode decomposition and the Hilbert spectrum for
+  nonlinear and non-stationary time series analysis}}
+  \verb{url}
+  \verb http://dx.doi.org/10.1098/rspa.1998.0193
+  \endverb
+  \field{journaltitle}{Proceedings of the Royal Society of London. Series A:
+  Mathematical, Physical and Engineering Sciences}
+  \field{year}{1998}
+\endentry
+
+\entry{GZC}{patent}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Huang}{H.}%
+     {Norden~E.}{N.~E.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{HNE1}
+  \strng{fullhash}{HNE1}
+  \field{sortinit}{H}
+  \field{number}{6990436}
+  \field{title}{Computing frequency by using generalized zero-crossing applied
+  to intrinsic mode functions}
+  \field{type}{patent}
+  \field{year}{2006}
+  \warn{\item Invalid format of field 'month'}
+\endentry
+
+\entry{IF}{article}{}
+  \name{author}{6}{}{%
+    {{}%
+     {Huang}{H.}%
+     {Norden~E.}{N.~E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Wu}{W.}%
+     {Zhaohua}{Z.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Long}{L.}%
+     {Steven~R.}{S.~R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Arnold}{A.}%
+     {Kenneth~C.}{K.~C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Chen}{C.}%
+     {Xianyao}{X.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Blank}{B.}%
+     {Karin}{K.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {World Scientific Publishing Company}%
+  }
+  \keyw{hilbert\_huang, phase\_extract, sympath\_freq}
+  \strng{namehash}{HNE+1}
+  \strng{fullhash}{HNEWZLSRAKCCXBK1}
+  \field{sortinit}{H}
+  \field{number}{2}
+  \field{title}{{On Instantaneous Frequency}}
+  \field{volume}{1}
+  \field{journaltitle}{Advances in Adaptive Data Analysis}
+  \field{year}{2009}
+\endentry
+
+\entry{6lowpan}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Hui}{H.}%
+     {Jonathan~W.}{J.~W.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Culler}{C.}%
+     {David~E.}{D.~E.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{HJWCDE1}
+  \strng{fullhash}{HJWCDE1}
+  \field{sortinit}{H}
+  \field{number}{4}
+  \field{title}{{Extending IP to Low-Power, Wireless Personal Area Networks}}
+  \field{volume}{12}
+  \field{journaltitle}{Internet Computing, IEEE}
+  \field{year}{2008}
+  \warn{\item Invalid format of field 'month'}
+\endentry
+
 \entry{ACme}{inproceedings}{}
   \name{author}{4}{}{%
     {{}%
@@ -144,6 +561,96 @@
   \field{year}{2009}
 \endentry
 
+\entry{failure}{inproceedings}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Kapitanova}{K.}%
+     {Krasimira}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Hoque}{H.}%
+     {Enamul}{E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Stankovic}{S.}%
+     {John~A.}{J.~A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Whitehouse}{W.}%
+     {Kamin}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Son}{S.}%
+     {Sang~H.}{S.~H.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{activity recognition, failure detection, failure severity, machine
+  learning, wireless sensor networks}
+  \strng{namehash}{KK+1}
+  \strng{fullhash}{KKHESJAWKSSH1}
+  \field{sortinit}{K}
+  \field{booktitle}{Proceedings of the 2012 ACM Conference on Ubiquitous
+  Computing}
+  \field{series}{UbiComp '12}
+  \field{title}{{Being SMART about failures: assessing repairs in SMART homes}}
+  \field{year}{2012}
+\endentry
+
+\entry{climate}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Lee}{L.}%
+     {T.}{T.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ouarda}{O.}%
+     {T.~B. M.~J.}{T.~B. M.~J.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{decomposition, global surface temperature anomalies, nonstationary
+  oscillations, time series}
+  \strng{namehash}{LTOTBMJ1}
+  \strng{fullhash}{LTOTBMJ1}
+  \field{sortinit}{L}
+  \field{number}{D6}
+  \field{title}{Prediction of climate nonstationary oscillation processes with
+  empirical mode decomposition}
+  \field{volume}{116}
+  \field{journaltitle}{Journal of Geophysical Research: Atmospheres}
+  \field{year}{2011}
+\endentry
+
+\entry{blueprints}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Lu}{L.}%
+     {Jiakang}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Whitehouse}{W.}%
+     {Kamin}{K.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{LJWK1}
+  \strng{fullhash}{LJWK1}
+  \field{sortinit}{L}
+  \field{booktitle}{Proceedings of the 10th international conference on
+  Pervasive Computing}
+  \field{series}{Pervasive'12}
+  \field{title}{Smart blueprints: automatically generated maps of homes and the
+  devices within them}
+  \field{year}{2012}
+\endentry
+
 \entry{mpc}{article}{}
   \name{author}{4}{}{%
     {{}%
@@ -183,6 +690,84 @@
   \field{volume}{32}
   \field{journaltitle}{Control Systems, IEEE}
   \field{year}{2012}
+\endentry
+
+\entry{ip}{inproceedings}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Mohammadzade}{M.}%
+     {H.}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Agrafioti}{A.}%
+     {F.}{F.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Gao}{G.}%
+     {Jiexin}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Hatzinakos}{H.}%
+     {D.}{D.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{face recognition;image resolution;pose estimation;2D BEMD;bivariate
+  empirical mode decomposition;face recognition;facial expression
+  transformation;intra-class variability prediction;multiresolution face
+  analysis;pose recognizer;Biometrics;Databases;Face;Face recognition;Image
+  recognition;Probes;Video sequences;Empirical mode decomposition;correlation
+  coefficient;linear discriminant analysis}
+  \strng{namehash}{MH+1}
+  \strng{fullhash}{MHAFGJHD1}
+  \field{sortinit}{M}
+  \field{booktitle}{IEEE International Conference on Acoustics, Speech and
+  Signal Processing (ICASSP)}
+  \field{title}{{BEMD for expression transformation in face recognition}}
+  \field{year}{2011}
+\endentry
+
+\entry{Jay}{report}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Taneja}{T.}%
+     {Jay}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Krioukov}{K.}%
+     {Andrew}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Dawson-Haggerty}{D.-H.}%
+     {Stephen}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Culler}{C.}%
+     {David~E.}{D.~E.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{TJ+1}
+  \strng{fullhash}{TJKADHSCDE1}
+  \field{sortinit}{T}
+  \field{number}{UCB/EECS-2013-14}
+  \field{title}{{Enabling Advanced Environmental Conditioning with a Building
+  Application Stack}}
+  \verb{url}
+  \verb http://www.eecs.berkeley.edu/Pubs/TechRpts/2013/EECS-2013-14.html
+  \endverb
+  \list{institution}{1}{%
+    {EECS Department, University of California, Berkeley}%
+  }
+  \field{type}{techreport}
+  \field{year}{2013}
+  \warn{\item Invalid format of field 'month'}
 \endentry
 
 \entry{Leed}{misc}{}

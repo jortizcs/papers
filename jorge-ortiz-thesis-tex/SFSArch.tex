@@ -9,27 +9,30 @@ In this section, we give an overview of the architecture -- all the components, 
 another.  StreamFS consists of over 20,000 lines of code and was implemented in mostly Java.  It was deployed across multiple
 buildings and several applications were built on top of it over a 2 years period.
 
+\section{Name Management and The Entity-Relationship Graph}
+\input{external_tex/streamfs_aggregation/namespaces}
+
+\section{Time-series Data Store}
+
+\section{Publish-Subscribe Subsystem and Graph Relations}
+
+% \section{Internal Process Management}
+% \section{External Process Management}
+\section{Data Cleaning and Real-time Processing}
+
+
+
+%\input{external_tex/streamfs_aggregation/intro}
+
+
+%\subsection{Graph Maintenance}
+
 \begin{figure}[t!] %htbp
 \centering
 \includegraphics[width=0.75\columnwidth]{figs/sfsarch}
 \caption{StreamFS system architecture.}
 \label{fig:sfsarch}
 \end{figure}
-
-\section{Name Management}
-\input{external_tex/streamfs_aggregation/namespaces}
-
-\section{Internal Process Management}
-
-
-\section{External Process Management}
-
-
-\section{Pub-Sub Subsystem}
-%\input{external_tex/streamfs_aggregation/intro}
-
-
-%\subsection{Graph Maintenance}
 
 
 

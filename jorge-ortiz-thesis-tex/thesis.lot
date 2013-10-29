@@ -8,23 +8,27 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {4.1}{\ignorespaces Summary of the 4 main file types and their valid operations in StreamFS.}}{22}{table.58}
+\addvspace {10pt}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {4.2}{\ignorespaces File opertaitons, the file types that support them, and their general semantics.}}{23}{table.59}
+\contentsline {table}{\numberline {5.1}{\ignorespaces Summary of the 4 main file types and their valid operations in StreamFS.}}{33}{table.100}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {4.3}{\ignorespaces Summary of the 6 special-file sub-types and their valid operations in StreamFS.}}{23}{table.62}
+\contentsline {table}{\numberline {5.2}{\ignorespaces File opertaitons, the file types that support them, and their general semantics.}}{33}{table.101}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {5.3}{\ignorespaces Summary of the 6 special-file sub-types and their valid operations in StreamFS.}}{34}{table.104}
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.1}{\ignorespaces Shows the time to fetch nodes based on the size of the fetch. The fetch time increased linearly with the number of nodes. Caching maintain fetch time near that of fetching a single node. A callback is used when cache is invalidated.}}{42}{table.127}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.2}{\ignorespaces Average operation execution time in StreamFS.}}{42}{table.129}
+\defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {6.1}{\ignorespaces Classification of the alarms reported by SBS for both dataset (and the number of corresponding anomalies).}}{58}{table.184}
+\contentsline {table}{\numberline {7.1}{\ignorespaces Classification of the alarms reported by SBS for both dataset (and the number of corresponding anomalies).}}{59}{table.179}
 \defcounter {refsection}{0}\relax 
-\addvspace {10pt}
+\contentsline {table}{\numberline {7.2}{\ignorespaces Room Specs}}{75}{table.223}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {7.1}{\ignorespaces Shows the time to fetch nodes based on the size of the fetch. The fetch time increased linearly with the number of nodes. Caching maintain fetch time near that of fetching a single node. A callback is used when cache is invalidated.}}{77}{table.231}
-\defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {7.2}{\ignorespaces Average operation execution time in StreamFS.}}{78}{table.233}
+\contentsline {table}{\numberline {7.3}{\ignorespaces Clustering result using the thresholding method: a ``1" means the sensor is classified as inside the room. We get the ``\text {$\mathsurround \z@ \mathchar "458$}" and ``$\times $" by comparing the clustering results with ground truth.}}{78}{table.231}
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 

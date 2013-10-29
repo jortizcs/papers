@@ -31,43 +31,43 @@
 % framework that addresses some of the challenges in doing energy analytics.  With a combination of naming,
 % entity-relationship data model, and use of the entity-relationship graph to do aggregation, we address these issues.
 
-\subsection{Introduction}
-StreamFS is a file system the represents the physical world as a collection of files.  
+% \subsection{Introduction}
+% StreamFS is a file system the represents the physical world as a collection of files.  
 
-Contributions:
-\begin{itemize}
-\item StreamFS treats metadata as a first-class citizen, allowing queries across snapshots of the structured, semi-structured,
-and timeseries data.
+% Contributions:
+% \begin{itemize}
+% \item StreamFS treats metadata as a first-class citizen, allowing queries across snapshots of the structured, semi-structured,
+% and timeseries data.
 
-\item The StreamFS view of the world revolves around signals or streams.  Streams with history, both in value and in metadata.  
-In StreamFS, a standard log file is decomposed into a collection of signals/streams files, whose associated pathnames and tags
-are maintained and querable in time.
+% \item The StreamFS view of the world revolves around signals or streams.  Streams with history, both in value and in metadata.  
+% In StreamFS, a standard log file is decomposed into a collection of signals/streams files, whose associated pathnames and tags
+% are maintained and querable in time.
 
-\item Job execution scheduling based to minimize calculation error, with backwards-updates for errors that occurred looking forward.
-		Gives results with approximate errors.
+% \item Job execution scheduling based to minimize calculation error, with backwards-updates for errors that occurred looking forward.
+% 		Gives results with approximate errors.
 
-\item Non append-only streaming output is handled as a function that minimizes historical error calculations.~\cite{syncsql}.
-		You should use LCM to determine when the reverse scan and update will take place.  The other trigger could be 
-		cumulative error -- if it gets too high, run the process again on the historical data and update.
-
-
-\end{itemize}
+% \item Non append-only streaming output is handled as a function that minimizes historical error calculations.~\cite{syncsql}.
+% 		You should use LCM to determine when the reverse scan and update will take place.  The other trigger could be 
+% 		cumulative error -- if it gets too high, run the process again on the historical data and update.
 
 
-\subsubsection{Sematics of a stream file}
+% \end{itemize}
 
-\subsubsection{Inputting to a file with Regex and mapper}
-Use a regular expression and a map file to parse incoming data and put it in a file(s).
 
-\subsection{Introduction}% 2}
+% \subsubsection{Sematics of a stream file}
+
+% \subsubsection{Inputting to a file with Regex and mapper}
+% Use a regular expression and a map file to parse incoming data and put it in a file(s).
+
+% \subsection{Introduction}% 2}
 %Second opening
-Buildings consume 40\% of the energy produced in the United States and nearly three quarters of 
-the electricity produced~\cite{epabuildings}.  It is conjectured that as much as 30-80\% of their energy is 
-wasted~\cite{waste_science, next10_waste}.  With such astounding figures, buildings are a clear optimization
-target.  In order to optimize building performance, we need fine grained visibility into the energy flow
-throughout the building.  With over 70\% of commercial buildings, 100,000 square feet or 
-larger, having a building management system~\cite{cbecs2003}, the infrastructure to attain that level of 
-visibility is available and widespread.  
+% Buildings consume 40\% of the energy produced in the United States and nearly three quarters of 
+% the electricity produced~\cite{epabuildings}.  It is conjectured that as much as 30-80\% of their energy is 
+% wasted~\cite{waste_science, next10_waste}.  With such astounding figures, buildings are a clear optimization
+% target.  In order to optimize building performance, we need fine grained visibility into the energy flow
+% throughout the building.  With over 70\% of commercial buildings, 100,000 square feet or 
+% larger, having a building management system~\cite{cbecs2003}, the infrastructure to attain that level of 
+% visibility is available and widespread.  
 
 Building management systems (BMS) consist of thousands of sensors
 deployed throughout the entire building, measuring temperature, pressure, flow, and other physical phenomenon.
