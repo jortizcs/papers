@@ -1,5 +1,19 @@
 \section{Verification through Sensor Data}
 
+\subsection{Correlation}
+We make extensive use of the correlation coefficient function defined as: 
+
+\begin{displaymath}
+r(X,Y) = r_{X, Y} = \frac{\sum_{i=1}^{n} (X_{i} - \overline{X})(Y_{i} - \overline{Y})}
+{\sqrt{\sum_{i=1}^{n} (X_{i} - \overline{X})^2}\sqrt{\sum_{i=1}^{n} (Y_{i} - \overline{Y})^2}}
+\end{displaymath}
+
+where $X$, $Y$ are separate sets of values, $n$ is the total number of sample points in 
+each set, and $\overline{X}$ is the mean value of $X$ (same for $\overline{Y}$ and Y).  % over the entire sampling period.
+For each pair of sensors, we compute the corrcoeff to ascertain the relationship between them.
+
+
+
 \subsection{Empirical Mode Decomposition} \label{emd}
 Empirical Mode Decomposition (EMD) \cite{huang:emd1998} is a technique that decomposes a signal and reveals intrinsic patterns, 
 trends, and noise.
@@ -37,7 +51,7 @@ For this work we implemented a variant of EMD called Complete Ensemble EMD~\cite
 This algorithm computes EMD several times with additional noise, it allows us to efficiently analyze signals that have 
 flat sections (i.e. consuming no electricity in our case). % and permits us to solve the \emph{EMD mode mixing problem}.
 
-\subsection{IMF aggregation} \label{methodo:corr}
+\subsection{Reaggregation of Intrinsic Mode Functions} \label{methodo:corr}
 By applying EMD to energy consumption signals we obtain a set of IMFs that precisely describe the devices consumption 
 patterns at different frequency bands.  Therefore, we can focus our analysis on the smaller time scales, ignoring the dominant 
 patterns that prevent us from effectively analyzing raw signals.

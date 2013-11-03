@@ -1,5 +1,6 @@
 
 \section{Addressing BMS Shortcomings}
+\label{sec:shortcomings}
 The current architecture of building information systems is very tightly integrated and based on monitoring and supervisory control
 of local control loops.  Building information systems were built as tightly integrated systems with a single application.  The main
 layer of interaction is been the underlying network layer.  However, because of the complexity of dealing directly with the network,
@@ -10,15 +11,15 @@ that are missing become more clear.  The following is a list of some of them:
 
 \begin{enumerate}
 % \item Network protocol details should remain opaque to end-user applications.
-\item Narrow waist should be above the network layer.
-\item A time-series store is necessary.
-\item Mechanisms to distill the readings must be availble.
-\item Real-time data forwarding should be available, especially for control applications.
-\item Contextual relationships between sensor should be verified.
+\item Narrow waist should be above the network layer. \label{nw}
+\item A time-series store is necessary. \label{ts}
+\item Mechanisms to distill the readings must be availble. \label{proc}
+\item Real-time data forwarding should be available, especially for control applications. \label{rt}
+\item Contextual relationships between sensor should be verified. \label{cntxt}
 \end{enumerate}
 
 The first four items are commonly built and re-built in emerging applications.  Therefore, we argue that they are fundamental 
-to the future architecture of building information systems.  Moreoever, we observe that dealing with network-protocol specific
+to the future architecture of building information systems.  Moreover, we observe that dealing with network-protocol specific
 calls is not only cumbersome, but usually circumvented in order to deal directly with the data.  Most applications that do
 use the underlying protocol expose a name-time-value (NTV) tuple to the layers above.  This observation leads us to believe that
 that's where the interface should be.
@@ -34,7 +35,7 @@ of the building \emph{must} capture the notion of time.  Almost all anlytical pr
 over time.  Therefore, there a time-series data store must be part of future BIS design.  The service should be made available
 through the NTV.  This will allow applications to fetch the necessary data for analysis either for display or complex processing.
 
-The third point is motivated by the observation that sensor data, especially from cheap sensors, is dirty and typically goes
+Point \ref{proc} is motivated by the observation that sensor data, especially from cheap sensors, is dirty and typically goes
 through a cleaning process before being forwarded to the end-use application.  There are various operations that are commonly
 performed on the data, that we think should be provided as primitives.  These mainly include re-sampling, filtering,  
 missing-data identification, and aggregation.  Re-sampling refers to taking a set of streams and interpolating missing values to 
@@ -52,5 +53,9 @@ as well.  For example, LEED is now proposing the use of building data to provide
 There are also many dashboard companies that make use of streaming data to provide real-time statistics on the performance of the
 building.  The mobile application described in section~\ref{sec:mobile} also requires a real-time forwarding and processing service to
 enable the application.  We believe that as more applications emerge they will likely need make use of real-time sensor data.
+
+
+
+
 
 

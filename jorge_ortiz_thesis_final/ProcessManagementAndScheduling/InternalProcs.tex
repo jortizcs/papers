@@ -14,12 +14,13 @@ and processing.  Our contributions are:
 \end{itemize}
 
 
-\subsection{Mapping OLAP to ERG}
+% \subsection{Mapping OLAP to ERG}
+\subsection{OLAP-style Aggregation}
 
-\begin{itemize}
-\item Introduction to OLAP.
-\item Explanation of ERG in StreamFS.
-\end{itemize}
+% \begin{itemize}
+% \item Introduction to OLAP.
+% \item Explanation of ERG in StreamFS.
+% \end{itemize}
 Online analytical processing (OLAP) is a processing layer that provides summurization of data
 from a set of underlying data repository (date warehouses).  Traditionally, OLAP is used to process
 business data.  Business data summurization allows an analyst ask targetted questions about aggregates 
@@ -27,10 +28,15 @@ and trends in their data.  The data is typically multidimensional in nature and 
 respect to those dimensions and their inter-relationship.
 
 \subsubsection{Measures, Dimenions, and Levels}
+Measures are the value, dimensions are the units of measure as well as time, and levels/hierarchy are 
+explicit in the naming structure.
 
 \subsubsection{Operations: drill-down and roll-up}
+Drill-down and roll-up are made explicit in the structure.  You can drill down to individual readings or roll them
+up into an aggregation point at a particular level in the hierarchy.
 
 \subsubsection{Operations: slice and dice}
+Slice and dice operations 
 
 \subsubsection{Operations: pivoting}
 \subsection{Dynamic Aggregation}
@@ -48,7 +54,7 @@ each view is a managed as an independent hierarchy.  So the hierarchy of \emph{s
 the \emph{inventory} hierarchy or the \emph{taxonomy} hierarchy.  This allows us to ask questions with a particular
 view in mind, without conflict, and is a natural fit for our aggregation scheme.
 
-\subsubsection{How it works}
+% \subsubsection{How it works}
 Although there are different semantics applied to different node types at the application layer, StreamFS only knows
 about two types of nodes: (1) default nodes and (2) stream nodes.  The main difference is that \emph{default} nodes
 are not explicitly associated with data coming from a sensor and \emph{stream} nodes are.  Furthermore, default

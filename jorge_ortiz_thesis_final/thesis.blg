@@ -6,17 +6,17 @@ A level-1 auxiliary file: abstract.aux
 A level-1 auxiliary file: Introduction/IntroMain.aux
 A level-1 auxiliary file: SensingInTheBuiltEnvironment/SensingInBuiltMain.aux
 Case mismatch error between cite keys MPC and mpc
----line 49 of file thesis.aux
+---line 69 of file thesis.aux
  : \citation{MPC
  :              }
 I'm skipping whatever remains of this command
 Case mismatch error between cite keys MPC and mpc
----line 50 of file thesis.aux
+---line 70 of file thesis.aux
  : \citation{MPC
  :              }
 I'm skipping whatever remains of this command
 Case mismatch error between cite keys DynamicLeed and dynamicLeed
----line 55 of file thesis.aux
+---line 75 of file thesis.aux
  : \citation{DynamicLeed
  :                      }
 I'm skipping whatever remains of this command
@@ -25,12 +25,12 @@ A level-1 auxiliary file: ProcessManagementAndScheduling/ProcMngtSchedMain.aux
 A level-1 auxiliary file: FilesystemMetaphoreNamingVerify/FilesystemMetaMain.aux
 A level-1 auxiliary file: ArchitecturalEvaluation/ArchEvalMain.aux
 Case mismatch error between cite keys acme and ACme
----line 111 of file thesis.aux
+---line 132 of file thesis.aux
  : \citation{acme
  :               }
 I'm skipping whatever remains of this command
 Case mismatch error between cite keys acme and ACme
----line 114 of file thesis.aux
+---line 135 of file thesis.aux
  : \citation{acme
  :               }
 I'm skipping whatever remains of this command
@@ -46,25 +46,19 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated field_info (elt_size=4) to 17376 items from 5000.
+Reallocated field_info (elt_size=4) to 20096 items from 5000.
 Database file #1: thesis-blx.bib
 Database file #2: references.bib
 Warning--I'm ignoring speech's extra "keywords" field
---line 1804 of file references.bib
+--line 2174 of file references.bib
 Warning--I'm ignoring speech's extra "keywords" field
---line 1806 of file references.bib
-Repeated entry---line 1859 of file references.bib
+--line 2176 of file references.bib
+Repeated entry---line 2229 of file references.bib
  : @inproceedings{MPC
  :                   ,
 I'm skipping whatever remains of this entry
 Warning--I didn't find a database entry for "cbecs2003"
-Warning--I didn't find a database entry for "buildings_study"
 Warning--I didn't find a database entry for "BMS_book"
-Warning--I didn't find a database entry for "LonTalk"
-Warning--I didn't find a database entry for "andrew_lighting"
-Warning--I didn't find a database entry for "buildsys1"
-Warning--I didn't find a database entry for "buildsys2"
-Warning--I didn't find a database entry for "EnergyPlus"
 Warning--I didn't find a database entry for "stephscale"
 Warning--I didn't find a database entry for "lanz"
 Warning--I didn't find a database entry for "aceee"
@@ -114,45 +108,45 @@ Warning--I didn't find a database entry for "chan:springer2005"
 Biblatex version: 1.7
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
-You've used 37 entries,
+You've used 63 entries,
             6019 wiz_defined-function locations,
-            1438 strings with 18366 characters,
-and the built_in function-call counts, 121811 in all, are:
-= -- 4656
-> -- 4210
-< -- 1201
-+ -- 1436
-- -- 1564
-* -- 9913
-:= -- 7254
+            1655 strings with 27787 characters,
+and the built_in function-call counts, 225668 in all, are:
+= -- 9424
+> -- 7735
+< -- 2438
++ -- 2825
+- -- 2826
+* -- 18183
+:= -- 13047
 add.period$ -- 0
-call.type$ -- 37
-change.case$ -- 611
-chr.to.int$ -- 49
-cite$ -- 72
-duplicate$ -- 14069
-empty$ -- 12584
-format.name$ -- 2922
-if$ -- 27306
+call.type$ -- 63
+change.case$ -- 1395
+chr.to.int$ -- 55
+cite$ -- 124
+duplicate$ -- 25638
+empty$ -- 22746
+format.name$ -- 5124
+if$ -- 50837
 int.to.chr$ -- 0
-int.to.str$ -- 93
+int.to.str$ -- 179
 missing$ -- 0
-newline$ -- 1193
-num.names$ -- 1773
-pop$ -- 11723
+newline$ -- 2191
+num.names$ -- 3456
+pop$ -- 20001
 preamble$ -- 1
-purify$ -- 748
+purify$ -- 1637
 quote$ -- 0
-skip$ -- 7075
+skip$ -- 13325
 stack$ -- 0
-substring$ -- 2284
-swap$ -- 4748
-text.length$ -- 1021
-text.prefix$ -- 36
+substring$ -- 5842
+swap$ -- 8996
+text.length$ -- 1803
+text.prefix$ -- 62
 top$ -- 1
-type$ -- 1393
+type$ -- 2381
 warning$ -- 0
-while$ -- 683
+while$ -- 1206
 width$ -- 0
-write$ -- 1155
+write$ -- 2127
 (There were 6 error messages)

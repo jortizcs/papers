@@ -19,11 +19,12 @@ the remaining chapters.
 \subsection{Control Loops and The Outstation}
 \label{sec:control_loops}
 Each loop is defined by a control domain consisting of a sensor, an actuator, and a control mechanism.  The control mechanism
-become logic based when signals from sensors moved to the digital domain.  However, the basic control principal was based
-entirely on local control loops, with the implicit assumption that these loops were largely independent of one another.
-Figure~\ref{fig:control_loop} shows a high-level control loop.  For example, the temperature control loop has a temperature
-sensor as the input and uses the temperature set-point parameter to decide when and which actuators to activate.
-For temperature control this actuation controls the the valve that lets cool air into the space.  This causes the temeprature
+become logic based when signals from sensors moved to the digital domain.  However, the basic control principle is based
+entirely on local control loops, with the implicit assumption that these loops are independent.
+Figure~\ref{fig:control_loop} shows a high-level control loop.  A simple control loop in the building is one that controls
+the temperature in a space.  It has a temperature sensor as the input and uses the temperature set-point parameter to 
+decide when and which actuators to activate.
+For temperature control, this actuation controls the the vent that lets cool air into the space.  This causes the temeprature
 to fall until a lower-bound is reached and the control logic is activated again.
 
 The figure also shows the basic structure inside an outstation.  An outstation is a box that contains up to several control boards, each
@@ -41,7 +42,7 @@ a series of buses and shown in Figure~\ref{fig:control_box}.
 
 As readings from the sensors are taken, they are placed in RAM.  The amount of RAM is limited and can get filled up, so it is important
 to schedule periodic collection tasks from the central station -- the building management system (BMS).  The control logic is typically
-written in ROM and can only be changed by the vendor.  The input parameters are set at the BMS and they dedicate the operational dynamics
+written in ROM and can only be changed by the equipment or BMS vendor.  The input parameters are set at the BMS and they dictate the operational dynamics
 of the control scheme in reaction to the input~\cite{BMS_book}.
 Outstations are distributed through the building and are essentially running independent of one another.  In order to enable centralized 
 monitoring and control, they are networked together and report some of the sensor readings and control-logic state to a central outstation.
@@ -49,8 +50,8 @@ monitoring and control, they are networked together and report some of the senso
 \subsection{Central Outstation and Communication Protocols}
 The central outstation is typically a Microsoft Windows-based PC connected to the outstation through either RS-485/modbus or ethernet.
 The user interacts with the system through a graphical interface, constructed from the schematics for the building or the schematics
-for the component in the system that is being monitored.  The BMS running on the PC communicates with the outstations through either a 
-proprietary protocol or an open one like BACNet~\cite{Bacnet} or LonTalk~\cite{LonTalk}.
+for the component in the system that is being monitored.  The BMS running on the PC communicates with outstations through either a 
+vendor-specific, proprietary protocol or an open one like BACNet~\cite{Bacnet} or LonTalk~\cite{LonTalk}.
 
 \begin{figure}[h!] %htbp
 \centering
@@ -59,20 +60,26 @@ proprietary protocol or an open one like BACNet~\cite{Bacnet} or LonTalk~\cite{L
 \label{fig:bms_network}
 \end{figure}
 
-Both protocols define both a wire protocol and packet structure for communicating with the outstations.  From these there's a high-level
-structure for the individual points throughout the system.  A point is a sensor/actuator or another kind of object, like a schedule object.
-BACNet exposes the notion of devices as a collection of different types of objects.  Each object contains a set of properties that can 
+Both protocols define both a wire protocol and packet structure for communicating with outstations and each other.  They also define a high-level
+naming scheme for sensors in the building, called `points'.  A point can also refer to a non-physical object, like a schedule of operation.
+It is common for both lights and temperature sensors to run on a daily, weekly, and seasonal schedules.  Such schedule are captured
+by the \emph{schedule object} in BACNet.  
+% BACNet also exposes devices as a collection of different object types.  
+Each object contains a set of properties that can 
 be read and/or written.  A device is identifyable through a name or address on the network, each object has a unique identifier and is one of
-many types -- such as input, output, value, analog, and many others~\cite{Bacnet}.  
+many types.  Examples of object types includes the following: input, output, value, analog~\cite{Bacnet}.  
 
-These protocols also provide a protocol for discovery and read/write.  Each [device, object name/id, property name/id] tuple forms a name.
-This name is typically what is exposed by the protocol to the application.  All the names are set by the vendor and the graphical interface, 
-constructed from the building schematics, is also designed and constructed by the vendor.  The building manger is the primary user of the system,
+These protocols also provide a mechanism for discovery .  Each [device, object name/id, property name/id] tuple forms a name.
+This name is exposed by the protocol-server to the application.  All the names are set by the vendor and the are shown through the graphical interface
+of the BMS.  
+% constructed from the building schematics, is also designed and constructed by the vendor.  
+The building manger is the primary user of the BMS,
 so rather than expose the underlying protocol, he/she interacts with the building via the graphical interface.
 
 In order to interact with the underlying sensor and actuator layer, the application must use a stub that communicates directly with the 
-sensor/actuator through the BACnet stack.  Services treated similarly to sensors/actuators.  They are represented as a collection of 
-objects with readable/writable properties.  An example service that is provided in BACNet is  \emph{WhoIs} and \emph{EventNotification}.
+sensor/actuator through the BACnet stack.  External communication stubs are recognized similarly to sensors/actuators.  They are represented 
+as a collection of 
+objects with readable/writable properties.  An example service that is provided in BACNet is  \texttt{WhoIs} and \texttt{EventNotification}.
 The former is a broadcast service that is used for discovery of other objects, the latter is used for setting alarms on the sensor data that
 are reported by the BACNet enabled devices on the network in the outstation layer.  There are many other types of events that are supported 
 and over 50 types of object types in the baseline protocol, which is extensible.  Device and object names that are added have no restriction

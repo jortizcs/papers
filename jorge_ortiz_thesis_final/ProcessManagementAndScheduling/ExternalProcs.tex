@@ -1,2 +1,23 @@
 \section{External Processes}
 
+External processing jobs can be centrally managed in StreamFS as well.  In real deployments, it is often the case that
+users do want to be limited by the particular libraries that are available to them in javascript or they have already made
+a signficant investment in time writing and testing their own processing jobs.  We introduce an external client stub that 
+re-directs data from standard in/out through a network connection to/from the StreamFS server.  The stub also interprets
+process management commands to spawn and kill jobs and associate different subscriptions with different instances of a jobs 
+running on the client side.
+
+On startup, the client stub read a local configuration file that specifies the path to the job and metadata that describes
+job.  These are used to register the job with StreamFS and set the metadata attributes.  The registration on the StreamFS 
+server is exposed through an \emph{external process} file.  The user interact with an external job exactly the same way they
+interact with an internal process job.  In order to spawn a job on the client, the user simply ``pipes'' a stream file 
+to the external process file.  The creation of the pipe/subcription send a spawn message to the client and starts the associated
+job on the client.  Once the process is started, data from the stream(s) is forwarded to the client, which writes it to the 
+standard-in of the client job.  Starting a job also creates a stream file the StreamFS server.  Any data that's produced by the job
+and written to standard-out is re-directed to the server and made available through the stream file.
+
+This desgin is consistent with the semantics of pipe/subscription management and functionality.  Recall, internal processes
+work the same way and this allow us to stay consistent with the file-centric principal whereby \emph{everything is managed
+through the filesystem itself as a file}.
+
+

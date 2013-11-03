@@ -6,15 +6,39 @@ of a particular object.  In this section, we discuss why we have two namespaces,
 they are managed, and how they are used by the query interface and analytical layer.
 
 \subsection{Object identifier namespace}
-Each new object that's created is assigned a 128-bit unique identifier:
 
-\begin{itemize}
-\item 96 high-order bits identify the object
-\item 32 low-order bits identify the version of the object
-\end{itemize}
+Each new object that's created is assigned a 128-bit unique identifier that uniquely identifies the object.
+Because StreamFS support multiple names that refer to the same object, we created a namespace that is 
+flat and large enough to uniquely identify objects in the building uniquely.  The unique identifier
+is randomly constructed and the probability of colissions is small because of the large namespace.
+StreamFS only assigns a unique identifier to stream files.  We will discuss the various file types in
+section~\ref{chap:naming}.
 
-In this paper we concentrate on the high-order bits used to identify the object.  Management of the low-order
-bits is the subject of related, ongoing work.
+% \begin{itemize}
+% \item 96 high-order bits identify the object
+% \item 32 low-order bits identify the version of the object
+% \end{itemize}
+
+% In this paper we concentrate on the high-order bits used to identify the object.  Management of the low-order
+% bits is the subject of related, ongoing work.
 
 \subsection{Hierarchical Namespace}
+
+Hierarchicaly naming schemes are an effective way to organize information, particularly for a relatively small amount of information
+where the access patterns are well defined and groups across buildings have a lot of overlap.  For example, upon close examination of
+the naming scheme for points across Sutardja Dai Hall, Soda Hall, Cory Hall, and the University of Tokyo Engineering Building 2, we 
+observe that there are 2 overlapping group types.  All the point name refer to the location of the sensor and the system that it is 
+associated with.  For example, `SODA1R430A\_ART' encodes the name of the building and the room number but also encodes the HVAC subsystem id --
+referred to by the 5th character which is a `1'.  The other common encoding include the type of sensor and implies the S.I. units of measure.
+Based on our experience with anlysis jobs on building sensor data, we decide it was less import from a naming persepctive than 
+an interpretive one.
+
+The number of sensors in the building can easily grow into the thousands or ten of thousands.  We apply the principals articulated 
+in~\cite{hierarchy_is_dead}, which asserts that hierarchical organization of file is ineffective when dealing with a large number of files
+and that databases are poor at providing direct access to the data, but provide a good way to find the information we are looking for.
+We combine these two, as suggested by the authors.  We expose a hierarchical namespace that gives the user direct access to the data
+through a familiar organization of that data.  The organization itself is directly traversable.  Moreover, we separate the metadata from
+the naming structure, so that users looking for various kinds of information can quickly locate it.
+We discuss our naming structure in more detail in Chapter~\ref{chap:naming} and give an overview of fundamental challenges that emerge when
+naming must reflect physical associations and the physical environment is changing.
 

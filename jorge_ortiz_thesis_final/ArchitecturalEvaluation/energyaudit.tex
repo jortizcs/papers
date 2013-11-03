@@ -82,7 +82,7 @@ In the next sections we go through a motivating scenario.  We then discuss some 
 by the system architecture, evaluation, and future directions.
 
 
-\section{EnergyLens Architecture and System Challenges}
+\section{Energy Lens Architecture and System Challenges}
 The Energy Lens application aims to approximate the vision described in section~\ref{sec:mobile}.  For our initial
 attempt, we tagged items in a building with QR codes and allowed users to 1) tag and register new items, 
 2) tell us which meters are atextttached to which items, and 3) scan individual items to view their load curve over a 
@@ -397,7 +397,7 @@ Note, this is a \emph{subset} of the relationship diagrams generated across our 
 \end{figure}
 
 
-\subsection{Application layer}
+% \subsection{Application layer}
 
 \begin{figure}[htb!]
 \begin{center}
@@ -540,8 +540,7 @@ do not often have reversably reachable addresses.  2) Failure assumes the operat
 of the world.  
 
 
-
-\subsection{Real-time analytics}
+\section{Energy Lens Analytics, Experience, and Results}
 
 Figure~\ref{fig:tsdata} shows three screen shots of power traces obtained from the ACme deployment, and displayed
 through the Energy Lens.  Notice that there is
@@ -604,7 +603,7 @@ and measure if more visibility and analytics indeed motivates occupants to use l
 % ** Code that needs to be writexttten and experiment that needs to be run
 
 
-\section{EnergyLens Evaluation}
+\subsection{EnergyLens Evaluation}
 \label{sec:eval}
 
 
@@ -639,7 +638,7 @@ callback facility and pass the application a reference to it.  The app can then 
 the query completes and the data is ready to be downloaded.  We can also include partial responses to the query
 in the prefetch-loop response.  This also allows users to continue using the application without any frustrating waits.
 
-\subsection{Log dump measurements}
+\subsubsection{Log dump measurements}
 \begin{table}
 \begin{center}
   \begin{tabular}{| r | c  c | }
@@ -658,7 +657,7 @@ that of fetching a single node.  A callback is used when cache is invalidated.}
 \end{table}
 
 
-\subsubsection{Log replay latency}
+% \subsubsection{Log replay latency}
 Table~\ref{tab:optimes} shows the  operations that the transaction manager calls on the StreamFS server.
 Log replay and transaction processing is entirely dependent on the time to execute these operations on StreamFS.
 There are five types of transactions, a \emph{move}, a \emph{un/bind}, \emph{un/attach}.  A move is a combination

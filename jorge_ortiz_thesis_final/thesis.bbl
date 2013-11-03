@@ -104,6 +104,62 @@
   \field{year}{2009}
 \endentry
 
+\entry{5985456}{article}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Aswani}{A.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Master}{M.}%
+     {N.}{N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Taneja}{T.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Culler}{C.}%
+     {D.}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Tomlin}{T.}%
+     {C.}{C.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{HVAC;building management systems;energy conservation;heat
+  pumps;learning (artificial intelligence);power consumption;predictive
+  control;statistical analysis;temperature control;temperature sensors;AC
+  energy consumption;BRITE;HVAC;energy savings;heat pump;heating, ventilation,
+  and air conditioning;homes;learning;mathematical model;model predictive
+  control;offices;retrofitting;room temperature control;statistical
+  methods;temperature dynamics;temperature sensor;Air
+  conditioning;Cyberspace;Energy consumption;Energy efficiency;Heat
+  pumps;Learning systems;Network topology;Predictive
+  control;Steady-state;Temperature control;Transient analysis;Ventilation;Air
+  conditioning (AC);building automation;energy
+  efficiency;learning;model-predictive control (MPC)}
+  \strng{namehash}{AA+1}
+  \strng{fullhash}{AAMNTJCDTC1}
+  \field{sortinit}{A}
+  \verb{doi}
+  \verb 10.1109/JPROC.2011.2161242
+  \endverb
+  \field{issn}{0018-9219}
+  \field{number}{1}
+  \field{pages}{240\bibrangedash 253}
+  \field{title}{Reducing Transient and Steady State Electricity Consumption in
+  HVAC Using Learning-Based Model-Predictive Control}
+  \field{volume}{100}
+  \field{journaltitle}{Proceedings of the IEEE}
+  \field{year}{2012}
+\endentry
+
 \entry{Bellala_buildsys11}{inproceedings}{}
   \name{author}{5}{}{%
     {{}%
@@ -176,6 +232,38 @@
   \field{year}{2008}
 \endentry
 
+\entry{Castro01aprobabilistic}{inproceedings}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Castro}{C.}%
+     {Paul}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Chiu}{C.}%
+     {Patrick}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kremenek}{K.}%
+     {Ted}{T.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Muntz}{M.}%
+     {Richard}{R.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{CP+1}
+  \strng{fullhash}{CPCPKTMR1}
+  \field{sortinit}{C}
+  \field{pages}{18\bibrangedash 34}
+  \field{title}{A Probabilistic Room Location Service for Wireless Networked
+  Environments}
+  \field{year}{2001}
+\endentry
+
 \entry{DStream}{inproceedings}{}
   \name{author}{2}{}{%
     {{}%
@@ -198,6 +286,102 @@
   \field{series}{KDD '07}
   \field{title}{Density-based clustering for real-time stream data}
   \field{year}{2007}
+\endentry
+
+\entry{Christensen_2002}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Christensen}{C.}%
+     {Henrik~Baerbak}{H.~B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Bardram}{B.}%
+     {Jakob}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer-Verlag}%
+  }
+  \strng{namehash}{CHBBJ1}
+  \strng{fullhash}{CHBBJ1}
+  \field{sortinit}{C}
+  \field{booktitle}{Proceedings of the 4th international conference on
+  Ubiquitous Computing}
+  \field{isbn}{3-540-44267-7}
+  \field{pages}{107\bibrangedash 116}
+  \field{series}{UbiComp '02}
+  \field{title}{Supporting Human Activities - Exploring Activity-Centered
+  Computing}
+  \verb{url}
+  \verb http://dl.acm.org/citation.cfm?id=647988.741475
+  \endverb
+  \list{location}{1}{%
+    {Goteborg, Sweden}%
+  }
+  \field{year}{2002}
+  \warn{\item Can't use 'location' + 'address'}
+\endentry
+
+\entry{Conner:2001:MEL:647987.741329}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Conner}{C.}%
+     {W.~Steven}{W.~S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Krishnamurthy}{K.}%
+     {Lakshman}{L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Want}{W.}%
+     {Roy}{R.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer-Verlag}%
+  }
+  \strng{namehash}{CWSKLWR1}
+  \strng{fullhash}{CWSKLWR1}
+  \field{sortinit}{C}
+  \field{booktitle}{Proceedings of the 3rd international conference on
+  Ubiquitous Computing}
+  \field{isbn}{3-540-42614-0}
+  \field{pages}{49\bibrangedash 55}
+  \field{series}{UbiComp '01}
+  \field{title}{Making Everyday Life Easier Using Dense Sensor Networks}
+  \verb{url}
+  \verb http://dl.acm.org/citation.cfm?id=647987.741329
+  \endverb
+  \list{location}{1}{%
+    {Atlanta, Georgia, USA}%
+  }
+  \field{year}{2001}
+  \warn{\item Can't use 'location' + 'address'}
+\endentry
+
+\entry{eplus}{misc}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Crawley}{C.}%
+     {Drury~B.}{D.~B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Lawrie}{L.}%
+     {Linda~K.}{L.~K.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{CDBLLK1}
+  \strng{fullhash}{CDBLLK1}
+  \field{sortinit}{C}
+  \field{title}{ENERGYPLUS: NEW CAPABILITIES IN A WHOLE-BUILDING ENERGY
+  SIMULATION PROGRAM}
 \endentry
 
 \entry{smap}{inproceedings}{}
@@ -300,6 +484,21 @@
   \field{sortinit}{D}
   \field{title}{Pattern Classification}
   \field{year}{2001}
+\endentry
+
+\entry{LonTalk}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {{Echelon Corporation}}{E.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{E1}
+  \strng{fullhash}{E1}
+  \field{sortinit}{E}
+  \field{note}{Echelon Corp. 1994}
+  \field{title}{{LonTalk Protocol Specification}}
 \endentry
 
 \entry{eugster}{article}{}
@@ -556,6 +755,136 @@
   \field{title}{Intelligent Infrastructure for Energy Efficiency}
   \field{journaltitle}{Science Magazine}
   \field{year}{2010}
+\endentry
+
+\entry{Haritaoglu:2001:ILR:647987.741331}{inproceedings}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Haritaoglu}{H.}%
+     {Ismail}{I.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer-Verlag}%
+  }
+  \strng{namehash}{HI1}
+  \strng{fullhash}{HI1}
+  \field{sortinit}{H}
+  \field{booktitle}{Proceedings of the 3rd international conference on
+  Ubiquitous Computing}
+  \field{isbn}{3-540-42614-0}
+  \field{pages}{247\bibrangedash 255}
+  \field{series}{UbiComp '01}
+  \field{title}{InfoScope: Link from Real World to Digital Information Space}
+  \verb{url}
+  \verb http://dl.acm.org/citation.cfm?id=647987.741331
+  \endverb
+  \list{location}{1}{%
+    {Atlanta, Georgia, USA}%
+  }
+  \field{year}{2001}
+  \warn{\item Can't use 'location' + 'address'}
+\endentry
+
+\entry{Holmquist01smart}{misc}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Holmquist}{H.}%
+     {Lars~Erik}{L.~E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Mattern}{M.}%
+     {Friedemann}{F.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Schiele}{S.}%
+     {Bernt}{B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Alahuhta}{A.}%
+     {Petteri}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Beigl}{B.}%
+     {Michael}{M.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{HLE+1}
+  \strng{fullhash}{HLEMFSBAPBM1}
+  \field{sortinit}{H}
+  \field{title}{Smart-Its Friends: A Technique for Users to Easily Establish
+  Connections between Smart Artefacts}
+  \field{year}{2001}
+\endentry
+
+\entry{Hsu1878444}{inproceedings}{}
+  \name{author}{7}{}{%
+    {{}%
+     {Hsu}{H.}%
+     {Jeff}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Mohan}{M.}%
+     {Prashanth}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Jiang}{J.}%
+     {Xiaofan}{X.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ortiz}{O.}%
+     {Jorge}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Shankar}{S.}%
+     {Sushant}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Dawson-Haggerty}{D.-H.}%
+     {Stephen}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Culler}{C.}%
+     {David}{D.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {ACM}%
+  }
+  \keyw{building monitoring, energy, sensor networks}
+  \strng{namehash}{HJ+1}
+  \strng{fullhash}{HJMPJXOJSSDHSCD1}
+  \field{sortinit}{H}
+  \field{booktitle}{Proceedings of the 2nd ACM Workshop on Embedded Sensing
+  Systems for Energy-Efficiency in Building}
+  \verb{doi}
+  \verb 10.1145/1878431.1878444
+  \endverb
+  \field{isbn}{978-1-4503-0458-0}
+  \field{pages}{55\bibrangedash 60}
+  \field{series}{BuildSys '10}
+  \field{title}{HBCI: human-building-computer interaction}
+  \verb{url}
+  \verb http://doi.acm.org/10.1145/1878431.1878444
+  \endverb
+  \list{location}{1}{%
+    {Zurich, Switzerland}%
+  }
+  \field{year}{2010}
+  \warn{\item Can't use 'location' + 'address'}
 \endentry
 
 \entry{speech}{article}{}
@@ -860,6 +1189,86 @@
   \field{year}{2009}
 \endentry
 
+\entry{Jiang:2011:MPM:2030112.2030150}{inproceedings}{}
+  \name{author}{10}{}{%
+    {{}%
+     {Jiang}{J.}%
+     {Yifei}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Li}{L.}%
+     {Kun}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Tian}{T.}%
+     {Lei}{L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Piedrahita}{P.}%
+     {Ricardo}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Yun}{Y.}%
+     {Xiang}{X.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Mansata}{M.}%
+     {Omkar}{O.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Lv}{L.}%
+     {Qin}{Q.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Dick}{D.}%
+     {Robert~P.}{R.~P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Hannigan}{H.}%
+     {Michael}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Shang}{S.}%
+     {Li}{L.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {ACM}%
+  }
+  \keyw{air quality sensing, location based service, smartphone}
+  \strng{namehash}{JY+1}
+  \strng{fullhash}{JYLKTLPRYXMOLQDRPHMSL1}
+  \field{sortinit}{J}
+  \field{booktitle}{Proceedings of the 13th international conference on
+  Ubiquitous computing}
+  \verb{doi}
+  \verb 10.1145/2030112.2030150
+  \endverb
+  \field{isbn}{978-1-4503-0630-0}
+  \field{pages}{271\bibrangedash 280}
+  \field{series}{UbiComp '11}
+  \field{title}{MAQS: a personalized mobile sensing system for indoor air
+  quality monitoring}
+  \verb{url}
+  \verb http://doi.acm.org/10.1145/2030112.2030150
+  \endverb
+  \list{location}{1}{%
+    {Beijing, China}%
+  }
+  \field{year}{2011}
+  \warn{\item Can't use 'location' + 'address'}
+\endentry
+
 \entry{failure}{inproceedings}{}
   \name{author}{5}{}{%
     {{}%
@@ -945,6 +1354,90 @@
   \warn{\item Invalid format of field 'month'}
 \endentry
 
+\entry{Koo}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Koo}{K.}%
+     {Jahyoung}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Yi}{Y.}%
+     {Jiyoung}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Cha}{C.}%
+     {Hojung}{H.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {ACM}%
+  }
+  \keyw{collaboration, mobile node localization, wireless sensor networks}
+  \strng{namehash}{KJYJCH1}
+  \strng{fullhash}{KJYJCH1}
+  \field{sortinit}{K}
+  \field{booktitle}{Proceedings of the 10th international conference on
+  Ubiquitous computing}
+  \verb{doi}
+  \verb 10.1145/1409635.1409652
+  \endverb
+  \field{isbn}{978-1-60558-136-1}
+  \field{pages}{124\bibrangedash 133}
+  \field{series}{UbiComp '08}
+  \field{title}{Localization in mobile ad hoc networks using cumulative route
+  information}
+  \verb{url}
+  \verb http://doi.acm.org/10.1145/1409635.1409652
+  \endverb
+  \list{location}{1}{%
+    {Seoul, Korea}%
+  }
+  \field{year}{2008}
+  \warn{\item Can't use 'location' + 'address'}
+\endentry
+
+\entry{andrew_lighting}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Krioukov}{K.}%
+     {Andrew}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Culler}{C.}%
+     {David}{D.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {ACM}%
+  }
+  \keyw{building, energy, hvac, lighting, personal controls}
+  \strng{namehash}{KACD1}
+  \strng{fullhash}{KACD1}
+  \field{sortinit}{K}
+  \field{booktitle}{Proceedings of the 11th international conference on
+  Information Processing in Sensor Networks}
+  \verb{doi}
+  \verb 10.1145/2185677.2185726
+  \endverb
+  \field{isbn}{978-1-4503-1227-1}
+  \field{pages}{157\bibrangedash 158}
+  \field{series}{IPSN '12}
+  \field{title}{Personal building controls}
+  \verb{url}
+  \verb http://doi.acm.org/10.1145/2185677.2185726
+  \endverb
+  \list{location}{1}{%
+    {Beijing, China}%
+  }
+  \field{year}{2012}
+  \warn{\item Can't use 'location' + 'address'}
+\endentry
+
 \entry{climate}{article}{}
   \name{author}{2}{}{%
     {{}%
@@ -995,6 +1488,110 @@
   \field{year}{2012}
 \endentry
 
+\entry{Lu2009}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Lu}{L.}%
+     {Xi}{X.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {McElroy}{M.}%
+     {Michael}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kiviluoma}{K.}%
+     {Juha}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{LXMMKJ1}
+  \strng{fullhash}{LXMMKJ1}
+  \field{sortinit}{L}
+  \field{number}{27}
+  \field{title}{{Global potential for wind-generated electricity}}
+  \verb{url}
+  \verb http://www.pnas.org/content/106/27/10933.full
+  \endverb
+  \field{volume}{106}
+  \field{journaltitle}{Proceedings of the National Academy of Sciences}
+  \field{annotation}{%
+  10.1073/pnas.0904101106%
+  }
+  \field{month}{07}
+  \field{year}{2009}
+\endentry
+
+\entry{Lukowicz2002}{inproceedings}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Lukowicz}{L.}%
+     {Paul}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Junker}{J.}%
+     {H.}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Stager}{S.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Buren}{B.}%
+     {T.~von}{T.~v.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Troster}{T.}%
+     {G.}{G.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer-Verlag}%
+  }
+  \strng{namehash}{LP+1}
+  \strng{fullhash}{LPJHSMBTvTG1}
+  \field{sortinit}{L}
+  \field{booktitle}{Proceedings of the 4th international conference on
+  Ubiquitous Computing}
+  \field{isbn}{3-540-44267-7}
+  \field{pages}{361\bibrangedash 370}
+  \field{series}{UbiComp '02}
+  \field{title}{WearNET: A Distributed Multi-sensor System for Context Aware
+  Wearables}
+  \verb{url}
+  \verb http://dl.acm.org/citation.cfm?id=647988.741494
+  \endverb
+  \list{location}{1}{%
+    {Goteborg, Sweden}%
+  }
+  \field{year}{2002}
+  \warn{\item Can't use 'location' + 'address'}
+\endentry
+
+\entry{Lymberopoulos09amethodology}{inproceedings}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Lymberopoulos}{L.}%
+     {Dimitrios}{D.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{LD1}
+  \strng{fullhash}{LD1}
+  \field{sortinit}{L}
+  \field{booktitle}{In Proceedings of the 7th ACM/Usenix International
+  Conference on Mobile Systems, Applications and Services (MobiSys ’09}
+  \field{title}{A methodology for extracting temporal properties from sensor
+  network data streams}
+  \field{year}{2009}
+\endentry
+
 \entry{mpc}{article}{}
   \name{author}{4}{}{%
     {{}%
@@ -1034,6 +1631,50 @@
   \field{volume}{32}
   \field{journaltitle}{Control Systems, IEEE}
   \field{year}{2012}
+\endentry
+
+\entry{Mamidi2343582}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Mamidi}{M.}%
+     {Sunil}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Chang}{C.}%
+     {Yu-Han}{Y.-H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Maheswaran}{M.}%
+     {Rajiv}{R.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{2}{%
+    {International Foundation for Autonomous Agents}%
+    {Multiagent Systems}%
+  }
+  \keyw{adaptive-agents, energy efficiency, environmental sensing, occupancy
+  prediction}
+  \strng{namehash}{MSCYHMR1}
+  \strng{fullhash}{MSCYHMR1}
+  \field{sortinit}{M}
+  \field{booktitle}{Proceedings of the 11th International Conference on
+  Autonomous Agents and Multiagent Systems - Volume 1}
+  \field{isbn}{0-9817381-1-7, 978-0-9817381-1-6}
+  \field{pages}{45\bibrangedash 52}
+  \field{series}{AAMAS '12}
+  \field{title}{Improving building energy efficiency with a network of sensing,
+  learning and prediction agents}
+  \verb{url}
+  \verb http://dl.acm.org/citation.cfm?id=2343576.2343582
+  \endverb
+  \list{location}{1}{%
+    {Valencia, Spain}%
+  }
+  \field{year}{2012}
+  \warn{\item Can't use 'location' + 'address'}
 \endentry
 
 \entry{buildanomaly}{inproceedings}{}
@@ -1168,6 +1809,198 @@
   \field{year}{2010}
 \endentry
 
+\entry{Ortiz2422540}{inproceedings}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Ortiz}{O.}%
+     {Jorge}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Noh}{N.}%
+     {Yongwoo}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Saldanha}{S.}%
+     {Gavin}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Su}{S.}%
+     {David}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Culler}{C.}%
+     {David}{D.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {ACM}%
+  }
+  \keyw{disconnected operations, distributed consistency, energy, mobile
+  application, network access, plug loads, power}
+  \strng{namehash}{OJ+1}
+  \strng{fullhash}{OJNYSGSDCD1}
+  \field{sortinit}{O}
+  \field{booktitle}{Proceedings of the Fourth ACM Workshop on Embedded Sensing
+  Systems for Energy-Efficiency in Buildings}
+  \verb{doi}
+  \verb 10.1145/2422531.2422540
+  \endverb
+  \field{isbn}{978-1-4503-1170-0}
+  \field{pages}{42\bibrangedash 44}
+  \field{series}{BuildSys '12}
+  \field{title}{Towards real-time, fine-grained energy analytics in buildings
+  through mobile phones}
+  \verb{url}
+  \verb http://doi.acm.org/10.1145/2422531.2422540
+  \endverb
+  \list{location}{1}{%
+    {Toronto, Ontario, Canada}%
+  }
+  \field{year}{2012}
+  \warn{\item Can't use 'location' + 'address'}
+\endentry
+
+\entry{Romer03thelighthouse}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Romer}{R.}%
+     {Kay}{K.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{RK1}
+  \strng{fullhash}{RK1}
+  \field{sortinit}{R}
+  \field{title}{The Lighthouse Location System for Smart Dust}
+  \field{year}{2003}
+\endentry
+
+\entry{Rossi:2011:RWC:2030112.2030238}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Rossi}{R.}%
+     {Mirco}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Cinaz}{C.}%
+     {Burcu}{B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Tr\"{o}ster}{T.}%
+     {Gerhard}{G.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {ACM}%
+  }
+  \keyw{fashion show, sensors, smart textiles, wearable computers}
+  \strng{namehash}{RMCBTG1}
+  \strng{fullhash}{RMCBTG1}
+  \field{sortinit}{R}
+  \field{booktitle}{Proceedings of the 13th international conference on
+  Ubiquitous computing}
+  \verb{doi}
+  \verb 10.1145/2030112.2030238
+  \endverb
+  \field{isbn}{978-1-4503-0630-0}
+  \field{pages}{609\bibrangedash 610}
+  \field{series}{UbiComp '11}
+  \field{title}{Ready-to-live: wearable computing meets fashion}
+  \verb{url}
+  \verb http://doi.acm.org/10.1145/2030112.2030238
+  \endverb
+  \list{location}{1}{%
+    {Beijing, China}%
+  }
+  \field{year}{2011}
+  \warn{\item Can't use 'location' + 'address'}
+\endentry
+
+\entry{hierarchy_is_dead}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Seltzer}{S.}%
+     {Margo}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Murphy}{M.}%
+     {Nicholas}{N.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {USENIX Association}%
+  }
+  \strng{namehash}{SMMN1}
+  \strng{fullhash}{SMMN1}
+  \field{sortinit}{S}
+  \field{booktitle}{Proceedings of the 12th conference on Hot topics in
+  operating systems}
+  \field{pages}{1\bibrangedash 1}
+  \field{series}{HotOS'09}
+  \field{title}{Hierarchical file systems are dead}
+  \verb{url}
+  \verb http://dl.acm.org/citation.cfm?id=1855568.1855569
+  \endverb
+  \list{location}{1}{%
+    {Monte Verit\&\#224;, Switzerland}%
+  }
+  \field{year}{2009}
+  \warn{\item Can't use 'location' + 'address'}
+\endentry
+
+\entry{Taneja2223873}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Taneja}{T.}%
+     {Jay}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Katz}{K.}%
+     {Randy}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Culler}{C.}%
+     {David}{D.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {IEEE Computer Society}%
+  }
+  \keyw{electricity, cyber-physical systems, smart grid, renewable energy}
+  \strng{namehash}{TJKRCD1}
+  \strng{fullhash}{TJKRCD1}
+  \field{sortinit}{T}
+  \field{booktitle}{Proceedings of the 2012 IEEE/ACM Third International
+  Conference on Cyber-Physical Systems}
+  \verb{doi}
+  \verb 10.1109/ICCPS.2012.20
+  \endverb
+  \field{isbn}{978-0-7695-4695-7}
+  \field{pages}{119\bibrangedash 128}
+  \field{series}{ICCPS '12}
+  \field{title}{Defining CPS Challenges in a Sustainable Electricity Grid}
+  \verb{url}
+  \verb http://dx.doi.org/10.1109/ICCPS.2012.20
+  \endverb
+  \list{location}{1}{%
+    {Washington, DC, USA}%
+  }
+  \field{year}{2012}
+\endentry
+
 \entry{Jay}{report}{}
   \name{author}{4}{}{%
     {{}%
@@ -1231,6 +2064,229 @@
   \field{note}{\url{http://www.usgbc.org/leed/}}
   \field{title}{{U.S. Green Building Council Leadership in Energy and
   Environmental Design}}
+\endentry
+
+\entry{6146507}{article}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Wang}{W.}%
+     {Lingfeng}{L.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Wang}{W.}%
+     {Zhu}{Z.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Yang}{Y.}%
+     {Rui}{R.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{building management systems;control engineering computing;intelligent
+  control;multi-agent systems;sustainable development;building industry;central
+  coordinator-agent;comfort management;control system design;customers
+  comfort;energy management;energy-efficient building;graphical user interface
+  based platform;hierarchical multiagent control system;integrated
+  building;intelligent multiagent control system;intelligent optimizer;load
+  agent;local controller-agent;microgrid system;particle swarm
+  optimization;power consumption minimisation;smart building;sustainable
+  building;switch agent;Buildings;Lighting;Renewable energy
+  resources;Switches;Temperature measurement;Visualization;Smart and
+  sustainable building;distributed energy resources;energy and comfort
+  management;graphical user interface;heuristic
+  optimization;microgrid;multiagent control system}
+  \strng{namehash}{WLWZYR1}
+  \strng{fullhash}{WLWZYR1}
+  \field{sortinit}{W}
+  \verb{doi}
+  \verb 10.1109/TSG.2011.2178044
+  \endverb
+  \field{issn}{1949-3053}
+  \field{number}{2}
+  \field{pages}{605\bibrangedash 617}
+  \field{title}{Intelligent Multiagent Control System for Energy and Comfort
+  Management in Smart and Sustainable Buildings}
+  \field{volume}{3}
+  \field{journaltitle}{Smart Grid, IEEE Transactions on}
+  \field{year}{2012}
+\endentry
+
+\entry{Want02thepersonal}{inproceedings}{}
+  \name{author}{6}{}{%
+    {{}%
+     {Want}{W.}%
+     {Roy}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Pering}{P.}%
+     {Trevor}{T.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Danneels}{D.}%
+     {Gunner}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kumar}{K.}%
+     {Muthu}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Sundar}{S.}%
+     {Murali}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Light}{L.}%
+     {John}{J.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer-Verlag}%
+  }
+  \strng{namehash}{WR+1}
+  \strng{fullhash}{WRPTDGKMSMLJ1}
+  \field{sortinit}{W}
+  \field{booktitle}{In Proceedings of Ubicomp 2002: 4th International
+  Conference on Ubiquitous Computing, Goteborg}
+  \field{pages}{194\bibrangedash 209}
+  \field{title}{The Personal Server: Changing the Way We Think about Ubiquitous
+  Computing}
+  \field{year}{2002}
+\endentry
+
+\entry{uqicomp_vision}{incollection}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Weiser}{W.}%
+     {Mark}{M.}%
+     {}{}%
+     {}{}}%
+  }
+  \name{editor}{4}{}{%
+    {{}%
+     {Baecker}{B.}%
+     {Ronald~M.}{R.~M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Grudin}{G.}%
+     {Jonathan}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Buxton}{B.}%
+     {William A.~S.}{W.~A.~S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Greenberg}{G.}%
+     {Saul}{S.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Morgan Kaufmann Publishers Inc.}%
+  }
+  \strng{namehash}{WM1}
+  \strng{fullhash}{WM1}
+  \field{sortinit}{W}
+  \field{chapter}{The computer for the 21st century}
+  \field{isbn}{1-55860-246-1}
+  \field{pages}{933\bibrangedash 940}
+  \field{title}{Human-computer interaction}
+  \verb{url}
+  \verb http://dl.acm.org/citation.cfm?id=212925.213017
+  \endverb
+  \list{location}{1}{%
+    {San Francisco, CA, USA}%
+  }
+  \field{year}{1995}
+\endentry
+
+\entry{Yoon2013}{inproceedings}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Yoon}{Y.}%
+     {Sungro}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Lee}{L.}%
+     {Kyunghan}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Rhee}{R.}%
+     {Injong}{I.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {ACM}%
+  }
+  \keyw{FM, automation, indoor localization}
+  \strng{namehash}{YSLKRI1}
+  \strng{fullhash}{YSLKRI1}
+  \field{sortinit}{Y}
+  \field{booktitle}{Proceeding of the 11th annual international conference on
+  Mobile systems, applications, and services}
+  \verb{doi}
+  \verb 10.1145/2462456.2464445
+  \endverb
+  \field{isbn}{978-1-4503-1672-9}
+  \field{pages}{207\bibrangedash 220}
+  \field{series}{MobiSys '13}
+  \field{title}{FM-based indoor localization via automatic fingerprint DB
+  construction and matching}
+  \verb{url}
+  \verb http://doi.acm.org/10.1145/2462456.2464445
+  \endverb
+  \list{location}{1}{%
+    {Taipei, Taiwan}%
+  }
+  \field{year}{2013}
+  \warn{\item Can't use 'location' + 'address'}
+\endentry
+
+\entry{Yu1956572}{inproceedings}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Yu}{Y.}%
+     {Tina}{T.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {IEEE Computer Society}%
+  }
+  \keyw{buildings occupancy model, energy efficiency, buildings simulation,
+  genetic programming, sensor data}
+  \strng{namehash}{YT1}
+  \strng{fullhash}{YT1}
+  \field{sortinit}{Y}
+  \field{booktitle}{Proceedings of the 2010 Ninth International Conference on
+  Machine Learning and Applications}
+  \verb{doi}
+  \verb 10.1109/ICMLA.2010.111
+  \endverb
+  \field{isbn}{978-0-7695-4300-0}
+  \field{pages}{726\bibrangedash 731}
+  \field{series}{ICMLA '10}
+  \field{title}{Modeling Occupancy Behavior for Energy Efficiency and Occupants
+  Comfort Management in Intelligent Buildings}
+  \verb{url}
+  \verb http://dx.doi.org/10.1109/ICMLA.2010.111
+  \endverb
+  \list{location}{1}{%
+    {Washington, DC, USA}%
+  }
+  \field{year}{2010}
 \endentry
 
 \lossort

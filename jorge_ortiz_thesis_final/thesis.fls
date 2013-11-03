@@ -243,6 +243,9 @@ INPUT Introduction/IntroMain.tex
 INPUT Introduction/IntroMain.tex
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/public/lm/rm-lmr17.tfm
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/public/lm/rm-lmbx12.tfm
+INPUT figs/BuildingAppModel.pdf
+INPUT ./figs/BuildingAppModel.pdf
+INPUT ./figs/BuildingAppModel.pdf
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/public/lm/rm-lmro12.tfm
 OUTPUT SensingInTheBuiltEnvironment/SensingInBuiltMain.aux
 INPUT SensingInTheBuiltEnvironment/SensingInBuiltMain.tex
@@ -288,10 +291,10 @@ INPUT StreamFSArchitecture/SFSArchMain.tex
 INPUT StreamFSArchitecture/SFSArchMain.tex
 INPUT StreamFSArchitecture/NameMngt.tex
 INPUT StreamFSArchitecture/NameMngt.tex
-INPUT /usr/local/texlive/2012/texmf-dist/tex/latex/lm/omslmr.fd
-INPUT /usr/local/texlive/2012/texmf-dist/tex/latex/lm/omslmr.fd
 INPUT StreamFSArchitecture/erg.tex
 INPUT StreamFSArchitecture/erg.tex
+INPUT /usr/local/texlive/2012/texmf-dist/tex/latex/lm/omslmr.fd
+INPUT /usr/local/texlive/2012/texmf-dist/tex/latex/lm/omslmr.fd
 INPUT StreamFSArchitecture/timeseries.tex
 INPUT StreamFSArchitecture/timeseries.tex
 INPUT StreamFSArchitecture/pubsub.tex

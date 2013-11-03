@@ -1,0 +1,172 @@
+\documentclass[12pt,final]{ucthesis}
+\usepackage{amstext,amssymb,amsmath,aasmacros,amsthm}
+\usepackage{epsfig}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{hyperref}
+%% below needs to be after biliographystyle to make bib single-spaced
+\usepackage{tweak_ucthesis}
+
+\usepackage{moreverb}
+\usepackage{xspace}
+\usepackage{algorithmic}
+\usepackage{algorithm}
+\usepackage{pdfsync}
+\usepackage{endnotes}
+\usepackage{color}
+\usepackage{cite}
+\usepackage{url}
+
+\urlstyle{sf}
+
+% \usepackage{natbib}
+% \citestyle{plainnat}
+\bibliographystyle{abbrv}
+% \bibliographystyle{apj}
+
+\def\newblock{\hskip .11em plus .33em minus .07em}
+%\nofiles %% Uncomment for final edit of thesis.lof and thesis.lot
+
+%% kluge to denote abstracts within thesis chapters
+\newcommand{\chabstract}{\medskip \bigskip {\bf \Large \centerline{Abstract} \bigskip}}
+%% kluge to denote acknowledgements within thesis chapters
+\newcommand{\chacknowledgements}{\medskip \bigskip {\bf \Large \noindent Acknowledgements \bigskip \nopagebreak}}
+%% kluge to fix figure/table numbers
+\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+\renewcommand{\thetable}{\thechapter.\arabic{table}}
+\newcommand{\ignore}[1]{}
+\newcommand{\comments}[1]{} 
+
+
+\newtheorem{lem}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{problem}{Problem}
+\newtheorem{defn}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{claim}{Claim}
+
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+\renewcommand{\paragraph}[1]{\vspace{3pt}\noindent\textbf{#1}}
+\newcommand{\scrX}{\ensuremath{\mathcal{X}}}
+\newcommand{\scrY}{\ensuremath{\mathcal{Y}}}
+\newcommand{\scrZ}{\ensuremath{\mathcal{Z}}}
+\newcommand{\rA}{\ensuremath{\rightarrow}}
+\newcommand{\rrA}{\ensuremath{\longrightarrow}}
+\newcommand{\qB}{\ensuremath{\mathbf{q}}}
+\newcommand{\XB}{\ensuremath{\mathbf{X}}}
+\newcommand{\zeroB}{\ensuremath{\mathbf{0}}}
+\newcommand{\sm}{\mbox{\textendash}}
+
+\newcommand{\eps}{\epsilon}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\I}{\mathcal{I}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\re}{\mathbb{R}}
+\newcommand{\mypar}[1]{\smallskip
+\noindent{\bf\em {#1}.}}
+\newcommand{\Paragraph}[1]{\smallskip \noindent{\bf\em {#1}}}
+\newcommand{\etal}{\emph{et al.}}
+\newcommand{\ie}{\textit{i.e.\,}}
+\newcommand{\Lap}{\mathsf{Lap}}
+
+\newcommand{\storage}{Storage~}
+\newcommand{\viewer}{Template~}
+\newcommand{\editor}{Application~}
+\newcommand{\storagee}{Storage}
+\newcommand{\viewere}{Template}
+\newcommand{\editore}{Application}
+\newcommand{\designpattern}{AST~}
+\newcommand{\designpatterne}{AST}
+\newcommand{\designpatternfull}{Application-Storage-Template~}
+\newcommand{\designpatternfulle}{Application-Storage-Template}
+
+\newcommand{\GUPT}{\textsc{GUPT}\xspace}
+\newcommand{\GUPTplain}{Gupt\xspace}
+\newcommand{\G}{\textsc{GUPT}\xspace}
+\newcommand{\Gp}{Gupt\xspace}
+
+\newcommand{\B}{{\small {\textsf{Bubbles}}}\xspace}
+\newcommand{\Bnouns}{bubbles\xspace}
+\newcommand{\Bnoun}{bubble\xspace}
+
+\newcommand{\R}{\textsc{Rubicon}\xspace}
+\newcommand{\Rp}{Rubicon\xspace}
+
+\newcommand*{\supervisor}[1]{\def\supname{#1}}
+\newcommand*{\thesistitle}[1]{\def\ttitle{#1}}
+\newcommand*{\authors}[1]{\def\authornames{#1}}
+\newcommand*{\addresses}[1]{\def\addressnames{#1}}
+\newcommand*{\university}[1]{\def\univname{#1}}
+\newcommand*{\UNIVERSITY}[1]{\def\UNIVNAME{#1}}
+\newcommand*{\department}[1]{\def\deptname{#1}}
+\newcommand*{\DEPARTMENT}[1]{\def\DEPTNAME{#1}}
+\newcommand*{\group}[1]{\def\groupname{#1}}
+\newcommand*{\GROUP}[1]{\def\GROUPNAME{#1}}
+\newcommand*{\faculty}[1]{\def\facname{#1}}
+\newcommand*{\FACULTY}[1]{\def\FACNAME{#1}}
+\newcommand*{\secfaculty}[1]{\def\secfacname{#1}}
+\newcommand*{\SECFACULTY}[1]{\def\SECFACNAME{#1}}
+\newcommand*{\subject}[1]{\def\subjectname{#1}}
+\newcommand*{\keywords}[1]{\def\keywordnames{#1}}
+
+\begin{document}
+
+\include{vars}
+
+% PDF meta-data
+\hypersetup{
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={\ttitle},    % title
+    pdfauthor={\authornames},     % author
+    pdfsubject={\subjectname},   % subject of the document
+    pdfcreator={\authornames},   % creator of the document
+    pdfproducer={\authornames}, % producer of the document
+    pdfkeywords={Information Flow Control} {Data Security} {Data Privacy} {Differential Privacy} {Context-centric Privacy}, % list of keywords
+    pdfnewwindow=true,      % links in new window
+    colorlinks=true,       % false: boxed links; true: colored links
+    linkcolor=red,          % color of internal links (change box color with linkbordercolor)
+    citecolor=green,        % color of links to bibliography
+    filecolor=magenta,      % color of file links
+    urlcolor=blue           % color of external links
+}
+%% front end stuff
+\include{frontmatter}
+
+%% thesis text
+
+\chapter{Introduction}
+\label{chap:introduction}
+\input{introduction}
+
+\chapter{Background}
+\label{chap:bg}
+\input{background}
+
+\chapter{Privacy preserving data mining}
+\label{chap:ppdm}
+\input{ppdm}
+
+\chapter{Enforcing user privacy policies}
+\label{chap:rubicon}
+\input{isolation}
+
+\chapter{Privacy with Internet (dis)connected applications}
+\label{chap:mobads}
+\input{mobads}
+
+\chapter{Conclusion}
+\label{chap:conclusion}
+\input{conclusion}
+
+% \addcontentsline{toc}{chapter}{Bibliography}
+\bibliography{papers}
+
+
+\end{document}

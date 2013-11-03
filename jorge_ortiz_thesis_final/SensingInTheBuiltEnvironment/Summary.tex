@@ -1,5 +1,47 @@
+% \section{Architectural Re-design}
+% We propose a new architecture to address the shortcomings we described.  The architecture deals with challenges 
+% of real-time data processing, time-series data storage, and uniform access to building sensor data.  It also
+% addresses the challenges with contextual accuracy.
+
 \section{Summary}
 
-We use StreamFS to organize and support applications using building data from three different
-buildings.  The first one is a 110,000 square foot, seven-story building, the second one is an eleven-story
-250,000 square-foot building, and the third is a 150,000 square-foot eleven-story building.
+% We use StreamFS to organize and support applications using building data from three different
+% buildings.  The first one is a 110,000 square foot, seven-story building, the second one is an eleven-story
+% 250,000 square-foot building, and the third is a 150,000 square-foot eleven-story building.
+
+In this chapter we discussed the historical motivation for the design and implementation of building information systems.
+We showed how they were built with the purpose of supporting the building manager's primary job of maintaining the 
+building and dealing with occuppant complaints.  A BMS displays the data from a large sensor deployment and show it in the
+context of the building schematics to the building manager at a central location (i.e. their office), so that they can 
+find problems through a series of clicks, rather than physically walking around the building and inspecting
+individual sensors and systems.
+
+We discussed the notion of building ``app-ification'' in greater detail, separating the BMS intwo three distinct layers
+and focusing on the graphical interface as just one possible interactive modality for buildings.  We explaine that if we
+view the interface as just another interface, then the narrow waiste of interaction if set at the naming layer.  We also discuss
+several emerging building applications: the graphical supervisory control app, the holistic building optimization app,
+and the mobile auditing app.  We show that the current approach does not contain the necessary layering or architectural components
+and mechanisms to support the emergy applications and consider what components \emph{are} necessary in order to do so.
+
+We also introduce the notion of verification of building elements through software.  We talk about the
+relationships betweens the systems and spaces, expressed in the naming of sensor streams and how these relationships are used
+to interpret context necessary for emerging applications.  We argue that verification at the sofware level, should be part of any
+architecture that manages the building.  We give an example through model predictive control, and how the mis-representation or
+staleness of information can lead to gross control-related and energy-accounting errors, especially long term.
+
+We have designed and implemented a system called StreamFS that contains each of these features as components in its architecture.
+For points \ref{nw}, \ref{proc}, and \ref{rt} in section \ref{sec:shortcomings}, we observe that filesytem constructs solve these 
+issues quite effectively.  We show
+how a uniform, hierarchical naming scheme combined with a high-level pipe abstraction can be used to address issues with naming, processing,
+and management of many streams.  We discuss how we translate these into different kinds of files in StreamFS, each with their
+own read/write semantics and how you can construct complex processing pipes easily through this abstraction.  Point \ref{ts} requires
+a traditional timeseries database approach.  In chapter~\ref{chap:SFSArchMain}, we explain how the time-oriented, scan-heavy
+workload calls for a timeseries data store and how we combine the datastore with the access semantics of specific files in
+StreamFS.
+
+We consider point \ref{cntxt}, an important component in our archictectural proposal.  However, 
+we separate it from the StreamFS architecture because it is a component that functions largely independently of \emph{how} the naming
+constructs are logically constructed.  Instead, this piece of the thesis focuses more on the mathematics and methodological
+underpinnings of a verification process that should be included in \emph{any} architecture that describes physical relationships
+and monitors functional behavior of equipment in buildings.  We leave the details of our approach and methodology to chapter~\ref{chap:naming}
+and the results are presented in chapter~\ref{chap:VerificationMain}.

@@ -16,8 +16,9 @@
 % the current architecture is fundamentally flawed; built largely to support a small set of vendor-specific
 % applications and not much else.
 
-In this section we dissect the BMS architecture and closely examine how well it can support broad application development
-in buildings, rather than the single supervisory control function it supports today.  We examine the architecture in the context
+% In this section we dissect the BMS architecture and closely examine how well it can support broad application development
+% in buildings, rather than the single supervisory control function it supports today.  
+We examine today's BMS architecture in the context
 of 4 potential services with distinct operational requirements that need to be supported.  The first two services that 
 are offered today and enabled by the BMS.  We describe how emerging requirements are driving the evolution of these
 services and how BMS's are struggling to meet the new requirements due to limitations in their architectural design.
@@ -33,9 +34,10 @@ the use and effectiveness of our system in real building deployments.
 % a set of necessary architectural components necessary to enable and support emerging applications.
 
 \subsection{Monitoring and Supervisory Control}
-The primary objective in the design of building information systems is for centralized monitoring and supervisor
+The primary objective in the design of building information systems is for centralized monitoring and supervisory
 control.  Control algorithms are left ``to the expert'' and embedded in the outstation control board.  The intended
-user of the system is a building manager -- a user whose expertise is more high-level than control-algorithm or system specific.
+user of the system is a building manager -- a user whose expertise is much broader than the designer of the control
+algorithm that runs on a particular system component.
 The manager is expected to monitor the health of building systems and quickly diagnose problems when they occur.  The tool
 is mainly in place to save the building manager time; and it is very effective at doing so.  The extent to which 
 the building manager is making control decisions is altering control algorithm paramter setting through
@@ -49,7 +51,7 @@ by the sensor image.  The user can double-click on the sensor or reading to get 
 measurement point.  For example, if you double-click on a temperature sensor, it will give you the exact name of the 
 point and accompanying information about related points, such as the set-point, which effectively drives the behavior of 
 the underlying system.  If an occupant makes a complaint about not getting any air from the vents, for example, the 
-building manager can find the screen for the vents that serve the room the occpant is in and observe the current
+building manager can find the screen for the vents that serve the room the occupant is in and observe the current
 pressure readings or look for value-based alerts on any of the readings, typically displayed on the same screen.
 If there is a malfunctioning component or something stuck in the vent, the readings should ``look off'' to the building 
 manager.
@@ -65,10 +67,11 @@ The building manager can, typically with the help of the vendor, decide on the b
 strategy cannot be met, due to flaws in the control algorithm itself, the vendor may step in and re-image the controller
 at the outstation and expose the necessary parameters through the graphical interface.  These kinds of changes are rare
 but do happen occassionally and can be somewhat expensive, since the cost is not typically included with the purchase
-of the system.  Because of the cost, the decision is typically made after close inspection and analysis, which a typical BMS
-enables.  For example, the sense/control points in question may be placed in ``trend'' mode.  This means that readings
+of the system.  Because of the cost, the decision is typically made after close inspection and analysis, which a BMS
+enables through the data export feature.  
+For example, the sense/control points in question may be placed in ``trend'' mode.  This means that readings
 from those streams are stored in the local memory buffer at the outstation for some period of time.  If a report is specifically
-set up at the central system, a report period if also associated with the point, allowing the saved points to be drained
+set up at the central system, a report period is also associated with the point, allowing the saved points to be drained
 from the local buffer at the outstation.  The points are then placed in a file for observation and graphing by the 
 building manager.  Time-dependent inspection of the behavior of any of the control-loop related points can be examined.
 
@@ -84,7 +87,7 @@ as 80\% of it is wasted.  As such, there has been an emergence of several compan
 commercial buildings with respect to their energy consumption.  Organizations such as LEED~\cite{Leed} provide certification of 
 buildings, specifically rating the energy efficiency of the building.
 
-Building modeling has been part of building science for quite some time, with systems such as EnergyPlus~\cite{EnergyPlus}.
+Building modeling has been part of building science for quite some time, with systems such as EnergyPlus~\cite{eplus}.
 EnergyPlus and simulators like it are part of a larger ecosystem of software for modeling various aspect of the operation
 of the building.  They allow the designer to construct detailed models of the building, from construction to usage.  You can
 model everything from the material, location, zone-based usage (office building, bathroom, storage room), window size and its

@@ -1,2 +1,13 @@
 \section{Process Management}
 
+Processes are managed through the filesystem.  Our design is guided by the principal that everything is a file and
+every entity is represented in the filesystem.  We used the term subscription and pipe interchangably, however, for 
+explicit disambiguation, we define a subscription as a one-way forwarding process of stream data to an external
+target.  A pipe is a type of subscription to a stream file from an instance of a process file.  The process can
+be internal or external and \emph{always} has its output represented by a stream file.  The latter allows us
+to construct processes chains that can be linked via their associated stream files.
+This section discusses the difference between internal and external processing jobs.  In short, internal processing jobs
+are written in javascript and managed within a StreamFS process-cluster manager.  An external processing job
+is one that interacts with external code that creates the associated representational files for management 
+of external jobs from a central location.
+
