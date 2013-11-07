@@ -1,7 +1,14 @@
 \section{Verification through Sensor Data}
+Verification is a broad topic in buildings that refers to verifying several things about building sensor metadata or through
+the sensor data.  Both cases are related to physical states are relationships that are assumed by the user and are either
+true and empirically observable or not.  If not, the end user or process should be informed and that inconsistencies should
+be immediately addressed.  This is even more of an issues as building begin to reply more and more on software.
+
+In this section we introduce some of the tools that we use for verification as discuss the 4 types of verification
+that exists in buildings.  We also present an overview approach for 3 of them.
 
 \subsection{Correlation}
-We make extensive use of the correlation coefficient function defined as: 
+Throughout this work, we make extensive use of the correlation coefficient function defined as: 
 
 \begin{displaymath}
 r(X,Y) = r_{X, Y} = \frac{\sum_{i=1}^{n} (X_{i} - \overline{X})(Y_{i} - \overline{Y})}

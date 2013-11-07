@@ -101,10 +101,38 @@ A detailed description and examples with be presented in later sections.
 \end{center}
 \end{table}
 
-\subsubsection{Default, Stream, and Controller Files}
+\subsection{Default, Stream, and Controller Files}
+% \subsection{Default/Folder Files}
+A default or folder file serve primarily as a container for other kinds of files.  It is used to group together different kinds of file and
+to represent a common attribute of the file within it.  For example, a default file is usually used to construct the spatial hierarchy.
+Each file at the top level represents a floor, its children are also a set of default file, representing each of the rooms on that floor.
+A default file cannot be deleted unless it is empty.
 
+File that represent streams are called stream files.  They are tightly associated with the associated stream data in the timeseries data-store.
+A user created a stream file and that associated stream ``writes'' to it in order to have its data saved.  StreamFS also forwards the
+data to the \emph{subscription manager} in case any subscription sink has subscribed to this feed.  When a stream file is create an id is 
+returned to the user.  This id must be used by the stream that wishes to push its data to StreamFS through this file.  If this id is incorrect
+or not include, the write operation is rejected.
 
-\subsubsection{Special Files}
+Because controllers accpet many kinds of input, we designed the the file that presents a controller similar to the external processing stub discussed
+in section~\ref{sec:externalprocs}.  Writes to a controller file and forwarded directly to the control stub running at the controller itself or a proxy
+machine that communicates with the controller.  Any reply is set as metadata in the controller file.  Controller files also an associated output stream.
+If a controller process wishes to inform the process of internal state at the controller, it does so through the controller file output --
+a stream file itself.  Table~\ref{tab:filetypes} lists the files in streamfs and the operations they support.  The operational semantics
+are listed in Table~\ref{tab:semantics}.
+
+% \subsection{Stream Files}
+
+% \subsection{Controller Files}
+
+\subsection{Special Files}
+There are 6 types of special files.  In chapter~\ref{chap:ProcMngtSchedMain} we eluded to the various kinds of file that are created
+when a user creates an internal or external file.  An internal process definition (ipd) file is created when the user
+submits a script to StreamFS.  When a (set of) stream(s) is piped through the defintion file, an internal process instance (ipi) file
+is created that represents the output of the process.  A subscription instance (sub) file is also created.  The sub file contains
+information about which streams are feed the file, a reference to the ipi file, and statistics about the file.  If either
+the sub file or the ipi file are deleted, the process ends.  The ipi file is also a stream file.  It can be used to pipe that
+output of the process to another processes or to an external \texttt{URL}.
 
 \begin{table}[h]
 \begin{center}
@@ -136,17 +164,24 @@ A detailed description and examples with be presented in later sections.
 \end{center}
 \end{table}
 
+The same set of files are created when an external processes is defined and started.  When the client stub is started on the client
+machines it creates an external procrocess definition file for each process that was listed in the configuration file for the stub on 
+the client machine.  Similarly, when streams are piped to the defintion files, the client starts the processes on the client
+and create their associated external process instance (epi) files.  Those files are also a sub-type of the stream file and can
+be used to pipe the output to another process (internal or external) or an external \texttt{URL}.
+Any subscription or pipe that is instantiated creates an associated sub file in the \texttt{/sub} directory.  These always contain information
+about the subscription and kill the fowarding process when deleted.
 
+Finally, we used symbolic link (symlinks) the same way they are used in a traditional filesystem.  They are also used to generalize
+the inter-relationship structure in the ERG.  They are a crucial file in the support of multi-naming.
 
+% \subsection{Special Files}
 
-
-\subsection{Default Files}
-
-\subsection{Stream Files}
-
-\subsection{Controller Files}
-
-\subsection{Special Files}
+% \subsubsection{Internal Process Definition}
+% \subsubsection{Internal Process Instance}
+% \subsubsection{External Process Definition}
+% \subsubsection{External Process Instance}
+% \subsubsection{Subscription Instance}
 
 
 

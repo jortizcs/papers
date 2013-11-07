@@ -1,2 +1,22 @@
 \section{Summary}
 
+In this chapter we described the details and motivation in the process management and related components.  We introduced the 
+notion of internal and external processing.  The former is used for small, simple data-cleaning jobs while the latter
+is for integrating external processing jobs written in the client's native language.
+We also showed how we comine the entity-relationship graph to provide the infrastructure necessary to support OLAP-style queries.
+This is an important features, since many of the queries posed in the building domain have the following properties:
+
+\begin{enumerate}
+\item Temporally-driven, scan-heavy queries.
+\item Hierarchical, unit-specific aggregates.
+\end{enumerate}
+
+Dynamic aggregation is an efficient design for these kinds of queries.  Unlike traditional OLAP, where the timestamps
+are uniform across other dimensions, we must interpolate the values to keep the ``OLAP cube'' populated with data at all
+intervals.  It is also necessary to provide accurate aggregates in time.
+
+Finally, we articulate our observation of the importance of scheduling with jobs that want a set of readings that are collectively
+the latest -- the collective buffer freshness is maximized.  We formalize the problem and present an algorithm solution and evaluation.
+In the next chapter we discuss the files and associated semantics in StreamFS.  We show can they related to traditional filesystems
+and discuss the motivation for its design.  We also present the mathematical tools for verifying the relationships between sensors that
+is constructed through the namespace.

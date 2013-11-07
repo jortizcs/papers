@@ -1,4 +1,11 @@
-\section{Maximizing Data Freshness}
+\section{Freshness Scheduling}
+Process execution parameters are set by the user when a process element is created.  Generally, job scheduling is strictly driven
+by these paramters.  However, in our deployments we found there were job pipe sinks that required a \emph{minimum freshness}
+property for the set of data points in the buffer upon consumption.  In this section we discuss our scheduling algorithm in
+relation to providing this property.% and present some experimental results.
+
+
+\subsection{Maximizing Data Freshness}
 \label{sec:freshness}
 
 Data is coming in at different, independent rate from sensors and is produced asynchronously from internal processing elements.
@@ -7,6 +14,28 @@ For certain processes, processing the incoming data as quickly as possible is ke
 should be avoided to minimize prediction inaccuracies in interpolated values.  Therefore, a process actually wants all the freshest
 data from all the streams they are subscribing to, while minimizing the average time that the data for each respective stream has 
 been waiting in the buffer.
+
+\begin{algorithm}[h!]
+ \SetAlgoLined
+ Given a full buffer $b[n]$:\\
+  \For{all elements in the $b$}{
+  (1) Calculate the staleness of element $i$ and add to total stalness, $S_n$\;
+  \For{all other elements in the buffer}{
+    (1) Determine the next report time $D_i$ for this element\;
+    (2) Determine the staleness of all the elements if we wait until $D_i$\;
+    (3) If it is the smallest staleness figure calculate, replace minimum cost, $S_l$.
+    }
+  }
+  \If{$S_l$ is less than $S_n$}{
+  (1) Wait until later to consume\;
+  \Else{
+  (1) Consume now}
+  }
+ \caption{\texttt{min\_buffer} algorithm.}
+ \label{alg:min_buffer}
+\end{algorithm}
+
+
 
 Certain jobs only care about consuming the latest readings from their subscription streams.  They are willing to discard reading until two
 conditions are met:
@@ -22,7 +51,8 @@ allowing some variability in the completion of the processing task.  Note, there
 between the staleness factor and variability of consumption.  It is sometimes better to wait for the next incoming data point than it is to use what
 is currently in the buffer, as waiting will decrease the overall staleness factor.  Other times, it is better to consume the bufferred data immedaitely.
 This causes a certain amount of variability in the delivery period to the control process.  However, for some applications, this is a reasonable tradeoff
-to make.  Making use of the freshest data is desirable for minimizing errors, either in the control of a system or the calculation of some aggregate state.
+to make.  Making use of the freshest data is desirable for minimizing errors, either in the control of a system or the calculation of some aggregate 
+state.
 Generally, the error grows with staleness, therefore the goal of this mechanism is to continuously minimize the error associated with staleness through
 scheduling.
 
@@ -62,26 +92,6 @@ until $D_{k}$ for the stream whose next deadline minimizes the staleness factor 
 \label{eqn:later_better_condition}
 \end{equation}
 
-The algorithm is sketched our below.
+Algorithm~\ref{alg:min_buffer} shows the pseudocode for the \texttt{min\_buffer} algorithm.
 
-
-\begin{algorithm}[h!]
- \SetAlgoLined
- Given a full buffer $b[n]$:\\
-  \For{all elements in the $b$}{
-  (1) Calculate the staleness of element $i$ and add to total stalness, $S_n$\;
-  \For{all other elements in the buffer}{
-  	(1) Determine the next report time $D_i$ for this element\;
-  	(2) Determine the staleness of all the elements if we wait until $D_i$\;
-  	(3) If it is the smallest staleness figure calculate, replace minimum cost, $S_l$.
-  	}
-  }
-  \If{$S_l$ is less than $S_n$}{
-  (1) Wait until later to consume\;
-  \Else{
-  (1) Consume now}
-  }
- \caption{\texttt{min\_buffer} algorithm.}
- \label{alg:emd}
-\end{algorithm}
 

@@ -1,5 +1,14 @@
 \section{Types of Verification}
+There are 4 kinds of verification that we discuss in this section.
 
+\begin{enumerate}
+\item Functional
+\item Spatial
+\item Categorical/type
+\item Value
+\end{enumerate}
+
+We discuss these in more detail in the upcoming sections and present our approach for the first three.
 
 \subsection{Functional Verification}% With Strip, Bind, and Search}
 A typical large building contains thousands of sensors, monitoring the HVAC system, lighting, and other operational sub-systems.
@@ -157,11 +166,16 @@ Before describing our methodology in detail, we introduce some definitions and n
 
 
 \subsection{Type Verification}
-
+Type verification is the ability to cluster sensor traces by the type of sensor that it (i.e. its unit of measure) and the thing it is measuring.
+Ideally we should be able to separate feeds that are measuring different physical attributes and/or are placed in different parts of the building.
+For example, if there are sensors measuring temperature in a pipe and temperature in a room we should be able to separate them from one another as well
+as separate them from sensor pressuring pressure in a valve.  We will show that this can be by examining their distribution and for 
+small data sets with different sensor our approach works quite well, however we present some challenges in a large, more realistic deployment
+data set and we discuss why it is so challenging to deal with.
 
 
 \subsection{Value Verification}
-
-
+Value verification used a physical model to verify that the value observed in the given context is producing values that agree with the model
+that is based on first-principals.  We do not explore this problem in this thesis and leave it for future work.
 
 

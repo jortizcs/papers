@@ -1,2 +1,11 @@
 \section{Supporting Multiple Names}
 
+One of the goals of the naming scheme in StreamFS was the support multiple names for sensor and actuators.  The inclusion of symlinks
+allows provides this ability.  A file can be names and linked to from multiple hierarchies.  This allows applications to refer
+to the same physical entity with a unique object id through multiple names.  It is also used by our pub-sub system when
+the names are resolved and play a crucial role in \emph{dynamic aggregation}.
+
+The naming scheme are mainly used to express different kinds of organizational patterns for the sensors and their data.
+However, the building goes through some changes and evolution which can causes they names to be physically incorrect.  In the next
+section we discuss the mathematical tools we used to verify that the groups specified by the naming convention are correct.
+

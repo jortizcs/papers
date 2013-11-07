@@ -352,6 +352,9 @@ INPUT ./figs/olapdice2ergdice.pdf
 INPUT ./figs/olapdice2ergdice.pdf
 INPUT ProcessManagementAndScheduling/ExternalProcs.tex
 INPUT ProcessManagementAndScheduling/ExternalProcs.tex
+INPUT figs/external_stub.pdf
+INPUT ./figs/external_stub.pdf
+INPUT ./figs/external_stub.pdf
 INPUT ProcessManagementAndScheduling/DataFreshness.tex
 INPUT ProcessManagementAndScheduling/DataFreshness.tex
 INPUT figs/min_buffer.pdf
