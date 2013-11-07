@@ -54,6 +54,68 @@ There are also many dashboard companies that make use of streaming data to provi
 building.  The mobile application described in section~\ref{sec:mobile} also requires a real-time forwarding and processing service to
 enable the application.  We believe that as more applications emerge they will likely need make use of real-time sensor data.
 
+%extendible: able to add and remove stuff 
+%scalable: able to scale with applications, data, and deployment size
+%generalizable: able to accomodate many kinds of analytical/control applications
+%ease of management: so many distributed things that it's hard to keep track of where everything lives.
+
+The design of a new system must provide the features highlighted above in order to embody the following properties:
+
+\begin{enumerate}
+
+\item \emph{Extensibility}:  The system should be able to accomodate different kinds of sensors and actuators and it should
+be simple for them to join and leave.
+
+\item \emph{Scalability}:  The system should scale with the size of the deployment and the number of applications that it supports.
+
+\item \emph{Generalizability}:  The system should provide a general set of primitives for application designers.  It should support applications
+suggested in this chapter and new emerging applications that we cannot currently anticipate.
+
+\item \emph{Ease of Management}: The system should make it easier to manage large deployments and their associated applications.
+
+\end{enumerate}
+
+Modern BMS architectures do not contain these properties.  They are difficult to extend, as new sensors and actuators must physically join 
+the network and follow both a high-level and low-level protocol in order to do so.  They are not scalable.  Most BMS's have a limit as to
+how fast they can obtain data from sensors and limit the amount of trending that the system can do.  The central outstation is the only
+machine handling incoming data.  The entire code-base runs on a single machine.  There are bottlenecks throughout the system in regards to
+data storage -- including the outstation memory and disk storage on the local machine that houses the BMS.  BMS's are also not generalizable.
+They only support one ``applicatoin'': the graphical interface.  The GUI does have a trending/plotting option, but extending the BMS
+to provide other kinds of services is impossible.  Finally, the scope of management is quite limited in BMS's and although they do provide
+ease of management of sensor/actuators on the system through centralized access, we contend that the scope is simply not broad enough.
+
+In this thesis, we will describe a new system, StreamFS, which contains the properties missing in the current architecture.  We will demonstrate 
+the existence of these properties through a series of applications that were built over it in several settings.  We describe the API and
+the scope and usage of the application and draw out how the capabilities enabled by StreamFS in those apps demonstrate the properties highlighted
+above.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -1,7 +1,7 @@
 \section{Time-series Data Store}
 
-
-The data collected from sensor in timeseries in nature.  A sensor produces data periodically.  The imporant aspect of
+The timeseries data store addresses point \ref{ts} in section~\ref{sec:shortcomings}.
+Data collected from sensor is timeseries in nature.  A sensor produces data periodically.  The imporant aspect of
 the stream are the name of the feed, the time the reading was received, and the value for that reading.  There is also
 metadata that needs to be stored about the stream.  For example, we want to know what the units of measure are, 
 the make/model of the sensor, the date it was installed, any calibration parameters or other information that will help 
@@ -21,6 +21,20 @@ is a temporally meaningful manner.  The query specifies the interval of time ove
 and either perform cleaning operations on the data, display it, or adjust the scan parameters for a subsequent query.
 The data is largely self-similar and highly compressable.  Simple compression tests we ran on real data showed a compression factor 
 between 15 and 30.  Also, the data is essentially append-only, forever.  It can grow quite large, but grows have a fairly 
-slow rate, especially after compression.  In either case, we decided a good option would be to use OpenTSDB~\cite{opentsdb}.
-We enabled the compression feature and indexed based on the same and timestamps of the feed.
+slow rate, especially after compression.  
+
+\subsection{Implementation Details}
+
+\begin{figure}[h!] %htbp
+\centering
+\includegraphics[width=.55\columnwidth]{figs/tsdstore}
+\caption{The timeseries data store.  We use OpenTSDB; a timeseries data-store that runs in a cluster setting over
+HBase.}
+\label{fig:tsdb}
+\end{figure}
+
+We chose OpenTSDB~\cite{opentsdb} as our primary data store. We enabled the compression feature and indexed based on the same and timestamps 
+of the feed.  OpenTSDB is a timeseries data store build on HBase~\cite{HBase}.  HBase is designed to scale horizontally for very
+large data sets.  OpenTSDB is a good choice because the compression features keep the footprint small/fast while the append-only, forever
+workload requires a scalable solution provided by the underlying technology.
 

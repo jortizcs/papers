@@ -1,9 +1,18 @@
 \section{Name Management}
-
+The name management layer addresses point \ref{nw} in section~\ref{sec:shortcomings}.  It provides a high-level
+narrow waist for access sensors in context specified in the name itself.
 StreamFS manages two namespaces.  The first is a flat namespaces that identifies a particular
 object instance.  The second is a hiearchical namespace that identifies the current instance
-of a particular object.  In this section, we discuss why we have two namespaces, how
-they are managed, and how they are used by the query interface and analytical layer.
+of a particular object in some context, specified by the path for the object.  
+We support two namespaces in order to uniquely identify sensors and actuators while supporting multiple names.
+
+Multiple names is a requirement in building applications.  Sensors and actuators can be accessed in various 
+way, depending on the application.  Some applications wish to access the sensor in the context of its placement 
+in space.  For example, the path \texttt{/soda/4F/410/temp} can refer to a temperature sensor in 410 of a building
+named `soda'.  The same temperature sensor drives the actuation profile for the HVAC system that serves room
+410 and for other applications it may be important to access it in the system context through a name that specifies
+that relationship, such as \texttt{/soda/hvac/ahu1/temp}.
+In the rest of this section we discuss how both namespaces are managed and implemented.
 
 \subsection{Object identifier namespace}
 
@@ -41,4 +50,45 @@ through a familiar organization of that data.  The organization itself is direct
 the naming structure, so that users looking for various kinds of information can quickly locate it.
 We discuss our naming structure in more detail in Chapter~\ref{chap:naming} and give an overview of fundamental challenges that emerge when
 naming must reflect physical associations and the physical environment is changing.
+
+\subsection{Implementation Details}
+
+The name management layer is implemented behind HAProxy, an open source load balancer. The implementation includes 
+a name registry and a name server.  Several name server handles requests that are forwarded
+from HAPRoxy to one of the name servers.  Each of the name server knows of each of the databases that contains names. 
+In all our deployments, we only had a single server.  However, for deployments that are large, we put the names in multiple, 
+replicated databases with a write-through update policy.  Reads are done from any of the database servers, randomly, since
+they all contain the same information.  Each name server has a preference, so the load is properly distributed.
+
+\begin{figure}[h!] %htbp
+\centering
+\includegraphics[width=.55\columnwidth]{figs/name_reg}
+\caption{Name management layer implemented behind HAProxy.  Name servers handle individual requests and use the name registration table
+query handle the request accordingly.}
+\label{fig:nameserver}
+\end{figure}
+
+The write-through policy is implemented with a write lock.  Whenever a name server receives a request to create or delete a file it informs the
+other name servers that it wishes to acquire a lock.  To prevent deadlock, we force a lock-acquisition order.  A lock is not acquired unless every
+name server agrees to give up the lock to the requesting name server.  Once the log is acquired, the name server performs the same write on each
+server.  The name server then releases the lock by contacting the other name servers in reverse order.  If a name server has given up a lock
+and not received a release, the lock is released automatically after some time.  If a name server goes down, the name server that acquired the lock
+assumes the release was successful.  The name server list is immutable, they are restarted in practice if they go down.
+
+A layer of memcached~\cite{memcached} is used to reduce the load on the databases.  Writes immediately invalidate any entries in memcached.  
+We also include file metadata in the memcached layer, so its use reduces the load on both the name register and the metadata data store.
+The security manager essentially maintains an access control list and set of operations that are supported by each file.  By defualt, 
+security is disabled, but some of our deployments did enable it.
+
+
+
+
+
+
+
+
+
+
+
+
 

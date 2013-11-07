@@ -25,12 +25,12 @@ A level-1 auxiliary file: ProcessManagementAndScheduling/ProcMngtSchedMain.aux
 A level-1 auxiliary file: FilesystemMetaphoreNamingVerify/FilesystemMetaMain.aux
 A level-1 auxiliary file: ArchitecturalEvaluation/ArchEvalMain.aux
 Case mismatch error between cite keys acme and ACme
----line 132 of file thesis.aux
+---line 152 of file thesis.aux
  : \citation{acme
  :               }
 I'm skipping whatever remains of this command
 Case mismatch error between cite keys acme and ACme
----line 135 of file thesis.aux
+---line 155 of file thesis.aux
  : \citation{acme
  :               }
 I'm skipping whatever remains of this command
@@ -46,14 +46,14 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated field_info (elt_size=4) to 20096 items from 5000.
+Reallocated field_info (elt_size=4) to 22544 items from 5000.
 Database file #1: thesis-blx.bib
 Database file #2: references.bib
 Warning--I'm ignoring speech's extra "keywords" field
---line 2174 of file references.bib
+--line 2395 of file references.bib
 Warning--I'm ignoring speech's extra "keywords" field
---line 2176 of file references.bib
-Repeated entry---line 2229 of file references.bib
+--line 2397 of file references.bib
+Repeated entry---line 2450 of file references.bib
  : @inproceedings{MPC
  :                   ,
 I'm skipping whatever remains of this entry
@@ -62,10 +62,10 @@ Warning--I didn't find a database entry for "BMS_book"
 Warning--I didn't find a database entry for "stephscale"
 Warning--I didn't find a database entry for "lanz"
 Warning--I didn't find a database entry for "aceee"
-Warning--I didn't find a database entry for "Chen76theentity-relationship"
-Warning--I didn't find a database entry for "SenkoDB"
 Warning--I didn't find a database entry for "opentsdb"
-Warning--I didn't find a database entry for "tibco"
+Warning--I didn't find a database entry for "SenkoDB"
+Warning--I didn't find a database entry for "Chen76theentity-relationship"
+Warning--I didn't find a database entry for "sec:shortcomings"
 Warning--I didn't find a database entry for "fig:everythingfile"
 Warning--I didn't find a database entry for "lee:climateEMD2011"
 Warning--I didn't find a database entry for "blanco:bioMed2008"
@@ -108,45 +108,45 @@ Warning--I didn't find a database entry for "chan:springer2005"
 Biblatex version: 1.7
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
-You've used 63 entries,
+You've used 81 entries,
             6019 wiz_defined-function locations,
-            1655 strings with 27787 characters,
-and the built_in function-call counts, 225668 in all, are:
-= -- 9424
-> -- 7735
-< -- 2438
-+ -- 2825
-- -- 2826
-* -- 18183
-:= -- 13047
+            1773 strings with 34525 characters,
+and the built_in function-call counts, 287045 in all, are:
+= -- 12223
+> -- 9539
+< -- 3155
++ -- 3593
+- -- 3442
+* -- 22598
+:= -- 16154
 add.period$ -- 0
-call.type$ -- 63
-change.case$ -- 1395
-chr.to.int$ -- 55
-cite$ -- 124
-duplicate$ -- 25638
-empty$ -- 22746
-format.name$ -- 5124
-if$ -- 50837
+call.type$ -- 81
+change.case$ -- 1857
+chr.to.int$ -- 63
+cite$ -- 160
+duplicate$ -- 32776
+empty$ -- 29199
+format.name$ -- 6310
+if$ -- 64860
 int.to.chr$ -- 0
-int.to.str$ -- 179
+int.to.str$ -- 223
 missing$ -- 0
-newline$ -- 2191
-num.names$ -- 3456
-pop$ -- 20001
+newline$ -- 2748
+num.names$ -- 4337
+pop$ -- 25795
 preamble$ -- 1
-purify$ -- 1637
+purify$ -- 2154
 quote$ -- 0
-skip$ -- 13325
+skip$ -- 16961
 stack$ -- 0
-substring$ -- 5842
-swap$ -- 8996
-text.length$ -- 1803
-text.prefix$ -- 62
+substring$ -- 7851
+swap$ -- 11443
+text.length$ -- 2244
+text.prefix$ -- 80
 top$ -- 1
-type$ -- 2381
+type$ -- 3062
 warning$ -- 0
-while$ -- 1206
+while$ -- 1469
 width$ -- 0
-write$ -- 2127
+write$ -- 2666
 (There were 6 error messages)

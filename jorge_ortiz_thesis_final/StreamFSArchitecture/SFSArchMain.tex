@@ -1,28 +1,66 @@
 \chapter{StreamFS System Architecture}
 \label{chap:SFSArchMain}
 
-StreamFS is a system that we built to address some of the shortcomings in the current architecture.  StreamFS uses the filesystem
-metaphore to represent all building information.  This include sensors, actuators, location, processing elements, 
-streams, categorical organization, etc.  It borrow several mechanisms uses in a Unix-style filesystem, namely, files, folders,
-and the pipe abstraction for processing streaming data.  It also borrows the notion that all interaction is through the filesystem.
-This eases management of both the raw data and the processing elements that produce derivative streams for further processing.
+%extendible: able to add and remove stuff 
+%scalable: able to scale with applications, data, and deployment size
+%generalizable: able to accomodate many kinds of analytical/control applications
+%ease of management: so many distributed things that it's hard to keep track of where everything lives.
 
-In this section, we give an overview of the architecture -- all the components, their organization, and how they interact with one
-another.  StreamFS consists of over 20,000 lines of code and was implemented in mostly Java.  It was deployed across multiple
-buildings and several applications were built on top of it over a 2 years period.
+
+\begin{figure}[th!] %htbp
+\centering
+\includegraphics[width=0.65\columnwidth]{figs/sfsarch}
+\caption{StreamFS system architecture.  The four main components -- name register, scription manager/forwarding engine, 
+process manager, and timeseries datastore -- are shown.  It also shows the application layer at the top.}
+\label{fig:sfsarch}
+\end{figure}
+
+StreamFS is a system that addresses some of the shortcomings in the BMS architecture.  StreamFS uses filesystem
+constructs to represent \emph{all building information}.  This includes sensors, actuators, location, processing, 
+streams, categorical organization, etc.  It borrows several mechanisms used in a Unix-style filesystem: files, folders,
+and the pipe abstraction for processing streaming data.  It also employs the principle that \emph{everything is a file} 
+that all interactions are through the filesystem.
+This eases management of both the raw data and the processing elements that produce derivative streams for further processing.
+In this chapter, we give an overview of the architecture -- all the components, their organization, and their interaction.
+Throughout this chapter, we refer back to the list in section~\ref{sec:shortcomings}, where we enumerated the shortcomings
+in the design of the BMS architecture in the context of building ``app-ification''.
+
+
+\section{Overview}
+Each component in StreamFS addresses the fundamental shortcomings discussed in chapter~\ref{chap:SensingInBuiltMain}.
+The four main components are highlighted below:
+
+\begin{enumerate}
+
+\item \textbf{Name Register}: The name register maintains both the object id namespace and the hierarchical namespace
+that it expose to external applications.  It also maintains an entity-relationship graph that is used to support
+indirect relationships between objects.
+
+\item \textbf{Subscription Manager and Forwarding Engine}: The subscription manager manages the input stream and output
+paths to data-processing sinks.  It is part of the publish-subscribe subsystem.  The forwarding engine is used for internal 
+and external data processing.  It queries the
+subscription manager and name register to determine where an input datapoint should be forwarded to.
+
+\item \textbf{Process Manager}: The process manager manages the internal and external processes running and managed in StreamFS.
+
+\item \textbf{Timeseries datastore}: The timeseries datastore functions like the NTV storage engine, as discussed in 
+section~\ref{sec:shortcomings}.
+
+\end{enumerate}
+
+StreamFS is built as a web service that resides in the cloud.  It has several interfaces; one is by direct TCP socket communication and 
+the other is RESTful~\cite{rest} over HTTP.  We use HAProxy~\cite{haproxy} to scale the service as it grows.  We also design each component
+to be horizontally scalable; to grow with the size of the deployment and the number of applications.
+Figure~\ref{fig:sfsarch} gives an overview of our architecture as well as the application layer.
+
 
 \input{StreamFSArchitecture/NameMngt}
-\input{StreamFSArchitecture/erg}
 \input{StreamFSArchitecture/timeseries}
 \input{StreamFSArchitecture/pubsub}
 \input{StreamFSArchitecture/processing}
+\input{StreamFSArchitecture/erg}
 
-\begin{figure}[t!] %htbp
-\centering
-\includegraphics[width=0.75\columnwidth]{figs/sfsarch}
-\caption{StreamFS system architecture.}
-\label{fig:sfsarch}
-\end{figure}
+
 
 \input{StreamFSArchitecture/related}
 \input{StreamFSArchitecture/summary}

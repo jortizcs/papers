@@ -20,143 +20,161 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Emerging Application: Mobile phone interfacing with the physical infrastructure.}}{16}{figure.31}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.8}{\ignorespaces MPC example where metadata must be verified to guarantee correct behavior.}}{19}{figure.39}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces MPC example where metadata must be verified to guarantee correct behavior.}}{20}{figure.43}
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.1}{\ignorespaces StreamFS system architecture.}}{28}{figure.61}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces StreamFS system architecture. The four main components -- name register, scription manager/forwarding engine, process manager, and timeseries datastore -- are shown. It also shows the application layer at the top.}}{24}{figure.47}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Name management layer implemented behind HAProxy. Name servers handle individual requests and use the name registration table query handle the request accordingly.}}{27}{figure.57}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.3}{\ignorespaces The timeseries data store. We use OpenTSDB; a timeseries data-store that runs in a cluster setting over HBase.}}{28}{figure.63}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.4}{\ignorespaces }}{30}{figure.69}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.5}{\ignorespaces The process manager manages a cluster of processing element and connection to external processing units. It works closely with the subscription manager to forward data between elements.}}{31}{figure.72}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {3.6}{\ignorespaces This figure shows how we translate the OLAP cube to a hierarchical ERG. Note how the dimensions of the cube translate to the graph. The level of the subtree is the category, the unit is specified at the node, and there are values at each node for every time slice.}}{33}{figure.75}
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.1}{\ignorespaces This shows an illustration of the aggregation tree used by \emph {dynamic aggregation}. Data flows from the leaves to the root through user-specified aggregation points. When the local buffer is full the streams are separated by source, interpolated, and summed. The aggregated signal is foward up the tree.}}{32}{figure.72}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces This figure shows the internal structure of a process element (PE). The PE consists of several javascript sandboxes where interanl process code runs. It also contains a scheduling loop, message router, and instance monitor.}}{39}{figure.99}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.2}{\ignorespaces The power consumes by a laptop in \emph {room 1} is shifted to \emph {room 2} a time t=7. Notice the aggregagate drops in room 1 while it rises in room 2. }}{32}{figure.77}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces This shows an illustration of the aggregation tree used by \emph {dynamic aggregation}. Data flows from the leaves to the root through user-specified aggregation points. When the local buffer is full the streams are separated by source, interpolated, and summed. The aggregated signal is foward up the tree.}}{41}{figure.105}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Room 1 object and aggregate streams.}}}{32}{subfigure.2.1}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces This figure shows how a ``slice'' operation is translated from the cube to the ERG. The user queries across all streams or aggregation points at a certain level, specified by a star level query with the level-specific prefix. The corresponding slice query is \texttt {query.slice('/4F/R*').start(t1).end(t2)}. }}{43}{figure.110}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Room 2 aggregate.}}}{32}{subfigure.2.2}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces This figure shows how a ``dice'' operation is translated from the cube to the ERG. The user queries across all streams or aggregation points at a certain level, specified by a star level query with the level-specific prefix. The corresponding dice query is \texttt {query.dice('/4F/R*').units(['F']).start(t1).end()}.}}{43}{figure.111}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Multiple streams in a subscription and their associated parameters.}}{34}{figure.82}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Multiple streams in a subscription and their associated parameters.}}{46}{figure.118}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.4}{\ignorespaces }}{36}{figure.89}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces The power consumes by a laptop in \emph {room 1} is shifted to \emph {room 2} a time t=7. Notice the aggregagate drops in room 1 while it rises in room 2. }}{47}{figure.128}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4.5}{\ignorespaces }}{36}{figure.90}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Room 1 object and aggregate streams.}}}{47}{subfigure.6.1}
 \defcounter {refsection}{0}\relax 
-\addvspace {10pt}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Room 2 aggregate.}}}{47}{subfigure.6.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Everything is a file. Temperature sensor represented as a file in a folder that contains folders for each room. Note, the file that represents a temperature sensor producing a stream is given a unique identifer. The user may also decorate the file with extra metadata for searching purposes.}}{38}{figure.98}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces This figures shows the tradeoff between staleness and the number of streams being consumed by the job. Note that out algorithm reduces the staleness of the buffer.}}{48}{figure.129}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Generalized Zero Crossing: the local mean period at the point $p$ is computed from one quarter period $T_4$, two half periods $T_2^x$ and four full periods $T_1^y$ (where $x=1, 2$, and, $y=1,2,3,4$).}}{43}{figure.120}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.3}{\ignorespaces (a) EMD decomposes a signal and exposes intrinsic oscillatory components; (b) Aggregation of IMFs within a pre-defined frequency range makes seemingly similar signals from different locations more distinguishable; (c) IMF aggregation makes seemingly distinct signals of different sensors in the same room show high correlation.}}{48}{figure.127}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces This figures shows that the \texttt {min\_buffer} algorithm provides a similar average execution period but generally at the cost of higher variance in delivery times.}}{48}{figure.130}
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Swiping gestures in the mobile application. The registration swipe requires on a single swipe. The linking and registration gestures require two swipes, and the look-up requires a single swipe.}}{55}{figure.145}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Everything is a file. Temperature sensor represented as a file in a folder that contains folders for each room. Note, the file that represents a temperature sensor producing a stream is given a unique identifer. The user may also decorate the file with extra metadata for searching purposes.}}{50}{figure.138}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.2}{\ignorespaces \ref {fig:qrcexfirst} resolves to the same {\texttt URL} as the \nobreakspace {}\ref {fig:qrcexsecond}, after resolution and redirection is complete. The short label resolves to {\texttt htextttp://tinyurl.com/6235eyw}. \ref {fig:qrcexsecond} encodes about half the characters as the \ref {fig:qrcexfirst}. We used tinyUrl to reduce the QR code image complexity and scan time.}}{57}{figure.147}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Generalized Zero Crossing: the local mean period at the point $p$ is computed from one quarter period $T_4$, two half periods $T_2^x$ and four full periods $T_1^y$ (where $x=1, 2$, and, $y=1,2,3,4$).}}{55}{figure.160}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.3}{\ignorespaces \ref {fig:qrcexfirst} resolves to the same {\texttt URL} as the \nobreakspace {}\ref {fig:qrcexsecond}, after resolution and redirection is complete. The short label resolves to {\texttt htextttp://tinyurl.com/6235eyw}. \ref {fig:qrcexsecond} encodes about half the characters as the \ref {fig:qrcexfirst}. We used tinyUrl to reduce the QR code image complexity and scan time.}}{57}{figure.148}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.4}{\ignorespaces The header of the response from the {\texttt tinyUrl} when resolving a QR code. The `Location' atextttribute is used to extract the unique identifier for the object this QR code tags. It is also used to re-direct users without the phone application to a meaningful web address for the object.}}{58}{figure.150}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Screen shots of the mobile application. The screens on the left are for editing the state of the deployment. The graph on the right shows a live feed of a the sensor that's atextttached to the item that was scanned with the `Scan To View Services' option in the mobile application. It can also be resolved by scanning the QR code and following the re-direct to the URL.}}{59}{figure.153}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.6}{\ignorespaces This diagram shows the relationship capture between the objects and locations in the building for the energy audit application. Children of a space node have an ``is-in'' relationship with the space. An item with another item as a child have a ``is-attached'' relationship and meters atextttached to items are bound to each other. Note, this is a \emph {subset} of the relationship diagrams generated across our three applications.}}{61}{figure.156}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.7}{\ignorespaces A portion of the prefetched entities on the a single floor in our building. This shows a snapshot of the entity-relationship graph for that floor. Each node, link, and associated content is prefetched when the user swipes the floor tag or anything on that floor.}}{62}{figure.157}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.8}{\ignorespaces Standard mechanisms for consistency management on the phone. All READ request go to the local cached version of the ERG. All WRITES must go through the OpLog. They are eventually applied to the cache if successful and logged if the StreamFS is unreachable.}}{64}{figure.161}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.9}{\ignorespaces Power traces obtained from power meters atextttached to various plug load on one of the floors of a building on campus. These show screen shots of the Energy Lens timerseries data display.}}{65}{figure.166}
-\defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.10}{\ignorespaces }}{66}{figure.168}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces (a) EMD decomposes a signal and exposes intrinsic oscillatory components; (b) Aggregation of IMFs within a pre-defined frequency range makes seemingly similar signals from different locations more distinguishable; (c) IMF aggregation makes seemingly distinct signals of different sensors in the same room show high correlation.}}{60}{figure.167}
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.1}{\ignorespaces Correlation coefficients of the raw traces from the Building 1 dataset (Section \ref {data:engbldg2}). The matrix is ordered such as the devices serving same/adjacent rooms are nearby in the matrix.}}{71}{figure.178}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces StreamFS console. The tool allows the user to view the namespace as a set of files, interact with the system, and view stream data.}}{64}{figure.180}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.2}{\ignorespaces Auto-correlation of a usual signal from the Building 1 dataset. The signal features daily and weekly patterns (resp. $x=24$ and $x=168$).}}{72}{figure.179}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Swiping gestures in the mobile application. The registration swipe requires on a single swipe. The linking and registration gestures require two swipes, and the look-up requires a single swipe.}}{68}{figure.186}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.3}{\ignorespaces \emph {Strip and Bind} using two raw signals standing for one week of data from two different HVACs. (1)\nobreakspace {}Decomposition of the signals in IMFs using EMD (top to bottom: $c_1$ to $c_n$); (2)\nobreakspace {}aggregation of the IMFs based on their time scale; (3)\nobreakspace {}comparison of the partial signals (aggregated IMFs) using correlation coefficient.}}{73}{figure.181}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces \ref {fig:qrcexfirst} resolves to the same {\texttt URL} as the \nobreakspace {}\ref {fig:qrcexsecond}, after resolution and redirection is complete. The short label resolves to {\texttt htextttp://tinyurl.com/6235eyw}. \ref {fig:qrcexsecond} encodes about half the characters as the \ref {fig:qrcexfirst}. We used tinyUrl to reduce the QR code image complexity and scan time.}}{69}{figure.188}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.4}{\ignorespaces Reference matrices for the four time scale ranges (the diagonal $x=y$ is colored in black for better reading). The medium frequencies highlight devices that are located next to each other thus intrinsically related. The low frequencies contains the common daily pattern of the data. The residual data permits to visually identify devices of the similar type.}}{77}{figure.189}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces \ref {fig:qrcexfirst} resolves to the same {\texttt URL} as the \nobreakspace {}\ref {fig:qrcexsecond}, after resolution and redirection is complete. The short label resolves to {\texttt htextttp://tinyurl.com/6235eyw}. \ref {fig:qrcexsecond} encodes about half the characters as the \ref {fig:qrcexfirst}. We used tinyUrl to reduce the QR code image complexity and scan time.}}{70}{figure.189}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {High Frequencies}}}{77}{subfigure.4.1}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces The header of the response from the {\texttt tinyUrl} when resolving a QR code. The `Location' atextttribute is used to extract the unique identifier for the object this QR code tags. It is also used to re-direct users without the phone application to a meaningful web address for the object.}}{71}{figure.191}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Medium Frequencies}}}{77}{subfigure.4.2}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Screen shots of the mobile application. The screens on the left are for editing the state of the deployment. The graph on the right shows a live feed of a the sensor that's atextttached to the item that was scanned with the `Scan To View Services' option in the mobile application. It can also be resolved by scanning the QR code and following the re-direct to the URL.}}{72}{figure.194}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Low Frequencies}}}{77}{subfigure.4.3}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces This diagram shows the relationship capture between the objects and locations in the building for the energy audit application. Children of a space node have an ``is-in'' relationship with the space. An item with another item as a child have a ``is-attached'' relationship and meters atextttached to items are bound to each other. Note, this is a \emph {subset} of the relationship diagrams generated across our three applications.}}{74}{figure.197}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Residual data}}}{77}{subfigure.4.4}
+\contentsline {figure}{\numberline {6.8}{\ignorespaces A portion of the prefetched entities on the a single floor in our building. This shows a snapshot of the entity-relationship graph for that floor. Each node, link, and associated content is prefetched when the user swipes the floor tag or anything on that floor.}}{74}{figure.198}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.5}{\ignorespaces Number of reported alarms for various threshold value ($\tau =[3,10]$).}}{81}{figure.198}
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Standard mechanisms for consistency management on the phone. All READ request go to the local cached version of the ERG. All WRITES must go through the OpLog. They are eventually applied to the cache if successful and logged if the StreamFS is unreachable.}}{76}{figure.202}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.6}{\ignorespaces Example of alarms (red rectangles) reported by SBS on the Eng. Bldg 2 dataset}}{82}{figure.205}
+\contentsline {figure}{\numberline {6.10}{\ignorespaces Power traces obtained from power meters atextttached to various plug load on one of the floors of a building on campus. These show screen shots of the Energy Lens timerseries data display.}}{78}{figure.207}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {High power usage where the HVAC (EHP) is turned on at night}}}{82}{subfigure.6.1}
+\contentsline {figure}{\numberline {6.11}{\ignorespaces }}{78}{figure.209}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {High power usage where the light is left on at night}}}{82}{subfigure.6.2}
+\addvspace {10pt}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Low power usage where the HVAC (EHP) is not used during office hours}}}{82}{subfigure.6.3}
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Correlation coefficients of the raw traces from the Building 1 dataset (Section \ref {data:engbldg2}). The matrix is ordered such as the devices serving same/adjacent rooms are nearby in the matrix.}}{84}{figure.219}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Long term high power usage partially detected}}}{82}{subfigure.6.4}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Auto-correlation of a usual signal from the Building 1 dataset. The signal features daily and weekly patterns (resp. $x=24$ and $x=168$).}}{85}{figure.220}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.7}{\ignorespaces Example of alarms (red rectangles) reported by SBS on the Cory Hall dataset}}{83}{figure.211}
+\contentsline {figure}{\numberline {7.3}{\ignorespaces \emph {Strip and Bind} using two raw signals standing for one week of data from two different HVACs. (1)\nobreakspace {}Decomposition of the signals in IMFs using EMD (top to bottom: $c_1$ to $c_n$); (2)\nobreakspace {}aggregation of the IMFs based on their time scale; (3)\nobreakspace {}comparison of the partial signals (aggregated IMFs) using correlation coefficient.}}{86}{figure.222}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Low power usage due to a chiller failure}}}{83}{subfigure.7.1}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Reference matrices for the four time scale ranges (the diagonal $x=y$ is colored in black for better reading). The medium frequencies highlight devices that are located next to each other thus intrinsically related. The low frequencies contains the common daily pattern of the data. The residual data permits to visually identify devices of the similar type.}}{90}{figure.230}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {High power usage highlighted by the elevator usage}}}{83}{subfigure.7.2}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {High Frequencies}}}{90}{subfigure.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Normal power and elevator usage}}}{83}{subfigure.7.3}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Medium Frequencies}}}{90}{subfigure.4.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Long term high power usage due to competing heating and cooling}}}{83}{subfigure.7.4}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Low Frequencies}}}{90}{subfigure.4.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.8}{\ignorespaces Decomposition of the EHP and light trace using bivariate EMD. IMFs correlation coefficients highlight the intrinsic relationship of the two traces.}}{84}{figure.214}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Residual data}}}{90}{subfigure.4.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.9}{\ignorespaces Decomposition of the EHP and GHP trace using bivariate EMD. IMFs correlation coefficients highlight the intrinsic independence of the two traces.}}{85}{figure.215}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Number of reported alarms for various threshold value ($\tau =[3,10]$).}}{94}{figure.239}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.10}{\ignorespaces Trace from an Electric Heat Pump (EHP) captured in 2011 from July 4th to July 24th. Data is normalized and aggregated into 30 minutes time bins.}}{85}{figure.216}
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Example of alarms (red rectangles) reported by SBS on the Eng. Bldg 2 dataset}}{95}{figure.246}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.11}{\ignorespaces Light traces from captured in 2011 from July 4th to July 24th. Data is normalized and aggregated into 30 minutes time bins.}}{86}{figure.217}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {High power usage where the HVAC (EHP) is turned on at night}}}{95}{subfigure.6.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.12}{\ignorespaces Traces from a Gas Heat Pump (EHP) captured in 2011 from July 4th to July 24th. Data is normalized and aggregated into 30 minutes time bins.}}{86}{figure.218}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {High power usage where the light is left on at night}}}{95}{subfigure.6.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.13}{\ignorespaces The ROC curves depict the sensitivity of the raw signal and mid-frequency IMFs to the threshold value. We choose the 0.2 FPR point as the boundary threshold for each room. }}{88}{figure.221}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Low power usage where the HVAC (EHP) is not used during office hours}}}{95}{subfigure.6.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.14}{\ignorespaces We collect data from 15 sensors in 5 rooms sitting on 4 different floors. This is a map of a section of the 3rd floor in Sutardja Dai Hall.}}{88}{figure.223}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Long term high power usage partially detected}}}{95}{subfigure.6.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.15}{\ignorespaces Distribution of the correlation coefficients of the raw traces and correlation coefficients average of the corresponding IMFs using 3 weeks of data from 674 sensors.}}{91}{figure.231}
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Example of alarms (red rectangles) reported by SBS on the Cory Hall dataset}}{96}{figure.252}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Raw traces correlation coefficients}}}{91}{subfigure.15.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Low power usage due to a chiller failure}}}{96}{subfigure.7.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Average IMFs correlation coefficients}}}{91}{subfigure.15.2}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {High power usage highlighted by the elevator usage}}}{96}{subfigure.7.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.16}{\ignorespaces Map of the floor where the analyzed EHP serves (room $C2$). The location of the sensors identified as related by the proposed approach are highlighted, showing a direct relationship between IMF correlation and spatial proximity.}}{92}{figure.232}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Normal power and elevator usage}}}{96}{subfigure.7.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.17}{\ignorespaces Two populations are examined for our threshold analysis. A solid line connects sensors in the same room while a dotted line connects to a pairs in different rooms.}}{93}{figure.235}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Long term high power usage due to competing heating and cooling}}}{96}{subfigure.7.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.18}{\ignorespaces CDF of correlation coefficients between IMFs of sensor feeds: the dotted lines point to some threshold which divides the distribution and produces a TPR and FPR. }}{94}{figure.236}
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Decomposition of the EHP and light trace using bivariate EMD. IMFs correlation coefficients highlight the intrinsic relationship of the two traces.}}{97}{figure.255}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.19}{\ignorespaces The threshold values all converge to a similar value and we can derive the optimal value with as minimal as 14 days data.}}{95}{figure.239}
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Decomposition of the EHP and GHP trace using bivariate EMD. IMFs correlation coefficients highlight the intrinsic independence of the two traces.}}{98}{figure.256}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.20}{\ignorespaces Clustering with k-means on the corrcoeff matrix after applying multidimensional scaling (MDS): The EMD-based set achieves an accuracy of 80\% while the results with raw-trace is only 53.3\% classification accuracy.}}{97}{figure.242}
+\contentsline {figure}{\numberline {7.10}{\ignorespaces Trace from an Electric Heat Pump (EHP) captured in 2011 from July 4th to July 24th. Data is normalized and aggregated into 30 minutes time bins.}}{98}{figure.257}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.21}{\ignorespaces }}{98}{figure.245}
+\contentsline {figure}{\numberline {7.11}{\ignorespaces Light traces from captured in 2011 from July 4th to July 24th. Data is normalized and aggregated into 30 minutes time bins.}}{99}{figure.258}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.22}{\ignorespaces }}{99}{figure.246}
+\contentsline {figure}{\numberline {7.12}{\ignorespaces Traces from a Gas Heat Pump (EHP) captured in 2011 from July 4th to July 24th. Data is normalized and aggregated into 30 minutes time bins.}}{99}{figure.259}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.23}{\ignorespaces }}{100}{figure.247}
+\contentsline {figure}{\numberline {7.13}{\ignorespaces The ROC curves depict the sensitivity of the raw signal and mid-frequency IMFs to the threshold value. We choose the 0.2 FPR point as the boundary threshold for each room. }}{101}{figure.262}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.24}{\ignorespaces }}{101}{figure.248}
+\contentsline {figure}{\numberline {7.14}{\ignorespaces We collect data from 15 sensors in 5 rooms sitting on 4 different floors. This is a map of a section of the 3rd floor in Sutardja Dai Hall.}}{101}{figure.264}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.25}{\ignorespaces }}{102}{figure.249}
+\contentsline {figure}{\numberline {7.15}{\ignorespaces Distribution of the correlation coefficients of the raw traces and correlation coefficients average of the corresponding IMFs using 3 weeks of data from 674 sensors.}}{104}{figure.272}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.26}{\ignorespaces }}{103}{figure.250}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Raw traces correlation coefficients}}}{104}{subfigure.15.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.27}{\ignorespaces }}{104}{figure.251}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Average IMFs correlation coefficients}}}{104}{subfigure.15.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7.28}{\ignorespaces }}{105}{figure.252}
+\contentsline {figure}{\numberline {7.16}{\ignorespaces Map of the floor where the analyzed EHP serves (room $C2$). The location of the sensors identified as related by the proposed approach are highlighted, showing a direct relationship between IMF correlation and spatial proximity.}}{105}{figure.273}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {7.17}{\ignorespaces Two populations are examined for our threshold analysis. A solid line connects sensors in the same room while a dotted line connects to a pairs in different rooms.}}{106}{figure.276}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {7.18}{\ignorespaces CDF of correlation coefficients between IMFs of sensor feeds: the dotted lines point to some threshold which divides the distribution and produces a TPR and FPR. }}{107}{figure.277}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {7.19}{\ignorespaces The threshold values all converge to a similar value and we can derive the optimal value with as minimal as 14 days data.}}{108}{figure.280}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {7.20}{\ignorespaces Clustering with k-means on the corrcoeff matrix after applying multidimensional scaling (MDS): The EMD-based set achieves an accuracy of 80\% while the results with raw-trace is only 53.3\% classification accuracy.}}{110}{figure.283}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {7.21}{\ignorespaces }}{111}{figure.286}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {7.22}{\ignorespaces }}{112}{figure.287}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {7.23}{\ignorespaces }}{113}{figure.288}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {7.24}{\ignorespaces }}{114}{figure.289}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {7.25}{\ignorespaces }}{115}{figure.290}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {7.26}{\ignorespaces }}{116}{figure.291}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {7.27}{\ignorespaces }}{117}{figure.292}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {7.28}{\ignorespaces }}{118}{figure.293}
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 

@@ -1,2 +1,50 @@
-\section{Comparison To Related Systems}
+\section{Related Work}
+StreamFS borrows ideas from many places.  Naturally, in adopting filesystem as the main abstraction we borrow directly
+from the design of unix-style filesystem and pipes~\cite{Ritchie74theunix}.  We translate these ideas into 
+our implementation, transforming these into a web-services architecture combined with mutliple databases.
+Our filesystem is also hierachical, but it is \emph{completely divorced from the approach to storage}.  File information is
+spread across multiple databases in StreamFS.  The name is made accessible through a RESTful interface or socket connection, but
+only the name and its structure is used to identify the object.  Moreover, the notion of symbolic and hard links are
+used as a way to support multiple names for the name unique object.  In traditional filesystems, these inform
+the access pattern to the file on disk.  Our filesystem API is \emph{not} POSIX compliant, since we introduce new file types
+and associated file-specific semantics.  We discuss these in detail in the next chapter.
+
+StreamFS constructs an entity-relationship graph~\cite{Chen76theentity-relationship} from the files in the system, in order to 
+represent different physical and semantics relationships.  We use it throughout the platform for analytical processing and querying.
+We couple the namespace that is exposed through the filesystem with an in-memory graph that graphically represents the inter-relationships
+between the files.  This graph is used to provide OLAP-style queries, similar to the work by Chen et al.~\cite{Chen2008_olapgraph}.  
+These authors describe how they translate OLAP operations to a graph.  Their decomposition is different in that nodes in the graph 
+explicitly represent measures and dimenions.  We do represent the time dimension as a separate snapshot of the graph at another
+point in time.  By separating the raw data from the graphical representation this becomes a trivial transformation.
+
+The use of a filesystem representation has been explored by researchers.  Tilak et al.~\cite{BingFS} use the filesystem 
+interface as a way to represent different naming conventions for a deployment of sensors.	StreamFS in similar in that it also 
+adopts the construct for naming purposes.  StreamFS also adopts it as a way to expose a uniform access layer for sensors and
+actuators in the world.  Actuator, in many ways, are also modeled like a periphal device.
+However, StreamFS is more general and adopts more filesystem features and principals.
+They do not support symbolic links and they couple the network organization of a wireless sensor network with the naming structure.
+Filipponi el al.~\cite{wsnfuse} create a mountable filesystem that is POSIX compliant, making the deployment nodes
+look like a peripheral device that can be directly written to.  In contrast to both pieces of work, we do not attempt
+to make a POSIX compliant filesystem.  We adopt \emph{conceptual} filesystem construct and re-interpret them as features in 
+a web architecture.  We tightly link the notion of a sensor and its data through the special file types and operations to 
+handle sensor data queries and organization.
+% OLAP + graph~\cite{Chen2008_olapgraph}
+
+% Entity-relationship graphs~\cite{Chen76theentity-relationship}
+
+% Filesystems~\cite{FastFS},Unix OS, which introduces filesystem naming and pipes~\cite{Ritchie74theunix}
+
+% File system for sensor deployments from Binghamton\cite{BingFS}, and WSNFuse by Filipponi et al.~\cite{wsnfuse}.
+
+The foundation of our processing framework is a pub/sub system architecure, similar 
+to~\cite{Eugster01contentbasedpubsub, Rosenblum97adesign, tspaces, tibco}.  StreamFS has a flexible pub/sub coupling architecture,
+where user options can separate certain dependencies between producers and consumers.  We also make use of the ERG to 
+do topic-matching.  This is crucial for building applications, where analysis is tightly coupled with context.
+In addition, our processing framework revisits many issues related to dataflow processing systems~\cite{CullerCSD92716,ptolemy2001,ptolemy2007}.
+StreamFS is focused on providing a tool that cleans the incoming data and provides real-time data to consumers/applications
+for the building.  It is not focused on true-real time constraints or modeling.
+% Pub/sub~\cite{Eugster01contentbasedpubsub, Rosenblum97adesign, tspaces, tibco}
+
+% Ptolemy project and dataflow graphs for cyber-physical systems~\cite{ptolemy2001,ptolemy2007}, 
+% graphical programming of CPS~\cite{Cheong2005,CheongEECS200615}
 

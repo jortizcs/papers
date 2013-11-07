@@ -1,48 +1,128 @@
 \section{Internal Processes}
-Internal processes are jobs submitted to StreamFS that are written in Javascript and managed within a StreamFS cluster.
+\label{sec:internalprocs}
 
-StreamFS distinguishes between nodes that represent streaming data sources in the real-world
-and those that do not.  Those that do not, however, can be tagged as aggregation points.  As part of the 
-tagging processes, a user specifies the units of aggregation, with additional options for cleaning
-and processing.  Our contributions are:  
-
-\begin{itemize}
-\item Use of the entity-relationship graph to provide OLAP \emph{roll-up}, \emph{drill-down},
-		and \emph{slice and dice} operations.
-\item Show how sliding-window operations can be used on real-time data in combination with the entity-relationship
-		graph to maintain accurate aggregates as the underlying objects and inter-relationships change.
-\end{itemize}
+Internal processing jobs are short jobs submitted by users that are managed by StreamFS.  When a user submits
+a job they specify the name of the job in the request.  The process definition is checked for syntax correcteness
+and if it is okay, then it is accepted.  All newly created job definitions are placed in \texttt{/proc/}.
 
 
-% \subsection{Mapping OLAP to ERG}
-\subsection{OLAP-style Aggregation}
+\begin{lstlisting}[caption={Simple aggregator process job.},label={code:simple_agg}]
+function(buffer, state){ 
+    var outObj = new Object();
+    var pavg = state.cnt;
+    var sum =0;
+    for(i=0; i<buffer.length; i++){
+        sum += buffer[i].value;
+        state.cnt+=1;
+    }
+    outObj.value = sum;
+    state.avg = (state.avg * pavg + sum)/state.cnt;
+    return outObj;
+}
+\end{lstlisting}
 
-% \begin{itemize}
-% \item Introduction to OLAP.
-% \item Explanation of ERG in StreamFS.
-% \end{itemize}
-Online analytical processing (OLAP) is a processing layer that provides summurization of data
-from a set of underlying data repository (date warehouses).  Traditionally, OLAP is used to process
-business data.  Business data summurization allows an analyst ask targetted questions about aggregates 
-and trends in their data.  The data is typically multidimensional in nature and operations can be performed with
-respect to those dimensions and their inter-relationship.
 
-\subsubsection{Measures, Dimenions, and Levels}
-Measures are the value, dimensions are the units of measure as well as time, and levels/hierarchy are 
-explicit in the naming structure.
+The code in Listing~\ref{code:simple_agg} gives an snippet of example code that aggregate the data 
+passed to it in the buffer.  If the user names this definition \texttt{simpleagg}, then the file that corresponds to 
+the job definition is \texttt{/proc/simpleagg}.  We do not limit check the size and complexity of the job, however, we
+strongly recommend that jobs be kept relatively short and simple.  Generally, we recommend that a job pipeline 
+be established rather than feeding one large chunk of code.  It makes the pipeline easier to debug once it is
+activated.
 
-\subsubsection{Operations: drill-down and roll-up}
-Drill-down and roll-up are made explicit in the structure.  You can drill down to individual readings or roll them
-up into an aggregation point at a particular level in the hierarchy.
+In order to activate the process, the user must pick a set of streams and initiate a subscription \emph{pipe}.  The 
+\emph{subscription manager} notes that the sink in a process definition file and informs the \emph{process manager}.
+The process manager fetches the code and passes it to a node in the processes cluster.  The process manager
+generates an id and passes it back to the subscription manager.  That code is used as a new \emph{instance file} that 
+represents the output of the file and that instance file is created in the process file definition file's folder.
+So if the id generated is \texttt{550e8400} the corresponding file is \texttt{/proc/simpleagg/550e8400}.
+This file instance is a stream file (which we discuss is detail in chapter~\ref{chap:naming}), which allows the user
+to pipe it to another sink.  There is also some metadata information that is associated with each of the files created.
+The instance file contains information about the streams it is consuming and various statistics, such as 
+execution time and execution period.  If the user deletes the file the subscription is deleted and the process manager sends
+a kill message to the corresponding process element.
 
-\subsubsection{Operations: slice and dice}
-Slice and dice operations 
+The function must have the signature as shown above, where the first parameter is the \texttt{buffer} and the second parameter
+is a \texttt{state} variable.  It must also return a variable of type \emph{object}.  The \texttt{buffer} is an array of \texttt{data}
+objects.  Each \texttt{data} object contains two fields, a \texttt{ts} field that is the timestamp
+for the data point and the \texttt{value} field which is the value for the data point.  An optional setting is to also
+include all attribute-value pair values that are part of the metadata associated with the corresponding stream file for the stream.
+The \texttt{state} variable is an object that is passed across executions of the function.  This way the function could maintain
+any necessary state without losing it after a single run of the job.  Upon creation, the user specifies other parameters that
+drive the execution period and/or execution conditions for the job.  The user specifies the \texttt{window} size and/or a
+\texttt{timeout} parameter.  If the \texttt{window} is of size $k$ then the job will run when the incoming buffer for the job has
+at least $k$ elements in it.  The \texttt{timeout} sets the minimum period for the job to run.  If both are specified the 
+\texttt{timeout} always runs and the job will also run when/if the buffer has at least $k$ elements.
 
-\subsubsection{Operations: pivoting}
-\subsection{Dynamic Aggregation}
-\label{sec:dynagg}
-Dynamic aggregation combines the underlying entity-relationship graph with in-network aggregation.  It treats
-each node in the graph as a potential point of aggregation on a particular data type.  For example,
+\subsection{Process Element}
+
+\begin{figure}[th!] %htbp
+\centering
+\includegraphics[width=0.85\columnwidth]{figs/pe_internals}
+\caption{This figure shows the internal structure of a process element (PE).  The PE consists of several
+javascript sandboxes where interanl process code runs.  It also contains a scheduling loop, message router, and instance 
+monitor.}
+\label{fig:pe_internals}
+\end{figure}
+
+
+The process element process that runs on a separate machine.  Its main job is to manage the jobs that are being executed on that
+machine.  Figure~\ref{fig:pe_internals} shows the components of a process element.  There are four main components in the unit.
+
+\begin{enumerate}
+\item \emph{Scheduler}: The scheduler manages the execution schedule for each job running in a sandbox.  The scheduler uses
+the \texttt{timeout} as the execution period of the job.
+
+\item \emph{Sandbox}:  The sandbox is where the javascript code runs.  The sandbox contains an input and output buffer and simply 
+waits for either an execution signal from the scheduler or until the input buffer has \texttt{window} element in it.  The output
+buffer is of size 1.  The object returned by the job is written to the output buffer.
+
+\item \emph{Message Router}:  The message router communicates with the process manager and send control and data messages between
+the PE and the process manager.  It monitors the output buffer for each of the elements and forwards them to the process manager 
+when it is populated.
+
+\item \emph{Instance Monitor}:  The instance monitor manages the state of the sandbox.  If a sandbox dies, the instance monitor re-starts
+it.  If it continues to die, it kills the sandbox process and forwards an error message to the message handler to the process manager.
+The process manager annotates the instance file with the error.
+
+\end{enumerate}
+
+
+The process manager keeps a map of which process elements own which jobs.  If a process element goes down, the jobs are automatically
+migrated to another process element and the process element is removed from the active list.  Each PE and job have a unique identifier.
+The messages received from the \emph{message router} in the PE are annotated with these ids and the process manager uses these
+to update the associated instance file in StreamFS.  Again, everything is managed in through filesystem.  So errors and data
+are exposed to external applications through the meta/data in the files.
+
+
+\subsection{Aggregation Points}
+\label{sec:aggpts}
+StreamFS distinguishes between nodes that represent streaming data sources and those that do not.  Those that do not, 
+however, can be tagged as aggregation points.  As part of the tagging processes, a user specifies the units of aggregation, with 
+additional options for cleaning and processing.  When node is tagged as an aggregation point all the points root at that
+node in the tree are set as aggregation points and all streams are aggregated and save to the timeseries database.
+Since streams are not synchronized (i.e. they do not produce data at the same time) each time a value arrives from a
+sensor the value for all other streams is interpolated and aggregated along the \emph{unit} level dimension.
+%an example?
+
+This propogates up to the aggregation point and all of it is saved in the timeseries database.  The aggregation function
+can either be specified by the user, with some defaults made available by StreamFS, such as \emph{avg, sum, max, min}.
+Aggregation points are also critical for support OLAP-style queries and \emph{dynamic aggregation}, discussed in
+the next two sections.
+
+%FILL IN WITH REAL GRAPH
+\begin{figure}[htb!]
+\begin{center}
+\includegraphics[scale=0.6]{figs/aggtree}
+\caption{This shows an illustration of the aggregation tree used by \emph{dynamic aggregation}.  Data flows from 
+the leaves to the root through user-specified aggregation points.  When the local buffer is full the streams
+are separated by source, interpolated, and summed.  The aggregated signal is foward up the tree.}
+\label{fig:aggtree}
+\end{center}
+\end{figure}
+
+% Aggregation points combine the underlying entity-relationship graph with in-network aggregation.  It treats
+% each node in the graph as a potential point of aggregation on a particular data type.  
+For example,
 if we need to compute aggregates of \emph{KW} data and we declare the node for a particular room as
 the point of aggregation, we accept data from all children of that node that, whose units are in \emph{KW},
 and add the streams together over pre-defined window size or pre-defined timeouts.
@@ -79,22 +159,113 @@ Once this is done for each signal, the values are added together for each unqiue
 signal is reported to the parent, where the operation occurs recursively to the root.
 Figure~\ref{fig:aggtree} shows an illustration of its operation.  
 
+% Our contributions are:  
+
+% \begin{itemize}
+% \item Use of the entity-relationship graph to provide OLAP \emph{roll-up}, \emph{drill-down},
+%         and \emph{slice and dice} operations.
+% \item Show how sliding-window operations can be used on real-time data in combination with the entity-relationship
+%         graph to maintain accurate aggregates as the underlying objects and inter-relationships change.
+% \end{itemize}
+
+% \subsection{Mapping OLAP to ERG}
+\subsection{OLAP-style Aggregation}
+
+% \begin{itemize}
+% \item Introduction to OLAP.
+% \item Explanation of ERG in StreamFS.
+% \end{itemize}
+Online analytical processing (OLAP) is a processing layer that provides summurization of data
+from a set of underlying data repository (date warehouses).  Traditionally, OLAP is used to process
+business data.  Business data summurization allows an analyst to ask targetted questions about aggregates 
+and trends in their data.  The data is typically multidimensional in nature and operations can be performed with
+respect to those dimensions and their inter-relationship.  In our deployments, we find that most queries are 
+similar to OLAP queries with scan-heavy queries across the time dimension.
+
+We introduce an optional mechanism that can perform hierarchical aggregates across a unit of measure, used in combination
+with the timeseries data store to support scan-heavy queries, called \emph{aggregation points}.  We discuss
+these in more detail in section~\ref{sec:aggpts}.  However, before discussing aggregation point, we give details
+on how we make use of the entity-relationship graph and timeseries database to support OLAP-style queries.
+
+OLAP schemas logically construct a hypercube with different dimensions along each axis.  We presented a visual translation of
+a OLAP cube to an entity relationship graph in section~\ref{sec:erg2olap}.  Specifically, we showed in Figure~\ref{fig:olap2erg}
+that each dimension is essentially a unit of measure, the hiearchy is explicitly constructed, and there
+time is a dimension that is stored in a timeseries database.  We show how the terminology also translates and some
+examples of certain classes of OLAP queries, how they are constructed, and how they are satisfied by StreamFS.
+
+\subsubsection{Measures, Dimenions, and Levels}
+\emph{Measures} refer to the actual value, located somewhere is the cube along the intersection of several dimensions.
+A \emph{dimension} is simply a reading and an example is shown in Figure~\ref{fig:olap2erg}.  Dimensions 
+are labels for an axis.  In StreamFS a measure is a unit of measure (i.e Fahrenheit) or time.  The hierarchical \emph{level}
+is explicit in the construction of the names.  So in the subtree that organizes stream according to the location of the
+in space, the floor level would be above the room level.  These points can be designated as aggregation points, whereby
+all streams that have the units are aggregated at the point and store like any other timeseries stream.
+
+\subsubsection{Operations: drill-down and roll-up}
+Drill-down and roll-up are explicit in the structure.  You can drill down to individual readings or roll them
+up into an aggregation point at a particular level in the hierarchy.  Essentially the level is an explicitly specified in the 
+name of either the raw stream or the aggregation point.
+
+\subsubsection{Operations: Slice and Dice}
+Slice and dice operations are translated as traversals of the hierarchical structure across levels and units.  Figure~\ref{fig:olapslice2ergslice}
+shows how a slice query is satisfied on a hierarchical structure.  The corresponding slice query 
+is \texttt{query.slice('/4F/R*').start(t1).end(t2);}.
+
+\begin{figure}[h!] %htbp
+\centering
+\includegraphics[width=1.0\columnwidth]{figs/olapslice2ergslice}
+\caption{This figure shows how a ``slice'' operation is translated from the cube to the ERG.  The user queries across all streams or aggregation
+points at a certain level, specified by a star level query with the level-specific prefix.  The corresponding slice query is
+\texttt{query.slice('/4F/R*').start(t1).end(t2)}.
+}
+\label{fig:olapslice2ergslice}
+\end{figure}
+
+
+% \begin{lstlisting}[caption={Slice query example.},label={code:slice_query}]
+% query.slice('/4F/R*').start(t1).end(t2);
+% \end{lstlisting}
+
+Figure~\ref{fig:olapdice2ergdice}
+shows how a dice query is satisfied on a hierarchical structure.  The corresponding dice query 
+is \texttt{query.dice('/4F/R*').units(['F']).start(t1).end();}.
+
+
+\begin{figure}[h!] %htbp
+\centering
+\includegraphics[width=1.0\columnwidth]{figs/olapdice2ergdice}
+\caption{This figure shows how a ``dice'' operation is translated from the cube to the ERG.  The user queries across all streams or aggregation
+points at a certain level, specified by a star level query with the level-specific prefix.  The corresponding dice query is
+\texttt{query.dice('/4F/R*').units(['F']).start(t1).end()}.}
+\label{fig:olapdice2ergdice}
+\end{figure}
+
+
+% \begin{lstlisting}[caption={Dice query example.},label={code:dice_query}]
+% query.dice('/4F/R*').units(['F']).start(t1).end();
+% \end{lstlisting}
+
+
+\subsubsection{Operations: Pivot}
+Pivot operations are not explicitly supported.  Although you can imagine that if you cut across a hierarchical level across all dimension, can
+can effectively construct a pivot-style query.
+
+
+
+
+
+% \subsection{Dynamic Aggregation}
+
+
 %problem:  the buffer size has to increase exponentially up the tree, in order to not drop any values.
 %solution: chuck the data into default-buffer sized pieces and parallelize the interpolation using the interpolated tasks technique
 
 
-%FILL IN WITH REAL GRAPH
-\begin{figure}[htb!]
-\begin{center}
-\includegraphics[scale=0.6]{figs/aggtree}
-\caption{This shows an illustration of the aggregation tree used by \emph{dynamic aggregation}.  Data flows from 
-the leaves to the root through user-specified aggregation points.  When the local buffer is full the streams
-are separated by source, interpolated, and summed.  The aggregated signal is foward up the tree.}
-\label{fig:aggtree}
-\end{center}
-\end{figure}
+
 
 \subsubsection{Dealing with dynamics}
+\label{sec:dynagg}
+
 This approach deals with changes in the graph quite naturally.  All aggregation point deal only with local data, so
 a node is only concerned about the children that give it data and the parent to send data to.  As objects in the environment
 move from place to place and these changes are captured, the entity-relationship graph also changes to reflect the move.
@@ -103,34 +274,7 @@ it no longer forwards data to the old parent, therefore the aggregate will refle
 Note, however, that changes in the entity-relationship graph are indistinguishable from energy-consuming items that have
 been turned off.  For the purposes of aggregation, that is okay.
 
-\subsubsection{Two scenarios}
-We illustrate dynamic aggregation with a common usage scenario.  Imagine there are a number of people in a building,
-each owning a number of plug-load applicances and a laptop.  Assume that when a person is in a room their laptop
-is plugged in and when they leave the room they unplug their laptop and take it with them.  People come and go
-throughout the day, changing the aggregate power consumption of the room and it happens.  In addition, some
-of those people move to other rooms and plug their laptop in the new location.  As this happens, we will assume
-all actions are being recorded in StreamFS.
 
-%FILL IN WITH REAL GRAPH
-\begin{figure}[htb!]
-\begin{center}
-\subfloat[Room 1 object and aggregate streams.]{%
-            \label{fig:dynaggs1room1}
-            \includegraphics[scale=0.4]{figs/dynagg_scenario1_room1}
-        }
-\subfloat[Room 2 aggregate.]{%
-            \label{fig:dynaggs1room2}
-            \includegraphics[scale=0.4]{figs/dynagg_scenario1_room2}
-        }
-\end{center}
-\caption{
-	The power consumes by a laptop in \emph{room 1} is shifted to \emph{room 2} a time t=7.  Notice the aggregagate drops in room 1
-	while it rises in room 2.
-     }%
-\label{fig:multiroomagg}
-\end{figure}
-
-Figure~\ref{fig:multiroomagg} illustrate the aggregation results of that scenario.  Notice how...
 
 % For demonstration lets have the user turn off on of their appliances when they leave as well.  This should cause that total
 % room aggregate to drop, the person's personal aggregate to drop, but the other occupant's aggregate to remain

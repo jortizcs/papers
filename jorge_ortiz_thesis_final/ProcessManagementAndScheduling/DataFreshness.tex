@@ -1,4 +1,12 @@
 \section{Maximizing Data Freshness}
+\label{sec:freshness}
+
+Data is coming in at different, independent rate from sensors and is produced asynchronously from internal processing elements.
+For certain processes, processing the incoming data as quickly as possible is key, however, this is challenging for several reasons:
+1) a process may subscribe to multiple, independent streams with asychronized report schedules and 2) interpolated values
+should be avoided to minimize prediction inaccuracies in interpolated values.  Therefore, a process actually wants all the freshest
+data from all the streams they are subscribing to, while minimizing the average time that the data for each respective stream has 
+been waiting in the buffer.
 
 Certain jobs only care about consuming the latest readings from their subscription streams.  They are willing to discard reading until two
 conditions are met:
@@ -73,7 +81,7 @@ The algorithm is sketched our below.
   \Else{
   (1) Consume now}
   }
- \caption{Staleness algorithm.}
+ \caption{\texttt{min\_buffer} algorithm.}
  \label{alg:emd}
 \end{algorithm}
 

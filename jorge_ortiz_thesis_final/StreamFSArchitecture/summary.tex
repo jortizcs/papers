@@ -1,1 +1,18 @@
 \section{Summary}
+
+% StreamFS consists of over 20,000 lines of code and was implemented in mostly Java.  It was deployed across multiple
+% buildings and several applications were built on top of it over a 2 years period.
+
+In this chapter we gave an overview of the main components in StreamFS.  Each of the components addresses the concerns stated in 
+section~\cite{sec:shortcomings}.  The filesystem name server expose a uniform namespace for access sensors and actuators in 
+deployed throughout the building.  The timeseries database serve to store data streaming physical information and 
+is optimized for the scan-style queries posed by applications.  These address points \ref{nw} and \ref{ts}.
+We also include a pub-sub system which serves multiple purposes.  It provides real-time data forwarding for external
+applications and forwards data internally to processing units that are specified or linked by the user.
+This addresses points \ref{rt}.  Finally, we introduce processing elements, both internal and external to address
+point \ref{proc}.  We also introduce an entity-relationship graph to deal with indirect relationships that are
+expressed in the contruction of names in the system.
+
+In the next chapter we talk more about processing and discuss the details in the scheduler that help enable applications
+that have certain delivery requirement.
+

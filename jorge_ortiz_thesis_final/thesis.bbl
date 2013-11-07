@@ -74,6 +74,12 @@
   \field{title}{{ASHRAE Standard 135-1995: BACnet}}
 \endentry
 
+\entry{HBase}{misc}{}
+  \field{sortinit}{A}
+  \field{note}{\url{http://hbase.apache.org/}}
+  \field{title}{{Apache HBase}}
+\endentry
+
 \entry{ecg}{inproceedings}{}
   \name{author}{2}{}{%
     {{}%
@@ -160,6 +166,80 @@
   \field{year}{2012}
 \endentry
 
+\entry{4160603}{article}{}
+  \name{author}{10}{}{%
+    {{}%
+     {Balazinska}{B.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Deshpande}{D.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Franklin}{F.}%
+     {M.J.}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Gibbons}{G.}%
+     {P.B.}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Gray}{G.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Nath}{N.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Hansen}{H.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Liebhold}{L.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Szalay}{S.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Tao}{T.}%
+     {V.}{V.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{Internet;data handling;wireless sensor networks;data
+  management;large-scale sensor network deployments;worldwide sensor
+  Web;Biomedical monitoring;Biosensors;Cardiac disease;Cardiovascular
+  diseases;Data analysis;Data visualization;Databases;Influenza;Large-scale
+  systems;Patient monitoring;data modeling;data streams;data
+  uncertainty;distributed systems;interoperability;sensor networks}
+  \strng{namehash}{BM+1}
+  \strng{fullhash}{BMDAFMGPGJNSHMLMSATV1}
+  \field{sortinit}{B}
+  \verb{doi}
+  \verb 10.1109/MPRV.2007.27
+  \endverb
+  \field{issn}{1536-1268}
+  \field{number}{2}
+  \field{pages}{30\bibrangedash 40}
+  \field{title}{Data Management in the Worldwide Sensor Web}
+  \field{volume}{6}
+  \field{journaltitle}{Pervasive Computing, IEEE}
+  \field{year}{2007}
+\endentry
+
 \entry{Bellala_buildsys11}{inproceedings}{}
   \name{author}{5}{}{%
     {{}%
@@ -232,6 +312,76 @@
   \field{year}{2008}
 \endentry
 
+\entry{ptolemy2007}{report}{}
+  \name{author}{6}{}{%
+    {{}%
+     {Brooks}{B.}%
+     {Christopher}{C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Lee}{L.}%
+     {Edward~A.}{E.~A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Liu}{L.}%
+     {Xiaojun}{X.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Neuendorffer}{N.}%
+     {Stephen}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Zhao}{Z.}%
+     {Yang}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Zheng}{Z.}%
+     {Haiyang}{H.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{BC+1}
+  \strng{fullhash}{BCLEALXNSZYZH1}
+  \field{sortinit}{B}
+  \field{abstract}{%
+  This volume describes how to construct Ptolemy II models for web-based
+  modeling or building applications. The first chapter includes an overview of
+  Ptolemy II software, and a brief description of each of the models of
+  computation that have been implemented. It describes the package structure of
+  the software, and includes as an appendix a brief tutorial on UML notation,
+  which is used throughout the documentation to explain the structure of the
+  software. The second chapter is a tutorial on building models using Vergil, a
+  graphical user interface where models are built pictorially. The third
+  chapter discusses the Ptolemy II expression language, which is used to set
+  parameter values. The next chapter gives an overview of actor libraries.
+  These three chapters, plus one of the domain chapters, will be sufficient for
+  users to start building interesting models in the selected domain. The fifth
+  chapter gives a tutorial on designing actors in Java. The sixth chapter
+  describes the Ptolemy coding style, The seventh chapter explains MoML, the
+  XML schema used by Vergil to store models. And the eighth chapter, the final
+  one in this part, explains how to construct custom applets. <p>Volume 2
+  describes the software architecture of Ptolemy II, and volume 3 describes the
+  domains, each of which implements a model of computation.%
+  }
+  \field{number}{UCB/EECS-2007-7}
+  \field{title}{Heterogeneous Concurrent Modeling and Design in Java (Volume 1:
+  Introduction to Ptolemy II)}
+  \verb{url}
+  \verb http://www.eecs.berkeley.edu/Pubs/TechRpts/2007/EECS-2007-7.html
+  \endverb
+  \list{institution}{1}{%
+    {EECS Department, University of California, Berkeley}%
+  }
+  \field{type}{techreport}
+  \field{year}{2007}
+  \warn{\item Invalid format of field 'month'}
+\endentry
+
 \entry{Castro01aprobabilistic}{inproceedings}{}
   \name{author}{4}{}{%
     {{}%
@@ -262,6 +412,58 @@
   \field{title}{A Probabilistic Room Location Service for Wireless Networked
   Environments}
   \field{year}{2001}
+\endentry
+
+\entry{Chen2008_olapgraph}{inproceedings}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Chen}{C.}%
+     {Chen}{C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Yan}{Y.}%
+     {Xifeng}{X.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Zhu}{Z.}%
+     {Feida}{F.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Han}{H.}%
+     {Jiawei}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Yu}{Y.}%
+     {Philip~S.}{P.~S.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {IEEE Computer Society}%
+  }
+  \strng{namehash}{CC+1}
+  \strng{fullhash}{CCYXZFHJYPS1}
+  \field{sortinit}{C}
+  \field{booktitle}{Proceedings of the 2008 Eighth IEEE International
+  Conference on Data Mining}
+  \verb{doi}
+  \verb 10.1109/ICDM.2008.30
+  \endverb
+  \field{isbn}{978-0-7695-3502-9}
+  \field{pages}{103\bibrangedash 112}
+  \field{series}{ICDM '08}
+  \field{title}{Graph OLAP: Towards Online Analytical Processing on Graphs}
+  \verb{url}
+  \verb http://dx.doi.org/10.1109/ICDM.2008.30
+  \endverb
+  \list{location}{1}{%
+    {Washington, DC, USA}%
+  }
+  \field{year}{2008}
 \endentry
 
 \entry{DStream}{inproceedings}{}
@@ -384,6 +586,54 @@
   SIMULATION PROGRAM}
 \endentry
 
+\entry{CullerCSD92716}{report}{}
+  \name{author}{3}{}{%
+    {{}%
+     {Culler}{C.}%
+     {David~E.}{D.~E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Schauser}{S.}%
+     {Klaus~Erik}{K.~E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Eicken}{E.}%
+     {Thorsten}{T.}%
+     {von}{v.}%
+     {}{}}%
+  }
+  \strng{namehash}{CDESKEETv1}
+  \strng{fullhash}{CDESKEETv1}
+  \field{sortinit}{C}
+  \field{abstract}{%
+  This paper examines the argument for dataflow architectures in "Two
+  Fundamental Issues in Multiprocessing." We observe two key problems. First,
+  the justification of extensive multithreading is based on an overly
+  simplistic view of the storage hierarchy. Second the local greedy scheduling
+  policy embodied in dataflow is inadequate in many circumstances. A more
+  realistic model of the storage hierarchy imposes significant constraints on
+  the scheduling of computation and requires a degree of parsimony in the
+  scheduling policy. In particular, it is important to establish a scheduling
+  hierarchy that reflects the underlying storage hierarchy. However, even with
+  this improvement, simple local scheduling policies are unlikely to be
+  adequate. <p>Keywords: dataflow, multiprocessing, multithreading, latency
+  tolerance, storage hierarchy, scheduling hierarchy%
+  }
+  \field{number}{UCB/CSD-92-716}
+  \field{title}{Two Fundamental Limits on Dataflow Multiprocessing}
+  \verb{url}
+  \verb http://www.eecs.berkeley.edu/Pubs/TechRpts/1992/6259.html
+  \endverb
+  \list{institution}{1}{%
+    {EECS Department, University of California, Berkeley}%
+  }
+  \field{type}{techreport}
+  \field{year}{1992}
+  \warn{\item Invalid format of field 'month'}
+\endentry
+
 \entry{smap}{inproceedings}{}
   \name{author}{5}{}{%
     {{}%
@@ -499,6 +749,26 @@
   \field{sortinit}{E}
   \field{note}{Echelon Corp. 1994}
   \field{title}{{LonTalk Protocol Specification}}
+\endentry
+
+\entry{Eugster01contentbasedpubsub}{misc}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Eugster}{E.}%
+     {Patrick~Th.}{P.~T.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Guerraoui}{G.}%
+     {Rachid}{R.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{EPTGR1}
+  \strng{fullhash}{EPTGR1}
+  \field{sortinit}{E}
+  \field{title}{Content-Based Publish/Subscribe with Structural Reflection}
+  \field{year}{2001}
 \endentry
 
 \entry{eugster}{article}{}
@@ -755,6 +1025,59 @@
   \field{title}{Intelligent Infrastructure for Energy Efficiency}
   \field{journaltitle}{Science Magazine}
   \field{year}{2010}
+\endentry
+
+\entry{Gray1996}{inproceedings}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Gray}{G.}%
+     {Jim}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Bosworth}{B.}%
+     {Adam}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Layman}{L.}%
+     {Andrew}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Pirahesh}{P.}%
+     {Hamid}{H.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {IEEE Computer Society}%
+  }
+  \keyw{Database, Relational, Cube, Query, Analysis, multi-dimensional}
+  \strng{namehash}{GJ+1}
+  \strng{fullhash}{GJBALAPH1}
+  \field{sortinit}{G}
+  \field{booktitle}{Proceedings of the Twelfth International Conference on Data
+  Engineering}
+  \field{isbn}{0-8186-7240-4}
+  \field{pages}{152\bibrangedash 159}
+  \field{series}{ICDE '96}
+  \field{title}{Data Cube: A Relational Aggregation Operator Generalizing
+  Group-By, Cross-Tab, and Sub-Total}
+  \verb{url}
+  \verb http://dl.acm.org/citation.cfm?id=645481.655593
+  \endverb
+  \list{location}{1}{%
+    {Washington, DC, USA}%
+  }
+  \field{year}{1996}
+\endentry
+
+\entry{haproxy}{misc}{}
+  \field{sortinit}{H}
+  \field{note}{\url{http://haproxy.1wt.eu/}}
+  \field{title}{{HAProxy: The Reliable, High Performance TCP/HTTP Load
+  Balancer}}
 \endentry
 
 \entry{Haritaoglu:2001:ILR:647987.741331}{inproceedings}{}
@@ -1144,6 +1467,12 @@
   \warn{\item Invalid format of field 'month'}
 \endentry
 
+\entry{jung}{misc}{}
+  \field{sortinit}{J}
+  \field{note}{\url{http://jung.sourceforge.net/}}
+  \field{title}{{Java Universal Network/Graph Framework}}
+\endentry
+
 \entry{ACme}{inproceedings}{}
   \name{author}{4}{}{%
     {{}%
@@ -1438,6 +1767,74 @@
   \warn{\item Can't use 'location' + 'address'}
 \endentry
 
+\entry{ptolemy2001}{report}{}
+  \name{author}{10}{}{%
+    {{}%
+     {Lee}{L.}%
+     {Edward~A.}{E.~A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Hylands}{H.}%
+     {C.}{C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Janneck}{J.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Davis~II}{D.~I.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Liu}{L.}%
+     {J.}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Liu}{L.}%
+     {X.}{X.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Neuendorffer}{N.}%
+     {S.}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Stewart}{S.}%
+     {S.~Sachs~M.}{S.~S.~M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Vissers}{V.}%
+     {K.}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Whitaker}{W.}%
+     {P.}{P.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{LEA+1}
+  \strng{fullhash}{LEAHCJJDIJLJLXNSSSSMVKWP1}
+  \field{sortinit}{L}
+  \field{number}{UCB/ERL M01/11}
+  \field{title}{Overview of the Ptolemy Project}
+  \verb{url}
+  \verb http://www.eecs.berkeley.edu/Pubs/TechRpts/2001/3947.html
+  \endverb
+  \list{institution}{1}{%
+    {EECS Department, University of California, Berkeley}%
+  }
+  \field{type}{techreport}
+  \field{year}{2001}
+\endentry
+
 \entry{climate}{article}{}
   \name{author}{2}{}{%
     {{}%
@@ -1677,6 +2074,12 @@
   \warn{\item Can't use 'location' + 'address'}
 \endentry
 
+\entry{memcached}{misc}{}
+  \field{sortinit}{M}
+  \field{note}{\url{http://memcached.org/}}
+  \field{title}{{Memcached}}
+\endentry
+
 \entry{buildanomaly}{inproceedings}{}
   \name{author}{4}{}{%
     {{}%
@@ -1865,6 +2268,63 @@
   \warn{\item Can't use 'location' + 'address'}
 \endentry
 
+\entry{rest}{inbook}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Richards}{R.}%
+     {R.}{R.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer Publishing}%
+  }
+  \keyw{course web-science}
+  \strng{namehash}{RR1}
+  \strng{fullhash}{RR1}
+  \field{sortinit}{R}
+  \field{abstract}{%
+  Representational State Transfer (REST) is not a specific standard like many
+  of the other technologies covered in this book. Instead, it is an
+  architectural style utilizing commonly found technologies and protocols that
+  in this case will be used to implement and utilize REST-based Web services.
+  This chapter will provide some background and information regarding REST, but
+  it focuses more on utilizing REST for Web services and uses the services
+  available from Yahoo and Amazon as examples. ER -%
+  }
+  \field{chapter}{17}
+  \field{pages}{633\bibrangedash 672}
+  \field{title}{"Representational State Transfer (REST)" in "Pro PHP XML and
+  Web Services"}
+  \verb{url}
+  \verb http://dx.doi.org/10.1007/978-1-4302-0139-7_17
+  \endverb
+  \field{year}{2006}
+\endentry
+
+\entry{Ritchie74theunix}{article}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Ritchie}{R.}%
+     {D.~M.}{D.~M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Thompson}{T.}%
+     {K.}{K.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{RDMTK1}
+  \strng{fullhash}{RDMTK1}
+  \field{sortinit}{R}
+  \field{pages}{365\bibrangedash 375}
+  \field{title}{The Unix Time-Sharing System}
+  \field{volume}{17}
+  \field{journaltitle}{Communications of the ACM}
+  \field{year}{1974}
+\endentry
+
 \entry{Romer03thelighthouse}{misc}{}
   \name{author}{1}{}{%
     {{}%
@@ -1878,6 +2338,33 @@
   \field{sortinit}{R}
   \field{title}{The Lighthouse Location System for Smart Dust}
   \field{year}{2003}
+\endentry
+
+\entry{Rosenblum97adesign}{inproceedings}{}
+  \name{author}{2}{}{%
+    {{}%
+     {Rosenblum}{R.}%
+     {David~S.}{D.~S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Wolf}{W.}%
+     {Alexander~L.}{A.~L.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {Springer}%
+  }
+  \strng{namehash}{RDSWAL1}
+  \strng{fullhash}{RDSWAL1}
+  \field{sortinit}{R}
+  \field{booktitle}{In Proc. of the 6 th European Software Engineering Conf.
+  held jointly with the 5 th ACM SIGSOFT Symp. on the Foundations of Software
+  Engineering (ESEC/FSE97), number 1301 in LNCS}
+  \field{title}{A Design Framework for Internet-Scale Event Observation and
+  Notification}
+  \field{year}{1997}
 \endentry
 
 \entry{Rossi:2011:RWC:2030112.2030238}{inproceedings}{}
@@ -2039,6 +2526,72 @@
   \field{type}{techreport}
   \field{year}{2013}
   \warn{\item Invalid format of field 'month'}
+\endentry
+
+\entry{tibco}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {TIBCO}{T.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{T1}
+  \strng{fullhash}{T1}
+  \field{sortinit}{T}
+  \field{title}{Using TIBCO Enterprise Message Service with Storage Foundation
+  Cluster File System Increasing Availability and Performance}
+  \field{year}{2006}
+\endentry
+
+\entry{BingFS}{inproceedings}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Tilak}{T.}%
+     {Sameer}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Pisupati}{P.}%
+     {Bhanu}{B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Chiu}{C.}%
+     {Kenneth}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Brown}{B.}%
+     {Geoffrey}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Abu-Ghazaleh}{A.-G.}%
+     {Nael}{N.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {USENIX Association}%
+  }
+  \strng{namehash}{TS+1}
+  \strng{fullhash}{TSPBCKBGAGN1}
+  \field{sortinit}{T}
+  \field{booktitle}{Proceedings of the 2005 workshop on End-to-end,
+  sense-and-respond systems, applications and services}
+  \field{isbn}{1-931971-32-3}
+  \field{pages}{1\bibrangedash 6}
+  \field{series}{EESR '05}
+  \field{title}{A file system abstraction for sense and respond systems}
+  \verb{url}
+  \verb http://dl.acm.org/citation.cfm?id=1072530.1072532
+  \endverb
+  \list{location}{1}{%
+    {Seattle, Washington}%
+  }
+  \field{year}{2005}
+  \warn{\item Can't use 'location' + 'address'}
 \endentry
 
 \entry{epabuildings}{misc}{}
@@ -2207,6 +2760,60 @@
     {San Francisco, CA, USA}%
   }
   \field{year}{1995}
+\endentry
+
+\entry{wsnfuse}{misc}{}
+  \field{sortinit}{W}
+  \field{note}{\url{http://sourceforge.net/projects/wsnfuse/}}
+  \field{title}{{WSNFuse: accessing Wireless Sensor Networks as a Filesystem}}
+\endentry
+
+\entry{tspaces}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Wyckoff}{W.}%
+     {P.}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {McLaughry}{M.}%
+     {S.~W.}{S.~W.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Lehman}{L.}%
+     {T.~J.}{T.~J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ford}{F.}%
+     {D.~A.}{D.~A.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {IBM Corp.}%
+  }
+  \strng{namehash}{WP+1}
+  \strng{fullhash}{WPMSWLTJFDA1}
+  \field{sortinit}{W}
+  \verb{doi}
+  \verb 10.1147/sj.373.0454
+  \endverb
+  \field{issn}{0018-8670}
+  \field{number}{3}
+  \field{pages}{454\bibrangedash 474}
+  \field{title}{T spaces}
+  \verb{url}
+  \verb http://dx.doi.org/10.1147/sj.373.0454
+  \endverb
+  \field{volume}{37}
+  \list{location}{1}{%
+    {Riverton, NJ, USA}%
+  }
+  \field{journaltitle}{IBM Syst. J.}
+  \field{month}{07}
+  \field{year}{1998}
 \endentry
 
 \entry{Yoon2013}{inproceedings}{}

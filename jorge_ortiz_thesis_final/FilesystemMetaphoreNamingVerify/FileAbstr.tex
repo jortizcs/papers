@@ -108,23 +108,26 @@ A detailed description and examples with be presented in later sections.
 
 \begin{table}[h]
 \begin{center}
-\begin{tabular}{| r | l | l |}
+\begin{tabular}{| l | l | l |}
 	\hline
 	\textbf{type} & \textbf{description} & \textbf{valid operations} \\ \hline
-	internal process defintion (ipd) & Javascript process definition.  & read, write, delete  \\ \hline
+	
+	internal process  & Javascript process definition.  & read, write, delete  \\ 
+	defintion (ipd)   & 							    &	\\ \hline
 
-	internal process instance (ipi) & Management file used for managing & read, delete \\
-							  & active processing of this script. & \\ \hline
+	internal process  & Management file used for managing & read, delete \\
+	instance (ipi)	  & active processing of this script. & \\ \hline
 
-	external process definition (epd) & Gives information about where an & read, write, delete \\
-								& external process lives. &\\ \hline
+	external process  & Gives information about where an & read, write, delete \\
+	definition (epd)  & external process lives. &\\ \hline
 
-	external process instance (epi) & An active processing stream to an  & read, write, delete \\
-								& external process. &\\ \hline
+	external process  & An active processing stream to an  & read, write, delete \\
+	instance (epi)	  & external process. &\\ \hline
 
-	subscription instance (sub) & An instance of a subscription.  Contains & read, delete \\
-								& information about the subscription, &\\
+	subscription instance & An instance of a subscription.  Contains & read, delete \\
+				(sub) 	  & information about the subscription, &\\
 								& such as source/sink and related statistics &\\ \hline
+								
 	symbolic link (symlink) & Similar to a symbolic link in Unix. & \\
 	\hline
 \end{tabular}
