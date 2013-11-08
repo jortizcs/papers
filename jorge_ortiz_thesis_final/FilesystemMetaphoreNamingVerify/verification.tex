@@ -20,8 +20,11 @@ each set, and $\overline{X}$ is the mean value of $X$ (same for $\overline{Y}$ a
 For each pair of sensors, we compute the corrcoeff to ascertain the relationship between them.
 
 
-
 \subsection{Empirical Mode Decomposition} \label{emd}
+Another important tool that we used is empirical mode decomposition.  We use it partition the empiriical data is its constituent
+sub-signals and examine what those sub-signals tell us about its behavior.  We also use it to examine how signal behavve between
+one another at certain bands of importance that contain important physical information.
+
 Empirical Mode Decomposition (EMD) \cite{huang:emd1998} is a technique that decomposes a signal and reveals intrinsic patterns, 
 trends, and noise.
 This technique has been widely applied to a variety of datasets, including climate variables~\cite{lee:climateEMD2011}, medical data~\cite{blanco:bioMed2008}, speech signals~\cite{huang:signalProc2006,hasan:ieeeletter2009}, and image processing~\cite{nunes:vision2005}.
@@ -97,6 +100,9 @@ EMD yields distinct components in different time scales and we compute the insta
 \item Low Frequency: a time scale between 6 hours and 7 days. %This category usually captures patterns repeated in a longer cycle, say, days. 
 \item Residue: everything has a time scale longer than 7 days and shows long-term patterns, such as seasonal changes.
 \end{itemize}
+
+Later in this thesis we will explain how we use the medium-frequency band for both spatial verification and functional verification.  We discuss
+the 4 types of verification in the next section.
 
 
 

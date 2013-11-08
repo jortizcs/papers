@@ -1,7 +1,19 @@
 \section{Functional Verification Methodology}
+We run SBS on a set of building sensor traces; each containing hundred sensors reporting data flows over 18 weeks from two separate buildings with fundamentally different infrastructures.  
+We demonstrate that, in many cases, SBS uncovers misbehavior corresponding to inefficient device usage that leads to energy waste.  
+The average waste uncovered is as high as 2500~kWh per device. 
 
+We validate the effectiveness of our approach using 10 weeks of data from a modern Japanese building containing 135 sensors and 
+8 weeks of data from an older American building containing 70 sensors.
+These experiments highlight the effectiveness of SBS to uncover device relationships in a large deployment of 135 sensors.
+Furthermore, we inspect the SBS results and show that the reported alarms correspond to significant opportunities to save energy.
+The major anomaly reported in the American building lasts 18 days and accounts for a waste of 2500 kWh. % for a single device whereas the building average power consumption is 600 kW per hour.
+% SBS also reported numerous smaller anomalies that are hidden in the building's overall consumption, thus, difficult for building operators to identify without the proposed method.
+SBS also reports numerous small anomalies, hidden deep within the building's overall consumption data.  Such errors are very difficult to find
+without SBS.
 % \subsection{Problem description}
 % \subsection{Dominant patterns}
+
 \begin{figure}
 \begin{center}
 \includegraphics[width=.5\textwidth]{figs/heatMap_raw_201106-eps-converted-to.pdf}

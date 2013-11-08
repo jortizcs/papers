@@ -18,21 +18,21 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {6.1}{\ignorespaces Shows the time to scan a long QR code versus a short QR code in light and dark conditions (loosely defined). Notice that short QR codes scan faster and with less variance that long ones.}}{74}{table.199}
+\contentsline {table}{\numberline {6.1}{\ignorespaces Shows the time to scan a long QR code versus a short QR code in light and dark conditions (loosely defined). Notice that short QR codes scan faster and with less variance that long ones.}}{74}{table.197}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {6.2}{\ignorespaces Shows the time to fetch nodes based on the size of the fetch. The fetch time increased linearly with the number of nodes. Caching maintain fetch time near that of fetching a single node. A callback is used when cache is invalidated.}}{83}{table.222}
+\contentsline {table}{\numberline {6.2}{\ignorespaces Shows the time to fetch nodes based on the size of the fetch. The fetch time increased linearly with the number of nodes. Caching maintain fetch time near that of fetching a single node. A callback is used when cache is invalidated.}}{83}{table.220}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {6.3}{\ignorespaces Average operation execution time in StreamFS.}}{84}{table.223}
+\contentsline {table}{\numberline {6.3}{\ignorespaces Average operation execution time in StreamFS.}}{84}{table.221}
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {7.1}{\ignorespaces Classification of the alarms reported by SBS for both dataset (and the number of corresponding anomalies).}}{97}{table.249}
+\contentsline {table}{\numberline {7.1}{\ignorespaces Classification of the alarms reported by SBS for both dataset (and the number of corresponding anomalies).}}{98}{table.247}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {7.2}{\ignorespaces Room Specs}}{106}{table.274}
+\contentsline {table}{\numberline {7.2}{\ignorespaces Room Specs}}{106}{table.272}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {7.3}{\ignorespaces Correlation coefficients of the analyzed trace and their IMFs uncovered by EMD}}{107}{table.276}
+\contentsline {table}{\numberline {7.3}{\ignorespaces Correlation coefficients of the analyzed trace and their IMFs uncovered by EMD}}{107}{table.274}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {7.4}{\ignorespaces Clustering result using the thresholding method: a ``1" means the sensor is classified as inside the room. We get the ``\text {$\mathsurround \z@ \mathchar "458$}" and ``$\times $" by comparing the clustering results with ground truth.}}{113}{table.291}
+\contentsline {table}{\numberline {7.4}{\ignorespaces Clustering result using the thresholding method: a ``1" means the sensor is classified as inside the room. We get the ``\text {$\mathsurround \z@ \mathchar "458$}" and ``$\times $" by comparing the clustering results with ground truth.}}{114}{table.289}
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 

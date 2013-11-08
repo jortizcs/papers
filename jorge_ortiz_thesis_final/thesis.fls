@@ -387,6 +387,8 @@ INPUT ./figs/everythingfile.pdf
 INPUT ./figs/everythingfile.pdf
 INPUT FilesystemMetaphoreNamingVerify/MultiNaming.tex
 INPUT FilesystemMetaphoreNamingVerify/MultiNaming.tex
+INPUT figs/mpc_example.pdf
+INPUT ./figs/mpc_example.pdf
 INPUT FilesystemMetaphoreNamingVerify/verification.tex
 INPUT FilesystemMetaphoreNamingVerify/verification.tex
 INPUT figs/gzc.pdf

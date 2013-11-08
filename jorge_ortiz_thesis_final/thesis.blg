@@ -25,12 +25,12 @@ A level-1 auxiliary file: ProcessManagementAndScheduling/ProcMngtSchedMain.aux
 A level-1 auxiliary file: FilesystemMetaphoreNamingVerify/FilesystemMetaMain.aux
 A level-1 auxiliary file: ArchitecturalEvaluation/ArchEvalMain.aux
 Case mismatch error between cite keys acme and ACme
----line 152 of file thesis.aux
+---line 144 of file thesis.aux
  : \citation{acme
  :               }
 I'm skipping whatever remains of this command
 Case mismatch error between cite keys acme and ACme
----line 155 of file thesis.aux
+---line 147 of file thesis.aux
  : \citation{acme
  :               }
 I'm skipping whatever remains of this command
@@ -46,7 +46,7 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated field_info (elt_size=4) to 22544 items from 5000.
+Reallocated field_info (elt_size=4) to 22408 items from 5000.
 Database file #1: thesis-blx.bib
 Database file #2: references.bib
 Warning--I'm ignoring speech's extra "keywords" field
@@ -108,45 +108,45 @@ Warning--I didn't find a database entry for "chan:springer2005"
 Biblatex version: 1.7
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
-You've used 81 entries,
+You've used 80 entries,
             6019 wiz_defined-function locations,
-            1773 strings with 34525 characters,
-and the built_in function-call counts, 287045 in all, are:
-= -- 12223
-> -- 9539
-< -- 3155
-+ -- 3593
-- -- 3442
-* -- 22598
-:= -- 16154
+            1767 strings with 34218 characters,
+and the built_in function-call counts, 282274 in all, are:
+= -- 12026
+> -- 9358
+< -- 3114
++ -- 3511
+- -- 3367
+* -- 22138
+:= -- 15848
 add.period$ -- 0
-call.type$ -- 81
-change.case$ -- 1857
+call.type$ -- 80
+change.case$ -- 1830
 chr.to.int$ -- 63
-cite$ -- 160
-duplicate$ -- 32776
-empty$ -- 29199
-format.name$ -- 6310
-if$ -- 64860
+cite$ -- 158
+duplicate$ -- 32219
+empty$ -- 28758
+format.name$ -- 6154
+if$ -- 63844
 int.to.chr$ -- 0
-int.to.str$ -- 223
+int.to.str$ -- 219
 missing$ -- 0
-newline$ -- 2748
-num.names$ -- 4337
-pop$ -- 25795
+newline$ -- 2686
+num.names$ -- 4273
+pop$ -- 25446
 preamble$ -- 1
-purify$ -- 2154
+purify$ -- 2118
 quote$ -- 0
-skip$ -- 16961
+skip$ -- 16697
 stack$ -- 0
-substring$ -- 7851
-swap$ -- 11443
-text.length$ -- 2244
-text.prefix$ -- 80
+substring$ -- 7740
+swap$ -- 11255
+text.length$ -- 2212
+text.prefix$ -- 79
 top$ -- 1
-type$ -- 3062
+type$ -- 3024
 warning$ -- 0
-while$ -- 1469
+while$ -- 1450
 width$ -- 0
-write$ -- 2666
+write$ -- 2605
 (There were 6 error messages)

@@ -1242,70 +1242,6 @@
   \field{year}{2006}
 \endentry
 
-\entry{EMD}{article}{}
-  \name{author}{9}{}{%
-    {{}%
-     {Huang}{H.}%
-     {N.~E.}{N.~E.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Shen}{S.}%
-     {Z.}{Z.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Long}{L.}%
-     {S.~R.}{S.~R.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Wu}{W.}%
-     {M.~C.}{M.~C.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Shih}{S.}%
-     {H.~H.}{H.~H.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Zheng}{Z.}%
-     {Q.}{Q.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Yen}{Y.}%
-     {N.~C.}{N.~C.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Tung}{T.}%
-     {C.~C.}{C.~C.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Liu}{L.}%
-     {H.~H.}{H.~H.}%
-     {}{}%
-     {}{}}%
-  }
-  \list{publisher}{1}{%
-    {The Royal Society}%
-  }
-  \strng{namehash}{HNE+1}
-  \strng{fullhash}{HNESZLSRWMCSHHZQYNCTCCLHH1}
-  \field{sortinit}{H}
-  \field{title}{{The empirical mode decomposition and the Hilbert spectrum for
-  nonlinear and non-stationary time series analysis}}
-  \verb{url}
-  \verb http://dx.doi.org/10.1098/rspa.1998.0193
-  \endverb
-  \field{journaltitle}{Proceedings of the Royal Society of London. Series A:
-  Mathematical, Physical and Engineering Sciences}
-  \field{year}{1998}
-\endentry
-
 \entry{GZC}{patent}{}
   \name{author}{1}{}{%
     {{}%
@@ -1421,7 +1357,7 @@
      {}{}}%
   }
   \strng{namehash}{HNE+1}
-  \strng{fullhash}{HNESZLSRWMCSHHZQYNCTCCLHH2}
+  \strng{fullhash}{HNESZLSRWMCSHHZQYNCTCCLHH1}
   \field{sortinit}{H}
   \verb{doi}
   \verb 10.1098/rspa.1998.0193
