@@ -1,0 +1,1073 @@
+\chapter{StreamFS Process Code}
+
+\begin{lstlisting}[caption={Load curve code used to generate aggregate load curves in the Energy Lens application.},label={code:loadcurve_full}]
+function(buffer, state){
+    var outObj = new Object();
+    var timestamps = new Object();
+    outObj.msg = 'processed';
+    if(typeof state.slope == 'undefined'){
+        state.slope = function(p1, p2){
+            if(typeof p1 != 'undefined' && typeof p2 != 'undefined' &&
+                typeof p1.value != 'undefined' && typeof p1.ts != 'undefined' &&
+                typeof p2.value != 'undefined' && typeof p2.ts != 'undefined'){
+                if(p1.ts == p2.ts)
+                    return 'inf';
+                return (p2.value-p1.value)/(p2.ts-p1.ts);
+            }
+            return 'error:undefined data point parameter';
+        };
+        state.intercept = function(slope,p1){
+            if(typeof p1 != 'undefined' &&
+                typeof p1.value != 'undefined' && typeof p1.ts != 'undefined'){
+                return p1.value - (slope*p1.ts);
+            }
+            return 'error:undefined data point parameter';
+        };
+    }
+    if(typeof state.multibuf == 'undefined'){
+        state.multibuf = new Object();
+    }
+    outObj.inputs = new Array();
+    var noted = new Object();
+    for(i=0; i<buffer.length; i++){
+        var streamid = buffer[i].pubid;
+        var ts = buffer[i].ts;
+        if(typeof state.multibuf[streamid] == 'undefined'){
+            state.multibuf[streamid] = new Array();
+        }
+        state.multibuf[streamid].push({'ts':buffer[i].ts, 'value':buffer[i].value,'path':buffer[i].is4_uri});
+        if(typeof noted[buffer[i].is4_uri] == 'undefined'){
+            noted[buffer[i].is4_uri]=true;
+            outObj.inputs.push(buffer[i].is4_uri);
+        }
+        timestamps[ts] = true;
+    }
+    var streamids = Object.keys(state.multibuf);
+    var tss = Object.keys(timestamps);
+    tss = tss.sort();
+
+    var ts_per_stream = new Object();
+    if(streamids.length>=2){
+        for(j=0; j<streamids.length; j++){
+            var this_streamid = streamids[j];
+            var dpts = state.multibuf[this_streamid];
+            if(dpts.length<2){
+                outObj.stat = 'pending';
+                return outObj;
+            } else {
+                for(dpidx = 0; dpidx<dpts.length; dpidx ++){
+                    if(typeof ts_per_stream[this_streamid] == 'undefined'){
+                        ts_per_stream[this_streamid] = new Object();
+                    }
+                    var thists = dpts[dpidx].ts;
+                    ts_per_stream[this_streamid][thists]=true;
+                }
+            }
+        }
+
+        var cleaned = new Object();
+        for(j=0; j<streamids.length; j++){
+            var this_streamid = streamids[j];
+            var dpts = state.multibuf[this_streamid];
+            cleaned[this_streamid]=new Array();
+            for(tss_idx = 0; tss_idx < tss.length; tss_idx++){
+                var timestamp = tss[tss_idx];
+                if(typeof ts_per_stream[this_streamid][timestamp] == 'undefined'){
+                    var p1 = dpts[0];
+                    var p2 = dpts[dpts.length-1];
+                    var slope = state.slope(p1,p2);
+                    if(slope != 'inf' || slope.indexOf('error:')<0){
+                        var intercept = state.intercept(slope,p1);
+                        var newdpt = new Object();
+                        newdpt.ts = timestamp;
+                        newdpt.value = (slope*timestamp)+intercept;
+                        cleaned[this_streamid].push(newdpt);
+                    } else {
+                        outObj.slope=slope;
+                    }
+                } else {
+                    for(idx = 0; idx<dpts.length; idx++){
+                        if(dpts[idx].ts==timestamp){
+                            cleaned[this_streamid].push(dpts[idx]);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+       
+        var loadcurve = new Array(); 
+        var cleaned_keys = Object.keys(cleaned);
+        var pts_per_key = cleaned[cleaned_keys[0]].length;
+        for(ts_idx=0; ts_idx<tss.length; ts_idx++){
+            var sum = 0;
+            for(idx=0; idx<cleaned_keys.length; idx++){
+                var thissubid = cleaned_keys[idx];
+                sum += cleaned[thissubid][ts_idx].value;
+            }
+            loadcurve.push({'ts':cleaned[thissubid][ts_idx].ts,
+                            'value':sum});
+        }
+        outObj.data = loadcurve;
+    } else {
+        outObj.stat = 'pending';
+    }
+    buffer = new Array();
+    return outObj;
+}
+\end{lstlisting}
+
+
+
+
+\chapter{StreamFS HTTP/REST Tutorial}
+\label{appendix:tutorial}
+
+This tutorial is meant to help you get started quickly with StreamFS. StreamFS integrates all kinds of sensor data and organizes it for easy access, processing, and integration with external applications. In this tutorial we will go through creating and deleting files in StreamFS, as well as accessing stream data from incoming data streams.
+
+\begin{itemize}
+\item Creating a resource
+\item Creating a stream file
+	\begin{itemize}
+	\item Streaming data through stream file
+	\item Bulk data insertion
+	\end{itemize}
+\item Bulk file creation
+\item Queries
+\item Subscriptions
+\item Symlinks
+\item Move
+\item Stream Processing
+	\begin{itemize}
+	\item Create process file
+	\item Starting the process
+	\item View the output
+	\item Stopping the process
+ 	\end{itemize}
+\end{itemize}	
+
+
+\section{Terminology}
+
+\begin{table}[h!]
+\begin{center}
+\begin{tabular}{| r | l | l |}
+	\hline
+	\textbf{Term} & \textbf{Description} & \textbf{Examples}\\ \hline
+
+
+	container/default & An logical object that represents a & \texttt{/hvac/heater} refers  \\ 
+				 file & physical or logical entity.    	 & to a heater in the hvac system \\ \hline
+
+	stream file & A file that represents a data stream.  	& \texttt{/room1/temperature/} is  \\
+				& Data is pushed into the stream files      & the name for a temperature \\
+				&  and queried through 						& stream coming from room1.\\
+				& the same file path..    					& 							\\		 \hline
+
+	control file & A file that represents a control  & \texttt{/hvac/heater/switch}  \\
+				 & 	channel for an associated 		 & refers to the switch for the heater.  \\
+				 &	actuator.						 & Writing a 1 to that file send an \\
+				 &   								 & `ON' signal to the heater, 0 is `OFF'.\\ \hline
+
+	subscriber 	& An external target URL to  				& \texttt{/subs/550e8400} represents \\
+				& which data is forwarded as  				& a subscription file created after a \\
+			   	& it comes into StreamFS. Subscription   	& subscription request satisfied. The  		\\
+			   	& are used to process incoming data 		& Id is a unique id for the subscriber. 		\\
+			   	& in real time in external 					& It can be used to manage the   	\\
+			   	& applications.								& subscription -- to see which \\
+			   	&											& streams are pushing data	\\
+			   	& 											& to which URLs and its deletion removes 	\\
+			   	&											& the subscription.							\\ \hline
+
+\end{tabular}
+\caption{Terminology}
+\label{tab:tutorial_terminology}
+\end{center}
+\end{table}
+
+  
+\section{Creating a resource}
+
+A clean installation of StreamFS, it comes with a set of core resources described in StreamFS documentation. The resource to start with is /. To make sure that StreamFS is up and running do a GET on that resource. You should receive a reply with some information about the instance as well as child resource for that resource. Observe the example below:
+
+\begin{lstlisting}%[caption={Load curve code used to generate aggregate load curves in the Energy Lens application.},label={code:loadcurve_full}]
+curl -i "http://localhost:8080/"
+HTTP/1.1 200 OK
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Thu, 19 Jan 2012 12:44:54 GMT
+
+{
+    "status": "success",
+    "children": [
+        "ibus",
+        "sub",
+        "resync",
+        "pub",
+        "time",
+        "models",
+        "admin",
+    ],
+    "uptime": 890,
+    "uptime_units": "seconds",
+    "activeResources": 37
+}
+\end{lstlisting}
+
+Now lets create a simple file that we'll use as our working directory for the tutorial. Create a temporary directory where you want to save the file you'll create for this tutorial. Open a text file and copy-paste this json below (not the PUT line) into the file. Then use curl (on linux systems) to POST the document to the StreamFS server.
+
+\begin{lstlisting}%[caption={},label={code:rest_create_resource}]
+
+echo "{\"operation\":\"create_resource\", \
+\"resourceName\":\"temp\",\"resourceType\":\"default\"}" \
+ > create_def.json
+
+ \end{lstlisting}
+
+This creates a text file with json in it that specifies the type of resource file you want to create and what its name is.
+
+\begin{lstlisting}
+curl -i -X PUT "http://localhost:8080/" -d@create_def.json
+ \end{lstlisting}
+
+The -d parameter in curl specifies the data portion of the PUT request. In this case we're forwarding the data to the root path. Once created, we issue an HTTP PUT request to send the request to the root directory of the StreamFS instance that is running. If created successfully you should get a reply that looks like the following:
+
+\begin{lstlisting}
+HTTP/1.1 201 Created
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Thu, 19 Jan 2012 12:35:25 GMT
+Notice that it's a '201 Created' HTTP status. That means the StreamFS was able to create a default resource for you under /. Now that's check to make sure it's there.
+
+curl -i "http://localhost:8080/"
+HTTP/1.1 200 OK
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Thu, 19 Jan 2012 12:44:54 GMT
+
+{
+    "status": "success",
+    "children": [
+        "ibus",
+        "sub",
+        "resync",
+        "pub",
+        "time",
+        "models",
+        "admin",
+        "temp",
+    ],
+    "uptime": 990,
+    "uptime_units": "seconds",
+    "activeResources": 
+}
+\end{lstlisting}
+
+Notice that when we issue the same GET request to the root directory in StreamFS we see ``temp'' in the children array associated with /. Now we can treat the ``temp'' resource as a directory and work there (i.e. all requests for resource creation, deletion, etc, will be forwarded to that file).
+
+\begin{lstlisting}
+curl -i "http://localhost:8080/temp"
+HTTP/1.1 200 OK
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Thu, 19 Jan 2012 12:50:12 GMT
+
+
+{
+    "status": "success",
+    "type": "DEFAULT",
+    "properties": {},
+    "children": []
+}
+\end{lstlisting}
+
+As we populate this directory, the name of the newly created files will show up the ``children'' array. Now, lets create a stream file that represents a real-time data stream. We'll create it as a child of the ``temp'' folder.
+
+\section{Creating a stream file}
+
+This processes is very similar to create a regular file. Lets create another json file with the command to create a stream file.
+
+\begin{lstlisting}
+echo "{\"operation\":\"create_generic_publisher\", \
+\"resourceName\":\"stream1\"}"  > create_stream.json
+\end{lstlisting}
+
+The operation that we're running this time is to creata a generic publisher. In StreamFS, that's understood to mean a stream file. Once created, lets post it to StreamFS, but this time lets post it to the directory we created in the previous section:
+
+\begin{lstlisting}
+curl -i -X PUT "http://localhost:8080/temp" -d@create_stream.json
+HTTP/1.1 201 Created
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Thu, 19 Jan 2012 12:58:31 GMT
+
+{
+    "status": "success",
+    "is4_uri": "/temp/stream1",
+    "PubId": "789cf943-bbc8-428e-97ce-03e7cfe5fc12"
+}
+\end{lstlisting}
+
+In reply above is shown. You should receive explicit confirmation from StreamFS that the stream file was created and should note the associated publisher ID. The publisher identifier is used when data is pushed to this resource. The underlying stream uses it when it POSTs data to this new file.
+
+\section{Pushing data to a stream file}
+
+In order to push data to the stream file, we have to use the pubid associated with the stream. We can either copy-paste it was from the response we received when we created the file, or we can simply call a GET on the file in StreamFS to obtain it:
+
+\begin{lstlisting}
+curl -i "http://localhost:8080/temp/stream1"
+HTTP/1.1 200 OK
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Thu, 19 Jan 2012 13:31:55 GMT
+
+{
+    "status": "success",
+    "pubid": "789cf943-bbc8-428e-97ce-03e7cfe5fc12",
+    "head": {},
+    "properties": {}
+}
+\end{lstlisting}
+
+Now that we have it noted, lets create a fake data object. For simplicity, we leave out any complicated information other than the value that we wish to save. The units are omitted for now and i'll explain why at the end.
+
+\begin{lstlisting}
+echo "{\"value\":123}" > datapt.json
+\end{lstlisting}
+
+Finally, we post the newly create file to the stream file as follows. To inform StreamFS to save the file correctly, we need to include the ``type'' and ``pubid'' as URL parameters. The type is always equal to ``generic'' and the pubid is set to the pubid we noted earlier. If either is missing or the pubid does not match the pubid associated with this stream, the POST will fail.
+
+\begin{lstlisting}
+curl -i -X POST \
+"http://localhost:8080/temp/stream1?type=generic&pubid=\
+789cf943-bbc8-428e-97ce-03e7cfe5fc12" -d@datapt.json
+
+HTTP/1.1 200 OK
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Thu, 19 Jan 2012 13:35:25 GMT
+
+{"status":"success"}
+\end{lstlisting}
+
+If successfully you should get the response above. This response can be used by the stream an an acknowledgement that the data has been succesfully saved. We can also check that by calling GET on the stream file again and seeing the ``head'' attribute. The ``head'' attribute is the last received data object saved and the timestamp associated with it.
+
+\begin{lstlisting}
+curl -i "http://localhost:8080/temp/stream1"
+HTTP/1.1 200 OK
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Thu, 19 Jan 2012 13:36:23 GMT
+
+{
+    "status": "success",
+    "pubid": "789cf943-bbc8-428e-97ce-03e7cfe5fc12",
+    "head": {
+        "value": 123,
+        "ts": 1326980179
+    },
+    "properties": {}
+}
+\end{lstlisting}
+
+Notice the ``properties'' attribute in the GET response to all resources. This is where the user can place arbitrary information about the object this file represents. For streams, however, the ``units'' attribute in the properties object is of particular importance, and we'll discuss it's importance later. For now, I'll show you how to update the properties. Recall from the creation of a fake data point that we did not specify the type of data (i.e. the units of measurement).
+
+Lets create a simple json document with the ``properties'' attribute defined as a json object with the ``units'' attribute. Below, I create a properties object with ``psi'' (pressure) units.
+
+\begin{lstlisting}
+echo "{\"operation\":\"overwrite_properties\",\
+ \"properties\":{\"units\":\"psi\"}}" > overwrite_props.json
+\end{lstlisting}
+
+Then we POST it to the stream file.
+
+\begin{lstlisting}
+curl -i -X POST \
+"http://localhost:8080/temp/stream1" -d@overwrite_props.json
+HTTP/1.1 200 OK
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Thu, 19 Jan 2012 22:52:57 GMT
+
+{"status":"success"}
+\end{lstlisting}
+
+If successful, we should get the preceding reply and we can check to make sure that everything is set up ok.
+
+\begin{lstlisting}
+curl -i "http://localhost:8080/temp/stream1"
+HTTP/1.1 200 OK
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Thu, 19 Jan 2012 22:53:07 GMT
+
+{
+    "status": "success",
+    "pubid": "789cf943-bbc8-428e-97ce-03e7cfe5fc12",
+    "head": {
+        "value": 123,
+        "ts": 1326980315
+    },
+    "properties": {
+        "units": "psi"
+    }
+}
+\end{lstlisting}
+
+We can set any properties on the object, as long as it's a valid json object. The only attribute that's currently reserved on the properties object is ``units''. The fields added here are used for properties-related queries -- they effectively serve as arbitrary tags on the files, so that we can find the specific ones later without traversing the entire tree.
+
+\section{Bulk data insertion}
+
+For efficiency, we can also push multiple values in a single request as shown below:
+
+\begin{lstlisting}
+{
+    "path":"/temp/stream1", 
+    "pubid":"789cf943-bbc8-428e-97ce-03e7cfe5fc12",
+    "data":[{"value":0},{"value":1},{"value":2, "ts":1347307033198},{"value":3, "ts":1347307033199}]
+}
+\end{lstlisting}
+
+Note, each element in the data array includes at least the `value' field. The `ts' field is optional. If not included, StreamFS will add it during processing.
+
+\section{Queries}
+
+The next section will show you how to run queries on the data and queries on the properties that are set on the files.
+
+Timeseries
+
+Finally, lets do a simple queries, starting with those that are timeseries in nature. We'll run a query that return any data point that was saved by this stream file in the last 10000 seconds. We'll go over the query syntax is the next section, but for simplicity, run the following:
+
+\begin{lstlisting}
+curl -i "http://localhost:8080/temp/stream1?query=true&ts_timestamp=gt:now-10000"
+HTTP/1.1 200 OK
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Thu, 19 Jan 2012 13:52:39 GMT
+
+{
+    "path": "/temp/stream1/",
+    "ts_query_results": [
+        {
+            "value": 123,
+            "ts": 1326980315
+        }
+    ],
+    "props_query_results": {
+        "errors": [
+            "Empty or invalid query"
+        ]
+    }
+}
+\end{lstlisting}
+
+The ``ts\_query\_results'' is really what we care about here. It's an array of json objects, where each json object is the object that was saved the underlying database holding data for this stream. Notice, the timestamp is also included. We can obtain much larger results using this functionality. We'll go more in depth in the next few sections.
+
+We're fundamentally dealing with timeseries data and there's a very simple syntax for acquiring the data you need. The following is a list of URL parameters that can be set to run a timeseries query.
+
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{| r | l | l |}
+	\hline
+	\textbf{Parameter} & \textbf{Description} \\ \hline
+
+
+	query & Must be set to ``true'' for the query to be processed.  \\ \hline
+
+	ts\_timestamp & A logical object that represents a physical or  \\
+				  & logical entity. 							 	\\ \hline
+
+
+	\textbf{Sub-parameters} & 										\\ \hline
+	gt 			& greater than. 									\\ \hline
+	lt		   	& less than.  										\\ \hline
+	gte		   	& greater than or equal to. 						\\ \hline
+	lte		   	& less than or equal to.							\\ \hline
+	now		   	& time on streamfs server when query is submitted. 	\\ \hline
+
+\end{tabular}
+\caption{Parameters}
+\label{tab:parameters}
+\end{center}
+\end{table}
+
+
+Sub-parameter	
+gt	 greater than.
+lt	 less than.
+gte	 greater than or equal to.
+lte	 less than or equal to.
+now	 time on streamfs server when query is submitted.
+
+The parameters specified above are URL parameters that should be included in the GET request URL to StreamFS. Notice that the ``query'' parameter must be set to ``true'' in order for the query to be processed. Below we have included several query examples.
+
+\begin{lstlisting}
+1.  curl -i "http://localhost:8080/temp/stream1?query=true&ts_timestamp=lt:1327017501"
+2.  curl -i "http://localhost:8080/temp/stream1?query=true&ts_timestamp=lte:now+1"
+3.  curl -i "http://localhost:8080/temp/stream1?query=true&ts_timestamp=gte:1326980040,lt:1326980315"
+\end{lstlisting}
+
+The first query fetches all values less than 1327017501. The second query fetches all values less than or equal to ``now+1''. 
+The keyword ``now'' is used by streamfs to be the current time on the streamfs server when the query is submitted and can be used 
+as a variable in the query. The third query is a typical range query, where we want values greater than or equal to 
+1326980040 and less than 1326980315. Notice the use of the comma in the URL parameter value. The comma implies an ``AND''
+ condition for the timeseries query.
+
+Properties
+
+Querying properties is a complex and you have more options. There's essentially two ways. The first sets the ``props\_'' URL 
+parameter while the other submits a set of keywords. The latter is the one we'll go over in this tutorial.
+
+\begin{lstlisting}
+echo "{\"\$or\":[{\"_keywords\":\"units\"}]}" >props_query.json
+curl -i -X POST "http://localhost:8080/*?query=true" -d@props_query.json
+\end{lstlisting}
+% [More to come]
+
+\section{Bulk default/stream file creation}
+
+Creating each file at a time can incur high overhead when there are many files to create, mainly because each request is established over a new HTTP connection. Therefore, StreamFS support a bulk-creation request:
+
+\begin{lstlisting}
+{   
+    "operation":"create_resources",
+    "list":[
+            {
+                "path":"/temp/one/two/stream3", 
+                "type":"stream"
+            },
+            {
+                "path":"/temp/one/three/stream4", 
+                "type":"stream"
+            },
+            {
+                "path":"/temp/one_four/two/", 
+                "type":"default"
+            }
+    ]
+}
+\end{lstlisting}
+
+The operation name is `create\_resources' and is includes a list array where each element in the list if an 
+object with the path and type attributes set. The path is the path of the resource you want to create and the 
+type is it's type. For each path in the list, it will create the necessary files that eventually lead to the 
+creation of the file listed. For example, if only \texttt{/temp} exists, \texttt{/temp/one} and \texttt{/temp/two}
+ will be created as 
+``default'' files and \texttt{/temp/one/two/stream3} will finally be created as a stream file.
+
+The response is shown below:
+
+\begin{lstlisting}
+HTTP/1.1 201 OK
+Content-Type: application/json
+Connection: close
+Last-Modified: Sun, 09 Sep 2012 21:14:46 GMT
+Server: StreamFS/2.0 (Simple 4.0)
+Date: Sun, 09 Sep 2012 21:14:46 GMT
+
+{
+    "/temp/one": {},
+    "/temp/one/two": {},
+    "/temp/one/two/stream3": {
+        "status": "success",
+        "is4_uri": "/temp/one/two/stream3",
+        "PubId": "22ee31ce-5975-434e-9836-762050544d3e"
+    },
+    "/temp/one/three": {},
+    "/temp/one/three/stream4": {
+        "status": "success",
+        "is4_uri": "/temp/one/three/stream4",
+        "PubId": "864a4dd7-fff3-4fc5-8cfb-ca55f86aed7f"
+    },
+    "/temp/one_four": {},
+    "/temp/one_four/two": {}
+}
+\end{lstlisting}
+
+This shows the results of creating the file(s). Each value is the body of the response upon creation.
+
+Subscribing to a stream
+
+StreamFS offers a subscription facility. StreamFS uses the url specified by the ``target'' field in the subscription request to POST the data to the url as soon as it comes into StreamFS. Lets set one up. First, lets create the subscription request object and POST it to the \texttt{/sub} file, which is where the subscription handler lives.
+
+\begin{lstlisting}
+echo "{\"s_uri\":\"/temp/stream1\", \
+\"target\":\"http://localhost:1337\"}" > subreq.json
+curl -i -X POST "http://localhost:8080/sub" -d@subreq.json 
+HTTP/1.1 200 OK
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Fri, 20 Jan 2012 03:51:49 GMT
+
+{
+    "operation": "subscribe",
+    "status": "success",
+    "subid": "eda7f7ee-99a1-4808-8d68-4be2562dd3bd"
+}
+\end{lstlisting}
+
+Notice, the reply includes a unique identifier for this subscription. It also creates a file in the /sub directory as an active file for managing the subscription and attaining information about it.
+
+\begin{lstlisting}
+curl -i -X GET "http://localhost:8080/sub"
+HTTP/1.1 200 OK
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Fri, 20 Jan 2012 03:53:07 GMT
+{
+    "status": "success",
+    "type": "DEFAULT",
+    "properties": {},
+    "children": [
+        "0828106",
+        "all"
+    ]
+}
+\end{lstlisting}
+
+\begin{lstlisting}
+curl -i -X GET "http://localhost:8080/sub/0828106"
+\end{lstlisting}
+
+\begin{lstlisting}
+HTTP/1.1 200 OK
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Fri, 20 Jan 2012 03:53:31 GMT
+
+{
+    "status": "success",
+    "subid": "eda7f7ee-99a1-4808-8d68-4be2562dd3bd",
+    "destination": "http://localhost:1337",
+    "sourceId": "789cf943-bbc8-428e-97ce-03e7cfe5fc12",
+    "sourcePath": "/temp/stream1"
+}
+\end{lstlisting}
+
+Notice, by calling GET on the subscription resource we can obtain information about it. Now lets test the the subscription. Here's a small  Node.js script you can use to act as a simple receiver for the incoming data from the stream.
+
+\begin{lstlisting}
+var http = require('http');
+
+function handlePost(req, res){
+    req.on('data', function(chunk) {
+                    console.log("got some data here");
+                  //console.log("Receive_Event::" + chunk.toString());
+                 });
+    res.writeHead(200, {'Content-Type': 'text/json'});
+    res.end("{\"status\":\"success\"}");
+}
+
+var server= http.createServer(function(req,res){
+    req.setEncoding('utf8');
+
+    console.log(req.headers);
+
+    req.on('data', function(chunk) {
+        console.log("Receive_Event::" + chunk);
+    });
+
+    req.on('end', function() {
+        console.log('on end');
+        console.log("Bytes received: " + req.socket.bytesRead);
+        if(req.method=='POST'){
+            handlePost(req,res);
+        } else{
+            res.writeHead(200, {'Content-Type': 'text/plain'});
+            res.end();
+        }
+    });
+});
+server.listen(1337, "localhost");
+console.log('Server running at http://localhost:1337/');
+\end{lstlisting}
+
+You can copy-paste this code in a file and running using it  Node.js. After you've installed, start it and POST data to the stream resource.
+
+\begin{lstlisting}
+curl -i -X POST "http://localhost:8080/temp/stream1\
+?type=generic&pubid=789cf943-bbc8-428e-97ce-03e7cfe5fc12" \
+-d "{\"data\":123}"
+HTTP/1.1 200 OK
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Fri, 20 Jan 2012 03:59:32 GMT
+
+{"status":"success"}
+\end{lstlisting}
+
+\begin{lstlisting}
+$ node dumblistener.js 
+
+Server running at http://127.0.0.1:1337/
+    
+Receive_Event::
+{
+    "data": 123,
+    "ts": 1327032612,
+    "pubid": "789cf943-bbc8-428e-97ce-03e7cfe5fc12",
+    "timestamp": 1327032612,
+    "PubId": "789cf943-bbc8-428e-97ce-03e7cfe5fc12",
+    "is4_uri": "/temp/stream1/"
+}
+\end{lstlisting}
+
+Notice, the data object is received successfully by the listener script. You write code to consume incoming data through an HTTP POST and run, collect data for whatever streams you have in your StreamFS instance.
+
+Now, if we want to cancel the subscription to stop incoming data from being forwarded to the external script, we simple delete the resource with an HTTP DELETE call to it.
+
+\begin{lstlisting}
+curl -i -X DELETE "http://localhost:8080/sub/0828106"
+HTTP/1.1 200 OK
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Fri, 20 Jan 2012 04:14:48 GMT
+
+{"status":"success"}
+\end{lstlisting}
+
+\section{Creating symbolic links}
+
+A very important feature in StreamFS is the ability to create symbolic links -- files that point to other files. Why is this important? In the case of sensor data management, we want to be able to access the data source through multiple names. So if we have a temperature sensor that is both inside a room and belongs to a set of things I own, I can place it in the room directory and symbolically link to it from my personal directory.
+
+Lets go ahead and create a symbolic link. As usual, we create a json documen with the operation that will be carried out by StreamFS. Lets name the symlink ``stream1\_link''.
+
+\begin{lstlisting}
+echo "{\"operation\":\"create_symlink\",\
+ \"uri\":\"/temp/stream1\", \"name\":\"stream1_link\"}" > \
+ create_symlink.json
+\end{lstlisting}
+Now lets POST it to the ``temp'' file and to create it.
+
+\begin{lstlisting}
+
+curl -i -X POST "http://184.106.109.119:8080/temp" -d@create_symlink.json 
+
+HTTP/1.1 201 Created
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Fri, 20 Jan 2012 23:21:24 GMT
+\end{lstlisting}
+
+If everything went well, you should get a response with the HTTP status code 201. Now that it's up and created, lets go ahead and see how it is listed when we call the parent directory.
+
+\begin{lstlisting}
+curl -i "http://184.106.109.119:8080/temp"
+HTTP/1.1 200 OK
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Fri, 20 Jan 2012 23:21:26 GMT
+
+{
+    "status": "success",
+    "type": "DEFAULT",
+    "properties": {},
+    "children": [
+        "stream1",
+        "stream1_link -> /temp/stream1"
+    ]
+}
+\end{lstlisting}
+
+Notice the child named ``stream1\_link''. The arrow indicate that it is a symbolic link that points to \texttt{/temp/stream1}. 
+Therefore all HTTP requests to \texttt{/temp/stream1\_link} will be forwarded to the \texttt{/temp/stream1} file and the response 
+will look as if it had come from there. Lets check that first hand.
+
+\begin{lstlisting}
+curl -i "http://184.106.109.119:8080/temp/stream1_link"
+HTTP/1.1 200 OK
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Fri, 20 Jan 2012 23:21:38 GMT
+
+{
+    "status": "success",
+    "pubid": "789cf943-bbc8-428e-97ce-03e7cfe5fc12",
+    "head": {},
+    "properties": {
+        "units": "psi"
+    }
+}
+\end{lstlisting}
+
+Compare this to the response we received from \texttt{/temp/stream1} when we created it. Notice, it's the same response. Again, this is a useful way to give multiple names to the same file and we use it in other features in StreamFS, for example to perform various aggregation procedures.
+
+Moving a resource
+
+Sometimes you either make a mistake in naming a file or simply want to place it in another directory. StreamFS supports the move operation that allows you to move any file from one location to another or to rename an existing file.
+
+\begin{lstlisting}
+echo "{\"operation\":\"move\",\
+ \"src\":\"/temp/stream1\", \"dst\":\"/temp/stream2\"}" > \
+ move.json
+curl -i -X PUT "http://localhost:8080/temp" -d@move.json
+HTTP/1.1 200 OK
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Tue, 10 Apr 2012 03:07:24 GMT
+
+{"status":"success"}
+\end{lstlisting}
+
+
+\section{Stream Processing}
+This section starts getting into the stream processing components of StreamFS. StreamFS supports the ability the run javascript processing scripts on streaming data and return the result via a stream file/resource. The user can either query or subscribe to the output of the resource to see the results. In this section we're going to use the previously created stream file in /temp/stream1 as the source stream to feed through the processing element. We will define a processing element, install it, pipe /temp/stream1 through it and obverse the output as it's being processed.
+
+\section{Configuration}
+
+The processing engine in StreamFS communicates with processing elements meant to run on remote machines. Note the contents of the configuration file in lib/local/rest/resources/proc/config/serverlist.json.
+
+\begin{lstlisting}
+{
+    "procservers":[
+        {
+        "name":"proc1",
+        "host":"127.0.0.1",
+        "port":1337
+        }
+    ]
+}
+\end{lstlisting}
+This configuration file consists of a list of process element servers. StreamFS automatically load balances between the servers while trying to maintain the highest leve of efficiency. In other words, it will use all the resources of a single machine until it decides to spawn jobs on a new one due to decreasing performance. For testing, lets use the default configuration which starts a proces-element server on the localhost.
+
+\section{Start the processing element}
+
+If you're administering your own copy of StreamFS you're going to have to fire up the processing layer and update the configuration files in StreamFS to point to their location. Each processing element runs in node. Lets starts it with the following command in a new terminal:
+
+\begin{lstlisting}
+node lib/local/rest/resources/proc/js/runner.js
+\end{lstlisting}
+
+
+\section{Creating a processing job}
+
+The script below is a request to to create a new process. The name is how the name of the file/resource to be created in /proc. The winsize is the window size that will induce the process to run. A winsize of 10 means that when the window has 10 elements it in, pass the window of values to the function defined by func. The materialize keyword is a boolean that sets the output of the function to be saved in the database for querying or not. The timeout parameters is the time out in milliseconds for the process to run. This is a special case where both the winsize and the timeout are specified. The timeout beats out the winsize parameter. In other words, if the timer fires before the buffer has reached winsize, the function runs on the data that is currently in the buffer. Lets save this in a file called saveproc.json.
+
+\begin{lstlisting}
+{
+    "operation":"save_proc",
+    "name":"testproc",
+    "script":{
+            "winsize":10,
+            "materialize":"false",
+            "timeout":20000,
+            "func":function(buffer, state){ 
+                var outObj = new Object();
+                outObj.tag = "processed";
+                return outObj;
+            }
+    }
+}
+\end{lstlisting}
+
+You can use it as a template for getting started with creating different types of processing scripts. Make sure that the processing script doesn't have any errors in it before running. Do not surround the function definition in quotes. The function must take the ``buffer'' variable is an Array of Objects, it also accepts an optional parameter `state' which holds state associated with the process. This is a generic object that is passed to the function each time it runs. The returned element must be an Object. It could be an object with any number of elements in it. This objects will be sent back to StreamFS and made available through the associated stream element for this process output.
+
+The script that you wish to run on the buffer is defined by func. This function takes a buffer, where buffer.length <= winsize, performs some operation on it, and outputs a buffer. If the materialize option is set to true and the output object contains the ``timestamp'' and ``value'' fields, it is saved for processing later on. We create it by POSTing it to /proc.
+
+\begin{lstlisting}
+curl -i -X POST http://localhost:8080/proc -d@saveproc.json
+\end{lstlisting}
+
+This returns a HTTP 201 response. We can check that the new resource has been created with a GET request to /proc.
+
+\begin{lstlisting}
+curl -i http://localhost:8080/proc
+HTTP/1.1 200 OK
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Fri, 11 May 2012 12:24:41 GMT
+
+{
+    "status": "success",
+    "type": "DEFAULT",
+    "properties": {
+        "status": "active"
+    },
+    "children": [
+        "testproc"
+    ]
+}
+\end{lstlisting}
+
+Notice that one of the children is named testproc. Lets call GET on that new resource. Notice the properties object. It contains a variant of the script that was entered. It's the basic code that will be run on the data directed through a running instance of the script.
+
+\begin{lstlisting}
+curl -i http://localhost:8080/proc/testproc
+
+
+HTTP/1.1 200 OK
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Fri, 11 May 2012 12:25:06 GMT
+
+{
+    "status": "success",
+    "type": "PROCESS_CODE",
+    "properties": {
+        "operation": "save_proc",
+        "name": "testproc2",
+        "script": {
+            "winsize": 10,
+            "materialize": "false",
+            "timeout": 20000,
+            "func": {
+                "params": [
+                    "inbuf"
+                ],
+                "text": "var outObj = new Object();  
+                           outObj.tag = \"processed\"; 
+                           return outObj;"
+            }
+        }
+    },
+    "children": [
+        "15a73498cfed"
+    ]
+}
+\end{lstlisting}
+
+
+\section{Start the process}
+
+Lets get a test process started. First lets create a request object and POST it to StreamFS to get the process `installed'.
+
+\begin{lstlisting}
+echo '{"path":"/temp/stream1", "target":"/proc/testproc"}' > subreq.json
+\end{lstlisting}
+
+Now lets post it to the subscription path in /sub to create it.
+
+\begin{lstlisting}
+curl -i -X POST "http://localhost:8080/sub/" -d@subreq.json
+\end{lstlisting}
+
+The response looks like a regular subscription response. However, this is a special subscription. It's a subscription that directs incoming data through a running process.
+
+\begin{lstlisting}
+HTTP/1.1 200 OK
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Fri, 11 May 2012 12:23:37 GMT
+
+{
+    "operation": "subscribe",
+    "status": "success",
+    "subid": "bc2e1035-7f19-4a34-baa2-60e49470a988"
+}
+\end{lstlisting}
+Below I have included a nodejs script that you can copy-paste in order to view the output of the running process. Copy-paste it and fire it up with node.
+
+\begin{lstlisting}
+var http = require('http');
+function handlePost(req, res){
+    console.log("Handling post event");
+    res.writeHead(200, {'Content-Type': 'text/json'});
+    res.end("{\"status\":\"success\"}");
+}
+var server= http.createServer(function(req,res){
+    req.setEncoding('utf8');
+    console.log(req.headers);
+    req.on('data', function(chunk) {
+                console.log("Receive_Event::" + chunk);
+                if(req.method=='POST'){
+                    handlePost(req,res);
+                }
+             });
+
+    req.on('end', function() {
+        console.log('on end');
+    });
+
+    console.log("Bytes received: " + req.socket.bytesRead);
+    if(req.method!='POST'){
+        res.writeHead(200, {'Content-Type': 'text/plain'});
+        res.end();
+    }
+}).listen(1338, "localhost");
+console.log('Server running at http://localhost:1338/');
+
+\end{lstlisting}
+
+
+Notice, the stream resource is a child of the testproc resource that was created when you saved the script. The stream resource was created after the subscription was installed (the initial one) that is piping incoming data through a running instance of the process.
+
+\begin{lstlisting}
+echo '{"path":"/proc/testproc/15a73498cfed/", "target":"http://localhost:1338"}' > subreq2.json
+\end{lstlisting}
+
+Now, we want to subscribe to this resource in order to observe the output of the process as data runs through it.
+
+\begin{lstlisting}
+curl -i -X POST "http://localhost:8080/sub/" -d@subreq2.json
+
+HTTP/1.1 200 OK
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Fri, 11 May 2012 12:30:00 GMT
+
+{
+    "operation": "subscribe",
+    "status": "success",
+    "subid": "14637d35-68d2-4757-bdf8-4438b12fce1f"
+}
+\end{lstlisting}
+Viewing the output
+
+As the process run, the output should look like similar to the output shown below:
+
+\begin{lstlisting}
+{ 'content-type': 'application/json',
+  'cache-control': 'no-cache',
+  pragma: 'no-cache',
+  'user-agent': 'Java/1.7.0_03',
+  host: 'localhost:1338',
+  accept: 'text/html, image/gif, image/jpeg, *; q=.2, */*; q=.2',
+  connection: 'close',
+  'content-length': '66' }
+Bytes received: 247
+Receive_Event::{
+               "tag":"processed",
+               "PubId":"a58227c6-2324-4a6a-bca8-72411d27340f"
+                         }
+Handling post event
+on end
+\end{lstlisting}
+
+\section{Stopping the process}
+
+To stop the process altogether, simple delete the stream resource, the subscription, or even the source, /temp/stream1. Any of those will stop the process altogether.
+
+\begin{lstlisting}
+curl -i -X DELETE http://localhost:8080/proc/testproc2/15a73498cfed
+
+HTTP/1.1 200 OK
+Transfer-encoding: chunked
+Content-type: application/json
+Connection: close
+Date: Fri, 11 May 2012 12:35:41 GMT
+\end{lstlisting}

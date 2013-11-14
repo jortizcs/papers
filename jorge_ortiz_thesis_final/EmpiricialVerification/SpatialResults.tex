@@ -21,7 +21,7 @@ compare the readings at high frequencies.
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|l|}
 \hline
-× & Raw trace & 1st IMF & 2nd IMF & 3rd IMF & Residual\\ \hline
+ & Raw trace & 1st IMF & 2nd IMF & 3rd IMF & Residual\\ \hline
 EHP, Light & 0.7715 & 0.43909 & 0.49344 & 0.63469 & 0.82132 \\ \hline
 EHP, GHP & 0.6370 & 0.0060274 & 0.063546 & 0.16764 & 0.79378 \\ \hline
 \end{tabular}
@@ -44,8 +44,27 @@ to include all the sensors in the dataset.
 
 
 
-\subsection{Initial analysis}
-Lets consider the simple example of Section \ref{problem} where we would like to know if the EHP trace is correlated with the two other traces.
+\subsection{Initial Todai Analysis Results}
+
+
+\begin{figure}[th!]
+\hspace{-2cm}
+\includegraphics[width=1.2\textwidth]{figs/emd_25_26-eps-converted-to}
+\vspace{-1cm}
+\caption{Decomposition of the EHP and light trace using bivariate EMD. IMFs correlation coefficients highlight the intrinsic relationship of the two traces.}
+\label{fig:emd}
+\end{figure}
+
+Figure~\ref{fig:emd} shows the raw traces for the three devices discussed in 
+the previous section (EHP, GHP, light). All three exhibit a diurnal usage pattern.  On weekends, each
+draw less power.   For our initial analysis, we calculated the pairwise 
+correlation coefficient for all sensors in the set.  The correlation coefficient for 
+ the EHP and light is $0.7715$ and the correlation coefficient for the EHP and GHP is $0.6370$.
+Running correlation across them yields high correlation coefficients, mostly
+due to their underlying daily usage pattern.
+
+% Lets consider the simple example of Section \ref{problem} where 
+We would like to know if the EHP trace is correlated with the two other traces.
 Recall that the correlation coefficients of the raw feeds was $0.7715$ and $0.6370$, corresponding to the light 
 and GHP, respectively.
 As stated in previous section this result is correct but not so meaningful, since most of the traces
@@ -61,11 +80,11 @@ We know that the light and EHP serve the same room, and their high-frequency IMF
 our prior knowledge.
 Figure~\ref{fig:emd2} shows a complementary result, for the EHP and GHP comparison.
 The correlation coefficients for the EHP and GHP IMFs suggest that the two may be independent.  In fact, they
-\emph{are} indepdent; they serve completely different rooms in the building!
-
+\emph{are} indepdent; they serve completely different rooms in the building.
 EMD allows us to remove low-frequency trends that add noise to the original analysis.
-By comparing IMFs, we see both intrisically correlated and \emph{uncorrelated} behavior.  In the next
-section we expand our analysis and show the effectiveness of our methodology. 
+By comparing IMFs, we see both intrisically correlated and \emph{uncorrelated} behavior.  
+% In the next
+% section we expand our analysis and show the effectiveness of our methodology. 
 % Although promising, these results must be validated across the rest of the
 % dataset to confirm their significance.  
 
@@ -75,9 +94,9 @@ section we expand our analysis and show the effectiveness of our methodology.
 
 
 
-\subsection{Validation}
-To validate the effectiveness of our approach, we analyze the same three-week time span for \emph{all} 674 
-sensors deployed in the building.
+\subsubsection{Initial Observations}
+% To validate the effectiveness of our approach, 
+We analyze the same three-week time span for \emph{all} 674 sensors deployed at Todai.
 For each trace $S$ we compute two scores: (1) the correlation coefficient between $S$ and the EHP trace
 and (2) the average value of the IMF correlation coefficients.
 
@@ -155,7 +174,7 @@ We combine this observation with a simple classifier to derive colocation.
 
 
 
-\subsection{Spatial Clustering Experimental Results}
+\subsection{SDH Spatial Clustering Results}
 We conduct two sets of experiments. First, we quantify the sensitivity of our method for different threshold values 
 and examine the effect of different time spans on the threshold. We then cluster the traces based on our threshold analysis 
 and compare it with a baseline approach using multidimensional scaling and k-means.
@@ -163,7 +182,7 @@ and compare it with a baseline approach using multidimensional scaling and k-mea
 % Last, we validate the usefulness of the proposed method in a case study.
 
 
-\subsection{Baseline and Metrics}
+\subsubsection{Baseline and Metrics}
 % We exploit a simple approach as baseline to compare with our proposed approach: instead of computing the correlation coefficients between re-aggregated IMFs of sensor feeds, we directly use the raw sensor data to do the correlation analysis and generate the two distributions for thresholding approach evaluation similarly to what described previously.
 
 % As a baseline, we perform correlation analysis on the raw data. We generate two distributions, as previously described, and observe the effects of the choice of threshold on the true/false positive rate.
@@ -189,7 +208,7 @@ while a false-positive (FP) is when a sensor that is not in room is classified a
 \label{fig:cdf}
 \end{figure}
 
-\subsection{Characterizing the Boundary}
+\subsubsection{Characterizing the Boundary}
 To corroborate our boundary-existence hypothesis, we first need to characterize the boundary between sensors in different rooms. 
 We compute the pairwise correlation coefficients (corrcoeffs) between sensor traces in both of populations depicted in Figure~\ref{fig:group}, 
 over different time spans -- ranging from one day to one month.
@@ -239,7 +258,7 @@ gradually converge, as the length of training data increases from one day to one
 are approximately the same as the final convergence value (around 0.07).  In other words, we can determine a threshold from two weeks of data.
 
 
-\subsection{Clustering Results}
+\subsubsection{Clustering Results}
 We cluster the sensor traces over the entire one-month period, and use the roughly 80th percentile corrceff (0.07) as the boundary threshold. 
 A sensor is classified into the cluster with the largest corrcoeff. The clustering result is shown in Table~\ref{tab:cluster}.  A ``1" means the sensor is classified as inside the corresponding room. 
 In general, after obtaining the sensor clusters, we don't know which room each cluster corresponds to without further information such as the metadata of sensors. The labels ``A-E" in Table~\ref{tab:cluster} are used to indicate the ground truth of where each sensor is physically placed since we have such information. Overall, the classification accuracy 

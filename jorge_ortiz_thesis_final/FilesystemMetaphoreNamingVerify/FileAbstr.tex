@@ -55,7 +55,7 @@ a stream file either.
 \begin{tabular}{| r | l | l |}
 	\hline
 	\textbf{type} & \textbf{description} & \textbf{valid operations} \\ \hline
-	default/folder & Container file.  Used to group other  & read, write, delete  \\
+	container & Container file.  Used to group other  & read, write, delete  \\
 				   & kinds of files within it.  &  \\ \hline
 
 	stream & Represents a data stream. & read, write, delete, subscribe, \\
@@ -101,12 +101,12 @@ A detailed description and examples with be presented in later sections.
 \end{center}
 \end{table}
 
-\subsection{Default, Stream, and Controller Files}
+\subsection{Container, Stream, and Controller Files}
 % \subsection{Default/Folder Files}
-A default or folder file serve primarily as a container for other kinds of files.  It is used to group together different kinds of file and
-to represent a common attribute of the file within it.  For example, a default file is usually used to construct the spatial hierarchy.
-Each file at the top level represents a floor, its children are also a set of default file, representing each of the rooms on that floor.
-A default file cannot be deleted unless it is empty.
+A container or folder file serve primarily as a container for other kinds of files.  It is used to group together different kinds of file and
+to represent a common attribute of the file within it.  For example, a container file is usually used to construct the spatial hierarchy.
+Each file at the top level represents a floor, its children are also a set of container files, representing each of the rooms on that floor.
+A container file cannot be deleted unless it is empty (i.e. has no children).
 
 File that represent streams are called stream files.  They are tightly associated with the associated stream data in the timeseries data-store.
 A user created a stream file and that associated stream ``writes'' to it in order to have its data saved.  StreamFS also forwards the
@@ -174,6 +174,27 @@ about the subscription and kill the fowarding process when deleted.
 
 Finally, we used symbolic link (symlinks) the same way they are used in a traditional filesystem.  They are also used to generalize
 the inter-relationship structure in the ERG.  They are a crucial file in the support of multi-naming.
+
+\subsection{Interfaces}
+We built several interfaces to interact with a StreamFS deployment.  Because StreamFS has its own file types and semantics
+we created a native shell application and a web-application console.  The web application console is displayed in 
+Figure~\ref{fig:sfsconsole}.  The console has various features, all mirrored in the shell application.  It provides
+a graphical interface for viewing the files in the deployment, changed the attribute-value pairs associated with file
+
+\begin{figure}[htb!]
+\begin{center}
+\includegraphics[scale=0.6]{figs/sfs_console}
+\caption{StreamFS console.  The tool allows the user to view the namespace as a set of files, interact with the system, and 
+view stream data.}
+\label{fig:sfsconsole}
+\end{center}
+\end{figure}
+
+Also available to the user is the ability to create and manage symbolic links, submit small processing jobs, pipe
+streams to external target or processing jobs, and plot.  The plotter is a basic mechanism to check if streams are 
+active and for exploration purposes.
+
+
 
 % \subsection{Special Files}
 

@@ -1,5 +1,80 @@
 \section{Related Work}
 
+The research community has addressed the detection of abnormal energy-consumption in buildings in numerous ways \cite{katipamula:1review2005,katipamula:2review2005}.
+% Detecting abnormal energy-consumption in buildings has recently received the attention of the research community and different approaches have been studied.
+% 
+
+The rule-based techniques rely on a priori knowledge, they assert the sustainability of a system by identifying a set of undesired behaviors.
+Using a hierarchical set of rules, Schein et al.\ propose a method to diagnose HVAC systems \cite{schein:hvacr2006}.
+In comparison, state machine models take advantage of historical training data and domain knowledge to learn the states and transitions of a system.
+The transitions are based on measured stimuli identified through a domain expertise.
+State machines can model the operation of HVAC systems \cite{patnaik:toist2011} and permit to predict or detect the abnormal behavior of HVAC's components \cite{bellala:buildsys2012}.
+However, the deployment of these methods require expert knowledge and are mostly applied to HVAC systems.
+
+In~\cite{seem:energybldg2007}, the authors propose a simple unsupervised approach to monitor the average and peak daily consumption of a building and uncover outlier, nevertheless, the misbehaving devices are left unidentified.
+
+Using regression analysis and weather variables the devices energy-consumption is predicted and abnormal usage is highlighted.
+The authors of~\cite{brown:buildperf2012} use kernel regression to forecast device consumption and devices that behave differently from the predictions are reported as anomalous.
+Regression models are also used with performances indices to monitor the HVAC's components and identify inefficiencies \cite{zhou:wiley2009}.
+The implementation of these approaches in real situations is difficult, since it requires a training dataset and non-trivial 
+parameter tuning.
+
+Similar to our approach, previous studies identify abnormal energy-consumption using frequency analysis and unsupervised anomaly detection methods.
+The device's consumption is decomposed using Fourier transform and outlier values are detected using clustering 
+techniques \cite{Bellala_buildsys11,wrinch:pes2012,chen:aaaiw2011}. %jakkula
+However, these methods assume a constant periodicity in the data and this causes many false positives in alarm reporting.  %, thus, they report devices usages happening at unusual times although they may not correspond to a faulty operation.
+We do not make any assumption about the device usage schedule.  We only observe and model device relationships.
+% We take advantage of a recent frequency analysis technique that enables us uncover the inter-device relationships~\cite{romain:iotapp12}.
+% The identified anomalies correspond to devices that deviate from their normal relationship to other devices.
+
+Reducing a building's energy consumption has also received a lot of attention from the research community.
+% Since HVACs are one of the major electricity consumer in the buildings, several researchers have mainly focused on reducing the consumption of HVACs.
+The most promising techniques are based on occupancy model predictions as they ensure that empty rooms are not over conditioned needlessly.
+Room occupancy is usually monitored through sensor networks \cite{agarwal:ipsn2011,erickson:ipsn2011} or the computer network traffic \cite{kim:buildsys2010}.
+These approaches are highly effective for buildings that have rarely-occupied rooms (e.g. conference room) and studies show that such approaches
+ can achieve up to 42\% annual energy saving.
+% However, these occupancy model predictions track human activity through sensor networks that usually imply the extra cost and privacy concerns.
+SBS is fundamentally different from these approaches.  SBS identifies the abnormal usage of any devices rather than optimizing the normal usage of specific devices.
+Nevertheless, the two approaches are complementary and energy-efficient buildings should take advantage of the synergy between them.
+
+Recently, there has been increased interest in minimizing building energy consumption.  Our approach
+differs quite substantially from related work.
+Agarwal et al.~\cite{occmodels_buildsys11} present a parameter-fitting 
+approach for a Gaussian model to fit the parameters of an occupancy model to match the occupancy data 
+with a small data set.  
+The model is then used to drive HVAC settings to reduce energy consumption.  We ignore occupancy entirely 
+in our approach.  It appears as a hidden factor in the correlation patterns we observe.
+
+Kim et al.~\cite{kim:buildsys2010} use branch-level energy monitoring and IP traffic from user's PCs to determine the
+causal relationships between occupancy and energy use.  Their approach is most similar to ours.  Understanding how IP 
+traffic, as a proxy for occupancy, correlates with energy use can help determine where inefficiencies may lie.
+
+%{\bf Anomaly Detection Using Projective Markov Models in a Distributed Sensor Network~\cite{buildanomaly}}
+
+%{\bf Duty-cycling buildings aggressively: The next frontier in HVAC control}~\cite{AgarwalBDGW11}
+
+In each of these studies and others~\cite{kaminthermo, buildanomaly}, occupancy is used as a trigger
+that drives efficient resource-usage policies.  Efficiency
+when unoccupied means shutting everything off and efficiency when a space is occupied means anything
+can be turned on.  There is no question that this is an excellent way to identify savings opportunities, however, we
+take a fundamentally different approach.  We are agnostic to the underlying cause or driver for efficient
+policies to be implemented.  More generally, we look to understand \emph{how the equipment is used in
+concert}.  This may help uncover unexpected underlying relationships and can be used in an anomaly detection application
+to establish ``(in)efficient'', ``(ab)normal'' usage patterns.  The latter 
+should identify savings opportunities in cases where the space is unoccupied as well 
+as occupied, because it has to do with the underlying behavior of the machines and how they generally work
+together.  Our approach could help achieve both generality and scale for such an application.
+This article focuses on the first step of this application, the identification of correlated devices.
+% Our approach is flexible to be helpful when the assumption does not hold by either allowing the
+% user to specify what efficient usage is or through the discovery of efficient usage over various time scales.
+% In either case, the flexibility of our approach is its strength from the perspective of generality and scale.
+
+
+
+
+
+
+
 SBS is a practical method for mining device traces, uncovering hidden relationships and abnormal behavior. 
 In this paper, we validate the efficacy of SBS using the sensor metadata (i.e. device types and location), however, these 
 tags are not needed by SBS to uncover devices relationships.

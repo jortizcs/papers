@@ -22,8 +22,10 @@ and the pipe abstraction for processing streaming data.  It also employs the pri
 that all interactions are through the filesystem.
 This eases management of both the raw data and the processing elements that produce derivative streams for further processing.
 In this chapter, we give an overview of the architecture -- all the components, their organization, and their interaction.
-Throughout this chapter, we refer back to the list in section~\ref{sec:shortcomings}, where we enumerated the shortcomings
-in the design of the BMS architecture in the context of building ``app-ification''.
+Throughout this chapter, we refer back to the list in section~\ref{sec:shortcomings}, where we enumerate the shortcomings
+in the design of the BMS architecture in the context of building ``app-ification''.  We also discuss how each component 
+provides one or more of the system properties we aim to provide -- extensibility, scalability, generalizability, and
+ease of management.
 
 
 \section{Overview}
@@ -34,7 +36,8 @@ The four main components are highlighted below:
 
 \item \textbf{Name Register}: The name register maintains both the object id namespace and the hierarchical namespace
 that it expose to external applications.  It also maintains an entity-relationship graph that is used to support
-indirect relationships between objects.
+indirect relationships between objects.  The name register manages various object types as well, which we will discuss
+in Chapter~\ref{chap:mechanisms}.
 
 \item \textbf{Subscription Manager and Forwarding Engine}: The subscription manager manages the input stream and output
 paths to data-processing sinks.  It is part of the publish-subscribe subsystem.  The forwarding engine is used for internal 

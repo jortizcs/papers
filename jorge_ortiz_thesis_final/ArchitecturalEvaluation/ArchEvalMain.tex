@@ -1,11 +1,24 @@
-\chapter{Architectural Evaluation}
+\chapter{Example Applications and API}
 \label{chap:ArchEvalMain}
 
+In this chapter we present an architectural evaluation through one of the 7 applications implemented on StreamFS.
+The name of the application is the \emph{Mobile Energy Lens}.  It was designed to collect building inventory and metering
+information and provide various live, aggregate view of the energy consumption of devices throughout the buidling.
+The application makes use of several StreamFS features and provides a working, real-world example one of our target
+emerging applications.
+We start with a quick overview of the of the StreamFS API and then give a detailed overview of the motivation for
+the Energy Lens application, components and architecture.  We highlight how StreamFS enables this class of applications
+through its features and API.  For problems which StreamFS only provides a partial solution, we demonstrate how that partial
+solution is extended into a full solution design and we present the associated evaluation.
+We also present a mounted Unix FS version of StreamFS towards the end of the chapter.  We describe its use in enabling 
+the use of legacy applications and describe the translation of StreamFS file operational semantics to Unix filesystem
+operational semantics.
+
 \input{ArchitecturalEvaluation/api}
-\input{ArchitecturalEvaluation/console}
-\input{ArchitecturalEvaluation/MountedFSandMatlab}
-\input{ArchitecturalEvaluation/LiveAggregator}
+% \input{ArchitecturalEvaluation/console}
 \input{ArchitecturalEvaluation/energyaudit}
+% \input{ArchitecturalEvaluation/LiveAggregator}
+\input{ArchitecturalEvaluation/MountedFSandMatlab}
 \input{ArchitecturalEvaluation/related}
 \input{ArchitecturalEvaluation/summary}
 

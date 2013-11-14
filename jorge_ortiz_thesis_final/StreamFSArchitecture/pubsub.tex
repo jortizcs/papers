@@ -12,6 +12,7 @@ Our pub/sub engine is also tightly coupled with the namespaces exposed to users,
 to control the space coupling between the publisher and the subscriber (similar to TIBCO~\cite{tibco}).  
 
 \subsection{Space decoupling}
+Space decoupling is achieved when the publisher and subscriber do not know of each other.
 By its very design, space decoupling is achieved.  Publisher do not hold a reference to the subscriber and subscribers do not
 hold references to publishers.  However, because of the coupling of a full pathname and an object, subscriptions to topics
 expressed as a full pathname refer to the single publisher.  Since we maintain a one-to-one mapping between the
@@ -21,6 +22,7 @@ to obtain all the feeds for \texttt{/soda/4F/*} then all the publishers that hav
 to the subscriber sink.  Space decoupling in achieved because the subscriber and the publishers are unknown.
 
 \subsection{Time decoupling}
+Time decoupling is achieved when the publisher(s) and subscriber(s) are not interacting at the same time.
 Time decoupling is achievable through the timeseries data store.  Publisher push data to StreamFS whether or not subscribers are
 online.  Moreover, data may be received at the subscriber even if the publisher becomes disconnected.  Currently, subscribers do
 not receive all information that was missed.  In order to achieve fill time-decoupling, we allow the subcription
@@ -28,6 +30,8 @@ target to enable or disable the option to buffer all missed readings for an asso
 target it offline.
 
 \subsection{Synchronization decoupling}
+Synchronization decoupling is when publishers are not blocked while producing events and subscribers get asynchronously notified
+of an event while it is engaged in another other process (i.e. it is not blocking on wait).
 Sychronization decoupling is achieved by the publisher and subscribers through StreamFS.  Events are received out of sequence
 from their arrival to StreamFS.  This is true even when the subscription target is a processing element.  The thread that buffers
 incoming data for each processing element is seperate from the thread where the process is executed.

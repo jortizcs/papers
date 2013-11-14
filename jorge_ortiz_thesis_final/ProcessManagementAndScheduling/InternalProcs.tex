@@ -93,71 +93,12 @@ The messages received from the \emph{message router} in the PE are annotated wit
 to update the associated instance file in StreamFS.  Again, everything is managed in through filesystem.  So errors and data
 are exposed to external applications through the meta/data in the files.
 
-
-\subsection{Aggregation Points}
-\label{sec:aggpts}
-StreamFS distinguishes between nodes that represent streaming data sources and those that do not.  Those that do not, 
-however, can be tagged as aggregation points.  As part of the tagging processes, a user specifies the units of aggregation, with 
-additional options for cleaning and processing.  When node is tagged as an aggregation point all the points root at that
-node in the tree are set as aggregation points and all streams are aggregated and save to the timeseries database.
-Since streams are not synchronized (i.e. they do not produce data at the same time) each time a value arrives from a
-sensor the value for all other streams is interpolated and aggregated along the \emph{unit} level dimension.
-%an example?
-
-This propogates up to the aggregation point and all of it is saved in the timeseries database.  The aggregation function
-can either be specified by the user, with some defaults made available by StreamFS, such as \emph{avg, sum, max, min}.
-Aggregation points are also critical for support OLAP-style queries and \emph{dynamic aggregation}, discussed in
-the next two sections.
-
-%FILL IN WITH REAL GRAPH
-\begin{figure}[htb!]
-\begin{center}
-\includegraphics[scale=0.6]{figs/aggtree}
-\caption{This shows an illustration of the aggregation tree used by \emph{dynamic aggregation}.  Data flows from 
-the leaves to the root through user-specified aggregation points.  When the local buffer is full the streams
-are separated by source, interpolated, and summed.  The aggregated signal is foward up the tree.}
-\label{fig:aggtree}
-\end{center}
-\end{figure}
-
-% Aggregation points combine the underlying entity-relationship graph with in-network aggregation.  It treats
-% each node in the graph as a potential point of aggregation on a particular data type.  
-For example,
-if we need to compute aggregates of \emph{KW} data and we declare the node for a particular room as
-the point of aggregation, we accept data from all children of that node that, whose units are in \emph{KW},
-and add the streams together over pre-defined window size or pre-defined timeouts.
-
-The scheme is hiearchical, so a node only accepts data from its children and only sends data to its parent.
-StreamFS checks for cycles when before node insertion and prevents double-counting errors by only allowing 
-aggregation-points that are roots of a tree that is a sub-graph of the entity-relationship graph.  In our deployment,
-each view is a managed as an independent hierarchy.  So the hierarchy of \emph{spaces} is separate from
-the \emph{inventory} hierarchy or the \emph{taxonomy} hierarchy.  This allows us to ask questions with a particular
-view in mind, without conflict, and is a natural fit for our aggregation scheme.
-
-% \subsubsection{How it works}
-Although there are different semantics applied to different node types at the application layer, StreamFS only knows
-about two types of nodes: (1) default nodes and (2) stream nodes.  The main difference is that \emph{default} nodes
-are not explicitly associated with data coming from a sensor and \emph{stream} nodes are.  Furthermore, default
-nodes can have children, while stream nodes cannot.  In our application, meters are represented by default nodes
-and each stream of data they produce is a stream node.
-
-When an aggregation point is chosen and enabled, dynamic aggregation places a buffer at the node for the type
-of data that should be aggregated.  If we want to aggregate \emph{KW} data, we specify the type and send an enable-aggregation
-request to the node through an HTTP {\texttt POST} to the path for that node.  The flow of data starts at the leaves when
-a stream node received data from a sensor through HTTP {\texttt POST}.  As data arrives it is immediately
-forwarded upstream to the parent(s).  If a node that receives data from its children is an aggregation point it buffers
-the data, otherwise it fowards it to its parent.
-
-Ignoring the timeouts for now, lets imagine the parent is a point of aggregation and its buffer is full.  At this point
-the parent separates data into bins for each source and cleans it for aggregation through interpolation.  The main
-operation is to \emph{stretch} and \emph{fill} that data with linearly interpolated values.  The \emph{stretch}
-operation orders all the timestamps in increasing order and for each bin (signal) interpolates the values using the
-first (last) pair of data points.  If there is only a single data point, the stretch uses it as the missing value.
-The \emph{fill} operation find the nearest timestamps that are less-than and greater-than the missing sampling time, 
-uses their values to determine the equation of a line between them and interpolates the missing value using that equation.
-Once this is done for each signal, the values are added together for each unqiue timestamp and the aggregated
-signal is reported to the parent, where the operation occurs recursively to the root.
-Figure~\ref{fig:aggtree} shows an illustration of its operation.  
+Note, the process manager maintains a mapping between job instances and PE's.  It also notes the machine the PE is running on.  The
+\emph{instance monitor} allows the process manager to make decisions about job migration in case of failure.  PEs are designed
+to function independently from one another.  This allows the process cluster to scale linearly with the load -- in terms of
+the number of streams being processed and the number of active jobs.  Like the other components in StreamFS, it is 
+\emph{horizontally scalable}.  The process manager serves as a single point of failure.  If it fails it must be restarted manually.
+Any messages sent from the PE to the process manager during the down period is lost.
 
 % Our contributions are:  
 
@@ -175,16 +116,16 @@ Figure~\ref{fig:aggtree} shows an illustration of its operation.
 % \item Introduction to OLAP.
 % \item Explanation of ERG in StreamFS.
 % \end{itemize}
-Online analytical processing (OLAP) is a processing layer that provides summurization of data
+Online analytical processing (OLAP) is a processing layer that provides summarization of data
 from a set of underlying data repository (date warehouses).  Traditionally, OLAP is used to process
-business data.  Business data summurization allows an analyst to ask targetted questions about aggregates 
+business data.  Business data summarization allows an analyst to ask targetted questions about aggregates 
 and trends in their data.  The data is typically multidimensional in nature and operations can be performed with
 respect to those dimensions and their inter-relationship.  In our deployments, we find that most queries are 
 similar to OLAP queries with scan-heavy queries across the time dimension.
 
-We introduce an optional mechanism that can perform hierarchical aggregates across a unit of measure, used in combination
+We introduce a mechanism that can perform hierarchical aggregates across a unit of measure, used in combination
 with the timeseries data store to support scan-heavy queries, called \emph{aggregation points}.  We discuss
-these in more detail in section~\ref{sec:aggpts}.  However, before discussing aggregation point, we give details
+these in more detail in section~\ref{sec:aggpts}.  However, before discussing aggregation points, we give details
 on how we make use of the entity-relationship graph and timeseries database to support OLAP-style queries.
 
 OLAP schemas logically construct a hypercube with different dimensions along each axis.  We presented a visual translation of
@@ -252,6 +193,78 @@ can effectively construct a pivot-style query.
 
 
 
+\subsection{Aggregation Points}
+\label{sec:aggpts}
+StreamFS makes use of OLAP-style mechanism to provide the end-user with \emph{aggregation points} in the hierarchy.
+StreamFS distinguishes between nodes that represent streaming data sources and those that do not.  Those that do not, 
+however, can be tagged as aggregation points.  
+% As part of the tagging processes, a user specifies the units of aggregation, with 
+% additional options for cleaning and processing.  
+When node is tagged as an aggregation point all the points root at that
+node in the tree are set as aggregation points and all streams are aggregated and save to the timeseries database.
+Since streams are not synchronized (i.e. they do not produce data at the same time) each time a value arrives from a
+sensor the value for all other streams is interpolated and aggregated along the \emph{unit} level dimension.
+%an example?
+
+This propogates up to the aggregation point and all of it is saved in the timeseries database.  The aggregation function
+can be specified by the user, with the default set to as \texttt{sum}.  Other options include \emph{avg, sum, max, min} and
+a custom function that can be specified by the user. %pointer to an internal/external process definition file
+% Aggregation points are also critical for support OLAP-style queries and \emph{dynamic aggregation}, discussed in
+% the next two sections.
+
+%FILL IN WITH REAL GRAPH
+\begin{figure}[htb!]
+\begin{center}
+\includegraphics[scale=0.6]{figs/aggtree}
+\caption{This shows an illustration of the aggregation tree used by \emph{dynamic aggregation}.  Data flows from 
+the leaves to the root through user-specified aggregation points.  When the local buffer is full the streams
+are separated by source, interpolated, and summed.  The aggregated signal is foward up the tree.}
+\label{fig:aggtree}
+\end{center}
+\end{figure}
+
+% Aggregation points combine the underlying entity-relationship graph with in-network aggregation.  It treats
+% each node in the graph as a potential point of aggregation on a particular data type.  
+Consider the following example.  We need to compute aggregates of \emph{KW} data and we declare the node for a particular room as
+the point of aggregation, we accept data from all children of that node that, whose units are in \emph{KW},
+and add the streams together over pre-defined window size or pre-defined timeouts.
+
+The scheme is hiearchical, so a node only accepts data from its children and only sends data to its parent.
+StreamFS checks for cycles when before node insertion and prevents double-counting errors by only allowing 
+aggregation-points that are roots of a tree that is a sub-graph of the entity-relationship graph.  In our deployment,
+each view is a managed as an independent hierarchy.  So the hierarchy of \emph{spaces} is separate from
+the \emph{inventory} hierarchy or the \emph{taxonomy} hierarchy.  This allows us to ask questions with a particular
+view in mind, without conflict, and is a natural fit for our aggregation scheme.
+
+% \subsubsection{How it works}
+Although there are different semantics applied to different file types at the application layer, dynamic aggregation
+mainly deals with two types of files: (1) container nodes and (2) stream nodes.  The main difference is that \emph{container} nodes
+are not explicitly associated with data coming from a sensor and \emph{stream} nodes are.  Furthermore, container
+nodes can have children, while stream nodes cannot.  In our application, meters are represented by container nodes
+and each stream of data they produce is a stream node.
+
+When an aggregation point is enabled, dynamic aggregation places a buffer at the node for the type
+of data that should be aggregated.  
+If we want to aggregate \emph{KW} data, we specify the type and send an enable-aggregation
+request to StreamFS.
+% to the node through an HTTP {\texttt POST} to the path for that node.  
+The flow of data starts at the leaves when
+a stream node receives data from a sensor.% through HTTP {\texttt POST}.  
+As data arrives it is immediately
+forwarded upstream to the parent(s).  
+% If a node that receives data from its children is an aggregation point it buffers
+% the data, otherwise it fowards it to its parent.
+
+Ignoring the timeouts for now, lets imagine the parent is a point of aggregation and its buffer is full.  At this point
+the parent separates data into bins for each source and cleans it for aggregation through interpolation.  The main
+operation is to \emph{stretch} and \emph{fill} that data with linearly interpolated values.  The \emph{stretch}
+operation orders all the timestamps in increasing order and, for each bin, interpolates the values using the
+first (last) pair of data points.  If there is only a single data point, the stretch uses it as the missing value.
+The \emph{fill} operation find the nearest timestamps that are less-than and greater-than the missing sampling time, 
+uses their values to determine the equation of a line between them and interpolates the missing value using that equation.
+Once this is done for each signal, the values are added together for each unqiue timestamp and the aggregated
+signal is reported to the parent, where the operation occurs recursively to the root.
+Figure~\ref{fig:aggtree} shows an illustration of this processing structure.
 
 
 % \subsection{Dynamic Aggregation}
@@ -266,13 +279,19 @@ can effectively construct a pivot-style query.
 \subsubsection{Dealing with dynamics}
 \label{sec:dynagg}
 
-This approach deals with changes in the graph quite naturally.  All aggregation point deal only with local data, so
+This approach deals with changes in the graph quite naturally.  All aggregation points deal only with local data, so
 a node is only concerned about the children that give it data and the parent to send data to.  As objects in the environment
 move from place to place and these changes are captured, the entity-relationship graph also changes to reflect the move.
 This change in aggregation constituents is naturally accounted for in the aggregate.  If a child is removed,
 it no longer forwards data to the old parent, therefore the aggregate will reflect that change.
 Note, however, that changes in the entity-relationship graph are indistinguishable from energy-consuming items that have
 been turned off.  For the purposes of aggregation, that is okay.
+
+OLAP-style aggregation is an expensive feature.  Each point in the subtree rooted at the aggregation point is automatically
+activated to produce streaming data.  Special internal processing elements are enabled to compute the aggregates and run
+the pre-processing and communication between the processing unit and name server increases as data is returned from the 
+process elements to be routed to the timeseries data store.  The amount of processing and storage scales linearly with the 
+number of streams and the number of aggregation points in the sub-tree.
 
 
 

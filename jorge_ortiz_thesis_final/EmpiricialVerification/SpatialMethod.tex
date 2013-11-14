@@ -1,59 +1,64 @@
 \section{Spatial Verification Methodology}
 
-\begin{figure}[th!]
-\hspace{-2cm}
-\includegraphics[width=1.2\textwidth]{figs/emd_25_26-eps-converted-to}
-\vspace{-1cm}
-\caption{Decomposition of the EHP and light trace using bivariate EMD. IMFs correlation coefficients highlight the intrinsic relationship of the two traces.}
-\label{fig:emd}
-\end{figure}
+We examine the use of EMD for verifying spatial relationships.  We run our separate analyses on two separate
+data sets.  The first is a data set at Todai and the other is a data set in Sutardja Dai Hall at UC Berkeley.
+For the Todai data set, we use a simple methodology whereby we run a pairwise correlation analysis on the IMFs
+for traces in that building.  We create clusters of traces that share a high correlation value and examine
+the spatial characteristics of the clusters as we sweep through the acceptance threshold on the correlation
+values.  
 
-\begin{figure}[tb]
-\hspace{-2cm}
-\includegraphics[width=1.2\textwidth]{figs/emd_25_41-eps-converted-to}
-\vspace{-1cm}
-\caption{Decomposition of the EHP and GHP trace using bivariate EMD. IMFs correlation coefficients highlight the intrinsic independence of the two traces.}
-\label{fig:emd2}
-\end{figure}
+The second analysis is on a separate data set in Sutardja Dai Hall.  There, we expand the methodology from the Todai 
+dataset and apply machine learning techniques to systematize the clustering processes.  We also examine
+the effectiveness of our clustering algorithm as we sweep through a series of threshold values.
+We present both methodologies and results in this section.
 
-
-\begin{figure}[ht!]
-\centering
-	\includegraphics[width=.4\textwidth]{figs/25.png}
-\caption{Trace from an Electric Heat Pump (EHP) captured in 2011 from July 4th to July 24th. Data is 
-normalized and aggregated into 30 minutes time bins.}
-\label{fig:raw_ehp}
-\end{figure}
-
-\begin{figure}[ht!]
-\centering
-	\includegraphics[width=.4\textwidth]{figs/26.png}
-\caption{Light traces from captured in 2011 from July 4th to July 24th. Data is 
-normalized and aggregated into 30 minutes time bins.}
-\label{fig:raw_light}
-\end{figure}
-
-\begin{figure}[ht!]
-\centering
-	\includegraphics[width=.4\textwidth]{figs/41.png}
-\caption{Traces from a Gas Heat Pump (EHP) captured in 2011 from July 4th to July 24th. Data is 
-normalized and aggregated into 30 minutes time bins.}
-\label{fig:raw_ghp}
-\end{figure}
+% \begin{figure}[tb]
+% \hspace{-2cm}
+% \includegraphics[width=1.2\textwidth]{figs/emd_25_41-eps-converted-to}
+% \vspace{-1cm}
+% \caption{Decomposition of the EHP and GHP trace using bivariate EMD. IMFs correlation coefficients highlight the intrinsic independence of the two traces.}
+% \label{fig:emd2}
+% \end{figure}
 
 
+% \begin{figure}[ht!]
+% \centering
+% 	\includegraphics[width=.4\textwidth]{figs/25.png}
+% \caption{Trace from an Electric Heat Pump (EHP) captured in 2011 from July 4th to July 24th. Data is 
+% normalized and aggregated into 30 minutes time bins.}
+% \label{fig:raw_ehp}
+% \end{figure}
 
-For this investigation, we focus on a three-week span in the summer of 2011 (from July 4th to July 24th).
+% \begin{figure}[ht!]
+% \centering
+% 	\includegraphics[width=.4\textwidth]{figs/26.png}
+% \caption{Light traces from captured in 2011 from July 4th to July 24th. Data is 
+% normalized and aggregated into 30 minutes time bins.}
+% \label{fig:raw_light}
+% \end{figure}
+
+% \begin{figure}[ht!]
+% \centering
+% 	\includegraphics[width=.4\textwidth]{figs/41.png}
+% \caption{Traces from a Gas Heat Pump (EHP) captured in 2011 from July 4th to July 24th. Data is 
+% normalized and aggregated into 30 minutes time bins.}
+% \label{fig:raw_ghp}
+% \end{figure}
+
+\subsection{Todai Data Set Analysis Methodology}
+For the first investigation, we focus on a three-week span in the summer of 2011 (from July 4th to July 24th).
 The dataset captures regular work days, weekends, and one holiday (July 18th).  This timeframe captures
 the typical usage of the equipment, triggered by occupant activity.  For the initial
-analysis, we focus on three sensors; two water pumps and a light feed.  The first pump is an 
-``electric heat pump'' and is labled as EHP, the second  is a ``gas heat pump''
-and labeled as GHP.  The room lighting system serves the same room as the EHP.  The GHP
-serves a different room on the same floor.  The expanded portion of our analysis pivots around the EHP
+analysis, we focus on three sensors; two pumps -- eletric heat pump (EHP) and a gas heat pump (GHP) and a light feed,
+that measure the light level is lumens.  
+% The first pump is an 
+% ``electric heat pump'' and is labled as EHP, the second  is a ``gas heat pump''
+% and labeled as GHP.
+The room lighting system serves the same room as the EHP.  The GHP
+serves a different room on the same floor.  The expanded portion of this analysis pivots on the EHP
 and does a pairwise comparison between it and all other sensors in the building.
-Computationally, this approach does not scale to a large number of sensors.  For future work, we will
-examine various heuristics to narrow the search space before running pairwise comparisons.
-
+% Computationally, this approach does not scale to a large number of sensors.  For future work, we will
+% examine various heuristics to narrow the search space before running pairwise comparisons.
 We use EMD to detrend each of the traces and pay particularly close attention to the high-frequency IMFs.  Our 
 hypothesis is that correlating at the higher frequencies will yield more meaningful comparisons.
 In buildings, metadata is poorly and unsystematically managed within a single system domain.  Moreover, 
@@ -61,14 +66,6 @@ with the ever growing number of additional sub-meters, it is important to quickl
 sensor data from multiple systems to understand the full state of the building.  It is also important to 
 understand how sensors are used in concert.  Anomalies in usage may indicate underlying problems with 
 the equipment or inefficient/incorrect usage.  
-
-Figure \ref{fig:raw} shows the raw traces for the three devices discussed in 
-the previous section (EHP, GHP, light). All three exhibit a diurnal usage pattern.  On weekends, each
-draw less power.   For our initial analysis, we calculated the pairwise 
-correlation coefficient for all sensors in the set.  The correlation coefficient for 
- the EHP and light is $0.7715$ and the correlation coefficient for the EHP and GHP is $0.6370$.
-Running correlation across them yields high correlation coefficients, mostly
-due to their underlying daily usage pattern.
 
 
 % \begin{figure}[t!]
@@ -81,7 +78,21 @@ due to their underlying daily usage pattern.
 % \end{figure}
 
 
-\subsection{Distribution}
+\subsection{Sutardja Dai Hall Analysis Methodology}
+The methodology used in the SDH is more extensive and consists of several steps. Each is discussed in great details
+in this section.
+
+\subsubsection{Distribution Analysis}
+For the second part of our evaluation, we perform an empirical study on sensor data collected from 15 sensors across 5 rooms. 
+Each room has three sensors: a temperature sensor, a $CO_{2}$ sensor,  and a humidity sensor. 
+The data from these is reported to an  
+sMAP~\cite{smap} archiver. The data set used comes from two separate deployments: one is a deployment~\cite{Jay} lasting 
+over 6 months on several floors in Sutardja Dai Hall (SDH) at UC Berkeley, where one sensor box -- which contains a thermometer, a humidity sensor
+ and a $CO_{2}$ sensor -- is placed in each room. The box reports data over 6LowPAN~\cite{6lowpan} to a sMAP archiver every 
+ 15 seconds. The other is a long-term deployment comprised of thousands of sensors in dozens of buildings on campus. 
+ We choose the portion of the SDH data set where the sensor devices, accessible via BACnet~\cite{BACnet}, report data to the archiver every few minutes. 
+ Due to intermittent data loss, we pick a time span without interruption, starting in January until mid-February, 2013, for evaluation.
+
 Let $ts^{i}_{j,t}$ be a time-series for sensor $j$ in room $i$ observed over some time interval $t$.  For simplicity, we ignore
 $t$ in defining subsequent functions and re-introduce it where necessary.
 For each trace we run EMD and obtain a set of $n$ IMFs, denoted as follows:
@@ -137,7 +148,7 @@ of the relationship between sensors in the same space and those in different spa
 perspective on this relationship.
 
 
-\subsection{Threshold Analysis}
+\subsubsection{Threshold Analysis}
 In order to understand the statistical properties, we generate two corrcoeff distributions by computing the corrcoeff between pairs of traces within and across each room, as detailed in the previous section.
 Figure~\ref{fig:group} shows how we divide the corrcoeff values into two sets.
 The figure shows two intra and two inter sets. Specifically, we examine how a choice in cut-off threshold affects the ability

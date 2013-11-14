@@ -1,3 +1,11 @@
-\section{Type Verification Methodology}
+\section{Categorical Verification Methodology}
+For categorical classification we took a use a very simple approach.  For every trace, we partition the range into 10 bins
+and take the average.  We sort the bins and take the top 2 and the combine it with the average.  This combination forms
+our feature vector with three components.
 
+We run our type analysis on 3 data sets from separate buildings.  The first is a from the Univeristy of Tokyo.  It contain 
+6 types of sensors measuring power, pressure, temperature, CO2, light, and occupancy.
+The nother is a deployment in Sutardja Dai Hall at UC Berkeley which measures 4 different type that include lumens, CO2, 
+temperature, and humidity.
+Finally, we used a data set from Soda hall at UC Berkeley which contains 23 different types.
 

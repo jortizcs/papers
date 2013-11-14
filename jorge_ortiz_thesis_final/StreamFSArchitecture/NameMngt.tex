@@ -17,6 +17,8 @@ In the rest of this section we discuss how both namespaces are managed and imple
 \subsection{Object identifier namespace}
 
 Each new object that's created is assigned a 128-bit unique identifier that uniquely identifies the object.
+The namespace is large enough to support to many object with low probability of collisions, even across
+StreamFS instances.
 Because StreamFS support multiple names that refer to the same object, we created a namespace that is 
 flat and large enough to uniquely identify objects in the building uniquely.  The unique identifier
 is randomly constructed and the probability of colissions is small because of the large namespace.
@@ -42,12 +44,19 @@ referred to by the 5th character which is a `1'.  The other common encoding incl
 Based on our experience with anlysis jobs on building sensor data, we decide it was less import from a naming persepctive than 
 an interpretive one.
 
-The number of sensors in the building can easily grow into the thousands or ten of thousands.  We apply the principals articulated 
-in~\cite{hierarchy_is_dead}, which asserts that hierarchical organization of file is ineffective when dealing with a large number of files
+The number of sensors in the building can easily grow into the thousands or ten of thousands.  We apply the principles articulated 
+in~\cite{hierarchy_is_dead}, which asserts that hierarchical organization of files is ineffective when dealing with a large number of files
 and that databases are poor at providing direct access to the data, but provide a good way to find the information we are looking for.
 We combine these two, as suggested by the authors.  We expose a hierarchical namespace that gives the user direct access to the data
 through a familiar organization of that data.  The organization itself is directly traversable.  Moreover, we separate the metadata from
 the naming structure, so that users looking for various kinds of information can quickly locate it.
+
+The decision to separate these also gives our implementation \emph{better scalability}.  The growth of the namespace, metadata, and data
+happen at different rates.  We can tailor the acquisition of information about the files depending on the type of information
+being requested.  For example, if the query is metadata-related, we send it to the metadata management cluster, which not only stores
+the metadata, but also indexes it accordingly.  Furthmore, the namespace is easily extendable and provides a natural
+way to group items which eases \emph{management and access}.
+
 We discuss our naming structure in more detail in Chapter~\ref{chap:naming} and give an overview of fundamental challenges that emerge when
 naming must reflect physical associations and the physical environment is changing.
 
@@ -70,7 +79,7 @@ query handle the request accordingly.}
 
 The write-through policy is implemented with a write lock.  Whenever a name server receives a request to create or delete a file it informs the
 other name servers that it wishes to acquire a lock.  To prevent deadlock, we force a lock-acquisition order.  A lock is not acquired unless every
-name server agrees to give up the lock to the requesting name server.  Once the log is acquired, the name server performs the same write on each
+name server agrees to give up the lock to the requesting name server.  Once the lock is acquired, the name server performs the same write on each
 server.  The name server then releases the lock by contacting the other name servers in reverse order.  If a name server has given up a lock
 and not received a release, the lock is released automatically after some time.  If a name server goes down, the name server that acquired the lock
 assumes the release was successful.  The name server list is immutable, they are restarted in practice if they go down.
@@ -80,6 +89,10 @@ We also include file metadata in the memcached layer, so its use reduces the loa
 The security manager essentially maintains an access control list and set of operations that are supported by each file.  By defualt, 
 security is disabled, but some of our deployments did enable it.
 
+The name management layer consists of 3 dependent components, each following the principles of horizontal \emph{scalability}.  The namespaces are
+managed in single replicatable, relational database.  The metadata is managed in a separate MongoDB~\cite{mongodb} database, which is itself
+shardable.  The data associated with streams is managed in a shardable timeseries database.  We follow the principle of scal-out
+system in sub-component for \emph{scalability}.
 
 
 

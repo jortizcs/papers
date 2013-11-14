@@ -1,15 +1,17 @@
 \section{Summary}
 
 
-\subsection{Functional Verification}
+% \subsection{Functional Verification}
 
 % future work
-This paper aims to establish a methodology to identify abnormalities in device power traces and inter-device usage patterns.
-In addition, we are planning to apply this method to online detection using, for example, a sliding window to compute an adaptive reference matrix that evolve in time.
-However, designing such system raises new challenges that are left for future work.
+This chapter aims to establish a set of methodology for classifying traces and verifying that relationships specified by
+users are accurate and continue to stay accurate over time.  We present empirical techniques to identify abnormalities in 
+device power traces and inter-device usage patterns.
+% In addition, we are planning to apply this method to online detection using, for example, a sliding window to compute an adaptive reference matrix that evolve in time.
+% However, designing such system raises new challenges that are left for future work.
 
-The goal of this work is to assist building administrators in identifying misbehaving devices in large building sensor
-deployments.  
+% The goal of this work is to assist building administrators in identifying misbehaving devices in large building sensor
+% deployments.  
 We proposed an unsupervised method to systematically detect abnormal energy consumption in buildings: the Strip, Bind, and Search (SBS) method.
 SBS uncovers inter-device usage patterns by striping dominant trends off the devices energy-consumption trace.
 Then, it monitors device usage and reports devices that deviate from the norm.  
@@ -20,7 +22,7 @@ The abnormal consumption identified in these two buildings are mainly energy was
 The most important one is an instance of a competing heater and cooler that caused the heater to waste around 2500~kWh.
 
 
-\subsection{Spatial Verification}
+% \subsection{Spatial Verification}
 
 EMD allows us to effectively identify fundamental relationships between sensor traces.
 We believe that identifying meaningful usage-correlation patterns can help reduce oversights
@@ -42,7 +44,7 @@ With our approach this could have been identified and corrected.  In future work
 package our solution to serve these kinds of applications.
 
 
-This paper set out to examine the underlying relationship between sensor traces to find interesting correlations
+This chapter we also set out to examine the underlying relationship between sensor traces to find interesting correlations
 in use.  We used data from a large deployment of sensors in a building and found that direct correlation analysis on the raw
 traces was not discriminatory enough to find interesting relationships.  Upon closer inspection, we noticed that
 the underlying trend was dominating the correlation calculation.  In order to extract meaningful behavior this trend has
@@ -64,14 +66,15 @@ and use these models to establish ``(ab)normal'' usage patterns.  We hope to tak
 supervised learning approach to distinguish between ``(in)efficient'' usage patterns as well.
 
 
-\paragraph{Bi-modal Distribution} From the results illustrated in Figure~\ref{fig:cdf}, we observe a bi-modality in the corrcoeff 
+% \paragraph{Bi-modal Distribution} 
+From the results illustrated in Figure~\ref{fig:cdf}, we observe a bi-modality in the corrcoeff 
 distribution for the two population sets.  Sensors in the same room correlate to each other more (typically a corcoeff of 0.4 or higher)
 than sensors in different rooms.  % have much smaller corrcoeff values. 
 This bi-modal distribution may provide insight for us to 
 % lays the foundation for us to 
 understand the boundary and search for an effective discriminator more broadly.
 
-\paragraph{Across Different Sources}
+% \paragraph{Across Different Sources}
 To further validate the effectiveness of the proposed method, we should consider using data from different sources.
 For example, in room B in Sutardja Dai Hall, there are two different sets of temperature sensors reporting data at different rates and granularities.
 We demonstrate our ability to classify sensor streams on the same platform (recall the sensor box we used to collect data). 
@@ -79,13 +82,14 @@ It would be more convincing to verify the effectiveness of our method with senso
  different systems -- since separate systems are independent.  For instance, we can use temperature data from the second deployment 
  and use the $CO_{2}$ and humidity sensor data from the first deployment and compare the results to what we have gathered.
 
-\paragraph{Generalizability} In our results, the boundary threshold parameter converges to a narrow interval, as the data set expands 
+% \paragraph{Generalizability} 
+In our results, the boundary threshold parameter converges to a narrow interval, as the data set expands 
 over a longer time range.  This may suggest that our method generalizes across rooms in a building, although further validation in a 
 larger, more representative data set is necessary.  This study looked at 5 different rooms with a large physical separation from one
 another.  A more representative data set would consider all the rooms and pay special attention to rooms that share a common orientation
 and are separated by a single wall or floor slab.
   
-Based on this study, and the previous, related one~\cite{IOT}, we conjecture that local activity modulates various types of physical 
+We conjecture that local activity modulates various types of physical 
 signals -- captured by the various kinds of physical sensors embedded
 throughout the building -- and that those signals are attenuated
 over distance and physical boundaries (such as walls).  We believe that this is what drives our observations. 
@@ -105,9 +109,13 @@ For this initial study, our method is able to classify the sensors of 93.3\% acc
 
 These results are very encouraging. However, we recognize that they are far from definitive. While the rooms in the study were picked arbitrarily, they are neither comprehensive nor a systematic sampling.  While they are clearly separated by our approach, and not by analyses of the raw time series, they do differ substantially in placement and usage.  A key question going forward is, ``how well will highly similar rooms be separated?"  - say, adjacent rooms facing the same side of the building and with similar occupancy. Will these techniques hold, more powerful techniques be required, or is further discrimination intractable? In future work, we will examine how far this method takes us and explore how it may be used in combination with other techniques to improve the results more generally. Automated metadata verification is important to include in the lifecycle of building data management.
 
+We also attempt to address the categorical classification problem.  With fairly simple approaches we can use the mean and standard deviation
+of the trace to classify the category of the trace, as labled by the user.  However, for large traces with many
+overlapping categories we observed that the traces are very similar and cannot be distinguised.  In order to uncover we may need out-of-band
+information.  Statistically they are indistinguishable with the techniques we present.
 
 
-\subsection{Type Verification}
+% \subsection{Type Verification}
 
 
 

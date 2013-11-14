@@ -16,6 +16,57 @@
   {}
 \endgroup
 
+\entry{bdepot}{inproceedings}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Agarwal}{A.}%
+     {Yuvraj}{Y.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Gupta}{G.}%
+     {Rajesh}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Komaki}{K.}%
+     {Daisuke}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Weng}{W.}%
+     {Thomas}{T.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {ACM}%
+  }
+  \keyw{API, applications, buildings, data storage, sensors, web service,
+  wireless sensor networks}
+  \strng{namehash}{AY+1}
+  \strng{fullhash}{AYGRKDWT1}
+  \field{sortinit}{A}
+  \field{booktitle}{Proceedings of the Fourth ACM Workshop on Embedded Sensing
+  Systems for Energy-Efficiency in Buildings}
+  \verb{doi}
+  \verb 10.1145/2422531.2422545
+  \endverb
+  \field{isbn}{978-1-4503-1170-0}
+  \field{pages}{64\bibrangedash 71}
+  \field{series}{BuildSys '12}
+  \field{title}{BuildingDepot: an extensible and distributed architecture for
+  building data storage, access and sharing}
+  \verb{url}
+  \verb http://doi.acm.org/10.1145/2422531.2422545
+  \endverb
+  \list{location}{1}{%
+    {Toronto, Ontario, Canada}%
+  }
+  \field{year}{2012}
+  \warn{\item Can't use 'location' + 'address'}
+\endentry
+
 \entry{occmodels_buildsys11}{inproceedings}{}
   \name{author}{5}{}{%
     {{}%
@@ -632,6 +683,65 @@
   \field{type}{techreport}
   \field{year}{1992}
   \warn{\item Invalid format of field 'month'}
+\endentry
+
+\entry{boss}{inproceedings}{}
+  \name{author}{7}{}{%
+    {{}%
+     {Dawson-Haggerty}{D.-H.}%
+     {Stephen}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Krioukov}{K.}%
+     {Andrew}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Taneja}{T.}%
+     {Jay}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Karandikar}{K.}%
+     {Sagar}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Fierro}{F.}%
+     {Gabe}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Kitaev}{K.}%
+     {Nikita}{N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Culler}{C.}%
+     {David}{D.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {USENIX Association}%
+  }
+  \strng{namehash}{DHS+1}
+  \strng{fullhash}{DHSKATJKSFGKNCD1}
+  \field{sortinit}{D}
+  \field{booktitle}{Proceedings of the 10th USENIX conference on Networked
+  Systems Design and Implementation}
+  \field{pages}{443\bibrangedash 458}
+  \field{series}{nsdi'13}
+  \field{title}{BOSS: building operating system services}
+  \verb{url}
+  \verb http://dl.acm.org/citation.cfm?id=2482626.2482669
+  \endverb
+  \list{location}{1}{%
+    {Lombard, IL}%
+  }
+  \field{year}{2013}
+  \warn{\item Can't use 'location' + 'address'}
 \endentry
 
 \entry{smap}{inproceedings}{}
@@ -2146,6 +2256,71 @@
   \verb http://next10.org/next10/pdf/NXT10_BuildingEfficiencies_final.pdf
   \endverb
   \field{year}{2010}
+\endentry
+
+\entry{fiap}{inproceedings}{}
+  \name{author}{8}{}{%
+    {{}%
+     {Ochiai}{O.}%
+     {H.}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ishiyama}{I.}%
+     {M.}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Momose}{M.}%
+     {T.}{T.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Fujiwara}{F.}%
+     {N.}{N.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ito}{I.}%
+     {K.}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Inagaki}{I.}%
+     {H.}{H.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Nakagawa}{N.}%
+     {A.}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Esaki}{E.}%
+     {H.}{H.}%
+     {}{}%
+     {}{}}%
+  }
+  \keyw{access protocols;building management systems;control engineering
+  computing;FIAP-based system integration;HVAC statuses;University of
+  Tokyo;data-centric building automation systems;facility information access
+  protocol;installation engineering cost minimization;intelligent
+  buildings;maintenance engineering cost minimization;motion detectors;power
+  usages;Automation;Buildings;Data models;Logic gates;Sensors;Servers;Web
+  services;Building Automation;Implementation;Intelligent Building;System
+  Design}
+  \strng{namehash}{OH+1}
+  \strng{fullhash}{OHIMMTFNIKIHNAEH1}
+  \field{sortinit}{O}
+  \field{booktitle}{Computer Communications Workshops (INFOCOM WKSHPS), 2011
+  IEEE Conference on}
+  \verb{doi}
+  \verb 10.1109/INFCOMW.2011.5928814
+  \endverb
+  \field{pages}{229\bibrangedash 234}
+  \field{title}{FIAP: Facility information access protocol for data-centric
+  building automation systems}
+  \field{year}{2011}
 \endentry
 
 \entry{Ortiz2422540}{inproceedings}{}

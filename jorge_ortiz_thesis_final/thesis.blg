@@ -21,20 +21,20 @@ Case mismatch error between cite keys DynamicLeed and dynamicLeed
  :                      }
 I'm skipping whatever remains of this command
 A level-1 auxiliary file: StreamFSArchitecture/SFSArchMain.aux
-A level-1 auxiliary file: ProcessManagementAndScheduling/ProcMngtSchedMain.aux
-A level-1 auxiliary file: FilesystemMetaphoreNamingVerify/FilesystemMetaMain.aux
+A level-1 auxiliary file: StreamFSMechanisms/StreamFSMechanismsMain.aux
 A level-1 auxiliary file: ArchitecturalEvaluation/ArchEvalMain.aux
 Case mismatch error between cite keys acme and ACme
----line 144 of file thesis.aux
- : \citation{acme
- :               }
-I'm skipping whatever remains of this command
-Case mismatch error between cite keys acme and ACme
----line 147 of file thesis.aux
+---line 113 of file thesis.aux
  : \citation{acme
  :               }
 I'm skipping whatever remains of this command
 A level-1 auxiliary file: EmpiricialVerification/VerificationMain.aux
+Case mismatch error between cite keys BACnet and Bacnet
+---line 158 of file thesis.aux
+ : \citation{BACnet
+ :                 }
+I'm skipping whatever remains of this command
+A level-1 auxiliary file: appendix.aux
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
@@ -46,14 +46,14 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated field_info (elt_size=4) to 22408 items from 5000.
+Reallocated field_info (elt_size=4) to 22952 items from 5000.
 Database file #1: thesis-blx.bib
 Database file #2: references.bib
 Warning--I'm ignoring speech's extra "keywords" field
---line 2395 of file references.bib
+--line 2452 of file references.bib
 Warning--I'm ignoring speech's extra "keywords" field
---line 2397 of file references.bib
-Repeated entry---line 2450 of file references.bib
+--line 2454 of file references.bib
+Repeated entry---line 2507 of file references.bib
  : @inproceedings{MPC
  :                   ,
 I'm skipping whatever remains of this entry
@@ -62,36 +62,16 @@ Warning--I didn't find a database entry for "BMS_book"
 Warning--I didn't find a database entry for "stephscale"
 Warning--I didn't find a database entry for "lanz"
 Warning--I didn't find a database entry for "aceee"
+Warning--I didn't find a database entry for "mongodb"
 Warning--I didn't find a database entry for "opentsdb"
 Warning--I didn't find a database entry for "SenkoDB"
 Warning--I didn't find a database entry for "Chen76theentity-relationship"
 Warning--I didn't find a database entry for "sec:shortcomings"
 Warning--I didn't find a database entry for "fig:everythingfile"
-Warning--I didn't find a database entry for "lee:climateEMD2011"
-Warning--I didn't find a database entry for "blanco:bioMed2008"
-Warning--I didn't find a database entry for "huang:signalProc2006"
-Warning--I didn't find a database entry for "hasan:ieeeletter2009"
-Warning--I didn't find a database entry for "nunes:vision2005"
-Warning--I didn't find a database entry for "torres:icassp2012"
-Warning--I didn't find a database entry for "huang:aada2009"
-Warning--I didn't find a database entry for "huang:patent2006"
-Warning--I didn't find a database entry for "katipamula:1review2005"
-Warning--I didn't find a database entry for "katipamula:2review2005"
-Warning--I didn't find a database entry for "schein:hvacr2006"
-Warning--I didn't find a database entry for "patnaik:toist2011"
-Warning--I didn't find a database entry for "bellala:buildsys2012"
-Warning--I didn't find a database entry for "seem:energybldg2007"
-Warning--I didn't find a database entry for "brown:buildperf2012"
-Warning--I didn't find a database entry for "zhou:wiley2009"
-Warning--I didn't find a database entry for "wrinch:pes2012"
-Warning--I didn't find a database entry for "chen:aaaiw2011"
-Warning--I didn't find a database entry for "romain:iotapp12"
-Warning--I didn't find a database entry for "agarwal:ipsn2011"
-Warning--I didn't find a database entry for "erickson:ipsn2011"
-Warning--I didn't find a database entry for "mobile2020"
-Warning--I didn't find a database entry for "tinyurl"
 Warning--I didn't find a database entry for "aceee_mobileaudit"
 Warning--I didn't find a database entry for "streamfs"
+Warning--I didn't find a database entry for "tinyurl"
+Warning--I didn't find a database entry for "fuse"
 Warning--I didn't find a database entry for "hbci"
 Warning--I didn't find a database entry for "cooltown"
 Warning--I didn't find a database entry for "rfid_gonz2006"
@@ -103,50 +83,71 @@ Warning--I didn't find a database entry for "surroundsense"
 Warning--I didn't find a database entry for "dita"
 Warning--I didn't find a database entry for "imp_mobisys2012"
 Warning--I didn't find a database entry for "bridgingphysical"
+Warning--I didn't find a database entry for "lee:climateEMD2011"
+Warning--I didn't find a database entry for "blanco:bioMed2008"
+Warning--I didn't find a database entry for "huang:signalProc2006"
+Warning--I didn't find a database entry for "hasan:ieeeletter2009"
+Warning--I didn't find a database entry for "nunes:vision2005"
+Warning--I didn't find a database entry for "torres:icassp2012"
+Warning--I didn't find a database entry for "huang:aada2009"
+Warning--I didn't find a database entry for "huang:patent2006"
+Warning--I didn't find a database entry for "wrinch:pes2012"
 Warning--I didn't find a database entry for "huber:wiley2009"
 Warning--I didn't find a database entry for "chan:springer2005"
+Warning--I didn't find a database entry for "romain:iotapp12"
+Warning--I didn't find a database entry for "katipamula:1review2005"
+Warning--I didn't find a database entry for "katipamula:2review2005"
+Warning--I didn't find a database entry for "schein:hvacr2006"
+Warning--I didn't find a database entry for "patnaik:toist2011"
+Warning--I didn't find a database entry for "bellala:buildsys2012"
+Warning--I didn't find a database entry for "seem:energybldg2007"
+Warning--I didn't find a database entry for "brown:buildperf2012"
+Warning--I didn't find a database entry for "zhou:wiley2009"
+Warning--I didn't find a database entry for "chen:aaaiw2011"
+Warning--I didn't find a database entry for "agarwal:ipsn2011"
+Warning--I didn't find a database entry for "erickson:ipsn2011"
 Biblatex version: 1.7
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
-You've used 80 entries,
+You've used 83 entries,
             6019 wiz_defined-function locations,
-            1767 strings with 34218 characters,
-and the built_in function-call counts, 282274 in all, are:
-= -- 12026
-> -- 9358
-< -- 3114
-+ -- 3511
-- -- 3367
-* -- 22138
-:= -- 15848
+            1790 strings with 35670 characters,
+and the built_in function-call counts, 295417 in all, are:
+= -- 12607
+> -- 9789
+< -- 3239
++ -- 3691
+- -- 3529
+* -- 23344
+:= -- 16624
 add.period$ -- 0
-call.type$ -- 80
-change.case$ -- 1830
+call.type$ -- 83
+change.case$ -- 1914
 chr.to.int$ -- 63
-cite$ -- 158
-duplicate$ -- 32219
-empty$ -- 28758
-format.name$ -- 6154
-if$ -- 63844
+cite$ -- 164
+duplicate$ -- 33744
+empty$ -- 30050
+format.name$ -- 6500
+if$ -- 66703
 int.to.chr$ -- 0
-int.to.str$ -- 219
+int.to.str$ -- 231
 missing$ -- 0
-newline$ -- 2686
-num.names$ -- 4273
-pop$ -- 25446
+newline$ -- 2848
+num.names$ -- 4467
+pop$ -- 26442
 preamble$ -- 1
-purify$ -- 2118
+purify$ -- 2221
 quote$ -- 0
-skip$ -- 16697
+skip$ -- 17409
 stack$ -- 0
-substring$ -- 7740
-swap$ -- 11255
-text.length$ -- 2212
-text.prefix$ -- 79
+substring$ -- 8141
+swap$ -- 11814
+text.length$ -- 2300
+text.prefix$ -- 82
 top$ -- 1
-type$ -- 3024
+type$ -- 3138
 warning$ -- 0
-while$ -- 1450
+while$ -- 1514
 width$ -- 0
-write$ -- 2605
+write$ -- 2764
 (There were 6 error messages)

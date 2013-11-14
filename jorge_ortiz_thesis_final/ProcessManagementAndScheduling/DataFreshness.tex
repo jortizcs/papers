@@ -15,6 +15,7 @@ should be avoided to minimize prediction inaccuracies in interpolated values.  T
 data from all the streams they are subscribing to, while minimizing the average time that the data for each respective stream has 
 been waiting in the buffer.
 
+
 \begin{algorithm}[h!]
  \SetAlgoLined
  Given a full buffer $b[n]$:\\
@@ -35,7 +36,17 @@ been waiting in the buffer.
  \label{alg:min_buffer}
 \end{algorithm}
 
-
+Some streams show lots of variability, driven by the underlying dynamics of the system being monitored.  For example, the power
+consumption of an active server or laptop tends to have a very active power profile.  For jobs doing aggregation of 
+streaming data, it is often the case that the time when the last reading was received is very different across streams.  
+For example, consider two rapidly changing streams.  If you do not use aggregation, the ideal aggregation scenario is to
+combine the streams from the latest readings for both streams.  That way you minimizing the offset difference between during aggregation.
+If stream 1 produces a reading every 3 seconds and stream 2 produces a reading every 2 seconds, and you aggregate the readings every time you
+have at least one reading from both streams, every 3 seconds.  Somtimes the reading from the 2-second stream will be 1 second old.
+If we compute now the total staleness of the buffer is 1 second, if we wait on more second the total staleness is still 1 second, because
+at t=4 seconds, the 3-second stream will be 1 second old.
+For applications that wish to display the freshest aggregates with the latest results (smallest buffer staleness), we provide an algorithm
+called \texttt{min\_buffer}.
 
 Certain jobs only care about consuming the latest readings from their subscription streams.  They are willing to discard reading until two
 conditions are met:
@@ -45,9 +56,10 @@ conditions are met:
 \item The statelness factor is minimized within the immediate time window.
 \end{enumerate}
 
-This is of particular interest to controllers that need to make control decision based on the freshest data possible and can tolerate some variability
-in the completion time of the control task.  It is also useful in analytical jobs that want to process the latest data from multiple streams while also
-allowing some variability in the completion of the processing task.  Note, there's a fundamental tradeoff
+% This is of particular interest to controllers that need to make control decision based on the freshest data possible and can tolerate some variability
+% in the completion time of the control task.  It is also useful in analytical jobs that want to process the latest data from multiple streams while also
+% allowing some variability in the completion of the processing task.  
+Note, there's a fundamental tradeoff
 between the staleness factor and variability of consumption.  It is sometimes better to wait for the next incoming data point than it is to use what
 is currently in the buffer, as waiting will decrease the overall staleness factor.  Other times, it is better to consume the bufferred data immedaitely.
 This causes a certain amount of variability in the delivery period to the control process.  However, for some applications, this is a reasonable tradeoff

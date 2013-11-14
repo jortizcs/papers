@@ -13,7 +13,7 @@ graph.
 
 The ERG is used throughout our architecture; for answering graph queries by the user and for subscription topic-matching.
 The latter is a slight twist to the topic matching that is done in traditional pub-sub systems.
-We discuss the details of our approach in section~\ref{sec:pubsub}.
+We discuss the details of our approach in section~\ref{sec:ProcMngtSchedMain}.
 
 
 \subsection{ERG to OLAP}
@@ -62,7 +62,7 @@ Below is a typical list of questions:
 
 % Notice, these question span space and time and require aggregation along a dimension, such as power.  
 
-Notice, these high-level questions can translate into categorical plus spatio-temporal queries.
+Notice, these high-level questions translate into categorical and spatio-temporal queries.
 There is also a hierarchical grouping pattern.  For example, to answer the first question we can
 aggregate the data from the individual rooms up to the whole building.  
 % This hierarchical relationship
@@ -74,17 +74,35 @@ to \emph{drill-down}, \emph{roll-up}, and \emph{slice and dice} the data -- trad
 Figure~\ref{fig:olap2erg} shows how we translate an OLAP cube to a hiearchical arrangement of 
 nodes in the ERG.  Time-range queries on any node translates to a slice in the cube along the time dimension.
 \emph{Pivoting} along any dimension can be done by taking slices along the ``cube'' in the bottom of that
-figure.  We describe how this functionality is useful in certain applications, like the mobile energy auditing 
-applications presented in section~\ref{sec:mobileaudit}.
+figure.
+% The dynamic aggregation processing model accomodates many common situations where aggregation of feeds is the primary
+% objective.  For example, consider a power meter attached to a fan running in a variabile air-volume (VAV) unit.
+% There can be several hundred VAV units throughout the entire building, one in each space that is controlled by 
+% the HVAC system.  An energy auditor may want to determine the energy consumption with respect to either a space 
+% or a system or by category.  If these three ``views'' are of interest, there would be three sub-trees in the namespace, 
+% rooted at the building: \texttt{/hvac/}\dots\texttt{/vav/fan}, \texttt{/zones/}\dots\texttt{/vav/fan}, 
+% and \texttt{/loads/}\dots\texttt{/fans}.  The first is the 
+% sub-tree that represents the HVAC sub-components and their inter-connection, the second one describes the set 
+% of zones, and the third one is a categorical partitioning of the loads in the building.  With dynamic aggregation,
+% as data is received from the each fan stream, it continues up-stream to the aggregation points.
+% So, for the total power consumption of the hvac system, you query \texttt{/hvac} (which includes the fans),
+% for the total energy consumed in a particular space you query \texttt{/zone/4F/410} for example (which include the fan
+% feeding that specific zone), and for a categorical aggregate, you could simple query 
+% \texttt{/loads/}\dots\texttt{/fans}.
+We describe how this functionality is useful in performing energy audits and describe its use in
+a mobile energy auditing applications presented in Section~\ref{sec:mobileaudit}.
+
+
+
 % The main difference between this setup and traditional OLAP is the underlying dynamics of the
 % inter-relationships: objects, particularly those meant to represent physical entities, are added and removed and 
 % their inter-relationships change over time.  \emph{The natural evolution of buildings and activities 
 % within them makes tracking energy-flow fundamentally challenging}.
 
-The entity-relationship model helps simplify this problem, both as an interface to the user and a data structure for the aggregation processes.  
+The entity-relationship model helps simplify these problems, both as an interface to the user and a data structure for the aggregation processes.  
 We argue that using the ERG in the building context is reduces the cognitive load and makes the formulation
 of such queries easier.  The inter-relationships are explicitly specified and this allows users to 
-maintain a structure that is more natural.  Also, it has been shown  that a relational model loses this 
+maintain a structure that is more natural.  Also, it has been shown that a relational model loses this 
 information~\cite{SenkoDB}.
 
 
@@ -142,9 +160,10 @@ The graph is maintained in memory.  A typical deployment contains about 10k node
 In our deployments we kept the unit on its own machine with 4 GB of memory.  The footprint is typically several hundred to
 about 1 GB in size.  We used a JUNG graph library~\cite{jung} to maintain the graph.
 
-In the interest of horizontal scalability, we propose that it an ERG unit should be separated into distinct nodes in
+To achieve horizontal scalability, we propose that each ERG unit should be separated into distinct nodes in
 a cluster and graph queries should be answered across the cluster.  This is a topic for future work, however, since a typical
-deployment for a medium-sized building does not require that level of scale.
+building deployment does not require that level of scale.  A collection of buildings, managed through
+a single instance of StreamFS, would likely require a clustered implementation of the ERG.
 
 
 
