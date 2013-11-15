@@ -140,13 +140,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4.11}Summary}{58}{section.157}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\chapternumberline {5}Example Applications and API}{60}{chapter.160}
+\contentsline {chapter}{\chapternumberline {5}Architectural Evaluation}{60}{chapter.160}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5.1}API Overview}{60}{section.161}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5.2}Energy Auditing With Mobile Phones}{62}{section.165}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.3}Energy Lens Architecture and System Challenges}{64}{section.166}
+\contentsline {section}{\numberline {5.3}Energy Lens Architecture and System Challenges}{63}{section.166}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{Challenge 1: Tracking People and Things}{64}{section*.167}
 \defcounter {refsection}{0}\relax 
@@ -154,11 +154,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{Challenge 2: Consistency Management}{67}{section*.195}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Challenge 3: Disconnected Operation}{68}{section*.197}
+\contentsline {subsection}{Challenge 3: Disconnected Operation}{67}{section*.197}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Log dumps and conflict resolution}{70}{section*.201}
+\contentsline {subsubsection}{Log dumps and conflict resolution}{69}{section*.201}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5.4}Energy Lens Analytics, Experience, and Results}{71}{section.203}
+\contentsline {section}{\numberline {5.4}Energy Lens Experience and Results}{71}{section.203}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{Deployment Experience}{71}{section*.204}
 \defcounter {refsection}{0}\relax 
@@ -166,7 +166,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{EnergyLens Evaluation}{75}{section*.215}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Sensing and tag layer}{76}{section*.217}
+\contentsline {subsubsection}{Sensing and tag layer}{75}{section*.217}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Prefetching}{76}{section*.218}
 \defcounter {refsection}{0}\relax 
@@ -178,136 +178,156 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5.7}Summary}{81}{section.226}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\chapternumberline {6}Empirical Verification of System Functionality and Metadata}{82}{chapter.227}
+\contentsline {chapter}{\chapternumberline {6}Empirical Verification of System Functionality and Metadata}{83}{chapter.228}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.1}Verification through Sensor Data}{82}{section.228}
+\contentsline {section}{\numberline {6.1}Verification through Sensor Data}{83}{section.229}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.2}Types of Verification}{83}{section.229}
+\contentsline {section}{\numberline {6.2}Types of Verification}{84}{section.230}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Correlation}{83}{section*.233}
+\contentsline {subsection}{Correlation}{84}{section*.234}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Empirical Mode Decomposition}{83}{section*.234}
+\contentsline {subsection}{Empirical Mode Decomposition}{84}{section*.235}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Reaggregation of Intrinsic Mode Functions}{84}{section*.241}
+\contentsline {subsection}{Reaggregation of Intrinsic Mode Functions}{85}{section*.242}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Functional Verification}{86}{section*.243}
+\contentsline {subsection}{Functional Verification}{87}{section*.244}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Spatial Verification}{87}{section*.244}
+\contentsline {subsection}{Spatial Verification}{88}{section*.245}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Categorical Verification}{88}{section*.246}
+\contentsline {subsection}{Categorical Verification}{89}{section*.247}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.3}Experimental Building Deployments and Datasets}{89}{section.247}
+\contentsline {section}{\numberline {6.3}Experimental Building Deployments and Datasets}{90}{section.248}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Cory Hall - UC Berkeley}{89}{section*.248}
+\contentsline {subsection}{Cory Hall - UC Berkeley}{90}{section*.249}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Sutardja Dai Hall - UC Berkeley}{89}{section*.249}
+\contentsline {subsection}{Sutardja Dai Hall - UC Berkeley}{90}{section*.250}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Soda Hall - UC Berkeley}{89}{section*.250}
+\contentsline {subsection}{Soda Hall - UC Berkeley}{90}{section*.251}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Engineering Building 2 - Todai}{89}{section*.251}
+\contentsline {subsection}{Engineering Building 2 - Todai}{90}{section*.252}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.4}Functional Verification Methodology}{90}{section.252}
+\contentsline {section}{\numberline {6.4}Functional Verification Methodology}{91}{section.253}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Strip and Bind}{92}{section*.255}
+\contentsline {subsubsection}{Strip and Bind}{93}{section*.256}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Search}{93}{section*.257}
+\contentsline {subsection}{Search}{94}{section*.258}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Reference Matrix}{94}{section*.258}
+\contentsline {subsection}{Reference Matrix}{95}{section*.259}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Behavior change}{94}{section*.259}
+\contentsline {subsection}{Behavior change}{95}{section*.260}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Device behavior at different time scales}{96}{section*.265}
+\contentsline {subsection}{Device behavior at different time scales}{97}{section*.266}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{High frequencies}{97}{section*.266}
+\contentsline {paragraph}{High frequencies}{98}{section*.267}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Medium frequencies}{97}{section*.267}
+\contentsline {paragraph}{Medium frequencies}{98}{section*.268}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Low frequencies}{97}{section*.268}
+\contentsline {paragraph}{Low frequencies}{98}{section*.269}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Residual data}{97}{section*.269}
+\contentsline {paragraph}{Residual data}{98}{section*.270}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Methodological Shortcomings}{98}{section*.270}
+\contentsline {subsection}{Methodological Shortcomings}{99}{section*.271}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.5}Functional Verification Experimental Results}{98}{section.271}
+\contentsline {section}{\numberline {6.5}Functional Verification Experimental Results}{99}{section.272}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Anomaly classification}{99}{section*.272}
+\contentsline {paragraph}{Anomaly classification}{100}{section*.273}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{Experimental setup}{99}{section*.275}
+\contentsline {paragraph}{Experimental setup}{100}{section*.276}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Alarms in Todai}{100}{section*.281}
+\contentsline {subsection}{Alarms in Todai}{101}{section*.282}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Alarms in Cory Hall}{101}{section*.287}
+\contentsline {subsection}{Alarms in Cory Hall}{102}{section*.288}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.6}Spatial Verification Methodology}{103}{section.288}
+\contentsline {section}{\numberline {6.6}Spatial Verification Methodology}{104}{section.289}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Todai Data Set Analysis Methodology}{103}{section*.289}
+\contentsline {subsection}{Todai Data Set Analysis Methodology}{104}{section*.290}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Sutardja Dai Hall Analysis Methodology}{103}{section*.290}
+\contentsline {subsection}{Sutardja Dai Hall Analysis Methodology}{104}{section*.291}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Distribution Analysis}{104}{section*.291}
+\contentsline {subsubsection}{Distribution Analysis}{105}{section*.292}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Threshold Analysis}{105}{section*.292}
+\contentsline {subsubsection}{Threshold Analysis}{106}{section*.293}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Experimental Setup}{105}{section*.294}
+\contentsline {subsection}{Experimental Setup}{106}{section*.295}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.7}Spatial Verification Results}{107}{section.297}
+\contentsline {section}{\numberline {6.7}Spatial Verification Results}{108}{section.298}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Initial Todai Analysis Results}{107}{section*.299}
+\contentsline {subsection}{Initial Todai Analysis Results}{108}{section*.300}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Initial Observations}{109}{section*.301}
+\contentsline {subsubsection}{Initial Observations}{110}{section*.302}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{SDH Spatial Clustering Results}{111}{section*.306}
+\contentsline {subsection}{SDH Spatial Clustering Results}{112}{section*.307}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Baseline and Metrics}{111}{section*.307}
+\contentsline {subsubsection}{Baseline and Metrics}{112}{section*.308}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Characterizing the Boundary}{112}{section*.310}
+\contentsline {subsubsection}{Characterizing the Boundary}{113}{section*.311}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Convergence over Time}{113}{section*.311}
+\contentsline {subsection}{Convergence over Time}{114}{section*.312}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Clustering Results}{113}{section*.313}
+\contentsline {subsubsection}{Clustering Results}{114}{section*.314}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.8}Categorical Verification Methodology}{116}{section.316}
+\contentsline {section}{\numberline {6.8}Categorical Verification Methodology}{117}{section.317}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.9}Categorical Verification Results}{116}{section.317}
+\contentsline {section}{\numberline {6.9}Categorical Verification Results}{117}{section.318}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.10}Related Work}{118}{section.323}
+\contentsline {section}{\numberline {6.10}Related Work}{119}{section.324}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6.11}Summary}{122}{section.324}
+\contentsline {section}{\numberline {6.11}Summary}{123}{section.325}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\chapternumberline {7}Lessons Learned and Future Work}{125}{chapter.325}
+\contentsline {chapter}{\chapternumberline {7}Lessons Learned and Future Work}{126}{chapter.326}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\chapternumberline {8}Conclusion}{126}{chapter.326}
+\contentsline {section}{\numberline {7.1}Lesson Learned}{126}{section.327}
 \defcounter {refsection}{0}\relax 
-\contentsline {appendix}{\chapternumberline {A}StreamFS Process Code}{127}{appendix.327}
+\contentsline {subsection}{Data Services Fundamental for Building Applications}{126}{section*.328}
 \defcounter {refsection}{0}\relax 
-\contentsline {appendix}{\chapternumberline {B}StreamFS HTTP/REST Tutorial}{130}{appendix.443}
+\contentsline {subsection}{Analytics is Dependent on Inter-relationships}{127}{section*.329}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.1}Terminology}{131}{section.444}
+\contentsline {subsection}{Centralized Management is better than Distributed Management}{127}{section*.330}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.2}Creating a resource}{131}{section.446}
+\contentsline {subsection}{Accurate Capture of Physical Configuration is Crucial}{128}{section*.331}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.3}Creating a stream file}{134}{section.522}
+\contentsline {subsection}{OS Abstractions for Managing Truly Physical Resources}{128}{section*.332}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.4}Pushing data to a stream file}{134}{section.539}
+\contentsline {section}{\numberline {7.2}Future Work}{129}{section.333}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.5}Bulk data insertion}{137}{section.617}
+\contentsline {subsection}{Explore More Diverse Verification Methods}{129}{section*.334}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.6}Queries}{137}{section.624}
+\contentsline {subsection}{Deeper Exploration of Control Applications}{129}{section*.335}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.7}Bulk default/stream file creation}{139}{section.655}
+\contentsline {subsection}{Version Control For Buildings}{130}{section*.336}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.8}Creating symbolic links}{144}{section.814}
+\contentsline {chapter}{\chapternumberline {8}Conclusion}{131}{chapter.337}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.9}Stream Processing}{146}{section.873}
+\contentsline {appendix}{\chapternumberline {A}StreamFS Process Code}{133}{appendix.338}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.10}Configuration}{146}{section.874}
+\contentsline {appendix}{\chapternumberline {B}StreamFS HTTP/REST Tutorial}{136}{appendix.454}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.11}Start the processing element}{146}{section.885}
+\contentsline {section}{\numberline {B.1}Terminology}{137}{section.455}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.12}Creating a processing job}{147}{section.888}
+\contentsline {section}{\numberline {B.2}Creating a resource}{137}{section.457}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.13}Start the process}{149}{section.958}
+\contentsline {section}{\numberline {B.3}Creating a stream file}{140}{section.533}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.14}Stopping the process}{151}{section.1036}
+\contentsline {section}{\numberline {B.4}Pushing data to a stream file}{140}{section.550}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Bibliography}{152}{section*.1046}
+\contentsline {section}{\numberline {B.5}Bulk data insertion}{143}{section.628}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.6}Queries}{143}{section.635}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.7}Bulk default/stream file creation}{145}{section.666}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.8}Creating symbolic links}{150}{section.825}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.9}Stream Processing}{152}{section.884}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.10}Configuration}{152}{section.885}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.11}Start the processing element}{152}{section.896}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.12}Creating a processing job}{153}{section.899}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.13}Start the process}{155}{section.969}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {B.14}Stopping the process}{157}{section.1047}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{Bibliography}{158}{section*.1057}

@@ -1,18 +1,31 @@
-\chapter{Example Applications and API}
+% \chapter{Example Applications and API}
+\chapter{Architectural Evaluation}
 \label{chap:ArchEvalMain}
 
-In this chapter we present an architectural evaluation through one of the 7 applications implemented on StreamFS.
-The name of the application is the \emph{Mobile Energy Lens}.  It was designed to collect building inventory and metering
+In this chapter we present an architectural evaluation through our deployment experience.  We give an overview of
+our application programming interface (API) and discuss its use in the context on two applications.  We describe
+how we are able to provide \emph{extensibility, generalizability, scalability,} and \emph{ease-of-management}
+through a description of the API and the applications that use it.
+
+The first application is the \emph{Mobile Energy Lens}.  It is designed to collect building inventory and metering
 information and provide various live, aggregate view of the energy consumption of devices throughout the buidling.
 The application makes use of several StreamFS features and provides a working, real-world example one of our target
-emerging applications.
-We start with a quick overview of the of the StreamFS API and then give a detailed overview of the motivation for
-the Energy Lens application, components and architecture.  We highlight how StreamFS enables this class of applications
-through its features and API.  For problems which StreamFS only provides a partial solution, we demonstrate how that partial
-solution is extended into a full solution design and we present the associated evaluation.
-We also present a mounted Unix FS version of StreamFS towards the end of the chapter.  We describe its use in enabling 
-the use of legacy applications and describe the translation of StreamFS file operational semantics to Unix filesystem
-operational semantics.
+emerging applications.  The second application is an mounted Unix filesystem interface for legacy applications.
+We discuss how StreamFS can support legacy applciations with minimal change to application code.  We discuss 
+the mapping from StreamFS file semantics to Unix file semantics.  The mounted FS demonstrates the \emph{generalizability}
+of our architecture.
+
+We also provide a detailed description of each application.  We highlight components of the application architecture
+where StreamFS provides a critical service.  For problems which StreamFS only provides a partial solution, we demonstrate 
+how that partial solution is extended into a full solution design and we present an associated evaluation.
+
+% We start with a quick overview of the of the StreamFS API and then give a detailed overview of the motivation for
+% the Energy Lens application, components and architecture.  We highlight how StreamFS enables this class of applications
+% through its features and API.  For problems which StreamFS only provides a partial solution, we demonstrate how that partial
+% solution is extended into a full solution design and we present the associated evaluation.
+% We also present a mounted Unix FS version of StreamFS towards the end of the chapter.  We describe its use in enabling 
+% the use of legacy applications and describe the translation of StreamFS file operational semantics to Unix filesystem
+% operational semantics.
 
 \input{ArchitecturalEvaluation/api}
 % \input{ArchitecturalEvaluation/console}

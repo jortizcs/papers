@@ -166,6 +166,8 @@ INPUT ArchitecturalEvaluation/ArchEvalMain.aux
 INPUT ArchitecturalEvaluation/ArchEvalMain.aux
 INPUT EmpiricialVerification/VerificationMain.aux
 INPUT EmpiricialVerification/VerificationMain.aux
+INPUT lessons.aux
+INPUT lessons.aux
 INPUT appendix.aux
 INPUT appendix.aux
 OUTPUT thesis.aux
@@ -404,11 +406,11 @@ INPUT ArchitecturalEvaluation/api.tex
 INPUT ArchitecturalEvaluation/api.tex
 INPUT ArchitecturalEvaluation/energyaudit.tex
 INPUT ArchitecturalEvaluation/energyaudit.tex
-INPUT /usr/local/texlive/2012/texmf-dist/tex/latex/lm/omslmr.fd
-INPUT /usr/local/texlive/2012/texmf-dist/tex/latex/lm/omslmr.fd
 INPUT figs/swipes.pdf
 INPUT ./figs/swipes.pdf
 INPUT ./figs/swipes.pdf
+INPUT /usr/local/texlive/2012/texmf-dist/tex/latex/lm/omslmr.fd
+INPUT /usr/local/texlive/2012/texmf-dist/tex/latex/lm/omslmr.fd
 INPUT figs/bindattachstructs.pdf
 INPUT ./figs/bindattachstructs.pdf
 INPUT ./figs/bindattachstructs.pdf
@@ -586,6 +588,9 @@ INPUT EmpiricialVerification/Related.tex
 INPUT EmpiricialVerification/Related.tex
 INPUT EmpiricialVerification/Summary.tex
 INPUT EmpiricialVerification/Summary.tex
+OUTPUT lessons.aux
+INPUT lessons.tex
+INPUT lessons.tex
 OUTPUT appendix.aux
 INPUT appendix.tex
 INPUT appendix.tex
@@ -608,6 +613,8 @@ INPUT ArchitecturalEvaluation/ArchEvalMain.aux
 INPUT ArchitecturalEvaluation/ArchEvalMain.aux
 INPUT EmpiricialVerification/VerificationMain.aux
 INPUT EmpiricialVerification/VerificationMain.aux
+INPUT lessons.aux
+INPUT lessons.aux
 INPUT appendix.aux
 INPUT appendix.aux
 INPUT ./thesis.out

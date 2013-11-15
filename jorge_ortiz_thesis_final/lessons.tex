@@ -1,0 +1,170 @@
+
+\chapter{Lessons Learned and Future Work}
+\label{chap:future}
+
+Our experience with the design, imeplementation, and wide-spread deployment of StreamFS teaches us several lessons about
+the mechanisms necessary to ``app-ify'' the building and the value of opening up the building as a platform for application 
+development in the interest of 1) reducing energy consumption and increased operation efficiency, 2) providing deeper
+insights about the operational dynamics of the building, 3) enabling the building to participate in a broader
+software ecosystem in the interest of more intelligent use of resources. 
+
+\section{Lesson Learned}
+In this section we discuss the lesson learned from deploying our system.  We present 5 statements that we experienced 
+and find true moving forward, all based on our deployment experience and through our many interactions with building
+systems, building managers, and the broader building science software ecosystem. 
+
+\subsection{Data Services Fundamental for Building Applications}
+Fundamentally application in the building must deal with data coming from a distributed, diverse deployment of sensors
+taking physical measurements.  The vast majority of building applications are analytical in nature and as we start coupling
+streaming sensor data with actual building model and control, more data services and jobs will be used across 
+several applications simultaneously.
+
+We implemented and deployed 7 applications on top of StreamFS.  Some applications were for instance management of the various 
+components in
+StreamFS, however we built a viewer console application, which initiated time-series queries and displayed them to the user,
+simple control applications that triggered a cascading re-activation sequence of home appliances when total energy consumption
+was above a user-defined threshold, and the mobile Energy Lens application provides the user with aggregate statistics based on
+the spatial configuration of the deployment.
+
+All these applications shared a small set of processing elements.  One of the elements is for removing statistical outliers, 
+another for interpolating values, one for computing the aggregate load curve, and another to compute a moving average of consumption.
+Because StreamFS provides the ability to define the function once, it could be used across applications.
+The hierarchical model prediction application presented in Chapter~\ref{chap:SensingInBuiltMain} would also require similar
+\emph{clean} and \emph{aggregate} capabiltiies before the data is fed into the model.  For jobs that require any 
+prediction or machine learning, the same assertion holds.
+
+\subsection{Analytics is Dependent on Inter-relationships}
+In StreamFS and the associated applications we demonstrate the value of coupling the inter-relationships explcitly with 
+our aggregation jobs.  Many jobs require the streams be fetched in the context of the metadata of the deployment and what 
+the metadata captures about the placement or category of the stream.  We find that it is convenient to consider
+coupling these associations explicitly, since many applications require it.  We found the use of \emph{aggregation points}
+to be a convenient tools for analysis, both from a historical perspective and from a live feed perspective.
+
+Moreover, queries for determining which sensors are where and how many sensors there are in a particular space are crucial
+for achieving generality across buildings -- a property that is rare to find in \emph{any} aspect of building design and operation.
+Providing the ability to traverse the relationship structure and discover, through the structure, the relationship
+between the sensors allows applications from one building to potentially be dropped into a new building without
+much learning.  With this kind of capabilty, we could write applications for one building and port them across the building
+stock; allowing a solution to have true impact on the entire building stock.
+
+
+\subsection{Centralized Management is better than Distributed Management}
+StreamFS adopts the Unix philosophy where everything is represented as a file.  This makes it simple to manage the raw
+and application-specific derivative data.  It also simplifies the sharing of processing code across applications.  In addition, 
+access control can be provided from a centralized location.  Application writers can devide which streams and processes they 
+want to share from the individual resource level to groups of resources organized as a collection within a container file.
+Generally, when there are many disparate devices that make up a system, there is a tension between extensibility 
+and ease of management.  Large deployment typically enable protocols for joining the network, but not ones that are 
+easy to manage.  The ones that are easy to manage, typically do not handle other kinds of sensors or devices easily joining
+the deployment.
+
+When the deployment is presented as a distributed system to the end user, there are usually complex mechanisms in place for doing 
+discovery.  Disovery over a centralized management system is much easier since it is clear where to target the search.
+Typically the argument against centralized management is a single point of failure, however the web-services model
+deals with centralized services rather well.  The systems is presented in a unified fashion to applications, while 
+internally it is actually distributed; shared for load management and replicated for failure tolerance.  StreamFS follows
+these principles throughout the design of each of its components.
+
+Similar to the proposal by Dixon et al.~\cite{homeos}, we believe that the abstraction should be raised from the network
+to the operating system level.  The Unix philosphy allows us to present unified namespace and access to the building deployment
+information and various levels granularity.  This allowed us to manage many applications simulataneously, control information
+sharing between them, and provide a unified view to the application writer; making it clear what resources are available to her.
+We believe these centralized view is the right one.  Although StreamFS is a distributed system in the cloud, it present a unified 
+layer for access and control which makes application development and management simpler.
+
+
+\subsection{Accurate Capture of Physical Configuration is Crucial}
+As we move towards software-defined building infrastructure and more analytical and control applications rely on building 
+state to make detailed control decision, it becomes very important to accurately capture the physical configuration of the building
+and provide mechanisms for discovering inconsistencies between the virtual representation and the correspinding physical state.
+There is a lot of work in the vision community for constructing a virtual representation of the physical world, accurately.
+In our work we show ways the the data \emph{already being collected from the building sensor deployments} can be used to
+ascertain physical relationships between sensors.  We introduced three kinds of verification -- functional, spatial, and cateogrical --
+however there are other ways we could explore these physical relationships.  For example, we can combine 
+these technique with vision-related work which uses cameras to determine the physical layout of a space and combine
+it to use physical models of heat transfer to determine if the readings we are collecting are accurate.
+
+Ultimately these should inform the layer presented to the application about the accuracy of the deployment information.  We
+explained how inaccuracies leads to errors in aggregation and control.  For software interfaces for the built environment
+to become more widespread, we must solve these issues related to verification.
+
+
+\subsection{OS Abstractions for Managing Truly Physical Resources}
+Mapping the jobs of organizing and controlling access to physical resources, the use of operating system abstractions
+allows us to reason about how to componentize a management architecture and lets us frame how solutions can 
+be constructed as applications that make use of the primitives provided by the operating system components.
+In our work we presented a filesystem abstraction which adopted several data and management services for organizing
+the information in the building.  Related work in the home~\cite{homeos} and in buildings~\cite{boss} take a similar
+approach.
+
+Questions remain about how building models fit into a operating system services architecture.  Perhaps they can be
+included with the verification services.  Ideally, we can start moving towards automated plug-and-play building applications
+with guarantees for service quality and efficient management of physical resources.  We believe that the best way to
+make this a reality it to view the building as a hardware platform and to move towards a truly distributed operating system
+for managing the systems, devices, and applications that run on the building platform.
+
+
+
+\section{Future Work}
+
+We explored many aspect of a design for building information information systems.  However, there are still many open questions have
+have not been tackled in this work.  We discuss three main future or on-going project topics in this section.
+
+\subsection{Explore More Diverse Verification Methods}
+There's a lot of work in capturing the physical state of the environment and building a virtual representation of it.
+Althought SBS shows a lot of promise, in terms of its effectiveness and generality, spatial verification shows poor generality 
+under certain conditions and categorical classification seems to only work with small data sets.  We look to expand our 
+exploration in the two pieces of work that showed fractional success.  We must characterize the conditions for which these
+verification approaches work well and formulate algorithms to detect whether those conditions hold in the data prior to
+initiating those verification processes.  We can partition the characterization to discover the statistical or semantic 
+properties or pieces of information that must be known about the deployment beforehand and tackle those problems only.
+
+For the others, we must explore different techniques that generalize better.  Although it is valuable to solve the problem for
+a small set of homogenous buildings, the real value comes through generalization, since in order to have widespread impact
+solutions must be brought to a large fraction of the building stock, quickly.
+
+
+
+\subsection{Deeper Exploration of Control Applications}
+We did not get a chance to support the kind of control application proposed in the beginning on the dissertation.  It did not
+allow us to experiment with vairous kinds of actuator interfaces for integrating them more generally into the architecture.
+We intend to expand our control application work by implementing model-predictive control processes on building deployments
+that use StreamFS.  We also need to closely examine a diverse set of control interfaces and APIs in order to generalize
+the control interface exposed through StreamFS.
+
+We only explored the class of controllers that consume binary signals.  Specifically, we intergrated with the ACme~\cite{acme}
+wireless power meter to turn devices on and off, remotely.  There are other kinds of controllers, that do not accept binary input.
+They input variable controllers, set-point driven controllers, parameterized controllers, time-based controllers, etc.  For example, 
+controllers based on physical models may used physical configuration-based parameters to determine how to drive the 
+load for the system controlling the space.  These must be considered and applications should be explored in this context
+before a determination can be made.
+
+
+\subsection{Version Control For Buildings}
+Provenance checking is important in many systems.  The building has many actors interacting with it and distributed changes cause
+the once efficient configurations to slowly deviate back to an inefficient state.  Version control would allow us to track changes
+in the deployment and associated configuration decisions.  It also introduces the notion of state rollback, whereby we roll the associated state
+information back to a previous, safe, efficient state.  We would like to explore how rollbacks manifest themselves in the 
+physical environment, since it involves not just rolling back the settings, register values, processes, etc. but the instant 
+rollback operation affects how the physical resources in the environment are activated.  Also, certain conditions \emph{cannot}
+be rolled back, such as the weather conditions, so a rollback operation needs to check if the proper rollback conditions
+are in place before the rollback is committed and executed.
+
+In addition, how do we determine commit conflicts between two committers.  In a traditional version control system it is based on the actual
+data being written to the file.  In the building context, conflict must be determined by models.  Model based on first-principles
+of the underlying physics or statistical models that used several empirically-derived parameters to project the state of 
+the system at some point in time.  For example, if two commits are made to change the setpoint of a thermometer, how to we determine
+that the setpoints will conflict and how to we resolve them.  Both commits are writing to the same devices, so that cannot be the sole
+criteria.  Any approach must consider how the set point affects the state of the room temepature that is controlled by that setting
+or the behavior of the air-handling unit when commits are happening quickly.  Either involves the use of a model to determine
+what the correct behavior is and project whether the new set point will lead to the right behavior.
+We look to explore these and other related concept further and hope that it leads to smart, software-defined buildings.
+
+
+
+
+
+
+
+
+

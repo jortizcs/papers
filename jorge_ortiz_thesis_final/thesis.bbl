@@ -817,6 +817,65 @@
   \field{title}{{USGBC Exploring A New Kind of LEED Plaque}}
 \endentry
 
+\entry{homeos}{inproceedings}{}
+  \name{author}{7}{}{%
+    {{}%
+     {Dixon}{D.}%
+     {Colin}{C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Mahajan}{M.}%
+     {Ratul}{R.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Agarwal}{A.}%
+     {Sharad}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Brush}{B.}%
+     {A.~J.}{A.~J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Lee}{L.}%
+     {Bongshin}{B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Saroiu}{S.}%
+     {Stefan}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Bahl}{B.}%
+     {Paramvir}{P.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {USENIX Association}%
+  }
+  \strng{namehash}{DC+1}
+  \strng{fullhash}{DCMRASBAJLBSSBP1}
+  \field{sortinit}{D}
+  \field{booktitle}{Proceedings of the 9th USENIX conference on Networked
+  Systems Design and Implementation}
+  \field{pages}{25\bibrangedash 25}
+  \field{series}{NSDI'12}
+  \field{title}{An operating system for the home}
+  \verb{url}
+  \verb http://dl.acm.org/citation.cfm?id=2228298.2228332
+  \endverb
+  \list{location}{1}{%
+    {San Jose, CA}%
+  }
+  \field{year}{2012}
+  \warn{\item Can't use 'location' + 'address'}
+\endentry
+
 \entry{MDS}{book}{}
   \name{author}{3}{}{%
     {{}%

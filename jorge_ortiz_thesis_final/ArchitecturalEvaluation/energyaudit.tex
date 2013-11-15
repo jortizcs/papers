@@ -19,7 +19,7 @@ through the primitives made available by StreamFS.
 We examine the challenges in capturing and maintaining a view of the physical world.  We track people and things,
 deal with consistency management issues, and provide mechanisms for dealing with the occasional disconnection.
 % \emph{Without addressing these systems issues, this vision cannot be achieved}.  
-In our work, we deploy a number of
+We deploy a number of
 wireless power meters, use QR codes as a tagging mechanism, and build an android application that interacts directly with
 StreamFS and plug-load devices.
 % \subsection{Approach With StreamFS and Mobile Phones}
@@ -32,8 +32,6 @@ We use these relationships to guide our analytics.
 For example, the load curve of room Y consists of the sum of all the power traces for loads
 inside room Y.  Our work examines \emph{three main challenges} in setting up and deploying a tag infrastructure through the building to 
 support this application.
-
-
 
 The first challenge is related to tracking.  Mobile phones present classical, fundamental challenges related to mobility.  Typically, mobility
 refers to the phone, as the person carrying it moves from place to place.  However, in the energy-attribution
@@ -66,28 +64,28 @@ atomically.  However, StreamFS does not provide atomicity across multiple file o
 log-replay and transaction manager.  Our `Energy Lens' system is deployed in Sutardja Dai Hall at UC Bekreley.  We discuss
 its architecture and design.  
   
-We also discuss novel strategies for tracking moving people/things and describe how we implement these in our system.  In summary, our work
-makes the following contributions:
+% We also discuss novel strategies for tracking moving people/things and describe how we implement these in our system.  In summary, our work
+% makes the following contributions:
 
-\begin{itemize}
-\item We design and implement a system that captures and combines physical entities, their inter-relationships, and real-time sensor data 
-		in buildings.% using mobile phones, qr code, and a cloud-based infrastructure.
-\item We observe that certain combinations of swipes give us useful information to set the location of people and things over time.
-		We codify this observation in our \emph{context-tracker} and use it to maintain consistency between the entity-relationship graph and the 
-		state of the physical world.  To the best of our knowledge, this is radically different from the approaches in standard 
-		localization techniques.  However, we argue that it can be used to \emph{enhance} their accuracy and overall performance.
-\item We implement a prefetching algorithm to obtain context-dependent information to both improve performance and
-		enable disconnected operation.  We also design and implement a log-replay and transaction manager over our data management layer.  We describe how different conflict-resolution policies can be implemented and our rationale for the policies we chose.
-\end{itemize}
+% \begin{itemize}
+% \item We design and implement a system that captures and combines physical entities, their inter-relationships, and real-time sensor data 
+% 		in buildings.% using mobile phones, qr code, and a cloud-based infrastructure.
+% \item We observe that certain combinations of swipes give us useful information to set the location of people and things over time.
+% 		We codify this observation in our \emph{context-tracker} and use it to maintain consistency between the entity-relationship graph and the 
+% 		state of the physical world.  To the best of our knowledge, this is radically different from the approaches in standard 
+% 		localization techniques.  However, we argue that it can be used to \emph{enhance} their accuracy and overall performance.
+% \item We implement a prefetching algorithm to obtain context-dependent information to both improve performance and
+% 		enable disconnected operation.  We also design and implement a log-replay and transaction manager over our data management layer.  We describe how different conflict-resolution policies can be implemented and our rationale for the policies we chose.
+% \end{itemize}
 
-\vspace{0.08in}
+% \vspace{0.08in}
 
 % In the next sections we go through a motivating scenario.  We then discuss some related work, followed 
 % by the system architecture, evaluation, and future directions.
 
 
 \section{Energy Lens Architecture and System Challenges}
-The Energy Lens application aims to approximate the vision described in section~\ref{sec:mobile}.  We tag
+The Energy Lens application aims to approximate the vision described in section~\ref{sec:elensvision}.  We tag
 items with QR codes and allow users to 1) tag and register new items, 
 2) tell us which meters are attached to which items, and 3) scan QR codes to view their load curve over a 
 24-hour period.  Both individual items and spaces are scannable -- spaces present aggregate information
@@ -98,12 +96,18 @@ layer.  In this section we discuss how aspects of each layer address the aforeme
 In deploying the application we run into various issues that inform our design.  
 For example, \emph{QR code reading times vary substantially across phones
 and lighting conditions}.  You must design for the least-common denominator in terms of camera quality and lighting.
-
 Another aspect to consider is network access.  Within our building, although connectivity is mostly ubiquitous, network
 access can be intermittent.  Network access may be unavailable for several reasons, including disassociation from an access point due
 to idleness, dead spots in the building where connectivity to both wifi and 3G/4G are unavailable, multipath-induced
 destructive interference, and various other reasons.  Dealing with these throughout the data collection and update phase is
 especially troublesome.  We discuss mechanisms and algorithms for dealing with disconnected operation.
+
+StreamFS serves as the data management and processing layer.  It must be \emph{extensibile} in order to add and remove
+sensors and contextual information throughout the contextual capture process -- the collection of device inventory,
+descriptive information, and associations between plug-loads and other items and locations in the deployment.
+It must provide \emph{scalability} with the number of sensors and rooms in the building, since all the sensors produce periodic readings
+and live, aggregate statistics is the main goal of the application.  Also, the application is interactive, so many mobile
+phone users are constantly performing lookups.  StreamFS must handle these requirements.
 
 
 \subsection{Challenge 1: Tracking People and Things}
@@ -392,7 +396,7 @@ do not often have reversably reachable addresses.  2) Failure assumes the operat
 of the world.  
 
 
-\section{Energy Lens Analytics, Experience, and Results}
+\section{Energy Lens Experience and Results}
 
 Figure~\ref{fig:tsdata} shows three screen shots of power traces obtained from the ACme deployment, and displayed
 through the Energy Lens.  Notice that there is
@@ -700,7 +704,19 @@ We deployed 20 ACme power meters~\cite{ACme} on a single floor of a building on 
 sMAP~\cite{smap} and forwarded to our processing and data management layer, StreamFS.  We distributed
 the ACmes throughout a single floor in our building and registered various plug loads as being measured by them.  We also tagged
 hundreds of items and locations throughout the entire building.  In total we tagged 20 meters, 20 metered items, 351 un-metered items,
- and 139 rooms over 7 floors.
+ and 139 rooms over 7 floors. 
+
+StreamFS supports the addition and operations to record all the deployment information.  It also supports active aggregates for 
+31 rooms on the 4th floor of the deployment and 1 for the entire building.  The number of active users was no more than 10 at any time.
+Because these number are not that large they do not truly test the scalability of the system.  However, they do demonstrate
+both \emph{extensibility} and \emph{generalizability}.  Without the first property we could not have added the the sensors,
+related information, user context, spatial configuration information and updated it with ease.  Without the second property
+we could not have supported both the collection of metadata and data about the deployment as well as \emph{data services} that
+are absolutely crucial to the success of the Energy Lens application.
+
+Also, we used a single function and instantiated 32 instances of it in the deployment.  This demonstrate the \emph{ease of management}
+property we set to provide through StreamFS.  Because we follow the principle where ``everything is a file'' the entire deployment
+data, metadata, and analytics can be accessed and controlled from the same deployment.
 
 \subsubsection{Prefetching}
 Prefetching occurs when a user enters a new floor, as detected by a floor scan or an item
@@ -721,10 +737,10 @@ in the prefetch-loop response.  This also allows users to continue using the app
 \begin{center}
   \begin{tabular}{| r | c  c | }
     \hline
-    {\textbf No. nodes } & {\textbf Fetch time (sec) } & {\textbf Std. Error (sec)} \\ \hline
-    1 & 0.8902 & 0.0756 \\ \hline
-    10 & 5.7342 & 1.7087 \\ \hline
-    100 & 52.3145 & 14.1146 \\ 
+    \textbf{No. nodes} & \textbf{Fetch time (sec)} & \textbf{Std. Error (sec)} \\ \hline
+    1       &   0.8902      & 0.0756 \\ \hline
+    10      &   5.7342      & 1.7087 \\ \hline
+    100     &   52.3145     & 14.1146 \\ 
     \hline
   \end{tabular}
 \caption{Shows the time to fetch nodes based on the size of the fetch.  The fetch time
@@ -763,7 +779,6 @@ in the ERG to limit the conflict-scope to a sub graph, rather than the entire gr
 on a node either shares an immediate parent with the node that will have an operation undone on it or it the operation
 is on the same node.  By limiting conflict-scope we minimize the number of operation that get execute and, hence, minimize the 
 cost of resolution.
-
 
 
 \begin{table}
