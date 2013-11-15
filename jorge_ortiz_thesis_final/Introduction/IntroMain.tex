@@ -231,33 +231,31 @@ to organize the streaming sensor data, clean and process the stream, and provide
 and actuation channels in the physical world.  We discuss the overall structure of the components of the architecture and how
 they interact with one another.
 
-Chapter~\ref{chap:ProcMngtSchedMain} focuses on the process management component in StreamFS.  The process management component
+Chapter~\ref{chap:mechanisms} dives into the details for the components and mechanisms in StreamFS.
+Section~\ref{chap:ProcMngtSchedMain} focuses on the process management component in StreamFS.  The process management component
 manages the streams and the processes that consume those streams.  It is designed to support processes that are specified by the user
 and managed by StreamFS as well as integrating external processing components and representing them through the file system in StreamFS.
 We discuss some of the challenges and present some solutions to a scheduling problem related to providing fresh data  to processing jobs.
 We also describe how various kinds of aggregation can be performed on the data, using the filesystem and pipe abstraction
 presented and managed by this component.
-
-
-Chapter~\ref{chap:naming} discusses how we represent the world as a collection of files.  StreamFS follows the unix filesystem principal 
+Section~\ref{chap:naming} discusses how we represent the world as a collection of files.  StreamFS follows the unix filesystem principal 
 where everything is a file and this allows us to provide a unified management layer for the entire set of building deployment
 data and metadata.  We discuss the individual file types that we support and their semantics.  We also introduce the fundamental
 challenge of dealing with evolving metadata.  Specifically,  we show how changes in the physical world can present problems
-with the structure and relationships between the files in the system.  We show the basic set of tools that we use to address these problem
-at the end of the chapter.
+with the structure and relationships between the files in the system.  
+% We show the basic set of tools that we use to address these problem
+% at the end of the chapter.
 
 We evaluate the StreamFS in chapter~\ref{chap:ArchEvalMain}.  We describe our experience in deploying StreamFS in several buildings
-at UC Berkeley and the University of Tokyo.  We describe these deployments in the context of 4 applications: 1) a deployment viewer
-application, 2) a real filesystem mount and direct integration with a legacy applications, 3) a real-time visualization and 
-aggregator tool, and 4) a combination of the other applications with a mobile phone fo energy auditing.  We also give an overview of the
-application programming interface and discuss how StreamFS can help build generable, scalable re-useable software within
-buildings.
+at UC Berkeley and the University of Tokyo.  We describe these deployments in the context of 2 applications: 1) a real-time visualization and 
+aggregator mobile phone for energy auditing, and  2) a real filesystem mount and direct integration with a legacy applications. 
+We also give an overview of the application programming interface and discuss how StreamFS can help build generable, scalable 
+re-useable software within buildings.
 
-Finally, we discuss verification of building systems and metadata in chapter~\ref{chap:VerificationMain}.  We introduce 4 types of 
+Finally, we discuss verification of building systems and metadata in chapter~\ref{chap:VerificationMain}.  We introduce 3 types of 
 verification and describe why each of them is crucial to building applications that interact with the physical world through
 a layer of software represent it.  We discuss our work on the Strip, Bind and Search methodology for functional verification, 
-our use of mode decomposition for spatial verification, and timeseries clustering techniques for type classificaiton.  We
-describe value verification but do not present any results in that area.
+our use of mode decomposition for spatial verification, and timeseries clustering techniques for type classificaiton.  
 We discuss future work in chapter~\ref{chap:future} and conclude in chapter~\ref{chap:done}.
 
 
