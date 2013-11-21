@@ -32,7 +32,8 @@ one another at certain bands of importance that contain important physical infor
 
 Empirical Mode Decomposition (EMD) \cite{huang:emd1998} is a technique that decomposes a signal and reveals intrinsic patterns, 
 trends, and noise.
-This technique has been widely applied to a variety of datasets, including climate variables~\cite{lee:climateEMD2011}, medical data~\cite{blanco:bioMed2008}, speech signals~\cite{huang:signalProc2006,hasan:ieeeletter2009}, and image processing~\cite{nunes:vision2005}.
+This technique has been widely applied to a variety of datasets, including climate variables\cite{lee:climateEMD2011}, medical 
+data\cite{blanco:bioMed2008}, speech signals\cite{huang:signalProc2006,hasan:ieeeletter2009}, and image processing~\cite{nunes:vision2005}.
 % for example, it helped to uncover the global surface temperature trends\cite{}, solar activity patterns and predicts climate variables .
 EMD's effectiveness relies on its empirical, adaptive and intuitive approach.
 In fact, this technique is designed to efficiently decompose both non-stationary and non-linear signals without requiring any 
@@ -44,7 +45,9 @@ IMF envelopes defined by its local maxima and local minima are symmetric with re
  IMFs are functions that directly convey the amplitude and frequency modulations.
 
 % EMD is an iterative sifting process that extracts IMFs step by step; each step seeks for the IMF with the highest frequency, then the computed IMF is removed from the data and the residual data are used as input for the next step.
-EMD is an iterative algorithm that extracts IMFs step by step by using the so-called sifting process \cite{huang:emd1998}; each step seeks for the IMF with the highest frequency by sifting, then the computed IMF is removed from the data and the residual data are used as input for the 
+EMD is an iterative algorithm that extracts IMFs step by step by using the so-called sifting 
+process \cite{huang:emd1998}; each step seeks for the IMF with the highest frequency by sifting, then 
+the computed IMF is removed from the data and the residual data are used as input for the 
 next step.
 The process stops when the residual data becomes a monotonic function from which no more IMF can be extracted.
 
@@ -77,7 +80,8 @@ Directly comparing $c_i^1$ and $c_i^2$ is meaningless unless we confirm that the
 
 There are numerous techniques to retrieve IMF frequencies~\cite{huang:aada2009}.  
 In this work we take advantage of the Generalized Zero Crossing (GZC)~\cite{huang:patent2006} because it is a simple and robust 
-estimator of the instantaneous IMF frequency \cite{huang:aada2009}.
+estimator of the instantaneous IMF 
+frequency\cite{huang:aada2009}.
 GZC is a direct estimation of IMF instantaneous frequency using critical points defined as the zero crossings and local extrema 
 (round dots in Figure~\ref{fig:gzc}).
 Formally, given a data point $p$, GZC measures the quarter ($T_4$), the two halves ($T_2^x$), and the four full periods ($T_1^y$), $p$   

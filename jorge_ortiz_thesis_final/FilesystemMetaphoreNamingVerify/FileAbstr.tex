@@ -87,13 +87,15 @@ A detailed description and examples with be presented in later sections.
 	read & folder, stream, ipd, ipi, epd, epi, sub & read the metadata and tags for \\
 		 &										   & the associated file. \\ \hline
 	write &  stream & Write to stream file, only the \\ 
-		  & 		& appropiate stream source is permitted.\\ \hline
+		  & 		& appropiate stream source is \\
+		  &			& permitted.\\ \hline
 	delete & folder, stream, ipd, ipi, epd, epi, sub & Folder must be empty.  \\
 		   & 										 & The others can be directly deleted. \\ \hline
-	query &  stream, all & streams support time-range queries.  \\
-		  &			     & All support metadata-tag queries.\\ \hline
-	subscribe & stream & Forwards data from a stream to the\\
-			  &		   & specified destination.\\
+	query &  stream, all & streams support time-range   \\
+		  &			     & queries. All support metadata-tag \\ 
+		  &				 & queries. \\ \hline
+	subscribe & stream & Forwards data from a stream \\
+			  &		   & to the specified destination.\\
 	\hline
 \end{tabular}
 \caption{File opertaitons, the file types that support them, and their general semantics.}

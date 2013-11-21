@@ -11,20 +11,20 @@ We would like to move towards a vision of building software systems that
 
 \begin{enumerate}
 \item Support the notion of applications; applications to make use of and directly control the environment.
-\item Provides a clean set of abstraction for application writers that wish to build both analytical and control
+\item Provide a clean set of abstraction for application writers that wish to build both analytical and control
 applications.
 \item Accurately capture the state of the building, even as it evolves.
 \end{enumerate}
 
 
-Recent trends in research and technology
-set the stage of the work the is described in this thesis.  We give a brief history of the work that has 
-led us to this point and the technology trends that allow us to realize the vision and move towards
-an architecture that support broad application development of the physical environment.
+Recent trends in research and technology set the stage for our work.  We give a brief history of the work that has 
+led us to the vision of a smart built environment.  We also describe the technology that
+allows us to realize our vision and show how the falling cost of sensor, ubiquity of connectivity and embedded computation,
+and falling cost of computation in the cloud informs our architectural choices.
 In the next section, 
 we discuss the built environment and how energy-efficiency has become a prime research focus.
-Then, we will give an overview of pervasive computing work and explain how they motivate the kinds of applications we look 
-to support in the built environment.  Finally, we will state our research goal and give an overview for the rest
+Then, we give an overview of pervasive computing work and explain how they motivate the kinds of applications we look 
+to support in the built environment.  Finally, we will state our research goal and give an overview of the rest
 of the thesis.
 
 
@@ -37,21 +37,21 @@ Buildings consume 40\% of the energy produced in the United States and nearly th
 the electricity produced~\cite{epabuildings}.  With specter of global warming and the continued decrease in the cost of storage and 
 communication, buildings have become a major target for improved energy efficiency.
 
-Buildings have been the subject of study for architects, mechanical, and building engineers.  Building manangers
-and contractors work together with a third-party provider to embed sensing that allows them to manage
-the day-to-day operations of the building as whole.  The main goal is to fix problems when they are either reported
-by the system or building occupants.  These \emph{Building Management Systems} (BMS) are common in large buildings.
+Buildings have been the subject of study for architects, mechanical, and building engineers.  Recently, there has been an 
+interest in buildings by computer scientists as they present a family of interesting challenges related to cyber-physical systems.
+Historically, building manangers and contractors work together with a third-party provider to embed sensors through the systems
+and spaces in the building to allow them to observe and manage
+the day-to-day operations of the building from a central location.  The building manager is the primary user to interact with the
+deployment information to diagnose and fix problems from a central locations.  Problem identification primarily occurs through occupant 
+complaints.  The building manager diagnoses through physical inspection and simple inspection of the associated data through the primary
+user interface for the \emph{building management system}.  These BMS's are common in large buildings.
 Over 70\% of large -- 100,000 square feet or larger -- commercial buildings, have a building management 
-system~\cite{cbecs2003}.  BMS's typically contain thousands of sensors embedded in them which report periodic readings to 
-a central computer system.  These systems are installed primarily for supervisory control and
+system~\cite{cbecs2003}.  These systems are installed primarily for supervisory control and
 centralized observation of the building.  
-% These provide infrastructure to attain that level of 
-% visibility is available and widespread.
-They help deal with the complexity of supervisory control of a highly distributed mechanical system.
+They help deal with the management complexity and supervisory control of a highly distributed mechanical system through
+a graphical view and the sensors and actuators they contain.
 
-However, buildings waste as much as 30-80\% of their energy~\cite{waste_science, next10_waste}, have little agility
-to adjust to outside factor, and each one is unique from the mechanical system to the BMS.  This motivates
-the research presented in this thesis.  
+
 
 % We assert that live and historical 
 % sensor data must be exposed to application developers so they may build application that easily and continuously 
@@ -89,22 +89,23 @@ Applications may also feed data to the cloud and make it available to other appl
 \section{Pervasive Computing}
 The polifertation of cheap, networked, embedded sensors is moving us towards a future where our infrastructure is 
 populated with computing that enable smart environments.  We march towards Mark Weiser's vision of the future of
-computing \cite{uqicomp_vision} where the environment contains sensors, people interact directly with the 
-physical objects in the environment,
-and are better able to optimize performance of our infrastructure, uncover problems with wear and tear,
-and share information with others that provide greater insight into the world around us.  This vision has be borne out
-incremenetally in the research community since the vision was initially proposed over 20 years ago.
+computing \cite{uqicomp_vision} where the environment contains sensors and people interact with the 
+physical environment through their personal devices and related services.  These services also allow us to 
+optimize the performance of our infrastructure, uncover problems proactively,
+and share information with others to provide greater insight into the world around us.  
+% This vision is borne out
+% incremenetally in the research community over the past 20 years.%since the vision was initially proposed over 20 years ago.
 
 The research in this area starts from the vision for the field.  What could the world be if we are surrounded by computing?
 How will we interact in that world?  What can we learn from the world and from each other?  Hypothetical scenarios
 guide the early work.  A common scenario is one that makes use of a personal handheld device, ``smart'' objects, and 
-ubiquitous connectivity.  Much of the early work was aimed at constructing a scenario that captures some aspect of
-the future evisioned that can be used to highlight and explore fundamental challenges in realizing the vision.
+ubiquitous connectivity.  Much of the early work aimed at constructing a scenario that captures some aspect of
+the future envisioned that can be used to highlight and explore fundamental challenges in realizing the vision.
 For example, Christensen et al.~\cite{Christensen_2002} explore how pervasive computing will play a role in assisting
-office workers in their day to day activities.  They imagine a scenario where members of an office each have mobile devices
-and interact and share information with each other through serendipitous work-related interactions.  Through this scenario
-they bring-forth fundamental issues related to mobility, interrupted operations, and activity scheduling due to ad-hoc 
-collaboration.
+office workers in their day to day activities.  They imagine a scenario where office occupants use their mobile devices
+to interact and share information with each other through serendipitous work-related activities.  Through this scenario
+draw attention to fundamental issues related to mobility, interrupted operations, and activity scheduling.% due to ad-hoc 
+% collaboration.
 
 Many fundamental challenges were discovered and addressed in this fashion.  Pervasive computing work eventually branched
 off into several sub-domains with their own focus.  Some examples are work related to 
@@ -112,10 +113,10 @@ localization~\cite{Castro01aprobabilistic,Koo,Romer03thelighthouse,Yoon2013},
 mobility and mobile devices~\cite{Haritaoglu:2001:ILR:647987.741331,Want02thepersonal,Jiang:2011:MPM:2030112.2030150},
 context deduction and wearable computing~\cite{Holmquist01smart,Lukowicz2002,Christensen_2002,Rossi:2011:RWC:2030112.2030238},
 and sensor networks~\cite{Conner:2001:MEL:647987.741329,Lymberopoulos09amethodology}.  These and related
-topic areas have guided our thinking in addressing the problems in the building environment.
+topic areas have guided our thinking in addressing the problems in the built environment.
 
-Looking back at the pervasive computing work, we observe that much of the work has focused on user but not as much on 
-the challenges in the environment itself.  There is very little
+Looking back at the pervasive computing work, we observe that much of the work has focused on users but not as much on 
+the challenges in the environment itself.  There is little
 emphasis on the infrastructure and issues with the accuracy in contextual representation of the physical environment.
 There is also very little work on how a changing physical environment affects the accuracy with which applications can 
 deduce the state of the world around them.  Also, there is very little emphasis on control of the physical environment.
@@ -170,38 +171,42 @@ issues specifically in this thesis.
 
 
 \section{Cloud Computing, Ubiquitous Connectivity, and Mobile Phones}
-Cloud computing has truly changed the way we design systems that bring together the physical and computational world.  Coupled with the 
-continued maturation of networking technologies -- both indoor through Wifi and outdoors through cellular -- and the explosion of mobile
+Cloud computing has changed the way we design systems that bring together the physical and computational world.  Coupled with the 
+continued maturation of networking technologies -- both indoors through Wifi and outdoors through cellular -- and the explosion of mobile
 phone use, today's systems are designed with the mobile phone as an access tool for information in the cloud.  It is mostly safe
 to assume that this information will be accessible.  Moreover, connection speeds can reach up to 300 Mbps, so serving sophisticated
 applications from the cloud and designing them in a highly interactive manner is commonplace.  The main bottleneck is the form of interaction, which
 is still a challenge given the small screen of a mobile phone.
 
-This design pattern also makes it easier to combine everything into a single system that is centrally accessible.  So services in the cloud
-can serve many clients simultaneously, proving a unified view of the state of the service and the object in it.  There is no difference 
-between the desktop application and the mobile application, other than the way the service is presented to each.  Moreover, all the data
-should live \emph{in} the cloud and be fetched \emph{from} the cloud by all clients.  The cloud service mediates interaction between all
+These technologies also make it easier to design centrally managed, globally accessible systems.  % into a single system that is centrally accessible.  
+Services in the cloud
+can serve many clients simultaneously, proving a unified view of the state of the service and the objects in it.  There is little difference 
+between the desktop application and the mobile application, other than service presentation.  Moreover, all the data lives \emph{in} the cloud 
+and is fetched \emph{from} the cloud by all clients.  The cloud service mediates interaction between all
 participants in the system.
 
 \section{Applications in Buildings}
-Advancements made in the pervasive computing communities, trends in technology, and problems in buildings lead us to thrust of this thesis.
-We start with the notion of ``app-ification'' of the building.  Technology trends have enable mobile phone ``apps''; mobile
+% Advancements made in the pervasive computing communities, trends in technology, and problems in buildings lead us to thrust of this thesis.
+We introduce the notion of building ``app-ification''.  Technology enables mobile phone ``apps''; mobile
 applications that closely interact with content in the cloud.  We assert that a good way to address problem in the building
 by opening up the building's sensor data streams and buildings services that make use of that data.  A system should provide 
 \emph{uniform access} to the data and \emph{facilities for cleaning and aggregation}.  It should be \emph{extendable}
-so that disparite systems could share information that could enable new kinds of applications.  Figure~\ref{fig:buidlingapp}
+so disparite systems could join and share information that could enable new kinds of applications.  Figure~\ref{fig:buidlingapp}
 illustrates a high-level of building ``app-ification architecture''.
 
-The building-scientist and architecture community already has a family of products and software pacakges that take building data an analyze
-it.  We need to be able to support those as well.  The main idea is to open up the building and a system where innovation can take place.
-We believe that the cloud-based service model would be effective.  Such service would contain a number of data services 
-that enable data processing tasks to deduce the performance of the building.  The service should also enable control of the building
-and help support holistic control applications that combine disparate data sources through the service itself.
+Building-scientists and architects use a family of products and software packages that take building data 
+and analyze it.  We need to support those as well.  The main idea is to expose building sensor streams and related information for 
+applications through the cloud.  This allows us to adopt application development design patterns and inherit the benefits of 
+centralized management.   It also provides an environment where a diverse set of applications and solutions can be designed
+and tested to address fundamental challenges in building management and control.  %and a system where innovation can take place.
+% We believe that the cloud-based service model would be effective.  
+Such service should offer a data-processing primitives as well.   It should mediate access to sensor data and actuators.
+The system should provide support holistic control applications that combine disparate data sources through the service itself.
 We describe the design of such a system in Chapter~\ref{chap:SensingInBuiltMain}.
 
 
 \section{Research Statement And Hypothesis}
-We formally state our guiding research thesis and hypothesis:
+We formally state the thesis that guides our work: %research thesis and hypothesis:
 % \emph{What are the architectural components and technical challenges in the design of an information system
 % that enables new and supports old classes of applications in the built environment?}  
 \emph{How can we incorporate filesystem and database constructs and what are the technical challenges in a system that supports applications
@@ -217,6 +222,7 @@ Furthermore, we discuss a component that is fundamental for providing correct in
 and formalize the notion of verification in the context of the built environment.  We provide several algorithmic 
 solutions to these problems, which lay the foundation for a fundamental service in the broader architecture.
 
+
 \section{Thesis Roadmap}
 In the next chapter, we discuss building information systems today.  We dive into their architectural components and introduce some terminology
 used in the building space.  We also describe the motivating scenario that they were built for and examine how well the architecture 
@@ -225,14 +231,15 @@ and walk through the components that are useful for this purpose and those that 
 components in an architectural re-design that could provide the same support as BMS's today as well as the emerging ones that we
 describe and argue that this should be the design of a \emph{building appification system}.
 
-In chapter~\ref{chap:SFSArchMain}, we give an overview of a system we designed with the components we propose in the previous
-chapter.  The name of the system is StreamFS. StreamFS is a cloud-based service that combines filesystem and database constructs
-to organize the streaming sensor data, clean and process the stream, and provide a unified access layer to both physical information
-and actuation channels in the physical world.  We discuss the overall structure of the components of the architecture and how
-they interact with one another.
+In chapter~\ref{chap:SFSArchMain}, we give an overview of a system that contains the components we propose in the previous
+chapter.  The name of the system is StreamFS.  StreamFS is a cloud-based service that combines filesystem and database constructs
+to organize the streaming sensor data, clean and process streams, and provides a unified access layer.
+%  for both physical information
+% and actuation channels in the physical world.  
+We discuss the overall structure each component in the architecture and how they interact with one another.
 
 Chapter~\ref{chap:mechanisms} dives into the details for the components and mechanisms in StreamFS.
-Section~\ref{chap:ProcMngtSchedMain} focuses on the process management component in StreamFS.  The process management component
+Section~\ref{sec:promngt} focuses on the process management component in StreamFS.  The process management component
 manages the streams and the processes that consume those streams.  It is designed to support processes that are specified by the user
 and managed by StreamFS as well as integrating external processing components and representing them through the file system in StreamFS.
 We discuss some of the challenges and present some solutions to a scheduling problem related to providing fresh data  to processing jobs.

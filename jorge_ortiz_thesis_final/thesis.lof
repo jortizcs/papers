@@ -24,17 +24,17 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.1}{\ignorespaces StreamFS system architecture. The four main components -- name register, scription manager/forwarding engine, process manager, and timeseries datastore -- are shown. It also shows the application layer at the top.}}{24}{figure.47}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces StreamFS system architecture. The four main components -- name register, scription manager/forwarding engine, process manager, and timeseries datastore -- are shown. It also shows the application layer at the top.}}{24}{figure.48}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Name management layer implemented behind HAProxy. Name servers handle individual requests and use the name registration table query handle the request accordingly.}}{27}{figure.57}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Name management layer implemented behind HAProxy. Name servers handle individual requests and use the name registration table query handle the request accordingly.}}{27}{figure.58}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.3}{\ignorespaces The timeseries data store. We use OpenTSDB; a timeseries data-store that runs in a cluster setting over HBase.}}{29}{figure.63}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces The timeseries data store. We use OpenTSDB; a timeseries data-store that runs in a cluster setting over HBase.}}{29}{figure.64}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.4}{\ignorespaces }}{30}{figure.69}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces }}{30}{figure.70}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.5}{\ignorespaces The process manager manages a cluster of processing element and connection to external processing units. It works closely with the subscription manager to forward data between elements.}}{32}{figure.72}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces The process manager manages a cluster of processing element and connection to external processing units. It works closely with the subscription manager to forward data between elements.}}{32}{figure.73}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.6}{\ignorespaces This figure shows how we translate the OLAP cube to a hierarchical ERG. Note how the dimensions of the cube translate to the graph. The level of the subtree is the category, the unit is specified at the node, and there are values at each node for every time slice.}}{34}{figure.75}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces This figure shows how we translate the OLAP cube to a hierarchical ERG. Note how the dimensions of the cube translate to the graph. The level of the subtree is the category, the unit is specified at the node, and there are values at each node for every time slice.}}{34}{figure.76}
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
@@ -76,11 +76,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {5.4}{\ignorespaces Power traces obtained from power meters attached to various plug load on one of the floors of a building on campus. These show screen shots of the Energy Lens timerseries data display.}}{71}{figure.205}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5.5}{\ignorespaces \ref {fig:qrcexfirst} resolves to the same \texttt {URL} as the \nobreakspace {}\ref {fig:qrcexsecond}, after resolution and redirection is complete. The short label resolves to \texttt {http://tinyurl.com/6235eyw}. \ref {fig:qrcexsecond} encodes about half the characters as the \ref {fig:qrcexfirst}. We used tinyUrl to reduce the QR code image complexity and scan time. }}{73}{figure.209}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces \ref {fig:qrcexfirst} resolves to the same \texttt {URL} as the \nobreakspace {}\ref {fig:qrcexsecond}, after resolution and redirection is complete. The short label resolves to \texttt {http://tinyurl.com/6235eyw}. \ref {fig:qrcexsecond} encodes about half the characters as the \ref {fig:qrcexfirst}. We used tinyUrl to reduce the QR code image complexity and scan time. }}{72}{figure.209}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Long QR Code}}}{73}{subfigure.5.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Long QR Code}}}{72}{subfigure.5.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Short QR Code.}}}{73}{subfigure.5.2}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Short QR Code.}}}{72}{subfigure.5.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {5.6}{\ignorespaces The header of the response from the \texttt {tinyUrl} when resolving a QR code. The `Location' attribute is used to extract the unique identifier for the object this QR code tags. It is also used to re-direct users without the phone application to a meaningful web address for the object.}}{74}{figure.211}
 \defcounter {refsection}{0}\relax 
@@ -96,13 +96,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {6.2}{\ignorespaces (a) EMD decomposes a signal and exposes intrinsic oscillatory components; (b) Aggregation of IMFs within a pre-defined frequency range makes seemingly similar signals from different locations more distinguishable; (c) IMF aggregation makes seemingly distinct signals of different sensors in the same room show high correlation.}}{89}{figure.246}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Correlation coefficients of the raw traces from the Building 1 dataset (Section \ref {data:engbldg2}). The matrix is ordered such as the devices serving same/adjacent rooms are nearby in the matrix.}}{91}{figure.254}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Correlation coefficients of the raw traces from the Building 1 dataset (Section \ref {data:engbldg2}). The matrix is ordered such as the devices serving same/adjacent rooms are nearby in the matrix.}}{91}{figure.251}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Auto-correlation of a usual signal from the Building 1 dataset. The signal features daily and weekly patterns (resp. $x=24$ and $x=168$).}}{92}{figure.255}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Auto-correlation of a usual signal from the Building 1 dataset. The signal features daily and weekly patterns (resp. $x=24$ and $x=168$).}}{92}{figure.252}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.5}{\ignorespaces \emph {Strip and Bind} using two raw signals standing for one week of data from two different HVACs. (1)\nobreakspace {}Decomposition of the signals in IMFs using EMD (top to bottom: $c_1$ to $c_n$); (2)\nobreakspace {}aggregation of the IMFs based on their time scale; (3)\nobreakspace {}comparison of the partial signals (aggregated IMFs) using correlation coefficient.}}{93}{figure.257}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces \emph {Strip and Bind} using two raw signals standing for one week of data from two different HVACs. (1)\nobreakspace {}Decomposition of the signals in IMFs using EMD (top to bottom: $c_1$ to $c_n$); (2)\nobreakspace {}aggregation of the IMFs based on their time scale; (3)\nobreakspace {}comparison of the partial signals (aggregated IMFs) using correlation coefficient.}}{93}{figure.254}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Reference matrices for the four time scale ranges (the diagonal $x=y$ is colored in black for better reading). The medium frequencies highlight devices that are located next to each other thus intrinsically related. The low frequencies contains the common daily pattern of the data. The residual data permits to visually identify devices of the similar type.}}{97}{figure.265}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Reference matrices for the four time scale ranges (the diagonal $x=y$ is colored in black for better reading). The medium frequencies highlight devices that are located next to each other thus intrinsically related. The low frequencies contains the common daily pattern of the data. The residual data permits to visually identify devices of the similar type.}}{97}{figure.262}
 \defcounter {refsection}{0}\relax 
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {High Frequencies}}}{97}{subfigure.6.1}
 \defcounter {refsection}{0}\relax 
@@ -112,57 +112,57 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Residual data}}}{97}{subfigure.6.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Number of reported alarms for various threshold value ($\tau =[3,10]$).}}{100}{figure.274}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Number of reported alarms for various threshold value ($\tau =[3,10]$).}}{100}{figure.271}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.8}{\ignorespaces Example of alarms (red rectangles) reported by SBS on the Eng. Bldg 2 dataset}}{102}{figure.281}
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Example of alarms (red rectangles) reported by SBS on the Eng. Bldg 2 dataset}}{101}{figure.278}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {High power usage where the HVAC (EHP) is turned on at night}}}{102}{subfigure.8.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {High power usage where the HVAC (EHP) is turned on at night}}}{101}{subfigure.8.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {High power usage where the light is left on at night}}}{102}{subfigure.8.2}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {High power usage where the light is left on at night}}}{101}{subfigure.8.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Low power usage where the HVAC (EHP) is not used during office hours}}}{102}{subfigure.8.3}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Low power usage where the HVAC (EHP) is not used during office hours}}}{101}{subfigure.8.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Long term high power usage partially detected}}}{102}{subfigure.8.4}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Long term high power usage partially detected}}}{101}{subfigure.8.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.9}{\ignorespaces Example of alarms (red rectangles) reported by SBS on the Cory Hall dataset}}{103}{figure.287}
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Example of alarms (red rectangles) reported by SBS on the Cory Hall dataset}}{102}{figure.284}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Low power usage due to a chiller failure}}}{103}{subfigure.9.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Low power usage due to a chiller failure}}}{102}{subfigure.9.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {High power usage highlighted by the elevator usage}}}{103}{subfigure.9.2}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {High power usage highlighted by the elevator usage}}}{102}{subfigure.9.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Normal power and elevator usage}}}{103}{subfigure.9.3}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Normal power and elevator usage}}}{102}{subfigure.9.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Long term high power usage due to competing heating and cooling}}}{103}{subfigure.9.4}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Long term high power usage due to competing heating and cooling}}}{102}{subfigure.9.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.10}{\ignorespaces The ROC curves depict the sensitivity of the raw signal and mid-frequency IMFs to the threshold value. We choose the 0.2 FPR point as the boundary threshold for each room. }}{107}{figure.294}
+\contentsline {figure}{\numberline {6.10}{\ignorespaces The ROC curves depict the sensitivity of the raw signal and mid-frequency IMFs to the threshold value. We choose the 0.2 FPR point as the boundary threshold for each room. }}{106}{figure.291}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.11}{\ignorespaces We collect data from 15 sensors in 5 rooms sitting on 4 different floors. This is a map of a section of the 3rd floor in Sutardja Dai Hall.}}{107}{figure.296}
+\contentsline {figure}{\numberline {6.11}{\ignorespaces We collect data from 15 sensors in 5 rooms sitting on 4 different floors. This is a map of a section of the 3rd floor in Sutardja Dai Hall.}}{106}{figure.293}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.12}{\ignorespaces Decomposition of the EHP and light trace using bivariate EMD. IMFs correlation coefficients highlight the intrinsic relationship of the two traces.}}{109}{figure.301}
+\contentsline {figure}{\numberline {6.12}{\ignorespaces Decomposition of the EHP and light trace using bivariate EMD. IMFs correlation coefficients highlight the intrinsic relationship of the two traces.}}{108}{figure.298}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.13}{\ignorespaces Distribution of the correlation coefficients of the raw traces and correlation coefficients average of the corresponding IMFs using 3 weeks of data from 674 sensors.}}{110}{figure.305}
+\contentsline {figure}{\numberline {6.13}{\ignorespaces Distribution of the correlation coefficients of the raw traces and correlation coefficients average of the corresponding IMFs using 3 weeks of data from 674 sensors.}}{109}{figure.302}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Raw traces correlation coefficients}}}{110}{subfigure.13.1}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Raw traces correlation coefficients}}}{109}{subfigure.13.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Average IMFs correlation coefficients}}}{110}{subfigure.13.2}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Average IMFs correlation coefficients}}}{109}{subfigure.13.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.14}{\ignorespaces Map of the floor where the analyzed EHP serves (room $C2$). The location of the sensors identified as related by the proposed approach are highlighted, showing a direct relationship between IMF correlation and spatial proximity.}}{111}{figure.306}
+\contentsline {figure}{\numberline {6.14}{\ignorespaces Map of the floor where the analyzed EHP serves (room $C2$). The location of the sensors identified as related by the proposed approach are highlighted, showing a direct relationship between IMF correlation and spatial proximity.}}{110}{figure.303}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.15}{\ignorespaces Two populations are examined for our threshold analysis. A solid line connects sensors in the same room while a dotted line connects to a pairs in different rooms.}}{112}{figure.309}
+\contentsline {figure}{\numberline {6.15}{\ignorespaces Two populations are examined for our threshold analysis. A solid line connects sensors in the same room while a dotted line connects to a pairs in different rooms.}}{112}{figure.306}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.16}{\ignorespaces CDF of correlation coefficients between IMFs of sensor feeds: the dotted lines point to some threshold which divides the distribution and produces a TPR and FPR. }}{113}{figure.310}
+\contentsline {figure}{\numberline {6.16}{\ignorespaces CDF of correlation coefficients between IMFs of sensor feeds: the dotted lines point to some threshold which divides the distribution and produces a TPR and FPR. }}{113}{figure.307}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.17}{\ignorespaces The threshold values all converge to a similar value and we can derive the optimal value with as minimal as 14 days data.}}{115}{figure.313}
+\contentsline {figure}{\numberline {6.17}{\ignorespaces The threshold values all converge to a similar value and we can derive the optimal value with as minimal as 14 days data.}}{114}{figure.310}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.18}{\ignorespaces Clustering with k-means on the corrcoeff matrix after applying multidimensional scaling (MDS): The EMD-based set achieves an accuracy of 80\% while the results with raw-trace is only 53.3\% classification accuracy.}}{116}{figure.316}
+\contentsline {figure}{\numberline {6.18}{\ignorespaces Clustering with k-means on the corrcoeff matrix after applying multidimensional scaling (MDS): The EMD-based set achieves an accuracy of 80\% while the results with raw-trace is only 53.3\% classification accuracy.}}{116}{figure.313}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.19}{\ignorespaces ASO versus AGN. There is a clear value-based boundary between the two sets of traces at around 3 in the mean.}}{118}{figure.320}
+\contentsline {figure}{\numberline {6.19}{\ignorespaces ASO versus AGN. There is a clear value-based boundary between the two sets of traces at around 3 in the mean.}}{117}{figure.317}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.20}{\ignorespaces The VR traces span a wide range, however, any mean above 100 is a VR trace.}}{118}{figure.321}
+\contentsline {figure}{\numberline {6.20}{\ignorespaces The VR traces span a wide range, however, any mean above 100 is a VR trace.}}{118}{figure.318}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.21}{\ignorespaces All temperature streams. Note, these are much more difficult to tease part. A Gaussian mixture model can separate them with approximately 77\% accuracy, but it may not generalize.}}{119}{figure.322}
+\contentsline {figure}{\numberline {6.21}{\ignorespaces All temperature streams. Note, these are much more difficult to tease part. A Gaussian mixture model can separate them with approximately 77\% accuracy, but it may not generalize.}}{119}{figure.319}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.22}{\ignorespaces Centers for our Gaussian mixture model. Note, 3 of the 5 centers are very close to each other. This makes these traces very difficult tease apart and accurately classify.}}{120}{figure.323}
+\contentsline {figure}{\numberline {6.22}{\ignorespaces Centers for our Gaussian mixture model. Note, 3 of the 5 centers are very close to each other. This makes these traces very difficult tease apart and accurately classify.}}{120}{figure.320}
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 

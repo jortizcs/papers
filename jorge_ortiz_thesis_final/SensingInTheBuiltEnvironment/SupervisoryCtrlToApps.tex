@@ -3,14 +3,14 @@
 
 % Building information systems were built as tightly integrated silos, where the main application is the graphical user interface.
 Features for interoperability were designed at two interface layers: 1) the protocol layer and 2) the presentation layer through a
-data-export feature.  The protocol layer provides services for enabling devices to talk to one another through the network.  Note, 
-we focus on BACNet, but the similar features exist in other protocols, such as LonTalk.  Several features were explicitly designed around
+data-export feature.  The protocol layer provides services for enabling devices to talk to one another through the network.  
+Several features were explicitly designed around
 the notion of interoperabilty: trending, scheduling, management services, alarms and events, direct sharing.  The graphical
 interface layer is mainly focused on providing periodic reports in a comma-separated value (CSV) file, which
 contains point-name information and time-value pairs of data.
 % Historically, the extent of interoperability objectives has included mainly the introduction of new devices onto the network or
 % the exporting of data for other software program to use for analysis and report generation.  
-For these protocols, interoperability means adding new devices or exporting the data is a common format.
+For these protocols, interoperability means adding new devices or exporting the data in a common format.
 Building informtation systems themselves
 were built to mainly support the in-time management and supervisory control of the building.  Analysis does not 
 extend far beyong univariate plotting and individual assessment of equipment and control.  Most tuning of control parameters is 
@@ -18,11 +18,10 @@ manual.  Hard-wired control logic at the outstation is rarely updated.
 
 
 Over the last few years, however, there has been in increased interest in energy management and comfort as a primary objective 
-in the design of new building applications~\cite{6146507,Yu1956572,Mamidi2343582}.  Moreoever, there is a broad interest in having buildings 
-participating in hierarchical, 
-global control schemes that optimize the performance of the grid in response to renewable source penetration and its inherent 
+in the design of new building applications~\cite{6146507,Yu1956572,Mamidi2343582}.  Moreover, there is a broad interest in buildings
+using global control schemes to optimize their performance and to interact more efficiently in response to renewable sources and its  
 generation volatility~\cite{Taneja2223873,5985456,Lu2009}.  Model predictive control has introduced new ways of controling the components in the building
-to make them more energy efficient~\cite{mpc}, there is an interest in performaning dynamic, real-time analysis of building health
+to make them more energy efficient~\cite{mpc}, there is an interest in performing dynamic, real-time analysis of building health
 and efficiency~\cite{dynamicLeed}.  There has even been interest is improving the visibility of the state of the building to the 
 occupants through various modalities, including touch-screens and mobile phones~\cite{andrew_lighting, Hsu1878444, Ortiz2422540}.  
 These, and other emerging applications,

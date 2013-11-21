@@ -34,17 +34,15 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {6.1}{\ignorespaces Classification of the alarms reported by SBS for both dataset (and the number of corresponding anomalies).}}{101}{table.275}
+\contentsline {table}{\numberline {6.1}{\ignorespaces Classification of the alarms reported by SBS for both dataset (and the number of corresponding anomalies).}}{100}{table.272}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {6.2}{\ignorespaces Room Specs}}{107}{table.297}
+\contentsline {table}{\numberline {6.2}{\ignorespaces Room Specs}}{107}{table.294}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {6.3}{\ignorespaces Correlation coefficients of the analyzed trace and their IMFs uncovered by EMD}}{108}{table.299}
+\contentsline {table}{\numberline {6.3}{\ignorespaces Correlation coefficients of the analyzed trace and their IMFs uncovered by EMD}}{108}{table.296}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {6.4}{\ignorespaces Clustering result using the thresholding method: a ``1" means the sensor is classified as inside the room. We get the ``\text {$\mathsurround \z@ \mathchar "458$}" and ``$\times $" by comparing the clustering results with ground truth.}}{116}{table.315}
+\contentsline {table}{\numberline {6.4}{\ignorespaces Clustering result using the thresholding method: a ``1" means the sensor is classified as inside the room. We get the ``\text {$\mathsurround \z@ \mathchar "458$}" and ``$\times $" by comparing the clustering results with ground truth.}}{115}{table.312}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {6.5}{\ignorespaces Categorical classification results for two data traces.}}{117}{table.319}
-\defcounter {refsection}{0}\relax 
-\addvspace {10pt}
+\contentsline {table}{\numberline {6.5}{\ignorespaces Categorical classification results for two data traces.}}{116}{table.316}
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
@@ -52,6 +50,8 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {B.1}{\ignorespaces Terminology}}{137}{table.456}
+\addvspace {10pt}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {B.2}{\ignorespaces Parameters}}{144}{table.658}
+\contentsline {table}{\numberline {B.1}{\ignorespaces Terminology}}{137}{table.453}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {B.2}{\ignorespaces Parameters}}{144}{table.655}

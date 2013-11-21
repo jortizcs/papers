@@ -204,6 +204,7 @@ INPUT /usr/local/texlive/2012/texmf-var/fonts/map/pdftex/updmap/pdftex.map
 OUTPUT abstract.aux
 INPUT abstract.tex
 INPUT abstract.tex
+INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/public/lm/rm-lmri12.tfm
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/public/lm/rm-lmr17.tfm
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/public/lm/rm-lmbx12.tfm
 INPUT thesis.toc
@@ -243,7 +244,6 @@ INPUT thesis.lof
 INPUT /usr/local/texlive/2012/texmf-dist/tex/latex/lm/ot1lmtt.fd
 INPUT /usr/local/texlive/2012/texmf-dist/tex/latex/lm/ot1lmtt.fd
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/public/lm/rm-lmtt12.tfm
-INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/public/lm/rm-lmri12.tfm
 INPUT thesis.lot
 INPUT thesis.lot
 INPUT /usr/local/texlive/2012/texmf-dist/fonts/tfm/public/lm/rm-lmr12.tfm

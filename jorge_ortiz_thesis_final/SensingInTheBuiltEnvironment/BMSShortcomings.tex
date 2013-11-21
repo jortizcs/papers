@@ -1,4 +1,4 @@
-\section{BMS Architectural Shortcomings for Supporting Emergying Application Development}
+\section{BMS Architectural Shortcomings for Supporting Emerging Application Development}
 
 \begin{figure}[t!] %htbp
 \centering
@@ -18,9 +18,9 @@
 
 % In this section we dissect the BMS architecture and closely examine how well it can support broad application development
 % in buildings, rather than the single supervisory control function it supports today.  
-We examine today's BMS architecture in the context
-of 4 potential services with distinct operational requirements that need to be supported.  The first two services that 
-are offered today and enabled by the BMS.  We describe how emerging requirements are driving the evolution of these
+We examine today's BMS architecture in the context of 4 potential services with distinct operational requirements. % that need to be supported.  
+The first two services are feartures in today's BMS's.  
+We describe how emerging requirements are driving the evolution of these
 services and how BMS's are struggling to meet the new requirements due to limitations in their architectural design.
 The next two are emerging services that BMS's cannot support today.  We describe which architectural components must be included
 or how current components must be modified in order to support these.  We also make the broader argument that 
@@ -45,7 +45,7 @@ the building management interface itself.  Even these decisions typically go thr
 
 Figure~\ref{fig:soda_bms_screenshot} shows a screenshot of the BMS in Soda Hall at UC Berkeley.  This specific image
 captures a schematic for one of the air handling units.  It shows the various sensors embedded in different locations
-on the component -- on either side of the supply/exhaust fans, temperature sensors at the supply/return sides of the
+on the component -- temperature sensors on either side of the supply/exhaust fans, temperature sensors at the supply/return 
 air ducts and the inlet vent, measuring the outside air temperature.  Accompanying real-time readings are juxtaposed
 by the sensor image.  The user can double-click on the sensor or reading to get more information about that particular 
 measurement point.  For example, if you double-click on a temperature sensor, it will give you the exact name of the 
@@ -62,59 +62,67 @@ with the graphical interface, in much the same way that a lookup on the measurem
 the point in question and following instructions for setting an alarm.  In some cases, the problem may be driven 
 by a faulty setting and adjustments can be made to the control parameters through the associated control points.
 
-The scope of control is limited to specific control loops.  Recall our discussion of control loops in section~\ref{sec:control_loops}.
+The scope of control is limited to local control loops.  Recall our discussion of control loops in section~\ref{sec:control_loops}.
 The building manager can, typically with the help of the vendor, decide on the best control strategy setting.  If the control
 strategy cannot be met, due to flaws in the control algorithm itself, the vendor may step in and re-image the controller
 at the outstation and expose the necessary parameters through the graphical interface.  These kinds of changes are rare
-but do happen occassionally and can be somewhat expensive, since the cost is not typically included with the purchase
-of the system.  Because of the cost, the decision is typically made after close inspection and analysis, which a BMS
-enables through the data export feature.  
+but do happen occassionally and are generally expensive, since the cost is not usually included with the purchase
+of the system.  The decision is made after close inspection and analysis, which a BMS enables through the data export feature.  
 For example, the sense/control points in question may be placed in ``trend'' mode.  This means that readings
 from those streams are stored in the local memory buffer at the outstation for some period of time.  If a report is specifically
-set up at the central system, a report period is also associated with the point, allowing the saved points to be drained
-from the local buffer at the outstation.  The points are then placed in a file for observation and graphing by the 
-building manager.  Time-dependent inspection of the behavior of any of the control-loop related points can be examined.
+set up at the central system, a report period is associated with the point of interest. This allows the saved data to be drained
+from the local buffer at the outstation.  The data are written in a file for observation and graphing by the 
+building manager.  %Time-dependent inspection of the behavior of any of the control-loop related points can be examined.
 
 Although this feature is not necessary in order to change control paramters, it is useful for observing how parameter changes
 affect the behavior of the system.  The building manager can, in principal, experiment with different setting and allow
 empirical observations to guide her future decisions.
 
 
+% Buildings waste as much as 30-80\% of their energy~\cite{waste_science, next10_waste}, have little agility
+% to adjust to outside factor, and each one is unique from the mechanical system to the BMS.  This motivates
+% the research presented in this thesis.  
+
 \subsection{Energy Auditing and Building Modeling}
 \label{sec:elensvision}
 Recently there has been renewed interest in the energy consumption of buildings.  In particular, several studies~\cite{BuildingEnergyData,
 MITBuildingScience} show that buildings consome a large fraction of the energy produced in the United States and that as much
-as 80\% of it is wasted.  As such, there has been an emergence of several companies and services for assessning the health of
+as 80\% of it is wasted\cite{waste_science, next10_waste}.  As such, there has been an emergence of several companies and 
+services for assessing the health of
 commercial buildings with respect to their energy consumption.  Organizations such as LEED~\cite{Leed} provide certification of 
 buildings, specifically rating the energy efficiency of the building.
 
-Building modeling has been part of building science for quite some time, with systems such as EnergyPlus~\cite{eplus}.
-EnergyPlus and simulators like it are part of a larger ecosystem of software for modeling various aspect of the operation
-of the building.  They allow the designer to construct detailed models of the building, from construction to usage.  You can
-model everything from the material, location, zone-based usage (office building, bathroom, storage room), window size and its
-construction, etc.  There are different types of LEED certification, but typical certification requires the submission of the detailed
-model and the results of various energy-related metrics, aggregated over seasonal time intervals to attain LEED certification.
+Building modeling software, such as EnergyPlus~\cite{eplus}, are used extensively by building scientists. 
+EnergyPlus and simulators like it are part of an ecosystem of software that models various aspect of the operation
+of the building.  They allow the designer to construct detailed models of the building, from construction materials to 
+operational usage and occupancy.  Some parameters include
+construction material, longitude and latitude, zone-based usage (office building, bathroom, storage room), window size, etc.  
+There are literally thousands of parameters that can be set.  All LEED certification relies on the construction of an 
+accurate model that demonstrates energy efficient performance.
+% Typical certification requires the submission of the detailed
+% model and the results of various energy-related metrics, aggregated over seasonal time intervals to attain LEED certification.
 
-Detailed model construction can take several months and in order to ground the underlying model in empirical performance data
-typically a modeler will use the data obtained from the building's BMS.  Most vendors provide a way to export the point-related 
-trended data.  Complex models can be built using this information.  The file export feature in combination with the ability to 
-``trend'' points provide an interface mechanism for these and other kinds of applications that need to make use of the data.
-
+Model construction can take several months.  In order to construct an accurate model, model output is compared with
+empirical data.  Most BMS systems provide a way to export the  trended data.  
+The file export feature and the ability to ``trend'' points, serve as an interface applications.
 Another option is to obtain the data directly from the system through the network.  Third-party vendors provide systems that 
-will join the building network of devices and eavesdrop of the readings and traffic being reported to the central server.
-This is the only way to obtain truly real-time readings from the sensors on the network.
-Typically BMS vendors do not like this since they may generate too much traffic and overwhelm the network because of congestion.
-Although not fundamental, it is a common concern in buildings today.  Many buildings use RS-485 rather than ethernet and there is
-a general, albeit unfounded, concern that the network will become overwhelmed if all the points are trended and report at the same
-time.
+will join the building network of devices and eavesdrop on the network for sensor data reports.  % and traffic being reported to the central server.
+In many instances, this is the only way to obtain truly real-time readings from the sensors on the network.
+BMS vendors do not like this, since they such devices may generate traffic that overwhelms the network.  % because of congestion.
+% Although not fundamental, it is a common concern in building sensor networks.  
+Many buildings use RS-485 rather than ethernet and there is
+a general, albeit unfounded, concern that the network will become overwhelmed if all the points are trended and report 
+simultaneously.
 
-Building modeling and real-time analysis have been separated because of these constraints.  The constraints are largely not
+Modeling and real-time analysis have been separated because of these constraints.  The constraints are largely not
 fundamental, but the current architecture is simply not designed to provide real-time readings for \emph{all the points, simultaneously}.
 Also, it is clear, even from the fairly simple workloads generated by these analysis applications, that a history of readings
 is needed.  BMS's, as currently designed, require the end-user to manage the history of the data point individually.
 When BMS's were first designed, there were certainly concerns about bandwidth and storage limits.  However, today those concerns
-are a non-issue.  A few hundred bytes produced on the order of a few minutes, even from several thousand sensors is simply not
-that much data.
+are a non-issue.  A few hundred bytes produced on the order of minutes, even from several thousand sensors is simply not
+that much data.  For example, 10k sensor produces readings every 15 minutes at 200 bytes per report is only 
+17 Kbps.  Even if the streams are sychronized, the total amount of data is 2 MB.  Ethernet links and switches can handle Gbps 
+transfers.
 
 
 \subsection{Holistic Building Optimization}
@@ -126,26 +134,27 @@ that much data.
 \label{fig:mpc1}
 \end{figure}
 
-An emerging class of applications, is in holistic control of the building using a new technique called model-predictive control~\cite{MPC}.
+An emerging class of applications, is in holistic control of the building using a new technique called model-predictive control~\cite{MPC_yudong}.
 Rather than rely on specific changes to control logic at the local-loop level, MPC techniques observe and learn a model
 of the behavior of a components, multiple components, or the whole building, based on the historical data.  Once the model is learned, 
 constraints can be specified to drive the behavior of the system to an optimal region in the tradeoff space; solving it as 
-a constraint optimization problem.  Figure~\ref{fig:mpc1}, reproduced from~\cite{MPC}, shows an example of the how MPC combines 
-several points in the building to control the building.  Essentially it decomposes a large optimization problem into indivial control 
-decision to be made at the control-loop level.
+a constraint optimization problem.  Figure~\ref{fig:mpc1}, reproduced from~\cite{MPC_yudong}, shows an example of hierarchical MPC control.  
+It decomposes a large optimization process -- High-level MPC --  into indivial control decision to be made at the control-loop level --
+low-level MPC.
 
-In order to build this application, the set of necessary points must be mapped into the process.  The user, setting up the problem,
-must connect the right data streams and control points to the algorithm by either manually going through the schematics or
-locating the schematic representation in the BMS graphical interface.  There is no query interface and it requires that you sit
-with the building manager or vendor in order to set up the trending, reporting, and enable the necessary control permisions.
-The process is time consuming and \emph{does not scale}.
+In order to enable the low-level MPC, the process must know the mapping between the points and their location.
+The user must connect the right data streams and control points to the algorithm's inputs by either manually going through the schematics or
+locating the schematic representation in the BMS graphical interface.  There is no query interface to a BMS.  This task requires sitting 
+with the building manager or vendor in order to set up the trending, reporting, and enabling the necessary control permisions.
+Needless to say, it is very time consuming and \emph{does not scale}.
 
-Although the method is very useful and has yielded excellent results, it is difficult to replicate.  The code and setup must be 
-customized for each building or stock of buildings it is set up on.  This lack of generalizability and scalability is missing
-in the current state of the art of building information systems.  In most cases the representation of sensor/actuator association is 
-implicitly represented in a combination of the schematics, the graphical interface, and the point name.  Moreover, all
-three of these change from building to building.  It is fundamentally difficult to generalize.  Buildings are treated as one-off constructions
-and their associated digital information has historically followed the same principle.
+% Although the method is very useful and has yielded excellent results, it is difficult to replicate.   
+% The code and setup must be 
+% customized for each building or stock of buildings it is set up on.  
+This lack of generalizability and scalability hinders widespread deployment of innovative solutions.  In most cases the 
+mapping of sensor/actuator to their placement in space/system are 
+captured through in a combination of the schematics, the graphical interface, and the point name. Moreover, buildings are 
+are one-off constructions and their associated digital information has followed the same pattern.  Alhtough MPC can yield signficant savings, setup complexity and building uniqueness, makes it nearly impossible to replicate quickly.  It is fundamentally difficult to generalize. 
 
 
 \subsection{Personal Energy Viewer}

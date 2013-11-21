@@ -5,11 +5,13 @@
 % have been recorded in other industrialized countries~\cite{buildings_study}.  Furthermore, studies show that they waste from
 % 30-80\% of the energy they consume.  
 
-Building management systems contain hundreds to thousands of sensors embedded in the systems that control the internal environment and
-the spaces occupied by people.  There are many different kinds of sensors take a diverse set of physical measurements.
-Some of them include temperature sensors in the thermostats,
-valve-position sensors and actuators in the pipes, pressure sensors in the vents, temperature sensors on the vents and pipes as well, etc.
-The BMS presents these through a graphical interface for building managers.  The graphical interface contains graphical sketches
+Building management systems consist of thousands of sensors embedded in the systems that control the internal environment and
+the spaces occupied by people.  Many different sensors take disparate physical measurements, continuously.
+For example, temperature sensors take Fahrenheit readings in the thermostats,
+valve-position sensors measure the position angle of the valve in the pipes, pressure sensors record pressure measurements in the vents, 
+etc.
+% temperature sensors on the vents and pipes as well, etc.
+The BMS presents these through a graphical interface to the building managers.  The graphical interface contains graphical sketches
 of the systems and spaces in the building with icon images of the sensors in their approximate physical location represented
 in the sketch.  The image sketch is generated from building schematics, so the interface is representative at the time of construction.
 Building managers can quickly locate any sensor in the building through a series of clicks.
@@ -50,5 +52,39 @@ We also present the pros and cons of these decisions and their implications and 
 \input{SensingInTheBuiltEnvironment/BMSShortcomings}
 \input{SensingInTheBuiltEnvironment/AddressingBMSShort}
 \input{SensingInTheBuiltEnvironment/ContextAccuracy}
+
+\section{Experimental Settings}
+In this thesis we describe and the architecture and implementation of a system that supports emerging applications and the ``app-ification''
+of buildings.  We construct a system called StreamFS and deploy it and/or analyze data from several buildings, including
+Cory Hall, Sutardja Dai Hall, and Soda Hall, and Engineering Building 2 at the University of Tokyo (Todai).
+% \subsection{Cory Hall - UC Berkeley}
+Cory Hall, at UC Berkeley, is a 5-story building hosting mainly classrooms, meeting rooms, laboratories and a datacenter.
+% This building was completed in 1950, thus its infrastructure is significantly different from the Japanese one.
+The HVAC system in the building is centralized and serves several floors per unit.
+There is a separate unit for an internal fabricated laboratory, inside the building.
+%Nevertheless, we notice an independent HVAC system that was serving a particular laboratory; the Microfabrication Laboratory (Microlab).
+% \subsection{Sutardja Dai Hall - UC Berkeley}
+Sutardja Dai Hall is a large building at Berkeley.  It is a 7-story, 141000 square-foot 
+ building which contains classrooms, meeting rooms, laboratories, a nano-fabrication laborty, and a cafe.
+% This building was completed in 1950, thus its infrastructure is significantly different from the Japanese one.
+The HVAC system in the building is centralized and serves several floors per unit.
+There is also a separate unit for an internal fabricated laboratory, inside the building.  It was built in 2009.
+% \subsection{Soda Hall - UC Berkeley}
+Soda Hall is another building at Berkeley.  It is the main building for the computer science department.
+It was built in 1994 and also has 7 floors and a centralized HVAC system.  It contains classrooms, 
+offices, server rooms, and open office spaces for several labs.
+The Todai Engineering building is 12-story building on the main campus of the University of Tokyo in Tokyo, Japan.
+It was built in 2005 and contains shared office space, individual offices, lecture classrooms, and small
+classrooms.
+
+For StreamFS and related applications, we set up deployments in each of these buildings to collect sensor data.  Our verification
+processes ran on StreamFS as a mixture of external and internal processes, which we discuss in Chapter~\ref{chap:mechanisms}.
+We describe the specific set up of the infrastructure and deployment in their respective chapters.  We give details 
+about the sensors and size of the data set that are collected as well.
+We also do 4 small deployments that we do not describe in the thesis.  They were deployments in several small office spaces at 
+Nokia, Intel, and Samsung as well as one in an apartment with a few applicances and meters.
+
+
+
 \input{SensingInTheBuiltEnvironment/Summary}
 

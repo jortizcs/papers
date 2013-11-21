@@ -1,10 +1,10 @@
-\section{Tighly Integrated Building Information System Architecture}
+\section{Tightly Integrated Building Information System Architecture}
 
 The first building information systems became commericially available in the 1970's ~\cite{gardner1987energy}.  
 Historically, building management 
 systems were constructed as a collection of control loops, which progressed from pneumatic to analog to digital.
 These control loops largely form the foundation for the design decisions made in building information systems.  
-This section gives a quick overview of the architecture bottom-up and describes how each stage is built around
+This section gives a quick overview of the architecture, bottom-up and describes how each stage is built around
 the concept of loops and supervisory control.  We then describe some of the short-comings of this architecture
 and give an overview of how we address it in a system called StreamFS -- described in more details in
 the remaining chapters.
@@ -25,7 +25,7 @@ Figure~\ref{fig:control_loop} shows a high-level control loop.  A simple control
 the temperature in a space.  It has a temperature sensor as the input and uses the temperature set-point parameter to 
 decide when and which actuators to activate.
 For temperature control, this actuation controls the the vent that lets cool air into the space.  This causes the temeprature
-to fall until a lower-bound is reached and the control logic is activated again.
+to fall until a lower-bound is reached and the control logic re-activates the fans and heating/cooling system.
 
 The figure also shows the basic structure inside an outstation.  An outstation is a box that contains up to several control boards, each
 wired to one or more sensors and one or more actuators.  The outstation is typically close to the sensors and actuators (in the same room)
@@ -51,7 +51,8 @@ monitoring and control, they are networked together and report some of the senso
 The central outstation is typically a Microsoft Windows-based PC connected to the outstation through either RS-485/modbus or ethernet.
 The user interacts with the system through a graphical interface, constructed from the schematics for the building or the schematics
 for the component in the system that is being monitored.  The BMS running on the PC communicates with outstations through either a 
-vendor-specific, proprietary protocol or an open one like BACNet~\cite{Bacnet} or LonTalk~\cite{LonTalk}.
+vendor-specific, proprietary protocol or an open one like BACNet~\cite{Bacnet} or LonTalk~\cite{LonTalk}.  Note, 
+we focus on BACNet, but the similar features exist in other protocols, such as LonTalk.  
 
 \begin{figure}[h!] %htbp
 \centering
