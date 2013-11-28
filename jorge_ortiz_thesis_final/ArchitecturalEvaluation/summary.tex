@@ -1,9 +1,29 @@
 \section{Summary}
 
-We demonstrate that StreamFS can serve a diverse set of applications from a single locations, provide \emph{generalizability}
-and \emph{ease of management} through the file system abstraction and data-processing ``pipe'' abstraction.
+\begin{table}
+\begin{center}
+  \begin{tabular}{| r | l | }
+    \hline
+    \textbf{No. deployments}    &   7                       \\ \hline
+    \textbf{Total files}        &   $>$ 10k                 \\ \hline
+    \textbf{Locations}          &   University of Tokyo,    \\
+                                &   UCB Cory, SDH,          \\
+                                &   Stanford Y2E2,          \\
+                                &   Intel, Nokia,           \\
+                                &   Samsung                 \\ \hline
+    \textbf{Total data}         &   ~1TB over 2 years       \\  \hline
+  \end{tabular}
+\caption{This table summarizes the deployment statistics of for StreamFS over a two years.}
+\label{tab:sfs_depstats}
+\end{center}
+\end{table}
+
+We demonstrate the versatility of StreamFS in its ability to serve a diverse set of applications.
+This clearly demonstrates its \emph{generalizability}
+and \emph{ease of management} through the file system abstraction. % and data-processing ``pipe'' abstraction.
 %Energy Lens
-In this Energy Lens application we examined two system challenges -- mobility and consistency management -- for enabling and energy 
+In the Energy Lens application we examined three system challenges -- mobility, consistency management, and disconnected operation
+ -- for enabling and energy 
 analytics applications in buildings.  StreamFS plays a crucial role in providing the kinds of services necessary 
 for collecting and managing deployment data and metadata as well as providing live aggregate statistics on the deployment
 to the end-user.  Furthermore, we demonstrated the \emph{extensibility} of the system, as all the StreamFS
@@ -19,24 +39,6 @@ fundamental challenges with consistency management and disconnected operation.
 
 Altogether, StreamFS was deployed across 7 buildings in 2 countries, with very different climates, systems, and 
 usage patterns.  Table~\ref{tab:sfs_depstats} summarizes these.
-
-\begin{table}
-\begin{center}
-  \begin{tabular}{| r | l | }
-    \hline
-    \textbf{No. deployments}	&   7     					\\ \hline
-    \textbf{Total files}      	&   $>$ 10k					\\ \hline
-    \textbf{Locations}     		&   University of Tokyo,	\\
-    							& 	UCB Cory, SDH,			\\
-    							& 	Stanford Y2E2,			\\
-    							&	Intel, Nokia,			\\
-    							&	Samsung					\\ \hline
-    \textbf{Total data}			&	~1TB over 2 years		\\	\hline
-  \end{tabular}
-\caption{This table summarizes the deployment statistics of for StreamFS over a two years.}
-\label{tab:sfs_depstats}
-\end{center}
-\end{table}
 
 Our largest deployment had $>$ 7k feeds simultaneously feeds a single deployment.  Several hundred derivative streams were generated
 in these deployments as well.  Several of these required a cluster of processing elements and datastore elements.  Typically, no larger

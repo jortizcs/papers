@@ -9,12 +9,12 @@ Processing of sensor data is a fundamental component of any analytics engine.  S
 must be cleaned before sophisticated processing jobs can consume it.  
 In this chapter we discuss the details of our process manager and process scheduler.  We describe how our process manager handles
 both internal and external processes and manages the buffers for all the jobs.  We give a detailed description of the job-specification
-API and describe how the user interacts with StreamFS in order to activate, management, and de-activate jobs.  We also 
+API and describe how the user interacts with StreamFS in order to activate, manage, and de-activate jobs.  We also 
 describe a class of applications that require the freshest data and present a new algorithm for providing the freshest set of data
 points to those jobs, in a timely fashion.
 
 This chapter also describes the use of the filesystem abstraction for representing streams in space.  The filesystem naming convention
-provides a a unified namespace to applications for accessing physical resources and streams.  Moreoever, we support multi-naming through
+provides a a unified namespace to applications for accessing physical resources and streams.  Moreover, we support multi-naming through
 symbolic links -- an important requirement for building applications. 
 
 % Sensor data is fundamentally challenging to deal with because much of it must be cleaned before it can be processed.  For example,
@@ -32,5 +32,4 @@ symbolic links -- an important requirement for building applications.
 \input{ProcessManagementAndScheduling/DataFreshness}
 \input{ProcessManagementAndScheduling/results}
 % \input{ProcessManagementAndScheduling/summary}
-
 

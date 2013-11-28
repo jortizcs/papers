@@ -7,11 +7,10 @@ Their approach to naming is ad-hoc and protocol specific, ours is also ad-hoc bu
 the user to directly access the data through multiple interfaces -- including a RESTful one.
 
 sMAP~\cite{smap} proposes a RESTful architecture for streaming sensor data.  Their resource-oriented architecture defines a 
-hiearchical resource structure for a sensor or actuator and provides facilities for reading and writing that data RESTfully.
+hierarchical resource structure for a sensor or actuator and provides facilities for reading and writing that data RESTfully.
 In contrast, they do not take a file system approach and only focus on sensor and actuators.  They leave the processing jobs
 as a function outside of sMAP.  Also, by adopting filesystem constructs, we support multi-naming through symlinks -- a 
 crucial feature that is missing from either of these.
 
 % They also rely on pub-sub but only to serve external targets.  We make it a central component
 % in our architecture
-

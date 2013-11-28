@@ -11,7 +11,7 @@
 % for buildings.  The first two describe how the current architecture is used to provide the intended service
 % that these application provide.  The latter two are emerging applications that we would like to available
 % throughout the entire building stock.  We will see, however, that these are very difficult to build at scale
-% and we pose the question ``what is missing in the current architecture to enanble the system properties that help
+% and we pose the question ``what is missing in the current architecture to enable the system properties that help
 % support these and other emerging applications?''.  Through close inspection it will hopefully become clear that
 % the current architecture is fundamentally flawed; built largely to support a small set of vendor-specific
 % applications and not much else.
@@ -19,7 +19,7 @@
 % In this section we dissect the BMS architecture and closely examine how well it can support broad application development
 % in buildings, rather than the single supervisory control function it supports today.  
 We examine today's BMS architecture in the context of 4 potential services with distinct operational requirements. % that need to be supported.  
-The first two services are feartures in today's BMS's.  
+The first two services are features in today's BMS's.  
 We describe how emerging requirements are driving the evolution of these
 services and how BMS's are struggling to meet the new requirements due to limitations in their architectural design.
 The next two are emerging services that BMS's cannot support today.  We describe which architectural components must be included
@@ -40,7 +40,7 @@ user of the system is a building manager -- a user whose expertise is much broad
 algorithm that runs on a particular system component.
 The manager is expected to monitor the health of building systems and quickly diagnose problems when they occur.  The tool
 is mainly in place to save the building manager time; and it is very effective at doing so.  The extent to which 
-the building manager is making control decisions is altering control algorithm paramter setting through
+the building manager is making control decisions is altering control algorithm parameter setting through
 the building management interface itself.  Even these decisions typically go through the vendor, through consultation.
 
 Figure~\ref{fig:soda_bms_screenshot} shows a screenshot of the BMS in Soda Hall at UC Berkeley.  This specific image
@@ -58,7 +58,7 @@ manager.
 
 If the problem recurs often, the astute building manager may be able to characterize the fault through a series of alarms.
 They can be proactive about finding and fixing the problem(s) before they occur.  Alarms can be set through interaction
-with the graphical interface, in much the same way that a lookup on the measurement point occurs -- by double-clicking on 
+with the graphical interface, in much the same way that a look up on the measurement point occurs -- by double-clicking on 
 the point in question and following instructions for setting an alarm.  In some cases, the problem may be driven 
 by a faulty setting and adjustments can be made to the control parameters through the associated control points.
 
@@ -66,7 +66,7 @@ The scope of control is limited to local control loops.  Recall our discussion o
 The building manager can, typically with the help of the vendor, decide on the best control strategy setting.  If the control
 strategy cannot be met, due to flaws in the control algorithm itself, the vendor may step in and re-image the controller
 at the outstation and expose the necessary parameters through the graphical interface.  These kinds of changes are rare
-but do happen occassionally and are generally expensive, since the cost is not usually included with the purchase
+but do happen occasionally and are generally expensive, since the cost is not usually included with the purchase
 of the system.  The decision is made after close inspection and analysis, which a BMS enables through the data export feature.  
 For example, the sense/control points in question may be placed in ``trend'' mode.  This means that readings
 from those streams are stored in the local memory buffer at the outstation for some period of time.  If a report is specifically
@@ -74,7 +74,7 @@ set up at the central system, a report period is associated with the point of in
 from the local buffer at the outstation.  The data are written in a file for observation and graphing by the 
 building manager.  %Time-dependent inspection of the behavior of any of the control-loop related points can be examined.
 
-Although this feature is not necessary in order to change control paramters, it is useful for observing how parameter changes
+Although this feature is not necessary in order to change control parameters, it is useful for observing how parameter changes
 affect the behavior of the system.  The building manager can, in principal, experiment with different setting and allow
 empirical observations to guide her future decisions.
 
@@ -86,7 +86,7 @@ empirical observations to guide her future decisions.
 \subsection{Energy Auditing and Building Modeling}
 \label{sec:elensvision}
 Recently there has been renewed interest in the energy consumption of buildings.  In particular, several studies~\cite{BuildingEnergyData,
-MITBuildingScience} show that buildings consome a large fraction of the energy produced in the United States and that as much
+MITBuildingScience} show that buildings consume a large fraction of the energy produced in the United States and that as much
 as 80\% of it is wasted\cite{waste_science, next10_waste}.  As such, there has been an emergence of several companies and 
 services for assessing the health of
 commercial buildings with respect to their energy consumption.  Organizations such as LEED~\cite{Leed} provide certification of 
@@ -110,7 +110,7 @@ will join the building network of devices and eavesdrop on the network for senso
 In many instances, this is the only way to obtain truly real-time readings from the sensors on the network.
 BMS vendors do not like this, since they such devices may generate traffic that overwhelms the network.  % because of congestion.
 % Although not fundamental, it is a common concern in building sensor networks.  
-Many buildings use RS-485 rather than ethernet and there is
+Many buildings use RS-485 rather than Ethernet and there is
 a general, albeit unfounded, concern that the network will become overwhelmed if all the points are trended and report 
 simultaneously.
 
@@ -121,7 +121,7 @@ is needed.  BMS's, as currently designed, require the end-user to manage the his
 When BMS's were first designed, there were certainly concerns about bandwidth and storage limits.  However, today those concerns
 are a non-issue.  A few hundred bytes produced on the order of minutes, even from several thousand sensors is simply not
 that much data.  For example, 10k sensor produces readings every 15 minutes at 200 bytes per report is only 
-17 Kbps.  Even if the streams are sychronized, the total amount of data is 2 MB.  Ethernet links and switches can handle Gbps 
+17 Kbps.  Even if the streams are synchronized, the total amount of data is 2 MB.  Ethernet links and switches can handle Gbps 
 transfers.
 
 
@@ -137,9 +137,9 @@ transfers.
 An emerging class of applications, is in holistic control of the building using a new technique called model-predictive control~\cite{MPC_yudong}.
 Rather than rely on specific changes to control logic at the local-loop level, MPC techniques observe and learn a model
 of the behavior of a components, multiple components, or the whole building, based on the historical data.  Once the model is learned, 
-constraints can be specified to drive the behavior of the system to an optimal region in the tradeoff space; solving it as 
+constraints can be specified to drive the behavior of the system to an optimal region in the trade off space; solving it as 
 a constraint optimization problem.  Figure~\ref{fig:mpc1}, reproduced from~\cite{MPC_yudong}, shows an example of hierarchical MPC control.  
-It decomposes a large optimization process -- High-level MPC --  into indivial control decision to be made at the control-loop level --
+It decomposes a large optimization process -- High-level MPC --  into individual control decision to be made at the control-loop level --
 low-level MPC.
 
 In order to enable the low-level MPC, the process must know the mapping between the points and their location.
@@ -154,7 +154,7 @@ Needless to say, it is very time consuming and \emph{does not scale}.
 This lack of generalizability and scalability hinders widespread deployment of innovative solutions.  In most cases the 
 mapping of sensor/actuator to their placement in space/system are 
 captured through in a combination of the schematics, the graphical interface, and the point name. Moreover, buildings are 
-are one-off constructions and their associated digital information has followed the same pattern.  Alhtough MPC can yield signficant savings, setup complexity and building uniqueness, makes it nearly impossible to replicate quickly.  It is fundamentally difficult to generalize. 
+are one-off constructions and their associated digital information has followed the same pattern.  Although MPC can yield significant savings, setup complexity and building uniqueness, makes it nearly impossible to replicate quickly.  It is fundamentally difficult to generalize. 
 
 
 \subsection{Personal Energy Viewer}
@@ -205,15 +205,14 @@ natural set of steps: perform processing in real-time and present the occupants 
 Currently, in order to enable this application, a detailed digital model of the building is necessary, data streams from the building must
 be easy to query, and it should work across buildings.  Also, there needs to be a way to localize the user. 
 Localization technology and information must be made available to the mobile application to provide in-situ services.
-It's clear that the current information instrastructure cannot provide these.  The interface to the network does not have
+It's clear that the current information infrastructure cannot provide these.  The interface to the network does not have
 a strict naming mechanism, there is not explicit representation of each building that the application could interpret, 
 the sensor/actuator deployment is not dense enough and adding new sensor is cumbersome.  Furthermore, the data itself can be quite dirty.
 
-Cheap sensors are unreliable.  They produce erroneous data and randomly stop and start at times.  Missing/errorneous data is common.
-Moreoever, within building information systems provided by a single vendor, there is no time synchronization across sensors, so
+Cheap sensors are unreliable.  They produce erroneous data and randomly stop and start at times.  Missing/erroneous data is common.
+Moreover, within building information systems provided by a single vendor, there is no time synchronization across sensors, so
 aggregation, filtering, and re-sampling are common operations that must be performed on the data in order to summarize and display it.
 The mobile energy viewer application not only require these but requires that they be performed in real time.
-
 
 
 

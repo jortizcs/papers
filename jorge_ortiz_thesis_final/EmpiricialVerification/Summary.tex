@@ -38,7 +38,7 @@ coil temperature, and the air vent position sensor.  If their behavior
 is not correlated as expected, an alarm will be raised.
 
 We can also apply it to other usage scenarios.  In our traces, we found an instance where the pump
-was on but the lights were off; where, typically, they are active simulatenously.
+was on but the lights were off; where, typically, they are active simultaneously.
 The air conditioning was pumping cool air into a room without occupants.
 With our approach this could have been identified and corrected.  In future work, we intend to
 package our solution to serve these kinds of applications.
@@ -110,13 +110,12 @@ For this initial study, our method is able to classify the sensors of 93.3\% acc
 These results are very encouraging. However, we recognize that they are far from definitive. While the rooms in the study were picked arbitrarily, they are neither comprehensive nor a systematic sampling.  While they are clearly separated by our approach, and not by analyses of the raw time series, they do differ substantially in placement and usage.  A key question going forward is, ``how well will highly similar rooms be separated?"  - say, adjacent rooms facing the same side of the building and with similar occupancy. Will these techniques hold, more powerful techniques be required, or is further discrimination intractable? In future work, we will examine how far this method takes us and explore how it may be used in combination with other techniques to improve the results more generally. Automated metadata verification is important to include in the lifecycle of building data management.
 
 We also attempt to address the categorical classification problem.  With fairly simple approaches we can use the mean and standard deviation
-of the trace to classify the category of the trace, as labled by the user.  However, for large traces with many
-overlapping categories we observed that the traces are very similar and cannot be distinguised.  In order to uncover we may need out-of-band
+of the trace to classify the category of the trace, as labeled by the user.  However, for large traces with many
+overlapping categories we observed that the traces are very similar and cannot be distinguished.  In order to uncover we may need out-of-band
 information.  Statistically they are indistinguishable with the techniques we present.
 
 
 % \subsection{Type Verification}
-
 
 
 

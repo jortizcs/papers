@@ -1,6 +1,6 @@
 \section{Categorical Verification Results}
 
-Categorical verification works quite well using the simple method describe in the the methdology.  Table~\ref{tab:type_class}
+Categorical verification works quite well using the simple method describe in the the methodology.  Table~\ref{tab:type_class}
 gives a summary of a pair of large traces with few categories.
 
 \begin{table}[h]
@@ -19,7 +19,7 @@ gives a summary of a pair of large traces with few categories.
 \end{table}
 
 The simple methodology is able to separate them quite easily.  It is clear that the mean and standard deviation provides enough
-inforomation for the classifier to differentiate between the different cateogories of traces.
+information for the classifier to differentiate between the different categories of traces.
 
 % \begin{figure}[t!] %htbp
 % \centering
@@ -101,7 +101,7 @@ separate them with approximately 77\% accuracy, but it may not generalize.}
 \end{figure}
 
 However, note the temperature traces between in Figure~\ref{fig:temps}.  The categorical clusters overlap signficantly.  We 
-examined this distribution more closely by construct a Gaussia mixture model and plotting the cluster centers.  The results
+examined this distribution more closely by construct a Gaussian mixture model and plotting the cluster centers.  The results
 are presented in Figure~\ref{fig:cluster_centers}.
 
 
@@ -113,9 +113,8 @@ very difficult tease apart and accurately classify.}
 \label{fig:cluster_centers}
 \end{figure}
 
-Note, the cluster centers are not easily distinguishable.  The classifier varied in accuracy, leading us to believe that 
-these sets of traces were mostly indistinguishable.  Moroever, our approach for this trace is very tightly tailored to
+Note, the cluster centers are not easily distinguishable.  The classification accuracy varies, leading us to believe that 
+these sets of traces are mostly indistinguishable.  Moreover, our approach for this trace is very tightly tailored to
 the particulars of this trace.  More exploration is necessary.
-
 
 

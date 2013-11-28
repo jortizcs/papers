@@ -1,5 +1,5 @@
 % \chapter{Example Applications and API}
-\chapter{Architectural Evaluation}
+\chapter{API and an Architectural Evaluation Through Applications}
 \label{chap:ArchEvalMain}
 
 In this chapter we present an architectural evaluation through our deployment experience.  We give an overview of
@@ -7,15 +7,15 @@ our application programming interface (API) and discuss its use in the context o
 how we are able to provide \emph{extensibility, generalizability, scalability,} and \emph{ease-of-management}
 through a description of the API and the applications that use it.
 
-The first application is the \emph{Mobile Energy Lens}.  It is designed to collect building inventory and metering
-information and provide various live, aggregate view of the energy consumption of devices throughout the buidling.
+The primary application that we focus on is the \emph{Mobile Energy Lens}.  It is designed to collect building 
+inventory and metering information and provide various live, aggregate view of the energy consumption of devices throughout the building.
 The application makes use of several StreamFS features and provides a working, real-world example one of our target
 emerging applications.  The second application is an mounted Unix filesystem interface for legacy applications.
 We discuss how StreamFS can support legacy applciations with minimal change to application code.  We discuss 
 the mapping from StreamFS file semantics to Unix file semantics.  The mounted FS demonstrates the \emph{generalizability}
 of our architecture.
 
-We also provide a detailed description of each application.  We highlight components of the application architecture
+We also provide a detailed description of each application.  We highlight components of their architecture
 where StreamFS provides a critical service.  For problems which StreamFS only provides a partial solution, we demonstrate 
 how that partial solution is extended into a full solution design and we present an associated evaluation.
 

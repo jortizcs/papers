@@ -1,8 +1,8 @@
 \section{Related Work}
 StreamFS borrows ideas from many places.  Naturally, in adopting filesystem as the main abstraction we borrow directly
-from the design of unix-style filesystem and pipes~\cite{Ritchie74theunix}.  We translate these ideas into 
-our implementation, transforming these into a web-services architecture combined with mutliple databases.
-Our filesystem is also hierachical, but it is \emph{completely divorced from the approach to storage}.  File information is
+from the design of Unix-style filesystem and pipes~\cite{Ritchie74theunix}.  We translate these ideas into 
+our implementation, transforming these into a web-services architecture combined with multiple databases.
+Our filesystem is also hierarchical, but it is \emph{completely divorced from the approach to storage}.  File information is
 spread across multiple databases in StreamFS.  The name is made accessible through a RESTful interface or socket connection, but
 only the name and its structure is used to identify the object.  Moreover, the notion of symbolic and hard links are
 used as a way to support multiple names for the name unique object.  In traditional filesystems, these inform
@@ -14,7 +14,7 @@ represent different physical and semantics relationships.  We use it throughout 
 We couple the namespace that is exposed through the filesystem with an in-memory graph that graphically represents the inter-relationships
 between the files.  This graph is used to provide OLAP-style queries, similar to the work by Chen et al.~\cite{Chen2008_olapgraph}.  
 These authors describe how they translate OLAP operations to a graph.  Their decomposition is different in that nodes in the graph 
-explicitly represent measures and dimenions.  We do represent the time dimension as a separate snapshot of the graph at another
+explicitly represent measures and dimensions.  We do represent the time dimension as a separate snapshot of the graph at another
 point in time.  By separating the raw data from the graphical representation this becomes a trivial transformation.
 
 The use of a filesystem representation has been explored by researchers.  Tilak et al.~\cite{BingFS} use the filesystem 
@@ -36,7 +36,7 @@ handle sensor data queries and organization.
 
 % File system for sensor deployments from Binghamton\cite{BingFS}, and WSNFuse by Filipponi et al.~\cite{wsnfuse}.
 
-The foundation of our processing framework is a pub/sub system architecure, similar 
+The foundation of our processing framework is a pub/sub system architecture, similar 
 to~\cite{Eugster01contentbasedpubsub, Rosenblum97adesign, tspaces, tibco}.  StreamFS has a flexible pub/sub coupling architecture,
 where user options can separate certain dependencies between producers and consumers.  We also make use of the ERG to 
 do topic-matching.  This is crucial for building applications, where analysis is tightly coupled with context.
@@ -48,8 +48,9 @@ for the building.  It is not focused on true-real time constraints or modeling.
 % Ptolemy project and dataflow graphs for cyber-physical systems~\cite{ptolemy2001,ptolemy2007}, 
 % graphical programming of CPS~\cite{Cheong2005,CheongEECS200615}
 
-HomeOs~\ref{homeos} is related.  So is BOSS~\cite{boss} and FIAP~\cite{fiap} and BuildingDepot~\cite{bdepot}.
 
+
+% HomeOs~\ref{homeos} is related.  So is BOSS~\cite{boss} and FIAP~\cite{fiap} and BuildingDepot~\cite{bdepot}.
 
 
 

@@ -10,7 +10,7 @@ A level-1 auxiliary file: StreamFSMechanisms/StreamFSMechanismsMain.aux
 A level-1 auxiliary file: ArchitecturalEvaluation/ArchEvalMain.aux
 A level-1 auxiliary file: EmpiricialVerification/VerificationMain.aux
 Case mismatch error between cite keys BACnet and Bacnet
----line 154 of file thesis.aux
+---line 149 of file thesis.aux
  : \citation{BACnet
  :                 }
 I'm skipping whatever remains of this command
@@ -27,7 +27,7 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated field_info (elt_size=4) to 23360 items from 5000.
+Reallocated field_info (elt_size=4) to 22952 items from 5000.
 Database file #1: thesis-blx.bib
 Database file #2: references.bib
 Repeated entry---line 1619 of file references.bib
@@ -252,24 +252,97 @@ Repeated entry---line 7522 of file references.bib
  : @article{blondel:unfolding
  :                           ,
 I'm skipping whatever remains of this entry
+Repeated entry---line 7687 of file references.bib
+ : @article{waste_science
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 7709 of file references.bib
+ : @misc{acme
+ :           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 7747 of file references.bib
+ : @inproceedings{hbci
+ :                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 7765 of file references.bib
+ : @phdthesis{cricket
+ :                   ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 7864 of file references.bib
+ : @inproceedings{smap
+ :                    ,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 7968 of file references.bib
+ : 
+ : year = {1993},
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Repeated entry---line 8159 of file references.bib
+ : @inproceedings{radar
+ :                     ,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 8525 of file references.bib
+ :   
+ :   organization = "Center for Information Technology Research in the Interest of Society"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 8594 of file references.bib
+ :    
+ :    title = "{Ensemble-level Power Management for Dense Blade Servers}",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 8763 of file references.bib
+ :   
+ :   organization = "Cambridge University Press",
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Repeated entry---line 8773 of file references.bib
+ : @misc{next10_waste
+ :                   ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 8788 of file references.bib
+ : @misc{epabuildings
+ :                   ,
+I'm skipping whatever remains of this entry
+Unbalanced braces---line 8797 of file references.bib
+ :   author="{Ecos}
+ :                 }",
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 8806 of file references.bib
+ :   
+ :   month="March"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 8813 of file references.bib
+ :   
+ :   month="March"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 8820 of file references.bib
+ :   
+ :   month="January"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 8827 of file references.bib
+ :   
+ :   year="2007"
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Repeated entry---line 9498 of file references.bib
+ : @misc{cbecs2003
+ :                ,
+I'm skipping whatever remains of this entry
 Warning--I'm ignoring speech's extra "keywords" field
---line 7934 of file references.bib
+--line 10161 of file references.bib
 Warning--I'm ignoring speech's extra "keywords" field
---line 7936 of file references.bib
-Repeated entry---line 7948 of file references.bib
+--line 10163 of file references.bib
+Repeated entry---line 10175 of file references.bib
  : @inproceedings{smap
  :                    ,
 I'm skipping whatever remains of this entry
 Warning--I didn't find a database entry for "mpc"
-Warning--I didn't find a database entry for "mongodb"
 Warning--I didn't find a database entry for "opentsdb"
-Warning--I didn't find a database entry for "SenkoDB"
-Warning--I didn't find a database entry for "Chen76theentity-relationship"
-Warning--I didn't find a database entry for "sec:shortcomings"
-Warning--I didn't find a database entry for "fig:everythingfile"
 Warning--I didn't find a database entry for "aceee_mobileaudit"
-Warning--I didn't find a database entry for "tinyurl"
-Warning--I didn't find a database entry for "fuse"
 Biblatex version: 1.7
 Too many commas in name 3 of "Lanzisera, Steven M. and Dawson-Haggerty, Stephen and Jiang, Xiaofan, Cheung, Hoi Ying and Taneja, Jay and Lai, Judy and Ortiz, Jorge and Culler, David and Brown, Richard" for entry lanz
 while executing---line 2500 of file biblatex.bst
@@ -297,45 +370,45 @@ Too many commas in name 3 of "Lanzisera, Steven M. and Dawson-Haggerty, Stephen 
 while executing---line 2645 of file biblatex.bst
 Too many commas in name 3 of "Lanzisera, Steven M. and Dawson-Haggerty, Stephen and Jiang, Xiaofan, Cheung, Hoi Ying and Taneja, Jay and Lai, Judy and Ortiz, Jorge and Culler, David and Brown, Richard" for entry lanz
 while executing---line 2645 of file biblatex.bst
-You've used 125 entries,
+You've used 129 entries,
             6019 wiz_defined-function locations,
-            1966 strings with 43018 characters,
-and the built_in function-call counts, 447298 in all, are:
-= -- 18762
-> -- 15205
-< -- 4776
-+ -- 5590
-- -- 5537
-* -- 35972
-:= -- 25583
+            1973 strings with 43132 characters,
+and the built_in function-call counts, 454094 in all, are:
+= -- 18956
+> -- 15278
+< -- 4834
++ -- 5605
+- -- 5562
+* -- 36263
+:= -- 25797
 add.period$ -- 0
-call.type$ -- 125
-change.case$ -- 2775
-chr.to.int$ -- 66
-cite$ -- 248
-duplicate$ -- 50928
-empty$ -- 45292
-format.name$ -- 10169
-if$ -- 100889
+call.type$ -- 129
+change.case$ -- 2793
+chr.to.int$ -- 67
+cite$ -- 256
+duplicate$ -- 51827
+empty$ -- 46309
+format.name$ -- 10214
+if$ -- 102529
 int.to.chr$ -- 0
-int.to.str$ -- 369
+int.to.str$ -- 373
 missing$ -- 0
-newline$ -- 4285
-num.names$ -- 6790
-pop$ -- 39988
+newline$ -- 4320
+num.names$ -- 6826
+pop$ -- 41259
 preamble$ -- 1
-purify$ -- 3259
+purify$ -- 3275
 quote$ -- 0
-skip$ -- 26368
+skip$ -- 26745
 stack$ -- 0
-substring$ -- 11719
-swap$ -- 17766
-text.length$ -- 3502
-text.prefix$ -- 124
+substring$ -- 11758
+swap$ -- 18014
+text.length$ -- 3558
+text.prefix$ -- 128
 top$ -- 1
-type$ -- 4734
+type$ -- 4886
 warning$ -- 0
-while$ -- 2316
+while$ -- 2341
 width$ -- 0
-write$ -- 4159
-(There were 69 error messages)
+write$ -- 4190
+(There were 87 error messages)

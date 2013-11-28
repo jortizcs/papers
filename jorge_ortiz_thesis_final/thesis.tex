@@ -1,5 +1,5 @@
-% \documentclass[12pt,final]{ucthesis}
-\documentclass{ucbthesis}
+\documentclass[12pt,final]{ucthesis}
+% \documentclass{ucbthesis}
 \usepackage{biblatex}
 \usepackage{graphicx}
 \usepackage{amsmath}
@@ -125,8 +125,50 @@ My accomplishments are not possible without your love, support, and complete fai
 \listoftables
 
 \begin{acknowledgements}
-I want to thank my advisor for advising me.
+I want to thank my advisor my advisor, David Culler, for guiding my research work and giving me enough
+freedom that I could select the problems I find interesting and go deep.  David has an amazing ability to
+offer deep insights and perspective to almost any problem I bourght to me and has helped guide my vision in 
+the the context of all the established work while fearlessly pushing me to examine completely new domains.
+
  % Aileen Cruz, Judy Zamora, Rudy Ortiz, Lilia Fajardo, Patty Rivera
+I want to thank my wife Aileen Cruz, my mother and father, Judy Zamora and Rudy Ortiz, my 
+grandmother Lilia Fajardo and my sister Patricia Rivera.  They have supported me throughout my entire career in ways
+that are too long to list here. I spoke to my family almost every day since I moved to California in 2005, and they
+were with me throughout; separated by many miles but never closer.  Aileen offered unwavering confidence in me since 
+my years at M.I.T., my arduous transition from Oracle to Berkeley, 
+and for all my years in the program.  We arrived as two and leave as a family of four, with our baby Elias on the way and 
+our wonderful dog Juani.  
+
+A special thanks to Professor Randy Katz, for always being encouraging, offering deep insights, and always
+excellent baseball conversation.  Ever the die-hard SF Giants fan, I will always remember the games we attended
+at AT\&T Park and our discussions about the statistics of the game.
+I also want to thank Processor Paul Wright for giving me great feedback during my qualifying exam and for being the first
+to sign off on this work.
+
+I want to thank my colleagues David Zats, Dezhi Hong, and Romain Fontugne for the work we did together and the deep
+insights they brought to our work together and my work in particular.  I will cherish my interactions with them and I am
+happy to call them friends.  A special thank you to Jay Taneja, Prabal Dutta, Jaein Jeong, Fred Xiang, Sukun Kim and Arsalan 
+Tavokoli.  The original wireless
+embedded systems group.  Jay, without your pushing me to sit in 410, I might not have had to opportunity to be 
+as productive as I was those early years.  Prabal, with all his deep insights and advice.  He served as the kind of
+mentor I hope every student gets to have at some point in their career.
+
+I also want to thank Prof. Ion Stoica and Scott Shenker, for giving me those early opportunities to transition from an employee
+at Oracle to a PhD student at Berkeley. To Rodrigo Fonseca, Chris Baker, Daekeong Moon, Jinyang Li, Joel Weinberger,
+Michael Heirich, Jonathan Chang and
+Professor Hiroshi Esaki.  Thank you for patiently working with me and giving me an opportunity to succeed.  
+A very special thanks to Albert Goto, for our long talks and for all your help throughout my time at Berkeley.  
+An extended
+thank you to Larry Rudolph at M.I.T. and Josh Jacobs at Drexel, who got me started on research many years ago, while I was at M.I.T.
+
+Finally, I want to thank my the organizations that funded the work in this thesis.  These include the National Science Foundation,
+Samsung, Intel, and Nokia.
+
+To my 49ers in Woodside, Queens, New York.  It took a long time but we in here!  Time to go home.
+
+
+
+
 
  % David Culler, Randy Katz, Paul Wright, Kamin Whitehouse, Dezhi Hong, Albert Goto, Jay Taneja, Prabal Dutta,
  % Jaein Jeong, 
@@ -167,7 +209,7 @@ scale, and are difficult to set up and manage.
 We propose a new architecture that embodies these system principles through a filesystem abstraction and data services.  We decompose
 all deployment data and metadata into three types of data -- structural inter-relationships and naming, attribute-value descriptive pairs,
 and timeseries data -- and expose them through a filesystem abstraction.  We adopt the Unix philosophy that ``everything is a file'' in a
-system called StreamFS.  We introduce 4 types of files -- containers, streams, controllers, and special -- that can be aribtrarily
+system called StreamFS.  We introduce 4 types of files -- containers, streams, controllers, and special -- that can be arbitrarily
 composed to reflect information about the physical configuration of the sensors and actuators relative to the systems and spaces in
 the building.  The filesystem makes these physical resources directly accessible, in a centralized and controlled fashion.  We
 also adopt filesystem security that mediates access between the client-side application and the sensors in the deployment.
@@ -189,14 +231,14 @@ of plug-load devices.  We present a 3-layer application architecture, where one 
 StreamFS data management and data processing services.  We also discuss the challenges that have to be overcome in order to
 provide a better user experience and discuss how each of mechanisms used to solve those problems were also implemented on top of StreamFS.
 
-Finally, we introduce the notion of verification of physical relationship through empiricial data.  We characterize and motivate the problem
+Finally, we introduce the notion of verification of physical relationship through empirical data.  We characterize and motivate the problem
 in buildings as being a fundamental problem that needs to be solved as we move toward software-based control of the built environment.
 We partition the verification problem into three sub problems: 1) functional verification, 2) spatial verification, and 3) categorical
 verification.  We should how empirical mode decomposition, correlation, and simple machine learning techniques can give us 
 information about how the sensors are related to each other, physically.  We propose the use of this information to 
-verfiying the manually specified physical configuration setting.
+verifying the manually specified physical configuration setting.
 
-Through our deployments we demonstrate the importance of specific features and overall, we demonstate an \emph{extensible, generalizable,
+Through our deployments we demonstrate the importance of specific features and overall, we demonstrate an \emph{extensible, generalizable,
 scalable, and easy-to-manage} system for supporting the ``appification'' of the built environment.  There are still many
 questions to explore more deeply, but we believe that StreamFS and verification provide a solid foundation on which to continue
 our exploration.

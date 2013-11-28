@@ -87,14 +87,14 @@ Applications may also feed data to the cloud and make it available to other appl
 
 
 \section{Pervasive Computing}
-The polifertation of cheap, networked, embedded sensors is moving us towards a future where our infrastructure is 
+The proliferation of cheap, networked, embedded sensors is moving us towards a future where our infrastructure is 
 populated with computing that enable smart environments.  We march towards Mark Weiser's vision of the future of
 computing \cite{uqicomp_vision} where the environment contains sensors and people interact with the 
 physical environment through their personal devices and related services.  These services also allow us to 
 optimize the performance of our infrastructure, uncover problems proactively,
 and share information with others to provide greater insight into the world around us.  
 % This vision is borne out
-% incremenetally in the research community over the past 20 years.%since the vision was initially proposed over 20 years ago.
+% incrementally in the research community over the past 20 years.%since the vision was initially proposed over 20 years ago.
 
 The research in this area starts from the vision for the field.  What could the world be if we are surrounded by computing?
 How will we interact in that world?  What can we learn from the world and from each other?  Hypothetical scenarios
@@ -128,10 +128,10 @@ issues specifically in this thesis.
 % Through the construction of vision-style scenarios and application development in those settings, 
 % frameworks emerged and fundamental challenges were uncovered. 
 % The challenges and solutions are related to localization, contextual inference, multi-modal input, vision, and other issues.
-% Eventually each of these branched off into invidual fields of study and communities that examined these
+% Eventually each of these branched off into individual fields of study and communities that examined these
 % more deeply.
 % As these communities matured they were driven by more realistic deployment and application contexts.
-% Over the years, this evolution has included advantaces in sensing, mobile, and network technology but also computational 
+% Over the years, this evolution has included advances in sensing, mobile, and network technology but also computational 
 % ubiquity through cloud computing.  Moreover, as we consider problems that emerge in specific application domains or
 % industries, we will see that the convergence of these technologies allow new domain-specific problems and solutions 
 % to be explored.
@@ -190,8 +190,8 @@ participants in the system.
 We introduce the notion of building ``app-ification''.  Technology enables mobile phone ``apps''; mobile
 applications that closely interact with content in the cloud.  We assert that a good way to address problem in the building
 by opening up the building's sensor data streams and buildings services that make use of that data.  A system should provide 
-\emph{uniform access} to the data and \emph{facilities for cleaning and aggregation}.  It should be \emph{extendable}
-so disparite systems could join and share information that could enable new kinds of applications.  Figure~\ref{fig:buidlingapp}
+\emph{uniform access} to the data and \emph{facilities for cleaning and aggregation}.  It should be \emph{extensible}
+so disparate systems could join and share information that could enable new kinds of applications.  Figure~\ref{fig:buidlingapp}
 illustrates a high-level of building ``app-ification architecture''.
 
 Building-scientists and architects use a family of products and software packages that take building data 
@@ -212,7 +212,7 @@ We formally state the thesis that guides our work: %research thesis and hypothes
 \emph{How can we incorporate filesystem and database constructs and what are the technical challenges in a system that supports applications
 in the built environment?}
 Given the emerging applications in
-the built environment it is clear that the old information system design is not sufficiently open, flexibile, nor
+the built environment it is clear that the old information system design is not sufficiently open, flexible, nor
 scalable enough to support them.  Old information systems are tightly integrated from the field-level sensor to
 the central supervisor control system.  There are two integration points in traditional systems that we argue 
 are either fundamentally flawed or insufficient for emerging applications.  We describe the components that 
@@ -245,7 +245,7 @@ and managed by StreamFS as well as integrating external processing components an
 We discuss some of the challenges and present some solutions to a scheduling problem related to providing fresh data  to processing jobs.
 We also describe how various kinds of aggregation can be performed on the data, using the filesystem and pipe abstraction
 presented and managed by this component.
-Section~\ref{chap:naming} discusses how we represent the world as a collection of files.  StreamFS follows the unix filesystem principal 
+Section~\ref{chap:naming} discusses how we represent the world as a collection of files.  StreamFS follows the Unix filesystem principal 
 where everything is a file and this allows us to provide a unified management layer for the entire set of building deployment
 data and metadata.  We discuss the individual file types that we support and their semantics.  We also introduce the fundamental
 challenge of dealing with evolving metadata.  Specifically,  we show how changes in the physical world can present problems
@@ -257,14 +257,13 @@ We evaluate the StreamFS in chapter~\ref{chap:ArchEvalMain}.  We describe our ex
 at UC Berkeley and the University of Tokyo.  We describe these deployments in the context of 2 applications: 1) a real-time visualization and 
 aggregator mobile phone for energy auditing, and  2) a real filesystem mount and direct integration with a legacy applications. 
 We also give an overview of the application programming interface and discuss how StreamFS can help build generable, scalable 
-re-useable software within buildings.
+re-usable software within buildings.
 
 Finally, we discuss verification of building systems and metadata in chapter~\ref{chap:VerificationMain}.  We introduce 3 types of 
 verification and describe why each of them is crucial to building applications that interact with the physical world through
 a layer of software represent it.  We discuss our work on the Strip, Bind and Search methodology for functional verification, 
-our use of mode decomposition for spatial verification, and timeseries clustering techniques for type classificaiton.  
+our use of mode decomposition for spatial verification, and timeseries clustering techniques for type classification.  
 We discuss future work in chapter~\ref{chap:future} and conclude in chapter~\ref{chap:done}.
-
 
 
 

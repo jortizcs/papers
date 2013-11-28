@@ -1,10 +1,18 @@
 \section{Summary}
 
-In this chapter we discussed the file abstraction is more detail.  We presented the 4 different types of files and how they
-are used in StreamFS.  We summarized their opertations and semantics as well.  We also discussed the challenges in dealing with
-maintaining an accurate view of the metadata over time and presented 4 types of verification.
-The last one is particularly important because we believe it is fundamental.
+In this chapter we discussed the mechanisms that drive the pub-sub system and the OLAP-related features in StreamFS.
+We gives details about the inner workings of the process manager and how it manages both internal and external processes.
+Internal processes are distributed in a cluster, where each cluster contains an internal process stub that manages 
+instances of running code.  The code, written in javascript, is managed in an independent sandbox for isolation.  Each
+stub also monitors the state of the stub and forwards the data to and from the process manager.
+A corresponding stub used to manage external processing elements.  It contains very similar components for managing
+external process instances on client machines and communicating with the StreamFS server.
+We also introduce an important scheduling feature for forwarding only the freshest data to data sinks.
+In this chapter, we also discuss the file abstraction is more detail.  We presented the 4 different types of files and how they
+are used in StreamFS.  We summarized their operations and semantics.  
+% We also discussed the challenges in dealing with
+% maintaining an accurate view of the metadata over time and presented 4 types of verification.
+% The last one is particularly important because we believe it is fundamental.
 
 In the next chapter we will evaluate the architecture with respect to its system properties.  We explore these properties by
 presenting applications that it support that could not be supported by legacy systems.
-

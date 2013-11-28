@@ -1,8 +1,8 @@
 \section{API Overview}
 
-In this section we give an overview of the application programming interface.  We give a description of some of the main
-function calls and the corresponding RESTful interface version.  We also provide a full tutorial 
-of the HTTP/REST interface in Appendex~\ref{appendix:tutorial}.
+In this section we give an overview of the application programming interface.  We provide a description of
+function calls and the corresponding HTTP/REST version.  A full tutorial of the HTTP/REST interface can be found 
+in Appendix~\ref{appendix:tutorial}.
 
 \begin{table}[h]
 \begin{center}
@@ -29,7 +29,7 @@ of the HTTP/REST interface in Appendex~\ref{appendix:tutorial}.
 Table~\ref{tab:api_calls1} gives and overview of API calls that are available through the standard library, available in several
 languages.  It provides functions for creating and deleting files as well as decorating them with attribute-value pairs.
 The Energy Lens application makes extensive use of this library interface for dealing with consistency-management
-features and ``atomic'' update operations.  Most of the applications that runs on the phone, however, uses the HTTP/REST
+features and ``atomic'' update operations.  Applications that run on the phone, typically use the HTTP/REST
 interface.
 
 
@@ -40,7 +40,7 @@ interface.
 	\textbf{callback} & \textbf{description} \\ \hline
 	search & General search of terms through file name and content.  Similar to grep.    \\ \hline
 
-	filter & Informs device of removal.    \\ \hline
+	filter & Used to filter the returned list by attribute-value pair or path.    \\ \hline
 
 	query & Timeseries query.    \\ \hline
 
@@ -50,17 +50,23 @@ interface.
 \end{center}
 \end{table}
 
-The search API is simple (summarized in Table~\ref{tab:api_calls2}.  It includes three main calls, depending 
-on what you are searching for.  If you the application 
-which to make a general search query based on the name of the file, the \texttt{search} call allows you to specify 
-a set of terms to look for or to specify specific attribute-value pairs.  It also provides a general 
-\texttt{path} search option where you can specify that the path match a regular expression.
+The search API is simple (summarized in Table~\ref{tab:api_calls2}).  It includes three main calls, depending 
+on what kind of data you are searching for.  
+If the application wishes to make a general search based on the name of the file or the metadata it is decorated with, 
+the \texttt{search} call allows you to specify 
+a set of terms to look for or to specify specific attribute-value pairs.  It performs the search as a \emph{filter-forward}.
+It uses provides a general \texttt{path} sub-option where you can specify that the path match a regular expression.
+For example, \texttt{search(type:plug-load).path(/410/*)} returns all the files that contain the ``type:plug-load''
+attribute-value pair in their metadata and \texttt{/410/} as a prefix for any of their names.  This example 
+AND's the search criteria. 
 The filter call can be combined with the search call to filter on metadata values returned from the \texttt{path} search.
+For example, \\ \texttt{search(type:plug-load).path(/410/*).filter(owner:jorge)} 
+fetches the same files as before but filters those that contain the attribute-value pair ``owner:jorge''.
 Finally, the \texttt{query} call runs a timeseries query on a specified path or all stream files
 that match a regular expression specified by through the \texttt{path} option.
 
-Finally, the pub/sub library is used extensively throughout all our applications.  It is specifically used in 
-the Energy Lens for initiating the aggregation processing.  Table~\ref{tab:api_calls3} summarizes
+The pub-sub library is used extensively in all our applications.  It is specifically used in 
+the Energy Lens for initiating aggregation processing.  Table~\ref{tab:api_calls3} summarizes
 the two main API calls for dealing with subscriptions and pipes.
 
 
@@ -83,8 +89,8 @@ the two main API calls for dealing with subscriptions and pipes.
 \end{center}
 \end{table}
 
-Internally the mechanism for dealing with either is similar, however, the semantics of the two calls implies that
-pipes direct streams to user-defined internal/external processing elements, while subscriptions are
+Internally, the mechanism for dealing with both is similar, however, the semantics of each call is differe.t % two calls implies that
+Pipes direct streams to user-defined internal/external processing elements, while subscriptions are
 for external sinks running on the client.  Subscriptions are managed through an \texttt{HTTP POST}
 operation.  If the user is using a client stub, the \texttt{POST} is unmarshalled and a callback
 is triggered with the body of the \texttt{POST} submission.

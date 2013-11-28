@@ -3,7 +3,7 @@
 
 Internal processing jobs are short jobs submitted by users that are managed by StreamFS.  When a user submits
 a job they specify the name of the job in the request.  The process definition is checked for syntax correcteness
-and if it is okay, then it is accepted.  All newly created job definitions are placed in \texttt{/proc/}.
+and if it is okay, then it is accepted.  All newly created job definitions are placed in \texttt{/proc}.
 
 
 \begin{lstlisting}[caption={Simple aggregator process job.},label={code:simple_agg}]
@@ -24,8 +24,8 @@ function(buffer, state){
 
 The code in Listing~\ref{code:simple_agg} gives an snippet of example code that aggregate the data 
 passed to it in the buffer.  If the user names this definition \texttt{simpleagg}, then the file that corresponds to 
-the job definition is \texttt{/proc/simpleagg}.  We do not limit check the size and complexity of the job, however, we
-strongly recommend that jobs be kept relatively short and simple.  Generally, we recommend that a job pipeline 
+the job definition is \texttt{/proc/simpleagg}.  We do not check the size and complexity of the job, however, we
+strongly recommend that jobs be kept small and simple.  Generally, we recommend that a job pipeline 
 be established rather than feeding one large chunk of code.  It makes the pipeline easier to debug once it is
 activated.
 
@@ -59,13 +59,13 @@ at least $k$ elements in it.  The \texttt{timeout} sets the minimum period for t
 \centering
 \includegraphics[width=0.85\columnwidth]{figs/pe_internals}
 \caption{This figure shows the internal structure of a process element (PE).  The PE consists of several
-javascript sandboxes where interanl process code runs.  It also contains a scheduling loop, message router, and instance 
+javascript sandboxes where internal process code runs.  It also contains a scheduling loop, message router, and instance 
 monitor.}
 \label{fig:pe_internals}
 \end{figure}
 
 
-The process element process that runs on a separate machine.  Its main job is to manage the jobs that are being executed on that
+The process element stub that runs on a separate machine.  Its main job is to manage the jobs that are being executed on that
 machine.  Figure~\ref{fig:pe_internals} shows the components of a process element.  There are four main components in the unit.
 
 \begin{enumerate}
@@ -76,7 +76,7 @@ the \texttt{timeout} as the execution period of the job.
 waits for either an execution signal from the scheduler or until the input buffer has \texttt{window} element in it.  The output
 buffer is of size 1.  The object returned by the job is written to the output buffer.
 
-\item \emph{Message Router}:  The message router communicates with the process manager and send control and data messages between
+\item \emph{Message Router}:  The message router communicates with the process manager and sends control and data messages between
 the PE and the process manager.  It monitors the output buffer for each of the elements and forwards them to the process manager 
 when it is populated.
 
@@ -93,7 +93,7 @@ The messages received from the \emph{message router} in the PE are annotated wit
 to update the associated instance file in StreamFS.  Again, everything is managed in through filesystem.  So errors and data
 are exposed to external applications through the meta/data in the files.
 
-Note, the process manager maintains a mapping between job instances and PE's.  It also notes the machine the PE is running on.  The
+Note, the process manager maintains a mapping between job instances and PEs.  It also notes the machine the PE is running on.  The
 \emph{instance monitor} allows the process manager to make decisions about job migration in case of failure.  PEs are designed
 to function independently from one another.  This allows the process cluster to scale linearly with the load -- in terms of
 the number of streams being processed and the number of active jobs.  Like the other components in StreamFS, it is 
@@ -116,9 +116,9 @@ Any messages sent from the PE to the process manager during the down period is l
 % \item Introduction to OLAP.
 % \item Explanation of ERG in StreamFS.
 % \end{itemize}
-Online analytical processing (OLAP) is a processing layer that provides summarization of data
+Online analytical processing (OLAP) provides summarization of data
 from a set of underlying data repository (date warehouses).  Traditionally, OLAP is used to process
-business data.  Business data summarization allows an analyst to ask targetted questions about aggregates 
+business data.  Business data summarization allows an analyst to ask targeted questions about aggregates 
 and trends in their data.  The data is typically multidimensional in nature and operations can be performed with
 respect to those dimensions and their inter-relationship.  In our deployments, we find that most queries are 
 similar to OLAP queries with scan-heavy queries across the time dimension.
@@ -138,9 +138,9 @@ examples of certain classes of OLAP queries, how they are constructed, and how t
 \emph{Measures} refer to the actual value, located somewhere is the cube along the intersection of several dimensions.
 A \emph{dimension} is simply a reading and an example is shown in Figure~\ref{fig:olap2erg}.  Dimensions 
 are labels for an axis.  In StreamFS a measure is a unit of measure (i.e. Fahrenheit) or time.  The hierarchical \emph{level}
-is explicit in the construction of the names.  So in the subtree that organizes stream according to the location of the
+is explicit in the construction of the names.  So in the subtree that organizes streams according to the location of the
 in space, the floor level would be above the room level.  These points can be designated as aggregation points, whereby
-all streams that have the units are aggregated at the point and store like any other timeseries stream.
+all streams that have the specified units, are aggregated at that point and the data are stored like any other streams.
 
 \subsubsection{Operations: drill-down and roll-up}
 Drill-down and roll-up are explicit in the structure.  You can drill down to individual readings or roll them
@@ -148,6 +148,7 @@ up into an aggregation point at a particular level in the hierarchy.  Essentiall
 name of either the raw stream or the aggregation point.
 
 \subsubsection{Operations: Slice and Dice}
+Slice and dice queries are queries that either take a slice of the cube along a dimension or pick a sub-cube from the cube.
 Slice and dice operations are translated as traversals of the hierarchical structure across levels and units.  Figure~\ref{fig:olapslice2ergslice}
 shows how a slice query is satisfied on a hierarchical structure.  The corresponding slice query 
 is \texttt{query.slice('/4F/R*').start(t1).end(t2);}.
@@ -206,7 +207,7 @@ Since streams are not synchronized (i.e. they do not produce data at the same ti
 sensor the value for all other streams is interpolated and aggregated along the \emph{unit} level dimension.
 %an example?
 
-This propogates up to the aggregation point and all of it is saved in the timeseries database.  The aggregation function
+This propagates up to the aggregation point and all of it is saved in the timeseries database.  The aggregation function
 can be specified by the user, with the default set to as \texttt{sum}.  Other options include \emph{avg, sum, max, min} and
 a custom function that can be specified by the user. %pointer to an internal/external process definition file
 % Aggregation points are also critical for support OLAP-style queries and \emph{dynamic aggregation}, discussed in
@@ -218,7 +219,7 @@ a custom function that can be specified by the user. %pointer to an internal/ext
 \includegraphics[scale=0.6]{figs/aggtree}
 \caption{This shows an illustration of the aggregation tree used by \emph{dynamic aggregation}.  Data flows from 
 the leaves to the root through user-specified aggregation points.  When the local buffer is full the streams
-are separated by source, interpolated, and summed.  The aggregated signal is foward up the tree.}
+are separated by source, interpolated, and summed.  The aggregated signal is forward up the tree.}
 \label{fig:aggtree}
 \end{center}
 \end{figure}
@@ -229,7 +230,7 @@ Consider the following example.  We need to compute aggregates of \emph{KW} data
 the point of aggregation, we accept data from all children of that node that, whose units are in \emph{KW},
 and add the streams together over pre-defined window size or pre-defined timeouts.
 
-The scheme is hiearchical, so a node only accepts data from its children and only sends data to its parent.
+The scheme is hierarchical, so a node only accepts data from its children and only sends data to its parent.
 StreamFS checks for cycles when before node insertion and prevents double-counting errors by only allowing 
 aggregation-points that are roots of a tree that is a sub-graph of the entity-relationship graph.  In our deployment,
 each view is a managed as an independent hierarchy.  So the hierarchy of \emph{spaces} is separate from
@@ -253,7 +254,7 @@ a stream node receives data from a sensor.% through HTTP {\texttt POST}.
 As data arrives it is immediately
 forwarded upstream to the parent(s).  
 % If a node that receives data from its children is an aggregation point it buffers
-% the data, otherwise it fowards it to its parent.
+% the data, otherwise it forwards it to its parent.
 
 Ignoring the timeouts for now, lets imagine the parent is a point of aggregation and its buffer is full.  At this point
 the parent separates data into bins for each source and cleans it for aggregation through interpolation.  The main
@@ -262,7 +263,7 @@ operation orders all the timestamps in increasing order and, for each bin, inter
 first (last) pair of data points.  If there is only a single data point, the stretch uses it as the missing value.
 The \emph{fill} operation find the nearest timestamps that are less-than and greater-than the missing sampling time, 
 uses their values to determine the equation of a line between them and interpolates the missing value using that equation.
-Once this is done for each signal, the values are added together for each unqiue timestamp and the aggregated
+Once this is done for each signal, the values are added together for each unique timestamp and the aggregated
 signal is reported to the parent, where the operation occurs recursively to the root.
 Figure~\ref{fig:aggtree} shows an illustration of this processing structure.
 
@@ -282,8 +283,13 @@ Figure~\ref{fig:aggtree} shows an illustration of this processing structure.
 This approach deals with changes in the graph quite naturally.  All aggregation points deal only with local data, so
 a node is only concerned about the children that give it data and the parent to send data to.  As objects in the environment
 move from place to place and these changes are captured, the entity-relationship graph also changes to reflect the move.
-This change in aggregation constituents is naturally accounted for in the aggregate.  If a child is removed,
-it no longer forwards data to the old parent, therefore the aggregate will reflect that change.
+This change in aggregation constituents is naturally accounted for in the aggregate.  Since the underlying pub-sub mechanism
+drives the forwarding (see Section~\ref{sec:ProcMngtSchedMain}) the removal of a child will reject any new data that comes 
+in for the removed node.  As such, it will
+not be accounted for in the aggregate.  If a new child is added, it is forwarded up the tree, since the name associated
+with the data point will indicate its position in the hierarchy.
+% When a child is removed,
+% it no longer forwards data to the old parent, therefore the aggregate will reflect that change.
 Note, however, that changes in the entity-relationship graph are indistinguishable from energy-consuming items that have
 been turned off.  For the purposes of aggregation, that is okay.
 
@@ -309,6 +315,5 @@ number of streams and the number of aggregation points in the sub-tree.
 % \end{center}
 % \end{figure}
 
-% Figure~\ref{fig:personaltotalagg} illustrate the results of the second sceanrio.  Note how...
-
+% Figure~\ref{fig:personaltotalagg} illustrate the results of the second scenario.  Note how...
 

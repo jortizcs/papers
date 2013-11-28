@@ -5,14 +5,14 @@
 
 StreamFS supports symbolic links, which allows the user to specify non-hierarchical relationships.  Indeed, they can 
 be used to express relationships which form a directed graph.  We find that many applications, such as control 
-applications and applications that perform aggregation, preceed their timeseries queries with multiple queries
-to determine indirect relationships between streams.  Fundamentally, the queries were use to acertain a multiple-hop
+applications and applications that perform aggregation, precede their timeseries queries with multiple queries
+to determine indirect relationships between streams.  Fundamentally, the queries were use to ascertain a multiple-hop
 relationship between streams and could be easily and efficiently answered with a single graph query.
 StreamFS maintains an entity-relationship graph (ERG) that uses the names and symbolic links to construct a queryable 
 graph.
 
 The ERG is used throughout our architecture; for answering graph queries by the user and for subscription topic-matching.
-The latter is a slight twist to the topic matching that is done in traditional pub-sub systems.
+The latter is slightly different from the topic-matching mechanism traditionally available in pub-sub systems. 
 We discuss the details of our approach in section~\ref{sec:ProcMngtSchedMain}.
 
 
@@ -20,7 +20,7 @@ We discuss the details of our approach in section~\ref{sec:ProcMngtSchedMain}.
 \label{sec:erg2olap}
 
 Many of the operations that users perform are OLAP-style (online analytical processing) operations\cite{Gray1996}. 
-OLAP typically requires that you build a logical hypercube along multiple dimensions.  The values in the cell are called 
+OLAP databases build a logical hypercube along multiple dimensions.  The values in the cells are called 
 measures.  Queries makes use of the cube to aggregate data along those dimensions.
 We provide OLAP-style queries using the ERG.  This is similar to the work proposed by Chen et al.~\cite{Chen2008_olapgraph}.
 The time dimension is fixed, the categorical dimension is determined by the hierarchy, and the unit are specified
@@ -35,18 +35,11 @@ for every time slice.}
 \label{fig:olap2erg}
 \end{figure}
 
-Unlike a typical OLAP cube, our ``cube'' is dynamic.  As new data comes in, it is immediately used.  Its arrival triggers
-the aggregator to interpolate values for all other related streams at that point in time, aggregate them, and update all
-the measures in the cube.  We find that many applications that require analytics, typically require OLAP style queries.
-For example, consider the problem of tracking the operational energy consumption of a building.  
-It requires the ability answer a series of questions
-about energy flow -- energy data aggregated across multiple categories to determine how, where, and the amount used.  
-The ability to \emph{slice and dice} the data allows the analyst to gain better insight into how the energy is being used.
 % where it can be used more effectively, and how to change the operation of the building -- through better equipment or activity scheduling -- 
 % in order to optimize and reduce its energy consumption.
 % For building-oriented energy analytics applications the building manager and occupants typically want answers
 % to the following set of questions:
-Below is a typical list of questions:
+Below is a typical list of questions that can be answered efficiently with OLAP-style queries.  
 
 \begin{enumerate}
 \item How much energy is consumed in this room/floor/building?  On average?
@@ -61,22 +54,24 @@ Below is a typical list of questions:
 \vspace{0.08in}
 
 % Notice, these question span space and time and require aggregation along a dimension, such as power.  
-
-Notice, these high-level questions translate into categorical and spatio-temporal queries.
-There is also a hierarchical grouping pattern.  For example, to answer the first question we can
-aggregate the data from the individual rooms up to the whole building.  
+These questions require the ability to answer a series of questions
+about energy flow -- energy data aggregated across multiple categories to determine how, where, and the amount used.  
+The ability to \emph{slice and dice} the data allows the analyst to gain better insight into how the energy is being used.
+Notice how questions translate into categorical and spatio-temporal queries.
+There is also a hierarchical grouping characteristic to them.  For example, to answer the first question we must 
+aggregate the data from the individual rooms up to the whole building (if the whole building data is not available)
 % This hierarchical relationship
 % is not as evident in the HVAC sub-components specified in the second question.  However,
 % local hierarchically relationships do exist.  For example, 
-Also, the cooling system consists of the set of pumps, cooling towers, and condensers in the HVAC system that push condensor
+Also, the cooling system consists of the set of pumps, cooling towers, and condensers in the HVAC system that push condenser
 fluid and water to remove heat from spaces in the building.  We can model this as a set of objects and inter-relationships which inform how
 to \emph{drill-down}, \emph{roll-up}, and \emph{slice and dice} the data -- traditional OLAP operations.
-Figure~\ref{fig:olap2erg} shows how we translate an OLAP cube to a hiearchical arrangement of 
+Figure~\ref{fig:olap2erg} shows how we translate an OLAP cube to a hierarchical arrangement of 
 nodes in the ERG.  Time-range queries on any node translates to a slice in the cube along the time dimension.
 \emph{Pivoting} along any dimension can be done by taking slices along the ``cube'' in the bottom of that
 figure.
-% The dynamic aggregation processing model accomodates many common situations where aggregation of feeds is the primary
-% objective.  For example, consider a power meter attached to a fan running in a variabile air-volume (VAV) unit.
+% The dynamic aggregation processing model accommodates many common situations where aggregation of feeds is the primary
+% objective.  For example, consider a power meter attached to a fan running in a variable air-volume (VAV) unit.
 % There can be several hundred VAV units throughout the entire building, one in each space that is controlled by 
 % the HVAC system.  An energy auditor may want to determine the energy consumption with respect to either a space 
 % or a system or by category.  If these three ``views'' are of interest, there would be three sub-trees in the namespace, 
@@ -89,6 +84,11 @@ figure.
 % for the total energy consumed in a particular space you query \texttt{/zone/4F/410} for example (which include the fan
 % feeding that specific zone), and for a categorical aggregate, you could simple query 
 % \texttt{/loads/}\dots\texttt{/fans}.
+
+Unlike a typical OLAP cube, our ``cube'' is dynamic.  As new data comes in, it is immediately used.  Its arrival triggers
+the aggregator to interpolate values for all other related streams at that point in time, aggregate them, and update all
+the measures in the cube.  We find that many applications that require analytics, typically require OLAP style queries.
+% For example, consider the problem of tracking the operational energy consumption of a building.  
 We describe how this functionality is useful in performing energy audits and describe its use in
 a mobile energy auditing applications presented in Section~\ref{sec:mobileaudit}.
 
@@ -146,7 +146,7 @@ information~\cite{SenkoDB}.
 % to accurately maintain the running aggregates as the deployment and activities churn.
 
 % We present the graph to the user through a filesystem-like naming and linking mechanisms.  The combination of a
-% hierarhical naming scheme and support for symbolic links allows the user to access and manipualte underlying objects
+% hierarchical naming scheme and support for symbolic links allows the user to access and manipulate underlying objects
 % and relationships.  Moreover, the underlying graph structure is overloaded with upstream communication mechanisms
 % and buffering to allow data to flow from the data-producing leave nodes to the aggregation-performing
 % parent nodes.  Furthermore, the buffering lets us deal with the streaming nature of data flow from the physical
@@ -164,7 +164,6 @@ To achieve horizontal scalability, we propose that each ERG unit should be separ
 a cluster and graph queries should be answered across the cluster.  This is a topic for future work, however, since a typical
 building deployment does not require that level of scale.  A collection of buildings, managed through
 a single instance of StreamFS, would likely require a clustered implementation of the ERG.
-
 
 
 

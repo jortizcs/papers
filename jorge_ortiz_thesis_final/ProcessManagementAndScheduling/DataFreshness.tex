@@ -1,6 +1,6 @@
 \section{Freshness Scheduling}
 Process execution parameters are set by the user when a process element is created.  Generally, job scheduling is strictly driven
-by these paramters.  However, in our deployments we found there were job pipe sinks that required a \emph{minimum freshness}
+by these parameters.  However, in our deployments we found there were job pipe sinks that required a \emph{minimum freshness}
 property for the set of data points in the buffer upon consumption.  In this section we discuss our scheduling algorithm in
 relation to providing this property.% and present some experimental results.
 
@@ -9,10 +9,9 @@ relation to providing this property.% and present some experimental results.
 \label{sec:freshness}
 
 Data is coming in at different, independent rate from sensors and is produced asynchronously from internal processing elements.
-For certain processes, processing the incoming data as quickly as possible is key, however, this is challenging for several reasons:
-1) a process may subscribe to multiple, independent streams with asychronized report schedules and 2) interpolated values
-should be avoided to minimize prediction inaccuracies in interpolated values.  Therefore, a process actually wants all the freshest
-data from all the streams they are subscribing to, while minimizing the average time that the data for each respective stream has 
+For certain processes, the freshest
+data from all the streams they are subscribing to is necessary; while minimizing the average time that the data for each respective 
+stream has 
 been waiting in the buffer.
 
 
@@ -20,7 +19,7 @@ been waiting in the buffer.
  \SetAlgoLined
  Given a full buffer $b[n]$:\\
   \For{all elements in the $b$}{
-  (1) Calculate the staleness of element $i$ and add to total stalness, $S_n$\;
+  (1) Calculate the staleness of element $i$ and add to total staleness, $S_n$\;
   \For{all other elements in the buffer}{
     (1) Determine the next report time $D_i$ for this element\;
     (2) Determine the staleness of all the elements if we wait until $D_i$\;
@@ -39,11 +38,11 @@ been waiting in the buffer.
 Some streams show lots of variability, driven by the underlying dynamics of the system being monitored.  For example, the power
 consumption of an active server or laptop tends to have a very active power profile.  For jobs doing aggregation of 
 streaming data, it is often the case that the time when the last reading was received is very different across streams.  
-For example, consider two rapidly changing streams.  If you do not use aggregation, the ideal aggregation scenario is to
+For example, consider two rapidly changing streams.  The ideal aggregation scenario is to
 combine the streams from the latest readings for both streams.  That way you minimizing the offset difference between during aggregation.
 If stream 1 produces a reading every 3 seconds and stream 2 produces a reading every 2 seconds, and you aggregate the readings every time you
-have at least one reading from both streams, every 3 seconds.  Somtimes the reading from the 2-second stream will be 1 second old.
-If we compute now the total staleness of the buffer is 1 second, if we wait on more second the total staleness is still 1 second, because
+have at least one reading from both streams, every 3 seconds.  Sometimes the reading from the 2-second stream will be 1 second old.
+If run the computation \emph{now}, the total staleness of the buffer is 1 second, if we wait on more second the total staleness is still 1 second, because
 at t=4 seconds, the 3-second stream will be 1 second old.
 For applications that wish to display the freshest aggregates with the latest results (smallest buffer staleness), we provide an algorithm
 called \texttt{min\_buffer}.
@@ -53,7 +52,7 @@ conditions are met:
 
 \begin{enumerate}
 \item There is at least one data point from each stream in the subscription buffer.
-\item The statelness factor is minimized within the immediate time window.
+\item The staleness factor is minimized within the immediate time window.
 \end{enumerate}
 
 % This is of particular interest to controllers that need to make control decision based on the freshest data possible and can tolerate some variability
@@ -61,7 +60,7 @@ conditions are met:
 % allowing some variability in the completion of the processing task.  
 Note, there's a fundamental tradeoff
 between the staleness factor and variability of consumption.  It is sometimes better to wait for the next incoming data point than it is to use what
-is currently in the buffer, as waiting will decrease the overall staleness factor.  Other times, it is better to consume the bufferred data immedaitely.
+is currently in the buffer, as waiting will decrease the overall staleness factor.  Other times, it is better to consume the buffered data immediately.
 This causes a certain amount of variability in the delivery period to the control process.  However, for some applications, this is a reasonable tradeoff
 to make.  Making use of the freshest data is desirable for minimizing errors, either in the control of a system or the calculation of some aggregate 
 state.
@@ -105,5 +104,4 @@ until $D_{k}$ for the stream whose next deadline minimizes the staleness factor 
 \end{equation}
 
 Algorithm~\ref{alg:min_buffer} shows the pseudocode for the \texttt{min\_buffer} algorithm.
-
 

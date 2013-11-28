@@ -14,7 +14,7 @@ pieces that are missing become more clear.  The following is a list of some of t
 % \item Network protocol details should remain opaque to end-user applications.
 \item Narrow waist should be above the network layer. \label{nw}
 \item A time-series store is necessary. \label{ts}
-\item Mechanisms to distill the readings must be availble. \label{proc}
+\item Mechanisms to distill the readings must be available. \label{proc}
 \item Real-time data forwarding should be available, especially for control applications. \label{rt}
 \item Contextual relationships between sensor should be verified. \label{cntxt}
 \end{enumerate}
@@ -33,8 +33,8 @@ wireless meter router provides the transformation of read/write request to/from 
 or any point protocols for sensors/actuators.  Like many problems in computer science, this one can be solved through layer separation
 and a level of indirection and translation.
 
-Each of the services that require the end user to have a deeper understanding of the underyling dynamics 
-of the building \emph{must} capture the notion of time.  Almost all anlytical processes or control decisions need a set of readings
+Each of the services that require the end user to have a deeper understanding of the underlying dynamics 
+of the building \emph{must} capture the notion of time.  Almost all analytical processes or control decisions need a set of readings
 over time.  Therefore, there a time-series data store must be part of future BMS design.  The service should be made available
 through the NTV.  %This will allow applications to fetch the data for analysis either for display or complex processing.
 
@@ -63,14 +63,14 @@ building.  The mobile energy-audit application, from section~\ref{sec:mobile}, a
 
 %extendible: able to add and remove stuff 
 %scalable: able to scale with applications, data, and deployment size
-%generalizable: able to accomodate many kinds of analytical/control applications
+%generalizable: able to accommodate many kinds of analytical/control applications
 %ease of management: so many distributed things that it's hard to keep track of where everything lives.
 
 The design of a new system must provide the features highlighted above and contain the following properties:
 
 \begin{enumerate}
 
-\item \emph{Extensibility}:  The system should be able to accomodate different kinds of sensors and actuators and it should
+\item \emph{Extensibility}:  The system should be able to accommodate different kinds of sensors and actuators and it should
 be simple add and remove them.
 
 \item \emph{Scalability}:  The system should scale with the size of the deployment and the number of applications.% that it supports.
@@ -95,7 +95,6 @@ In this thesis, we will describe a new system, StreamFS, which contains the prop
 the existence of these properties through a series of applications that were built over it in several settings.  We describe the API and
 the scope and usage of the application and draw out how the capabilities enabled by StreamFS in those apps demonstrate the properties highlighted
 above.
-
 
 
 

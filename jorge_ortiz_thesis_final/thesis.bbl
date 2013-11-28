@@ -16,6 +16,10 @@
   {}
 \endgroup
 
+\entry{tinyurl}{misc}{}
+  \field{howpublished}{\url{http://tinyurl.com/}}
+\endentry
+
 \entry{cbecs2003}{misc}{}
   \name{author}{1}{}{%
     {{}%
@@ -29,57 +33,6 @@
   \field{sortinit}{A}
   \field{title}{COMMERCIAL BUILDINGS ENERGY CONSUMPTION SURVEY}
   \field{year}{2003}
-\endentry
-
-\entry{bdepot}{inproceedings}{}
-  \name{author}{4}{}{%
-    {{}%
-     {Agarwal}{A.}%
-     {Yuvraj}{Y.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Gupta}{G.}%
-     {Rajesh}{R.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Komaki}{K.}%
-     {Daisuke}{D.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Weng}{W.}%
-     {Thomas}{T.}%
-     {}{}%
-     {}{}}%
-  }
-  \list{publisher}{1}{%
-    {ACM}%
-  }
-  \keyw{API, applications, buildings, data storage, sensors, web service,
-  wireless sensor networks}
-  \strng{namehash}{AY+1}
-  \strng{fullhash}{AYGRKDWT1}
-  \field{sortinit}{A}
-  \field{booktitle}{Proceedings of the Fourth ACM Workshop on Embedded Sensing
-  Systems for Energy-Efficiency in Buildings}
-  \verb{doi}
-  \verb 10.1145/2422531.2422545
-  \endverb
-  \field{isbn}{978-1-4503-1170-0}
-  \field{pages}{64\bibrangedash 71}
-  \field{series}{BuildSys '12}
-  \field{title}{BuildingDepot: an extensible and distributed architecture for
-  building data storage, access and sharing}
-  \verb{url}
-  \verb http://doi.acm.org/10.1145/2422531.2422545
-  \endverb
-  \list{location}{1}{%
-    {Toronto, Ontario, Canada}%
-  }
-  \field{year}{2012}
-  \warn{\item Can't use 'location' + 'address'}
 \endentry
 
 \entry{agarwal:ipsn2011}{inproceedings}{}
@@ -790,6 +743,24 @@
   \field{year}{2008}
 \endentry
 
+\entry{Chen76theentity-relationship}{article}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Chen}{C.}%
+     {Peter~Pin}{P.~P.}%
+     {shan}{s.}%
+     {}{}}%
+  }
+  \strng{namehash}{CPPs1}
+  \strng{fullhash}{CPPs1}
+  \field{sortinit}{C}
+  \field{pages}{9\bibrangedash 36}
+  \field{title}{The Entity-Relationship Model: Toward a Unified View of Data}
+  \field{volume}{1}
+  \field{journaltitle}{ACM Transactions on Database Systems}
+  \field{year}{1976}
+\endentry
+
 \entry{DStream}{inproceedings}{}
   \name{author}{2}{}{%
     {{}%
@@ -1358,6 +1329,14 @@
   \field{journaltitle}{ACM Comput. Surv.}
   \field{month}{06}
   \field{year}{2003}
+\endentry
+
+\entry{fuse}{misc}{}
+  \field{sortinit}{F}
+  \field{title}{File System in User Space (FUSE)}
+  \verb{url}
+  \verb http://fuse.sourceforge.net/
+  \endverb
 \endentry
 
 \entry{romain:iotapp12}{inproceedings}{}
@@ -3267,6 +3246,14 @@
   \field{year}{2011}
 \endentry
 
+\entry{mongodb}{misc}{}
+  \field{sortinit}{M}
+  \field{title}{MongoDB}
+  \verb{url}
+  \verb http://www.mongodb.org/
+  \endverb
+\endentry
+
 \entry{ACE}{inproceedings}{}
   \name{author}{1}{}{%
     {{}%
@@ -3813,6 +3800,52 @@
   }
   \field{year}{2009}
   \warn{\item Can't use 'location' + 'address'}
+\endentry
+
+\entry{SenkoDB}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Senko}{S.}%
+     {M.~E.}{M.~E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Altman}{A.}%
+     {E.~B.}{E.~B.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Astrahan}{A.}%
+     {M.~M.}{M.~M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Fehder}{F.}%
+     {P.~L.}{P.~L.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {IBM Corp.}%
+  }
+  \strng{namehash}{SME+1}
+  \strng{fullhash}{SMEAEBAMMFPL1}
+  \field{sortinit}{S}
+  \field{issn}{0018-8670}
+  \field{issue}{1}
+  \field{pages}{64\bibrangedash 93}
+  \field{title}{Data structures and accessing in data-base systems: III data
+  representations and the data independent accessing model}
+  \verb{url}
+  \verb http://dl.acm.org/citation.cfm?id=1661096.1661100
+  \endverb
+  \field{volume}{12}
+  \list{location}{1}{%
+    {Riverton, NJ, USA}%
+  }
+  \field{journaltitle}{IBM Syst. J.}
+  \field{year}{1973}
+  \warn{\item Invalid format of field 'month'}
 \endentry
 
 \entry{dita}{misc}{}

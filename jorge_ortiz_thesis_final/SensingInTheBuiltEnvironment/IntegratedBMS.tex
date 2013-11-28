@@ -1,6 +1,6 @@
 \section{Tightly Integrated Building Information System Architecture}
 
-The first building information systems became commericially available in the 1970's ~\cite{gardner1987energy}.  
+The first building information systems became commercially available in the 1970's ~\cite{gardner1987energy}.  
 Historically, building management 
 systems were constructed as a collection of control loops, which progressed from pneumatic to analog to digital.
 These control loops largely form the foundation for the design decisions made in building information systems.  
@@ -24,7 +24,7 @@ entirely on local control loops, with the implicit assumption that these loops a
 Figure~\ref{fig:control_loop} shows a high-level control loop.  A simple control loop in the building is one that controls
 the temperature in a space.  It has a temperature sensor as the input and uses the temperature set-point parameter to 
 decide when and which actuators to activate.
-For temperature control, this actuation controls the the vent that lets cool air into the space.  This causes the temeprature
+For temperature control, this actuation controls the the vent that lets cool air into the space.  This causes the temperature
 to fall until a lower-bound is reached and the control logic re-activates the fans and heating/cooling system.
 
 The figure also shows the basic structure inside an outstation.  An outstation is a box that contains up to several control boards, each
@@ -48,7 +48,7 @@ Outstations are distributed through the building and are essentially running ind
 monitoring and control, they are networked together and report some of the sensor readings and control-logic state to a central outstation.
 
 \subsection{Central Outstation and Communication Protocols}
-The central outstation is typically a Microsoft Windows-based PC connected to the outstation through either RS-485/modbus or ethernet.
+The central outstation is typically a Microsoft Windows-based PC connected to the outstation through either RS-485/modbus or Ethernet.
 The user interacts with the system through a graphical interface, constructed from the schematics for the building or the schematics
 for the component in the system that is being monitored.  The BMS running on the PC communicates with outstations through either a 
 vendor-specific, proprietary protocol or an open one like BACNet~\cite{Bacnet} or LonTalk~\cite{LonTalk}.  Note, 
@@ -67,7 +67,7 @@ It is common for both lights and temperature sensors to run on a daily, weekly, 
 by the \emph{schedule object} in BACNet.  
 % BACNet also exposes devices as a collection of different object types.  
 Each object contains a set of properties that can 
-be read and/or written.  A device is identifyable through a name or address on the network, each object has a unique identifier and is one of
+be read and/or written.  A device is identifiable through a name or address on the network, each object has a unique identifier and is one of
 many types.  Examples of object types includes the following: input, output, value, analog~\cite{Bacnet}.  
 
 These protocols also provide a mechanism for discovery .  Each [device, object name/id, property name/id] tuple forms a name.

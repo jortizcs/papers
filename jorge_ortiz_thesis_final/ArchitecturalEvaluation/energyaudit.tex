@@ -20,7 +20,7 @@ We examine the challenges in capturing and maintaining a view of the physical wo
 deal with consistency management issues, and provide mechanisms for dealing with the occasional disconnection.
 % \emph{Without addressing these systems issues, this vision cannot be achieved}.  
 We deploy a number of
-wireless power meters, use QR codes as a tagging mechanism, and build an android application that interacts directly with
+wireless power meters, use QR codes as a tagging mechanism, and build an Android application that interacts directly with
 StreamFS and plug-load devices.
 % \subsection{Approach With StreamFS and Mobile Phones}
 We use mobile phones to construct the entity-relationship 
@@ -49,7 +49,7 @@ Once tagged, there are three types of swipe interactions --
 registration, linking, and scanning -- which establish important relationships.  Registration is the act of creating a virtual object 
 to represent a physical one.  Linking captures the relationship between pairs of objects.  Scanning is the act of performing an item lookup.
 Each of these interactions requires a set of swipe gestures.  Linking requires two tag swipes while the other two actions
-require a single tag swipe.  StreamFS conveniently already maintains an \emph{entity-relationship graph (ERG)} and we use it 
+require a single tag swipe.  StreamFS maintains an \emph{entity-relationship graph (ERG)} and we use it 
 extensively in the Energy Lens to record things, people, and locations through these gestures.
 
 The third challenge appears in dealing with indoor network connectivity and access.
@@ -116,7 +116,7 @@ phone users are constantly performing lookups.  StreamFS must handle these requi
 The Energy Lens application consists of a web application that displays timeseries data and an Android-based smartphone
 app.
 %Figure~\ref{fig:mobileapp} shows a few of screen shots from the application.  
-The android app is relatively simple; consisting of a menu with only two options: Update deployment state, scan to view services.
+The Android app is relatively simple; consisting of a menu with only two options: Update deployment state, scan to view services.
 Swipe gestures manipualte a local portion of the entity-relationship graph -- local with respect to a user's current location.
 Since each location (room, floor) has a QR code attached to it and items are associated with those locations, we
 can identify the location by name (\texttt{/buildings/SDH/spaces/4F/toaster}).  
@@ -159,15 +159,16 @@ user/item has moved but they have not, the preset action can be overridden.  The
 is to leverage the swipe gesture for as much contextual information as possible.  Furthermore, we do not explicitly track users.
 Context is only set on the phone and used in operations sent to the server.  
 We construct an entity relationship graph through 
-naming in StreamFS.  StreamFS uses filesystem constructs, such as hierarchical naming and symbolic
-links, which we use to express an acyclic relationship graph-structure.
+naming in StreamFS.  
+% StreamFS uses filesystem constructs, such as hierarchical naming and symbolic
+% links, which we use to express an acyclic relationship graph-structure.
 %  which you are either editing directly or
 % adding creating/destroying a relationship link in the graph.
 Because location swipes give us direct confirmation of a user's location, it can be coupled with wifi localization mechanisms
 and supervised learning algorithms to adjust the localization model as the user interacts with their environment. 
 % For future work we intend to experiment with this mechanism.% to enable supervised-learning-based indoor wifi localization.
 
-\subsubsection{Entity-Relationship Graph and Analytics}
+% \subsubsection{Entity-Relationship Graph and Analytics}
 We construct the entity relationship graph through naming in StreamFS.  StreamFS uses filesystem constructs, such as symbolic
 links and hierarchical naming which are useful for expressing an acyclic graph structure (StreamFS checks for cycles when symlinks 
 are created).  
@@ -211,7 +212,7 @@ function(buffer, state){
 }
 \end{lstlisting}
 
-When a new meter is measuring a device in a room, the Energy Lens app actives the \texttt{loadcurve} process through a general
+When a new meter is measuring a device in a room, the Energy Lens app activates the \texttt{loadcurve} process through a general
 subscription instance.  For example\\ \texttt{sub.source(/sdh/4F/473R/*).filter(unit:KW).destination(/sdh/4F/473R/lc\_324hb)}
 creates a subscription for streams with the prefix specified in the source call with the filter on the metadata where 
 the units produced on KW and pipes it into an instance of the \texttt{loadcurve} process.  Note \texttt{/sdh/4F/473R/lc\_324hb}
@@ -224,15 +225,23 @@ be cleaned up.  The cleanup is done by the Energy Lens application.  StreamFS do
 
 
 \subsection{Challenge 2: Consistency Management}
-We use an eventual-consistency model for maintaining the ERG over time.  Naturally, the spatial inter-relationships
-change over time as items are moved and replaced.  In order to deal with this we offer two options: 1) we periodically
-re-scan the items and their locations, essentially re-capturing the inventory collection portion of the audit or
-2) we allow building occupants to participate as auditors, capturing their own personal items and shared items.
-This should provide at least as much value as a periodic energy audit and can be completed in a fraction of the 
+We use an eventual-consistency model for maintaining the ERG over time.  The consistency we must maintain is the mapping between
+sensors, people, and spaces.  The mechanism for inputting these relationships is specified in the previous section.  This section
+focuses on the mechanism for capturing the nature of these relationships and how the application lets users provide input for consistency
+maintenance.  The Energy Lens uses file metadata
+and directional associations in the ERG (i.e. what type of parent/child does this file have?) to capture the nature of relationshups.
+% In addition, it maintains a consistent view that represents the physical associations in the ERG through StreamFS.
+% The relationship between plug-loads, spaces, abnd
+% in the building change over time as items are moved.  
+In order to maximize consistency, we offer two options: 1) periodically
+re-scan items and their locations; essentially re-capturing the inventory and placement information or
+2) allow building occupants to participate as auditors, capturing their own personal and shared items.
+This provides at least as much value as a periodic energy audit and can be completed in a fraction of the 
 time~\cite{aceee_mobileaudit}.
 
-Placement (location) is captured with symbolic links as well.
-Node types inform the application of the nature of the relationship.  We define five distinct types: item, meter, 
+Placement (location) is captured with symbolic links. Node types -- specified in the metadata as an attribute value pair -- inform 
+the application of the nature of the relationship.  
+We define five distinct types: item, meter, 
 location, category, and tag.  The following relationships are constructed with symlinks between different node types:
 
 \begin{itemize}
@@ -270,11 +279,11 @@ Note, this is a \emph{subset} of the relationship diagrams generated across our 
 \subsection{Challenge 3: Disconnected Operation}
 Although connectivity is ubiquitous, network access is not.  This occurs due to dead zones, 
 idle-disconnect and failed hand-off between access points.  When encountered in practice, especially while editing
-deployment state, it can be quite frustrating and discourage use of the application.  We designed a
-mechanism that does smart caching, not only to improve performance, but also to allow for disconnected operation.
+deployment state, it can be quite frustrating and discourage use of the application.  We design a
+mechanism that does smart caching, not only to improve performance, but also to enable \emph{disconnected operation}.
 
 The Energy Lens application downloads a portion of the ERG when a user enters a new floor.  The application fetches the portion
-of the graph rooted at the floor.  
+of the graph rooted at the floor.  The root is determine by either an item or a floor scan, initiated by the user.
 Figure~\ref{fig:sdh_4f_erg} shows just a small portion of that entity-relationship graph for the floor we are monitoring in
 our deployment.  
 A prefetch populates the cache with all entity nodes on that floor, their associated metadata,
@@ -335,11 +344,15 @@ Let $OP_R$ be an operation performed on the node rooted at node $R$ and $t_i$ be
 % Algorithm~\ref{alg:prefetch} shows the pseudo code for the prefetch process.  
 After a set period, the phone sends the server
 its last performed operation and the time that operation was performed.  The server responds with any operations that have
-take place since then.  The client applies those operations internally to the cached version of the the ERG in order to 
+take place since then.  This server process runs on top of StreamFS.  All operations performed by the mobile application
+run through this process for logging.  Essentially, this process maintains a timestamped write-log.  The prefetcher
+queries the write log for updates since the last down time.
+The client applies those operations internally to a cached version of the the ERG \emph{on the phone} in order to 
 maintain consistency.  The ``\emph{active}'' parameter-check, is for energy savings.  If the phone application is active, the
 check occurs every 10 minutes, otherwise it occurs ever hour.
 
-The process is demonstrated in Figure~\ref{fig:interactions}.  The components shown are the \emph{ERG cache}, the \emph{operation
+The consistency process that \emph{runs on the phones} is shown in Figure~\ref{fig:interactions}.  The components shown 
+are the \emph{ERG cache}, the \emph{operation
 log (OpLog)}, and the \emph{prefetcher}.  We separate the steps in the figure as a READ sequence and a WRITE sequence.
 All reads go to the cache (steps 1 and 2 on the left hand side of the figure).  Writes go through the OpLog (steps 1 - 5 on the right
 side of the figure).  For writes, 
@@ -348,13 +361,15 @@ successful (3), the operation is applied to the ERG cache (4) and the response i
 If the operation is not successfuly, step 4 is skipped.  If StreamFS could not be reached, step 3 is skipped, and the operation
 is written to the OpLog.  The OpLog is flushed to the server, by the prefetcher, upon re-connection. 
 
-The OpLog contains records of operations that are eventually applied to StreamFS.  Some of those operations
+The OpLog contains records operations that are eventually applied to StreamFS.  Some of those operations
 are actually groups of operations that need to be applied atomically.  For example, 
 when a bind or attach operation occurs, we append the timestamp to the item(s) that are being connected, as well as create
 a link between them in the graph.  The application uses both the link and the added metadata to fetch the appropriate
 graph for display.  These operations must be applied atomically or not be applied at all.
 When the log is dumped, the global transaction manager (GTXM) -- the layer that handles log dumps and transaction processing --
-attempts to apply the log in timestamp order.
+attempts to apply the log in timestamp order.  The GTXM also runs as a process on top of StreamFS.  It assures atomicity
+by applying each operation in timestamp order and explicitly checking that the writes were successfully applied after 
+the operation is initiated.
 
 
 \begin{figure}[htb!]
@@ -369,7 +384,7 @@ Energy Lens application.}
 \end{center}
 \end{figure}
 
-\subsubsection{Log dumps and conflict resolution}
+% \subsubsection{Log dumps and conflict resolution}
 \label{sec:conflicts}
 When the Energy Lens application is started it contacts the server and attains the server's local clock time. 
 It notes its local time as being equal to the timestamp of the server and calculates all subsequent timestamps
@@ -384,7 +399,7 @@ t_{approx} = t_s + (t_{now} - t_l)
 This timestamp is a general approximation of when the operation should be applied on the server.  The server applies 
 these is ascending timestamp order.
 
-Generally, a conflict occurs if there is any operation or transaction that was applied after the timestamp of the current operation
+A conflict occurs if there is any operation or transaction that was applied after the timestamp of the current operation
 being processed.  A typical transaction manager must rollback the state of the database, apply the operation, and replay
 the log.  However, conflict resolution is much simpler in this context.  \emph{The latest operations reflect the state of the
 world because they are updates induced by direct interaction with the world at that point in time.}  Therefore, if there is a conflict
@@ -407,13 +422,13 @@ to streaming data.  This allows us to clean it as it comes in and compute the ag
 with various aggregation models to give occupants deeper insights.  
 
 
-\subsection{Deployment Experience}
-\label{sec:depexp}
+% \subsection{Deployment Experience}
+% \label{sec:depexp}
 
 % We deployed 20 ACme power meters~\cite{acmemeter} on a single floor of a building on campus.  The data was made available through
 % sMAP~\cite{smap} and forwarded to our processing and data management layer, StreamFS.  
-We distributed several ACmes~\cite{acmemeter} throughout a single floor in our building and registered various plug loads as being measured by them.  We also tagged
-hundreds of items and locations throughout the entire building.  In total we tagged 20 meters, 20 metered items, 351 un-metered items,
+We distribute several ACmes~\cite{acmemeter} throughout a single floor in our building and register various plug loads.  We also tag
+hundreds of items and locations throughout the entire building.  Our audit includes 20 meters, 20 metered items, 351 un-metered items,
  and 139 rooms over 7 floors.  Figure~\ref{fig:tsdata} shows three screen shots of power traces obtained from the ACme deployment, and displayed
  through the Energy Lens. 
 
@@ -426,11 +441,14 @@ a building on campus.  These show screen shots of the Energy Lens timerseries da
 \end{center}
 \end{figure}
 
-In our initial deployment we found that the use of our tracking scheme to be effective, especially in conjunction with
-interactive confirmation.  The ERG was effective at capturing deployment state, although highly mobile items, such as laptops,
-were particularly difficult to keep track of.  Finally, our disconnected operation mechanism was effective at masking 
-intermittent connectivity.  For future work we will baseline the floor's energy consumption before and after the deployment 
-and measure if more visibility and analytics indeed motivates occupants to use less.
+In our initial deployment we find the use of our tracking scheme to be effective, especially in conjunction with
+interactive confirmation.  The ERG is effective at capturing deployment state, although highly mobile items, such as laptops,
+were particularly difficult to keep track of without explicit user re-registration.  Our disconnected operation mechanism is 
+effective at masking 
+intermittent connectivity -- although our data show that disconnection is rare in this building.  
+
+% For future work we will baseline the floor's energy consumption before and after the deployment 
+% and measure if more visibility and analytics indeed motivates occupants to use less.
 
 % \section{Acknowledgements}
 % This work is support by the LoCal NSF Grant \#CPS-0932209 and ActionWebs NSF Grant \#CPS-0931843.  We would also like
@@ -460,18 +478,23 @@ and measure if more visibility and analytics indeed motivates occupants to use l
 
 \subsubsection{QR code design}
 \label{sec:qrc}
-Our choice to use QR codes is important, since the \emph{only way to scale -- in deployment size and management complexity -- is to
-involve building occupants}. QR codes are cheap to produce.  They can be printed and attached to items with tape or sticky paper.  
-Figure~\ref{fig:qrcexsecond} shows an example QR code used in our deployment.  These are placed on physical
-objects and spaces throughout the building to link between the physical world and our virtual representation of it.
 
-With the number of physical objects and places in a building, \emph{we must rely on the occupants
-to scale our deployment and manage it}. Because QR codes are easy to produce, we provide occupants with a webpage that
-that produces them.  They print them out, place them on items or places they want to interact with and use them to register
-items in StreamFS through the Energy Lens.
-Since occupants are our target users, we must make the application easy to use.  For QR code scan-times, vary by lighting conditions, 
+Our most surprising observation is that the tag design is one of the most important aspects of the Energy Lens architecture. 
+% Our choice to use QR codes is important, since the \emph{only way to scale -- in deployment size and management complexity -- is to
+% involve building occupants}. 
+We use QR codes as our tag mechanism because they are cheap to produce.  They can be printed and attached to items with tape or sticky paper.  
+Figure~\ref{fig:qrcexsecond} shows an example QR code used in our deployment.  
+% These are placed on physical
+% objects and spaces throughout the building to link between the physical world and our virtual representation of it.
+With the number of physical objects and their placement in the building, \emph{we must rely on the occupants
+to scale our deployment and manage it}.  Using QR codes should not burden the user in any way, lest they stop using the application.
+% Because QR codes are easy to produce, we provide occupants with a webpage that
+% that produces them.  They print them out, place them on items or places they want to interact with and use them to register
+% items in StreamFS through the Energy Lens.
+% Since occupants are our target users, we must make the application easy to use.  For 
+QR code scan-times, vary by lighting conditions, 
 camera quality, and hand movements.  In poor conditions scanning is cumbersome; ultimately de-motivating continued use.  
-QR codes must be designed to minimize scanning time.  In our initial deployment and experiments we observe
+QR codes must be designed to minimize scanning time.  In our deployment and experiments we observe
 that complex QR code code not only have an longer average scanning time but also experience a larger variance in scanning time.  
 The more complex the pixel design in the QR code, the harder it is for the camera to focus and capture it. 
 
@@ -671,9 +694,8 @@ mechanism allows us to combine the ERG with streaming data, and feeds our timese
 
 
 
-\subsection{EnergyLens Evaluation}
-\label{sec:eval}
-
+% \subsection{EnergyLens Evaluation}
+% \label{sec:eval}
 
 
 % \subsection{Application layer}
@@ -689,36 +711,27 @@ mechanism allows us to combine the ERG with streaming data, and feeds our timese
 % \end{figure}
 
 
-In this section we measure prefetch download times and discuss strategies for providing scalability.  We also
-look at the transaction manager and discuss conflict resolution.
-
-\begin{figure}[htb!]
-\begin{center}
-\includegraphics[scale=0.8]{figs/acmenetwork_SDH_4F}
-\caption{}
-\label{fig:acmenetwork_SDH_4F}
-\end{center}
-\end{figure}
-\subsubsection{Sensing and tag layer}
 % We deployed 20 ACme power meters~\cite{acmemeter} on a single floor of a building on campus.  The data was made available through
 % sMAP~\cite{smap} and forwarded to our processing and data management layer, StreamFS.  We distributed
 % the ACmes throughout a single floor in our building and registered various plug loads as being measured by them.  We also tagged
 % hundreds of items and locations throughout the entire building.  In total we tagged 20 meters, 20 metered items, 351 un-metered items,
 %  and 139 rooms over 7 floors. 
 
-StreamFS supports the addition and operations to record all the deployment information.  It also supports active aggregates for 
-31 rooms on the 4th floor of the deployment and 1 for the entire building.  The number of active users was no more than 10 at any time.
-Because these number are not that large they do not truly test the scalability of the system.  However, they do demonstrate
-both \emph{extensibility} and \emph{generalizability}.  Without the first property we could not have added the the sensors,
-related information, user context, spatial configuration information and updated it with ease.  Without the second property
-we could not have supported both the collection of metadata and data about the deployment as well as \emph{data services} that
-are absolutely crucial to the success of the Energy Lens application.
 
-Also, we used a single function and instantiated 32 instances of it in the deployment.  This demonstrate the \emph{ease of management}
-property we set to provide through StreamFS.  Because we follow the principle where ``everything is a file'' the entire deployment
-data, metadata, and analytics can be accessed and controlled from the same deployment.
+\subsection{Prefetching and Transaction Measurements}
+We measure prefetch download times and discuss strategies for providing scalability.  We also
+look at the transaction manager and discuss conflict resolution.
 
-\subsubsection{Prefetching}
+\begin{figure}[htb!]
+\begin{center}
+\includegraphics[scale=0.8]{figs/acmenetwork_SDH_4F}
+\caption{A snapshot of the connectivity graph between the wireless plug-load ACmes deployed in the 4th floor
+of SDH.}
+\label{fig:acmenetwork_SDH_4F}
+\end{center}
+\end{figure}
+\subsubsection{Sensing and tag layer}
+
 Prefetching occurs when a user enters a new floor, as detected by a floor scan or an item
 scan.  Table~\ref{tab:prefetchtimes} shows that the prefetch times scale linearly with the number of
 items (and data) to prefetch.  Each node holds approximate 100 bytes or information and for
@@ -732,7 +745,7 @@ callback facility and pass the application a reference to it.  The app can then 
 the query completes and the data is ready to be downloaded.  We can also include partial responses to the query
 in the prefetch-loop response.  This also allows users to continue using the application without any frustrating waits.
 
-\subsubsection{Log dump measurements}
+% \subsubsection{Log dump measurements}
 \begin{table}
 \begin{center}
   \begin{tabular}{| r | c  c | }
@@ -790,13 +803,27 @@ cost of resolution.
     delete & 326  &\\ \hline
     update tags & 267  &\\ \hline
     create link & 250  &\\ \hline
-    create node & 1036  &\\ 
+    create node & 336  &\\ 
     \hline
   \end{tabular}
 \caption{Average operation execution time in StreamFS.}
 \label{tab:optimes}
 \end{center}
 \end{table}
+
+\subsection{Discussion}
+
+StreamFS supports the addition and operations to record all the deployment information.  It also supports active aggregates for 
+31 rooms on the 4th floor of the deployment and 1 for the entire building.  The number of active users was no more than 10 at any time.
+Because these number are not that large they do not truly test the scalability of the system.  However, they do demonstrate
+both \emph{extensibility} and \emph{generalizability}.  Without the first property we could not have added the the sensors,
+related information, user context, spatial configuration information and updated it with ease.  Without the second property
+we could not have supported both the collection of metadata and data about the deployment as well as \emph{data services} that
+are absolutely crucial to the success of the Energy Lens application.
+
+Also, we used a single function and instantiated 32 instances of it in the deployment.  This demonstrates the \emph{ease of management}
+property we set to provide through StreamFS.  Because we follow the principle where ``everything is a file'' the entire deployment
+data, metadata, and analytics can be accessed and controlled from the same deployment.
 
 % \begin{itemize}
 % \item Forwarding

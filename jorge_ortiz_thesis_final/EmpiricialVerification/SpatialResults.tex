@@ -34,7 +34,7 @@ EHP, GHP & 0.6370 & 0.0060274 & 0.063546 & 0.16764 & 0.79378 \\ \hline
 % \subsection{Simple Scenario}
 We test our hypothesis in this section by using EMD to remove low-frequency trends in the data
 and run correlation calculation at overlapping IMF timescales.  We discover that EMD allows us
-to find and compare high-frequency instrinsic behavior that is spatially correlated across
+to find and compare high-frequency intrinsic behavior that is spatially correlated across
 sensors.  We begin with a small set of three sensors (EHP, GHP, light) and expand our scope
 to include all the sensors in the dataset.
 
@@ -82,7 +82,7 @@ Figure~\ref{fig:emd2} shows a complementary result, for the EHP and GHP comparis
 The correlation coefficients for the EHP and GHP IMFs suggest that the two may be independent.  In fact, they
 \emph{are} indepdent; they serve completely different rooms in the building.
 EMD allows us to remove low-frequency trends that add noise to the original analysis.
-By comparing IMFs, we see both intrisically correlated and \emph{uncorrelated} behavior.  
+By comparing IMFs, we see both intrinsically correlated and \emph{uncorrelated} behavior.  
 % In the next
 % section we expand our analysis and show the effectiveness of our methodology. 
 % Although promising, these results must be validated across the rest of the
@@ -328,7 +328,6 @@ we believe that k should equal the number of rooms you wish to classify the sens
 The clustering results are shown in Figure~\ref{fig:mds}.  Ground truth is shown through different markers (x, o, +, star, box). Each marker stands for one room. 
 The cluster each sensor assigned to is denoted with a number. The classification accuracy of the baseline approach on corrcoeffs matrix of re-aggregated IMFs is 80\%. 
 For raw traces, the baseline approach achieves an accuracy of only 53.3\%.
-
 
 
 
