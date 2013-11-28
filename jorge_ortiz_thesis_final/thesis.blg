@@ -10,7 +10,7 @@ A level-1 auxiliary file: StreamFSMechanisms/StreamFSMechanismsMain.aux
 A level-1 auxiliary file: ArchitecturalEvaluation/ArchEvalMain.aux
 A level-1 auxiliary file: EmpiricialVerification/VerificationMain.aux
 Case mismatch error between cite keys BACnet and Bacnet
----line 149 of file thesis.aux
+---line 156 of file thesis.aux
  : \citation{BACnet
  :                 }
 I'm skipping whatever remains of this command
@@ -27,7 +27,7 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated field_info (elt_size=4) to 22952 items from 5000.
+Reallocated field_info (elt_size=4) to 23360 items from 5000.
 Database file #1: thesis-blx.bib
 Database file #2: references.bib
 Repeated entry---line 1619 of file references.bib
@@ -333,10 +333,10 @@ Repeated entry---line 9498 of file references.bib
  :                ,
 I'm skipping whatever remains of this entry
 Warning--I'm ignoring speech's extra "keywords" field
---line 10161 of file references.bib
+--line 10174 of file references.bib
 Warning--I'm ignoring speech's extra "keywords" field
---line 10163 of file references.bib
-Repeated entry---line 10175 of file references.bib
+--line 10176 of file references.bib
+Repeated entry---line 10188 of file references.bib
  : @inproceedings{smap
  :                    ,
 I'm skipping whatever remains of this entry
@@ -370,45 +370,45 @@ Too many commas in name 3 of "Lanzisera, Steven M. and Dawson-Haggerty, Stephen 
 while executing---line 2645 of file biblatex.bst
 Too many commas in name 3 of "Lanzisera, Steven M. and Dawson-Haggerty, Stephen and Jiang, Xiaofan, Cheung, Hoi Ying and Taneja, Jay and Lai, Judy and Ortiz, Jorge and Culler, David and Brown, Richard" for entry lanz
 while executing---line 2645 of file biblatex.bst
-You've used 129 entries,
+You've used 132 entries,
             6019 wiz_defined-function locations,
-            1973 strings with 43132 characters,
-and the built_in function-call counts, 454094 in all, are:
-= -- 18956
-> -- 15278
-< -- 4834
-+ -- 5605
-- -- 5562
-* -- 36263
-:= -- 25797
+            1985 strings with 43523 characters,
+and the built_in function-call counts, 462135 in all, are:
+= -- 19275
+> -- 15548
+< -- 4916
++ -- 5669
+- -- 5642
+* -- 36709
+:= -- 26257
 add.period$ -- 0
-call.type$ -- 129
-change.case$ -- 2793
+call.type$ -- 132
+change.case$ -- 2831
 chr.to.int$ -- 67
-cite$ -- 256
-duplicate$ -- 51827
-empty$ -- 46309
-format.name$ -- 10214
-if$ -- 102529
+cite$ -- 262
+duplicate$ -- 52766
+empty$ -- 47207
+format.name$ -- 10371
+if$ -- 104412
 int.to.chr$ -- 0
-int.to.str$ -- 373
+int.to.str$ -- 384
 missing$ -- 0
-newline$ -- 4320
-num.names$ -- 6826
-pop$ -- 41259
+newline$ -- 4371
+num.names$ -- 6977
+pop$ -- 42219
 preamble$ -- 1
-purify$ -- 3275
+purify$ -- 3316
 quote$ -- 0
-skip$ -- 26745
+skip$ -- 27273
 stack$ -- 0
-substring$ -- 11758
-swap$ -- 18014
-text.length$ -- 3558
-text.prefix$ -- 128
+substring$ -- 11866
+swap$ -- 18272
+text.length$ -- 3627
+text.prefix$ -- 131
 top$ -- 1
-type$ -- 4886
+type$ -- 5000
 warning$ -- 0
-while$ -- 2341
+while$ -- 2395
 width$ -- 0
-write$ -- 4190
+write$ -- 4238
 (There were 87 error messages)

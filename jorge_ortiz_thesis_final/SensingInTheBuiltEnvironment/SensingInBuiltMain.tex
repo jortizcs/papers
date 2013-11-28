@@ -53,7 +53,7 @@ We also present the pros and cons of these decisions and their implications and 
 \input{SensingInTheBuiltEnvironment/AddressingBMSShort}
 \input{SensingInTheBuiltEnvironment/ContextAccuracy}
 
-\section{Experimental Settings}
+\section{Experimental Setting in Real Buildings}
 In this thesis we describe and the architecture and implementation of a system that supports emerging applications and the ``app-ification''
 of buildings.  We construct a system called StreamFS and deploy it and/or analyze data from several buildings, including
 Cory Hall, Sutardja Dai Hall, and Soda Hall, and Engineering Building 2 at the University of Tokyo (Todai).
@@ -77,11 +77,45 @@ The Todai Engineering building is 12-story building on the main campus of the Un
 It was built in 2005 and contains shared office space, individual offices, lecture classrooms, and small
 classrooms.
 
+These buildings represent a wide sampling of characteristics common in an office setting within the commercial building sector.  Moreover,
+this allows us to examine the generality across climates and HVAC architectures, since the Tokyo building does not use a centralized
+HVAC system.  Cory Hall was built in the 1950's and has been through many changes since then.  Originally, the 5th floor did not exist
+and several structural aspect of the building have been altered.  Moreover, with changes in technology and research focus, the activities
+the building supports has also changed.  This is reflected in both the structure of the building and the design of the HVAC systems inside it.
+In all, there are about 15 different HVAC systems within Cory Hall.  Soda Hall was built in the 1990's.  It supports mainly
+small labs, shared space, and a few small datacenters -- clusters of machines in a server room.
+The Tokyo building is different from the other three, in that the Tokyo experiences four distinct seasons, the HVAC system is distrubuted,
+and the all the data we examine is post-Fukushima disaster \cite{fukushima}.  This events drastically altered the energy usage profile
+of the building, as mandates for energy reduction were disseminated across all of Japan.
+
+In the context of the rest of the building stock in the United States.  Soda Hall, Cory Hall, and Sutardja Dai Hall are representative
+buildings within the office-building category.  Although, both Cory and Sutardja Dai support fabrication laborties that consume high-than-average
+energy than most activities in a typical office building.  Moreover, all three host several machine clusters with most of the machines consuming
+power continuously.  More broadly, they all fall into the ``Commerical Sector'' category according to the Department of Energy~\cite{EIA}.
+Commercial buildings consume $>$ 40\% of total energy in the United States.  More specifically, these buildings also fall into the \emph{Office} category,
+which consume about 19\% of total consumption for the broader ``commercial'' category.  In addition, Cory Hall and Sutardja Dai Hall are $>100,000$
+square feet while Soda Hall is about $60,000$ square feet.  28\% of all buildings fall in the range from 50-200k square feet in the 
+United States \cite{EIA}.
+The distribution of consumption is similar in many ways to the distribution in the United States.  In Japan, buildings consume 33\% of 
+total energy \cite{Japan_buildings}, which is higher than either the industrial or transportation sectors.
+
+\begin{figure}[t!] %htbp
+\centering
+\includegraphics[width=1.0\columnwidth]{figs/end_use_fuel_type}
+\caption{Distribution of energy consumption in buildings by end-use.  Table reproduced here from the 2011 Buildings 
+Energy Data Book \cite{EIA}.}
+\label{fig:end_use_energy}
+\end{figure}
+
+Figure~\ref{fig:end_use_energy} shows the distribution of energy expenditures by end-use category in buildings, presented in ~\cite{EIA} and
+reproduced here.  Note, about 50-60\% is used by the HVAC system and Lighting, and about a third goes to other and plug-loads.  These figures
+motivate the applications presented in this chapter.  In particular, we show how energy audits of miscellaneous loads is enabled and can be coupled
+with total consumption data through the `Mobile Energy Lens' application, presented in Chapter \ref{chap:ArchEvalMain}.
 For StreamFS and related applications, we set up deployments in each of these buildings to collect sensor data.  Our verification
-processes ran on StreamFS as a mixture of external and internal processes, which we discuss in Chapter~\ref{chap:mechanisms}.
+processes runs on StreamFS as a mixture of external and internal processes, which we discuss in Chapter~\ref{chap:mechanisms}.
 We describe the specific set up of the infrastructure and deployment in their respective chapters.  We give details 
 about the sensors and size of the data set that are collected as well.
-We also do 4 small deployments that we do not describe in the thesis.  They were deployments in several small office spaces at 
+We also do four small deployments that we do not describe in the thesis.  They are deployments in small office spaces at 
 Nokia, Intel, and Samsung as well as one in an apartment with a few appliances and meters.
 
 

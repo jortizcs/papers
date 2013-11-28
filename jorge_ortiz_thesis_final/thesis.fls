@@ -294,6 +294,9 @@ INPUT SensingInTheBuiltEnvironment/ContextAccuracy.tex
 INPUT figs/mpc_example.pdf
 INPUT ./figs/mpc_example.pdf
 INPUT ./figs/mpc_example.pdf
+INPUT figs/end_use_fuel_type.pdf
+INPUT ./figs/end_use_fuel_type.pdf
+INPUT ./figs/end_use_fuel_type.pdf
 INPUT SensingInTheBuiltEnvironment/Summary.tex
 INPUT SensingInTheBuiltEnvironment/Summary.tex
 OUTPUT StreamFSArchitecture/SFSArchMain.aux

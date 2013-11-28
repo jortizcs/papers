@@ -3888,6 +3888,27 @@
   Mobile Phone}
 \endentry
 
+\entry{fukushima}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {Strickland}{S.}%
+     {Eliza}{E.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {IEEE Spectrum}%
+  }
+  \strng{namehash}{SE1}
+  \strng{fullhash}{SE1}
+  \field{sortinit}{S}
+  \field{title}{Explainer: What Went Wrong in Japan's Nuclear Reactors}
+  \verb{url}
+  \verb http://spectrum.ieee.org/tech-talk/energy/nuclear/explainer-what-went-w
+  \verb rong-in-japans-nuclear-reactors
+  \endverb
+\endentry
+
 \entry{Taneja2223873}{inproceedings}{}
   \name{author}{3}{}{%
     {{}%
@@ -4122,6 +4143,36 @@
   \warn{\item Invalid format of field 'month'}
 \endentry
 
+\entry{EIA}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {{U.S. Department of Energy}}{U.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{U1}
+  \strng{fullhash}{U1}
+  \field{sortinit}{U}
+  \field{note}{\url{http://buildingsdatabook.eren.doe.gov/}}
+  \field{title}{{2011 Buildings Energy Data Book}}
+\endentry
+
+\entry{Japan_buildings}{misc}{}
+  \name{author}{1}{}{%
+    {{}%
+     {{U.S. Department of Energy}}{U.}%
+     {}{}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{U1}
+  \strng{fullhash}{U1}
+  \field{sortinit}{U}
+  \field{note}{\url{http://www.pnl.gov/main/publications/external/technical_reports/PNNL-17849.pdf}}
+  \field{title}{{Country Report on Building Energy Codes in Japan}}
+\endentry
+
 \entry{epabuildings}{misc}{}
   \name{author}{1}{}{%
     {{}%
@@ -4130,8 +4181,8 @@
      {}{}%
      {}{}}%
   }
-  \strng{namehash}{U1}
-  \strng{fullhash}{U1}
+  \strng{namehash}{U2}
+  \strng{fullhash}{U2}
   \field{sortinit}{U}
   \field{title}{{Buildings Energy Data Book}}
   \verb{url}
