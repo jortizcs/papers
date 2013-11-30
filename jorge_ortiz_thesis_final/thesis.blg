@@ -9,11 +9,6 @@ A level-1 auxiliary file: StreamFSArchitecture/SFSArchMain.aux
 A level-1 auxiliary file: StreamFSMechanisms/StreamFSMechanismsMain.aux
 A level-1 auxiliary file: ArchitecturalEvaluation/ArchEvalMain.aux
 A level-1 auxiliary file: EmpiricialVerification/VerificationMain.aux
-Case mismatch error between cite keys BACnet and Bacnet
----line 156 of file thesis.aux
- : \citation{BACnet
- :                 }
-I'm skipping whatever remains of this command
 A level-1 auxiliary file: lessons.aux
 A level-1 auxiliary file: appendix.aux
 Reallocated singl_function (elt_size=4) to 100 items from 50.
@@ -27,7 +22,7 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated field_info (elt_size=4) to 23360 items from 5000.
+Reallocated field_info (elt_size=4) to 23768 items from 5000.
 Database file #1: thesis-blx.bib
 Database file #2: references.bib
 Repeated entry---line 1619 of file references.bib
@@ -333,16 +328,14 @@ Repeated entry---line 9498 of file references.bib
  :                ,
 I'm skipping whatever remains of this entry
 Warning--I'm ignoring speech's extra "keywords" field
---line 10174 of file references.bib
+--line 10233 of file references.bib
 Warning--I'm ignoring speech's extra "keywords" field
---line 10176 of file references.bib
-Repeated entry---line 10188 of file references.bib
+--line 10235 of file references.bib
+Repeated entry---line 10247 of file references.bib
  : @inproceedings{smap
  :                    ,
 I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "mpc"
 Warning--I didn't find a database entry for "opentsdb"
-Warning--I didn't find a database entry for "aceee_mobileaudit"
 Biblatex version: 1.7
 Too many commas in name 3 of "Lanzisera, Steven M. and Dawson-Haggerty, Stephen and Jiang, Xiaofan, Cheung, Hoi Ying and Taneja, Jay and Lai, Judy and Ortiz, Jorge and Culler, David and Brown, Richard" for entry lanz
 while executing---line 2500 of file biblatex.bst
@@ -370,45 +363,45 @@ Too many commas in name 3 of "Lanzisera, Steven M. and Dawson-Haggerty, Stephen 
 while executing---line 2645 of file biblatex.bst
 Too many commas in name 3 of "Lanzisera, Steven M. and Dawson-Haggerty, Stephen and Jiang, Xiaofan, Cheung, Hoi Ying and Taneja, Jay and Lai, Judy and Ortiz, Jorge and Culler, David and Brown, Richard" for entry lanz
 while executing---line 2645 of file biblatex.bst
-You've used 132 entries,
+You've used 137 entries,
             6019 wiz_defined-function locations,
-            1985 strings with 43523 characters,
-and the built_in function-call counts, 462135 in all, are:
-= -- 19275
-> -- 15548
-< -- 4916
-+ -- 5669
-- -- 5642
-* -- 36709
-:= -- 26257
+            2016 strings with 44738 characters,
+and the built_in function-call counts, 480337 in all, are:
+= -- 19993
+> -- 16158
+< -- 5076
++ -- 5887
+- -- 5866
+* -- 38314
+:= -- 27344
 add.period$ -- 0
-call.type$ -- 132
-change.case$ -- 2831
-chr.to.int$ -- 67
-cite$ -- 262
-duplicate$ -- 52766
-empty$ -- 47207
-format.name$ -- 10371
-if$ -- 104412
+call.type$ -- 137
+change.case$ -- 2922
+chr.to.int$ -- 73
+cite$ -- 272
+duplicate$ -- 54904
+empty$ -- 49081
+format.name$ -- 10841
+if$ -- 108409
 int.to.chr$ -- 0
-int.to.str$ -- 384
+int.to.str$ -- 400
 missing$ -- 0
-newline$ -- 4371
-num.names$ -- 6977
-pop$ -- 42219
+newline$ -- 4573
+num.names$ -- 7242
+pop$ -- 43860
 preamble$ -- 1
-purify$ -- 3316
+purify$ -- 3430
 quote$ -- 0
-skip$ -- 27273
+skip$ -- 28263
 stack$ -- 0
-substring$ -- 11866
-swap$ -- 18272
-text.length$ -- 3627
-text.prefix$ -- 131
+substring$ -- 12258
+swap$ -- 19015
+text.length$ -- 3761
+text.prefix$ -- 136
 top$ -- 1
-type$ -- 5000
+type$ -- 5190
 warning$ -- 0
-while$ -- 2395
+while$ -- 2495
 width$ -- 0
-write$ -- 4238
-(There were 87 error messages)
+write$ -- 4435
+(There were 86 error messages)

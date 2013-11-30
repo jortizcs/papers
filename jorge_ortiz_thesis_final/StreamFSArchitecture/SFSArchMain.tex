@@ -22,14 +22,14 @@ and the pipe abstraction for processing streaming data.  It also employs the pri
 that all interactions are through the filesystem.
 This eases management of both the raw data and the processing elements that produce derivative streams for further processing.
 In this chapter, we give an overview of the architecture -- all the components, their organization, and their interaction.
-Throughout this chapter, we refer back to the list in section~\ref{sec:shortcomings}, where we enumerate the shortcomings
+Throughout this chapter, we refer back to the list in Section~\ref{sec:shortcomings}, where we enumerate the shortcomings
 in the design of the BMS architecture in the context of building ``app-ification''.  We also discuss how each component 
 provides one or more of the system properties we aim to provide -- extensibility, scalability, generalizability, and
 ease of management.
 
 
 \section{Overview}
-Each component in StreamFS addresses the fundamental shortcomings discussed in chapter~\ref{chap:SensingInBuiltMain}.
+Each component in StreamFS addresses the fundamental shortcomings discussed in Chapter~\ref{chap:SensingInBuiltMain}.
 The four main components are highlighted below:
 
 \begin{enumerate}
@@ -47,7 +47,7 @@ subscription manager and name register to determine where an input datapoint sho
 \item \textbf{Process Manager}: The process manager manages the internal and external processes running and managed in StreamFS.
 
 \item \textbf{Timeseries datastore}: The timeseries datastore functions like the NTV storage engine, as discussed in 
-section~\ref{sec:shortcomings}.
+Section~\ref{sec:shortcomings}.
 
 \end{enumerate}
 

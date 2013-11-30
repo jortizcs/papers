@@ -35,7 +35,7 @@ The process manager fetches the code and passes it to a node in the processes cl
 generates an id and passes it back to the subscription manager.  That code is used as a new \emph{instance file} that 
 represents the output of the file and that instance file is created in the process file definition file's folder.
 So if the id generated is \texttt{550e8400} the corresponding file is \texttt{/proc/simpleagg/550e8400}.
-This file instance is a stream file (which we discuss is detail in chapter~\ref{chap:naming}), which allows the user
+This file instance is a stream file (which we discuss is detail in Chapter~\ref{chap:naming}), which allows the user
 to pipe it to another sink.  There is also some metadata information that is associated with each of the files created.
 The instance file contains information about the streams it is consuming and various statistics, such as 
 execution time and execution period.  If the user deletes the file the subscription is deleted and the process manager sends
@@ -125,11 +125,11 @@ similar to OLAP queries with scan-heavy queries across the time dimension.
 
 We introduce a mechanism that can perform hierarchical aggregates across a unit of measure, used in combination
 with the timeseries data store to support scan-heavy queries, called \emph{aggregation points}.  We discuss
-these in more detail in section~\ref{sec:aggpts}.  However, before discussing aggregation points, we give details
+these in more detail in Section~\ref{sec:aggpts}.  However, before discussing aggregation points, we give details
 on how we make use of the entity-relationship graph and timeseries database to support OLAP-style queries.
 
 OLAP schemas logically construct a hypercube with different dimensions along each axis.  We presented a visual translation of
-a OLAP cube to an entity relationship graph in section~\ref{sec:erg2olap}.  Specifically, we showed in Figure~\ref{fig:olap2erg}
+a OLAP cube to an entity relationship graph in Section~\ref{sec:erg2olap}.  Specifically, we showed in Figure~\ref{fig:olap2erg}
 that each dimension is essentially a unit of measure, the hiearchy is explicitly constructed, and there
 time is a dimension that is stored in a timeseries database.  We show how the terminology also translates and some
 examples of certain classes of OLAP queries, how they are constructed, and how they are satisfied by StreamFS.

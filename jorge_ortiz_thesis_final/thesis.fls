@@ -364,6 +364,9 @@ INPUT ./figs/external_stub.pdf
 INPUT ./figs/external_stub.pdf
 INPUT ProcessManagementAndScheduling/DataFreshness.tex
 INPUT ProcessManagementAndScheduling/DataFreshness.tex
+INPUT figs/sched_example.pdf
+INPUT ./figs/sched_example.pdf
+INPUT ./figs/sched_example.pdf
 INPUT figs/min_buffer.pdf
 INPUT ./figs/min_buffer.pdf
 INPUT ./figs/min_buffer.pdf
@@ -460,8 +463,6 @@ INPUT ./figs/gzc.pdf
 INPUT figs/IMFReAggExample.pdf
 INPUT ./figs/IMFReAggExample.pdf
 INPUT ./figs/IMFReAggExample.pdf
-INPUT FilesystemMetaphoreNamingVerify/datasets.tex
-INPUT FilesystemMetaphoreNamingVerify/datasets.tex
 INPUT EmpiricialVerification/FunctionalMethod.tex
 INPUT EmpiricialVerification/FunctionalMethod.tex
 INPUT figs/heatMap_raw_201106-eps-converted-to.pdf

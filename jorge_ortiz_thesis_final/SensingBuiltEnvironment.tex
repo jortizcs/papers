@@ -26,7 +26,7 @@ sensors distributed throughout the building.  Both set a foundation for ongoing 
 The thesis is presented in the context of building systems and building-related applications.  We draw out the fundamental 
 components in our analysis and design and discuss where it fits in the broader context of prior, computer science related,
 literature.  In the next section, we describe the state-of-the-art practices followed by vendors of building information systems.
-We describe the architecture features and design principals both implicitly and explicitly implemented into these systems.
+We describe the architecture features and design principles both implicitly and explicitly implemented into these systems.
 We present the pros and cons of these decisions and their implications and include a high-level description of our approach.
 Later chapters delve more deeply into the implications of our design decisions.
 
@@ -61,7 +61,7 @@ the remaining chapters.
 \subsection{Control Loops and The Outstation}
 \label{sec:control_loops}
 Each loop is defined by a control domain consisting of a sensor, an actuator, and a control mechanism.  The control mechanism
-become logic based when signals from sensors moved to the digital domain.  However, the basic control principal was based
+become logic based when signals from sensors moved to the digital domain.  However, the basic control principle was based
 entirely on local control loops, with the implicit assumption that these loops were largely independent of one another.
 Figure~\ref{fig:control_loop} shows a high-level control loop.  For example, the temperature control loop has a temperature
 sensor as the input and uses the temperature set-point parameter to decide when and which actuators to activate.
@@ -242,7 +242,7 @@ with the graphical interface, in much the same way that a lookup on the measurem
 the point in question and following instructions for setting an alarm.  In some cases, the problem may be driven 
 by a faulty setting and adjustments can be made to the control parameters through the associated control points.
 
-The scope of control is limited to specific control loops.  Recall our discussion of control loops in section~\ref{sec:control_loops}.
+The scope of control is limited to specific control loops.  Recall our discussion of control loops in Section~\ref{sec:control_loops}.
 The building manager can, typically with the help of the vendor, decide on the best control strategy setting.  If the control
 strategy cannot be met, due to flaws in the control algorithm itself, the vendor may step in and re-image the controller
 at the outstation and expose the necessary parameters through the graphical interface.  These kinds of changes are rare
@@ -255,7 +255,7 @@ from the local buffer at the outstation.  The points are then placed in a file f
 building manager.  Time-dependent inspection of the behavior of any of the control-loop related points can be examined.
 
 Although this feature is not necessary in order to change control paramters, it is useful for observing how parameter changes
-affect the behavior of the system.  The building manager can, in principal, experiment with different setting and allow
+affect the behavior of the system.  The building manager can, in principle, experiment with different setting and allow
 empirical observations to guide her future decisions.
 
 
@@ -407,7 +407,7 @@ Finally, in order to enable control, real-time mechanisms must be exposed to the
 layered integrity of the NTV layer.  In addition, we have observed the need to provide real-time services for analytical applications
 as well.  For example, LEED is now proposing the use of building data to provide a dynamic performance meter~\cite{DynamicLeed}.
 There are also many dashboard companies that make use of streaming data to provide real-time statistics on the performance of the
-building.  The mobile application described in section~\ref{sec:mobile} also requires a real-time forwarding and processing service to
+building.  The mobile application described in Section~\ref{sec:mobile} also requires a real-time forwarding and processing service to
 enable the application.  We believe that as more applications emerge they will likely need make use of real-time sensor data.
 
 \section{Contextual Accuracy}
@@ -438,7 +438,7 @@ evolution and this will impact processes that depend on knowing the context of t
 
 Figure~\ref{fig:mpc_example} shows an example where this will have a more direct impact.  This example shows a simplified illustration
 of the relationship between a chiller and a space in the building.  The building of the future will optimize the space using a 
-model-predictive control strategy (MPC) based on equation~\ref{eqn:room_temp_control}.  The equation is used to model the temperature
+model-predictive control strategy (MPC) based on Equation~\ref{eqn:room_temp_control}.  The equation is used to model the temperature
 dynamics of the room.  In this equation C is the termal capacitance (a constant), T is the temperature in the space, u is the heating/cooling
 power input, $P_{d}$ is the internal load, $T_{oa}$ is the outside air temperature, and R is the resistivity of the walls.
 
@@ -488,14 +488,14 @@ virtual models of the building.
 % physical model of the building, with arbitary amount of detail, in order to simulate it performance with respect to comfort
 % and energy footprint.
 
-% Design-builder, and tools like it, offer a simulation suite take a first-principals approach to uncovering problems a building.
+% Design-builder, and tools like it, offer a simulation suite take a first-principles approach to uncovering problems a building.
 % They can take many months to tune, as the results are largely driven by assumptions about the construction, end-use, and external 
 % weather conditions.  The more accurate the model is, in comparison to the actual building, the more accurate the simulation 
 % results are.
 
 
 %\section{Related Work}
-% \section{Building Analysis: First principals}
+% \section{Building Analysis: First principles}
 % \section{Building Analysis: Statistics}
 
 % \section{Shortcomings in Analytical Systems and Methodology}

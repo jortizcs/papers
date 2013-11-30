@@ -19,7 +19,7 @@ for that name, which include \texttt{/soda/4F/410R/temp} and see that it matches
 
 Notice how naming explicitly affects how we group sensors according to some hiearchical organization.  Some of those groupings
 are physical associations with one another that are important to stay accurate.  Let's re-examine the example presented in
-section~\ref{sec:cntxtacc}.  We present the figure from that section again in Figure~\ref{fig:mpc_example2}.
+Section~\ref{sec:cntxtacc}.  We present the figure from that section again in Figure~\ref{fig:mpc_example2}.
 
 % walk through the example and show how multinaming helps address this and 
 % why it's important to get right -- that should lead us right into the next section with no problem.
@@ -31,7 +31,7 @@ section~\ref{sec:cntxtacc}.  We present the figure from that section again in Fi
 \label{fig:mpc_example2}
 \end{figure}
 
-Recall that the equation that drive the control process depending on knowing the mapping between vents and rooms.  Therefore,
+Recall that the equation that drives the control process depends on knowing the mapping between vents and rooms.  Therefore,
 if the room changes and a vent is added or removed, the control algorithm must be updated to account for the change.  The naming
 structure would contain a reference to the vent in some group, linked to a sensor that belongs to a certain room, however,
 if a wall is put up, we should be able to automatically detect that this has occurred to update the control process.

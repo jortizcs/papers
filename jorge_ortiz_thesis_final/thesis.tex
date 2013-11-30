@@ -195,54 +195,6 @@ To my 49ers in Woodside, Queens, New York.  It took a long time but we in here! 
 \include{EmpiricialVerification/VerificationMain}
 
 \include{lessons}
-\chapter{Conclusion}
-\label{chap:done}
-
-This thesis examines the state of the art of building information systems and evaluates their architecture in the context
-of emerging technologies and applications for deep analysis of the built environment.  With the increasing interest in
-attaining a deeper understanding of the operational dynamics of buildings and an increased interest in energy efficiency,
-we assert that the only way to enable the wide spread of solutions across the entire stock of buildings is to build a platform
-that ``app-ifies'' the built environment.  We observe that modern building information systems hinder wide spread development 
-of building applications.  They are difficult to extend, do not provide general services for application development, do not
-scale, and are difficult to set up and manage.  
-
-We propose a new architecture that embodies these system principles through a filesystem abstraction and data services.  We decompose
-all deployment data and metadata into three types of data -- structural inter-relationships and naming, attribute-value descriptive pairs,
-and timeseries data -- and expose them through a filesystem abstraction.  We adopt the Unix philosophy that ``everything is a file'' in a
-system called StreamFS.  We introduce 4 types of files -- containers, streams, controllers, and special -- that can be arbitrarily
-composed to reflect information about the physical configuration of the sensors and actuators relative to the systems and spaces in
-the building.  The filesystem makes these physical resources directly accessible, in a centralized and controlled fashion.  We
-also adopt filesystem security that mediates access between the client-side application and the sensors in the deployment.
-Because containers can be used to group files together, the security layer can also explicitly mediate access to \emph{collections}
-of files that represent physical resources.
-
-StreamFS also provides a number of data services, made available to applications through the pipe abstraction.  Applications can 
-designate a set streams to flow through user-defined \emph{process elements}.  The output of process elements are made available
-through the filesystem as stream file themselves, allowing applications to construct complex processing pipe-lines.
-We also leverage the relationship structure to inform common processing pipelines to support \emph{OLAP-style} aggregation
-queries.  We describe how the underyling \emph{entity-relationship graph (ERG)} is used to support the notion of \emph{aggregation points}.
-We show this graphical structure and associated mechanisms map to a traditional OLAP cube.  Portions of the hierarchy that have 
-enabled aggregation points can then support \emph{drill-up/drill-down}, \emph{pivot}, and \emph{slice and dice} queries.
-
-We deploy StreamFS in 7 different buildings with very different setting and wrote several applications for it as well.  One of the driving
-application is the Mobile Energy Lens.  The Energy Lens app provides occupants with mechanisms for collecting building information
-in a unified platforms and provides a way to view aggregate energy consumption associated with the spatial deployment
-of plug-load devices.  We present a 3-layer application architecture, where one of the main layers is implemented entirely through
-StreamFS data management and data processing services.  We also discuss the challenges that have to be overcome in order to
-provide a better user experience and discuss how each of mechanisms used to solve those problems were also implemented on top of StreamFS.
-
-Finally, we introduce the notion of verification of physical relationship through empirical data.  We characterize and motivate the problem
-in buildings as being a fundamental problem that needs to be solved as we move toward software-based control of the built environment.
-We partition the verification problem into three sub problems: 1) functional verification, 2) spatial verification, and 3) categorical
-verification.  We should how empirical mode decomposition, correlation, and simple machine learning techniques can give us 
-information about how the sensors are related to each other, physically.  We propose the use of this information to 
-verifying the manually specified physical configuration setting.
-
-Through our deployments we demonstrate the importance of specific features and overall, we demonstrate an \emph{extensible, generalizable,
-scalable, and easy-to-manage} system for supporting the ``appification'' of the built environment.  There are still many
-questions to explore more deeply, but we believe that StreamFS and verification provide a solid foundation on which to continue
-our exploration.
-
 
 
 

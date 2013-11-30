@@ -1738,6 +1738,49 @@
   \warn{\item Invalid format of field 'month'}
 \endentry
 
+\entry{boosting}{article}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Hay}{H.}%
+     {Michael}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Rastogi}{R.}%
+     {Vibhor}{V.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Miklau}{M.}%
+     {Gerome}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Suciu}{S.}%
+     {Dan}{D.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {VLDB Endowment}%
+  }
+  \strng{namehash}{HM+1}
+  \strng{fullhash}{HMRVMGSD1}
+  \field{sortinit}{H}
+  \field{issn}{2150-8097}
+  \field{number}{1-2}
+  \field{pages}{1021\bibrangedash 1032}
+  \field{title}{Boosting the Accuracy of Differentially Private Histograms
+  Through Consistency}
+  \verb{url}
+  \verb http://dl.acm.org/citation.cfm?id=1920841.1920970
+  \endverb
+  \field{volume}{3}
+  \field{journaltitle}{Proc. VLDB Endow.}
+  \field{month}{09}
+  \field{year}{2010}
+\endentry
+
 \entry{imp_mobisys2012}{inproceedings}{}
   \name{author}{6}{}{%
     {{}%
@@ -2468,6 +2511,37 @@
   \field{year}{2012}
 \endentry
 
+\entry{privgraph}{inproceedings}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Karwa}{K.}%
+     {Vishesh}{V.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Raskhodnikova}{R.}%
+     {Sofya}{S.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Smith}{S.}%
+     {Adam}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Yaroslavtsev}{Y.}%
+     {Grigory}{G.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{KV+1}
+  \strng{fullhash}{KVRSSAYG1}
+  \field{sortinit}{K}
+  \field{booktitle}{In VLDB}
+  \field{title}{Private analysis of graph structure}
+  \field{year}{2011}
+\endentry
+
 \entry{katipamula:1review2005}{article}{}
   \name{author}{2}{}{%
     {{}%
@@ -2909,6 +2983,47 @@
   \field{year}{2000}
 \endentry
 
+\entry{privlinear}{inproceedings}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Li}{L.}%
+     {Chao}{C.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Hay}{H.}%
+     {Michael}{M.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Rastogi}{R.}%
+     {Vibhor}{V.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Miklau}{M.}%
+     {Gerome}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Mcgregor}{M.}%
+     {Andrew}{A.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {ACM}%
+  }
+  \strng{namehash}{LC+1}
+  \strng{fullhash}{LCHMRVMGMA1}
+  \field{sortinit}{L}
+  \field{booktitle}{In PODS ’10: Proceedings of the twenty-ninth ACM
+  SIGMOD-SIGACT-SIGART symposium on Principles of database systems of data}
+  \field{pages}{123\bibrangedash 134}
+  \field{title}{Optimizing linear counting queries under differential privacy}
+  \field{year}{2010}
+\endentry
+
 \entry{blueprints}{inproceedings}{}
   \name{author}{2}{}{%
     {{}%
@@ -3246,6 +3361,60 @@
   \field{year}{2011}
 \endentry
 
+\entry{gupt}{inproceedings}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Mohan}{M.}%
+     {Prashanth}{P.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Thakurta}{T.}%
+     {Abhradeep}{A.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Shi}{S.}%
+     {Elaine}{E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Song}{S.}%
+     {Dawn}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Culler}{C.}%
+     {David}{D.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {ACM}%
+  }
+  \keyw{algorithms, data mining, differential privacy, security}
+  \strng{namehash}{MP+1}
+  \strng{fullhash}{MPTASESDCD1}
+  \field{sortinit}{M}
+  \field{booktitle}{Proceedings of the 2012 ACM SIGMOD International Conference
+  on Management of Data}
+  \verb{doi}
+  \verb 10.1145/2213836.2213876
+  \endverb
+  \field{isbn}{978-1-4503-1247-9}
+  \field{pages}{349\bibrangedash 360}
+  \field{series}{SIGMOD '12}
+  \field{title}{GUPT: Privacy Preserving Data Analysis Made Easy}
+  \verb{url}
+  \verb http://doi.acm.org/10.1145/2213836.2213876
+  \endverb
+  \list{location}{1}{%
+    {Scottsdale, Arizona, USA}%
+  }
+  \field{year}{2012}
+  \warn{\item Can't use 'location' + 'address'}
+\endentry
+
 \entry{mongodb}{misc}{}
   \field{sortinit}{M}
   \field{title}{MongoDB}
@@ -3439,6 +3608,43 @@
   \strng{namehash}{OJ+1}
   \strng{fullhash}{OJTJSGCDEWPK1}
   \field{sortinit}{O}
+  \field{title}{Live, Continuous Energy Auditing of Miscellaneous Electrical
+  Loads: Methodology and Results}
+\endentry
+
+\entry{aceee_mobileaudit}{inproceedings}{}
+  \name{author}{5}{}{%
+    {{}%
+     {Ortiz}{O.}%
+     {Jorge}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Trager}{T.}%
+     {Jason}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Saldanha}{S.}%
+     {Gavin}{G.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Culler}{C.}%
+     {David~E.}{D.~E.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Wright}{W.}%
+     {Paul~K.}{P.~K.}%
+     {}{}%
+     {}{}}%
+  }
+  \strng{namehash}{OJ+1}
+  \strng{fullhash}{OJTJSGCDEWPK2}
+  \field{sortinit}{O}
+  \field{booktitle}{ACEEE Summer Study on Energy Efficient Buildings 2012}
+  \field{series}{ACEEE '12}
   \field{title}{Live, Continuous Energy Auditing of Miscellaneous Electrical
   Loads: Methodology and Results}
 \endentry

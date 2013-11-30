@@ -25,7 +25,7 @@ The meter is constantly reporting readings to StreamFS as well.
 We setup this experiment in a home office environment with two rooms
 and set up the room-level nodes as an \emph{aggregation point} for all the meters in the room.  The monitored
 2 laptops and 2 lamps and we demonstrate the aggregate power draw of both rooms as we move one of the laptops from
-room 1 at tick 7, walk to room 2, and register the laptop in room 2.
+Room 1 at tick 7, walk to Room 2, and register the laptop in Room 2.
 
 %FILL IN WITH REAL GRAPH
 \begin{figure}[htb!]
@@ -40,15 +40,15 @@ room 1 at tick 7, walk to room 2, and register the laptop in room 2.
         }
 \end{center}
 \caption{
-	The power consumes by a laptop in \emph{room 1} is shifted to \emph{room 2} a time t=7.  Notice the aggregagate drops in room 1
-	while it rises in room 2.
+	The power consumes by a laptop in \emph{Room 1} is shifted to \emph{Room 2} a time t=7.  Notice the aggregagate drops in Room 1
+	while it rises in Room 2.
      }%
 \label{fig:multiroomagg}
 \end{figure}
 
 Figure~\ref{fig:multiroomagg} show the process of dynamic aggregation.  Notice that around tick 5 there is a drop in the total power
-draw curve.  As we walk to the new location, the energy consumption remains steady, but lower in room 1 while it remains steady.
-Then around tick 12, the energy consumption of the room 2 aggregate rises.  Note, the level of rise and fall of both curves is the same
+draw curve.  As we walk to the new location, the energy consumption remains steady, but lower in Room 1 while it remains steady.
+Then around tick 12, the energy consumption of the Room 2 aggregate rises.  Note, the level of rise and fall of both curves is the same
 30 Watts.
 
 
@@ -62,7 +62,7 @@ that out algorithm reduces the staleness of the buffer.}
 
 \subsection{Maximum Freshness Methodology and Results}
 
-We simulated the effects of the \texttt{max\_buffer} algorithm shown in algorithm~\ref{alg:min_buffer}.  We start up multiple streams and
+We simulated the effects of the \texttt{max\_buffer} algorithm shown in Algorithm~\ref{alg:min_buffer}.  We start up multiple streams and
 have them feed a subscription with the algorithm option enabled.  A single run of the experiment consists of 10 runs with $k$ active streams,
 where $k$ is between 1 and 20.  We let it run for some time and record the total staleness for each run, which is the sum for all data points, between
 when the data point arrived and the current time.  We compare these against the default case where data is delivered as soon as at least one data point from every stream arrives.  Figure~\ref{fig:stalevsstreams} shows the returns of our experiment.

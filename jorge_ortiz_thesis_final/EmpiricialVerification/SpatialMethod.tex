@@ -90,7 +90,7 @@ sMAP~\cite{smap} archiver. The data set used comes from two separate deployments
 over 6 months on several floors in Sutardja Dai Hall (SDH) at UC Berkeley, where one sensor box -- which contains a thermometer, a humidity sensor
  and a $CO_{2}$ sensor -- is placed in each room. The box reports data over 6LowPAN~\cite{6lowpan} to a sMAP archiver every 
  15 seconds. The other is a long-term deployment comprised of thousands of sensors in dozens of buildings on campus. 
- We choose the portion of the SDH data set where the sensor devices, accessible via BACnet~\cite{BACnet}, report data to the archiver every few minutes. 
+ We choose the portion of the SDH data set where the sensor devices, accessible via BACnet, report data to the archiver every few minutes. 
  Due to intermittent data loss, we pick a time span without interruption, starting in January until mid-February, 2013, for evaluation.
 
 Let $ts^{i}_{j,t}$ be a time-series for sensor $j$ in room $i$ observed over some time interval $t$.  For simplicity, we ignore
@@ -101,8 +101,8 @@ For each trace we run EMD and obtain a set of $n$ IMFs, denoted as follows:
 \Phi^i_j = EMD(ts^i_j) = \left \{ IMF_{1\sim n} \right \}
 \end{displaymath}
 
-IMFs are traces themselves, so we divide and re-aggregate them into the four bands, $B$,
-further described in Section~\ref{sec:aggr}.
+IMFs are traces themselves, so we divide and re-aggregate them into the four bands $B$.
+% further described in Section~\ref{sec:aggr}.
 \begin{displaymath}
 B = \left \{ H(igh), M(edium), L(ow), R(esidue) \right \}
 \end{displaymath} 

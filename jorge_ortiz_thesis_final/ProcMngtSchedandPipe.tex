@@ -62,7 +62,7 @@ scheduling.
 \end{figure}
 
 Let $A_{i}$ be the arrival time of the last data point received from stream $i$ and $D_{i}$ be the arrival time for the next data point from stream $i$
-and their relationship as described in equation \ref{eqn:deadline}, where $T(i)$ is the average period between the arrivals from stream $i$.
+and their relationship as described in Equation \ref{eqn:deadline}, where $T(i)$ is the average period between the arrivals from stream $i$.
 
 \begin{equation}
 D_{i} = A_{i} + T(i)
@@ -72,15 +72,15 @@ D_{i} = A_{i} + T(i)
 
 Periodically, our algorithm runs and checks if there is a data point for each stream in the subscription.  If so, the \emph{min\_buffer} algorithm runs 
 and effectively decides whether to execute the job on the current buffer immediately or whether to wait until later, when the \emph{staleness factor} of
-the buffer will be at a minimum.  This decision is driven by equation~\ref{eqn:later_better_condition}, whereby we find the next deadline, computed with
-equation~\ref{eqn:last_deadline}, for each stream in the set and determine the staleness factor will be for the entire buffer if we wait until that deadline arrives.
+the buffer will be at a minimum.  This decision is driven by Equation~\ref{eqn:later_better_condition}, whereby we find the next deadline, computed with
+Equation~\ref{eqn:last_deadline}, for each stream in the set and determine the staleness factor will be for the entire buffer if we wait until that deadline arrives.
 
 \begin{equation}
 t_{L,i} = A_{i} + \Bigl\lfloor \frac{D_{k}-A_{i}}{T(i)} \Bigr\rfloor T(i)
 \label{eqn:last_deadline}
 \end{equation}
 
-If there is no deadline $D_{k}$ for some stream $k$ such that equation~\ref{eqn:later_better_condition} holds, then we execute now.  Otherwise we choose to wait
+If there is no deadline $D_{k}$ for some stream $k$ such that Equation~\ref{eqn:later_better_condition} holds, then we execute now.  Otherwise we choose to wait
 until $D_{k}$ for the stream whose next deadline minimizes the staleness factor of the buffer.
 
 

@@ -1,7 +1,7 @@
 \section{Data Cleaning and Real-time Processing}
 
 StreamFS provides sophisticated mechanisms to process data in real time.  Processing features in StreamFS address
-point \ref{proc} in section~\ref{sec:shortcomings}.
+Point \ref{proc} in Section~\ref{sec:shortcomings}.
 Sensor data is fundamentally challenging to deal with because much of it must be cleaned before it can be processed.  For example,
 it is not uncommon to receive readings that is out of operational range, that is erroneous with respect to the previous observed trend,
 or to stop receiving readings altogether.  This implies the need for processing jobs to provide a level of filtering over the raw streams.
@@ -19,7 +19,7 @@ For jobs that need to clean the data or wish to run small, simple operations, we
 For jobs that are more complex and require client-side libraries, we offer a facility where the process is allowed
 to run on the client side, but is entirely managed by StreamFS.  We provide a client stub that essentially runs like a
 mini-job scheduler on the client side and communicate with StreamFS to execute file operations that affect locally-running
-jobs.  We discuss the details for both kinds of jobs in section~\ref{sec:internalprocs} and \ref{sec:externalprocs}.
+jobs.  We discuss the details for both kinds of jobs in Section~\ref{sec:internalprocs} and \ref{sec:externalprocs}.
 
 % Aggregation is done as a function of the underlying constituents: they can be combined arbitrarily, by adding
 % subtracting, multiplying or dividing corresponding values.  We provide an interface to the user that
@@ -34,7 +34,7 @@ jobs.  We discuss the details for both kinds of jobs in section~\ref{sec:interna
 
 Finally, some processes actually want all the freshest
 data from all the streams they are subscribing to, while minimizing the average time that the data for each respective stream has 
-been waiting in the buffer.  We address these problem through a freshness scheduler that is presented in section~\ref{sec:freshness}.
+been waiting in the buffer.  We address these problem through a freshness scheduler that is presented in Section~\ref{sec:freshness}.
 
 
 

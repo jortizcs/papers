@@ -5,7 +5,7 @@ buildings that provide services to its occupants, the grid, and the environment.
 are largely built in isolation of one another -- each unique in its own right, from the material the walls
 are made of to the systems and software that control them.  With the falling cost of memory, the ubiquity of
 connectivity and sensing, and cheap cost of computation in the cloud, it should be possible to make buildings ``smarter''
-through software guided by the principals of extensibility and clean, well-defined software interfaces.
+through software guided by the principles of extensibility and clean, well-defined software interfaces.
 
 We would like to move towards a vision of building software systems that
 
@@ -204,6 +204,15 @@ Such service should offer a data-processing primitives as well.   It should medi
 The system should provide support holistic control applications that combine disparate data sources through the service itself.
 We describe the design of such a system in Chapter~\ref{chap:SensingInBuiltMain}.
 
+Privacy is a major concern as we consider the ``app-ification'' of buildings.  Detailed information about energy usage can reveal 
+information about the activity in the building and can be used to predict the behavior or individuals and organizations.  For example, 
+right before a product launch, employees typically spend longer hours at work.  This could be used by a rival company to acticipate
+the release of a new product.  Individual usage data can be used by thieves to indicate when a particular occupant is home and what their
+move patterns are.  We only partially address the topic in this thesis,
+through mechanisms in our architecture that allow the user to control access to individual and aggregate pieces of information.
+However, privacy is a much broader topic and there are many techniques available for adoption.  We leave this exploration
+for future work.
+
 
 \section{Research Statement And Hypothesis}
 We formally state the thesis that guides our work: %research thesis and hypothesis:
@@ -231,7 +240,7 @@ and walk through the components that are useful for this purpose and those that 
 components in an architectural re-design that could provide the same support as BMS's today as well as the emerging ones that we
 describe and argue that this should be the design of a \emph{building appification system}.
 
-In chapter~\ref{chap:SFSArchMain}, we give an overview of a system that contains the components we propose in the previous
+In Chapter~\ref{chap:SFSArchMain}, we give an overview of a system that contains the components we propose in the previous
 chapter.  The name of the system is StreamFS.  StreamFS is a cloud-based service that combines filesystem and database constructs
 to organize the streaming sensor data, clean and process streams, and provides a unified access layer.
 %  for both physical information
@@ -245,7 +254,7 @@ and managed by StreamFS as well as integrating external processing components an
 We discuss some of the challenges and present some solutions to a scheduling problem related to providing fresh data  to processing jobs.
 We also describe how various kinds of aggregation can be performed on the data, using the filesystem and pipe abstraction
 presented and managed by this component.
-Section~\ref{chap:naming} discusses how we represent the world as a collection of files.  StreamFS follows the Unix filesystem principal 
+Section~\ref{chap:naming} discusses how we represent the world as a collection of files.  StreamFS follows the Unix filesystem principle 
 where everything is a file and this allows us to provide a unified management layer for the entire set of building deployment
 data and metadata.  We discuss the individual file types that we support and their semantics.  We also introduce the fundamental
 challenge of dealing with evolving metadata.  Specifically,  we show how changes in the physical world can present problems
@@ -253,17 +262,21 @@ with the structure and relationships between the files in the system.
 % We show the basic set of tools that we use to address these problem
 % at the end of the chapter.
 
-We evaluate the StreamFS in chapter~\ref{chap:ArchEvalMain}.  We describe our experience in deploying StreamFS in several buildings
-at UC Berkeley and the University of Tokyo.  We describe these deployments in the context of 2 applications: 1) a real-time visualization and 
+We evaluate the StreamFS in Chapter~\ref{chap:ArchEvalMain}.  We describe our experience in deploying StreamFS in several buildings
+at UC Berkeley and the University of Tokyo.  These buildings represent a broad range of characteristic ``office buildings'' in both
+countries.  Office buildings consume nearly 20\% of all energy in the United States and similar proportions in Japan.  Moreoever,
+there difference between buildings in both countries, such as usage patterns and HVAC architecture (centralized vs distributed).
+We show how our architecture and techniques work well across both and describe these deployments in the context of 2 applications: 
+1) a real-time visualization and 
 aggregator mobile phone for energy auditing, and  2) a real filesystem mount and direct integration with a legacy applications. 
 We also give an overview of the application programming interface and discuss how StreamFS can help build generable, scalable 
 re-usable software within buildings.
 
-Finally, we discuss verification of building systems and metadata in chapter~\ref{chap:VerificationMain}.  We introduce 3 types of 
+Finally, we discuss verification of building systems and metadata in Chapter~\ref{chap:VerificationMain}.  We introduce 3 types of 
 verification and describe why each of them is crucial to building applications that interact with the physical world through
 a layer of software represent it.  We discuss our work on the Strip, Bind and Search methodology for functional verification, 
 our use of mode decomposition for spatial verification, and timeseries clustering techniques for type classification.  
-We discuss future work in chapter~\ref{chap:future} and conclude in chapter~\ref{chap:done}.
+We discuss future work in Chapter~\ref{chap:future} and conclude in Chapter~\ref{chap:done}.
 
 
 

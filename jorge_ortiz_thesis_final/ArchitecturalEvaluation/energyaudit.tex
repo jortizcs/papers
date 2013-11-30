@@ -58,7 +58,7 @@ In order to connect these components, we rely on `ubiquitous' network connectivi
 and logging are used to address these challenges.  Moreover, when connectivity is re-established, we must deal with
 applying updates to StreamFS; updates recorded by the phone while disconnected.  
 Conflicts may also occur during an update.  For example, the two updates may conflict about which items are attached
-to which meters.  We implement a very simple conflict resolution scheme, described in section~\ref{sec:conflicts}.
+to which meters.  We implement a very simple conflict resolution scheme, described in Section~\ref{sec:conflicts}.
 Finally, physical state-transitions are represented as a set of updates to StreamFS that must be applied 
 atomically.  However, StreamFS does not provide atomicity across multiple file operations.  We implement transactions through 
 log-replay and transaction manager.  Our `Energy Lens' system is deployed in Sutardja Dai Hall at UC Bekreley.  We discuss
@@ -85,7 +85,7 @@ its architecture and design.
 
 
 \section{Energy Lens Architecture and System Challenges}
-The Energy Lens application aims to approximate the vision described in section~\ref{sec:elensvision}.  We tag
+The Energy Lens application aims to approximate the vision described in Section~\ref{sec:elensvision}.  We tag
 items with QR codes and allow users to 1) tag and register new items, 
 2) tell us which meters are attached to which items, and 3) scan QR codes to view their load curve over a 
 24-hour period.  Both individual items and spaces are scannable -- spaces present aggregate information
@@ -155,7 +155,7 @@ The following is a list of rules for automatically setting the location of peopl
 
 
 For each of these, we provide an interactive option to ask for location-change confirmation from the user.  So if we think the
-user/item has moved but they have not, the preset action can be overridden.  The guiding principal we follow in our design
+user/item has moved but they have not, the preset action can be overridden.  The guiding principle we follow in our design
 is to leverage the swipe gesture for as much contextual information as possible.  Furthermore, we do not explicitly track users.
 Context is only set on the phone and used in operations sent to the server.  
 We construct an entity relationship graph through 
@@ -284,8 +284,8 @@ mechanism that does smart caching, not only to improve performance, but also to 
 
 The Energy Lens application downloads a portion of the ERG when a user enters a new floor.  The application fetches the portion
 of the graph rooted at the floor.  The root is determine by either an item or a floor scan, initiated by the user.
-Figure~\ref{fig:sdh_4f_erg} shows just a small portion of that entity-relationship graph for the floor we are monitoring in
-our deployment.  
+% Figure~\ref{fig:sdh_4f_erg} shows just a small portion of that entity-relationship graph for the floor we are monitoring in
+% our deployment.  
 A prefetch populates the cache with all entity nodes on that floor, their associated metadata,
 and 30 minutes of data from the stream entities.  The full fetch of the 4th floor data set includes
 176 nodes and about 1 MB of meter data.  In total, the app downloads ~1.2 MB of data upon re-connection.
@@ -649,8 +649,9 @@ flexibility in several ways:
 
 It provides a web address for users to re-direct to and find information and various read-only services for the object.  However, because
 the \texttt{URL} also contains a unique identifier \emph{qrc}, it can be used to provide for sophisticated services and capabilities.
-An example is the ability to change the virtual structure of inter-relationship between this object and other objects.  This
-is demonstrated in our energy auditing application discussed in detail in section~\ref{sec:eaudit}.
+An example is the ability to change the virtual structure of inter-relationship between this object and other objects.  
+% This
+% is demonstrated in our energy auditing application discussed in detail in section~\ref{sec:eaudit}.
 Once items are tagged, they can be added and removed by swiping the tag and pressing the button for what you want to do with
 the item.  You also check into locations either explicit with a location-tag swipe or implicitly with an item swipe.
 
@@ -821,9 +822,25 @@ related information, user context, spatial configuration information and updated
 we could not have supported both the collection of metadata and data about the deployment as well as \emph{data services} that
 are absolutely crucial to the success of the Energy Lens application.
 
-Also, we used a single function and instantiated 32 instances of it in the deployment.  This demonstrates the \emph{ease of management}
+Also, we use a single function and instantiate 32 instances of it in the deployment.  This demonstrates the \emph{ease of management}
 property we set to provide through StreamFS.  Because we follow the principle where ``everything is a file'' the entire deployment
 data, metadata, and analytics can be accessed and controlled from the same deployment.
+
+An important aspect of our work that we have not explored it privacy.  Privacy is the ability for a group or individual to hide
+their information and to selectively share it with other groups or individuals.  StreamFS uses an access control list and adopts
+Unix-style file security for sharing information.  Users of StreamFS can create users and groups and control the access rights to
+individual files in the system, and their corresponding file-specific operations.  If a user wishes to share information about their
+personal aggregates, they may share the aggregation point and make all the individual streams inaccessible.  
+
+In the Energy Lens application, people and objects are tracked by associating individuals with locations according to their scans.
+This information is not explicitly logged and is inaccessible through StreamFS.  Scan history is also not logged on the phone, so
+privacy and security should not be a major concern.  Moreover, HTTPS is an option for communicating with the StreamFS servers
+and for the transaction log layer that sits above it.  That said, privacy is a much broader topic that must be explored in 
+future iterations of our system.
+Work on differential privacy~\cite{gupt, boosting, privgraph, privlinear} may also be a good fit for providing accurate 
+query responses without revealing the constituent identify information.  These methods could be applied at the database layer
+within the timeseries datastore and made available through the filesystem as anonymous, globally accessible stream files.
+
 
 % \begin{itemize}
 % \item Forwarding

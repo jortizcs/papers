@@ -69,7 +69,7 @@ Recall that the correlation coefficients of the raw feeds was $0.7715$ and $0.63
 and GHP, respectively.
 As stated in previous section this result is correct but not so meaningful, since most of the traces
 display the same diurnal pattern.
-Figure \ref{fig:emd} and Figure \ref{fig:emd2} show the EMD decomposition of the three traces.
+Figure \ref{fig:emd} shows the EMD decomposition of the three traces.
 For each trace, EMD has retrieved three IMFs that highlight the higher frequencies of the traces.
 
 Figure~\ref{fig:emd} shows the normalized raw trace (top) and EMD output IMFs and residual as well as the 
@@ -78,12 +78,12 @@ light traces.  The correlation coefficients are $0.43909$, $0.49344$ and $0.6346
 IMF2, and IMF3, respectively.  Notice the high correlation between the high-frequency IMFs.
 We know that the light and EHP serve the same room, and their high-frequency IMF correlation corroborates
 our prior knowledge.
-Figure~\ref{fig:emd2} shows a complementary result, for the EHP and GHP comparison.
-The correlation coefficients for the EHP and GHP IMFs suggest that the two may be independent.  In fact, they
-\emph{are} indepdent; they serve completely different rooms in the building.
-EMD allows us to remove low-frequency trends that add noise to the original analysis.
-By comparing IMFs, we see both intrinsically correlated and \emph{uncorrelated} behavior.  
-% In the next
+% Figure~\ref{fig:emd2} shows a complementary result, for the EHP and GHP comparison.
+% The correlation coefficients for the EHP and GHP IMFs suggest that the two may be independent.  In fact, they
+% \emph{are} indepdent; they serve completely different rooms in the building.
+% EMD allows us to remove low-frequency trends that add noise to the original analysis.
+% By comparing IMFs, we see both intrinsically correlated and \emph{uncorrelated} behavior.  
+% % In the next
 % section we expand our analysis and show the effectiveness of our methodology. 
 % Although promising, these results must be validated across the rest of the
 % dataset to confirm their significance.  
@@ -155,19 +155,19 @@ the sensors are measuring.  Its underlying trend is ultimately what EMD will be 
 from the intrinsic modes of the signal.
 
 
-Figure~\ref{fig:aggr1} shows a comparison of two temperature sensor feeds from different rooms and their respective
-decomposition.  Despite strong correlation in the raw time series, the medium frequency IMF shows little correlation.
-Only the low frequency diurnal pattern is correlated.  Alternatively,  Figure~\ref{fig:aggr2} shows a $CO_{2}$ trace and a humidity trace.
+% Figure~\ref{fig:aggr1} shows a comparison of two temperature sensor feeds from different rooms and their respective
+% decomposition.  Despite strong correlation in the raw time series, the medium frequency IMF shows little correlation.
+% Only the low frequency diurnal pattern is correlated.  Alternatively,  Figure~\ref{fig:aggr2} shows a $CO_{2}$ trace and a humidity trace.
 
-While the raw signals appear to be very different, and indeed have modest correlation, the medium frequency components
-are strongly correlated.  We conjecture that the medium frequency band ``records'' local activity.  Occupants
-and movement in the space affect the levels of various physical phenomenon, namely temperature, humidity, $CO_{2}$ levels, etc.
-Over shorter time spans, noise in the system hides the effects of local activity.  Longer time-spans capture long-term trends 
-related to weather or building operation schedules.  The medium frequency band
-captures activities such as meetings and office occupation times.  
-These examples illustrate the basis for an automated process.  By isolating a particular component of the signal
-we seek to strip away common diurnal factors and also eliminate differences in the response of various sensors to environmental factors.
-We combine this observation with a simple classifier to derive colocation.
+% While the raw signals appear to be very different, and indeed have modest correlation, the medium frequency components
+% are strongly correlated.  We conjecture that the medium frequency band ``records'' local activity.  Occupants
+% and movement in the space affect the levels of various physical phenomenon, namely temperature, humidity, $CO_{2}$ levels, etc.
+% Over shorter time spans, noise in the system hides the effects of local activity.  Longer time-spans capture long-term trends 
+% related to weather or building operation schedules.  The medium frequency band
+% captures activities such as meetings and office occupation times.  
+% These examples illustrate the basis for an automated process.  By isolating a particular component of the signal
+% we seek to strip away common diurnal factors and also eliminate differences in the response of various sensors to environmental factors.
+% We combine this observation with a simple classifier to derive colocation.
 
 
 
@@ -233,7 +233,7 @@ ROC graph on the left.  Moreover, the corresponding average FPR is lower on the 
 In general, as the TPR rises, the FPR also goes up -- \emph{a tradeoff exists between maximizing TPR and maintaining a lower FPR}.
 
 
- The ``boundary'' is represented as the corrcoeff that produces a ``good" TPR with an ``acceptable" FPR.  In Figure~\ref{fig:rocA}, 
+ The ``boundary'' is represented as the corrcoeff that produces a ``good" TPR with an ``acceptable" FPR.  In Figure~\ref{fig:roc}, 
   we choose 0.2 FPR as the boundary threshold.  This point represents the largest difference between TPR and FPR -- an acceptable tradeoff point. 
 Looking at Figure~\ref{fig:cdf}, the 0.2 FPR corresponds roughly to the 80th-percentile correlation coefficient, on the ``inter''
 set (the set of CDFs on the right).
@@ -263,7 +263,8 @@ We cluster the sensor traces over the entire one-month period, and use the rough
 A sensor is classified into the cluster with the largest corrcoeff. The clustering result is shown in Table~\ref{tab:cluster}.  A ``1" means the sensor is classified as inside the corresponding room. 
 In general, after obtaining the sensor clusters, we don't know which room each cluster corresponds to without further information such as the metadata of sensors. The labels ``A-E" in Table~\ref{tab:cluster} are used to indicate the ground truth of where each sensor is physically placed since we have such information. Overall, the classification accuracy 
 is 93.3\%.  We do not cluster on the corrcoeffs obtained among raw signals because the 80\%-percentile corrcoeff values do not converge across rooms.
-The reason that we are able to get such a high accuracy, which is seemingly different from the statistics in Figure~\ref{fig:cdf} and Figure~\ref{fig:roc}, is because the statistics in the two figures are generated out of the corrcoeffs accumulated over different time spans (the same intervals in Figure~\ref{fig:leneff}) while the clustering here is performed on the corrcoeffs from the entire one-month period. 
+The reason that we are able to get such a high accuracy, which is seemingly different from the statistics in Figure~\ref{fig:cdf} 
+and Figure~\ref{fig:roc}, is because the statistics in the two figures are generated out of the corrcoeffs accumulated over different time spans (the same intervals in Figure~\ref{fig:leneff}) while the clustering here is performed on the corrcoeffs from the entire one-month period. 
 % vary a lot and it doesn't make much sense to use different threshold for each room individually.
 
 \begin{table}[h!]\footnotesize

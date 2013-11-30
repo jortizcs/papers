@@ -35,20 +35,49 @@ been waiting in the buffer.
  \label{alg:min_buffer}
 \end{algorithm}
 
-Some streams show lots of variability, driven by the underlying dynamics of the system being monitored.  For example, the power
-consumption of an active server or laptop tends to have a very active power profile.  For jobs doing aggregation of 
+
+Some streams show lots of variability in its value distribution over time; driven by the underlying dynamics of the system being 
+monitored.  For example, the power
+consumption of an active server or laptop tends to have a varying power-draw profile over short time scales.  
+For jobs doing aggregation of 
 streaming data, it is often the case that the time when the last reading was received is very different across streams.  
-For example, consider two rapidly changing streams.  The ideal aggregation scenario is to
-combine the streams from the latest readings for both streams.  That way you minimizing the offset difference between during aggregation.
-If stream 1 produces a reading every 3 seconds and stream 2 produces a reading every 2 seconds, and you aggregate the readings every time you
-have at least one reading from both streams, every 3 seconds.  Sometimes the reading from the 2-second stream will be 1 second old.
-If run the computation \emph{now}, the total staleness of the buffer is 1 second, if we wait on more second the total staleness is still 1 second, because
-at t=4 seconds, the 3-second stream will be 1 second old.
-For applications that wish to display the freshest aggregates with the latest results (smallest buffer staleness), we provide an algorithm
+
+\begin{figure}[t!] %htbp
+\centering
+\includegraphics[width=0.75\columnwidth]{figs/sched_example.pdf}
+\caption{This figure shows an example of two streams with different sampling frequencies.  Since we do not know the underlying fundamental frequency
+of the phenomenon, our algorithm attempts to minimize error by minimizing staleness (or the average time a data point is in the receive buffer).}
+\label{fig:sched_example}
+\end{figure}
+
+For example, consider two rapidly changing streams, as shown in Figure~\ref{fig:sched_example}.  
+Each line represents the fundamental frequency of a different physical phenomenon.  The vertical lines represent reports times, as
+observed at the StreamFS server; the time when the data points from those sensors are received.  
+The circular dots show the value of the 
+measurement that is in the buffer.  Assuming we have a subscriber that subscribes to only these two streams, the point labled with a 
+`1' shows the first time that we can aggregate the two readings, `2' shows the second time, etc.
+Note, the ideal aggregator \emph{minimizes} aggregation error in the sum, as specified in the figure.  Since a measurement was received 
+at time t=2 and t=3, there will be some error associated with the sum -- the difference between the actual
+value of the phenomenon at time t=3 and the value in the buffer (received at time t=2).  \emph{The longer we wait to compute the 
+aggregate, the higher the error; until it resets when a new reading arrives}.
+
+StreamFS does not know the underlying fundamental frequency of the phenomenon being measured, so it uses the staleness of the measurement to
+approximate the error and a running report average for each stream to decide when it is best to compute the aggregate operation.  
+Since the fundamental frequency is unknow, the driving assumption is that the more stale the reading, the higher the measurement error.  
+Our measurement scheduler attempts to \emph{minimize aggregation error
+by minimizing average buffer staleness} -- the time between the when the computation is taken and when the data point was received.  Note again
+from the figure, that the best time to take a measurement is at t=6, since both data point come in at the same time and will have an average staleness
+of 0.
+% The ideal aggregation scenario is to
+% combine the streams from the latest readings for both streams.  That way you minimizing the offset difference between during aggregation.
+% If stream 1 produces a reading every three seconds and stream two produces a reading every two seconds, and you aggregate the readings every time you
+% have at least one reading from both streams, every three seconds.  Sometimes the reading from the two-second stream will be one second old.
+% If run the computation \emph{now}, the total staleness of the buffer is 1 second, if we wait on more second the total staleness is still one second, because
+% at t=4 seconds, the three-second stream will be one second old.
+For applications that wish to display the freshest aggregate (and approximate minimum error) we provide an algorithm
 called \texttt{min\_buffer}.
 
-Certain jobs only care about consuming the latest readings from their subscription streams.  They are willing to discard reading until two
-conditions are met:
+The \texttt{min\_buffer} algorithm discards readings until two conditions are met:
 
 \begin{enumerate}
 \item There is at least one data point from each stream in the subscription buffer.
@@ -58,7 +87,7 @@ conditions are met:
 % This is of particular interest to controllers that need to make control decision based on the freshest data possible and can tolerate some variability
 % in the completion time of the control task.  It is also useful in analytical jobs that want to process the latest data from multiple streams while also
 % allowing some variability in the completion of the processing task.  
-Note, there's a fundamental tradeoff
+Note, there is a fundamental tradeoff
 between the staleness factor and variability of consumption.  It is sometimes better to wait for the next incoming data point than it is to use what
 is currently in the buffer, as waiting will decrease the overall staleness factor.  Other times, it is better to consume the buffered data immediately.
 This causes a certain amount of variability in the delivery period to the control process.  However, for some applications, this is a reasonable tradeoff
@@ -76,7 +105,7 @@ scheduling.
 \end{figure}
 
 Let $A_{i}$ be the arrival time of the last data point received from stream $i$ and $D_{i}$ be the arrival time for the next data point from stream $i$
-and their relationship as described in equation \ref{eqn:deadline}, where $T(i)$ is the average period between the arrivals from stream $i$.
+and their relationship as described in Equation \ref{eqn:deadline}, where $T(i)$ is the average period between the arrivals from stream $i$.
 
 \begin{equation}
 D_{i} = A_{i} + T(i)
@@ -86,15 +115,15 @@ D_{i} = A_{i} + T(i)
 
 Periodically, our algorithm runs and checks if there is a data point for each stream in the subscription.  If so, the \emph{min\_buffer} algorithm runs 
 and effectively decides whether to execute the job on the current buffer immediately or whether to wait until later, when the \emph{staleness factor} of
-the buffer will be at a minimum.  This decision is driven by equation~\ref{eqn:later_better_condition}, whereby we find the next deadline, computed with
-equation~\ref{eqn:last_deadline}, for each stream in the set and determine the staleness factor will be for the entire buffer if we wait until that deadline arrives.
+the buffer will be at a minimum.  This decision is driven by Equation~\ref{eqn:later_better_condition}, whereby we find the next deadline, computed with
+Equation~\ref{eqn:last_deadline}, for each stream in the set and determine the staleness factor will be for the entire buffer if we wait until that deadline arrives.
 
 \begin{equation}
 t_{L,i} = A_{i} + \Bigl\lfloor \frac{D_{k}-A_{i}}{T(i)} \Bigr\rfloor T(i)
 \label{eqn:last_deadline}
 \end{equation}
 
-If there is no deadline $D_{k}$ for some stream $k$ such that equation~\ref{eqn:later_better_condition} holds, then we execute now.  Otherwise we choose to wait
+If there is no deadline $D_{k}$ for some stream $k$ such that Equation~\ref{eqn:later_better_condition} holds, then we execute now.  Otherwise we choose to wait
 until $D_{k}$ for the stream whose next deadline minimizes the staleness factor of the buffer.
 
 

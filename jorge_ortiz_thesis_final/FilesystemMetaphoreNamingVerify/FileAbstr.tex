@@ -42,7 +42,7 @@ or grouping files that contain similar tags, quickly.
 
 \subsection{File types and operations}
 As we map the filesystem abstraction into this problem space, we need to consider the various kinds of files our system will contain,
-their semantics, and how our system will expose and manage them.  There are essentially 4 types of files and 6 sub-types.  We summarize
+their semantics, and how our system will expose and manage them.  There are essentially four types of files and six sub-types.  We summarize
 these in Table~\ref{tab:filetypes}.  There are also different kinds of operations that the each file type supports.  Operational semantics
 are file dependent.  For example, when you \emph{read} a folder, you obtain the metadata associated with the folder and the name
 of its children.  When you \emph{read} a stream, you its metadata and the last timestamp-value it produced.  \emph{Writing} to a stream
@@ -68,12 +68,12 @@ a stream file either.
 		    & management of jobs and pipes. &  \\ 
 	\hline
 \end{tabular}
-\caption{Summary of the 4 main file types and their valid operations in StreamFS.}
+\caption{Summary of the four main file types and their valid operations in StreamFS.}
 \label{tab:filetypes}
 \end{center}
 \end{table}
 
-Similar to a traditional filesystem, StreamFS includes \emph{special files}.  There are 6 special files and 5 of them 
+Similar to a traditional filesystem, StreamFS includes \emph{special files}.  There are six special files and five of them 
 are for management purposes.  The only one that is not is the \emph{symbolic link} file, which is essentially used to support
 multi-naming and inherit the operational semantics of the file it points to.  The delete operation on a symlink, however,
 only deletes the symlink.  A description of these files and the operations they support is given in Table~\ref{tab:filesubtypes}.
@@ -118,7 +118,7 @@ returned to the user.  This id must be used by the stream that wishes to push it
 or not included, the write operation fails.
 
 Because controllers accept many kinds of input, we designed the the file that presents a controller similar to the external processing stub discussed
-in section~\ref{sec:externalprocs}.  Writes to a controller file and forwarded directly to the control stub running at the controller itself or a proxy
+in Section~\ref{sec:externalprocs}.  Writes to a controller file and forwarded directly to the control stub running at the controller itself or a proxy
 machine that communicates with the controller.  Any reply is set as metadata in the controller file.  Controller files also has associated output stream.
 If a controller process wishes to inform the process of internal state at the controller, it does so through the controller file output --
 a stream file itself.  Table~\ref{tab:filetypes} lists the files in StreamFS and the operations they support.  The operational semantics
@@ -129,7 +129,7 @@ are listed in Table~\ref{tab:semantics}.
 % \subsection{Controller Files}
 
 \subsection{Special Files}
-There are 6 types of special files.  In chapter~\ref{chap:ProcMngtSchedMain} we eluded to the various kinds of file that are created
+There are 6 types of special files.  In Section~\ref{sec:internalprocs} we eluded to the various kinds of files that are created
 when a user creates an internal or external file.  An internal process definition (ipd) file is created when the user
 submits a script to StreamFS.  When a (set of) stream(s) is piped through the definition file, an internal process instance (ipi) file
 is created that represents the output of the process.  A subscription instance (sub) file is also created.  The sub file contains
