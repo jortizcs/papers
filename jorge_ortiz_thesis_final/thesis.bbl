@@ -269,11 +269,13 @@
      {}{}%
      {}{}}%
   }
+  \keyw{indoor localization radar rfid tracking}
   \strng{namehash}{BPPVN1}
   \strng{fullhash}{BPPVN1}
   \field{sortinit}{B}
+  \field{booktitle}{INFOCOM}
   \field{pages}{775\bibrangedash 784}
-  \field{title}{RADAR: An In-Building RF-based User Location and Tracking
+  \field{title}{RADAR: An In-Building RF-Based User Location and Tracking
   System}
   \field{year}{2000}
 \endentry
@@ -619,17 +621,31 @@
      {}{}}%
     {{}%
      {Muntz}{M.}%
-     {Richard}{R.}%
+     {Richard~R.}{R.~R.}%
      {}{}%
      {}{}}%
   }
+  \list{publisher}{1}{%
+    {Springer-Verlag}%
+  }
   \strng{namehash}{CP+1}
-  \strng{fullhash}{CPCPKTMR1}
+  \strng{fullhash}{CPCPKTMRR1}
   \field{sortinit}{C}
+  \field{booktitle}{Proceedings of the 3rd International Conference on
+  Ubiquitous Computing}
+  \field{isbn}{3-540-42614-0}
   \field{pages}{18\bibrangedash 34}
+  \field{series}{UbiComp '01}
   \field{title}{A Probabilistic Room Location Service for Wireless Networked
   Environments}
+  \verb{url}
+  \verb http://dl.acm.org/citation.cfm?id=647987.741335
+  \endverb
+  \list{location}{1}{%
+    {Atlanta, Georgia, USA}%
+  }
   \field{year}{2001}
+  \warn{\item Can't use 'location' + 'address'}
 \endentry
 
 \entry{chan:springer2005}{incollection}{}
@@ -1092,7 +1108,7 @@
   \verb http://doi.acm.org/10.1145/1869983.1870003
   \endverb
   \list{location}{1}{%
-    {Z\&\#252;rich, Switzerland}%
+    {Zurich, Switzerland}%
   }
   \field{year}{2010}
   \warn{\item Can't use 'location' + 'address'}
@@ -1374,40 +1390,6 @@
   \field{year}{2012}
 \endentry
 
-\entry{IOT}{inproceedings}{}
-  \name{author}{4}{}{%
-    {{}%
-     {Fontugne}{F.}%
-     {Romain}{R.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Ortiz}{O.}%
-     {Jorge}{J.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Culler}{C.}%
-     {David}{D.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Esaki}{E.}%
-     {Hiroshi}{H.}%
-     {}{}%
-     {}{}}%
-  }
-  \keyw{anomaly detection, building, energy consumption}
-  \strng{namehash}{FR+1}
-  \strng{fullhash}{FROJCDEH1}
-  \field{sortinit}{F}
-  \field{booktitle}{Workshop on Internet of Things Applications}
-  \field{series}{IoT-App'12}
-  \field{title}{Empirical mode decomposition for intrinsic-relationship
-  extraction in large sensor deployments}
-  \field{year}{2012}
-\endentry
-
 \entry{SBS}{inproceedings}{}
   \name{author}{8}{}{%
     {{}%
@@ -1552,32 +1534,6 @@
   \field{title}{Intelligent Infrastructure for Energy Efficiency}
   \field{volume}{327}
   \field{journaltitle}{Science}
-  \field{year}{2010}
-\endentry
-
-\entry{MITBuildingScience}{article}{}
-  \name{author}{3}{}{%
-    {{}%
-     {Gershenfeld}{G.}%
-     {Neil}{N.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Samouhos}{S.}%
-     {Stephen}{S.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Nordman3}{N.}%
-     {Bruce}{B.}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{GNSSNB2}
-  \strng{fullhash}{GNSSNB2}
-  \field{sortinit}{G}
-  \field{title}{Intelligent Infrastructure for Energy Efficiency}
-  \field{journaltitle}{Science Magazine}
   \field{year}{2010}
 \endentry
 
@@ -1876,70 +1832,6 @@
   \field{year}{2001}
 \endentry
 
-\entry{Hsu1878444}{inproceedings}{}
-  \name{author}{7}{}{%
-    {{}%
-     {Hsu}{H.}%
-     {Jeff}{J.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Mohan}{M.}%
-     {Prashanth}{P.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Jiang}{J.}%
-     {Xiaofan}{X.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Ortiz}{O.}%
-     {Jorge}{J.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Shankar}{S.}%
-     {Sushant}{S.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Dawson-Haggerty}{D.-H.}%
-     {Stephen}{S.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Culler}{C.}%
-     {David}{D.}%
-     {}{}%
-     {}{}}%
-  }
-  \list{publisher}{1}{%
-    {ACM}%
-  }
-  \keyw{building monitoring, energy, sensor networks}
-  \strng{namehash}{HJ+1}
-  \strng{fullhash}{HJMPJXOJSSDHSCD1}
-  \field{sortinit}{H}
-  \field{booktitle}{Proceedings of the 2nd ACM Workshop on Embedded Sensing
-  Systems for Energy-Efficiency in Building}
-  \verb{doi}
-  \verb 10.1145/1878431.1878444
-  \endverb
-  \field{isbn}{978-1-4503-0458-0}
-  \field{pages}{55\bibrangedash 60}
-  \field{series}{BuildSys '10}
-  \field{title}{HBCI: human-building-computer interaction}
-  \verb{url}
-  \verb http://doi.acm.org/10.1145/1878431.1878444
-  \endverb
-  \list{location}{1}{%
-    {Zurich, Switzerland}%
-  }
-  \field{year}{2010}
-  \warn{\item Can't use 'location' + 'address'}
-\endentry
-
 \entry{hbci}{inproceedings}{}
   \name{author}{7}{}{%
     {{}%
@@ -2029,55 +1921,6 @@
   \field{year}{2006}
 \endentry
 
-\entry{speech}{article}{}
-  \name{author}{2}{}{%
-    {{}%
-     {Huang}{H.}%
-     {Hai}{H.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Pan}{P.}%
-     {Jiaqiang}{J.}%
-     {}{}%
-     {}{}}%
-  }
-  \keyw{Speech analysis}
-  \strng{namehash}{HHPJ1}
-  \strng{fullhash}{HHPJ1}
-  \field{sortinit}{H}
-  \verb{doi}
-  \verb http://dx.doi.org/10.1016/j.sigpro.2005.06.011
-  \endverb
-  \field{issn}{0165-1684}
-  \field{number}{4}
-  \field{pages}{792 \bibrangedash  803}
-  \field{title}{{Speech pitch determination based on Hilbert-Huang transform}}
-  \verb{url}
-  \verb http://www.sciencedirect.com/science/article/pii/S0165168405002367
-  \endverb
-  \field{volume}{86}
-  \field{journaltitle}{Signal Processing}
-  \field{year}{2006}
-\endentry
-
-\entry{huang:patent2006}{article}{}
-  \name{author}{1}{}{%
-    {{}%
-     {Huang}{H.}%
-     {Norden~E.}{N.~E.}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{HNE1}
-  \strng{fullhash}{HNE1}
-  \field{sortinit}{H}
-  \field{title}{Computing frequency by using generalized zero-crossing applied
-  to intrinsic mode functions}
-  \field{journaltitle}{U.S. Patent 6,990,436 B1}
-  \field{year}{2006}
-\endentry
-
 \entry{GZC}{patent}{}
   \name{author}{1}{}{%
     {{}%
@@ -2095,48 +1938,6 @@
   \field{type}{patent}
   \field{year}{2006}
   \warn{\item Invalid format of field 'month'}
-\endentry
-
-\entry{huang:aada2009}{article}{}
-  \name{author}{6}{}{%
-    {{}%
-     {Huang}{H.}%
-     {Norden~E.}{N.~E.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Wu}{W.}%
-     {Zhaohua}{Z.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Long}{L.}%
-     {Steven~R.}{S.~R.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Arnold}{A.}%
-     {Kenneth~C.}{K.~C.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Chen}{C.}%
-     {Xianyao}{X.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Blank}{B.}%
-     {Karin}{K.}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{HNE+1}
-  \strng{fullhash}{HNEWZLSRAKCCXBK1}
-  \field{sortinit}{H}
-  \field{pages}{177\bibrangedash 229}
-  \field{title}{On Instantaneous Frequency}
-  \field{journaltitle}{Advances in Adaptive Data Analysis}
-  \field{year}{2009}
 \endentry
 
 \entry{IF}{article}{}
@@ -2302,51 +2103,6 @@
 \endentry
 
 \entry{acme}{inproceedings}{}
-  \name{author}{4}{}{%
-    {{}%
-     {Jiang}{J.}%
-     {Xiaofan}{X.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Dawson-Haggerty}{D.-H.}%
-     {Stephen}{S.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Dutta}{D.}%
-     {Prabal}{P.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Culler}{C.}%
-     {David}{D.}%
-     {}{}%
-     {}{}}%
-  }
-  \list{publisher}{1}{%
-    {IEEE Computer Society}%
-  }
-  \strng{namehash}{JX+1}
-  \strng{fullhash}{JXDHSDPCD1}
-  \field{sortinit}{J}
-  \field{booktitle}{Proceedings of the 2009 International Conference on
-  Information Processing in Sensor Networks}
-  \field{isbn}{978-1-4244-5108-1}
-  \field{pages}{253\bibrangedash 264}
-  \field{series}{IPSN '09}
-  \field{title}{Design and implementation of a high-fidelity AC metering
-  network}
-  \verb{url}
-  \verb http://dl.acm.org/citation.cfm?id=1602165.1602189
-  \endverb
-  \list{location}{1}{%
-    {Washington, DC, USA}%
-  }
-  \field{year}{2009}
-\endentry
-
-\entry{acmemeter}{inproceedings}{}
   \name{author}{4}{}{%
     {{}%
      {Jiang}{J.}%
@@ -2564,7 +2320,7 @@
   \field{number}{1}
   \field{pages}{3\bibrangedash 25}
   \field{title}{Review Article: Methods for Fault Detection, Diagnostics, and
-  Prognostics for Building Systems—A Review, Part I}
+  Prognostics for Building Systems, A Review, Part I}
   \field{volume}{11}
   \field{journaltitle}{HVAC\&R Research}
   \field{year}{2005}
@@ -2592,7 +2348,7 @@
   \field{number}{2}
   \field{pages}{169\bibrangedash 187}
   \field{title}{Review Article: Methods for Fault Detection, Diagnostics, and
-  Prognostics for Building Systems—A Review, Part II}
+  Prognostics for Building Systems, A Review, Part II}
   \field{volume}{11}
   \field{journaltitle}{HVAC\&R Research}
   \field{year}{2005}
@@ -2702,8 +2458,7 @@
   \strng{namehash}{KT+1}
   \strng{fullhash}{KTBJMJBGCDDPGGFMKVMHSJSB1}
   \field{sortinit}{K}
-  \field{booktitle}{In proceedings WMCSA2000. Available as
-  http://www.cooltown.hp.com/papers/webpres/webpresence.htm}
+  \field{booktitle}{WMCSA2000.}
   \field{pages}{365\bibrangedash 376}
   \field{title}{People, Places, Things: Web Presence for the Real World}
   \field{year}{2000}
@@ -2794,10 +2549,10 @@
 \endentry
 
 \entry{lanz}{inproceedings}{}
-  \name{author}{8}{}{%
+  \name{author}{9}{}{%
     {{}%
      {Lanzisera}{L.}%
-     {Steven~M.}{S.~M.}%
+     {Steven~M}{S.~M.}%
      {}{}%
      {}{}}%
     {{}%
@@ -2807,9 +2562,14 @@
      {}{}}%
     {{}%
      {Jiang}{J.}%
-     {Cheung Hoi~Ying}{C.~H.~Y.}%
+     {Xiaofan}{X.}%
      {}{}%
-     {Xiaofan}{X.}}%
+     {}{}}%
+    {{}%
+     {Cheung}{C.}%
+     {Hoi~Ying}{H.~Y.}%
+     {}{}%
+     {}{}}%
     {{}%
      {Taneja}{T.}%
      {Jay}{J.}%
@@ -2822,7 +2582,7 @@
      {}{}}%
     {{}%
      {Ortiz}{O.}%
-     {Jorge}{J.}%
+     {Jorge~J}{J.~J.}%
      {}{}%
      {}{}}%
     {{}%
@@ -2837,10 +2597,12 @@
      {}{}}%
   }
   \strng{namehash}{LSM+1}
-  \strng{fullhash}{LSMDHSJXCHYTJLJOJCDBR1}
+  \strng{fullhash}{LSMDHSJXCHYTJLJOJJCDBR1}
   \field{sortinit}{L}
+  \field{booktitle}{2011 Future of Instrumentation International Workshop}
   \field{title}{Wireless Electricity Metering of Miscellaneous and Electronic
   Devices in Buildings}
+  \field{year}{2011}
 \endentry
 
 \entry{ptolemy2001}{report}{}
@@ -2909,33 +2671,6 @@
   }
   \field{type}{techreport}
   \field{year}{2001}
-\endentry
-
-\entry{lee:climateEMD2011}{article}{}
-  \name{author}{2}{}{%
-    {{}%
-     {Lee}{L.}%
-     {T.}{T.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Ouarda}{O.}%
-     {T.~B. M.~J.}{T.~B. M.~J.}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{LTOTBMJ1}
-  \strng{fullhash}{LTOTBMJ1}
-  \field{sortinit}{L}
-  \verb{doi}
-  \verb 10.1029/2010JD015142
-  \endverb
-  \field{issue}{D6}
-  \field{title}{{Prediction of climate nonstationary oscillation processes with
-  empirical mode decomposition}}
-  \field{volume}{116}
-  \field{journaltitle}{Journal of Geophysical Research}
-  \field{year}{2011}
 \endentry
 
 \entry{climate}{article}{}
@@ -3017,7 +2752,7 @@
   \strng{namehash}{LC+1}
   \strng{fullhash}{LCHMRVMGMA1}
   \field{sortinit}{L}
-  \field{booktitle}{In PODS ’10: Proceedings of the twenty-ninth ACM
+  \field{booktitle}{In PODS 2010: Proceedings of the twenty-ninth ACM
   SIGMOD-SIGACT-SIGART symposium on Principles of database systems of data}
   \field{pages}{123\bibrangedash 134}
   \field{title}{Optimizing linear counting queries under differential privacy}
@@ -3146,7 +2881,7 @@
   \strng{fullhash}{LD1}
   \field{sortinit}{L}
   \field{booktitle}{In Proceedings of the 7th ACM/Usenix International
-  Conference on Mobile Systems, Applications and Services (MobiSys ’09}
+  Conference on Mobile Systems, Applications and Services (MobiSys 09)}
   \field{title}{A methodology for extracting temporal properties from sensor
   network data streams}
   \field{year}{2009}
@@ -3577,39 +3312,12 @@
   \field{year}{2011}
 \endentry
 
-\entry{aceee}{inproceedings}{}
-  \name{author}{5}{}{%
-    {{}%
-     {Ortiz}{O.}%
-     {Jorge}{J.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Trage}{T.}%
-     {Jason}{J.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Saldanha}{S.}%
-     {Gavin}{G.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Culler}{C.}%
-     {David~E.}{D.~E.}%
-     {}{}%
-     {}{}}%
-    {{}%
-     {Wright}{W.}%
-     {Paul~K}{P.~K.}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{OJ+1}
-  \strng{fullhash}{OJTJSGCDEWPK1}
+\entry{opentsdb}{misc}{}
   \field{sortinit}{O}
-  \field{title}{Live, Continuous Energy Auditing of Miscellaneous Electrical
-  Loads: Methodology and Results}
+  \field{title}{OpenTSDB}
+  \verb{url}
+  \verb http://opentsdb.net/
+  \endverb
 \endentry
 
 \entry{aceee_mobileaudit}{inproceedings}{}
@@ -3641,7 +3349,7 @@
      {}{}}%
   }
   \strng{namehash}{OJ+1}
-  \strng{fullhash}{OJTJSGCDEWPK2}
+  \strng{fullhash}{OJTJSGCDEWPK1}
   \field{sortinit}{O}
   \field{booktitle}{ACEEE Summer Study on Energy Efficient Buildings 2012}
   \field{series}{ACEEE '12}
@@ -3995,14 +3703,14 @@
   \field{sortinit}{S}
   \field{booktitle}{Proceedings of the 12th conference on Hot topics in
   operating systems}
-  \field{pages}{1\bibrangedash 1}
+  \field{pages}{1\bibrangedash 6}
   \field{series}{HotOS'09}
   \field{title}{Hierarchical file systems are dead}
   \verb{url}
   \verb http://dl.acm.org/citation.cfm?id=1855568.1855569
   \endverb
   \list{location}{1}{%
-    {Monte Verit\&\#224;, Switzerland}%
+    {Monte Verit, Switzerland}%
   }
   \field{year}{2009}
   \warn{\item Can't use 'location' + 'address'}
@@ -4092,6 +3800,9 @@
   \field{sortinit}{S}
   \field{title}{Dita: Enabling Gesture-based Human-Device Interaction using
   Mobile Phone}
+  \verb{url}
+  \verb http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.186.7191
+  \endverb
 \endentry
 
 \entry{fukushima}{misc}{}
@@ -4347,21 +4058,6 @@
   noise}
   \field{year}{2011}
   \warn{\item Invalid format of field 'month'}
-\endentry
-
-\entry{EIA}{misc}{}
-  \name{author}{1}{}{%
-    {{}%
-     {{U.S. Department of Energy}}{U.}%
-     {}{}%
-     {}{}%
-     {}{}}%
-  }
-  \strng{namehash}{U1}
-  \strng{fullhash}{U1}
-  \field{sortinit}{U}
-  \field{note}{\url{http://buildingsdatabook.eren.doe.gov/}}
-  \field{title}{{2011 Buildings Energy Data Book}}
 \endentry
 
 \entry{Japan_buildings}{misc}{}

@@ -164,23 +164,29 @@ This tutorial is meant to help you get started quickly with StreamFS. StreamFS i
 				&  and queried through 						& stream coming from room1.\\
 				& the same file path..    					& 							\\		 \hline
 
-	control file & A file that represents a control  & \texttt{/hvac/heater/switch}  \\
-				 & 	channel for an associated 		 & refers to the switch for the heater.  \\
-				 &	actuator.						 & Writing a 1 to that file send an \\
-				 &   								 & `ON' signal to the heater, 0 is `OFF'.\\ \hline
+	control file & A file that represents a control  & \texttt{/hvac/heater/switch}    \\
+				 & 	channel for an associated 		 & refers to the switch for        \\
+				 &	actuator.						 & the heater.  Writing a 1 to    \\
+				 &   								 & that file send an `ON'          \\
+                 &                                   & signal to the heater,           \\ 
+                 &                                   & 0 is `OFF'. \\ \hline
 
-	subscriber 	& An external target URL to  				& \texttt{/subs/550e8400} represents \\
-				& which data is forwarded as  				& a subscription file created after a \\
-			   	& it comes into StreamFS. Subscription   	& subscription request satisfied. The  		\\
-			   	& are used to process incoming data 		& Id is a unique id for the subscriber. 		\\
-			   	& in real time in external 					& It can be used to manage the   	\\
-			   	& applications.								& subscription -- to see which \\
-			   	&											& streams are pushing data	\\
-			   	& 											& to which URLs and its deletion removes 	\\
-			   	&											& the subscription.							\\ \hline
+	subscriber 	& An external target URL to  				& \texttt{/subs/550e8400}  \\
+				& which data is forwarded as  				& represents a subscription  \\
+			   	& it comes into StreamFS.                	& file created after a   		\\
+			   	& Subscriptions are used to process  		& subscription request  		\\
+			   	& incoming data in real time in  	 		& satisfied. The Id is a \\
+			   	& external applications.					& unique id for the  \\
+			   	&											& subscriber. It can \\
+			   	& 											& be used to manage the   	\\
+			   	&											& subscription -- 			\\ 
+                &                                           & to see which streams are \\
+                &                                           & pushing data to which URLs \\
+                &                                           & and its deletion removes \\
+                &                                           & the subscription. \\ \hline
 
 \end{tabular}
-\caption{Terminology}
+\caption{Terminology.}
 \label{tab:tutorial_terminology}
 \end{center}
 \end{table}
@@ -516,7 +522,8 @@ The parameters specified above are URL parameters that should be included in the
 \begin{lstlisting}
 1.  curl -i "http://localhost:8080/temp/stream1?query=true&ts_timestamp=lt:1327017501"
 2.  curl -i "http://localhost:8080/temp/stream1?query=true&ts_timestamp=lte:now+1"
-3.  curl -i "http://localhost:8080/temp/stream1?query=true&ts_timestamp=gte:1326980040,lt:1326980315"
+3.  curl -i "http://localhost:8080/temp/stream1?
+    query=true&ts_timestamp=gte:1326980040,lt:1326980315"
 \end{lstlisting}
 
 The first query fetches all values less than 1327017501. The second query fetches all values less than or equal to ``now+1''. 

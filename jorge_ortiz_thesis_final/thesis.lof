@@ -10,31 +10,31 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {2.2}{\ignorespaces High-level control board architecture.}}{10}{figure.19}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.3}{\ignorespaces High-level control board architecture.}}{11}{figure.21}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces BMS network architecture.}}{11}{figure.21}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {2.4}{\ignorespaces BACNet device example.}}{12}{figure.22}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Screen shot for the Soda Hall Building Management System Interface.}}{13}{figure.25}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.6}{\ignorespaces Emerging Application: Hierachical MPC for a stock of buildings.}}{16}{figure.29}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Emerging Application: Hierachical MPC for a cluster of buildings.}}{16}{figure.29}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {2.7}{\ignorespaces Emerging Application: Mobile phone interfacing with the physical infrastructure.}}{17}{figure.31}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {2.8}{\ignorespaces MPC example where metadata must be verified to maintain correct behavior.}}{21}{figure.43}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2.9}{\ignorespaces Distribution of energy consumption in buildings by end-use. Table reproduced here from the 2011 Buildings Energy Data Book \cite {EIA}.}}{23}{figure.46}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Distribution of energy consumption in buildings by end-use. Table reproduced here from the 2011 Buildings Energy Data Book \cite {epabuildings}.}}{23}{figure.46}
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {3.1}{\ignorespaces StreamFS system architecture. The four main components -- name register, subscription manager/forwarding engine, process manager, and timeseries datastore -- are shown. It also shows the application layer at the top.}}{26}{figure.49}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Name management layer implemented behind HAProxy. Name servers handle individual requests and use the name registration table query handle the request accordingly.}}{29}{figure.59}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Name management layer implemented behind HAProxy. Name servers handle individual requests and use the ``name registration table'' to handle name-lookup requests accordingly.}}{29}{figure.59}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.3}{\ignorespaces The timeseries data store. We use OpenTSDB; a timeseries data-store that runs in a cluster setting over HBase.}}{31}{figure.65}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces The timeseries data store. We use OpenTSDB; a timeseries data-store that runs in cluster of HBase instances.}}{31}{figure.65}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.4}{\ignorespaces }}{32}{figure.71}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Subscription manager and forwarding engine. These components manage the mapping from sources to sinks and forwards data between client applications and internal/external processes or external subscribers.}}{32}{figure.71}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3.5}{\ignorespaces The process manager manages a cluster of processing element and connection to external processing units. It works closely with the subscription manager to forward data between elements.}}{34}{figure.74}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces The process manager manages a cluster of processing elements and connections to external processing units. It works closely with the subscription manager to forward data between elements.}}{34}{figure.74}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {3.6}{\ignorespaces This figure shows how we translate the OLAP cube to a hierarchical ERG. Note how the dimensions of the cube translate to the graph. The level of the subtree is the category, the unit is specified at the node, and there are values at each node for every time slice.}}{36}{figure.77}
 \defcounter {refsection}{0}\relax 
@@ -140,7 +140,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {6.10}{\ignorespaces The ROC curves depict the sensitivity of the raw signal and mid-frequency IMFs to the threshold value. We choose the 0.2 FPR point as the boundary threshold for each room. }}{109}{figure.287}
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6.11}{\ignorespaces We collect data from 15 sensors in 5 rooms sitting on 4 different floors. This is a map of a section of the 3rd floor in Sutardja Dai Hall.}}{109}{figure.289}
+\contentsline {figure}{\numberline {6.11}{\ignorespaces We collect data from 15 sensors in five rooms sitting on four different floors. This is a map of a section of the 3rd floor in Sutardja Dai Hall.}}{109}{figure.289}
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {6.12}{\ignorespaces Decomposition of the EHP and light trace using bivariate EMD. IMFs correlation coefficients highlight the intrinsic relationship of the two traces.}}{111}{figure.294}
 \defcounter {refsection}{0}\relax 

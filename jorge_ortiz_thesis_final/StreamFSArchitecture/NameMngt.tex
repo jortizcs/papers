@@ -8,7 +8,7 @@ We support two namespaces in order to uniquely identify sensors and actuators wh
 
 Supporting multiple names for points in the building is requirement in applications.  Sensors and actuators can be accessed in various 
 ways, depending on the application.  Some applications access the sensors in the context of its placement 
-in space.  For example, in Soda Hall, the path \texttt{/soda/4F/410/temp} refers to a temperature sensor in room 410.  
+in space.  For example, in Soda Hall, the path \texttt{/soda/4F/410/temp} refers to a temperature sensor in Room 410.  
 The same temperature sensor drives the fans and heating/cooling sub-system in the HVAC system that serves room.
 Other applications refer to this sensor through its association to that sub-system.  For example,
 \texttt{/soda/hvac/ahu1/temp} gives that contextual information in the name by using a path name that refers to the the specific
@@ -40,7 +40,7 @@ object in the deployment.  We discuss StreamFS file types in Section~\ref{chap:n
 Hierarchical naming schemes are an effective way to organize information, particularly for a relatively small amount of information
 where the access patterns are well defined and groups across buildings have a lot of overlap.  For example, upon close examination of
 the naming scheme for points across Sutardja Dai Hall, Soda Hall, Cory Hall, and the University of Tokyo Engineering Building 2, we 
-observe that there are 2 overlapping group types.  All the point name refer to the location of the sensor and the system that it is 
+observe that there are two overlapping group types.  All the point name refer to the location of the sensor and the system that it is 
 associated with.  For example, `SODA1R430A\_ART' encodes the name of the building and the room number but also encodes the HVAC subsystem id --
 referred to by the 5th character which is a `1'.  The other common encoding include the type of sensor and implies the S.I. units of measure.
 Based on our experience with anlysis jobs on building sensor data, we decide it was less import from a naming persepctive than 
@@ -79,8 +79,8 @@ they all contain the same information.  %Each name server has a preference, so t
 \begin{figure}[h!] %htbp
 \centering
 \includegraphics[width=.55\columnwidth]{figs/name_reg}
-\caption{Name management layer implemented behind HAProxy.  Name servers handle individual requests and use the name registration table
-query handle the request accordingly.}
+\caption{Name management layer implemented behind HAProxy.  Name servers handle individual requests and use the ``name registration table''
+to handle name-lookup requests accordingly.}
 \label{fig:nameserver}
 \end{figure}
 
@@ -96,7 +96,7 @@ We also include file metadata in the memcached layer, so its use reduces the loa
 The security manager essentially maintains an access control list and set of operations that are supported by each file.  By default, 
 security is disabled, but some of our deployments do enable it.
 
-The name management layer consists of 3 dependent components, each following the principles of horizontal \emph{scalability}.  The namespaces are
+The name management layer consists of three dependent components, each following the principles of horizontal \emph{scalability}.  The namespaces are
 managed in single replicatable, relational database.  The metadata is managed in a separate MongoDB~\cite{mongodb} database, which is itself
 shardable.  The data associated with streams is managed in a timeseries database.  We follow the principle of scale-out
 in each sub-component, for \emph{scalability}.

@@ -167,7 +167,7 @@ what the correct behavior is and project whether the new set point will lead to 
 We look to explore these and other related concept further and hope that it leads to smart, software-defined buildings.
 
 
-\section{Conclusion}
+\section{Thesis Summary}
 \label{chap:done}
 
 This thesis examines the state of the art of building information systems and evaluates their architecture in the context
@@ -178,10 +178,12 @@ that ``app-ifies'' the built environment.  We observe that modern building infor
 of building applications.  They are difficult to extend, do not provide general services for application development, do not
 scale, and are difficult to set up and manage.  
 
-We propose a new architecture that embodies these system principles through a filesystem abstraction and data services.  We decompose
+We assert that a new architecture must be designed with four system properties -- extensibility, generalizability, scalability,
+ease of management -- in order to address these shortcomings.  
+This new architecture embodies these system principles through a filesystem abstraction and a set data services.  We decompose
 all deployment data and metadata into three types of data -- structural inter-relationships and naming, attribute-value descriptive pairs,
 and timeseries data -- and expose them through a filesystem abstraction.  We adopt the Unix philosophy that ``everything is a file'' in a
-system called StreamFS.  We introduce 4 types of files -- containers, streams, controllers, and special -- that can be arbitrarily
+system called StreamFS.  We introduce four types of files -- containers, streams, controllers, and special -- that can be arbitrarily
 composed to reflect information about the physical configuration of the sensors and actuators relative to the systems and spaces in
 the building.  The filesystem makes these physical resources directly accessible, in a centralized and controlled fashion.  We
 also adopt filesystem security that mediates access between the client-side application and the sensors in the deployment.
@@ -196,10 +198,10 @@ queries.  We describe how the underyling \emph{entity-relationship graph (ERG)} 
 We show this graphical structure and associated mechanisms map to a traditional OLAP cube.  Portions of the hierarchy that have 
 enabled aggregation points can then support \emph{drill-up/drill-down}, \emph{pivot}, and \emph{slice and dice} queries.
 
-We deploy StreamFS in 7 different buildings with very different setting and wrote several applications for it as well.  One of the driving
+We deploy StreamFS in seven different buildings with very different setting and wrote several applications for it as well.  One of the driving
 application is the Mobile Energy Lens.  The Energy Lens app provides occupants with mechanisms for collecting building information
 in a unified platforms and provides a way to view aggregate energy consumption associated with the spatial deployment
-of plug-load devices.  We present a 3-layer application architecture, where one of the main layers is implemented entirely through
+of plug-load devices.  We present a three-layer application architecture, where one of the main layers is implemented entirely through
 StreamFS data management and data processing services.  We also discuss the challenges that have to be overcome in order to
 provide a better user experience and discuss how each of mechanisms used to solve those problems were also implemented on top of StreamFS.
 

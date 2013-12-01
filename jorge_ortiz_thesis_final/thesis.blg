@@ -22,386 +22,315 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated field_info (elt_size=4) to 23768 items from 5000.
+Reallocated field_info (elt_size=4) to 22408 items from 5000.
 Database file #1: thesis-blx.bib
 Database file #2: references.bib
-Repeated entry---line 1619 of file references.bib
+Repeated entry---line 1635 of file references.bib
  : @article{seem:energybldg2007
  :                             ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1630 of file references.bib
+Repeated entry---line 1646 of file references.bib
  : @inproceedings{erickson:ipsn2011
  :                                 ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1642 of file references.bib
+Repeated entry---line 1658 of file references.bib
  : @inproceedings{agarwal:ipsn2011
  :                                ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1656 of file references.bib
+Repeated entry---line 1672 of file references.bib
  : @inproceedings{chen:aaaiw2011
  :                              ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1666 of file references.bib
+Repeated entry---line 1682 of file references.bib
  : @inproceedings{wrinch:pes2012
  :                              ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1677 of file references.bib
+Repeated entry---line 1693 of file references.bib
  : @article{brown:buildperf2012
  :                             ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1706 of file references.bib
+Repeated entry---line 1722 of file references.bib
  : @incollection {chan:springer2005
  :                                 ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1717 of file references.bib
+Repeated entry---line 1733 of file references.bib
  : @book{huber:wiley2009
  :                      ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1726 of file references.bib
- : @article{huang:patent2006
- :                          ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 1733 of file references.bib
+Repeated entry---line 1749 of file references.bib
  : @article {nunes:vision2005
  :                           ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1786 of file references.bib
+Repeated entry---line 1802 of file references.bib
  : @article{blanco:bioMed2008
  :                           ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1797 of file references.bib
+Repeated entry---line 1813 of file references.bib
  : @article{hasan:ieeeletter2009
  :                              ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1807 of file references.bib
+Repeated entry---line 1823 of file references.bib
  : @article{huang:signalProc2006
  :                              ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1828 of file references.bib
- : @article{lee:climateEMD2011
- :                            ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 1839 of file references.bib
- : @inproceedings{romain:iotapp12
- :                               ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 1848 of file references.bib
- : @article{huang:aada2009
- :                        ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 1858 of file references.bib
+Repeated entry---line 1874 of file references.bib
  : @inproceedings{torres:icassp2012
  :                                 ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1882 of file references.bib
+Repeated entry---line 1898 of file references.bib
  : @article{simheatcool
  :                     ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1892 of file references.bib
+Repeated entry---line 1908 of file references.bib
  : @misc{epabuildings
  :                   ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1905 of file references.bib
+Repeated entry---line 1921 of file references.bib
  : @inproceedings{occmodels_buildsys11
  :                                    ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1915 of file references.bib
+Repeated entry---line 1931 of file references.bib
  : @inproceedings{Bellala_buildsys11
  :                                  ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 1927 of file references.bib
- :   @inproceedings{kaminthermo
- :                             ,
 I'm skipping whatever remains of this entry
 Repeated entry---line 1943 of file references.bib
- : @article{waste_science
- :                       ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 1954 of file references.bib
- : @misc{next10_waste
- :                   ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 1961 of file references.bib
- : @article{huang:emd1998
- :                       ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 2015 of file references.bib
- : @inproceedings{buildanomaly
- :                            ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 2025 of file references.bib
- : @inproceedings{kim:buildsys2010
- :                                ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 3763 of file references.bib
- : @article{blondel:unfolding
- :                           ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 3934 of file references.bib
- : @article{simheatcool
- :                     ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 3944 of file references.bib
- : @misc{epabuildings
- :                   ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 3957 of file references.bib
- : @inproceedings{occmodels_buildsys11
- :                                    ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 3968 of file references.bib
- : @inproceedings{Bellala_buildsys11
- :                                  ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 3980 of file references.bib
  :   @inproceedings{kaminthermo
  :                             ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 3996 of file references.bib
- : @article{waste_science
- :                       ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 4007 of file references.bib
+Repeated entry---line 1970 of file references.bib
  : @misc{next10_waste
  :                   ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 4014 of file references.bib
+Repeated entry---line 1977 of file references.bib
  : @article{huang:emd1998
  :                       ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 4071 of file references.bib
+Repeated entry---line 2031 of file references.bib
  : @inproceedings{buildanomaly
  :                            ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 4081 of file references.bib
+Repeated entry---line 2041 of file references.bib
  : @inproceedings{kim:buildsys2010
  :                                ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 5273 of file references.bib
+Repeated entry---line 3779 of file references.bib
  : @article{blondel:unfolding
  :                           ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 5492 of file references.bib
+Repeated entry---line 3950 of file references.bib
+ : @article{simheatcool
+ :                     ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 3960 of file references.bib
+ : @misc{epabuildings
+ :                   ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 3973 of file references.bib
+ : @inproceedings{occmodels_buildsys11
+ :                                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 3984 of file references.bib
+ : @inproceedings{Bellala_buildsys11
+ :                                  ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 3996 of file references.bib
+ :   @inproceedings{kaminthermo
+ :                             ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 4023 of file references.bib
+ : @misc{next10_waste
+ :                   ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 4030 of file references.bib
+ : @article{huang:emd1998
+ :                       ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 4087 of file references.bib
+ : @inproceedings{buildanomaly
+ :                            ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 4097 of file references.bib
+ : @inproceedings{kim:buildsys2010
+ :                                ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 5294 of file references.bib
+ : @article{blondel:unfolding
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 5513 of file references.bib
  : @inproceedings{homeos
  :                      ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 5922 of file references.bib
+Repeated entry---line 5943 of file references.bib
  :  @inproceedings{imp_mobisys2012
  :                                ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 6050 of file references.bib
+Repeated entry---line 6089 of file references.bib
  : @article{eugster
  :                 ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 6114 of file references.bib
+Repeated entry---line 6153 of file references.bib
  : @article{simheatcool
  :                     ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 6124 of file references.bib
+Repeated entry---line 6163 of file references.bib
  : @misc{epabuildings
  :                   ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 6137 of file references.bib
+Repeated entry---line 6176 of file references.bib
  : @inproceedings{occmodels_buildsys11
  :                                    ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 6148 of file references.bib
+Repeated entry---line 6187 of file references.bib
  : @inproceedings{Bellala_buildsys11
  :                                  ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 6160 of file references.bib
+Repeated entry---line 6199 of file references.bib
  :   @inproceedings{kaminthermo
  :                             ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 6176 of file references.bib
+Repeated entry---line 6215 of file references.bib
  : @article{waste_science
  :                       ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 6187 of file references.bib
+Repeated entry---line 6226 of file references.bib
  : @misc{next10_waste
  :                   ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 6194 of file references.bib
+Repeated entry---line 6233 of file references.bib
  : @article{huang:emd1998
  :                       ,
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 6228 of file references.bib
- :  
- :  booktitle = {2011 Future of Instrumentation International Workshop},
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 6234 of file references.bib
- :  
- :  booktitle = {American Council for an Energy-Efficient Economy Summer Study on Energy Efficient Buildings 2012},
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
-Repeated entry---line 6320 of file references.bib
+Repeated entry---line 6375 of file references.bib
  : @inproceedings{buildanomaly
  :                            ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 6330 of file references.bib
+Repeated entry---line 6385 of file references.bib
  : @inproceedings{kim:buildsys2010
  :                                ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 7522 of file references.bib
+Repeated entry---line 7577 of file references.bib
  : @article{blondel:unfolding
  :                           ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 7687 of file references.bib
- : @article{waste_science
- :                       ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 7709 of file references.bib
+Repeated entry---line 7822 of file references.bib
  : @misc{acme
  :           ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 7747 of file references.bib
- : @inproceedings{hbci
- :                    ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 7765 of file references.bib
+Repeated entry---line 7878 of file references.bib
  : @phdthesis{cricket
  :                   ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 7864 of file references.bib
+Repeated entry---line 7977 of file references.bib
  : @inproceedings{smap
  :                    ,
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 7968 of file references.bib
+I was expecting a `,' or a `}'---line 8081 of file references.bib
  : 
  : year = {1993},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Repeated entry---line 8159 of file references.bib
+Repeated entry---line 8272 of file references.bib
  : @inproceedings{radar
  :                     ,
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 8525 of file references.bib
+I was expecting a `,' or a `}'---line 8638 of file references.bib
  :   
  :   organization = "Center for Information Technology Research in the Interest of Society"
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 8594 of file references.bib
+I was expecting a `,' or a `}'---line 8707 of file references.bib
  :    
  :    title = "{Ensemble-level Power Management for Dense Blade Servers}",
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 8763 of file references.bib
+I was expecting a `,' or a `}'---line 8876 of file references.bib
  :   
  :   organization = "Cambridge University Press",
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Repeated entry---line 8773 of file references.bib
+Repeated entry---line 8886 of file references.bib
  : @misc{next10_waste
  :                   ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 8788 of file references.bib
+Repeated entry---line 8901 of file references.bib
  : @misc{epabuildings
  :                   ,
 I'm skipping whatever remains of this entry
-Unbalanced braces---line 8797 of file references.bib
+Unbalanced braces---line 8910 of file references.bib
  :   author="{Ecos}
  :                 }",
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 8806 of file references.bib
+I was expecting a `,' or a `}'---line 8919 of file references.bib
  :   
  :   month="March"
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 8813 of file references.bib
+I was expecting a `,' or a `}'---line 8926 of file references.bib
  :   
  :   month="March"
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 8820 of file references.bib
+I was expecting a `,' or a `}'---line 8933 of file references.bib
  :   
  :   month="January"
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 8827 of file references.bib
+I was expecting a `,' or a `}'---line 8940 of file references.bib
  :   
  :   year="2007"
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Repeated entry---line 9498 of file references.bib
+Repeated entry---line 9611 of file references.bib
  : @misc{cbecs2003
  :                ,
 I'm skipping whatever remains of this entry
-Warning--I'm ignoring speech's extra "keywords" field
---line 10233 of file references.bib
-Warning--I'm ignoring speech's extra "keywords" field
---line 10235 of file references.bib
-Repeated entry---line 10247 of file references.bib
+Repeated entry---line 10364 of file references.bib
  : @inproceedings{smap
  :                    ,
 I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "opentsdb"
 Biblatex version: 1.7
-Too many commas in name 3 of "Lanzisera, Steven M. and Dawson-Haggerty, Stephen and Jiang, Xiaofan, Cheung, Hoi Ying and Taneja, Jay and Lai, Judy and Ortiz, Jorge and Culler, David and Brown, Richard" for entry lanz
-while executing---line 2500 of file biblatex.bst
-Too many commas in name 3 of "Lanzisera, Steven M. and Dawson-Haggerty, Stephen and Jiang, Xiaofan, Cheung, Hoi Ying and Taneja, Jay and Lai, Judy and Ortiz, Jorge and Culler, David and Brown, Richard" for entry lanz
-while executing---line 2524 of file biblatex.bst
-Too many commas in name 3 of "Lanzisera, Steven M. and Dawson-Haggerty, Stephen and Jiang, Xiaofan, Cheung, Hoi Ying and Taneja, Jay and Lai, Judy and Ortiz, Jorge and Culler, David and Brown, Richard" for entry lanz
-while executing---line 2528 of file biblatex.bst
-Too many commas in name 3 of "Lanzisera, Steven M. and Dawson-Haggerty, Stephen and Jiang, Xiaofan, Cheung, Hoi Ying and Taneja, Jay and Lai, Judy and Ortiz, Jorge and Culler, David and Brown, Richard" for entry lanz
-while executing---line 2528 of file biblatex.bst
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
-Too many commas in name 3 of "Lanzisera, Steven M. and Dawson-Haggerty, Stephen and Jiang, Xiaofan, Cheung, Hoi Ying and Taneja, Jay and Lai, Judy and Ortiz, Jorge and Culler, David and Brown, Richard" for entry lanz
-while executing---line 2645 of file biblatex.bst
-Too many commas in name 3 of "Lanzisera, Steven M. and Dawson-Haggerty, Stephen and Jiang, Xiaofan, Cheung, Hoi Ying and Taneja, Jay and Lai, Judy and Ortiz, Jorge and Culler, David and Brown, Richard" for entry lanz
-while executing---line 2645 of file biblatex.bst
-Too many commas in name 3 of "Lanzisera, Steven M. and Dawson-Haggerty, Stephen and Jiang, Xiaofan, Cheung, Hoi Ying and Taneja, Jay and Lai, Judy and Ortiz, Jorge and Culler, David and Brown, Richard" for entry lanz
-while executing---line 2645 of file biblatex.bst
-Too many commas in name 3 of "Lanzisera, Steven M. and Dawson-Haggerty, Stephen and Jiang, Xiaofan, Cheung, Hoi Ying and Taneja, Jay and Lai, Judy and Ortiz, Jorge and Culler, David and Brown, Richard" for entry lanz
-while executing---line 2645 of file biblatex.bst
-Too many commas in name 3 of "Lanzisera, Steven M. and Dawson-Haggerty, Stephen and Jiang, Xiaofan, Cheung, Hoi Ying and Taneja, Jay and Lai, Judy and Ortiz, Jorge and Culler, David and Brown, Richard" for entry lanz
-while executing---line 2645 of file biblatex.bst
-Too many commas in name 3 of "Lanzisera, Steven M. and Dawson-Haggerty, Stephen and Jiang, Xiaofan, Cheung, Hoi Ying and Taneja, Jay and Lai, Judy and Ortiz, Jorge and Culler, David and Brown, Richard" for entry lanz
-while executing---line 2645 of file biblatex.bst
-Too many commas in name 3 of "Lanzisera, Steven M. and Dawson-Haggerty, Stephen and Jiang, Xiaofan, Cheung, Hoi Ying and Taneja, Jay and Lai, Judy and Ortiz, Jorge and Culler, David and Brown, Richard" for entry lanz
-while executing---line 2645 of file biblatex.bst
-Too many commas in name 3 of "Lanzisera, Steven M. and Dawson-Haggerty, Stephen and Jiang, Xiaofan, Cheung, Hoi Ying and Taneja, Jay and Lai, Judy and Ortiz, Jorge and Culler, David and Brown, Richard" for entry lanz
-while executing---line 2645 of file biblatex.bst
-You've used 137 entries,
+You've used 128 entries,
             6019 wiz_defined-function locations,
-            2016 strings with 44738 characters,
-and the built_in function-call counts, 480337 in all, are:
-= -- 19993
-> -- 16158
-< -- 5076
-+ -- 5887
-- -- 5866
-* -- 38314
-:= -- 27344
+            1986 strings with 43825 characters,
+and the built_in function-call counts, 448905 in all, are:
+= -- 18843
+> -- 14894
+< -- 4814
++ -- 5500
+- -- 5395
+* -- 35650
+:= -- 25287
 add.period$ -- 0
-call.type$ -- 137
-change.case$ -- 2922
+call.type$ -- 128
+change.case$ -- 2805
 chr.to.int$ -- 73
-cite$ -- 272
-duplicate$ -- 54904
-empty$ -- 49081
-format.name$ -- 10841
-if$ -- 108409
+cite$ -- 254
+duplicate$ -- 51352
+empty$ -- 45943
+format.name$ -- 9946
+if$ -- 101392
 int.to.chr$ -- 0
-int.to.str$ -- 400
+int.to.str$ -- 359
 missing$ -- 0
-newline$ -- 4573
-num.names$ -- 7242
-pop$ -- 43860
+newline$ -- 4276
+num.names$ -- 6736
+pop$ -- 40905
 preamble$ -- 1
-purify$ -- 3430
+purify$ -- 3274
 quote$ -- 0
-skip$ -- 28263
+skip$ -- 26413
 stack$ -- 0
-substring$ -- 12258
-swap$ -- 19015
-text.length$ -- 3761
-text.prefix$ -- 136
+substring$ -- 11861
+swap$ -- 17873
+text.length$ -- 3504
+text.prefix$ -- 127
 top$ -- 1
-type$ -- 5190
+type$ -- 4848
 warning$ -- 0
-while$ -- 2495
+while$ -- 2304
 width$ -- 0
-write$ -- 4435
-(There were 86 error messages)
+write$ -- 4147
+(There were 64 error messages)

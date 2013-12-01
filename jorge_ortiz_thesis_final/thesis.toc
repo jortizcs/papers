@@ -230,7 +230,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Threshold Analysis}{108}{section*.286}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Experimental Setup}{108}{section*.288}
+\contentsline {subsection}{Suatardja Dai Hall Data Set Analysis Methodology}{108}{section*.288}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {6.6}Spatial Verification Results}{109}{section.291}
 \defcounter {refsection}{0}\relax 
@@ -244,7 +244,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Characterizing the Boundary}{114}{section*.304}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{Convergence over Time}{116}{section*.305}
+\contentsline {subsection}{Convergence Over Time}{116}{section*.305}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{Clustering Results}{116}{section*.307}
 \defcounter {refsection}{0}\relax 
@@ -278,7 +278,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{Version Control For Buildings}{132}{section*.329}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7.3}Conclusion}{132}{section.330}
+\contentsline {section}{\numberline {7.3}Thesis Summary}{132}{section.330}
 \defcounter {refsection}{0}\relax 
 \contentsline {appendix}{\chapternumberline {A}StreamFS Process Code}{135}{appendix.331}
 \defcounter {refsection}{0}\relax 
@@ -296,20 +296,20 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {B.6}Queries}{145}{section.628}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.7}Bulk default/stream file creation}{147}{section.659}
+\contentsline {section}{\numberline {B.7}Bulk default/stream file creation}{147}{section.660}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.8}Creating symbolic links}{152}{section.818}
+\contentsline {section}{\numberline {B.8}Creating symbolic links}{152}{section.819}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.9}Stream Processing}{154}{section.877}
+\contentsline {section}{\numberline {B.9}Stream Processing}{154}{section.878}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.10}Configuration}{154}{section.878}
+\contentsline {section}{\numberline {B.10}Configuration}{154}{section.879}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.11}Start the processing element}{154}{section.889}
+\contentsline {section}{\numberline {B.11}Start the processing element}{155}{section.890}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.12}Creating a processing job}{155}{section.892}
+\contentsline {section}{\numberline {B.12}Creating a processing job}{155}{section.893}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.13}Start the process}{157}{section.962}
+\contentsline {section}{\numberline {B.13}Start the process}{157}{section.963}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {B.14}Stopping the process}{159}{section.1040}
+\contentsline {section}{\numberline {B.14}Stopping the process}{159}{section.1041}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Bibliography}{160}{section*.1050}
+\contentsline {chapter}{Bibliography}{161}{section*.1051}

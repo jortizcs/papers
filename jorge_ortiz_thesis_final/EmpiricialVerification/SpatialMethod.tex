@@ -49,7 +49,7 @@ We present both methodologies and results in this section.
 For the first investigation, we focus on a three-week span in the summer of 2011 (from July 4th to July 24th).
 The dataset captures regular work days, weekends, and one holiday (July 18th).  This timeframe captures
 the typical usage of the equipment, triggered by occupant activity.  For the initial
-analysis, we focus on three sensors; two pumps -- eletric heat pump (EHP) and a gas heat pump (GHP) and a light feed,
+analysis, we focus on three sensors; two pumps -- electric heat pump (EHP) and a gas heat pump (GHP) and a light feed,
 that measure the light level is lumens.  
 % The first pump is an 
 % ``electric heat pump'' and is labled as EHP, the second  is a ``gas heat pump''
@@ -83,11 +83,11 @@ The methodology used in the SDH is more extensive and consists of several steps.
 in this section.
 
 \subsubsection{Distribution Analysis}
-For the second part of our evaluation, we perform an empirical study on sensor data collected from 15 sensors across 5 rooms. 
+For the second part of our evaluation, we perform an empirical study on sensor data collected from 15 sensors across five rooms. 
 Each room has three sensors: a temperature sensor, a $CO_{2}$ sensor,  and a humidity sensor. 
 The data from these is reported to an  
 sMAP~\cite{smap} archiver. The data set used comes from two separate deployments: one is a deployment~\cite{Jay} lasting 
-over 6 months on several floors in Sutardja Dai Hall (SDH) at UC Berkeley, where one sensor box -- which contains a thermometer, a humidity sensor
+over six months on several floors in Sutardja Dai Hall (SDH) at UC Berkeley, where one sensor box -- which contains a thermometer, a humidity sensor
  and a $CO_{2}$ sensor -- is placed in each room. The box reports data over 6LowPAN~\cite{6lowpan} to a sMAP archiver every 
  15 seconds. The other is a long-term deployment comprised of thousands of sensors in dozens of buildings on campus. 
  We choose the portion of the SDH data set where the sensor devices, accessible via BACnet, report data to the archiver every few minutes. 
@@ -172,16 +172,16 @@ We also examine whether there is a uniform boundary between clusters across all 
 
 
 
-\subsection{Experimental Setup}
+\subsection{Suatardja Dai Hall Data Set Analysis Methodology}
 \begin{figure}[h!]
 \centering
   \includegraphics[width=0.45\textwidth]{figs/SDH3_crop}
-\caption{We collect data from 15 sensors in 5 rooms sitting on 4 different floors. This is a map of a section of the 3rd floor
+\caption{We collect data from 15 sensors in five rooms sitting on four different floors. This is a map of a section of the 3rd floor
 in Sutardja Dai Hall.}
 \label{fig:sdh}
 \end{figure}
 
-We perform an empirical study on sensor data collected from 15 sensors across 5 rooms on 4 different floors of a Sutardja Dai Hall, 
+We perform an empirical study on sensor data collected from 15 sensors across five rooms on four different floors of a Sutardja Dai Hall, 
 as detailed in Table~\ref{table:roomspec}. 
 Each room has three sensors: a temperature sensor, a $CO_{2}$ sensor,  and a humidity sensor. 
 The data from these is reported to an sMAP~\cite{smap} archiver. The data set used comes from a deployment~\cite{Jay} lasting 

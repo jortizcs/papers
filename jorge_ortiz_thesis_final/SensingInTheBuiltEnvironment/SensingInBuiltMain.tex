@@ -58,20 +58,20 @@ In this thesis we describe and the architecture and implementation of a system t
 of buildings.  We construct a system called StreamFS and deploy it and/or analyze data from several buildings, including
 Cory Hall, Sutardja Dai Hall, and Soda Hall, and Engineering Building 2 at the University of Tokyo (Todai).
 % \subsection{Cory Hall - UC Berkeley}
-Cory Hall, at UC Berkeley, is a 5-story building hosting mainly classrooms, meeting rooms, laboratories and a datacenter.
+Cory Hall, at UC Berkeley, is a five-story building hosting mainly classrooms, meeting rooms, laboratories and a datacenter.
 % This building was completed in 1950, thus its infrastructure is significantly different from the Japanese one.
 The HVAC system in the building is centralized and serves several floors per unit.
 There is a separate unit for an internal fabrication laboratory, inside the building.
 %Nevertheless, we notice an independent HVAC system that was serving a particular laboratory; the Microfabrication Laboratory (Microlab).
 % \subsection{Sutardja Dai Hall - UC Berkeley}
-Sutardja Dai Hall is a large building at Berkeley.  It is a 7-story, 141000 square-foot 
+Sutardja Dai Hall is a large building at Berkeley.  It is a seven-story, $141,000$ square-foot 
  building which contains classrooms, meeting rooms, laboratories, a nano-fabrication laboratory, and a cafe.
 % This building was completed in 1950, thus its infrastructure is significantly different from the Japanese one.
 The HVAC system in the building is centralized and serves several floors per unit.
 There is also a separate unit for an internal fabrication laboratory, inside the building.  It was built in 2009.
 % \subsection{Soda Hall - UC Berkeley}
 Soda Hall is another building at Berkeley.  It is the main building for the computer science department.
-It was built in 1994 and also has 7 floors and a centralized HVAC system.  It contains classrooms, 
+It was built in 1994 and also has seven floors and a centralized HVAC system.  It contains classrooms, 
 offices, server rooms, and open office spaces for several labs.
 The Todai Engineering building is 12-story building on the main campus of the University of Tokyo in Tokyo, Japan.
 It was built in 2005 and contains shared office space, individual offices, lecture classrooms, and small
@@ -79,7 +79,7 @@ classrooms.
 
 These buildings represent a wide sampling of characteristics common in an office setting within the commercial building sector.  Moreover,
 this allows us to examine the generality across climates and HVAC architectures, since the Tokyo building does not use a centralized
-HVAC system.  Cory Hall was built in the 1950's and has been through many changes since then.  Originally, the 5th floor did not exist
+HVAC system.  Cory Hall was built in the 1950's and has been through many changes since then.  Originally, the fifth floor did not exist
 and several structural aspect of the building have been altered.  Moreover, with changes in technology and research focus, the activities
 the building supports has also changed.  This is reflected in both the structure of the building and the design of the HVAC systems inside it.
 In all, there are about 15 different HVAC systems within Cory Hall.  Soda Hall was built in the 1990's.  It supports mainly
@@ -91,11 +91,11 @@ of the building, as mandates for energy reduction were disseminated across all o
 In the context of the rest of the building stock in the United States.  Soda Hall, Cory Hall, and Sutardja Dai Hall are representative
 buildings within the office-building category.  Although, both Cory and Sutardja Dai support fabrication laborties that consume high-than-average
 energy than most activities in a typical office building.  Moreover, all three host several machine clusters with most of the machines consuming
-power continuously.  More broadly, they all fall into the ``Commerical Sector'' category according to the Department of Energy~\cite{EIA}.
+power continuously.  More broadly, they all fall into the ``Commerical Sector'' category according to the Department of Energy~\cite{epabuildings}.
 Commercial buildings consume $>$ 40\% of total energy in the United States.  More specifically, these buildings also fall into the \emph{Office} category,
 which consume about 19\% of total consumption for the broader ``commercial'' category.  In addition, Cory Hall and Sutardja Dai Hall are $>100,000$
 square feet while Soda Hall is about $60,000$ square feet.  28\% of all buildings fall in the range from 50-200k square feet in the 
-United States \cite{EIA}.
+United States \cite{epabuildings}.
 The distribution of consumption is similar in many ways to the distribution in the United States.  In Japan, buildings consume 33\% of 
 total energy \cite{Japan_buildings}, which is higher than either the industrial or transportation sectors.
 
@@ -103,11 +103,11 @@ total energy \cite{Japan_buildings}, which is higher than either the industrial 
 \centering
 \includegraphics[width=1.0\columnwidth]{figs/end_use_fuel_type}
 \caption{Distribution of energy consumption in buildings by end-use.  Table reproduced here from the 2011 Buildings 
-Energy Data Book \cite{EIA}.}
+Energy Data Book \cite{epabuildings}.}
 \label{fig:end_use_energy}
 \end{figure}
 
-Figure~\ref{fig:end_use_energy} shows the distribution of energy expenditures by end-use category in buildings, presented in ~\cite{EIA} and
+Figure~\ref{fig:end_use_energy} shows the distribution of energy expenditures by end-use category in buildings, presented in ~\cite{epabuildings} and
 reproduced here.  Note, about 50-60\% is used by the HVAC system and Lighting, and about a third goes to other and plug-loads.  These figures
 motivate the applications presented in this chapter.  In particular, we show how energy audits of miscellaneous loads is enabled and can be coupled
 with total consumption data through the `Mobile Energy Lens' application, presented in Chapter \ref{chap:ArchEvalMain}.
