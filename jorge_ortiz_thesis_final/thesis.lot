@@ -8,41 +8,41 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {4.1}{\ignorespaces Summary of the four main file types and their valid operations in StreamFS.}}{56}{table.149}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Summary of the four main file types and their valid operations in StreamFS.}}{56}{table.150}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {4.2}{\ignorespaces File operations, the file types that support them, and their general semantics.}}{57}{table.150}
+\contentsline {table}{\numberline {4.2}{\ignorespaces File operations, the file types that support them, and their general semantics.}}{57}{table.151}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {4.3}{\ignorespaces Summary of the 6 special-file sub-types and their valid operations in StreamFS.}}{58}{table.153}
-\defcounter {refsection}{0}\relax 
-\addvspace {10pt}
-\defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {5.1}{\ignorespaces Overview of StreamFS file-related API calls. Library written in Java, PHP, and C.}}{64}{table.164}
-\defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {5.2}{\ignorespaces Summary of control interface callbacks in StreamFS. Library written in Java, PHP, and C.}}{64}{table.165}
-\defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {5.3}{\ignorespaces Summary of control interface callbacks in StreamFS. Library written in Java, PHP, and C.}}{65}{table.166}
-\defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {5.4}{\ignorespaces Shows the time to scan a long QR code versus a short QR code in light and dark conditions (loosely defined). Notice that short QR codes scan faster and with less variance that long ones.}}{75}{table.209}
-\defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {5.5}{\ignorespaces Shows the time to fetch nodes based on the size of the fetch. The fetch time increased linearly with the number of nodes. Caching maintain fetch time near that of fetching a single node. A callback is used when cache is invalidated.}}{79}{table.217}
-\defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {5.6}{\ignorespaces Average operation execution time in StreamFS.}}{80}{table.218}
-\defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {5.7}{\ignorespaces Overview of StreamFS file-related API calls. Library written in Java, PHP, and C.}}{82}{table.222}
-\defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {5.8}{\ignorespaces This table summarizes the deployment statistics of for StreamFS over a two years.}}{85}{table.225}
+\contentsline {table}{\numberline {4.3}{\ignorespaces Summary of the 6 special-file sub-types and their valid operations in StreamFS.}}{58}{table.154}
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {6.1}{\ignorespaces Classification of the alarms reported by SBS for both dataset (and the number of corresponding anomalies).}}{103}{table.268}
+\contentsline {table}{\numberline {5.1}{\ignorespaces Overview of StreamFS file-related API calls. Library written in Java, PHP, and C.}}{64}{table.165}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {6.2}{\ignorespaces Room Specs}}{109}{table.290}
+\contentsline {table}{\numberline {5.2}{\ignorespaces Summary of control interface callbacks in StreamFS. Library written in Java, PHP, and C.}}{64}{table.166}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {6.3}{\ignorespaces Correlation coefficients of the analyzed trace and their IMFs uncovered by EMD}}{110}{table.292}
+\contentsline {table}{\numberline {5.3}{\ignorespaces Summary of control interface callbacks in StreamFS. Library written in Java, PHP, and C.}}{65}{table.167}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {6.4}{\ignorespaces Clustering result using the thresholding method: a ``1" means the sensor is classified as inside the room. We get the ``\text {$\mathsurround \z@ \mathchar "458$}" and ``$\times $" by comparing the clustering results with ground truth.}}{117}{table.308}
+\contentsline {table}{\numberline {5.4}{\ignorespaces Shows the time to scan a long QR code versus a short QR code in light and dark conditions (loosely defined). Notice that short QR codes scan faster and with less variance that long ones.}}{75}{table.210}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {6.5}{\ignorespaces Categorical classification results for two data traces.}}{119}{table.312}
+\contentsline {table}{\numberline {5.5}{\ignorespaces Shows the time to fetch nodes based on the size of the fetch. The fetch time increased linearly with the number of nodes. Caching maintain fetch time near that of fetching a single node. A callback is used when cache is invalidated.}}{79}{table.218}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {5.6}{\ignorespaces Average operation execution time in StreamFS.}}{80}{table.219}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {5.7}{\ignorespaces Overview of StreamFS file-related API calls. Library written in Java, PHP, and C.}}{82}{table.223}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {5.8}{\ignorespaces This table summarizes the deployment statistics of for StreamFS over a two years.}}{85}{table.226}
+\defcounter {refsection}{0}\relax 
+\addvspace {10pt}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.1}{\ignorespaces Classification of the alarms reported by SBS for both dataset (and the number of corresponding anomalies).}}{103}{table.269}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.2}{\ignorespaces Room Specs}}{109}{table.291}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.3}{\ignorespaces Correlation coefficients of the analyzed trace and their IMFs uncovered by EMD}}{110}{table.293}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.4}{\ignorespaces Clustering result using the thresholding method: a ``1" means the sensor is classified as inside the room. We get the ``\text {$\mathsurround \z@ \mathchar "458$}" and ``$\times $" by comparing the clustering results with ground truth.}}{117}{table.309}
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6.5}{\ignorespaces Categorical classification results for two data traces.}}{119}{table.313}
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
@@ -50,6 +50,6 @@
 \defcounter {refsection}{0}\relax 
 \addvspace {10pt}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {B.1}{\ignorespaces Terminology.}}{139}{table.449}
+\contentsline {table}{\numberline {B.1}{\ignorespaces Terminology.}}{139}{table.450}
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {B.2}{\ignorespaces Parameters}}{147}{table.651}
+\contentsline {table}{\numberline {B.2}{\ignorespaces Parameters}}{147}{table.652}

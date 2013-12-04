@@ -69,7 +69,7 @@ when the data point arrived and the current time.  We compare these against the 
 
 Note, the staleness increases for both cases.  The variance of both is also similar, however, the average staleness is lower 
 when the \texttt{min\_buffer} algorithm is used.  It's important to note that this is always true, since the decision is explicitly
-bounded by the the ``now'' case.  The algorithm chooses between ``now'' and waiting later for a better staleness calculation.
+bounded by the ``now'' case.  The algorithm chooses between ``now'' and waiting later for a better staleness calculation.
 
 We also examine the predictability in the report rate of the job that enables this feature.  Most streams in the system report data periodically
 with a very small variance around the delivery mean.  However, because the algorithm may decide that waiting is better, the delivery

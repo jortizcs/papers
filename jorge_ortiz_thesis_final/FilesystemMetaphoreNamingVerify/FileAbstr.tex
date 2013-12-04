@@ -117,7 +117,7 @@ data to the \emph{subscription manager} in case any subscription sink has subscr
 returned to the user.  This id must be used by the stream that wishes to push its data to StreamFS through this file.  If this id is incorrect
 or not included, the write operation fails.
 
-Because controllers accept many kinds of input, we designed the the file that presents a controller similar to the external processing stub discussed
+Because controllers accept many kinds of input, we design a file that presents a controller similar to the external processing stub discussed
 in Section~\ref{sec:externalprocs}.  Writes to a controller file and forwarded directly to the control stub running at the controller itself or a proxy
 machine that communicates with the controller.  Any reply is set as metadata in the controller file.  Controller files also has associated output stream.
 If a controller process wishes to inform the process of internal state at the controller, it does so through the controller file output --

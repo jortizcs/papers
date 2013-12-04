@@ -22,315 +22,315 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
-Reallocated field_info (elt_size=4) to 22408 items from 5000.
+Reallocated field_info (elt_size=4) to 22544 items from 5000.
 Database file #1: thesis-blx.bib
 Database file #2: references.bib
-Repeated entry---line 1635 of file references.bib
+Repeated entry---line 1654 of file references.bib
  : @article{seem:energybldg2007
  :                             ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1646 of file references.bib
+Repeated entry---line 1665 of file references.bib
  : @inproceedings{erickson:ipsn2011
  :                                 ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1658 of file references.bib
+Repeated entry---line 1677 of file references.bib
  : @inproceedings{agarwal:ipsn2011
  :                                ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1672 of file references.bib
+Repeated entry---line 1691 of file references.bib
  : @inproceedings{chen:aaaiw2011
  :                              ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1682 of file references.bib
+Repeated entry---line 1701 of file references.bib
  : @inproceedings{wrinch:pes2012
  :                              ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1693 of file references.bib
+Repeated entry---line 1712 of file references.bib
  : @article{brown:buildperf2012
  :                             ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1722 of file references.bib
+Repeated entry---line 1741 of file references.bib
  : @incollection {chan:springer2005
  :                                 ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1733 of file references.bib
+Repeated entry---line 1752 of file references.bib
  : @book{huber:wiley2009
  :                      ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1749 of file references.bib
+Repeated entry---line 1768 of file references.bib
  : @article {nunes:vision2005
  :                           ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1802 of file references.bib
+Repeated entry---line 1821 of file references.bib
  : @article{blanco:bioMed2008
  :                           ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1813 of file references.bib
+Repeated entry---line 1832 of file references.bib
  : @article{hasan:ieeeletter2009
  :                              ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1823 of file references.bib
+Repeated entry---line 1842 of file references.bib
  : @article{huang:signalProc2006
  :                              ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1874 of file references.bib
+Repeated entry---line 1893 of file references.bib
  : @inproceedings{torres:icassp2012
  :                                 ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1898 of file references.bib
+Repeated entry---line 1917 of file references.bib
  : @article{simheatcool
  :                     ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1908 of file references.bib
+Repeated entry---line 1927 of file references.bib
  : @misc{epabuildings
  :                   ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1921 of file references.bib
+Repeated entry---line 1940 of file references.bib
  : @inproceedings{occmodels_buildsys11
  :                                    ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1931 of file references.bib
+Repeated entry---line 1950 of file references.bib
  : @inproceedings{Bellala_buildsys11
  :                                  ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1943 of file references.bib
+Repeated entry---line 1962 of file references.bib
  :   @inproceedings{kaminthermo
  :                             ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1970 of file references.bib
+Repeated entry---line 1989 of file references.bib
  : @misc{next10_waste
  :                   ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 1977 of file references.bib
+Repeated entry---line 1996 of file references.bib
  : @article{huang:emd1998
  :                       ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 2031 of file references.bib
+Repeated entry---line 2050 of file references.bib
  : @inproceedings{buildanomaly
  :                            ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 2041 of file references.bib
+Repeated entry---line 2060 of file references.bib
  : @inproceedings{kim:buildsys2010
  :                                ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 3779 of file references.bib
+Repeated entry---line 3798 of file references.bib
  : @article{blondel:unfolding
  :                           ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 3950 of file references.bib
+Repeated entry---line 3969 of file references.bib
  : @article{simheatcool
  :                     ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 3960 of file references.bib
+Repeated entry---line 3979 of file references.bib
  : @misc{epabuildings
  :                   ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 3973 of file references.bib
+Repeated entry---line 3992 of file references.bib
  : @inproceedings{occmodels_buildsys11
  :                                    ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 3984 of file references.bib
+Repeated entry---line 4003 of file references.bib
  : @inproceedings{Bellala_buildsys11
  :                                  ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 3996 of file references.bib
+Repeated entry---line 4015 of file references.bib
  :   @inproceedings{kaminthermo
  :                             ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 4023 of file references.bib
+Repeated entry---line 4042 of file references.bib
  : @misc{next10_waste
  :                   ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 4030 of file references.bib
+Repeated entry---line 4049 of file references.bib
  : @article{huang:emd1998
  :                       ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 4087 of file references.bib
+Repeated entry---line 4106 of file references.bib
  : @inproceedings{buildanomaly
  :                            ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 4097 of file references.bib
+Repeated entry---line 4116 of file references.bib
  : @inproceedings{kim:buildsys2010
  :                                ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 5294 of file references.bib
+Repeated entry---line 5313 of file references.bib
  : @article{blondel:unfolding
  :                           ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 5513 of file references.bib
+Repeated entry---line 5532 of file references.bib
  : @inproceedings{homeos
  :                      ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 5943 of file references.bib
+Repeated entry---line 5962 of file references.bib
  :  @inproceedings{imp_mobisys2012
  :                                ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 6089 of file references.bib
+Repeated entry---line 6108 of file references.bib
  : @article{eugster
  :                 ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 6153 of file references.bib
+Repeated entry---line 6172 of file references.bib
  : @article{simheatcool
  :                     ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 6163 of file references.bib
+Repeated entry---line 6182 of file references.bib
  : @misc{epabuildings
  :                   ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 6176 of file references.bib
+Repeated entry---line 6195 of file references.bib
  : @inproceedings{occmodels_buildsys11
  :                                    ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 6187 of file references.bib
+Repeated entry---line 6206 of file references.bib
  : @inproceedings{Bellala_buildsys11
  :                                  ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 6199 of file references.bib
+Repeated entry---line 6218 of file references.bib
  :   @inproceedings{kaminthermo
  :                             ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 6215 of file references.bib
+Repeated entry---line 6234 of file references.bib
  : @article{waste_science
  :                       ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 6226 of file references.bib
+Repeated entry---line 6245 of file references.bib
  : @misc{next10_waste
  :                   ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 6233 of file references.bib
+Repeated entry---line 6252 of file references.bib
  : @article{huang:emd1998
  :                       ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 6375 of file references.bib
+Repeated entry---line 6394 of file references.bib
  : @inproceedings{buildanomaly
  :                            ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 6385 of file references.bib
+Repeated entry---line 6404 of file references.bib
  : @inproceedings{kim:buildsys2010
  :                                ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 7577 of file references.bib
+Repeated entry---line 7596 of file references.bib
  : @article{blondel:unfolding
  :                           ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 7822 of file references.bib
+Repeated entry---line 7841 of file references.bib
  : @misc{acme
  :           ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 7878 of file references.bib
+Repeated entry---line 7897 of file references.bib
  : @phdthesis{cricket
  :                   ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 7977 of file references.bib
+Repeated entry---line 7996 of file references.bib
  : @inproceedings{smap
  :                    ,
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 8081 of file references.bib
+I was expecting a `,' or a `}'---line 8100 of file references.bib
  : 
  : year = {1993},
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Repeated entry---line 8272 of file references.bib
+Repeated entry---line 8291 of file references.bib
  : @inproceedings{radar
  :                     ,
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 8638 of file references.bib
+I was expecting a `,' or a `}'---line 8657 of file references.bib
  :   
  :   organization = "Center for Information Technology Research in the Interest of Society"
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 8707 of file references.bib
+I was expecting a `,' or a `}'---line 8726 of file references.bib
  :    
  :    title = "{Ensemble-level Power Management for Dense Blade Servers}",
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 8876 of file references.bib
+I was expecting a `,' or a `}'---line 8895 of file references.bib
  :   
  :   organization = "Cambridge University Press",
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Repeated entry---line 8886 of file references.bib
+Repeated entry---line 8905 of file references.bib
  : @misc{next10_waste
  :                   ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 8901 of file references.bib
+Repeated entry---line 8920 of file references.bib
  : @misc{epabuildings
  :                   ,
 I'm skipping whatever remains of this entry
-Unbalanced braces---line 8910 of file references.bib
+Unbalanced braces---line 8929 of file references.bib
  :   author="{Ecos}
  :                 }",
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 8919 of file references.bib
+I was expecting a `,' or a `}'---line 8938 of file references.bib
  :   
  :   month="March"
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 8926 of file references.bib
+I was expecting a `,' or a `}'---line 8945 of file references.bib
  :   
  :   month="March"
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 8933 of file references.bib
+I was expecting a `,' or a `}'---line 8952 of file references.bib
  :   
  :   month="January"
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 8940 of file references.bib
+I was expecting a `,' or a `}'---line 8959 of file references.bib
  :   
  :   year="2007"
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Repeated entry---line 9611 of file references.bib
+Repeated entry---line 9630 of file references.bib
  : @misc{cbecs2003
  :                ,
 I'm skipping whatever remains of this entry
-Repeated entry---line 10364 of file references.bib
+Repeated entry---line 10383 of file references.bib
  : @inproceedings{smap
  :                    ,
 I'm skipping whatever remains of this entry
 Biblatex version: 1.7
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 9000 items from 6000.
-You've used 128 entries,
+You've used 129 entries,
             6019 wiz_defined-function locations,
-            1986 strings with 43825 characters,
-and the built_in function-call counts, 448905 in all, are:
-= -- 18843
-> -- 14894
-< -- 4814
-+ -- 5500
-- -- 5395
-* -- 35650
-:= -- 25287
+            1998 strings with 44265 characters,
+and the built_in function-call counts, 452798 in all, are:
+= -- 19008
+> -- 15011
+< -- 4850
++ -- 5543
+- -- 5438
+* -- 36001
+:= -- 25510
 add.period$ -- 0
-call.type$ -- 128
-change.case$ -- 2805
+call.type$ -- 129
+change.case$ -- 2829
 chr.to.int$ -- 73
-cite$ -- 254
-duplicate$ -- 51352
-empty$ -- 45943
-format.name$ -- 9946
-if$ -- 101392
+cite$ -- 256
+duplicate$ -- 51801
+empty$ -- 46349
+format.name$ -- 10032
+if$ -- 102246
 int.to.chr$ -- 0
-int.to.str$ -- 359
+int.to.str$ -- 363
 missing$ -- 0
-newline$ -- 4276
-num.names$ -- 6736
-pop$ -- 40905
+newline$ -- 4324
+num.names$ -- 6796
+pop$ -- 41222
 preamble$ -- 1
-purify$ -- 3274
+purify$ -- 3302
 quote$ -- 0
-skip$ -- 26413
+skip$ -- 26619
 stack$ -- 0
-substring$ -- 11861
-swap$ -- 17873
-text.length$ -- 3504
-text.prefix$ -- 127
+substring$ -- 11981
+swap$ -- 18049
+text.length$ -- 3530
+text.prefix$ -- 128
 top$ -- 1
-type$ -- 4848
+type$ -- 4886
 warning$ -- 0
-while$ -- 2304
+while$ -- 2326
 width$ -- 0
-write$ -- 4147
+write$ -- 4194
 (There were 64 error messages)

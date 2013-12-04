@@ -1832,6 +1832,57 @@
   \field{year}{2001}
 \endentry
 
+\entry{Hong:2013}{inproceedings}{}
+  \name{author}{4}{}{%
+    {{}%
+     {Hong}{H.}%
+     {Dezhi}{D.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Ortiz}{O.}%
+     {Jorge}{J.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Whitehouse}{W.}%
+     {Kamin}{K.}%
+     {}{}%
+     {}{}}%
+    {{}%
+     {Culler}{C.}%
+     {David}{D.}%
+     {}{}%
+     {}{}}%
+  }
+  \list{publisher}{1}{%
+    {ACM}%
+  }
+  \keyw{Clustering, Correlation Coefficient, Empirical Mode Decomposition,
+  Sensor Placement}
+  \strng{namehash}{HD+1}
+  \strng{fullhash}{HDOJWKCD1}
+  \field{sortinit}{H}
+  \field{booktitle}{Proceedings of the 5th ACM Workshop on Embedded Systems For
+  Energy-Efficient Buildings}
+  \verb{doi}
+  \verb 10.1145/2528282.2528302
+  \endverb
+  \field{isbn}{978-1-4503-2431-1}
+  \field{pages}{13:1\bibrangedash 13:8}
+  \field{series}{BuildSys'13}
+  \field{title}{Towards Automatic Spatial Verification of Sensor Placement in
+  Buildings}
+  \verb{url}
+  \verb http://doi.acm.org/10.1145/2528282.2528302
+  \endverb
+  \list{location}{1}{%
+    {Roma, Italy}%
+  }
+  \field{year}{2013}
+  \warn{\item Can't use 'location' + 'address'}
+\endentry
+
 \entry{hbci}{inproceedings}{}
   \name{author}{7}{}{%
     {{}%

@@ -347,7 +347,7 @@ its last performed operation and the time that operation was performed.  The ser
 take place since then.  This server process runs on top of StreamFS.  All operations performed by the mobile application
 run through this process for logging.  Essentially, this process maintains a timestamped write-log.  The prefetcher
 queries the write log for updates since the last down time.
-The client applies those operations internally to a cached version of the the ERG \emph{on the phone} in order to 
+The client applies those operations internally to a cached version of the ERG \emph{on the phone} in order to 
 maintain consistency.  The ``\emph{active}'' parameter-check, is for energy savings.  If the phone application is active, the
 check occurs every 10 minutes, otherwise it occurs ever hour.
 
@@ -817,7 +817,7 @@ cost of resolution.
 StreamFS supports the addition and operations to record all the deployment information.  It also supports active aggregates for 
 31 rooms on the 4th floor of the deployment and 1 for the entire building.  The number of active users was no more than 10 at any time.
 Because these number are not that large they do not truly test the scalability of the system.  However, they do demonstrate
-both \emph{extensibility} and \emph{generalizability}.  Without the first property we could not have added the the sensors,
+both \emph{extensibility} and \emph{generalizability}.  Without the first property we could not have added the sensors,
 related information, user context, spatial configuration information and updated it with ease.  Without the second property
 we could not have supported both the collection of metadata and data about the deployment as well as \emph{data services} that
 are absolutely crucial to the success of the Energy Lens application.
