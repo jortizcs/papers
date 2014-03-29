@@ -15,6 +15,27 @@ This makes the integration process laborious and fundamentally unscalable.  If w
 wish to have a broad impact across the entire building stock, at scale, we need
 to explore methods for overcoming this challenge.
 
+A simple analysis application might include the ability
+to identify anomalous readings from a specific kind of sensor.  In order to run the application
+we need to know what the name of the sensor(s) is and how to attain readings from that 
+stream.  If the analysis is for a particular kind of system, then the name is used to refer to 
+only the set of streams that the application knows how to process.  Even within a single building,
+the stream identification process is manual.  The deployer looks loads the interface to the 
+building management system, track down the spatial or system view, clicks through several windows
+to locate the location of the point(s) of interest, mouses over the point(s) and records the name,
+and then uses that point name to request it from the data-fetch protocol -- typically BACNet or 
+LonTalk or another open standard.  This process is repeated in \emph{every building} that wants
+the application deployed.
+
+In order to meaningfully deal with disparate building data streams in a scalable 
+fashion the streams should be \emph{searchable} across various properties, such
+as building name, room location, and statistical trends.  Moreover, we
+assert that wide searchability is necessary for achieving scalability.  By providing a tool for
+searching across building streams, we minimize the deployment time for applications that 
+offer deeper insight into building performance -- allowing application  to be used in \emph{all}
+buildings, not just a single one.
+
+
 We observe that every naming scheme looks to capture three point attributes: 
 1) the location in space, 2) its relation to an subsytem, and 3) the type of 
 measurement it is taking.  
