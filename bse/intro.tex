@@ -1,0 +1,30 @@
+\section{Introduction}
+
+Buildings are sites of very large sensor deployments, typically containing
+up to several thousand sensors reporting physical measurement, continuously.
+Moreover, with the recent interest in reducing building energy consumption, it
+is important to consider ways to quickly bootstrap a set of building data streams
+into an anlytical pipeline to determine where there are opportunities for energy savings,
+discovery of broken sensors, and assessing and tracking overall building performance.
+However, current `point' naming conventions form a bottleneck in the scalability of
+the data integration process.  A `point' refers to a physical location where
+a sensor is taking measurements. Each building vendor uses their own naming scheme and
+uniques variants of each scheme are implemented from building to building; variations exist
+even across buildings that have contracted the same vendor to set up their deployment.
+This makes the integration process laborious and fundamentally unscalable.  If we
+wish to have a broad impact across the entire building stock, at scale, we need
+to explore methods for overcoming this challenge.
+
+We observe that every naming scheme looks to capture three point attributes: 
+1) the location in space, 2) its relation to an subsytem, and 3) the type of 
+measurement it is taking.  
+
+We want to make the streams searchable.  How do we do that?
+1) We need index the metadata for the streams but the metadata available is not enough
+2) We need to expand the metadata, but how?
+3) name expansion --> tag unification
+4) timeseries feature extraction --> tag unification
+
+top things to expand upon:  location, type, system
+secondary: statistical features about the data
+ 
